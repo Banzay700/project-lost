@@ -1,3 +1,8 @@
+### Link to the project
+[GitHub Repository](https://github.com/Banzay700/project-lost)
+
+[GitHub Project Bord](https://github.com/users/Banzay700/projects/2)
+
 ### Install dependencies 
 - `yarn install` - add all dependencies for a project.
 - `yarn add [package name]` - install as a dependency.
