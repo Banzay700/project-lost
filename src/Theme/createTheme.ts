@@ -6,7 +6,7 @@ const themeWithBreakpoints = createTheme({})
 const theme = createTheme(
   {
     breakpoints: {
-      // default breakpoints
+      // default values
       values: {
         xs: 0,
         sm: 600,
@@ -89,6 +89,13 @@ const theme = createTheme(
             padding: '20px 0 14px',
             width: '145px',
             [themeWithBreakpoints.breakpoints.between('sm', 'md')]: {},
+          },
+          containedPrimary: {
+            '&.Mui-disabled': {
+              opacity: '0.6',
+              background: '#FF5C00',
+              color: '#FFFFFF',
+            },
           },
         },
         defaultProps: {
