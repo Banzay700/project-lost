@@ -14,7 +14,6 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
-    "styled-components": "^6.0.0-rc.1",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
