@@ -19,9 +19,10 @@
     "paths": {
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
+      "hooks/*": ["hooks/*"],
       "constants/*": ["constants/*"],
-      "modules/*": ["modules/*"],
       "pages/*": ["pages/*"],
+      "theme/*": ["theme/*"],
       "store/*": ["store/*"],
       "types/*": ["types/*"],
       "UI/*": ["UI/*"],
