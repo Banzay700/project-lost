@@ -1,7 +1,7 @@
-import { DataCategoryType, IDish, RequiredIdDish } from 'types/IDish'
-import { api } from './API'
+import { DataCategoryType, IDish, RequiredIdDish } from '../../types'
+import { api } from './api'
 
-export const dishAPI = api.injectEndpoints({
+export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllDishes: builder.query<IDish[], string>({
       query: () => ({
@@ -79,4 +79,4 @@ export const {
   useGetDishesSearchQuery,
   useGetDishQuery,
   useUpdateDishMutation,
-} = dishAPI
+} = dishApi

@@ -1,7 +1,7 @@
-import { IOrder, RequiredIdOrder } from 'types/IOrder'
-import { api } from './API'
+import { IOrder, RequiredIdOrder } from 'types'
+import { api } from './api'
 
-export const orderAPI = api.injectEndpoints({
+export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllOrders: builder.query<IOrder[], string>({
       query: () => ({
@@ -47,4 +47,4 @@ export const {
   useGetAllOrdersQuery,
   useGetOrderQuery,
   useUpdateOrderMutation,
-} = orderAPI
+} = orderApi

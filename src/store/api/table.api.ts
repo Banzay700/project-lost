@@ -1,12 +1,13 @@
 import {
+  FreeTableType,
   IRequestDeleteReservation,
   IReservationsInfo,
   ITable,
   TableMessageType,
-} from 'types/ITable'
-import { api } from './API'
+} from 'types'
+import { api } from './api'
 
-export const tableAPI = api.injectEndpoints({
+export const tableApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllTables: builder.query<ITable[], string>({
       query: () => ({
@@ -14,28 +15,25 @@ export const tableAPI = api.injectEndpoints({
       }),
       providesTags: ['Table'],
     }),
-    getFreeTables: builder.query<Pick<ITable, 'id' | 'number'>[], string>({
+    getFreeTables: builder.query<FreeTableType[], string>({
       query: () => ({
         url: '/tables/free',
       }),
     }),
-    getTableReservationForCurrentDay: builder.query<
-      TableMessageType | Pick<TableMessageType, 'message'>,
-      string
-    >({
+    getTableReservationForCurrentDay: builder.query<TableMessageType, string>({
       query: (id) => ({
         url: `/tables/reservation/${id}`,
       }),
     }),
     getTableReservationSelectedDate: builder.query<
-      TableMessageType | Pick<TableMessageType, 'message'>,
+      TableMessageType,
       { id: string; date: string } // <--- date: "2023-05-13"
     >({
       query: ({ id, date }) => ({
         url: `/tables/reservation/${id}/${date}`,
       }),
     }),
-    addNewTable: builder.mutation<ITable, Pick<ITable, 'number' | 'tableLimit'>>({
+    addNewTable: builder.mutation<ITable, ITable>({
       query: (body) => ({
         url: '/tables',
         method: 'POST',
@@ -97,4 +95,4 @@ export const {
   useGetTableReservationSelectedDateQuery,
   useUpdateReservationMutation,
   useUpdateTableStatusMutation,
-} = tableAPI
+} = tableApi

@@ -13,8 +13,8 @@ export interface ITable {
   id?: string
   number: string
   tableLimit: number
-  reserved: boolean
-  reservationInfo: IReservationsInfo[]
+  reserved?: boolean
+  reservationInfo?: IReservationsInfo[]
 }
 
 export interface IRequestDeleteReservation {
@@ -24,4 +24,5 @@ export interface IRequestDeleteReservation {
   upsertedCount: number
   matchedCount: number
 }
-export type TableMessageType = { message: string; tableReservations: string[] }
+export type TableMessageType = { message: string; tableReservations?: string[] }
+export type FreeTableType = Pick<ITable, 'id' | 'number'>

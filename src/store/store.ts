@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import orderReducer from './reducers/OrderSlice'
-import { api } from '../api/API'
+import { api } from './api/api'
 
 const rootReducer = combineReducers({
   orderReducer,
