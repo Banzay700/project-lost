@@ -4,6 +4,8 @@
 
 [GitHub Project Bord](https://github.com/users/Banzay700/projects/2)
 
+[Figma](https://www.figma.com/file/47R2LiZizqnWWEonCxjGZ7/Coca---Point-of-sales-(Copy)?type=design&node-id=1462-14101&t=kLNuL6KXSi7s0qKD-0)
+
 ### Install dependencies
 
 - `yarn install` - add all dependencies for a project.
