@@ -1,26 +1,22 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 import {
   IRequestDeleteReservation,
   IReservationsInfo,
   ITable,
   TableMessageType,
 } from 'types/ITable'
+import { api } from './API'
 
-export const tableAPI = createApi({
-  reducerPath: 'tableAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: ' http://localhost:5001/api/restaurant/tables' }),
-  tagTypes: ['Table'],
+export const tableAPI = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllTables: builder.query<ITable[], string>({
       query: () => ({
-        url: '/',
+        url: '/tables',
       }),
       providesTags: ['Table'],
     }),
     getFreeTables: builder.query<Pick<ITable, 'id' | 'number'>[], string>({
       query: () => ({
-        url: '/free',
+        url: '/tables/free',
       }),
     }),
     getTableReservationForCurrentDay: builder.query<
@@ -28,7 +24,7 @@ export const tableAPI = createApi({
       string
     >({
       query: (id) => ({
-        url: `/reservation/${id}`,
+        url: `/tables/reservation/${id}`,
       }),
     }),
     getTableReservationSelectedDate: builder.query<
@@ -36,12 +32,12 @@ export const tableAPI = createApi({
       { id: string; date: string } // <--- date: "2023-05-13"
     >({
       query: ({ id, date }) => ({
-        url: `/reservation/${id}/${date}`,
+        url: `/tables/reservation/${id}/${date}`,
       }),
     }),
     addNewTable: builder.mutation<ITable, Pick<ITable, 'number' | 'tableLimit'>>({
       query: (body) => ({
-        url: '/',
+        url: '/tables',
         method: 'POST',
         body,
       }),
@@ -49,7 +45,7 @@ export const tableAPI = createApi({
     }),
     addNewReservation: builder.mutation<ITable, { id: string; body: IReservationsInfo }>({
       query: ({ id, body }) => ({
-        url: `/reservation/${id}`,
+        url: `/tables/reservation/${id}`,
         method: 'POST',
         body,
       }),
@@ -57,14 +53,14 @@ export const tableAPI = createApi({
     }),
     updateTableStatus: builder.mutation<ITable, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/tables/${id}`,
         method: 'PUT',
       }),
       invalidatesTags: ['Table'],
     }),
     updateReservation: builder.mutation<ITable, { id: string; body: Required<IReservationsInfo> }>({
       query: ({ id, body }) => ({
-        url: `/reservation/update/${id}`,
+        url: `/tables/reservation/update/${id}`,
         method: 'PUT',
         body,
       }),
@@ -72,7 +68,7 @@ export const tableAPI = createApi({
     }),
     deleteTable: builder.mutation<ITable, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/tables/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Table'],
@@ -82,10 +78,23 @@ export const tableAPI = createApi({
       { tableNumber: string; reservationId: string }
     >({
       query: ({ tableNumber, reservationId }) => ({
-        url: `/reservation/${tableNumber}/${reservationId}`,
+        url: `/tables/reservation/${tableNumber}/${reservationId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Table'],
     }),
   }),
 })
+
+export const {
+  useGetAllTablesQuery,
+  useGetFreeTablesQuery,
+  useAddNewReservationMutation,
+  useAddNewTableMutation,
+  useDeleteReservationMutation,
+  useDeleteTableMutation,
+  useGetTableReservationForCurrentDayQuery,
+  useGetTableReservationSelectedDateQuery,
+  useUpdateReservationMutation,
+  useUpdateTableStatusMutation,
+} = tableAPI

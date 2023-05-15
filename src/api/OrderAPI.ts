@@ -1,25 +1,22 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IOrder, RequiredIdOrder } from 'types/IOrder'
+import { api } from './API'
 
-export const orderAPI = createApi({
-  reducerPath: 'orderAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: ' http://localhost:5001/api/restaurant/orders' }),
-  tagTypes: ['Order'],
+export const orderAPI = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllOrders: builder.query<IOrder[], string>({
       query: () => ({
-        url: '/',
+        url: '/orders',
       }),
       providesTags: ['Order'],
     }),
     getOrder: builder.query<IOrder, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/orders/${id}`,
       }),
     }),
     createOrder: builder.mutation<IOrder, IOrder>({
       query: (post) => ({
-        url: '/',
+        url: '/orders',
         method: 'POST',
         body: post,
       }),
@@ -28,7 +25,7 @@ export const orderAPI = createApi({
     // Вкладені страви не додаються, а перезаписуються
     updateOrder: builder.mutation<IOrder, RequiredIdOrder>({
       query: (post) => ({
-        url: '/',
+        url: '/orders',
         method: 'PUT',
         body: post,
       }),
@@ -36,10 +33,18 @@ export const orderAPI = createApi({
     }),
     deleteOrder: builder.mutation<IOrder, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/orders/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Order'],
     }),
   }),
 })
+
+export const {
+  useCreateOrderMutation,
+  useDeleteOrderMutation,
+  useGetAllOrdersQuery,
+  useGetOrderQuery,
+  useUpdateOrderMutation,
+} = orderAPI

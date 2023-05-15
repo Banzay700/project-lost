@@ -1,24 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import orderReducer from './reducers/OrderSlice'
-import { dishAPI } from '../services/DishService'
-import { orderAPI } from '../services/OrderService'
-import { tableAPI } from '../services/TableService'
+import { api } from '../api/API'
 
 const rootReducer = combineReducers({
   orderReducer,
-  [dishAPI.reducerPath]: dishAPI.reducer,
-  [orderAPI.reducerPath]: orderAPI.reducer,
-  [tableAPI.reducerPath]: tableAPI.reducer,
+  [api.reducerPath]: api.reducer,
 })
 
-export const setupStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(dishAPI.middleware, orderAPI.middleware, tableAPI.middleware),
-  })
-}
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
+})
 
 export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
-export type AppDispatch = AppStore['dispatch']
+export type AppDispatch = typeof store.dispatch

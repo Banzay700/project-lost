@@ -1,20 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { DataCategoryType, IDish, RequiredIdDish } from 'types/IDish'
+import { api } from './API'
 
-export const dishAPI = createApi({
-  reducerPath: 'dishAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: ' http://localhost:5001/api/restaurant/dishes' }),
-  tagTypes: ['Dish'],
+export const dishAPI = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllDishes: builder.query<IDish[], string>({
       query: () => ({
-        url: '/',
+        url: '/dishes',
       }),
       providesTags: ['Dish'],
     }),
     getDishesByCategory: builder.query<IDish[], string>({
       query: (category) => ({
-        url: `/by_category/${category}`,
+        url: `/dishes/by_category/${category}`,
       }),
     }),
     getDishesByCategoryAndSubCategory: builder.query<
@@ -22,32 +19,32 @@ export const dishAPI = createApi({
       { category: string; subcategory: string }
     >({
       query: ({ category, subcategory }) => ({
-        url: `/by_category/${category}/${subcategory}`,
+        url: `/dishes/by_category/${category}/${subcategory}`,
       }),
     }),
     getDish: builder.query<IDish, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/dishes/${id}`,
       }),
     }),
     getAllCategories: builder.query<DataCategoryType[], string>({
       query: () => ({
-        url: '/categories/all',
+        url: '/dishes/categories/all',
       }),
     }),
     getAllSubcategoriesInCategory: builder.query<string[], string>({
       query: (category) => ({
-        url: `/categories/${category}`,
+        url: `/dishes/categories/${category}`,
       }),
     }),
     getDishesSearch: builder.query<IDish[], string>({
       query: (query) => ({
-        url: `/search/td?q=${query}`,
+        url: `/dishes/search/td?q=${query}`,
       }),
     }),
     createDish: builder.mutation<IDish, IDish>({
       query: (post) => ({
-        url: '/',
+        url: '/dishes',
         method: 'POST',
         body: post,
       }),
@@ -55,7 +52,7 @@ export const dishAPI = createApi({
     }),
     updateDish: builder.mutation<IDish, RequiredIdDish>({
       query: (post) => ({
-        url: '/',
+        url: '/dishes',
         method: 'PUT',
         body: post,
       }),
@@ -63,10 +60,23 @@ export const dishAPI = createApi({
     }),
     deleteDish: builder.mutation<IDish, string>({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/dishes/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Dish'],
     }),
   }),
 })
+
+export const {
+  useGetAllDishesQuery,
+  useCreateDishMutation,
+  useDeleteDishMutation,
+  useGetAllCategoriesQuery,
+  useGetAllSubcategoriesInCategoryQuery,
+  useGetDishesByCategoryAndSubCategoryQuery,
+  useGetDishesByCategoryQuery,
+  useGetDishesSearchQuery,
+  useGetDishQuery,
+  useUpdateDishMutation,
+} = dishAPI
