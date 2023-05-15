@@ -5,8 +5,15 @@ import { store } from 'store'
 import App from './App'
 import './style/index.css'
 
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+ 
+  <ThemeProvider theme={theme}>
+    <StyledEngineProvider injectFirst>
+      <CssBaseline />
+      <App />
+    </StyledEngineProvider>
+  </ThemeProvider>,
+
 )
