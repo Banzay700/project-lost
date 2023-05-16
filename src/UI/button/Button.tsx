@@ -4,7 +4,7 @@ import { Typography } from '@mui/material'
 import cn from 'classnames'
 import s from './Button.module.scss'
 
-interface MyButtonProps extends PropsWithChildren {
+interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
   size: 'small' | 'default'
   color?: 'secondary'
@@ -16,14 +16,14 @@ interface MyButtonProps extends PropsWithChildren {
   fullWidth?: boolean
 }
 
-const Button: FC<MyButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   variant,
   size,
   color,
   startIcon,
   endIcon,
   icon,
-  fullWidth = true,
+  fullWidth = false,
   disabled,
   children,
   onClick,

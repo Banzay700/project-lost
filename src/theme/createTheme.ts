@@ -86,12 +86,9 @@ const theme = createTheme(
             },
           },
           containedSecondary: {
-            padding: '20px 0 14px',
-            width: '145px',
             '&.Mui-disabled': {
-              opacity: '.8',
-              background: '#111113',
-              color: '#FFFFFF',
+              background: '#E4E4E4',
+              color: '#9C9C9C',
             },
             [themeWithBreakpoints.breakpoints.between('sm', 'md')]: {},
           },
