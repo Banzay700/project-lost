@@ -1,2 +1,2 @@
 import { SampleItemContainer } from 'sampleComponents'
-import { ICommon, Products } from 'sampleTypes'
+import { SomeButtonExtraProps, Products } from 'sampleTypes'

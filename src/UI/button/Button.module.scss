@@ -1,0 +1,28 @@
+.wrapper {
+    border-radius: 58px;
+    box-shadow: none;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:hover {
+        box-shadow:none;
+    }
+}
+
+.box-focus {
+
+    &:focus {
+        box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+    }
+}
+
+.size-default {
+    padding: 12px;
+}
+
+.size-small {
+    padding: 8px;
+}
+
