@@ -18,7 +18,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
-    "vite-plugin-svgr": "^2.4.0"
+    "vite-plugin-svgr": "^2.4.0",
+    "@fontsource/poppins": "^4.5.10"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
