@@ -1,0 +1,11 @@
+.time {
+  background: #F8F9FD;
+  width: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  @media (max-width: 890px) {
+    display: none;
+  }
+}
