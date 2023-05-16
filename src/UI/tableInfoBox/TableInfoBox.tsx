@@ -15,8 +15,12 @@ const TableInfoBox: FC<TableInfoBoxProps> = ({ data }) => {
         {data?.map(({ time, description }) => (
           <Step key={time} className={s.step}>
             <StepLabel className={s.stepLabel} StepIconComponent={IconOval}>
-              <Typography className={s.time}>{time}</Typography>
-              <Typography className={s.description}>{description}</Typography>
+              <Typography variant="subtitle2" className={s.time}>
+                {time}
+              </Typography>
+              <Typography variant="subtitle1" color="secondary.main">
+                {description}
+              </Typography>
             </StepLabel>
           </Step>
         ))}
