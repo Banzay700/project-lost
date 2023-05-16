@@ -5,7 +5,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 40px;
-  @media (max-width: 890px) {
+  @media (max-width: 991px) {
     display: none;
   }
+}
+.p{
+  padding: 100px;
 }

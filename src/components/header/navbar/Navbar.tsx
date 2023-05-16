@@ -1,27 +1,45 @@
-import React, { FC, useState } from 'react'
-import { BottomNavigation, BottomNavigationAction, Stack } from '@mui/material'
+import React, { FC } from 'react'
+import { Stack, Typography } from '@mui/material'
 import { Clock, Home, Note, Receipt } from 'assets'
-// import s from './Navbar.module.scss'
-// interface NavbarProps {
-// }
+import { NavLink } from 'react-router-dom'
+import cn from 'classnames'
+import s from './Navbar.module.scss'
 
 const Navbar: FC = () => {
-  const [value, setValue] = useState(0)
-
   return (
     <Stack spacing={6.4} direction="row">
-      {/* Here will be NavLink from react-router */}
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue: number): void => {
-          setValue(newValue)
-        }}>
-        <BottomNavigationAction label="Home" icon={<Home />} />
-        <BottomNavigationAction label="Order" icon={<Receipt />} />
-        <BottomNavigationAction label="History" icon={<Clock />} />
-        <BottomNavigationAction label="Bills" icon={<Note />} />
-      </BottomNavigation>
+      <NavLink
+        to="/home"
+        className={({ isActive }) => (isActive ? cn(s.navItem, s.activeLink) : s.navItem)}>
+        <Home style={{ marginRight: '8px' }} />
+        <Typography variant="h2" fontWeight={500}>
+          Home
+        </Typography>
+      </NavLink>
+      <NavLink
+        to="/order"
+        className={({ isActive }) => (isActive ? cn(s.navItem, s.activeLink) : s.navItem)}>
+        <Receipt style={{ marginRight: '8px' }} />
+        <Typography variant="h2" fontWeight={500}>
+          Order
+        </Typography>
+      </NavLink>
+      <NavLink
+        to="/history"
+        className={({ isActive }) => (isActive ? cn(s.navItem, s.activeLink) : s.navItem)}>
+        <Clock style={{ marginRight: '8px' }} />
+        <Typography variant="h2" fontWeight={500}>
+          History
+        </Typography>
+      </NavLink>
+      <NavLink
+        to="/bills"
+        className={({ isActive }) => (isActive ? cn(s.navItem, s.activeLink) : s.navItem)}>
+        <Note style={{ marginRight: '8px' }} />
+        <Typography variant="h2" fontWeight={500}>
+          Bills
+        </Typography>
+      </NavLink>
     </Stack>
   )
 }

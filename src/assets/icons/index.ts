@@ -1,3 +1,5 @@
+export { ReactComponent as IconMinus } from './icon-minus.svg'
+export { ReactComponent as IconPlus } from './icon-plus.svg'
 export { ReactComponent as Home } from './home.svg'
 export { ReactComponent as Note } from './note.svg'
 export { ReactComponent as Clock } from './clock.svg'
