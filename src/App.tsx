@@ -1,11 +1,5 @@
-import { Input } from 'UI/index'
-
 const App = () => {
-  return (
-    <div>
-      <Input placeholder="test" label="test" />
-    </div>
-  )
+  return <div />
 }
 
 export default App
