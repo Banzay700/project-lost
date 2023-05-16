@@ -1,4 +1,6 @@
 .input {
+  font-size: 16px;
+  line-height: 150%;
   & :global .MuiInputBase-root {
     border-radius: 16px;
     text-align: center;
@@ -21,7 +23,6 @@
     transform: translate(10px, -7px);
     font-weight: 500;
     font-size: 12px;
-    line-height: 150%;
     color: #828487;
   }
 
