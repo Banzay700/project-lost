@@ -10,24 +10,24 @@ interface IndicatorProps {
 const Indicator: FC<IndicatorProps> = ({ type }) => {
   return (
     <ListItem className={s.indicator}>
-      {type === 'away' ? (
+      {type === 'away' && (
         <>
           <IconAway />
           <ListItemText primary="Take away" />
         </>
-      ) : null}
-      {type === 'dineIn' ? (
+      )}
+      {type === 'dineIn' && (
         <>
           <IconDineIn />
           <ListItemText primary="Dine in" />
         </>
-      ) : null}
-      {type === 'delivery' ? (
+      )}
+      {type === 'delivery' && (
         <>
           <IconDelivery />
           <ListItemText primary="Delivery" />
         </>
-      ) : null}
+      )}
     </ListItem>
   )
 }
