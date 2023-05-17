@@ -2,19 +2,19 @@ import { FC } from 'react'
 import s from './InfoTag.module.scss'
 
 interface InfoTagProps {
-  type: 'Take away' | 'Dine in' | 'Delivery' | 'Close' | 'Open'
+  type: 'away' | 'dineIn' | 'delivery' | 'close' | 'open'
 }
 
 const classMap = {
-  'Take away': s.takeAway,
-  'Dine in': s.dineIn,
-  Delivery: s.delivery,
-  Close: s.close,
-  Open: s.open,
+  away: [s.takeAway, 'Take away'],
+  dineIn: [s.dineIn, 'Dine in'],
+  delivery: [s.delivery, 'Delivery'],
+  close: [s.close, 'Close'],
+  open: [s.open, 'Open'],
 }
 
 const InfoTag: FC<InfoTagProps> = ({ type }) => {
-  return <div className={classMap[type]}>{type}</div>
+  return <div className={classMap[type][0]}>{classMap[type][1]}</div>
 }
 
 export default InfoTag
