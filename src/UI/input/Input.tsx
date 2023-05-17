@@ -2,11 +2,11 @@ import { FC } from 'react'
 import { TextField } from '@mui/material'
 import cn from 'classnames'
 
-import { InputVariantProps } from 'types'
+import { InputVariantPropsType } from 'types'
 import { IconWrapper } from './icon-wrapper'
 import s from './Input.module.scss'
 
-type InputProps = InputVariantProps & {
+type InputProps = InputVariantPropsType & {
   placeholder: string
 }
 
