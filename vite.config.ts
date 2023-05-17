@@ -8,8 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       assets: '/src/assets/',
-      sampleTypes: '/src/sampleTypes/', /// DELETE
-      sampleComponents: '/src/sampleComponents/', /// DELETE
       components: '/src/components/',
       hooks: '/src/hooks/',
       constants: '/src/constants/',
