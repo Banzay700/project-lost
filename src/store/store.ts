@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { orderReducer } from './redusers'
+import { orderReducer } from './reducers'
 import { api } from './api'
 
 const rootReducer = combineReducers({
