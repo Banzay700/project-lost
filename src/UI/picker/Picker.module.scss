@@ -1,0 +1,13 @@
+.wrapper {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.value {
+    min-width: 22px;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}

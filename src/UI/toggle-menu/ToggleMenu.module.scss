@@ -1,0 +1,14 @@
+.wrapper {
+    background: #F8F9FD;
+    border-radius: 80px;
+    padding: 4px;
+    color: #828487;
+
+    & :global .MuiTabs-indicator {
+        height: 100%;
+        background-color: white;
+        border-radius: 80px;
+        z-index: 0;
+    }
+}
+
