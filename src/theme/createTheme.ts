@@ -1,5 +1,21 @@
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/500.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/poppins/700.css'
+import '@fontsource/poppins/400-italic.css'
+import '@fontsource/poppins/500-italic.css'
+import '@fontsource/poppins/600-italic.css'
+import '@fontsource/poppins/700-italic.css'
 import { createTheme } from '@mui/material'
 import { enUS } from '@mui/material/locale'
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/500.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/poppins/700.css'
+import '@fontsource/poppins/400-italic.css'
+import '@fontsource/poppins/500-italic.css'
+import '@fontsource/poppins/600-italic.css'
+import '@fontsource/poppins/700-italic.css'
 
 const themeWithBreakpoints = createTheme({})
 
@@ -56,7 +72,7 @@ const theme = createTheme(
       primary: {
         main: '#FF5C00',
         light: '#ff7c33',
-        dark: '#d24801',
+        dark: '#FF7527',
         contrastText: '#fff',
       },
       secondary: {
@@ -86,12 +102,9 @@ const theme = createTheme(
             },
           },
           containedSecondary: {
-            padding: '20px 0 14px',
-            width: '145px',
             '&.Mui-disabled': {
-              opacity: '.8',
-              background: '#111113',
-              color: '#FFFFFF',
+              background: '#E4E4E4',
+              color: '#9C9C9C',
             },
             [themeWithBreakpoints.breakpoints.between('sm', 'md')]: {},
           },

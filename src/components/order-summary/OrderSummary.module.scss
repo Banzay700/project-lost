@@ -1,0 +1,20 @@
+.wrapper {
+    padding: 24px;
+    border-top: 1px solid #E4E4E4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #E4E4E4
+}
+
+.text {
+    display: flex;
+    justify-content: space-between;
+}
