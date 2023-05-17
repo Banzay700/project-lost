@@ -8,3 +8,4 @@ export type {
   IReservationsInfo,
   IRequestDeleteReservation,
 } from './ITable'
+export type { ToggleMenuItemType } from './ToggleMenuItemType'

@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   ignorePatterns: ['vite.config.ts'],
   rules: {
+    'ban-ts-comment': 0,
     'react/react-in-jsx-scope': 0,
     'react/function-component-definition': 0,
     'import/prefer-default-export': 0,
