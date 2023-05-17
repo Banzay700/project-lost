@@ -1,0 +1,14 @@
+.list{
+  height: 100%;
+  width: 100%;
+  max-width: 125px;
+  border-right: 1px solid #E4E4E4;
+  padding: 24px;
+  gap: 12px;
+
+  @media (max-width: 1280px) {
+    padding: 10px;
+    max-width: 80px;
+    gap: 8px;
+  }
+}
