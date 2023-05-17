@@ -1,1 +1,1 @@
-export { IconMinus, IconPlus } from './icons'
+export { IconMinus, IconPlus, IconMore } from './icons'
