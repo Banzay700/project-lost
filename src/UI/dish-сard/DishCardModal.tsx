@@ -6,9 +6,10 @@ interface DishCardModalProps {
   open: boolean
   onClose: () => void
   description: string
+  weight: number
 }
 
-const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description }) => {
+const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description, weight }) => {
   const handleClose = () => {
     onClose()
   }
@@ -17,7 +18,8 @@ const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description }) =
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle className={s.titleModal}>Dish details</DialogTitle>
       <DialogContent dividers>
-        <DialogContentText>{description}</DialogContentText>
+        <DialogContentText>Ingredients: {description}</DialogContentText>
+        <DialogContentText>Weight: {weight}</DialogContentText>
       </DialogContent>
     </Dialog>
   )

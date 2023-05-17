@@ -1,4 +1,4 @@
-.card{
+.card {
   background: #FFFFFF;
   border-radius: 16px;
   width: 219px;
@@ -7,7 +7,7 @@
   justify-content: center;
   transition: all 0.3s ease-in-out;
   position: relative;
-  
+
   @media (max-width: 1280px) {
     width: 190px;
     height: 234px;
@@ -17,65 +17,67 @@
     width: 180px;
   }
 
-  &:hover{
-height: 260px;
-    .priceTitle{
+  &:hover {
+    height: 260px;
+
+    .priceTitle {
       display: block;
     }
 
-    .button{
+    .button {
       display: block;
     }
 
-    .wrapper{
+    .wrapper {
       justify-content: space-between;
     }
   }
 }
 
-.content{
+.content {
   padding: 12px 8px 16px;
 }
 
-.image{
+.image {
   border-radius: 12px;
   height: 158px;
   cursor: pointer;
 }
 
-.icon{
-  width: 25px;
-  height: 25px;
+.icon {
   position: absolute;
   top: 8px;
   right: 19px;
   cursor: pointer;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
 }
 
-.title{
-  font-weight: 600;
-  text-align: center;
-}
-
-.priceTitle{
+.priceTitle {
   display: none;
   color: #9C9C9C;
   font-size: 12px;
   line-height: 130%;
 }
 
-.button{
+.button {
   display: none;
   height: 36px;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.titleModal{
+.titleModal {
   font-weight: 600;
   font-size: 20px;
   line-height: 150%;

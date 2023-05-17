@@ -1,7 +1,5 @@
-interface IDishes {
-  id?: string
-  title: string
-  price: number
+export interface IDishes {
+  id: string
   amount: number
 }
 
@@ -39,3 +37,4 @@ export interface IOrder {
 export type RequiredIdOrder = {
   id: string
 } & Partial<IOrder>
+

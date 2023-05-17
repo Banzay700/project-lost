@@ -1,1 +1,1 @@
-export { default as orderReducer } from './order.slice'
+export { default as dishReducer } from './dish.slice'
