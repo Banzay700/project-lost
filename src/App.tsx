@@ -1,5 +1,11 @@
+import { InfoTag } from 'UI/infoTag'
+
 const App = () => {
-  return <div />
+  return (
+    <div>
+      <InfoTag type="dineIn" />
+    </div>
+  )
 }
 
 export default App
