@@ -1,5 +1,12 @@
+import { Search } from 'UI/search'
+import { FilterSearch } from 'components/filter-search'
+
 const App = () => {
-  return <div />
+  return (
+    <div>
+      <FilterSearch />
+    </div>
+  )
 }
 
 export default App
