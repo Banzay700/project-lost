@@ -3,7 +3,6 @@ import { FormControl, Stack, RadioGroup } from '@mui/material'
 import { useField, useFormikContext } from 'formik'
 
 import { RadioButton } from 'UI'
-
 import { RadioGroupContentType } from 'types'
 
 interface RadioButtonsGroupProps {
