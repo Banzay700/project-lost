@@ -23,6 +23,7 @@
     "react-router-dom": "^6.10.0",
     "vite-plugin-svgr": "^2.4.0",
     "yup": "^1.1.1"
+    "@fontsource/poppins": "^4.5.10"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

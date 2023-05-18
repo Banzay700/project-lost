@@ -48,14 +48,13 @@ const Button: FC<ButtonProps> = ({
       )}
       fullWidth={fullWidth}
       disabled={disabled}
-      onClick={onClick}
-      type="submit">
+      onClick={onClick}>
+      {icon && icon}
       {children && (
         <Typography variant={size === 'small' ? 'h3' : 'h2'} component="p" fontWeight="600">
           {children}
         </Typography>
       )}
-      {icon && icon}
     </ButtonMUI>
   )
 }

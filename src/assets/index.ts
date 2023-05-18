@@ -1,1 +1,2 @@
-export { IconMinus, IconPlus, DineIn, InputIcon, TakeAway, Delivery } from './icons'
+export { IconMinus, IconPlus, IconUser, IconOval, IconAway, IconDineIn, IconDelivery } from './icons'
+
