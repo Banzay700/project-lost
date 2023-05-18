@@ -1,3 +1,4 @@
+export { Indicator } from './indicator'
 export { SidebarLeftList } from './sidebar-left/sidebar-left-list'
 export { SidebarLeftItem } from './sidebar-left/sidebar-left-list/sidebar-left-item'
 export { ToggleMenu } from './toggle-menu'
