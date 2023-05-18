@@ -8,4 +8,5 @@ export type {
   IReservationsInfo,
   IRequestDeleteReservation,
 } from './ITable'
+export type { OrderItemPropsType } from './OrderItemPropsType'
 export type { ToggleMenuItemType } from './ToggleMenuItemType'
