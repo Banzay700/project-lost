@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { TextField } from '@mui/material'
+import { TextField, TextFieldProps } from '@mui/material'
+import { useField } from 'formik'
 import cn from 'classnames'
 
 import { InputVariantPropsType } from 'types'
@@ -8,21 +9,28 @@ import s from './Input.module.scss'
 
 type InputProps = InputVariantPropsType & {
   placeholder: string
+  name: string
 }
 
-const Input: FC<InputProps> = ({ label, placeholder, icon, outlined }) => {
-  const iconOptions = icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {}
-  const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
+const Input: FC<InputProps> = ({ name, label, placeholder, icon, outlined }) => {
+  const [field, meta] = useField(name)
 
-  return (
-    <TextField
-      className={inputClasses}
-      placeholder={placeholder}
-      label={label}
-      InputProps={iconOptions}
-      fullWidth
-    />
-  )
+  const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
+  const textFieldConfig: TextFieldProps = {
+    placeholder,
+    label,
+    ...field,
+    fullWidth: true,
+    InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},
+    className: inputClasses,
+  }
+
+  if (meta.touched && meta.error) {
+    textFieldConfig.error = true
+    textFieldConfig.helperText = meta.error
+  }
+
+  return <TextField {...textFieldConfig} />
 }
 
 export default Input
