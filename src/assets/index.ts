@@ -1,2 +1,2 @@
-export { Coca, CocaText } from './logo'
-export { IconMinus, IconPlus, Home, Note, Clock, Receipt } from './icons'
+export { CocaImg, CocaText } from './logotype'
+export { IconMinus, IconPlus, IconHome, IconNote, IconClock, IconReceipt } from './icons'

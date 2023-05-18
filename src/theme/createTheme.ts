@@ -17,7 +17,7 @@ const theme = createTheme(
       // default values
       values: {
         xs: 0,
-        sm: 600,
+        sm: 775,
         md: 900,
         lg: 1200,
         xl: 1536,
@@ -107,10 +107,9 @@ const theme = createTheme(
               color: '#FFFFFF',
             },
           },
-          // У нас другой цвет должет быть у кнопки со стрелкой, а не чёрный. Если прописать тут, то всё будет нормально, если нет то можно прописать кастомный цвет(ключ) в палитру, но тогда и кнопку как я понимаю надо переделать немного, или не надо?
-          // outlinedSecondary: {
-          //   border: '1px solid #E4E4E4',
-          // },
+          outlinedSecondary: {
+            border: '1px solid #E4E4E4',
+          },
         },
         defaultProps: {
           disableRipple: true,

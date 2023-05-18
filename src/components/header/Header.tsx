@@ -1,22 +1,13 @@
-import { FC } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { Logo } from './logo'
-import { Navbar } from './navbar'
-import { DateLogo } from './date-logo'
+import { FC, ReactNode } from 'react'
 import s from './Header.module.scss'
 
-// interface HeaderProps {}
+interface HeaderProps {
+  className: string
+  children: ReactNode
+}
 
-const Header: FC = () => {
-  return (
-    <Router>
-      <header className={s.header}>
-        <Logo />
-        <Navbar />
-        <DateLogo />
-      </header>
-    </Router>
-  )
+const Header: FC<HeaderProps> = ({ children, className }) => {
+  return <header className={s[className]}>{children}</header>
 }
 
 export default Header

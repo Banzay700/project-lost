@@ -7,3 +7,4 @@ export type {
   IReservationsInfo,
   IRequestDeleteReservation,
 } from './ITable'
+export type { NavType } from './NavType'

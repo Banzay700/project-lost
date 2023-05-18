@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
 import { ArrowBack } from '@mui/icons-material'
-import { Coca, CocaText } from 'assets'
-import { Link } from 'react-router-dom'
-import { Button } from 'UI/button'
-import s from './Logo.module.scss'
-// interface LogoProps {
-// }
+import { Button, Logo } from 'UI'
+import s from './LogoWrapper.module.scss'
 
-const Logo: FC = () => {
+const LogoWrapper: FC = () => {
+  // const theme = useTheme()
+  // const breakpoints = theme.breakpoints.down('sm') ? 'img' : 'both'
+
   return (
     <Stack alignItems="center" direction="row" spacing={4.8}>
       <Button
@@ -18,12 +17,9 @@ const Logo: FC = () => {
         color="secondary"
       />
       <Box className={s.line} />
-      <Link to="/" className={s.logo}>
-        <Coca className={s.coca} />
-        <CocaText className={s.cocaText} />
-      </Link>
+      <Logo classImg="coca" classText="cocaText" view="both" link="/" />
     </Stack>
   )
 }
 
-export default Logo
+export default LogoWrapper

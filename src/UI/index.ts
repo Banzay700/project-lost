@@ -1,2 +1,5 @@
 export { Button } from './button'
 export { Picker } from './picker'
+export { NavItem } from './nav-item'
+export { MenuItem } from './menu-item'
+export { Logo } from './logo'
