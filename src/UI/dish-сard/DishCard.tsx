@@ -1,11 +1,12 @@
 import { FC, useState } from 'react'
+import { useAppDispatch } from 'hooks'
+import { addDishToOrder } from 'store/reducers'
 import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { Button } from 'UI'
 import { IconMore, IconPlus } from 'assets'
-import { useAppDispatch } from 'hooks'
-import { addDishToOrder } from 'store/reducers'
-import s from './DishCard.module.scss'
 import DishCardModal from './DishCardModal'
+import s from './DishCard.module.scss'
+
 
 interface DishCardProps {
   id: string
