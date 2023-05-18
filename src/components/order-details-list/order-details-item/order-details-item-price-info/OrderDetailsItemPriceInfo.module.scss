@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 auto;
+    padding: 0;
+
+    &:last-child {
+        padding: 0;
+    }
+}
+
+.price-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
