@@ -9,5 +9,4 @@ export { ReactComponent as TakeAway } from './take-away.svg'
 export { ReactComponent as Delivery } from './delivery.svg'
 export { ReactComponent as IconUser } from './icon-user.svg'
 export { ReactComponent as IconOval } from './oval.svg'
-
-
+export { ReactComponent as IconSearch } from './search.svg'

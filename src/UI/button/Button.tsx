@@ -14,6 +14,7 @@ interface ButtonProps extends PropsWithChildren {
   disabled?: boolean
   onClick?: () => void
   fullWidth?: boolean
+  className?: string
 }
 
 const Button: FC<ButtonProps> = ({
@@ -27,6 +28,7 @@ const Button: FC<ButtonProps> = ({
   disabled,
   children,
   onClick,
+  className,
 }) => {
   return (
     <ButtonMUI
@@ -35,6 +37,7 @@ const Button: FC<ButtonProps> = ({
       startIcon={startIcon}
       endIcon={endIcon}
       className={cn(
+        className,
         s.wrapper,
         {
           [s.boxFocus]: color !== 'secondary',
