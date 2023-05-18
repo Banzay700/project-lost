@@ -1,2 +1,6 @@
 export { ReactComponent as IconMinus } from './icon-minus.svg'
 export { ReactComponent as IconPlus } from './icon-plus.svg'
+export { ReactComponent as InputIcon } from './input-icon.svg'
+export { ReactComponent as DineIn } from './dine-in.svg'
+export { ReactComponent as TakeAway } from './take-away.svg'
+export { ReactComponent as Delivery } from './delivery.svg'

@@ -48,7 +48,8 @@ const Button: FC<ButtonProps> = ({
       )}
       fullWidth={fullWidth}
       disabled={disabled}
-      onClick={onClick}>
+      onClick={onClick}
+      type="submit">
       {children && (
         <Typography variant={size === 'small' ? 'h3' : 'h2'} component="p" fontWeight="600">
           {children}
