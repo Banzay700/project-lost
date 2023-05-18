@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { OrderItemPropsType } from 'types/OrderItemPropsType'
-import { DetailsListTitle } from 'UI/details-title'
+import { OrderItemPropsType } from 'types'
+import { DetailsListTitle } from 'UI'
 import { OrderDetailsItem } from './order-details-item'
 import s from './OrderDetailsList.module.scss'
 
