@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { dishReducer } from './redusers'
+import { dishReducer } from './reducers'
 import { api } from './api'
 
 const rootReducer = combineReducers({

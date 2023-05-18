@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 import { Card, CardContent, CardMedia, Typography } from '@mui/material'
-import { Button } from 'UI/button'
-import { IconMore, IconPlus } from 'assets/icons'
-import { useAppDispatch } from 'hooks/useRedux.hook'
-import { addDishToOrder } from 'store/redusers/dish.slice'
+import { Button } from 'UI'
+import { IconMore, IconPlus } from 'assets'
+import { useAppDispatch } from 'hooks'
+import { addDishToOrder } from 'store/reducers'
 import s from './DishCard.module.scss'
 import DishCardModal from './DishCardModal'
 
@@ -44,11 +44,21 @@ const DishCard: FC<DishCardProps> = (props) => {
         className={s.icon}
       />
       <CardContent className={s.content}>
-        <Typography variant="h2" color="secondary.main" fontWeight={600} textAlign="center">
+        <Typography
+          component="h5"
+          variant="h2"
+          color="secondary.main"
+          fontWeight={600}
+          textAlign="center">
           {title}
         </Typography>
         <div className={s.wrapper}>
-          <Typography variant="h2" color="primary.main" fontWeight={600} textAlign="center">
+          <Typography
+            component="p"
+            variant="h2"
+            color="primary.main"
+            fontWeight={600}
+            textAlign="center">
             <span className={s.priceTitle}>Price</span>
             {`${price} ₴`}
           </Typography>
