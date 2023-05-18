@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
-import { ArrowBack } from '@mui/icons-material'
 import { Button, Logo } from 'UI'
+import { IconArrowLeft } from 'assets'
 import s from './LogoWrapper.module.scss'
 
 const LogoWrapper: FC = () => {
@@ -10,7 +10,7 @@ const LogoWrapper: FC = () => {
       <Button
         variant="outlined"
         size="default"
-        icon={<ArrowBack className={s.arrow} color="secondary" />}
+        icon={<IconArrowLeft className={s.arrow} color="secondary" />}
         color="secondary"
       />
       <Box className={s.line} />
