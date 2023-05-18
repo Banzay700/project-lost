@@ -1,16 +1,16 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItem as MenuItemMui } from '@mui/material'
-import { NavType } from 'types'
+import { LinkType } from 'types'
 import s from './MenuItem.module.scss'
 
 interface MenuProps {
   onClose: () => void
-  className: string
-  data: NavType
+  className?: string
+  data: LinkType
 }
 
-const MenuItem: FC<MenuProps> = ({ onClose, className, data }) => {
+const MenuItem: FC<MenuProps> = ({ onClose, className = '', data }) => {
   const { link, text, icon } = data
   return (
     <MenuItemMui onClick={onClose}>

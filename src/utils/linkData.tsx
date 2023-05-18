@@ -1,7 +1,7 @@
-import { NavType } from 'types/NavType'
+import { LinkType } from 'types/LinkType'
 import { IconHome, IconNote, IconClock, IconReceipt } from 'assets'
 
-export const navData: NavType[] = [
+export const navData: LinkType[] = [
   {
     link: '/home',
     text: 'Home',
@@ -24,7 +24,7 @@ export const navData: NavType[] = [
   },
 ]
 
-export const menuData: NavType[] = [
+export const menuData: LinkType[] = [
   {
     link: '/login',
     text: 'Log out',

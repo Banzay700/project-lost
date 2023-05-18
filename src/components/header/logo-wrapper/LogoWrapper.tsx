@@ -5,9 +5,6 @@ import { Button, Logo } from 'UI'
 import s from './LogoWrapper.module.scss'
 
 const LogoWrapper: FC = () => {
-  // const theme = useTheme()
-  // const breakpoints = theme.breakpoints.down('sm') ? 'img' : 'both'
-
   return (
     <Stack alignItems="center" direction="row" spacing={4.8}>
       <Button

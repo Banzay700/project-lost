@@ -1,1 +1,1 @@
-export { navData, menuData } from './navData'
+export { navData, menuData } from './linkData'

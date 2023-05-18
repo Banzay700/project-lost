@@ -5,8 +5,7 @@ import { menuData } from 'utils'
 import { stringAvatar } from './watch.utils'
 import s from './Watch.module.scss'
 
-// тут мы будем делать запрос для информации юзера(официанта)
-const data = {
+const dataMok = {
   name: 'John',
   surname: 'Robertson',
   src: '',
@@ -15,8 +14,9 @@ const data = {
 const Watch: FC = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date())
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const { name, surname, src } = dataMok
   const open = Boolean(anchorEl)
-  const { name, surname, src } = data
+
   const avatarName = !!name && !!surname && { ...stringAvatar(`${name} ${surname}`) }
 
   const handleClickAvatar = (e: MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
@@ -48,12 +48,7 @@ const Watch: FC = () => {
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (
-            <MenuItem
-              data={item}
-              key={item.text}
-              onClose={handleCloseAvatar}
-              className="menuItem"
-            />
+            <MenuItem data={item} key={item.text} onClose={handleCloseAvatar} />
           ))}
         </Menu>
       </Box>
