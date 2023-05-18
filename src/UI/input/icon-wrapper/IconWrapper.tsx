@@ -8,9 +8,7 @@ interface IconWrapperProps {
 const IconWrapper: FC<IconWrapperProps> = ({ children }) => {
   return (
     <div>
-      <InputAdornment className="ass" position="start">
-        {children}
-      </InputAdornment>
+      <InputAdornment position="start">{children}</InputAdornment>
     </div>
   )
 }
