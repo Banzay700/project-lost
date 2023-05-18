@@ -1,14 +1,26 @@
-import { FC } from 'react'
-import { FormControl, Input, InputAdornment, InputBase } from '@mui/material'
+import { ChangeEvent, FC } from 'react'
+import { FormControl, InputAdornment, InputBase } from '@mui/material'
 import { IconSearch } from 'assets/icons'
+import { useLocation, useNavigate } from 'react-router-dom'
 import s from './Search.module.scss'
 
-interface SearchProps {}
+const Search: FC = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
 
-const Search: FC<SearchProps> = () => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const searchQuery = event.target.value
+    const queryParams = new URLSearchParams(location.search)
+    queryParams.set('q', searchQuery)
+    navigate(`?${queryParams.toString()}`)
+  }
+
   return (
     <FormControl variant="standard" className={s.form}>
       <InputBase
+        type="search"
+        onChange={handleInputChange}
+        value={new URLSearchParams(location.search).get('q') || ''}
         placeholder="Search menu..."
         className={s.input}
         startAdornment={

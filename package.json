@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/poppins": "^4.5.10",
     "@mui/material": "^5.13.0",
     "@mui/styled-engine": "^5.12.3",
     "@reduxjs/toolkit": "^1.9.3",
@@ -19,8 +20,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
-    "vite-plugin-svgr": "^2.4.0",
-    "@fontsource/poppins": "^4.5.10"
+    "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

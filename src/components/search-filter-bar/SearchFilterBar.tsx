@@ -1,23 +1,23 @@
 import { FC } from 'react'
 import { Search } from 'UI/search'
 import { FilterList } from 'UI/filter-list'
-import s from './FilterSearch.module.scss'
+import s from './SearchFilterBar.module.scss'
 
-interface FilterSearchProps {}
+interface SearchFilterBarProps {
+  subcategories: string[]
+}
 
-const subCategories = ['pizza', 'coffee', 'burger', 'sushi']
-
-const FilterSearch: FC<FilterSearchProps> = () => {
+const SearchFilterBar: FC<SearchFilterBarProps> = ({ subcategories }) => {
   return (
     <div className={s.wrapper}>
       <div className={s.search}>
         <Search />
       </div>
       <div className={s.filter}>
-        <FilterList subcategory={subCategories} />
+        <FilterList subcategory={subcategories} />
       </div>
     </div>
   )
 }
 
-export default FilterSearch
+export default SearchFilterBar

@@ -1,2 +1,2 @@
 export { OrderSummary } from './order-summary'
-export { FilterSearch } from './filter-search'
+export { SearchFilterBar } from './search-filter-bar'
