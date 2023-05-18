@@ -1,8 +1,8 @@
 import { FC, SyntheticEvent, useState } from 'react'
 
+import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import s from './SelectInput.module.scss'
-import { useField, useFormikContext } from 'formik'
 
 interface SelectInputProps {
   name: string
@@ -17,7 +17,6 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, value }) => {
     setFieldValue(name, event.target.value)
   }
 
-  console.log(values)
   const formControlConfig = {
     sx: {
       borderRadius: '16px',

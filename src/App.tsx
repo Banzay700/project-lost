@@ -2,7 +2,7 @@ import { Formik, Form, FormikValues } from 'formik'
 import { Stack } from '@mui/material'
 import { object, string } from 'yup'
 
-import { Button, SelectInput } from 'UI'
+import { Input, SelectInput } from 'UI'
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -28,6 +28,7 @@ const App = () => {
           <Form>
             <Stack spacing={2}>
               <SelectInput name="table" label="Select table" />
+              <Input name="firstName" label="Test label" placeholder="Name" />
               <button type="submit">Submit</button>
             </Stack>
           </Form>
@@ -36,5 +37,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
