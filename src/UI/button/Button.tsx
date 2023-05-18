@@ -8,6 +8,7 @@ interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
   size: 'small' | 'default'
   color?: 'secondary'
+  type?: 'submit' | 'reset' | 'button'
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
   icon?: ReactNode | ReactElement
@@ -22,6 +23,7 @@ const Button: FC<ButtonProps> = ({
   color,
   startIcon,
   endIcon,
+  type,
   icon,
   fullWidth = false,
   disabled,
@@ -34,6 +36,7 @@ const Button: FC<ButtonProps> = ({
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
+      type={type}
       className={cn(
         s.wrapper,
         {
