@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { ListItem, ListItemText } from '@mui/material'
-import { IconAway, IconDelivery, IconDineIn } from 'assets/icons'
+import { IconAwayIndicator, IconDeliveryIndicator, IconDineInIndicator } from 'assets/icons'
 import { formatString } from 'utils'
 import s from './Indicator.module.scss'
 
@@ -9,9 +9,9 @@ interface IndicatorProps {
 }
 
 const icons = {
-  takeAway: <IconAway />,
-  dineIn: <IconDineIn />,
-  delivery: <IconDelivery />,
+  takeAway: <IconAwayIndicator />,
+  dineIn: <IconDineInIndicator />,
+  delivery: <IconDeliveryIndicator />,
 }
 
 const Indicator: FC<IndicatorProps> = ({ type }) => {
@@ -22,6 +22,5 @@ const Indicator: FC<IndicatorProps> = ({ type }) => {
     </ListItem>
   )
 }
-
 
 export default Indicator

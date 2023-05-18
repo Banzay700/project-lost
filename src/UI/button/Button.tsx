@@ -1,17 +1,19 @@
 import ButtonMUI from '@mui/material/Button'
 import { FC, PropsWithChildren, ReactElement, ReactNode } from 'react'
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import cn from 'classnames'
 import s from './Button.module.scss'
 
 interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
   size: 'small' | 'default'
-  color?: 'secondary'
-  type?: 'submit' | 'reset' | 'button'
+  color?: 'secondary' | 'primary'
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
   icon?: ReactNode | ReactElement
+  type?: 'submit' | 'reset' | 'button'
+  variantText?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
+  fontWeight?: 400 | 500 | 600 | 700
   disabled?: boolean
   onClick?: () => void
   fullWidth?: boolean
@@ -24,21 +26,25 @@ const Button: FC<ButtonProps> = ({
   color,
   startIcon,
   endIcon,
-  type,
   icon,
+  type,
+  variantText,
+  fontWeight,
   fullWidth = false,
   disabled,
+  className,
   children,
   onClick,
-  className,
 }) => {
+  const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
+
   return (
     <ButtonMUI
       variant={variant}
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
-      type={type}
+      type={type || 'submit'}
       className={cn(
         className,
         s.wrapper,
@@ -55,12 +61,14 @@ const Button: FC<ButtonProps> = ({
       fullWidth={fullWidth}
       disabled={disabled}
       onClick={onClick}>
-      {icon && icon}
-      {children && (
-        <Typography variant={size === 'small' ? 'h3' : 'h2'} component="p" fontWeight="600">
-          {children}
-        </Typography>
-      )}
+      <Stack justifyContent="center" spacing="9px" alignItems="center">
+        {icon && icon}
+        {children && (
+          <Typography variant={variantTextSize} component="p" fontWeight={fontWeight || 600}>
+            {children}
+          </Typography>
+        )}
+      </Stack>
     </ButtonMUI>
   )
 }

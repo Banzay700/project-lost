@@ -1,16 +1,16 @@
-import { Delivery, DineIn, TakeAway } from 'assets/icons'
+import { IconDelivery, IconDineIn, IconAway } from 'assets/icons'
 
 export const radioButtonGroupContent = [
   {
     value: 'Dine In',
-    icon: <DineIn />,
+    icon: <IconDineIn />,
   },
   {
     value: 'Take Away',
-    icon: <TakeAway />,
+    icon: <IconAway />,
   },
   {
     value: 'Delivery',
-    icon: <Delivery />,
+    icon: <IconDelivery />,
   },
 ]
