@@ -7,7 +7,6 @@ import { IconMore, IconPlus } from 'assets'
 import DishCardModal from './DishCardModal'
 import s from './DishCard.module.scss'
 
-
 interface DishCardProps {
   id: string
   image: string

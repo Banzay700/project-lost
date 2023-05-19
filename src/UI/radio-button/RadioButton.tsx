@@ -11,11 +11,10 @@ interface RadioControlLabelProps {
   icon: ReactNode
 }
 
-const RadioControlLabel: FC<RadioControlLabelProps> = ({ value, selectedValue, icon }) => {
+const RadioButton: FC<RadioControlLabelProps> = ({ value, selectedValue, icon }) => {
   const isChecked = selectedValue === value
 
   const formControlLabelConfig = {
-    value,
     label: value,
     sx: { ...formControlLabelSx },
     control: <Radio sx={{ color: '#C2C2C2' }} />,
@@ -31,9 +30,9 @@ const RadioControlLabel: FC<RadioControlLabelProps> = ({ value, selectedValue, i
   return (
     <div className={s.radioButton}>
       <div className={cn(s.iconWrapper, { [s.isChecked]: isChecked })}>{icon}</div>
-      <FormControlLabel {...formControlLabelConfig} labelPlacement="start" />
+      <FormControlLabel {...formControlLabelConfig} labelPlacement="start" value={value} />
     </div>
   )
 }
 
-export default RadioControlLabel
+export default RadioButton
