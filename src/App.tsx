@@ -1,4 +1,6 @@
+import { DishCard } from './components'
+
 const App = () => {
-  return <div />
+  return
 }
 export default App
