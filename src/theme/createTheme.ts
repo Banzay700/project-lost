@@ -25,7 +25,7 @@ const theme = createTheme(
       // default values
       values: {
         xs: 0,
-        sm: 600,
+        sm: 775,
         md: 900,
         lg: 1200,
         xl: 1536,
@@ -114,6 +114,9 @@ const theme = createTheme(
               background: '#FF5C00',
               color: '#FFFFFF',
             },
+          },
+          outlinedSecondary: {
+            border: '1px solid #E4E4E4',
           },
         },
         defaultProps: {

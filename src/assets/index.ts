@@ -16,4 +16,10 @@ export {
   IconDineIn,
   IconAway,
   IconDeliveryIndicator,
+  IconHome,
+  IconNote,
+  IconClock,
+  IconReceipt,
+  IconArrowLeft,
 } from './icons'
+export { LogoCocaImg, LogoCocaText } from './logo-type'
