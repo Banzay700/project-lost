@@ -1,70 +1,38 @@
-import { FC, SyntheticEvent, useState } from 'react'
-
+import { FC } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import s from './SelectInput.module.scss'
+import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 
 interface SelectInputProps {
   name: string
   label: string
 }
 
-const SelectInput: FC<SelectInputProps> = ({ name, label, value }) => {
+const SelectInput: FC<SelectInputProps> = ({ name, label }) => {
   const [field] = useField(name)
-  const { setFieldValue, values } = useFormikContext()
+  const { setFieldValue, values } = useFormikContext<{ table: string }>()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFieldValue(name, event.target.value)
   }
 
-  const formControlConfig = {
-    sx: {
-      borderRadius: '16px',
-      '& .MuiInputBase-root': { borderRadius: '16px', backgroundColor: '#FFF5EE' },
-      '& .MuiSelect-select': { padding: '13px' },
-    },
-  }
-
-  const inputLabelConfig = {
-    sx: {
-      '&.MuiInputLabel-root': { color: '#C2C2C2', top: '-2px' },
-    },
-  }
-
-  const menuItemsConfig = {
-    sx: {
-      '&.MuiMenuItem-root': { borderRadius: '16px' },
-
-      '&.Mui-selected': {
-        backgroundColor: '#FFF5EE',
-        borderRadius: '16px',
-        border: '1px solid #FFA07A',
-        color: '#FFA07A',
-      },
-    },
-  }
-
   if (values.table) {
-    const { sx } = formControlConfig
+    selectStyle.backgroundColor = '#FFF5EE'
+    selectStyle['& .MuiOutlinedInput-notchedOutline'].borderColor = '#FF5C00'
+    inputLabelStyle.color = '#FF5C00'
   }
+
   return (
-    <FormControl {...formControlConfig} fullWidth>
-      <InputLabel id="select-input" {...inputLabelConfig}>
-        Select table
-      </InputLabel>
-      <Select
-        {...field}
-        labelId="select-input"
-        id="simple-select"
-        label={label}
-        onChange={handleChange}>
-        <MenuItem {...menuItemsConfig} value="T-01">
+    <FormControl sx={formControlStyle} fullWidth>
+      <InputLabel sx={inputLabelStyle}>Select table</InputLabel>
+      <Select {...field} sx={selectStyle} label={label} onChange={handleChange}>
+        <MenuItem sx={menuItemsStyle} value="T-01">
           T-01
         </MenuItem>
-        <MenuItem {...menuItemsConfig} value="T-02">
+        <MenuItem sx={menuItemsStyle} value="T-02">
           T-02
         </MenuItem>
-        <MenuItem {...menuItemsConfig} value="T-03">
+        <MenuItem sx={menuItemsStyle} value="T-03">
           T-03
         </MenuItem>
       </Select>

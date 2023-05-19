@@ -4,15 +4,15 @@ import { useField, useFormikContext } from 'formik'
 
 import { RadioButton } from 'UI'
 import { RadioGroupContentType } from 'types'
+import { IconDineIn } from 'assets/icons'
 
 interface RadioButtonsGroupProps {
   name: string
-  label: string
   content: RadioGroupContentType[]
 }
 
 const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content }) => {
-  const [field] = useField(name)
+  const [field, meta] = useField(name)
   const { setFieldValue } = useFormikContext()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +21,7 @@ const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content }) => {
 
   return (
     <FormControl component="fieldset" fullWidth>
-      <RadioGroup {...field} onChange={handleChange}>
+      <RadioGroup onChange={handleChange}>
         <Stack spacing={2}>
           {content.map(({ value, icon }) => (
             <RadioButton key={value} value={value} selectedValue={field.value} icon={icon} />
