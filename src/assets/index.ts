@@ -22,4 +22,4 @@ export {
   IconReceipt,
   IconArrowLeft,
 } from './icons'
-export { CocaImg, CocaText } from './logotype'
+export { LogoCocaImg, LogoCocaText } from './logo-type'

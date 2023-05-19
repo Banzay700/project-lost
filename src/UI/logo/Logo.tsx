@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { CocaImg, CocaText } from 'assets'
+import { LogoCocaImg, LogoCocaText } from 'assets'
 import s from './Logo.module.scss'
 
 interface LogoProps {
@@ -16,8 +16,8 @@ const Logo: FC<LogoProps> = ({ link, classText, classImg, view }) => {
 
   return (
     <Link to={link} className={s.logo}>
-      {viewImg && <CocaImg className={s[classImg]} />}
-      {viewText && <CocaText className={s[classText]} />}
+      {viewImg && <LogoCocaImg className={s[classImg]} />}
+      {viewText && <LogoCocaText className={s[classText]} />}
     </Link>
   )
 }
