@@ -1,0 +1,20 @@
+.radio-button {
+  position: relative;
+  max-height: 56px;
+}
+
+.is-checked {
+  color: #ff5c00;
+  transition: color 0.2s ease;
+}
+
+.icon-wrapper {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 12px;
+  left: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

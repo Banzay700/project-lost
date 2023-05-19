@@ -1,10 +1,25 @@
-export { CocaImg, CocaText } from './logotype'
 export {
   IconMinus,
   IconPlus,
+  IconUser,
+  IconOval,
+  IconAwayIndicator,
+  IconDineInIndicator,
+  IconDelivery,
+  IconCash,
+  IconMasterCard,
+  IconVisa,
+  IconAddTipAmount,
+  IconEmail,
+  IconSearch,
+  IconMore,
+  IconDineIn,
+  IconAway,
+  IconDeliveryIndicator,
   IconHome,
   IconNote,
   IconClock,
   IconReceipt,
   IconArrowLeft,
 } from './icons'
+export { CocaImg, CocaText } from './logotype'

@@ -1,0 +1,27 @@
+.item{
+  height: 36px;
+  border: 1px solid #E4E4E4;
+  border-radius: 40px;
+  padding: 8px 16px;
+
+  &:hover{
+    color: #FF5C00;
+    border: 1px solid #FF5C00;
+    background: #FFF5EE;
+  }
+
+  & :global .MuiTypography-root{
+    font-weight: 400;
+  }
+}
+
+.active {
+  @extend .item;
+  color: #FF5C00;
+  border: 1px solid #FF5C00;
+  background: #FFF5EE;
+}
+
+.itemWrapper{
+  padding: 0;
+}

@@ -1,0 +1,15 @@
+.wrapper {
+    max-height: 660px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 5px;
+        background: #C2C2C2;
+        border-radius: 4px;
+
+    }
+}
