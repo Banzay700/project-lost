@@ -1,6 +1,6 @@
 import ButtonMUI from '@mui/material/Button'
-import { FC, PropsWithChildren, ReactElement, ReactNode } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { FC, PropsWithChildren, ReactElement, ReactNode, MouseEvent } from 'react'
+import { Typography, Stack } from '@mui/material'
 import cn from 'classnames'
 import s from './Button.module.scss'
 
@@ -15,7 +15,7 @@ interface ButtonProps extends PropsWithChildren {
   variantText?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
   fontWeight?: 400 | 500 | 600 | 700
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   fullWidth?: boolean
   className?: string
 }

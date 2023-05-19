@@ -1,14 +1,14 @@
 import { FC, useState } from 'react'
-import { useAppDispatch, useHover } from 'hooks/index'
-import { addDishToOrder } from 'store/reducers'
 import { Card, Stack } from '@mui/material'
-import { Button } from 'UI/button'
-import { IconMore } from 'assets/icons'
+import { IconMore } from 'assets'
+import { Button } from 'UI'
+import { useAppDispatch, useHover } from 'hooks'
+import { addDishToOrder } from 'store/reducers'
 import DishCardModal from './DishCardModal'
-import s from './DishCard.module.scss'
 import { DishCardMedia } from './dish-card-media'
 import { DishCardTitle } from './dish-card-title'
 import { DishCardPricing } from './dish-card-pricing'
+import s from './DishCard.module.scss'
 
 interface DishCardProps {
   id: string
@@ -25,13 +25,9 @@ const DishCard: FC<DishCardProps> = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const dispatch = useAppDispatch()
 
-  const handleClickOpenModal = () => {
-    setOpenModal(true)
-  }
+  const handleOpenModal = () => setOpenModal(true)
 
-  const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+  const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
     dispatch(addDishToOrder({ id, amount: 1 }))
@@ -42,7 +38,7 @@ const DishCard: FC<DishCardProps> = (props) => {
       <Button
         variant="text"
         size="small"
-        onClick={handleClickOpenModal}
+        onClick={handleOpenModal}
         icon={<IconMore />}
         className={s.icon}
       />

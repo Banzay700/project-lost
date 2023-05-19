@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Search } from 'UI/search'
+import { Search } from 'UI/search-input'
 import { FilterList } from 'UI/filter-list'
 import s from './SearchFilterBar.module.scss'
 
