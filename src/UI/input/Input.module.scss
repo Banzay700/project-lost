@@ -17,9 +17,11 @@
 
   & :global .MuiInputLabel-shrink {
     transform: translate(10px, -7px);
-    font-weight: 500;
     font-size: 12px;
-    color: #828487;
+    color: #c2c2c2;
+  }
+  & :global .Mui-focused.MuiFormLabel-root {
+    color: #ff5c00;
   }
 
   & :global .Mui-focused .MuiOutlinedInput-notchedOutline {
