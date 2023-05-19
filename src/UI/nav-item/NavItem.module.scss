@@ -1,17 +1,9 @@
 .nav-item {
   display: flex;
   align-items: center;
+  color: #828487;
 }
 
 .active-link {
   color: #FF5C00;
-
-  svg path {
-    fill: #FF5C00;
-    stroke: #FFFFFF;
-  }
-  svg circle {
-    fill: #FF5C00;
-    stroke: #FFFFFF;
-  }
 }
