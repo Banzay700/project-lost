@@ -4,13 +4,9 @@ export const useHover = <T extends HTMLElement>(): [RefObject<T>, boolean] => {
   const [isHovered, setIsHovered] = useState(false)
   const ref = useRef<T>(null)
 
-  const handleMouseEnter = () => {
-    setIsHovered(true)
-  }
+  const handleMouseEnter = () => setIsHovered(true)
 
-  const handleMouseLeave = () => {
-    setIsHovered(false)
-  }
+  const handleMouseLeave = () => setIsHovered(false)
 
   useEffect(() => {
     const element = ref.current
