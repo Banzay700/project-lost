@@ -1,15 +1,15 @@
 import { Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { FC } from 'react'
 import s from './DishCard.module.scss'
-
+// TODO переделать другим таском, сделать универсальную модалку
 interface DishCardModalProps {
   open: boolean
   onClose: () => void
   description: string
-  weight: number
+  weightProduct: number
 }
 
-const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description, weight }) => {
+const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description, weightProduct }) => {
   const handleClose = () => {
     onClose()
   }
@@ -19,7 +19,7 @@ const DishCardModal: FC<DishCardModalProps> = ({ onClose, open, description, wei
       <DialogTitle className={s.titleModal}>Dish details</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>Ingredients: {description}</DialogContentText>
-        <DialogContentText>Weight: {weight}</DialogContentText>
+        <DialogContentText>Weight: {weightProduct}</DialogContentText>
       </DialogContent>
     </Dialog>
   )

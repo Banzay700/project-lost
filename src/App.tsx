@@ -1,3 +1,5 @@
+import { DishCard } from './components'
+
 const App = () => {
   return
 }
