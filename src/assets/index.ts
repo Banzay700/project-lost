@@ -16,4 +16,5 @@ export {
   IconDineIn,
   IconAway,
   IconDeliveryIndicator,
+  TestIcon,
 } from './icons'

@@ -1,0 +1,38 @@
+.item {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+
+}
+
+.img {
+  max-width: 35px;
+  max-height: 35px;
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 12px 6px;
+  color: #828487;
+  border-radius: 8px;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(218.57deg, #FFAB18 -6.67%, #FF2197 137.69%);
+    color: #fff;
+  }
+}
+
+.active-link{
+  background: linear-gradient(218.57deg, #FFAB18 -6.67%, #FF2197 137.69%);
+  color: #fff;
+}

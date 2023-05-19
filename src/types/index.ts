@@ -11,4 +11,5 @@ export type {
 } from './ITable'
 export type { OrderItemPropsType } from './OrderItemPropsType'
 export type { ToggleMenuItemType } from './ToggleMenuItemType'
+export type { SidebarItemsType } from './SidebarItemsType'
 export type { OrderPaymentMethodItemType } from './OrderPaymentMethodItemType'
