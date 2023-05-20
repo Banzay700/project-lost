@@ -1,0 +1,14 @@
+.coca {
+  margin-right: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.coca-text{
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

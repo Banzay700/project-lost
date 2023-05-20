@@ -9,6 +9,9 @@ export type {
   IReservationsInfo,
   IRequestDeleteReservation,
 } from './ITable'
+export type { LinkType } from './LinkType'
 export type { OrderItemPropsType } from './OrderItemPropsType'
 export type { ToggleMenuItemType } from './ToggleMenuItemType'
+export type { SidebarItemsType } from './SidebarItemsType'
 export type { OrderPaymentMethodItemType } from './OrderPaymentMethodItemType'
+export type { FilterMenuItemType } from './FilterMenuItemType'
