@@ -4,19 +4,20 @@ import { useField, useFormikContext } from 'formik'
 
 import { RadioButton } from 'UI'
 import { RadioGroupContentType } from 'types'
-import { IconDineIn } from 'assets/icons'
 
 interface RadioButtonsGroupProps {
   name: string
   content: RadioGroupContentType[]
+  handleHideSelect: (value: string) => void
 }
 
-const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content }) => {
-  const [field, meta] = useField(name)
-  const { setFieldValue } = useFormikContext()
+const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content, handleHideSelect }) => {
+  const [field] = useField(name)
+  const { setFieldValue, values } = useFormikContext()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFieldValue(name, event.target.value)
+    handleHideSelect(event.target.value)
   }
 
   return (

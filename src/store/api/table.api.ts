@@ -21,8 +21,8 @@ export const tableApi = api.injectEndpoints({
       }),
     }),
     getTableReservationForCurrentDay: builder.query<TableMessageType, string>({
-      query: (id) => ({
-        url: `/tables/reservation/${id}`,
+      query: (tableNumber) => ({
+        url: `/tables/reservation/${tableNumber}`,
       }),
     }),
     getTableReservationSelectedDate: builder.query<
