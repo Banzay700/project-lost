@@ -24,5 +24,5 @@ export interface IRequestDeleteReservation {
   upsertedCount: number
   matchedCount: number
 }
-export type TableMessageType = { message: string; tableReservations?: string[] }
+export type TableMessageType = { message: string; tableReservations: string[] }
 export type FreeTableType = Pick<ITable, 'id' | 'number'>
