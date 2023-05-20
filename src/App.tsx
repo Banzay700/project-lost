@@ -1,4 +1,6 @@
+import { SearchFilterBar } from 'components'
+
 const App = () => {
-  return
+  return <SearchFilterBar />
 }
 export default App

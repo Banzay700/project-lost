@@ -1,19 +1,41 @@
 import { FC } from 'react'
-// import { Search } from 'UI/search-input'
-// import { FilterList } from 'UI/filter-list'
-import s from './SearchFilterBar.module.scss'
+import { Divider, Stack } from '@mui/material'
+import { FilterMenu, SearchInput } from 'UI'
+import { FilterMenuItemType } from 'types'
 
 interface SearchFilterBarProps {
-  subcategories: string[]
+  subcategories: FilterMenuItemType[]
+  defaultValueInput?: string
+  defaultValueFilter?: string[]
+  onChange: (props: { filterValue?: string[]; titleValue?: string }) => void
 }
-// TODO на рефакторинг
 
-const SearchFilterBar: FC<SearchFilterBarProps> = ({ subcategories }) => {
+const SearchFilterBar: FC<SearchFilterBarProps> = ({
+  subcategories,
+  onChange,
+  defaultValueInput,
+  defaultValueFilter,
+}) => {
+  const handleChangeInput = (value: string) => {
+    onChange({ titleValue: value })
+  }
+  const handleChangeFilter = (value: string[]) => {
+    onChange({ filterValue: value })
+  }
+
   return (
-    <div className={s.wrapper}>
-      <div className={s.search}>{/*<Search />*/}</div>
-      <div className={s.filter}>{/*<FilterList subcategory={subcategories} />*/}</div>
-    </div>
+    <Stack
+      direction="row"
+      sx={{ padding: '16px 24px', borderBottom: '1px solid #E4E4E4' }}
+      spacing="24px">
+      <SearchInput onChange={handleChangeInput} defaultValue={defaultValueInput} />
+      <Divider orientation="vertical" flexItem />
+      <FilterMenu
+        filterMenuItems={subcategories}
+        onChange={handleChangeFilter}
+        defaultValue={defaultValueFilter}
+      />
+    </Stack>
   )
 }
 
