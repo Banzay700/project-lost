@@ -1,28 +1,19 @@
 .take-away{
-  width: fit-content;
-  padding: 6px 12px;
-  border-radius: 48px;
   background: #E5EDFE;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 150%;
   color: #3071FF;
 }
 
 .dine-in, .close{
-  @extend .take-away;
   background: #FFF5EE;
   color: #FF5C00;
 }
 
 .delivery{
-  @extend .take-away;
   background: rgba(240, 180, 51, 0.16);
   color: #F0B433;
 }
 
 .open{
-  @extend .take-away;
   background: #EEFFEE;
   color: #35C335;
 }

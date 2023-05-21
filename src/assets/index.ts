@@ -22,5 +22,6 @@ export {
   IconReceipt,
   IconArrowLeft,
   TestIcon,
+  IconPrinter,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'
