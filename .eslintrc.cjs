@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
-
+    tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   ignorePatterns: ['vite.config.ts'],
@@ -28,8 +28,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
-    "no-param-reassign":0,
-    "react/require-default-props":0,
-
+    'no-param-reassign': 0,
+    'react/require-default-props': 0,
   },
 }
