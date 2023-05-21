@@ -8,3 +8,10 @@ a {
   text-decoration: none;
 }
 
+#root {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+}
