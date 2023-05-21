@@ -6,7 +6,7 @@ interface OrderPricingTotalInfoProps {
   totalAmount: number
 }
 
-const OrderPricingTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, totalAmount }) => {
+const OrderTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, totalAmount }) => {
   return (
     <Stack padding="16px" borderRadius="12px" bgcolor="#F8F9FD" spacing="8px">
       <Stack direction="row" justifyContent="space-between">
@@ -29,4 +29,4 @@ const OrderPricingTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, tota
   )
 }
 
-export default OrderPricingTotalInfo
+export default OrderTotalInfo

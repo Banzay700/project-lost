@@ -1,50 +1,41 @@
-import { FC } from 'react'
-import { DetailsListTitle } from 'UI/details-title'
+import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { IconCash, IconMasterCard, IconVisa } from 'assets'
-import { OrderPaymentMethodItemType } from 'types/OrderPaymentMethodItemType'
-import { OrderPricingTotalInfo } from './order-pricing-total-info'
-import OrderPaymentMethod from './order-payment-method/OrderPaymentMethod'
-import { OrderAdditionalInformation } from './order-additional-information'
+
+import { DetailsListTitle } from 'UI'
+import { OrderPaymentFormValuesType } from 'types'
+import { OrderPaymentForm } from './order-payment-form'
+import { OrderButtonsGroup } from './order-buttons-group'
+import { OrderPricingTotalInfo } from './order-total-info'
 
 interface OrderPaymentInfoProps {
   orderId: string
   totalAmount: number
-  paymentMethodItems: OrderPaymentMethodItemType[]
 }
 
-const mockTestPayment: OrderPaymentMethodItemType[] = [
-  {
-    value: 'test',
-    icon: <IconCash />,
-    name: 'test',
-  },
-  {
-    value: 'test2',
-    icon: <IconMasterCard />,
-    name: 'test',
-  },
-  {
-    value: 'test3',
-    icon: <IconVisa />,
-    name: 'test',
-  },
-]
+const OrderPaymentInfo: FC<OrderPaymentInfoProps> = ({ orderId, totalAmount }) => {
+  const [tipStatus, setTipStatus] = useState(false)
+  const [emailStatus, setEmailStatus] = useState(false)
 
-const OrderPaymentInfo: FC<OrderPaymentInfoProps> = ({
-  orderId,
-  totalAmount,
-  paymentMethodItems,
-}) => {
+  const handleToggleTipStatus = () => setTipStatus((prevState) => !prevState)
+  const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
+
+  const handleFormSubmit = (values: OrderPaymentFormValuesType) => {
+    console.log(values)
+  }
+
   return (
-    <Stack>
+    <>
       <DetailsListTitle title="Order payment" orderId={orderId} />
       <Stack spacing="32px" sx={{ p: '16px' }}>
         <OrderPricingTotalInfo totalAmount={totalAmount} />
-        <OrderPaymentMethod paymentMethodItems={paymentMethodItems} />
-        <OrderAdditionalInformation />
+        <OrderPaymentForm isTip={tipStatus} isEmail={emailStatus} onSubmit={handleFormSubmit}>
+          <OrderButtonsGroup
+            setTipStatus={handleToggleTipStatus}
+            setEmailStatus={handleToggleEmailStatus}
+          />
+        </OrderPaymentForm>
       </Stack>
-    </Stack>
+    </>
   )
 }
 
