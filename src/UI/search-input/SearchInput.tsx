@@ -5,16 +5,16 @@ import s from './SearchInput.module.scss'
 
 interface SearchInputProps {
   defaultValue?: string
-  onClick?: (value: string) => void
+  onChange?: (value: string) => void
 }
 
-const SearchInput: FC<SearchInputProps> = ({ defaultValue, onClick }) => {
+const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
   const [valueInput, setValueInput] = useState<string>(defaultValue || '')
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValueInput(event.target.value)
-    if (onClick) {
-      onClick(event.target.value)
+    if (onChange) {
+      onChange(event.target.value)
     }
   }
 
