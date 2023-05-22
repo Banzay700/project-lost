@@ -15,3 +15,8 @@ export const paymentMethodItems: OrderPaymentMethodItemType[] = [
     icon: <IconVisa />,
   },
 ]
+
+export const toggleMenuValues = [
+  { label: 'Order info', value: 'Order info' },
+  { label: 'Offers', value: 'Offers' },
+]
