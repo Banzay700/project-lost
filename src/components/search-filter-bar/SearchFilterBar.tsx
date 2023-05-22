@@ -3,11 +3,16 @@ import { Divider, Stack } from '@mui/material'
 import { FilterMenu, SearchInput } from 'UI'
 import { FilterMenuItemType } from 'types'
 
+type OnChangeProps = {
+  filterValue?: string[]
+  titleValue?: string
+}
+
 interface SearchFilterBarProps {
   subcategories: FilterMenuItemType[]
   defaultValueInput?: string
   defaultValueFilter?: string[]
-  onChange: (props: { filterValue?: string[]; titleValue?: string }) => void
+  onChange: (props: OnChangeProps) => void
 }
 
 const SearchFilterBar: FC<SearchFilterBarProps> = ({

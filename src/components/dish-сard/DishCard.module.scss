@@ -1,4 +1,6 @@
 .card {
+  width: 100%;
+  max-width: 219px;
   border-radius: 16px;
   padding: 12px 8px 16px;
   position: relative;
@@ -13,5 +15,5 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 150%;
-  color: #19191C;
+  color: #19191c;
 }

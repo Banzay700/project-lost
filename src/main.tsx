@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import { store } from 'store'
 import { theme } from 'theme'
-import App from './App'
+import AppRouter from './AppRouter'
 import './style/index.css'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
           <CssBaseline />
-          <App />
+          <AppRouter />
         </StyledEngineProvider>
       </ThemeProvider>
     </BrowserRouter>
