@@ -1,20 +1,21 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { Form, Formik, useFormikContext } from 'formik'
+import { Form, Formik } from 'formik'
 
-import { RadioButtonsGroup } from 'components'
 import { Button, SelectInput, TableInfoBox } from 'UI'
 import { mockData } from 'utils'
-import { initialValues, validationSchema } from './NewOrderForm.utils'
-import { radioButtonGroupContent } from '../radio-buttons-group/RadioButtonGroup.utils'
+import { NewOrderFormValuesType } from 'types'
+import { RadioButtonsGroup } from './radio-buttons-group'
+import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
+import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './newOrderForm.utils'
 
 import s from './NewOrderForm.module.scss'
 
 interface NewOrderFormProps {
-  handleSubmit: (values: { orderType: string; table: string }) => void
+  onSubmit: (values: NewOrderFormValuesType) => void
 }
 
-const NewOrderForm: FC<NewOrderFormProps> = ({ handleSubmit }) => {
+const NewOrderForm: FC<NewOrderFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)
@@ -25,22 +26,19 @@ const NewOrderForm: FC<NewOrderFormProps> = ({ handleSubmit }) => {
   }
 
   const handleHideSelect = (value: string) => {
-    setHidden(value === 'Dine In')
-    setDisabled(value === 'Dine In')
+    setHidden(value === MAIN_ORDER_TYPE)
+    setDisabled(value === MAIN_ORDER_TYPE)
   }
 
   // getFreeTables data here and pass it to SelectInput `data` prop
   // handleFormSubmit must be in parent component
-  //  const handleFormSubmit = (values: { orderType: string; table: string }) => {
+  //  const handleFormSubmit = (values: NewOrderFormValuesType) => {
   //     console.log(values)
   //   }
 
   return (
     <div className={s.newOrderForm}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}>
+      <Formik initialValues={initialValue} validationSchema={validationSchema} onSubmit={onSubmit}>
         <Form>
           <Stack spacing={6}>
             <RadioButtonsGroup
