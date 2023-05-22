@@ -1,63 +1,63 @@
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import { ToggleButtonGroup } from '@mui/material'
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { Stack, ToggleButtonGroup } from '@mui/material'
 import { FilterMenuItemType } from 'types/index'
 import { filterListItems } from './filterMenu.utils'
 import { DishFilterMenuItem } from './filter-menu-item'
 import { useLocation } from 'react-router-dom'
+import filterMenuItem from 'UI/filter-menu/filter-menu-item/FilterMenuItem'
 
 interface FilterMenuProps {
   filterMenuItems: FilterMenuItemType[]
   defaultValue?: string[]
-  onChange?: (value: string[]) => void
+  onChange: (value: string[]) => void
 }
 
 const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChange }) => {
-  const filterDefaultValue = filterListItems(defaultValue || [], filterMenuItems.length)
-  const location = useLocation()
-  const [filterItems, setFilterItems] = useState(filterDefaultValue)
-  const handleChangeFilter = (_: any, newItemFilter: string[]) => {
-    const data = filterListItems(newItemFilter, filterMenuItems.length)
-    setFilterItems(data)
-  }
-  const filterItemsMemo = useMemo(() => filterItems, [filterItems])
+  const [filterItems, setFilterItems] = useState(defaultValue || ['all'])
 
-  useEffect(() => {
-    if (onChange) {
-      onChange(filterItemsMemo)
+  const handleChangeFilter = (value: string) => {
+    const withoutAllCategory = filterItems.filter((item) => item !== 'all')
+    if (value === 'all') {
+      setFilterItems(['all'])
+      onChange(['all'])
+    } else if (filterMenuItems.length - 1 === withoutAllCategory.length) {
+      setFilterItems(['all'])
+      onChange(['all'])
+    } else if (filterItems.some((item) => item === value)) {
+      setFilterItems((prevState) => prevState.filter((item) => item !== value))
+      onChange(filterItems.filter((item) => item !== value))
+    } else {
+      setFilterItems((prevState) => {
+        return [...prevState.filter((item) => item !== 'all'), value]
+      })
+      onChange([...filterItems.filter((item) => item !== 'all'), value])
     }
-  }, [filterItemsMemo])
+  }
 
   useEffect(() => {
-    setFilterItems(['all'])
-  }, [location.pathname])
-
-  const defaultRenderFilterItem = (
-    <DishFilterMenuItem
-      value="all"
-      label="All"
-      onChange={handleChangeFilter}
-      menuItems={filterItemsMemo}
-    />
-  )
-
-  const renderFilterMenuItems = filterMenuItems.map(({ value, label }) => (
-    <DishFilterMenuItem
-      key={value}
-      value={value}
-      label={label}
-      onChange={handleChangeFilter}
-      menuItems={filterItemsMemo}
-    />
-  ))
+    if (defaultValue) {
+      setFilterItems(defaultValue)
+    }
+  }, [defaultValue])
 
   return (
-    <ToggleButtonGroup
-      value={filterItemsMemo}
-      onChange={handleChangeFilter}
-      sx={{ gap: '10px', whiteSpace: 'nowrap' }}>
-      {defaultRenderFilterItem}
-      {renderFilterMenuItems}
-    </ToggleButtonGroup>
+    <Stack spacing="8px" direction="row">
+      <DishFilterMenuItem
+        value="all"
+        label="All"
+        isSelected={filterItems.some((item) => item === 'all')}
+        onChange={handleChangeFilter}
+      />
+      {filterMenuItems.map(({ value, label }) => (
+        <DishFilterMenuItem
+          key={value}
+          value={value}
+          label={label}
+          isSelected={filterItems.some((item) => item === value)}
+          onChange={handleChangeFilter}
+        />
+      ))}
+    </Stack>
   )
 }
 
