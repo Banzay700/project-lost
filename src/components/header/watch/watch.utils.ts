@@ -1,3 +1,5 @@
+import { LinkType } from 'types/LinkType'
+
 const stringToColor = (string: string): string => {
   let hash = 0
   let i
@@ -24,3 +26,14 @@ export const stringAvatar = (username: string) => {
     children: `${username.split(' ')[0][0]}${username.split(' ')[1][0]}`,
   }
 }
+
+export const menuData: LinkType[] = [
+  {
+    link: '/login',
+    text: 'Log out',
+  },
+  {
+    link: '/settings',
+    text: 'Settings',
+  },
+]

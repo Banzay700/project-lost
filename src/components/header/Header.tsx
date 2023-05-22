@@ -1,24 +1,21 @@
 import { FC } from 'react'
-import { DataMokUserType, LinkType } from 'types'
 import { Navbar } from 'UI'
-import { LogoWrapper } from './logo-wrapper'
 import { Watch } from './watch'
+import { LogoWrapper } from './logo-wrapper'
+import { mockUser, navData } from './header.util'
 import s from './Header.module.scss'
 
-interface HeaderProps {
-  className: 'header' | string
-  data: LinkType[]
-  spacing?: number
-  direction?: 'row' | 'column' | 'column-reverse' | 'row-reverse'
-  dataMokUser: DataMokUserType
-}
+// interface HeaderProps {
+//   // dataUser: DataMokUserType
+//   // direction?: 'row' | 'column' | 'column-reverse' | 'row-reverse'
+// }
 
-const Header: FC<HeaderProps> = ({ className, data, direction, spacing, dataMokUser }) => {
+const Header: FC = () => {
   return (
-    <header className={s[className]}>
+    <header className={s.header}>
       <LogoWrapper />
-      <Navbar direction={direction || 'row'} data={data} spacing={spacing || 6.4} />
-      <Watch dataMokUser={dataMokUser} />
+      <Navbar direction="row" data={navData} spacing={6.4} />
+      <Watch dataUser={mockUser} />
     </header>
   )
 }
