@@ -24,14 +24,8 @@ export const navData: LinkType[] = [
   },
 ]
 
-export const menuData: LinkType[] = [
-  {
-    link: '/login',
-    text: 'Log out',
-  },
-  {
-    link: '/settings',
-    text: 'Settings',
-  },
-]
-
+// TODO: delete this mock
+export const mockUser = {
+  name: 'John Doe',
+  surname: 'Doe',
+}
