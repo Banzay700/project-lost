@@ -1,20 +1,21 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { Form, Formik, useFormikContext } from 'formik'
+import { Form, Formik } from 'formik'
 
-import { RadioButtonsGroup } from 'components'
 import { Button, SelectInput, TableInfoBox } from 'UI'
 import { mockData } from 'utils'
-import { initialValues, validationSchema } from './NewOrderForm.utils'
-import { radioButtonGroupContent } from '../radio-buttons-group/RadioButtonGroup.utils'
+import { OrderCreatorFormValues } from 'types'
+import { RadioButtonsGroup } from './radio-buttons-group'
+import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
+import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 
-import s from './NewOrderForm.module.scss'
+import s from './OrderCreatorForm.module.scss'
 
-interface NewOrderFormProps {
-  handleSubmit: (values: { orderType: string; table: string }) => void
+interface OrderCreatorFormProps {
+  onSubmit: (values: OrderCreatorFormValues) => void
 }
 
-const NewOrderForm: FC<NewOrderFormProps> = ({ handleSubmit }) => {
+const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)
@@ -25,22 +26,15 @@ const NewOrderForm: FC<NewOrderFormProps> = ({ handleSubmit }) => {
   }
 
   const handleHideSelect = (value: string) => {
-    setHidden(value === 'Dine In')
-    setDisabled(value === 'Dine In')
+    setHidden(value === MAIN_ORDER_TYPE)
+    setDisabled(value === MAIN_ORDER_TYPE)
   }
 
   // getFreeTables data here and pass it to SelectInput `data` prop
-  // handleFormSubmit must be in parent component
-  //  const handleFormSubmit = (values: { orderType: string; table: string }) => {
-  //     console.log(values)
-  //   }
 
   return (
     <div className={s.newOrderForm}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}>
+      <Formik initialValues={initialValue} validationSchema={validationSchema} onSubmit={onSubmit}>
         <Form>
           <Stack spacing={6}>
             <RadioButtonsGroup
@@ -68,4 +62,4 @@ const NewOrderForm: FC<NewOrderFormProps> = ({ handleSubmit }) => {
   )
 }
 
-export default NewOrderForm
+export default OrderCreatorForm

@@ -27,6 +27,10 @@
   & :global .Mui-focused .MuiOutlinedInput-notchedOutline {
     border: 1px solid #ff5c00;
   }
+
+  & :global .Mui-focused .MuiInputAdornment-root {
+    color: #ff5c00;
+  }
 }
 .with-icon {
   & :global .MuiInputBase-input {

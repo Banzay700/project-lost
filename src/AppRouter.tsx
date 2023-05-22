@@ -1,6 +1,8 @@
+import { Stack } from '@mui/material'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ROUTES } from 'utils'
-import { MainPage, HomePage, DishesPage } from 'pages'
+import { MainPage, HomePage, DishesPage, Layout } from 'pages'
+
 import { useGetCategoriesQuery } from 'store/api/dish.api'
 
 const AppRouter = () => {
@@ -22,3 +24,7 @@ const AppRouter = () => {
   )
 }
 export default AppRouter
+// !! DO NOT DELETE
+// <Stack height="100vh">
+//   <Layout />
+//   </Stack>

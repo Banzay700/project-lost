@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Tabs } from '@mui/material'
+import { Box, Tabs } from '@mui/material'
 import { ToggleMenuItem } from 'UI/toggle-menu/toggle-menu-item'
 import { ToggleMenuItemType } from 'types'
 import s from './ToggleMenu.module.scss'
@@ -18,17 +18,19 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange }) => {
   }
 
   return (
-    <Tabs value={selectedItem} className={s.wrapper} centered textColor="secondary">
-      {menuItems.map(({ label, value }) => (
-        <ToggleMenuItem
-          key={value}
-          label={label}
-          value={value}
-          selected={selectedItem}
-          onClick={handleChangeMenuItem}
-        />
-      ))}
-    </Tabs>
+    <Box sx={{ padding: '12px 15px' }}>
+      <Tabs value={selectedItem} className={s.wrapper} centered textColor="secondary">
+        {menuItems.map(({ label, value }) => (
+          <ToggleMenuItem
+            key={value}
+            label={label}
+            value={value}
+            selected={selectedItem}
+            onClick={handleChangeMenuItem}
+          />
+        ))}
+      </Tabs>
+    </Box>
   )
 }
 

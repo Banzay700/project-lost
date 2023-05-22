@@ -1,6 +1,8 @@
 import { object, string } from 'yup'
 
-export const initialValues = {
+export const MAIN_ORDER_TYPE = 'Dine In'
+
+export const initialValue = {
   orderType: '',
   table: '',
 }

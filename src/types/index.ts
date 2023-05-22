@@ -15,6 +15,10 @@ export type { ToggleMenuItemType } from './ToggleMenuItemType'
 export type { SidebarItemsType } from './SidebarItemsType'
 export type { OrderPaymentMethodItemType } from './OrderPaymentMethodItemType'
 export type { FilterMenuItemType } from './FilterMenuItemType'
+
+export type { OrderCreatorFormValues } from './OrderCreatorFormValues'
+export type { OrderPaymentFormValuesType } from './OrderPaymentFormValuesType'
+
 export type { DishProductType } from './DishProductType'
 export type { DataSubCategoriesResponseType } from './DataCategoriesResponseType'
 export type { ReturnChangePropsFilter } from './ReturnChangePropsFilter'

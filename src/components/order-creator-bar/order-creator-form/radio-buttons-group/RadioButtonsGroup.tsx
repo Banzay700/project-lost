@@ -2,8 +2,8 @@ import { FC, ChangeEvent } from 'react'
 import { FormControl, Stack, RadioGroup } from '@mui/material'
 import { useField, useFormikContext } from 'formik'
 
-import { RadioButton } from 'UI'
-import { RadioGroupContentType } from 'types'
+import { RadioButton } from 'UI/index'
+import { RadioGroupContentType } from 'types/index'
 
 interface RadioButtonsGroupProps {
   name: string
@@ -13,7 +13,7 @@ interface RadioButtonsGroupProps {
 
 const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content, handleHideSelect }) => {
   const [field] = useField(name)
-  const { setFieldValue, values } = useFormikContext()
+  const { setFieldValue } = useFormikContext()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFieldValue(name, event.target.value)
