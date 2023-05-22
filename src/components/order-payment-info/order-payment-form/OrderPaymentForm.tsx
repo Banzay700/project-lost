@@ -8,6 +8,8 @@ import { OrderPaymentFormValuesType } from 'types'
 import { OrderPaymentMethod } from './order-payment-method'
 import { initialValues, validationSchema } from './OrderPaymentForm.utils'
 
+import s from './OrderPaymentForm.module.scss'
+
 interface OrderPaymentFormProps {
   onSubmit: (values: OrderPaymentFormValuesType) => void
   children: ReactNode
@@ -17,31 +19,27 @@ interface OrderPaymentFormProps {
 
 const OrderPaymentForm: FC<OrderPaymentFormProps> = ({ children, isTip, isEmail, onSubmit }) => {
   return (
-    <div>
+    <div className={s.formWrapper}>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         <Form>
-          <Stack spacing={4}>
-            <OrderPaymentMethod name="paymentMethod" />
-            {children}
-            <div style={{ display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}>
-              <Stack spacing={4}>
-                {isTip && (
-                  <Input
-                    placeholder="Tip Amount"
-                    name="tipAmount"
-                    label="Tip Amount"
-                    icon={<IconAddTipAmount />}
-                  />
-                )}
-                {isEmail && (
-                  <Input placeholder="Email" name="email" label="Email" icon={<IconEmail />} />
-                )}
-              </Stack>
-            </div>
-            <Button variant="contained" size="default" type="submit" fullWidth>
-              Submit
-            </Button>
+          <OrderPaymentMethod name="paymentMethod" />
+          {children}
+          <Stack spacing={4} sx={{ flex: '1 1 auto' }}>
+            {isTip && (
+              <Input
+                placeholder="Tip Amount"
+                name="tipAmount"
+                label="Tip Amount"
+                icon={<IconAddTipAmount />}
+              />
+            )}
+            {isEmail && (
+              <Input placeholder="Email" name="email" label="Email" icon={<IconEmail />} />
+            )}
           </Stack>
+          <Button variant="contained" size="default" type="submit" fullWidth>
+            Submit
+          </Button>
         </Form>
       </Formik>
     </div>

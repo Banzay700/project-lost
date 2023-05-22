@@ -26,7 +26,7 @@ const OrderPaymentInfo: FC<OrderPaymentInfoProps> = ({ orderId, totalAmount }) =
   return (
     <>
       <DetailsListTitle title="Order payment" orderId={orderId} />
-      <Stack spacing="32px" sx={{ p: '16px' }}>
+      <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>
         <OrderPricingTotalInfo totalAmount={totalAmount} />
         <OrderPaymentForm isTip={tipStatus} isEmail={emailStatus} onSubmit={handleFormSubmit}>
           <OrderButtonsGroup

@@ -1,2 +1,11 @@
-.order-payment-form {
+.form-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+
+  form {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 27px;
+  }
 }
