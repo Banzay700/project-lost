@@ -1,11 +1,8 @@
-import { FC, ReactNode } from 'react'
-
-type TableCellProps = {
-  tableCell?: ReactNode
-}
+import { FC } from 'react'
+import { TableCellType } from 'types'
 
 interface TableLineItemProps {
-  data: (TableCellProps | undefined)[]
+  data: (TableCellType | undefined)[]
 }
 
 const TableLineItem: FC<TableLineItemProps> = ({ data }) => {

@@ -2,11 +2,11 @@ import { TableCell, Typography } from '@mui/material'
 import { TableNumber, InfoChip } from 'UI'
 import { IconAddTipAmount } from 'assets'
 import { TableDataMok } from 'types'
-import { TableActions } from './table-actions'
+import { TableActions } from 'UI/table-line-wrapper/table-actions'
 
 export const dataTableCell = (
   { number, orderNumber, status, orderType, amount }: TableDataMok,
-  className: string,
+  className?: string,
 ) => [
   {
     tableCell: (
