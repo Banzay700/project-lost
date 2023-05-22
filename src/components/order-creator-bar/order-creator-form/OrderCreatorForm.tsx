@@ -4,18 +4,18 @@ import { Form, Formik } from 'formik'
 
 import { Button, SelectInput, TableInfoBox } from 'UI'
 import { mockData } from 'utils'
-import { NewOrderFormValuesType } from 'types'
+import { OrderCreatorFormValues } from 'types'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
-import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './newOrderForm.utils'
+import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 
-import s from './NewOrderForm.module.scss'
+import s from './OrderCreatorForm.module.scss'
 
-interface NewOrderFormProps {
-  onSubmit: (values: NewOrderFormValuesType) => void
+interface OrderCreatorFormProps {
+  onSubmit: (values: OrderCreatorFormValues) => void
 }
 
-const NewOrderForm: FC<NewOrderFormProps> = ({ onSubmit }) => {
+const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)
@@ -31,10 +31,6 @@ const NewOrderForm: FC<NewOrderFormProps> = ({ onSubmit }) => {
   }
 
   // getFreeTables data here and pass it to SelectInput `data` prop
-  // handleFormSubmit must be in parent component
-  //  const handleFormSubmit = (values: NewOrderFormValuesType) => {
-  //     console.log(values)
-  //   }
 
   return (
     <div className={s.newOrderForm}>
@@ -66,4 +62,4 @@ const NewOrderForm: FC<NewOrderFormProps> = ({ onSubmit }) => {
   )
 }
 
-export default NewOrderForm
+export default OrderCreatorForm

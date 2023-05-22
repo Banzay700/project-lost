@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import Grid from '@mui/material/Unstable_Grid2'
+
 import { DishProductType } from 'types'
 import { DishCard } from 'components'
-import Grid from '@mui/material/Unstable_Grid2'
 
 interface DishesListProps {
   dishes: DishProductType[]

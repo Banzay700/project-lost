@@ -1,14 +1,13 @@
 .wrapper {
-    background: #F8F9FD;
+  background: #f8f9fd;
+  border-radius: 80px;
+  padding: 4px;
+  color: #828487;
+
+  & :global .MuiTabs-indicator {
+    height: 100%;
+    background-color: white;
     border-radius: 80px;
-    padding: 4px;
-    color: #828487;
-
-    & :global .MuiTabs-indicator {
-        height: 100%;
-        background-color: white;
-        border-radius: 80px;
-        z-index: 0;
-    }
+    z-index: 0;
+  }
 }
-
