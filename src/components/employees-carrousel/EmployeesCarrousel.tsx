@@ -1,5 +1,5 @@
-import { FC, useState } from 'react'
-import { Stack } from '@mui/material'
+import { FC, useState, useEffect } from 'react'
+import { Box, Stack } from '@mui/material'
 import EmployeesItem from './EmployeesItem'
 import s from './EmployeesCarrousel.module.scss'
 
@@ -45,31 +45,69 @@ const employeesInfo = [
 ]
 
 const EmployeesCarrousel: FC = () => {
-  const [chosenEmployee, setChosenEmployee] = useState('')
+  const slideWidth = 177
 
-  const handleClick = (id: string) => {
+  const [chosenEmployee, setChosenEmployee] = useState('')
+  const [currentTranslateX, setCurrentTranslateX] = useState(0)
+
+  const handleSetActiveSlide = (id: string) => {
     setChosenEmployee(id)
+  }
+
+  const handleRightArrow = () => {
+    setCurrentTranslateX((prevTranslateX) => prevTranslateX - slideWidth)
+  }
+
+  const handleLeftArrow = () => {
+    if (currentTranslateX === employeesInfo.length * slideWidth) {
+      setCurrentTranslateX(0)
+    } else {
+      setCurrentTranslateX((prevTranslateX) => prevTranslateX + slideWidth)
+    }
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event: { keyCode: number }) => {
+      if (event.keyCode === 39) {
+        handleRightArrow()
+      } else if (event.keyCode === 37) {
+        handleLeftArrow()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  const sliderStyle = {
+    transform: `translateX(${currentTranslateX}px)`,
+    width: employeesInfo.length * slideWidth,
   }
 
   const employeesRender = () => {
     return employeesInfo.map((item) => {
       const isActive = chosenEmployee === item.id
 
-      return <EmployeesItem key={item.id} {...item} onClick={handleClick} isActive={isActive} />
+      return (
+        <EmployeesItem key={item.id} {...item} onClick={handleSetActiveSlide} isActive={isActive} />
+      )
     })
   }
 
   return (
-    <Stack
-      direction="row"
-      spacing={16}
-      alignItems="center"
-      className={s.carrouselWrapper}
-      onMouseDown={(e) => {
-        console.log(e)
-      }}>
-      {employeesRender()}
-    </Stack>
+    <Box className={s.carrouselWrapper} onKeyPress={handleRightArrow}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={15}
+        style={sliderStyle}
+        className={s.carrouselItems}>
+        {employeesRender()}
+      </Stack>
+    </Box>
   )
 }
 

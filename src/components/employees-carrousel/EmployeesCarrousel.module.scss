@@ -1,7 +1,12 @@
 .carrouselWrapper {
-  overflow: hidden;
+  width: 855px;
+  min-height: 165px;
   background-color: brown;
-  width: 845px;
+  overflow: hidden;
+}
+
+.carrouselItems {
+  min-height: 165px;
 }
 
 .carrouselItem {
