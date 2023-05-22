@@ -1,5 +1,5 @@
-import { FC, isValidElement, ReactNode } from 'react'
-import { ListItem, Typography } from '@mui/material'
+import { FC, useEffect, useState } from 'react'
+import { ListItem, Stack, Typography } from '@mui/material'
 import cn from 'classnames'
 import { NavLink } from 'react-router-dom'
 import s from './SidebarLinkItem.module.scss'
@@ -7,24 +7,32 @@ import s from './SidebarLinkItem.module.scss'
 interface SidebarLeftItemProps {
   label: string
   linkTo: string
-  icon?: string | ReactNode
+  icon: string
   className?: string
 }
 const SidebarLinkItem: FC<SidebarLeftItemProps> = ({ label, linkTo, icon, className }) => {
-  let imgComponent
+  const [svgContent, setSvgContent] = useState('')
 
-  if (isValidElement(icon)) {
-    imgComponent = icon
-  } else {
-    imgComponent = <img src={icon as string} alt={label} className={s.img} />
+  const fetchSvg = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}${icon}`)
+      const json = await response.text()
+      setSvgContent(json)
+    } catch (error) {
+      console.error('Ошибка загрузки SVG файла', error)
+    }
   }
 
+  useEffect(() => {
+    if (!svgContent) fetchSvg()
+  }, [fetchSvg])
+
   return (
-    <ListItem className={cn(s.item, className)}>
+    <ListItem className={cn(s.item, className)} sx={{ maxWidth: 77 }}>
       <NavLink
         to={linkTo}
         className={({ isActive }) => (isActive ? cn(s.link, s.activeLink) : s.link)}>
-        {imgComponent}
+        <Stack dangerouslySetInnerHTML={{ __html: svgContent }} />
         <Typography variant="subtitle1" component="p">
           {label}
         </Typography>

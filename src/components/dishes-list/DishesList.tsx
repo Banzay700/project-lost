@@ -13,16 +13,16 @@ const DishesList: FC<DishesListProps> = ({ dishes }) => {
       container
       spacing="16px"
       columns={{ xl: 4, lg: 4, md: 3, sm: 2, xs: 1 }}
-      sx={{ background: '#F8F9FD', padding: '16px' }}>
+      sx={{ padding: '16px', margin: 0 }}>
       {dishes.map((dish) => (
         <Grid key={dish.id} xs={1} sx={{ display: 'flex', justifyContent: 'center' }}>
           <DishCard
             id={dish.id}
-            image={dish.image}
+            image={dish.picture}
             title={dish.title}
             price={dish.price}
             description={dish.description}
-            weightProduct={dish.weightProduct}
+            weightProduct={dish.weight}
           />
         </Grid>
       ))}

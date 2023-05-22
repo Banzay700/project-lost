@@ -1,8 +1,19 @@
+interface IAdditionalFood {
+  id?: string
+  title: string
+  price: number
+  weight?: number
+}
+
 export type DishProductType = {
   id: string
-  image: string
+  picture: string
   title: string
   price: number
   description: string
-  weightProduct: number
+  category?: string
+  subcategory?: string
+  weight: number
+  bonus?: number
+  additionalFood?: IAdditionalFood[]
 }
