@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export type SidebarItemsType = {
-  label: string
-  linkTo: string
-  icon?: string | ReactNode
+  title: string
+  picture: string
+  id: string
 }

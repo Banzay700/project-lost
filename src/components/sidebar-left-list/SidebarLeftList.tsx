@@ -3,6 +3,7 @@ import { List } from '@mui/material'
 import { SidebarItemsType } from 'types'
 import { SidebarLinkItem } from 'UI'
 import s from './SidebarLeftList.module.scss'
+import { correctionName } from 'utils/correctionName'
 
 interface SidebarLeftListProps {
   sidebarItems: SidebarItemsType[]
@@ -11,12 +12,12 @@ interface SidebarLeftListProps {
 const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems }) => {
   return (
     <List className={s.list}>
-      {sidebarItems.map(({ label, icon, linkTo }) => (
+      {sidebarItems.map(({ title, id, picture }) => (
         <SidebarLinkItem
-          key={label}
-          label={label}
-          icon={icon}
-          linkTo={linkTo}
+          key={id}
+          label={correctionName(title)}
+          icon={picture}
+          linkTo={title.toLowerCase()}
           className={s.listItem}
         />
       ))}

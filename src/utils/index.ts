@@ -5,3 +5,6 @@ export { dataTableCell } from './dataTableCell.utils'
 
 // APPLICATION MOCKS - DELETE
 export { mockData } from './appCommonMock'
+
+export { API_CONST, ROUTES } from './constants'
+export { correctionName } from './correctionName'

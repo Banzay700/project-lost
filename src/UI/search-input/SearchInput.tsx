@@ -10,7 +10,6 @@ interface SearchInputProps {
 
 const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
   const [valueInput, setValueInput] = useState<string>(defaultValue || '')
-
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValueInput(event.target.value)
     if (onChange) {
