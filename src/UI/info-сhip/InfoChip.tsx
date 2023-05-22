@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import s from './InfoTag.module.scss'
+import { Chip } from '@mui/material'
+import s from './InfoChip.module.scss'
 
 interface InfoTagProps {
   type: 'away' | 'dineIn' | 'delivery' | 'close' | 'open'
@@ -13,8 +14,8 @@ const classMap = {
   open: [s.open, 'Open'],
 }
 
-const InfoTag: FC<InfoTagProps> = ({ type }) => {
-  return <div className={classMap[type][0]}>{classMap[type][1]}</div>
+const InfoChip: FC<InfoTagProps> = ({ type }) => {
+  return <Chip label={classMap[type][1]} className={classMap[type][0]} />
 }
 
-export default InfoTag
+export default InfoChip

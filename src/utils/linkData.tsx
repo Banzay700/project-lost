@@ -34,3 +34,4 @@ export const menuData: LinkType[] = [
     text: 'Settings',
   },
 ]
+
