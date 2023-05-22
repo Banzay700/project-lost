@@ -2,13 +2,13 @@ import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Typography } from '@mui/material'
 import cn from 'classnames'
-import { LinkType } from 'types'
+import { LinkType } from 'types/index'
 import s from './NavItem.module.scss'
 
 interface NavbarProps {
   data: LinkType
-  active: string
-  className: string
+  active: 'activeLink' | string
+  className: 'navItem' | string
   variant?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
   fontWeight?: 400 | 500 | 600 | 700
 }
