@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
+  overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -19,7 +20,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
-  ignorePatterns: ['vite.config.ts'],
+  ignorePatterns: ['vite.config.ts', 'vitest.config.ts'],
   rules: {
     'ban-ts-comment': 0,
     'react/react-in-jsx-scope': 0,

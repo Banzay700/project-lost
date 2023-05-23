@@ -23,4 +23,6 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw?
+.env
+.eslintignore
 .eslintrc.cjs

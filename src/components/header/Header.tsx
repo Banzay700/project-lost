@@ -1,13 +1,23 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import { Navbar } from 'UI'
+import { Watch } from './watch'
+import { LogoWrapper } from './logo-wrapper'
+import { mockUser, navData } from './header.util'
 import s from './Header.module.scss'
 
-interface HeaderProps {
-  className: string
-  children: ReactNode
-}
+// interface HeaderProps {
+//   // dataUser: DataMokUserType
+//   // direction?: 'row' | 'column' | 'column-reverse' | 'row-reverse'
+// }
 
-const Header: FC<HeaderProps> = ({ children, className }) => {
-  return <header className={s[className]}>{children}</header>
+const Header: FC = () => {
+  return (
+    <header className={s.header}>
+      <LogoWrapper />
+      <Navbar direction="row" data={navData} spacing={6.4} />
+      <Watch dataUser={mockUser} />
+    </header>
+  )
 }
 
 export default Header

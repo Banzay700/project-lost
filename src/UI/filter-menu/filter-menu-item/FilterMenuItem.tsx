@@ -1,27 +1,29 @@
 import { FC } from 'react'
-import { ToggleButton, Typography } from '@mui/material'
+import { Button } from 'UI/button'
 import s from './FilterMenuItem.module.scss'
 
 interface DishFilterMenuItemProps {
   value: string
   label: string
-  onChange: (event: any, newFormats: string[]) => void
-  menuItems: string[]
+  onChange: (value: string) => void
+  isSelected?: boolean
 }
 
-const FilterMenuItem: FC<DishFilterMenuItemProps> = ({ value, label, onChange, menuItems }) => {
-  const isSelected = !!menuItems.find((item) => item === value)
+const FilterMenuItem: FC<DishFilterMenuItemProps> = ({ value, label, onChange, isSelected }) => {
+  const handleClick = () => {
+    onChange(value)
+  }
   return (
-    <ToggleButton
-      value={value}
-      color="primary"
+    <Button
+      variantText="h3"
+      fontWeight={400}
+      color={isSelected ? 'primary' : 'secondary'}
       className={s.toggleButton}
-      selected={isSelected}
-      onChange={onChange}>
-      <Typography variant="h3" fontWeight={600}>
-        {label}
-      </Typography>
-    </ToggleButton>
+      onClick={handleClick}
+      size="default"
+      variant="outlined">
+      {label}
+    </Button>
   )
 }
 

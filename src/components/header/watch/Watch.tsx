@@ -1,20 +1,19 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 import { Stack, Avatar, Box, Menu } from '@mui/material'
 import { Button, MenuItem } from 'UI'
-import { menuData } from 'utils'
-import { stringAvatar } from './watch.utils'
+
+import { DataUserType, LinkType } from 'types'
+import { stringAvatar, menuData } from './watch.utils'
 import s from './Watch.module.scss'
 
-const dataMok = {
-  name: 'John',
-  surname: 'Robertson',
-  src: '',
+interface WatchProps {
+  dataUser: DataUserType
 }
 
-const Watch: FC = () => {
+const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date())
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const { name, surname, src } = dataMok
+  const { name, surname, src } = dataUser
   const open = Boolean(anchorEl)
 
   const avatarName = !!name && !!surname && { ...stringAvatar(`${name} ${surname}`) }

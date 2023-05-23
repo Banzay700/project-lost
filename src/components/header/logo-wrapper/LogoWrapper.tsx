@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
-import { Button, Logo } from 'UI'
+
 import { IconArrowLeft } from 'assets'
+import { Button, Logo } from 'UI'
 import s from './LogoWrapper.module.scss'
 
 const LogoWrapper: FC = () => {
