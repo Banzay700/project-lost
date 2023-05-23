@@ -1,4 +1,3 @@
 export const correctionRouteLinkForRequest = (str: string) => {
-  const result = str.slice(1)
-  return result[0].toUpperCase() + result.slice(1)
+  return str[0].toUpperCase() + str.slice(1)
 }
