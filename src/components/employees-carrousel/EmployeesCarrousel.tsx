@@ -1,90 +1,39 @@
-import { FC, useState, useEffect } from 'react'
-import { Box, Stack } from '@mui/material'
+/* eslint-disable import/no-extraneous-dependencies */
+import { FC, useState } from 'react'
+import { Box } from '@mui/material'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import EmployeesItem from './EmployeesItem'
+
 import s from './EmployeesCarrousel.module.scss'
+import { employeesInfo } from './mockData'
 
-const employeesInfo = [
-  {
-    id: ' 1fvccbmht',
-    name: 'Beby Jovancy',
-    picture:
-      'https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg',
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+    slidesToSlide: 5,
   },
-  {
-    id: ' vvbnm,j',
-    name: 'Bena Kane',
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg',
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3,
+    slidesToSlide: 3,
   },
-  {
-    id: ' 1fvcdsdddcbmht',
-    name: 'Aisyah Zidni',
-    picture:
-      'https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg',
-  },
-  {
-    id: ' vvcdddbnm,j',
-    name: 'Firmino Kudo',
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg',
-  },
-  {
-    id: ' vvbnm,j1',
-    name: 'Bena Kane',
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg',
-  },
-  {
-    id: ' 1fvcdsdddcbm4ht',
-    name: 'Aisyah Zidni',
-    picture:
-      'https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg',
-  },
-  {
-    id: ' vvcdddbnm8j',
-    name: 'Firmino Kudo',
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg',
-  },
-]
+}
 
-const EmployeesCarrousel: FC = () => {
-  const slideWidth = 177
+interface EmployeesCarrouselProps {
+  bgc: 'transparent' | 'brown'
+}
+const EmployeesCarrousel: FC<EmployeesCarrouselProps> = ({ bgc }) => {
+  const carrouselBGC = {
+    brown: '#291d1a',
+    transparent: 'unset',
+  }
 
   const [chosenEmployee, setChosenEmployee] = useState('')
-  const [currentTranslateX, setCurrentTranslateX] = useState(0)
 
   const handleSetActiveSlide = (id: string) => {
     setChosenEmployee(id)
-  }
-
-  const handleRightArrow = () => {
-    setCurrentTranslateX((prevTranslateX) => prevTranslateX - slideWidth)
-  }
-
-  const handleLeftArrow = () => {
-    if (currentTranslateX === employeesInfo.length * slideWidth) {
-      setCurrentTranslateX(0)
-    } else {
-      setCurrentTranslateX((prevTranslateX) => prevTranslateX + slideWidth)
-    }
-  }
-
-  useEffect(() => {
-    const handleKeyDown = (event: { keyCode: number }) => {
-      if (event.keyCode === 39) {
-        handleRightArrow()
-      } else if (event.keyCode === 37) {
-        handleLeftArrow()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
-
-  const sliderStyle = {
-    transform: `translateX(${currentTranslateX}px)`,
-    width: employeesInfo.length * slideWidth,
   }
 
   const employeesRender = () => {
@@ -98,15 +47,16 @@ const EmployeesCarrousel: FC = () => {
   }
 
   return (
-    <Box className={s.carrouselWrapper} onKeyPress={handleRightArrow}>
-      <Stack
-        direction="row"
-        alignItems="center"
-        spacing={15}
-        style={sliderStyle}
-        className={s.carrouselItems}>
+    <Box sx={{ bgcolor: carrouselBGC[bgc], display: 'inline-block' }}>
+      <Carousel
+        arrows={false}
+        infinite
+        draggable
+        responsive={responsive}
+        containerClass={s.carrouselWrapper}
+        sliderClass={s.carrouselContainer}>
         {employeesRender()}
-      </Stack>
+      </Carousel>
     </Box>
   )
 }

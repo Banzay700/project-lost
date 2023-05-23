@@ -1,10 +1,4 @@
-import { EmployeesCarrousel } from './components'
-
 const App = () => {
-  return (
-    <div>
-      <EmployeesCarrousel />
-    </div>
-  )
+  return <div>1</div>
 }
 export default App
