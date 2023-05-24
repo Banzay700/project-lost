@@ -1,9 +1,8 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
-import { Stack, Avatar, Box, Menu } from '@mui/material'
+import { Stack, Avatar, Box, Menu, Typography } from '@mui/material'
 import { Button, MenuItem } from 'UI'
-
-import { DataUserType, LinkType } from 'types'
-import { stringAvatar, menuData } from './watch.utils'
+import { DataUserType } from 'types'
+import { stringAvatar, menuData, formatDateTime } from './watch.utils'
 import s from './Watch.module.scss'
 
 interface WatchProps {
@@ -13,8 +12,9 @@ interface WatchProps {
 const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date())
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const { name, surname, src } = dataUser
   const open = Boolean(anchorEl)
+
+  const { name, surname, src } = dataUser
 
   const avatarName = !!name && !!surname && { ...stringAvatar(`${name} ${surname}`) }
 
@@ -32,10 +32,14 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
     }
   }, [])
 
+  const formattedDate = formatDateTime(currentDateTime)
+
   return (
-    <Stack spacing={3.2} direction="row">
+    <Stack spacing={3.2} direction="row" alignItems="center">
       <Box className={s.time} color="text.secondary">
-        {currentDateTime.toLocaleString()}
+        <Typography variant="h3" position="absolute">
+          {formattedDate}
+        </Typography>
       </Box>
       <Box>
         <Button
