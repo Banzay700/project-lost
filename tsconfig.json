@@ -15,13 +15,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
     "baseUrl": "src",
-    "rootDir": "src",
     "paths": {
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
-      "constants/*": ["constants/*"],
+      "routes/*": ["routes/*"],
       "pages/*": ["pages/*"],
       "theme/*": ["theme/*"],
       "store/*": ["store/*"],
@@ -30,6 +30,6 @@
       "utils/*": ["utils/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts", "./setup-tests.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

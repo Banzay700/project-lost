@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material'
-import { AppRoutes } from './routes'
+import { AppRoutes } from 'routes'
 
 const App = () => {
   // TODO: add to dish layout
