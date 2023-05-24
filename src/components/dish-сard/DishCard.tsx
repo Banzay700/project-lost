@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Card, Stack } from '@mui/material'
 import { IconMore } from 'assets'
 import { Button } from 'UI'
-import { useAppDispatch, useHover } from 'hooks'
+import { useAppDispatch } from 'hooks'
 import { addDishToOrder } from 'store/reducers'
 import DishCardModal from './DishCardModal'
 import { DishCardMedia } from './dish-card-media'
@@ -21,7 +21,6 @@ interface DishCardProps {
 
 const DishCard: FC<DishCardProps> = (props) => {
   const { image, title, price, description, id, weightProduct } = props
-  const [ref, isHovered] = useHover<HTMLDivElement>()
   const [openModal, setOpenModal] = useState(false)
   const dispatch = useAppDispatch()
 
@@ -34,7 +33,7 @@ const DishCard: FC<DishCardProps> = (props) => {
   }
 
   return (
-    <Card ref={ref} className={s.card}>
+    <Card className={s.card}>
       <Button
         variant="text"
         size="small"
