@@ -15,7 +15,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({ label, linkTo, icon, classN
 
   const fetchSvg = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}${icon}`)
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_STATIC}/${icon}`)
       const json = await response.text()
       setSvgContent(json)
     } catch (error) {
