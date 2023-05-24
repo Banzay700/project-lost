@@ -3,11 +3,9 @@ import { CardContent, Typography } from '@mui/material'
 
 interface DishCardTitleProps {
   title: string
-  isHovered: boolean
 }
 
-const DishCardTitle: FC<DishCardTitleProps> = ({ title, isHovered }) => {
-  const textPosition = isHovered ? 'start' : 'center'
+const DishCardTitle: FC<DishCardTitleProps> = ({ title }) => {
   return (
     <CardContent sx={{ p: 0 }}>
       <Typography
@@ -15,7 +13,7 @@ const DishCardTitle: FC<DishCardTitleProps> = ({ title, isHovered }) => {
         variant="h2"
         color="secondary"
         fontWeight={600}
-        textAlign={textPosition}
+        textAlign="start"
         overflow="hidden"
         textOverflow="ellipsis">
         {title}

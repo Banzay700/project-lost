@@ -45,12 +45,8 @@ const DishCard: FC<DishCardProps> = (props) => {
       <Stack spacing="12px">
         <DishCardMedia title={title} image={image} />
         <Stack spacing="8px" sx={{ transition: '1s' }}>
-          <DishCardTitle title={title} isHovered={isHovered} />
-          <DishCardPricing
-            price={price}
-            isHovered={isHovered}
-            onClickButton={handleAddProductToOrder}
-          />
+          <DishCardTitle title={title} />
+          <DishCardPricing price={price} onClickButton={handleAddProductToOrder} />
         </Stack>
       </Stack>
       <DishCardModal
