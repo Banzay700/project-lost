@@ -3,5 +3,5 @@ export type TableDataMok = {
   orderNumber: number
   orderType: 'away' | 'dineIn' | 'delivery'
   amount: number
-  status?: 'close' | 'open'
+  status?: 'closed' | 'opened'
 }
