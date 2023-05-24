@@ -41,9 +41,11 @@ const DishCard: FC<DishCardProps> = (props) => {
         icon={<IconMore />}
         className={s.icon}
       />
-      <Stack spacing="12px">
+      <Stack spacing="12px" height="100%">
         <DishCardMedia title={title} image={image} />
-        <Stack spacing="8px" sx={{ transition: '1s' }}>
+        <Stack
+          spacing="8px"
+          sx={{ transition: '1s', height: '100%', justifyContent: 'space-between' }}>
           <DishCardTitle title={title} />
           <DishCardPricing price={price} onClickButton={handleAddProductToOrder} />
         </Stack>
