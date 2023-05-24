@@ -4,32 +4,15 @@ import { Box } from '@mui/material'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import EmployeesItem from './EmployeesItem'
-
+import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
 import s from './EmployeesCarrousel.module.scss'
 import { employeesInfo } from './mockData'
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
-    slidesToSlide: 5,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    slidesToSlide: 3,
-  },
-}
 
 interface EmployeesCarrouselProps {
   bgc: 'transparent' | 'brown'
 }
-const EmployeesCarrousel: FC<EmployeesCarrouselProps> = ({ bgc }) => {
-  const carrouselBGC = {
-    brown: '#291d1a',
-    transparent: 'unset',
-  }
 
+const EmployeesCarrousel: FC<EmployeesCarrouselProps> = ({ bgc }) => {
   const [chosenEmployee, setChosenEmployee] = useState('')
 
   const handleSetActiveSlide = (id: string) => {
