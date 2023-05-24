@@ -64,7 +64,7 @@ const Button: FC<ButtonProps> = ({
       <Stack justifyContent="center" spacing="9px" alignItems="center">
         {icon && icon}
         {children && (
-          <Typography variant={variantTextSize} component="p" fontWeight={fontWeight || 600}>
+          <Typography variant={variantTextSize} component="p" fontWeight={fontWeight || 600} noWrap>
             {children}
           </Typography>
         )}

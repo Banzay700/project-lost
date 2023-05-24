@@ -2,6 +2,10 @@ import { FC } from 'react'
 import { Divider, Stack } from '@mui/material'
 import { FilterMenu, SearchInput } from 'UI'
 import { FilterMenuItemType } from 'types'
+import InfoChip from '../../UI/info-сhip/InfoChip'
+import Input from '../../UI/input/Input'
+import { Form, Formik } from 'formik'
+import Logo from '../../UI/logo/Logo'
 
 type OnChangeProps = {
   filterValue?: string[]

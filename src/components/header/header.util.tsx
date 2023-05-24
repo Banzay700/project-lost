@@ -8,7 +8,7 @@ export const navData: LinkType[] = [
     icon: <IconHome style={{ marginRight: '11px' }} />,
   },
   {
-    link: '/order',
+    link: '/orders',
     text: 'Order',
     icon: <IconReceipt style={{ marginRight: '11px' }} />,
   },
