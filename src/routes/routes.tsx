@@ -5,9 +5,8 @@ import { DishesPageContent } from 'pages/dishes-page/dishes-page-content'
 
 const AppRoutes = () => {
   return (
-    <div>
       <Routes>
-        <Route path="/" element={<Layout />}>
+         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to={`${ROUTES.DISHES}/pizza`} />} />
           <Route path={ROUTES.DISHES} element={<DishesPage />}>
             <Route index element={<Navigate to="pizza" />} />
@@ -17,7 +16,6 @@ const AppRoutes = () => {
           <Route path={ROUTES.BILLS} element={<BillsPage />} />
         </Route>
       </Routes>
-    </div>
   )
 }
 
