@@ -70,7 +70,7 @@ const DishesPageContent: FC = () => {
   }, [subcategory, search])
 
   return (
-    <Stack sx={{ width: '100%' }}>
+    <Stack sx={{ width: '100%', height: '100%' }}>
       {filterMenu && (
         <SearchFilterBar
           subcategories={filterMenu}
@@ -79,7 +79,13 @@ const DishesPageContent: FC = () => {
           defaultValueInput={search}
         />
       )}
-      <Box sx={{ background: '#F8F9FD', height: '100%', overflowY: 'auto' }}>
+      <Box
+        sx={{
+          width: '100%',
+          background: '#F8F9FD',
+          height: '100vh',
+          overflowY: 'auto',
+        }}>
         {dishes && <DishesList dishes={dishes} />}
       </Box>
     </Stack>
