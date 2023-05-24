@@ -27,17 +27,17 @@ describe('testing InfoChip', () => {
     expect(content).toBeInTheDocument()
     expect(wrapper).toHaveClass(s.takeAway)
   })
-  test('props open', () => {
-    render(<InfoChip type="open" />)
-    const content = screen.getByText('Open')
+  test('props opened', () => {
+    render(<InfoChip type="opened" />)
+    const content = screen.getByText('Opened')
     const wrapper = content.parentElement
 
     expect(content).toBeInTheDocument()
     expect(wrapper).toHaveClass(s.open)
   })
-  test('props close', () => {
-    render(<InfoChip type="close" />)
-    const content = screen.getByText('Close')
+  test('props closed', () => {
+    render(<InfoChip type="closed" />)
+    const content = screen.getByText('Closed')
     const wrapper = content.parentElement
 
     expect(content).toBeInTheDocument()

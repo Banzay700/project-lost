@@ -14,13 +14,7 @@ const Table: FC<TableNavProps> = ({ data }) => {
   return (
     <TableContainer component={Paper} sx={{ maxHeight: 625 }}>
       <MuiTable sx={{ minWidth: 900 }} aria-label="simple table">
-        <TableHead
-          data={dataTile}
-          borderBottom="2px solid #E4E4E4"
-          align="center"
-          textTransform="uppercase"
-          fontSize="12px"
-        />
+        <TableHead data={dataTile} />
         <TableBody>
           {data.map((element) => (
             <TableLineWrapper

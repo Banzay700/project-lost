@@ -11,10 +11,13 @@ interface TableHeadProps {
 
 const TableHead: FC<TableHeadProps> = ({ data, textTransform, fontSize, borderBottom, align }) => {
   return (
-    <TableHeadMui sx={{ borderBottom }}>
+    <TableHeadMui sx={{ borderBottom: borderBottom || '2px solid #E4E4E4' }}>
       <TableRow>
         {data.map((item) => (
-          <TableCell key={item} align={align} sx={{ textTransform, fontSize }}>
+          <TableCell
+            key={item}
+            align={align || 'center'}
+            sx={{ textTransform: textTransform || 'uppercase', fontSize: fontSize || '12px' }}>
             {item}
           </TableCell>
         ))}
