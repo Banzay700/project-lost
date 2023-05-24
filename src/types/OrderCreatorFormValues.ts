@@ -1,4 +1,4 @@
-export type OrderCreatorFormValues = {
+export interface OrderCreatorFormValues {
   orderType: string
   table?: string
 }

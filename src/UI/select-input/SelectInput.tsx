@@ -1,14 +1,14 @@
 import { FC, useEffect } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 
-type FreeTablesType = { number: string; id: string }
+import { FreeTablesType } from 'types'
+import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 
 interface SelectInputProps {
   name: string
   label: string
-  data: FreeTablesType[]
+  data: FreeTablesType[] | undefined
   handleValue: (value: string) => void
   hidden?: boolean
 }
@@ -37,7 +37,7 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, hid
     <FormControl sx={formControlStyle} fullWidth>
       <InputLabel sx={inputLabelStyle}>Select table</InputLabel>
       <Select {...field} label={label} sx={selectStyle} onChange={handleChange}>
-        {data.map(({ id, number }) => (
+        {data?.map(({ id, number }) => (
           <MenuItem key={id} value={number} sx={menuItemsStyle}>
             {number}
           </MenuItem>

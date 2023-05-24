@@ -18,7 +18,7 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange }) => {
   }
 
   return (
-    <Box sx={{ padding: '7px 15px', borderLeft: '1px solid #E4E4E4' }}>
+    <Box sx={{ padding: '7px 15px' }}>
       <Tabs value={selectedItem} className={s.wrapper} centered textColor="secondary">
         {menuItems.map(({ label, value }) => (
           <ToggleMenuItem

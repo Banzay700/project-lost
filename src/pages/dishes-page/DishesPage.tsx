@@ -14,8 +14,6 @@ const DishesPage: FC = () => {
     return <div>Server Error</div>
   }
 
-  console.log()
-
   return (
     <Stack direction="row" height="100%">
       <Box borderRight="1px solid #e4e4e4">
