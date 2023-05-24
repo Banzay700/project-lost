@@ -15,7 +15,7 @@ const LogoWrapper: FC = () => {
         color="secondary"
       />
       <Box className={s.line} />
-      <Logo classImg="coca" classText="cocaText" view="both" link="/" />
+      <Logo view="both" link="/" />
     </Stack>
   )
 }

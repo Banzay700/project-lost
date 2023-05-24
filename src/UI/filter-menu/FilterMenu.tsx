@@ -1,10 +1,7 @@
-import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { Stack, ToggleButtonGroup } from '@mui/material'
-import { FilterMenuItemType } from 'types/index'
-import { filterListItems } from './filterMenu.utils'
+import { FC, useEffect, useState } from 'react'
+import { Stack } from '@mui/material'
+import { FilterMenuItemType } from 'types'
 import { DishFilterMenuItem } from './filter-menu-item'
-import { useLocation } from 'react-router-dom'
-import filterMenuItem from 'UI/filter-menu/filter-menu-item/FilterMenuItem'
 
 interface FilterMenuProps {
   filterMenuItems: FilterMenuItemType[]
