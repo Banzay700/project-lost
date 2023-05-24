@@ -16,7 +16,7 @@ const TableActions: FC<ButtonElementType> = ({ status, className, startIcon }) =
           Close order
         </Button>
       )}
-      {status === 'open' && (
+      {status === 'opened' && (
         <Button
           className={className}
           size="small"
@@ -25,7 +25,7 @@ const TableActions: FC<ButtonElementType> = ({ status, className, startIcon }) =
           Pay Now
         </Button>
       )}
-      {status === 'close' && (
+      {status === 'closed' && (
         <Button className={className} size="small" variant="outlined" startIcon={<IconPrinter />}>
           Print bill
         </Button>

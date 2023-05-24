@@ -1,10 +1,12 @@
 .time {
   background: #F8F9FD;
-  width: 230px;
+  width: 182px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 40px;
+  position: relative;
   @media (max-width: 1015px) {
     display: none;
   }

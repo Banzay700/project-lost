@@ -3,12 +3,11 @@ import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
 import { Button, SelectInput, TableInfoBox } from 'UI'
-import { mockData } from 'utils'
 import { OrderCreatorFormValues } from 'types'
+import { useGetFreeTablesQuery } from 'store/api'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
-
 import s from './OrderCreatorForm.module.scss'
 
 interface OrderCreatorFormProps {
@@ -30,7 +29,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
     setDisabled(value === MAIN_ORDER_TYPE)
   }
 
-  // getFreeTables data here and pass it to SelectInput `data` prop
+  const { data } = useGetFreeTablesQuery()
 
   return (
     <div className={s.newOrderForm}>
@@ -46,7 +45,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
               name="table"
               label="Select table"
               hidden={hidden}
-              data={mockData}
+              data={data}
               handleValue={handleValue}
             />
           </Stack>

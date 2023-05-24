@@ -1,18 +1,21 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout, DishesPage, OrdersPage, BillsPage } from 'pages'
+import { DishesPageContent } from 'pages/dishes-page/dishes-page-content'
 import { ROUTES } from './routes.utils'
 
 const AppRoutes = () => {
   return (
-    <div>
-      <Routes>
-        <Route path={ROUTES.HOME} element={<Layout />}>
-          <Route index element={<DishesPage />} />
-          <Route path={ROUTES.DISHES} element={<OrdersPage />} />
-          <Route path={ROUTES.BILLS} element={<BillsPage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to={`${ROUTES.DISHES}/pizza`} />} />
+        <Route path={ROUTES.DISHES} element={<DishesPage />}>
+          <Route index element={<Navigate to="pizza" />} />
+          <Route path=":category" element={<DishesPageContent />} />
         </Route>
-      </Routes>
-    </div>
+        <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
+        <Route path={ROUTES.BILLS} element={<BillsPage />} />
+      </Route>
+    </Routes>
   )
 }
 

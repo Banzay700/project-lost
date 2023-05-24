@@ -5,7 +5,6 @@ export type { RadioGroupContentType } from './RadioGroupContentType'
 export type {
   ITable,
   TableMessageType,
-  FreeTableType,
   IReservationsInfo,
   IRequestDeleteReservation,
 } from './ITable'
@@ -24,3 +23,4 @@ export type { OrderPaymentFormValuesType } from './OrderPaymentFormValuesType'
 export type { DishProductType } from './DishProductType'
 export type { DataSubCategoriesResponseType } from './DataCategoriesResponseType'
 export type { ReturnChangePropsFilter } from './ReturnChangePropsFilter'
+export type { FreeTablesType } from './FreeTablesType'

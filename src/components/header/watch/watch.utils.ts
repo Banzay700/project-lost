@@ -27,6 +27,16 @@ export const stringAvatar = (username: string) => {
   }
 }
 
+export const formatDateTime = (date: Date) => {
+  const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  const dateString = date.toLocaleDateString([], {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+  return `${time} ${dateString}`
+}
+
 export const menuData: LinkType[] = [
   {
     link: '/login',

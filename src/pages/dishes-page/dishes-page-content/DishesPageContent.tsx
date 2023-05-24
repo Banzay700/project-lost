@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 import { DishesList, SearchFilterBar } from 'components'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
   useGetDishesByCategoryAndFilterQuery,
   useGetSubCategoriesInCategoryQuery,
@@ -11,9 +11,10 @@ import { FilterMenuItemType } from 'types/FilterMenuItemType'
 import { correctionName } from 'utils/correctionName'
 import { ReturnChangePropsFilter } from 'types/ReturnChangePropsFilter'
 
-const DishesPage: FC = () => {
+const DishesPageContent: FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { category } = useParams()
   const searchParams = new URLSearchParams(location.search)
   const defaultSearch = searchParams.get('search')
   const defaultSubcategory = searchParams.get('category')
@@ -21,11 +22,9 @@ const DishesPage: FC = () => {
     defaultSubcategory?.split(',') || ['all'],
   )
   const [search, setSearch] = useState(defaultSearch || '')
-  const { data } = useGetSubCategoriesInCategoryQuery(
-    correctionRouteLinkForRequest(location.pathname),
-  )
+  const { data } = useGetSubCategoriesInCategoryQuery(correctionRouteLinkForRequest(category || ''))
   const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
-    category: correctionRouteLinkForRequest(location.pathname),
+    category: correctionRouteLinkForRequest(category || ''),
     subcategory: subcategory.some((item) => item === 'all') ? undefined : subcategory,
     search,
   })
@@ -71,7 +70,7 @@ const DishesPage: FC = () => {
   }, [subcategory, search])
 
   return (
-    <Stack sx={{ width: '100%' }}>
+    <Stack sx={{ width: '100%', height: '100%' }}>
       {filterMenu && (
         <SearchFilterBar
           subcategories={filterMenu}
@@ -80,11 +79,17 @@ const DishesPage: FC = () => {
           defaultValueInput={search}
         />
       )}
-      <Box sx={{ background: '#F8F9FD', height: '100%', overflowY: 'auto' }}>
+      <Box
+        sx={{
+          width: '100%',
+          background: '#F8F9FD',
+          height: '100vh',
+          overflowY: 'auto',
+        }}>
         {dishes && <DishesList dishes={dishes} />}
       </Box>
     </Stack>
   )
 }
 
-export default DishesPage
+export default DishesPageContent

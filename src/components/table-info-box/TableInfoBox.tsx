@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { Box } from '@mui/material'
 
-import { useGetTableReservationForCurrentDayQuery } from 'store/api/table.api'
-
+import { useGetTableReservationForCurrentDayQuery } from 'store/api'
 import { TablesInfoItem } from './tables-info-item'
 
 interface TableInfoBoxProps {
