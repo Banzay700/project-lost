@@ -15,12 +15,12 @@ export const tableApi = api.injectEndpoints({
     }),
 
     getFreeTables: builder.query<FreeTablesType[], void>({
-      query: () => ({ url: 'api/tables/free' }),
+      query: () => ({ url: '/tables/free' }),
       providesTags: ['Table'],
     }),
 
     getTableReservationForCurrentDay: builder.query<TableMessageType, string>({
-      query: (tableNumber) => ({ url: `api/tables/reservation/${tableNumber}` }),
+      query: (tableNumber) => ({ url: `/tables/reservation/${tableNumber}` }),
     }),
 
     getTableReservationSelectedDate: builder.query<TableMessageType, { id: string; date: string }>({
@@ -38,7 +38,7 @@ export const tableApi = api.injectEndpoints({
     }),
 
     updateTableStatus: builder.mutation<ITable, string>({
-      query: (tableNumber) => ({ url: `api/tables/${tableNumber}`, method: 'PUT' }),
+      query: (tableNumber) => ({ url: `/tables/${tableNumber}`, method: 'PUT' }),
       invalidatesTags: ['Table'],
     }),
 
