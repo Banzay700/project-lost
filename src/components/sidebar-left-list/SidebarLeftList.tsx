@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { List } from '@mui/material'
 import { SidebarItemsType } from 'types'
 import { SidebarLinkItem } from 'UI'
-import s from './SidebarLeftList.module.scss'
 import { correctionName } from 'utils/correctionName'
+import s from './SidebarLeftList.module.scss'
 
 interface SidebarLeftListProps {
   sidebarItems: SidebarItemsType[]

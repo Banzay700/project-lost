@@ -7,11 +7,11 @@ import { Outlet } from 'react-router-dom'
 // add container MUI component here
 const Layout: FC = () => {
   return (
-    <Stack direction="column" minHeight="100vh">
-      <Stack height="100%" maxHeight="76px" minHeight="64px">
+    <Stack direction="column" height="100vh">
+      <Stack height="7.42%">
         <Header />
       </Stack>
-      <Stack direction="row" flex="1">
+      <Stack direction="row" flex="1" height="92.58%">
         <Stack flex={1}>
           <Outlet />
         </Stack>
