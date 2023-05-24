@@ -76,6 +76,7 @@ const theme = createTheme(
       text: {
         primary: '#828487',
         secondary: '#19191C',
+        addition: '#fff',
       },
     },
     components: {

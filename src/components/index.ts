@@ -9,8 +9,12 @@ export { OrderCreatorBar } from './order-creator-bar'
 export { DishesList } from './dishes-list'
 
 export { TableNav } from './table-nav'
+
+export { EmployeesCarrousel } from './employees-carrousel'
+
 export { SidebarContentWrapper } from './sidebar-content-wrapper'
 
 export { Table } from './table'
+
 
 
