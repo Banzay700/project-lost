@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TableRow } from '@mui/material'
-import { DataTableCellType, TableDataMok } from 'types'
+import { DataTableCellType, TableDataMok } from 'types/index'
 import { TableLineItem } from './table-line-item'
 import s from './TableLineWrapper.module.scss'
 
