@@ -17,7 +17,7 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems }) => {
           key={id}
           label={correctionName(title)}
           icon={picture}
-          linkTo={title.toLowerCase()}
+          linkTo={`/home/${title.toLowerCase()}`}
           className={s.listItem}
         />
       ))}
