@@ -10,7 +10,13 @@ interface DishCardMediaProps {
 const DishCardMedia: FC<DishCardMediaProps> = ({ title, image }) => {
   return (
     <CardMedia
-      sx={{ borderRadius: '12px', height: '158px' }}
+      sx={{
+        borderRadius: '12px',
+        minHeight: '158px',
+        maxHeight: '158px',
+        flex: 1,
+        objectFit: 'cover',
+      }}
       component="img"
       image={image}
       alt={title}
