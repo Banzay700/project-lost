@@ -7,7 +7,7 @@ type IndicatorContent = {
   text: string
 }
 
-export const initIndicatorContent = ({ type }: IndicatorProps): IndicatorContent | undefined => {
+export const initIndicatorContent = (type: string): IndicatorContent => {
   if (type === 'takeAway') {
     return {
       color: '#3395F0',
@@ -27,5 +27,10 @@ export const initIndicatorContent = ({ type }: IndicatorProps): IndicatorContent
       color: '#F0B433',
       text: 'Delivery',
     }
+  }
+
+  return {
+    color: 'gray',
+    text: 'default',
   }
 }
