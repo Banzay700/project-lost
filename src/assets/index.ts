@@ -3,8 +3,6 @@ export {
   IconPlus,
   IconUser,
   IconOval,
-  IconAwayIndicator,
-  IconDineInIndicator,
   IconDelivery,
   IconCash,
   IconMasterCard,
@@ -15,7 +13,6 @@ export {
   IconMore,
   IconDineIn,
   IconAway,
-  IconDeliveryIndicator,
   IconHome,
   IconNote,
   IconClock,
@@ -23,5 +20,6 @@ export {
   IconArrowLeft,
   TestIcon,
   IconPrinter,
+  IconIndicator,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'
