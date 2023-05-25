@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react'
-import { Stack } from '@mui/material'
+import { FC, useEffect, useRef, useState } from 'react'
+import { Box, Menu, MenuItem, Select, SelectChangeEvent, Stack, Tab, Tabs } from '@mui/material'
 import { FilterMenuItemType } from 'types'
 import { DishFilterMenuItem } from './filter-menu-item'
+import { Button } from 'UI/button'
 
 interface FilterMenuProps {
   filterMenuItems: FilterMenuItemType[]
@@ -11,7 +12,6 @@ interface FilterMenuProps {
 
 const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChange }) => {
   const [filterItems, setFilterItems] = useState(defaultValue || ['all'])
-
   const handleChangeFilter = (value: string) => {
     const withoutAllCategory = filterItems.filter((item) => item !== 'all')
     if (value === 'all') {
@@ -38,7 +38,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
   }, [defaultValue])
 
   return (
-    <Stack spacing="8px" direction="row">
+    <Stack sx={{ gap: '8px' }} direction="row" flexWrap="wrap">
       <DishFilterMenuItem
         value="all"
         label="All"

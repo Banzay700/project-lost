@@ -1,7 +1,7 @@
 import { CardContent, Typography, Stack } from '@mui/material'
 import { FC } from 'react'
 import { Button } from 'UI'
-import { IconPlus } from 'assets/icons'
+import { IconPlus } from 'assets'
 
 interface DishCardPricingProps {
   price: number

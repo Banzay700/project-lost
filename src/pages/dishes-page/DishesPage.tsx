@@ -1,9 +1,8 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
-import { SidebarLeftList } from 'components/sidebar-left-list'
+import { SidebarLeftList } from 'components'
 import { useGetCategoriesQuery } from 'store/api/dish.api'
-import { Outlet, useLocation, useMatch, useNavigate } from 'react-router-dom'
-import { ROUTES } from 'routes/routes.utils'
+import { Outlet } from 'react-router-dom'
 
 const DishesPage: FC = () => {
   const { data, isLoading } = useGetCategoriesQuery(null)
