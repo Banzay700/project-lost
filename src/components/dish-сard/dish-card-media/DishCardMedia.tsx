@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { CardMedia } from '@mui/material'
-import s from './DishCardMedia.module.scss'
 
 interface DishCardMediaProps {
   title: string

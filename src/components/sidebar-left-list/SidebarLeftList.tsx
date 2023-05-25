@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { List } from '@mui/material'
 import { SidebarItemsType } from 'types'
 import { SidebarLinkItem } from 'UI'
-import { correctionName } from 'utils/correctionName'
+import { correctionName } from 'utils'
 import s from './SidebarLeftList.module.scss'
 
 interface SidebarLeftListProps {
