@@ -3,7 +3,6 @@ import { Box, Stack } from '@mui/material'
 import { SidebarLeftList } from 'components/sidebar-left-list'
 import { useGetCategoriesQuery } from 'store/api/dish.api'
 import { Outlet, useLocation, useMatch, useNavigate } from 'react-router-dom'
-import { ROUTES } from 'routes/routes.utils'
 
 const DishesPage: FC = () => {
   const { data, isLoading } = useGetCategoriesQuery(null)

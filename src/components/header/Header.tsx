@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Navbar } from 'UI'
+import { Indicator, Navbar } from 'UI'
 import { Watch } from './watch'
 import { LogoWrapper } from './logo-wrapper'
 import { mockUser, navData } from './header.util'
@@ -10,6 +10,7 @@ const Header: FC = () => {
     <header className={s.header}>
       <LogoWrapper />
       <Navbar direction="row" data={navData} spacing={6.4} />
+      <Indicator type="delivery" />
       <Watch dataUser={mockUser} />
     </header>
   )

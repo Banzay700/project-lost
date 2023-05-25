@@ -23,5 +23,6 @@ export {
   IconArrowLeft,
   TestIcon,
   IconPrinter,
+  IconIndicator,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'
