@@ -33,7 +33,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderId, totalAmount }) => 
       <ToggleMenu
         menuItems={toggleMenuValues}
         onChange={handleToggleMenuChange}
-        toggleValue="orderInfo"
+        defaultValue="orderInfo"
       />
       <DetailsListTitle title="Order payment" orderId={orderId} />
       <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>

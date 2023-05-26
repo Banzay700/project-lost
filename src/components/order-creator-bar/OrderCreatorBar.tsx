@@ -12,7 +12,8 @@ import { OrderCreatorForm } from './order-creator-form'
 import { preparedData, toggleMenuValues, unique } from './orderCreatorBar.utils'
 
 const OrderCreatorBar: FC = () => {
-  const [toggleValue, setToggleValue] = useState<ToggleMenuValuesType>('orderInfo')
+  const [toggleValue, setToggleValue] = useState<string>('orderInfo')
+  const [buttonDisabled, setButtonDisabled] = useState(true)
   const [orderID, setOrderID] = useState(0)
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
@@ -31,6 +32,7 @@ const OrderCreatorBar: FC = () => {
 
     if (table) updateTableStatus(table)
     setToggleValue('dishes')
+    setButtonDisabled(false)
   }
 
   const handleCreateOrder = () => {
@@ -39,7 +41,7 @@ const OrderCreatorBar: FC = () => {
     createOrder(data)
   }
 
-  const handleToggleChange = (value: ToggleMenuValuesType) => {
+  const handleToggleChange = (value: string) => {
     setToggleValue(value)
   }
 
@@ -48,7 +50,8 @@ const OrderCreatorBar: FC = () => {
       <ToggleMenu
         menuItems={toggleMenuValues}
         onChange={handleToggleChange}
-        toggleValue={toggleValue}
+        defaultValue={toggleValue}
+        buttonDisabled={buttonDisabled}
       />
       {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
       {toggleValue === 'dishes' && (
