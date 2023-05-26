@@ -1,6 +1,6 @@
 interface CommonTableData {
   id?: string
-  orderType: 'takeaway' | 'dineIn' | 'delivery'
+  orderType: 'takeAway' | 'dineIn' | 'delivery'
   orderNumber: string
   table?: string
 }

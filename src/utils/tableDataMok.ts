@@ -3,7 +3,7 @@ import { TableDataBills } from 'types'
 export const dataMokBill: TableDataBills[] = [
   {
     id: '12312312',
-    orderType: 'takeaway',
+    orderType: 'takeAway',
     orderNumber: '12',
     table: 'T-9',
     dishes: [

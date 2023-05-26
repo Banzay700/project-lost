@@ -29,7 +29,7 @@ const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell }) => {
 
   return (
     // <Paper sx={{ maxWidth: 1200, overflowX: 'auto' }} ref={containerRef}>
-    <TableContainer sx={{ maxWidth: 1200, overflowX: 'auto' }} ref={containerRef}>
+    <TableContainer sx={{ overflowX: 'auto' }} ref={containerRef}>
       <MuiTable stickyHeader aria-label="sticky table" sx={{ width: '100%' }}>
         <TableHead data={tableTitles} />
         <TableBody>
