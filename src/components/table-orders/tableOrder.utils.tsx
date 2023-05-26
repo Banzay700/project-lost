@@ -1,17 +1,25 @@
 import { TableCell, Typography } from '@mui/material'
-import { TableNumber, InfoChip } from 'UI'
+import { TableNumber, Button, InfoChip } from 'UI'
+import { DataTableCellType, TableDataOrders } from 'types'
 import { IconAddTipAmount } from 'assets'
-import { TableDataMok } from 'types'
-import { TableActions } from 'UI/../components/table/table-line-wrapper/table-actions'
 
-export const dataTableCell = (
-  { number, orderNumber, status, orderType, amount }: TableDataMok,
-  className?: string,
-) => [
+export const tableTitleOrder: string[] = [
+  'Table Number',
+  'Order Number',
+  'Total Amount',
+  'Order Type',
+  'Actions',
+]
+
+export const dataTableCellOrder = ({
+  element,
+  totalAmount,
+  className,
+}: DataTableCellType<TableDataOrders>) => [
   {
     tableCell: (
       <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-        <TableNumber tableNumber={number} />
+        <TableNumber tableNumber={element?.table} />
       </TableCell>
     ),
   },
@@ -19,7 +27,7 @@ export const dataTableCell = (
     tableCell: (
       <TableCell align="center">
         <Typography color="secondary" variant="h3" fontWeight={600}>
-          #{orderNumber}
+          #{element?.orderNumber}
         </Typography>
       </TableCell>
     ),
@@ -28,29 +36,28 @@ export const dataTableCell = (
     tableCell: (
       <TableCell align="center">
         <Typography color="secondary" variant="h3" fontWeight={400}>
-          ${amount}
+          {totalAmount}
         </Typography>
       </TableCell>
     ),
   },
-  status && {
+  {
     tableCell: (
       <TableCell align="center">
-        <InfoChip type={status} />
+        <InfoChip type={element?.orderType} />
       </TableCell>
     ),
   },
   {
     tableCell: (
       <TableCell align="center">
-        <InfoChip type={orderType} />
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <TableActions status={status} className={className} startIcon={<IconAddTipAmount />} />
+        <Button
+          className={className}
+          size="small"
+          variant="contained"
+          startIcon={<IconAddTipAmount />}>
+          Close order
+        </Button>
       </TableCell>
     ),
   },
