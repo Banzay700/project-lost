@@ -11,7 +11,7 @@ interface TableLineItemProps {
 }
 
 const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell }) => {
-  const totalPrice = total(element, 'price')
+  const totalPrice = total(element, 'price') // TODO: refactoring
   const totalAmount = total(element, 'amount')
 
   const dataCell = dataTableCell({ element, totalPrice, totalAmount, className: s.tableButton })
