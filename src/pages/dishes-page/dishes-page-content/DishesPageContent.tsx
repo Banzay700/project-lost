@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 import { DishesList, SearchFilterBar } from 'components'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { correctionRouteLinkForRequest } from 'utils/firstLetterUpperCase'
 import { FilterMenuItemType } from 'types/FilterMenuItemType'
 import { correctionName } from 'utils/correctionName'
 import { ReturnChangePropsFilter } from 'types/ReturnChangePropsFilter'
+import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
 const DishesPageContent: FC = () => {
   const location = useLocation()
@@ -79,15 +80,7 @@ const DishesPageContent: FC = () => {
           defaultValueInput={search}
         />
       )}
-      <Box
-        sx={{
-          width: '100%',
-          background: '#F8F9FD',
-          height: '100vh',
-          overflowY: 'auto',
-        }}>
-        {dishes && <DishesList dishes={dishes} />}
-      </Box>
+      {dishes && <DishesList dishes={dishes} />}
     </Stack>
   )
 }

@@ -1,10 +1,10 @@
-import { IOrder, RequiredIdOrder } from 'types'
-import { api } from './api'
+import { IOrder, RequiredIdOrder, TableDataOrders } from 'types'
 import { NewlyOrderType } from 'store/reducers/newlyCreatedOrder.slice'
+import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllOrders: builder.query<IOrder[], string>({
+    getAllOrders: builder.query<TableDataOrders[], string>({
       query: () => ({ url: '/orders' }),
       providesTags: ['Order'],
     }),

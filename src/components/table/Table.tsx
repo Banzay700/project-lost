@@ -3,6 +3,7 @@ import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import Scrollbar from 'smooth-scrollbar'
 import { TableLineWrapper, TableHead } from 'UI'
 import { DataTableCellFuncType, TableData } from 'types'
+import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
 interface TableProps {
   data: TableData[] | undefined
@@ -11,21 +12,7 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell }) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const container = containerRef.current
-
-    if (container) {
-      Scrollbar.init(containerRef.current, { damping: 0.1 })
-    }
-
-    return () => {
-      if (container) {
-        Scrollbar.destroy(container)
-      }
-    }
-  }, [])
+  const containerRef = useSmoothScrollbar<HTMLDivElement>()
 
   return (
     // <Paper sx={{ maxWidth: 1200, overflowX: 'auto' }} ref={containerRef}>
