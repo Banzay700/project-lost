@@ -24,6 +24,7 @@ const OrderCreatorBar: FC = () => {
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormValues) => {
     const orderNumber = unique()
+
     const orderInfo = { orderNumber, orderType, table, dishes: [] }
 
     setOrderID(orderNumber)
