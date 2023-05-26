@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TableCellType } from 'types/index'
+import { TableCellType } from 'types'
 
 interface TableLineItemProps {
   data: (TableCellType | undefined)[]
