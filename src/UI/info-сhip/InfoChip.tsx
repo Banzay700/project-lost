@@ -3,11 +3,11 @@ import { Chip } from '@mui/material'
 import s from './InfoChip.module.scss'
 
 interface InfoTagProps {
-  type: 'takeaway' | 'dineIn' | 'delivery' | 'closed' | 'opened' | undefined
+  type: 'takeAway' | 'dineIn' | 'delivery' | 'closed' | 'opened' | undefined
 }
 
 const classMap = {
-  takeaway: [s.takeAway, 'Take away'],
+  takeAway: [s.takeAway, 'Take away'],
   dineIn: [s.dineIn, 'Dine in'],
   delivery: [s.delivery, 'Delivery'],
   closed: [s.close, 'Close'],
