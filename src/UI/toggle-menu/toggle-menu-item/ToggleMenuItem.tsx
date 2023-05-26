@@ -7,9 +7,16 @@ interface ToggleMenuItemProps {
   value: string
   selected: string
   onClick: (value: string) => void
+  buttonDisabled?: boolean
 }
 
-const ToggleMenuItem: FC<ToggleMenuItemProps> = ({ label, value, selected, onClick }) => {
+const ToggleMenuItem: FC<ToggleMenuItemProps> = ({
+  label,
+  value,
+  selected,
+  buttonDisabled,
+  onClick,
+}) => {
   const isSelected = selected ? 'secondary' : 'text.primary'
 
   const handleChange = () => {
@@ -18,6 +25,7 @@ const ToggleMenuItem: FC<ToggleMenuItemProps> = ({ label, value, selected, onCli
 
   return (
     <Tab
+      disabled={buttonDisabled}
       className={s.tabItem}
       onClick={handleChange}
       label={

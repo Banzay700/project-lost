@@ -31,7 +31,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, o
           />
         ))}
       </div>
-      <Stack sx={{ gap: '24px', p: '24px', borderTop: '1px solid #e4e4e4' }}>
+      <Stack sx={{ gap: '24px', p: '18px 16px', borderTop: '1px solid #e4e4e4' }}>
         <OrderSummary tax={10} total={total} />
         <Button variant="contained" size="default" type="submit" fullWidth onClick={onClick}>
           Submit
