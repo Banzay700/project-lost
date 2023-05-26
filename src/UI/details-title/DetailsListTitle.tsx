@@ -4,7 +4,7 @@ import s from './DetailsListTitle.module.scss'
 
 interface OrderDetailsTitleProps {
   title: string
-  orderId?: string
+  orderId: number
 }
 
 const DetailsListTitle: FC<OrderDetailsTitleProps> = ({ title, orderId }) => {
@@ -15,7 +15,7 @@ const DetailsListTitle: FC<OrderDetailsTitleProps> = ({ title, orderId }) => {
       </Typography>
       {orderId && (
         <Typography variant="h3" component="p">
-          Order #{orderId}
+          Order # {orderId}
         </Typography>
       )}
     </div>

@@ -1,6 +1,10 @@
 export interface IDishes {
   id: string
   amount: number
+  price: number
+  src: string
+  title: string
+  totalPrice: number
 }
 
 interface IAdditionalFood {
@@ -37,4 +41,3 @@ export interface IOrder {
 export type RequiredIdOrder = {
   id: string
 } & Partial<IOrder>
-
