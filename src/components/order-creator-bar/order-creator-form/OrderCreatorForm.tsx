@@ -21,6 +21,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
 
   const handleValue = (value: string) => {
     setSelectValue(value)
+
     setDisabled(false)
   }
 
