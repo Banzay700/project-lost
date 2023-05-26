@@ -1,30 +1,64 @@
-import { FC } from 'react'
+import { useNavigate, useNavigation } from 'react-router-dom'
+import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 
+import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
-import { OrderCreatorFormValues } from 'types'
 import { useNewOrderReducer } from 'hooks'
-import { useUpdateTableStatusMutation } from 'store/api'
+import { OrderCreatorFormValues, ToggleMenuValuesType } from 'types'
+import { ROUTES } from 'routes'
+import { useCreateOrderMutation, useUpdateTableStatusMutation } from 'store/api'
 import { OrderCreatorForm } from './order-creator-form'
-import { toggleMenuValues } from './orderCreatorBar.utils'
+import { preparedData, toggleMenuValues, unique } from './orderCreatorBar.utils'
 
 const OrderCreatorBar: FC = () => {
-  const { createNewOrder } = useNewOrderReducer()
+  const [toggleValue, setToggleValue] = useState<ToggleMenuValuesType>('orderInfo')
+  const [orderID, setOrderID] = useState(0)
+
   const [updateTableStatus] = useUpdateTableStatusMutation()
+  const [createOrder] = useCreateOrderMutation()
+  const { newlyOrder, dishes, createNewOrder } = useNewOrderReducer()
+
+  const navigate = useNavigate()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormValues) => {
-    const orderInfo = { orderNumber: 0, dishes: [], orderType, table }
+    const orderNumber = unique()
 
+    const orderInfo = { orderNumber, orderType, table, dishes: [] }
+
+    setOrderID(orderNumber)
     createNewOrder(orderInfo)
+
     if (table) updateTableStatus(table)
+    setToggleValue('dishes')
   }
 
-  const handleToggleChange = (value: string) => {}
+  const handleCreateOrder = () => {
+    const data = preparedData(newlyOrder)
+    navigate(ROUTES.ORDERS)
+    createOrder(data)
+  }
+
+  const handleToggleChange = (value: ToggleMenuValuesType) => {
+    setToggleValue(value)
+  }
 
   return (
-    <Stack flex="1">
-      <ToggleMenu menuItems={toggleMenuValues} onChange={handleToggleChange} />
-      <OrderCreatorForm onSubmit={handleFormSubmit} />
+    <Stack flex="1" height="100%">
+      <ToggleMenu
+        menuItems={toggleMenuValues}
+        onChange={handleToggleChange}
+        toggleValue={toggleValue}
+      />
+      {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
+      {toggleValue === 'dishes' && (
+        <OrderDetailsList
+          isPicker
+          orderId={orderID}
+          orderItems={dishes}
+          onClick={handleCreateOrder}
+        />
+      )}
     </Stack>
   )
 }

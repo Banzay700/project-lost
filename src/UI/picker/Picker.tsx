@@ -10,20 +10,17 @@ interface PickerProps {
 
 const Picker: FC<PickerProps> = ({ onChange }) => {
   const [valuePicker, setValuePicker] = useState<number>(1)
-
   const isDisabled = valuePicker === 1 && true
 
   const handleIncrementValue = () => {
     setValuePicker((prevState) => prevState + 1)
+    onChange(valuePicker + 1)
   }
 
   const handleDecrementValue = () => {
     setValuePicker((prevState) => prevState - 1)
+    onChange(valuePicker - 1)
   }
-
-  useEffect(() => {
-    onChange(valuePicker)
-  }, [onChange, valuePicker])
 
   return (
     <div className={s.wrapper}>

@@ -2,15 +2,18 @@ import { IconDelivery, IconDineIn, IconAway } from 'assets/icons'
 
 export const radioButtonGroupContent = [
   {
-    value: 'Dine In',
+    value: 'dineIn',
+    label: 'Dine in',
     icon: <IconDineIn />,
   },
   {
-    value: 'Take Away',
+    value: 'takeAway',
+    label: 'Take away',
     icon: <IconAway />,
   },
   {
-    value: 'Delivery',
+    value: 'delivery',
+    label: 'Delivery',
     icon: <IconDelivery />,
   },
 ]

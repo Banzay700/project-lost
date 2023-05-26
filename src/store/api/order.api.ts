@@ -1,41 +1,30 @@
-import { IOrder, RequiredIdOrder } from 'types'
+import { IOrder, RequiredIdOrder, TableDataOrders } from 'types'
+import { NewlyOrderType } from 'store/reducers/newlyCreatedOrder.slice'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllOrders: builder.query<IOrder[], string>({
-      query: () => ({
-        url: '/orders',
-      }),
+    getAllOrders: builder.query<TableDataOrders[], string>({
+      query: () => ({ url: '/orders' }),
       providesTags: ['Order'],
     }),
+
     getOrder: builder.query<IOrder, string>({
-      query: (id) => ({
-        url: `/orders/${id}`,
-      }),
+      query: (id) => ({ url: `/orders/${id}` }),
     }),
-    createOrder: builder.mutation<IOrder, IOrder>({
-      query: (post) => ({
-        url: '/orders',
-        method: 'POST',
-        body: post,
-      }),
+
+    createOrder: builder.mutation<NewlyOrderType, NewlyOrderType>({
+      query: (data) => ({ url: '/orders', method: 'POST', body: data }),
       invalidatesTags: ['Order'],
     }),
-    // Вкладені страви не додаються, а перезаписуються
+
     updateOrder: builder.mutation<IOrder, RequiredIdOrder>({
-      query: (post) => ({
-        url: '/orders',
-        method: 'PUT',
-        body: post,
-      }),
+      query: (post) => ({ url: '/orders', method: 'PUT', body: post }),
       invalidatesTags: ['Order'],
     }),
+
     deleteOrder: builder.mutation<IOrder, string>({
-      query: (id) => ({
-        url: `/orders/${id}`,
-        method: 'DELETE',
-      }),
+      query: (id) => ({ url: `/orders/${id}`, method: 'DELETE' }),
       invalidatesTags: ['Order'],
     }),
   }),

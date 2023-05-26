@@ -3,4 +3,5 @@ export type OrderItemPropsType = {
   title: string
   price: number
   src: string
+  amount: number
 }

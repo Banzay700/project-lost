@@ -36,6 +36,17 @@ declare module '@mui/material/styles' {
   //     danger: React.CSSProperties['color'];
   //   };
   // }
+  // interface PaletteColor {
+  //   s?: {
+  //     addition?: string
+  //   }
+  // }
+  //
+  // interface SimplePaletteColorOptions {
+  //   text?: {
+  //     addition?: string
+  //   }
+  // }
 }
 
 declare module '@mui/material/Typography' {

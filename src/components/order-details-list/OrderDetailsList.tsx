@@ -1,34 +1,43 @@
 import { FC } from 'react'
-import { OrderItemPropsType } from 'types'
-import { DetailsListTitle } from 'UI'
+import { Stack } from '@mui/material'
+import { OrderSummary } from 'components'
+import { Button, DetailsListTitle } from 'UI'
+import { IDishes } from 'types/IOrder'
 import { OrderDetailsItem } from './order-details-item'
 import s from './OrderDetailsList.module.scss'
 
 interface OrderListProps {
-  orderItems: OrderItemPropsType[]
+  orderItems: IDishes[]
   isPicker?: boolean
-  onChange?: (props: { id: string; price: number }) => void
-  orderId?: string
+  orderId: number
+  onClick?: () => void
 }
 
-const OrderDetailsList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onChange }) => {
+const OrderDetailsList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onClick }) => {
+  const total = orderItems.reduce((acc, item) => acc + item.totalPrice, 0)
+
   return (
-    <>
+    <Stack sx={{ height: '100%' }}>
       <DetailsListTitle title="Order details" orderId={orderId} />
       <div className={s.wrapper}>
-        {orderItems.map(({ id, title, price, src }) => (
+        {orderItems.map(({ id, title, src, totalPrice }) => (
           <OrderDetailsItem
             key={id}
             id={id}
             title={title}
-            price={price}
+            total={totalPrice}
             src={src}
             isPicker={isPicker}
-            onChange={onChange}
           />
         ))}
       </div>
-    </>
+      <Stack sx={{ gap: '24px', p: '24px', borderTop: '1px solid #e4e4e4' }}>
+        <OrderSummary tax={10} total={total} />
+        <Button variant="contained" size="default" type="submit" fullWidth onClick={onClick}>
+          Submit
+        </Button>
+      </Stack>
+    </Stack>
   )
 }
 

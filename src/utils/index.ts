@@ -1,8 +1,5 @@
 export { formatString } from './formatString'
-export { tableTitle } from './tableTitle'
-export { dataTableCell } from './dataTableCell.utils'
-
-export { dataMokBill, dataMokOrder } from './tableDataMok'
+export { dataMokBill } from './tableDataMok'
 // APPLICATION MOCKS - DELETE
 
 export { API_CONST } from './constants'

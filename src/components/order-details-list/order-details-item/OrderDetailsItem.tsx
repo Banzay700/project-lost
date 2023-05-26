@@ -6,28 +6,26 @@ import s from './OrderDetailsItem.module.scss'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
+import { useNewOrderReducer } from 'hooks/useNewOrderReducer.hook'
 
 interface OrderItemProps {
   id: string
   title: string
-  price: number
   src: string
+  total: number
   isPicker?: boolean
-  onChange?: (props: { id: string; price: number }) => void
 }
 
-const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, price, src, isPicker, onChange }) => {
-  const [totalPriceItem, setTotalPriceItem] = useState(price)
+const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total }) => {
+  const { dishes, addDish } = useNewOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
-    setTotalPriceItem(value * price)
-  }
+    const dish = dishes.find((item) => item.id === id)
 
-  useEffect(() => {
-    if (onChange) {
-      onChange({ id, price: totalPriceItem })
+    if (dish) {
+      addDish({ ...dish, amount: value })
     }
-  }, [totalPriceItem, id, onChange])
+  }
 
   return (
     <ListItem className={s.wrapper}>
@@ -35,8 +33,8 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, price, src, isPicker,
         <OrderDetailsItemMedia src={src} alt={title} />
         <div className={s.description}>
           <OrderDetailsItemTitle title={title} />
-          <OrderDetailsItemPriceInfo totalPriceItem={totalPriceItem}>
-            {isPicker && onChange && <Picker onChange={handleChangeOrderInfo} />}
+          <OrderDetailsItemPriceInfo totalPriceItem={total}>
+            {isPicker && <Picker onChange={handleChangeOrderInfo} />}
           </OrderDetailsItemPriceInfo>
         </div>
       </Card>

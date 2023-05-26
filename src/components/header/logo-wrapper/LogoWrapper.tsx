@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 
 import { IconArrowLeft } from 'assets'
 import { Button, Logo } from 'UI'
@@ -14,7 +14,6 @@ const LogoWrapper: FC = () => {
         icon={<IconArrowLeft className={s.arrow} color="secondary" />}
         color="secondary"
       />
-      <Box className={s.line} />
       <Logo view="both" link="/" />
     </Stack>
   )

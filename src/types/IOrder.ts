@@ -1,6 +1,10 @@
 export interface IDishes {
   id: string
   amount: number
+  price: number
+  src: string
+  title: string
+  totalPrice: number
 }
 
 interface IAdditionalFood {
@@ -16,25 +20,18 @@ interface IDeliveryDetails {
   name: string
   addresses: string
   email?: string
+  dishID: string
 }
 
 export interface IOrder {
   id?: string
-  status: boolean
-  diningOptions: string
+  orderType: 'takeaway' | 'dine-in' | 'delivery'
   orderNumber: string
-  totalPrice: number
-  paymentMethod: string
-  tipAmount?: number
-  tableTitle?: string
+  table?: string
   dishes?: IDishes[]
-  additionalFood?: IAdditionalFood[]
-  deliveryDetails?: IDeliveryDetails
-  email?: string
-  notes?: string
+  description?: string
 }
 
 export type RequiredIdOrder = {
   id: string
 } & Partial<IOrder>
-

@@ -9,7 +9,7 @@ import { OrderPricingTotalInfo } from './order-total-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
 
 interface OrderPaymentBarProps {
-  orderId: string
+  orderId: number
   totalAmount: number
 }
 
@@ -30,7 +30,11 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderId, totalAmount }) => 
 
   return (
     <>
-      <ToggleMenu menuItems={toggleMenuValues} onChange={handleToggleMenuChange} />
+      <ToggleMenu
+        menuItems={toggleMenuValues}
+        onChange={handleToggleMenuChange}
+        toggleValue="orderInfo"
+      />
       <DetailsListTitle title="Order payment" orderId={orderId} />
       <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>
         <OrderPricingTotalInfo totalAmount={totalAmount} />

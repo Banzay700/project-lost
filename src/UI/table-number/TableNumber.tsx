@@ -2,7 +2,7 @@ import { FC } from 'react'
 import s from './TableNumber.module.scss'
 
 interface TableNumberProps {
-  tableNumber: string
+  tableNumber: string | undefined
 }
 
 const TableNumber: FC<TableNumberProps> = ({ tableNumber }) => {

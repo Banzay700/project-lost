@@ -1,21 +1,15 @@
-import { FC, ReactElement, ReactNode } from 'react'
+import { FC } from 'react'
 import { Button } from 'UI/index'
 import { IconAddTipAmount, IconPrinter } from 'assets/index'
 
-interface ButtonElementType {
+interface TableActionsBillsProps {
   status: string | undefined
   className?: string
-  startIcon: ReactNode | ReactElement
 }
 
-const TableActions: FC<ButtonElementType> = ({ status, className, startIcon }) => {
+const TableActionsBills: FC<TableActionsBillsProps> = ({ status, className }) => {
   return (
     <>
-      {!status && (
-        <Button className={className} size="small" variant="contained" startIcon={startIcon}>
-          Close order
-        </Button>
-      )}
       {status === 'opened' && (
         <Button
           className={className}
@@ -33,4 +27,4 @@ const TableActions: FC<ButtonElementType> = ({ status, className, startIcon }) =
     </>
   )
 }
-export default TableActions
+export default TableActionsBills

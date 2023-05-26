@@ -1,31 +1,36 @@
-import { FC } from 'react'
-import { Table as MuiTable, TableBody, TableContainer, Paper } from '@mui/material'
+import { FC, useEffect, useRef } from 'react'
+import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
+import Scrollbar from 'smooth-scrollbar'
 import { TableLineWrapper, TableHead } from 'UI'
-import { dataTableCell, tableTitle } from 'utils'
-import { TableDataMok } from 'types'
-import { transformTableTitle } from './table.utils'
+import { DataTableCellFuncType, TableData } from 'types'
+import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
-interface TableNavProps {
-  data: TableDataMok[]
+interface TableProps {
+  data: TableData[] | undefined
+  tableTitles: string[]
+  dataTableCell: DataTableCellFuncType<TableData>
 }
 
-const Table: FC<TableNavProps> = ({ data }) => {
-  const dataTile = transformTableTitle(data, tableTitle)
+const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell }) => {
+  const containerRef = useSmoothScrollbar<HTMLDivElement>()
+
   return (
-    <TableContainer component={Paper} sx={{ maxHeight: 625 }}>
-      <MuiTable sx={{ minWidth: 900 }} aria-label="simple table">
-        <TableHead data={dataTile} />
+    // <Paper sx={{ maxWidth: 1200, overflowX: 'auto' }} ref={containerRef}>
+    <TableContainer sx={{ overflowX: 'auto' }} ref={containerRef}>
+      <MuiTable stickyHeader aria-label="sticky table" sx={{ width: '100%' }}>
+        <TableHead data={tableTitles} />
         <TableBody>
-          {data.map((element) => (
+          {data?.map((element) => (
             <TableLineWrapper
               element={element}
               key={element.orderNumber}
-              dataTableCellFunc={dataTableCell}
+              dataTableCell={dataTableCell}
             />
           ))}
         </TableBody>
       </MuiTable>
     </TableContainer>
+    // </Paper>
   )
 }
 
