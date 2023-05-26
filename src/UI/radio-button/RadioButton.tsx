@@ -9,13 +9,14 @@ interface RadioControlLabelProps {
   value: string
   selectedValue: string
   icon: ReactNode
+  label: string
 }
 
-const RadioButton: FC<RadioControlLabelProps> = ({ value, selectedValue, icon }) => {
+const RadioButton: FC<RadioControlLabelProps> = ({ value, selectedValue, icon, label }) => {
   const isChecked = selectedValue === value
 
   const formControlLabelConfig = {
-    label: value,
+    label,
     sx: { ...formControlLabelSx },
     control: <Radio sx={{ color: '#C2C2C2' }} />,
   }

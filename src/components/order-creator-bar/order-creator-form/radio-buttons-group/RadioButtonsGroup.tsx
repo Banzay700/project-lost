@@ -24,8 +24,14 @@ const RadioButtonsGroup: FC<RadioButtonsGroupProps> = ({ name, content, handleHi
     <FormControl component="fieldset" fullWidth>
       <RadioGroup onChange={handleChange}>
         <Stack spacing={2}>
-          {content.map(({ value, icon }) => (
-            <RadioButton key={value} value={value} selectedValue={field.value} icon={icon} />
+          {content.map(({ label, value, icon }) => (
+            <RadioButton
+              key={value}
+              value={value}
+              label={label}
+              selectedValue={field.value}
+              icon={icon}
+            />
           ))}
         </Stack>
       </RadioGroup>
