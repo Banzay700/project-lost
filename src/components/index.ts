@@ -11,6 +11,4 @@ export { DishesList } from './dishes-list'
 export { EmployeesCarrousel } from './employees-carrousel'
 export { SidebarContentWrapper } from './sidebar-content-wrapper'
 export { Table } from './table'
-
-
-
+export { IndicatorFilterBar } from './indicator-filter-bar'

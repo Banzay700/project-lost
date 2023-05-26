@@ -1,12 +1,21 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
+import { Table, IndicatorFilterBar } from 'components'
 import { dataMokOrder } from 'utils'
-import s from './OrdersPage.module.scss'
 
 const OrdersPage: FC = () => {
+  const handleChangeFilter = (value: string[]) => {
+    console.log(value)
+  }
   return (
     <>
-      <div>OrdersPage</div>
+      <IndicatorFilterBar
+        filterMenuItems={[
+          { value: 'dineIn', label: 'Dine in' },
+          { value: 'takeAway', label: 'Take away' },
+        ]}
+        indicatorName={['takeAway', 'dineIn']}
+        onChange={handleChangeFilter}
+      />
       <Table data={dataMokOrder} />
     </>
   )

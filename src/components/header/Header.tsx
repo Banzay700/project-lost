@@ -10,7 +10,6 @@ const Header: FC = () => {
     <header className={s.header}>
       <LogoWrapper />
       <Navbar direction="row" data={navData} spacing={6.4} />
-      <Indicator type="delivery" />
       <Watch dataUser={mockUser} />
     </header>
   )
