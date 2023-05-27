@@ -7,18 +7,12 @@ export const tableTitleBills: string[] = [
   'Table Number',
   'Order Number',
   'Total Price',
-  'Total Amount',
   'Status',
   'Order Type',
   'Actions',
 ]
 
-export const dataTableCellBills = ({
-  element,
-  totalPrice,
-  totalAmount,
-  className,
-}: DataTableCellType<TableDataBills>) => [
+export const dataTableCellBills = ({ element, className, onClick }: DataTableCellType<TableDataBills>) => [
   {
     tableCell: (
       <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -39,16 +33,7 @@ export const dataTableCellBills = ({
     tableCell: (
       <TableCell align="center">
         <Typography color="secondary" variant="h3" fontWeight={400}>
-          ${totalPrice}
-        </Typography>
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <Typography color="secondary" variant="h3" fontWeight={400}>
-          {totalAmount}
+          ${element?.totalPrice}
         </Typography>
       </TableCell>
     ),

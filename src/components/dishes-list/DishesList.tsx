@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { DishProductType } from 'types'
 import { DishCard } from 'components'
-import s from './DishesList.module.scss'
 import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+import s from './DishesList.module.scss'
 
 interface DishesListProps {
   dishes: DishProductType[]

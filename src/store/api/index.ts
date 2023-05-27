@@ -5,3 +5,4 @@ export {
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
 } from './table.api'
+export { useCreateBillMutation, useGetAllBillsQuery } from './bills.api'

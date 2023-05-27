@@ -6,16 +6,16 @@ import { IconAddTipAmount } from 'assets'
 export const tableTitleOrder: string[] = [
   'Table Number',
   'Order Number',
-  'Total Amount',
+  'Total Price',
   'Order Type',
   'Actions',
 ]
 
 export const dataTableCellOrder = ({
   element,
-  totalAmount,
   className,
-}: DataTableCellType<TableDataOrders>) => [
+}: // onClick,
+DataTableCellType<TableDataOrders>) => [
   {
     tableCell: (
       <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -36,7 +36,7 @@ export const dataTableCellOrder = ({
     tableCell: (
       <TableCell align="center">
         <Typography color="secondary" variant="h3" fontWeight={400}>
-          {totalAmount}
+          ${element?.totalPrice}
         </Typography>
       </TableCell>
     ),

@@ -38,7 +38,7 @@ const OrderCreatorBar: FC = () => {
   const handleCreateOrder = () => {
     const data = preparedData(newlyOrder)
     navigate(ROUTES.ORDERS)
-    createOrder(data)
+    createOrder(data) // TODO: Make Total Price and normal types
   }
 
   const handleToggleChange = (value: string) => {

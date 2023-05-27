@@ -1,17 +1,17 @@
-import { FC, useEffect, useRef } from 'react'
+import { FC } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
-import Scrollbar from 'smooth-scrollbar'
 import { TableLineWrapper, TableHead } from 'UI'
-import { DataTableCellFuncType, TableData } from 'types'
+import { DataTableCellFuncType, TableData, TableDataBills } from 'types'
 import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
 interface TableProps {
   data: TableData[] | undefined
   tableTitles: string[]
   dataTableCell: DataTableCellFuncType<TableData>
+  onClick?: (element: TableDataBills | undefined) => TableDataBills
 }
 
-const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell }) => {
+const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell, onClick }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
 
   return (
@@ -23,8 +23,9 @@ const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell }) => {
           {data?.map((element) => (
             <TableLineWrapper
               element={element}
-              key={element.orderNumber}
+              key={element.orderID}
               dataTableCell={dataTableCell}
+              // onClick={onClick}
             />
           ))}
         </TableBody>

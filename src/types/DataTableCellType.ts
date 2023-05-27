@@ -1,15 +1,13 @@
-import { TableCellType } from 'types'
+import { TableCellType, TableDataBills } from 'types'
 
 export type DataTableCellType<T> = {
   element: T | undefined
-  totalPrice?: number | undefined
-  totalAmount?: number | undefined
+  // onClick: (element: TableDataBills | undefined) => TableDataBills
   className?: string
 }
 
 export type DataTableCellFuncType<T> = ({
   element,
-  totalPrice,
-  totalAmount,
+  // onClick,
   className,
 }: DataTableCellType<T>) => TableCellType[]
