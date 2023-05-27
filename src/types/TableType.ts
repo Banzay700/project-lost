@@ -1,20 +1,22 @@
 interface CommonTableData {
-  id?: string
-  orderType: 'takeAway' | 'dineIn' | 'delivery'
-  orderNumber: string
+  orderID?: string
+  orderType: 'takeAway' | 'dineIn' | 'delivery' | undefined
+  orderNumber: string | undefined
   table?: string
+  totalPrice?: number
+  description?: string
 }
+
 export interface Dishes {
-  id: string
   amount: number
   dishID: string
-  totalPrice: number
+  dishTotalPrice: number
 }
 
 export interface DishesBills {
-  id: string
-  amount: number
   dishID: string
+  amount: number
+  title?: string
   price: number
 }
 
@@ -25,10 +27,9 @@ export interface TableDataOrders extends CommonTableData {
 export interface TableDataBills extends CommonTableData {
   dishes?: DishesBills[]
   status?: 'opened' | 'closed'
-  totalPrice: number
-  tip: number
-  email: string
-  description?: string
+  tip?: number
+  email?: string
+  paymentMethod?: string
 }
 
 export type TableData = TableDataBills | TableDataOrders

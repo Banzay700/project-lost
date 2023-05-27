@@ -10,16 +10,17 @@ export const unique = () => {
 }
 
 export const preparedData = (order: NewlyOrderType) => {
-  const { orderType, orderNumber, table, description, dishes } = order
-  const filteredDishes = dishes.map(({ id, amount, totalPrice }) => ({
+  const { orderType, orderNumber, table, description, dishes, totalPrice } = order
+  const filteredDishes = dishes.map(({ id, amount, price }) => ({
     dishID: id,
     amount,
-    totalPrice,
+    dishTotalPrice: price,
   }))
 
   return {
     orderType,
     dishes: filteredDishes,
+    totalPrice,
     description,
     table: table || '-',
     orderNumber,

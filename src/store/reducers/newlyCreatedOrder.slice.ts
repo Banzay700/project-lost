@@ -6,6 +6,7 @@ export interface NewlyOrderType extends OrderCreatorFormValues {
   orderNumber: number
   description?: string
   dishes: IDishes[]
+  totalPrice?: number
 }
 
 interface NewlyOrderState {
@@ -18,6 +19,7 @@ const initialState: NewlyOrderState = {
     table: '',
     orderNumber: 0,
     dishes: [],
+    totalPrice: 0,
   },
 }
 
