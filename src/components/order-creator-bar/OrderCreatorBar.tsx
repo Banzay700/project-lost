@@ -1,6 +1,6 @@
 import { useNavigate, useNavigation } from 'react-router-dom'
 import { FC, useState } from 'react'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'

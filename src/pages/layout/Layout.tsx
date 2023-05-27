@@ -10,10 +10,11 @@ const Layout: FC = () => {
         <Header />
       </Stack>
       <Stack direction="row" flex="1" height="92.58%">
-        <Stack flex={1}>
+        <Stack flex={1} height="100%">
           <Outlet />
         </Stack>
         <Stack
+          height="100%"
           direction="column"
           width="100%"
           maxWidth="360px"
