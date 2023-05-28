@@ -1,6 +1,7 @@
 import { object, string } from 'yup'
 
 export const initialValues = {
+  id: '',
   password: '',
 }
 

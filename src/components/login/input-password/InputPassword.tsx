@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
 import { Input } from 'UI/input'
@@ -13,8 +13,9 @@ interface InputPasswordProps {
 
 const InputPassword: FC<InputPasswordProps> = ({ id }) => {
   const [password, setPasswordValue] = useState('')
+  const [formValues, setFormValues] = useState(initialValues)
 
-  const getValue = (v: BtnLoginValue) => {
+  const getPassword = (v: BtnLoginValue) => {
     if (typeof v === 'number') {
       setPasswordValue((prevState) => {
         // eslint-disable-next-line no-return-assign
@@ -28,20 +29,24 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
   }
 
   const handleSubmit = (values, actions) => {
-    values.id = id
+    console.log(values)
 
-    console.log({
-      values,
-    })
     actions.resetForm()
     setPasswordValue('')
   }
 
+  useEffect(() => {
+    const values = { id, password }
+
+    setFormValues(values)
+  }, [password, id])
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues || initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      enableReinitialize>
       <Form>
         <Stack spacing={8}>
           <Input
@@ -52,7 +57,7 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
             valueExternal={password}
           />
 
-          <DigitButtonsGroup getValue={getValue} />
+          <DigitButtonsGroup getValue={getPassword} />
           <Button variant="contained" size="default" fullWidth>
             Login
           </Button>
