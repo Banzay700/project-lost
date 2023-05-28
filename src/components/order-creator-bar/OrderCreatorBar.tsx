@@ -1,15 +1,15 @@
-import { useNavigate, useNavigation } from 'react-router-dom'
-import { FC, useState } from 'react'
-import { Box, Stack } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { FC, useEffect, useState } from 'react'
+import { Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
 import { useNewOrderReducer } from 'hooks'
-import { OrderCreatorFormValues, ToggleMenuValuesType } from 'types'
+import { OrderCreatorFormValues } from 'types'
 import { ROUTES } from 'routes'
 import { useCreateOrderMutation, useUpdateTableStatusMutation } from 'store/api'
 import { OrderCreatorForm } from './order-creator-form'
-import { preparedData, toggleMenuValues, unique } from './orderCreatorBar.utils'
+import { getFormedOrder, toggleMenuValues, unique } from './orderCreatorBar.utils'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
@@ -18,13 +18,12 @@ const OrderCreatorBar: FC = () => {
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createOrder] = useCreateOrderMutation()
-  const { newlyOrder, dishes, createNewOrder } = useNewOrderReducer()
+  const { newOrder, dishes, createNewOrder } = useNewOrderReducer()
 
   const navigate = useNavigate()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormValues) => {
     const orderNumber = unique()
-
     const orderInfo = { orderNumber, orderType, table, dishes: [] }
 
     setOrderID(orderNumber)
@@ -36,15 +35,24 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleCreateOrder = () => {
-    const data = preparedData(newlyOrder)
+    const formedOrder = getFormedOrder(newOrder)
+
+    createOrder(formedOrder)
+    console.log(formedOrder)
     navigate(ROUTES.ORDERS)
-    createOrder(data) // TODO: Make Total Price and normal types
   }
 
   const handleToggleChange = (value: string) => {
     setToggleValue(value)
   }
 
+  useEffect(() => {
+    // if (dishes.length) {
+    //   console.log(dishes)
+    //   setToggleValue('dishes')
+    // }
+  }, [dishes])
+  console.log(dishes)
   return (
     <Stack flex="1" height="100%">
       <ToggleMenu

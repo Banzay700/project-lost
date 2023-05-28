@@ -9,7 +9,7 @@ export const billsApi = api.injectEndpoints({
     }),
     createBill: builder.mutation<TableDataBills, TableDataBills>({
       query: (body) => ({ url: '/bills', method: 'POST', body }),
-      invalidatesTags: ['Bills'],
+      invalidatesTags: ['Bills', 'Order'],
     }),
   }),
 })

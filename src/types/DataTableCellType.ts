@@ -1,13 +1,13 @@
-import { TableCellType, TableDataBills } from 'types'
+import { TableCellType, TableData } from 'types'
 
 export type DataTableCellType<T> = {
-  element: T | undefined
-  // onClick: (element: TableDataBills | undefined) => TableDataBills
+  element: T
+  onClick?: (dataOrder: TableData) => void
   className?: string
 }
 
 export type DataTableCellFuncType<T> = ({
   element,
-  // onClick,
+  onClick,
   className,
 }: DataTableCellType<T>) => TableCellType[]

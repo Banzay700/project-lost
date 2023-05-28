@@ -1,5 +1,5 @@
-import { IOrder, RequiredIdOrder, TableDataOrders } from 'types'
-import { NewlyOrderType } from 'store/reducers/newlyCreatedOrder.slice'
+import { IOrder, OrderFormedType, RequiredIdOrder, TableDataOrders } from 'types'
+import { ActiveOrderType, addOrderToActive, NewOrderType } from 'store/reducers/order.slice'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
@@ -9,11 +9,18 @@ export const orderApi = api.injectEndpoints({
       providesTags: ['Order'],
     }),
 
-    getOrder: builder.query<IOrder, string>({
+    getOrder: builder.query<ActiveOrderType, string>({
       query: (id) => ({ url: `/orders/${id}` }),
+      onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+
+        if (data) {
+          dispatch(addOrderToActive(data))
+        }
+      },
     }),
 
-    createOrder: builder.mutation<NewlyOrderType, NewlyOrderType>({
+    createOrder: builder.mutation<NewOrderType, OrderFormedType>({
       query: (data) => ({ url: '/orders', method: 'POST', body: data }),
       invalidatesTags: ['Order'],
     }),
@@ -36,4 +43,5 @@ export const {
   useGetAllOrdersQuery,
   useGetOrderQuery,
   useUpdateOrderMutation,
+  useLazyGetOrderQuery,
 } = orderApi
