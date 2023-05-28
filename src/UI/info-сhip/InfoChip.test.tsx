@@ -20,7 +20,7 @@ describe('testing InfoChip', () => {
     expect(wrapper).toHaveClass(s.dineIn)
   })
   test('props away', () => {
-    render(<InfoChip type="away" />)
+    render(<InfoChip type="takeAway" />)
     const content = screen.getByText('Take away')
     const wrapper = content.parentElement
 

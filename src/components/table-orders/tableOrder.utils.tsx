@@ -1,6 +1,6 @@
 import { TableCell, Typography } from '@mui/material'
 import { TableNumber, Button, InfoChip } from 'UI'
-import { DataTableCellType, TableDataOrders } from 'types'
+import { DataTableCellType, TableDataBills, TableDataOrders } from 'types'
 import { IconAddTipAmount } from 'assets'
 
 export const tableTitleOrder: string[] = [
@@ -11,54 +11,87 @@ export const tableTitleOrder: string[] = [
   'Actions',
 ]
 
+const prepareBillsData = (element: TableDataOrders) => {
+  const { id, orderType, orderNumber, dishes, table, totalPrice, description } = element
+  const modifiedData = dishes?.map(({ dishID, dishTotalPrice, amount, picture }) => {
+    return {
+      dishID,
+      amount,
+      price: dishTotalPrice,
+      // picture,
+    }
+  })
+  return {
+    orderID: id,
+    orderType,
+    orderNumber,
+    table,
+    description: 'dasdas',
+    totalPrice: 123,
+    dishes: modifiedData,
+  }
+}
+
 export const dataTableCellOrder = ({
   element,
   className,
-}: // onClick,
-DataTableCellType<TableDataOrders>) => [
-  {
-    tableCell: (
-      <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-        <TableNumber tableNumber={element?.table} />
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <Typography color="secondary" variant="h3" fontWeight={600}>
-          #{element?.orderNumber}
-        </Typography>
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <Typography color="secondary" variant="h3" fontWeight={400}>
-          ${element?.totalPrice}
-        </Typography>
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <InfoChip type={element?.orderType} />
-      </TableCell>
-    ),
-  },
-  {
-    tableCell: (
-      <TableCell align="center">
-        <Button
-          className={className}
-          size="small"
-          variant="contained"
-          startIcon={<IconAddTipAmount />}>
-          Close order
-        </Button>
-      </TableCell>
-    ),
-  },
-]
+  onClick,
+}: DataTableCellType<TableDataOrders>) => {
+  const handleSendOrder = async () => {
+    const dataOrder = prepareBillsData(element)
+    console.log(dataOrder)
+
+    if (onClick) {
+      await onClick(dataOrder as TableDataBills)
+    }
+  }
+
+  return [
+    {
+      tableCell: (
+        <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
+          <TableNumber tableNumber={element?.table} />
+        </TableCell>
+      ),
+    },
+    {
+      tableCell: (
+        <TableCell align="center">
+          <Typography color="secondary" variant="h3" fontWeight={600}>
+            #{element?.orderNumber}
+          </Typography>
+        </TableCell>
+      ),
+    },
+    {
+      tableCell: (
+        <TableCell align="center">
+          <Typography color="secondary" variant="h3" fontWeight={400}>
+            ${element?.totalPrice}
+          </Typography>
+        </TableCell>
+      ),
+    },
+    {
+      tableCell: (
+        <TableCell align="center">
+          <InfoChip type={element?.orderType} />
+        </TableCell>
+      ),
+    },
+    {
+      tableCell: (
+        <TableCell align="center">
+          <Button
+            className={className}
+            size="small"
+            variant="contained"
+            startIcon={<IconAddTipAmount />}
+            onClick={handleSendOrder}>
+            Close order
+          </Button>
+        </TableCell>
+      ),
+    },
+  ]
+}

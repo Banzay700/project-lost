@@ -1,30 +1,35 @@
 interface CommonTableData {
-  orderID?: string
-  orderType: 'takeAway' | 'dineIn' | 'delivery' | undefined
-  orderNumber: string | undefined
+  id?: string
+  orderType: 'takeAway' | 'dineIn' | 'delivery'
+  orderNumber: string
   table?: string
-  totalPrice?: number
   description?: string
 }
 
 export interface Dishes {
+  id?: string
   amount: number
   dishID: string
-  dishTotalPrice: number
+  picture?: string
+  dishTotalPrice?: number
 }
 
 export interface DishesBills {
+  id?: string
   dishID: string
   amount: number
-  title?: string
   price: number
+  title?: string
+  picture?: string
 }
 
 export interface TableDataOrders extends CommonTableData {
-  dishes?: Dishes[]
+  dishes?: Dishes[] | undefined
+  totalPrice?: number
 }
 
 export interface TableDataBills extends CommonTableData {
+  totalPrice: number
   dishes?: DishesBills[]
   status?: 'opened' | 'closed'
   tip?: number
