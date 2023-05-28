@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { TextField, TextFieldProps } from '@mui/material'
 import { useField } from 'formik'
 import cn from 'classnames'
@@ -11,12 +11,25 @@ type InputProps = InputVariantPropsType & {
   placeholder: string
   name: string
   type?: string
+  valueExternal?: string
 }
 
-const Input: FC<InputProps> = ({ name, label, placeholder, icon, outlined, type }) => {
+const Input: FC<InputProps> = ({
+  name,
+  label,
+  placeholder,
+  icon,
+  outlined,
+  type,
+  valueExternal,
+}) => {
   const [field, meta, helpers] = useField(name)
 
-  //const setValue = (value: string | number) => helpers.setValue(value, true)
+  useEffect(() => {
+    const setValue = () => helpers.setValue(valueExternal, true)
+    setValue()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueExternal])
 
   const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
   const textFieldConfig: TextFieldProps = {

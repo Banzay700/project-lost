@@ -1,33 +1,56 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { Form, Formik } from 'formik'
+import { Stack } from '@mui/material'
 import { Input } from 'UI/input'
 import { Button } from 'UI/button'
-import { Stack } from '@mui/material'
+import { BtnValue } from 'types/IEmployee'
 import { DigitButtonsGroup } from '../digitButtonsGroup'
 import { initialValues, validationSchema } from './InputPassword.utils'
 
-const InputPassword = () => {
-  const [value, setStateValue] = useState('')
+interface InputPasswordProps {
+  id: string
+}
 
-  const getValue = (v: 'clear' | 'delete' | number) => {
+const InputPassword: FC<InputPasswordProps> = ({ id }) => {
+  const [password, setPasswordValue] = useState('')
+
+  const getValue = (v: BtnValue) => {
     if (typeof v === 'number') {
-      setStateValue((prevState) => {
+      setPasswordValue((prevState) => {
         // eslint-disable-next-line no-return-assign
         return (prevState += String(v))
       })
     } else if (v === 'clear') {
-      setStateValue('')
+      setPasswordValue('')
     } else if (v === 'delete') {
-      setStateValue((prevState) => prevState.slice(0, prevState.length - 1))
+      setPasswordValue((prevState) => prevState.slice(0, prevState.length - 1))
     }
-
-    console.log(value)
   }
+
+  const handleSubmit = (values, actions) => {
+    values.id = id
+
+    console.log({
+      values,
+    })
+    actions.resetForm()
+    setPasswordValue('')
+  }
+
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={() => {}}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}>
       <Form>
         <Stack spacing={8}>
-          {/* <Input placeholder="Enter your PIN" name="password" type="password" outlined /> */}
+          <Input
+            placeholder="Enter your PIN"
+            name="password"
+            type="password"
+            outlined
+            valueExternal={password}
+          />
 
           <DigitButtonsGroup getValue={getValue} />
           <Button variant="contained" size="default" fullWidth>

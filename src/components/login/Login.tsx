@@ -8,27 +8,26 @@ import { InputPassword } from './input-password'
 import s from './Login.module.scss'
 
 const Login: FC = () => {
-  const { data: users = [], isFetching, error } = useGetAllUsersQuery('')
+  const { data: users = [] } = useGetAllUsersQuery('')
   const [chosenEmployee, setChosenEmployee] = useState('')
 
   const handleSetActiveSlide = (id: string) => {
     setChosenEmployee(id)
   }
 
-  const bgc = chosenEmployee ? 'transparent' : 'brown'
   const gap = chosenEmployee ? '44px' : '114px'
 
   return (
     <Stack alignItems="center" justifyContent="center" className={s.wrapper}>
       <Stack flexDirection="column" alignItems="center" gap={gap}>
         <EmployeesCarrousel
-          bgc={bgc}
+          bgc="transparent"
           employeesData={users}
           handleSetActiveSlide={handleSetActiveSlide}
           chosenEmployee={chosenEmployee}
         />
         {chosenEmployee ? (
-          <InputPassword />
+          <InputPassword id={chosenEmployee} />
         ) : (
           <Button variant="outlined" size="default" className={s.buttonBlur}>
             Login

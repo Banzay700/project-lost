@@ -4,3 +4,5 @@ export interface IEmployee {
   secondName: string
   userImage: string
 }
+
+export type BtnValue = 'clear' | 'delete' | number
