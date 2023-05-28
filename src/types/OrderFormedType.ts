@@ -1,6 +1,5 @@
 type FormedDishType = {
   dishID: string
-  picture: string
   amount: number
   dishTotalPrice: number
 }

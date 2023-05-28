@@ -13,9 +13,8 @@ export const unique = () => {
 export const getFormedOrder = (order: NewOrderType): OrderFormedType => {
   const { orderType, orderNumber, table, description, dishes } = order
 
-  const filteredDishes = dishes.map(({ id, amount, dishTotalPrice, picture }) => ({
+  const filteredDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
     dishID: id,
-    picture,
     amount,
     dishTotalPrice,
   }))

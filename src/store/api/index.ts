@@ -1,6 +1,11 @@
 export { api } from './api'
 
-export { useCreateOrderMutation, useGetOrderQuery, useLazyGetOrderQuery } from './order.api'
+export {
+  useCreateOrderMutation,
+  useGetOrderQuery,
+  useLazyGetOrderQuery,
+  useGetAllOrdersQuery,
+} from './order.api'
 
 export {
   useGetFreeTablesQuery,

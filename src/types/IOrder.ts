@@ -3,7 +3,6 @@ export interface IDishes {
   dishID?: number
   amount: number
   price: number
-  picture: string
   title: string
   dishTotalPrice: number
 }

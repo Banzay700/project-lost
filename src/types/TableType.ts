@@ -20,7 +20,6 @@ export interface DishesBills {
   amount: number
   price: number
   title?: string
-  picture?: string
 }
 
 export interface TableDataOrders extends CommonTableData {

@@ -13,12 +13,11 @@ export const tableTitleOrder: string[] = [
 
 const prepareBillsData = (element: TableDataOrders) => {
   const { id, orderType, orderNumber, dishes, table, totalPrice, description } = element
-  const modifiedData = dishes?.map(({ dishID, dishTotalPrice, amount, picture }) => {
+  const modifiedData = dishes?.map(({ dishID, dishTotalPrice, amount }) => {
     return {
       dishID,
       amount,
       price: dishTotalPrice,
-      // picture,
     }
   })
   return {
@@ -26,8 +25,8 @@ const prepareBillsData = (element: TableDataOrders) => {
     orderType,
     orderNumber,
     table,
-    description: 'dasdas',
-    totalPrice: 123,
+    description,
+    totalPrice,
     dishes: modifiedData,
   }
 }
@@ -37,10 +36,11 @@ export const dataTableCellOrder = ({
   className,
   onClick,
 }: DataTableCellType<TableDataOrders>) => {
-  const handleSendOrder = async () => {
+  const handleSendOrder = async (e) => {
+    e.stopPropagation()
     const dataOrder = prepareBillsData(element)
-    console.log(dataOrder)
 
+    console.log('Click on button', e.currentTarget)
     if (onClick) {
       await onClick(dataOrder as TableDataBills)
     }
