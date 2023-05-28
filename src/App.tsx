@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
 import { AppRoutes } from 'routes'
-
+import { Login } from './components'
 const App = () => {
   // TODO: add to dish layout
   // const { data } = useGetCategoriesQuery(null)
@@ -11,7 +11,8 @@ const App = () => {
 
   return (
     <Stack height="100vh">
-      <AppRoutes />
+      <Login />
+      {/* <AppRoutes /> */}
     </Stack>
   )
 }

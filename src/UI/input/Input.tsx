@@ -10,15 +10,19 @@ import s from './Input.module.scss'
 type InputProps = InputVariantPropsType & {
   placeholder: string
   name: string
+  type?: string
 }
 
-const Input: FC<InputProps> = ({ name, label, placeholder, icon, outlined }) => {
-  const [field, meta] = useField(name)
+const Input: FC<InputProps> = ({ name, label, placeholder, icon, outlined, type }) => {
+  const [field, meta, helpers] = useField(name)
+
+  //const setValue = (value: string | number) => helpers.setValue(value, true)
 
   const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
   const textFieldConfig: TextFieldProps = {
     placeholder,
     label,
+    type: type || 'text',
     ...field,
     fullWidth: true,
     InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},

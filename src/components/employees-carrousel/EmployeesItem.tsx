@@ -1,18 +1,15 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import classNames from 'classnames'
-
+import { IEmployee } from 'types/IEmployee'
 import s from './EmployeesCarrousel.module.scss'
 
-interface EmployeesItemProps {
-  id: string
-  name: string
-  picture: string
+interface EmployeesItemProps extends IEmployee {
   isActive: boolean
   onClick: (id: string) => void
 }
 const EmployeesItem: FC<EmployeesItemProps> = (props) => {
-  const { id, name, picture, isActive, onClick } = props
+  const { id, firstName, secondName, userImage, isActive, onClick } = props
 
   const imgClasses = classNames(s.img, { [s.activeImg]: isActive })
   const cardClasses = classNames(s.carrouselItem, { [s.active]: isActive })
@@ -27,10 +24,10 @@ const EmployeesItem: FC<EmployeesItemProps> = (props) => {
       className={cardClasses}
       onClick={() => onClick(id)}>
       <Box>
-        <img src={picture} alt={name} className={imgClasses} />
+        <img src={userImage} alt={secondName} className={imgClasses} />
       </Box>
       <Typography variant="h3" component="div" color="#fff">
-        {name}
+        {`${firstName} ${secondName}`}
       </Typography>
     </Stack>
   )
