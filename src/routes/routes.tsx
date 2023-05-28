@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Layout, DishesPage, OrdersPage, BillsPage } from 'pages'
-import { DishesPageContent } from 'pages/dishes-page/dishes-page-content'
+import { Layout, DishesPage, OrdersPage, BillsPage, DishesPageContent } from 'pages'
 import { ROUTES } from './routes.utils'
 
 const AppRoutes = () => {

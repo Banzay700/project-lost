@@ -12,7 +12,7 @@ import s from './DishCard.module.scss'
 
 interface DishCardProps {
   id: string
-  image: string
+  picture: string
   title: string
   price: number
   description: string
@@ -20,7 +20,7 @@ interface DishCardProps {
 }
 
 const DishCard: FC<DishCardProps> = (props) => {
-  const { image, title, price, description, id, weightProduct } = props
+  const { picture, title, price, description, id, weightProduct } = props
   const [openModal, setOpenModal] = useState(false)
   const { addDish } = useNewOrderReducer()
 
@@ -29,7 +29,7 @@ const DishCard: FC<DishCardProps> = (props) => {
   const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
-    addDish({ id, price, title, amount: 1, src: image, totalPrice: price })
+    addDish({ id, price, title, amount: 1, picture, dishTotalPrice: price })
   }
 
   return (
@@ -42,7 +42,7 @@ const DishCard: FC<DishCardProps> = (props) => {
         className={s.icon}
       />
       <Stack spacing="12px" height="100%">
-        <DishCardMedia title={title} image={image} />
+        <DishCardMedia title={title} image={picture} />
         <Stack
           spacing="8px"
           sx={{ transition: '1s', height: '100%', justifyContent: 'space-between' }}>
