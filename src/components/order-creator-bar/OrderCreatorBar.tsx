@@ -18,7 +18,7 @@ const OrderCreatorBar: FC = () => {
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createOrder] = useCreateOrderMutation()
-  const { newOrder, dishes, createNewOrder } = useNewOrderReducer()
+  const { newOrder, dishes, createNewOrder, addActiveOrder } = useNewOrderReducer()
 
   const navigate = useNavigate()
 
@@ -35,10 +35,10 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleCreateOrder = () => {
-    const formedOrder = getFormedOrder(newOrder)
+    const [dataOrder, activeOrder] = getFormedOrder(newOrder)
 
-    createOrder(formedOrder)
-    console.log(formedOrder)
+    createOrder(dataOrder)
+    addActiveOrder(activeOrder)
     navigate(ROUTES.ORDERS)
   }
 
@@ -52,7 +52,7 @@ const OrderCreatorBar: FC = () => {
     //   setToggleValue('dishes')
     // }
   }, [dishes])
-  console.log(dishes)
+
   return (
     <Stack flex="1" height="100%">
       <ToggleMenu

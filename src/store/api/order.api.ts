@@ -15,7 +15,7 @@ export const orderApi = api.injectEndpoints({
         const { data } = await queryFulfilled
 
         if (data) {
-          dispatch(addOrderToActive(data))
+          dispatch(addOrderToActive(data[0])) /// TODO: fix this after DB will be fixed
         }
       },
     }),

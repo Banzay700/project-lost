@@ -44,7 +44,7 @@ const OrderInfoBar: FC = () => {
     updatedAt: '2023-05-27T12:53:09.469Z',
     id: '6471fd35e3a337ecbc735a4b',
   }
-  // GET ACTIVE ORDER FROM STORE HERE
+
   const ACTIVE_ORDER_DISHES_LIST_MOCK = [
     {
       dishID: '645a8c14bdac7211baf9aa08',
@@ -73,6 +73,7 @@ const OrderInfoBar: FC = () => {
     // createNewOrder(ACTIVE_ORDER_MOCK)
     navigate(ROUTES.DISHES)
   }
+  const { activeOrder } = useNewOrderReducer()
 
   const handleToggleChange = (value: string) => {
     setToggleValue(value)
@@ -88,8 +89,8 @@ const OrderInfoBar: FC = () => {
       />
       {toggleValue === 'dishes' && (
         <OrderInfoList
-          orderItems={ACTIVE_ORDER_DISHES_LIST_MOCK}
-          orderId={ACTIVE_ORDER_MOCK.orderNumber}
+          orderItems={activeOrder.dishes}
+          orderId={activeOrder.orderNumber}
           onClick={handleUpdateOrder}
         />
       )}

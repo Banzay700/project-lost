@@ -13,7 +13,7 @@ export const useNewOrderReducer = () => {
 
   const addDish = (dish: IDishes) => dispatch(addDishToOrder(dish))
   const createNewOrder = (order: NewOrderType) => dispatch(openNewOrder(order))
-  // const addActiveOrderToStore = (order: ActiveOrderType) => dispatch(addOrderToActive(order))
+  const addActiveOrder = (order: ActiveOrderType) => dispatch(addOrderToActive(order))
 
-  return { newOrder, dishes, activeOrder, createNewOrder, addDish }
+  return { newOrder, dishes, activeOrder, createNewOrder, addDish, addActiveOrder }
 }

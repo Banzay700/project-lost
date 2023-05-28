@@ -5,6 +5,7 @@ type FormedDishType = {
 }
 
 export type OrderFormedType = {
+  id: string
   orderType: string
   orderNumber: number
   table: string

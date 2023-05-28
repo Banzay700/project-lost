@@ -13,21 +13,37 @@ export const unique = () => {
 export const getFormedOrder = (order: NewOrderType): OrderFormedType => {
   const { orderType, orderNumber, table, description, dishes } = order
 
-  const filteredDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
+  const dataDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
     dishID: id,
     amount,
     dishTotalPrice,
   }))
-
-  const totalPrice = filteredDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
+  const activeDishes = dishes.map(({ id, amount, dishTotalPrice, title, picture }) => ({
+    dishID: id,
+    amount,
+    dishTotalPrice,
+    picture,
+    title,
+  }))
+  const totalPrice = dataDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
   const totalPriseWithTax = Math.round(totalPrice * 1.1)
 
-  return {
-    description,
-    orderNumber,
-    orderType,
-    table: table || '-',
-    totalPrice: totalPriseWithTax,
-    dishes: filteredDishes,
-  }
+  return [
+    {
+      description,
+      orderNumber,
+      orderType,
+      table: table || '-',
+      totalPrice: totalPriseWithTax,
+      dishes: dataDishes,
+    },
+    {
+      description,
+      orderNumber,
+      orderType,
+      table: table || '-',
+      totalPrice: totalPriseWithTax,
+      dishes: activeDishes,
+    },
+  ]
 }
