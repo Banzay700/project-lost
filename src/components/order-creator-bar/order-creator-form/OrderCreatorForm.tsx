@@ -21,7 +21,6 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
 
   const handleValue = (value: string) => {
     setSelectValue(value)
-
     setDisabled(false)
   }
 
@@ -53,7 +52,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
           <Stack sx={{ height: '100%' }}>
             <TableInfoBox tableNumber={selectValue} />
             <Button variant="contained" size="default" type="submit" disabled={disabled} fullWidth>
-              Submit
+              Open New Order
             </Button>
           </Stack>
         </Form>
