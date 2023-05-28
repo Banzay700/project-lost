@@ -1,7 +1,8 @@
 import { object, string } from 'yup'
 
 export const initialValues = {
-  password: null,
+  id: '',
+  password: '',
 }
 
 export const validationSchema = object().shape({
