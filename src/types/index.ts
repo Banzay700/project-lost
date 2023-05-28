@@ -25,3 +25,4 @@ export type { DataSubCategoriesResponseType } from './DataCategoriesResponseType
 export type { ReturnChangePropsFilter } from './ReturnChangePropsFilter'
 export type { FreeTablesType } from './FreeTablesType'
 export type { ToggleMenuValuesType } from './ToggleMenuValuesType'
+export type { OrderFormedType } from './OrderFormedType'

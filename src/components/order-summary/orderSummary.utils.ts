@@ -1,6 +1,6 @@
 export const calculateValues = (total: number, tax: number) => {
-  const taxValue = ((total / 100) * tax).toFixed(1)
-  const totalValue = total + Number(taxValue)
+  const taxValue = Math.round((total / 100) * tax)
+  const totalValue = total + taxValue
 
   return { taxValue, totalValue }
 }
