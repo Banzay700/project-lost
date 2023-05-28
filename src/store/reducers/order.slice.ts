@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { OrderActiveType, DishType, NewOrderType } from 'types/COMMON_TYPES'
 
-interface NewOrderState {
+interface OrderState {
   newOrder: NewOrderType
   activeOrder: OrderActiveType
 }
 
-const initialState: NewOrderState = {
+const initialState: OrderState = {
   newOrder: {
     orderType: '',
     table: '',
