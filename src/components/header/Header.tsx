@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Indicator, Navbar } from 'UI'
+import { Navbar } from 'UI'
 import { Watch } from './watch'
 import { LogoWrapper } from './logo-wrapper'
 import { mockUser, navData } from './header.util'

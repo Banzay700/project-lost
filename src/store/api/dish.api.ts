@@ -1,7 +1,7 @@
-import { API_CONST } from 'utils'
 // import { DataCategoryType, IDish, RequiredIdDish } from '../../types'
 import { DataSubCategoriesResponseType, DishProductType, IDish, SidebarItemsType } from 'types'
 import { api } from './api'
+import { API_CONST_DISHES } from './api.utils'
 // localhost:5001/api/dishes?category=Pizza&q=tomatoes&subcategory=Round_pizza
 
 interface DishesRequest {
@@ -14,7 +14,7 @@ export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getDishesByCategoryAndFilter: builder.query<DishProductType[], DishesRequest>({
       query: ({ category, search, subcategory }) => ({
-        url: API_CONST.API_DISHES,
+        url: API_CONST_DISHES.DISHES,
         params: {
           category,
           q: search,
@@ -43,12 +43,12 @@ export const dishApi = api.injectEndpoints({
     // }),
     getCategories: builder.query<SidebarItemsType[], null>({
       query: () => ({
-        url: API_CONST.API_CATEGORIES,
+        url: API_CONST_DISHES.CATEGORIES,
       }),
     }),
     getSubCategoriesInCategory: builder.query<DataSubCategoriesResponseType[], string>({
       query: (category) => ({
-        url: API_CONST.API_CATEGORIES,
+        url: API_CONST_DISHES.CATEGORIES,
         params: {
           category,
         },
