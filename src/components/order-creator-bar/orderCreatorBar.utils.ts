@@ -1,5 +1,4 @@
-import { NewOrderType } from 'store/reducers/order.slice'
-import { OrderFormedType } from 'types/OrderFormedType'
+import { NewOrderType } from 'types/COMMON_TYPES'
 
 export const toggleMenuValues = [
   { label: 'Order info', value: 'orderInfo' },
@@ -10,7 +9,7 @@ export const unique = () => {
   return Math.floor(Math.random() * 9000) + 1000
 }
 
-export const getFormedOrder = (order: NewOrderType): OrderFormedType => {
+export const getFormedOrder = (order: NewOrderType) => {
   const { orderType, orderNumber, table, description, dishes } = order
 
   const dataDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
@@ -30,19 +29,19 @@ export const getFormedOrder = (order: NewOrderType): OrderFormedType => {
 
   return [
     {
-      description,
-      orderNumber,
       orderType,
       table: table || '-',
+      orderNumber,
       totalPrice: totalPriseWithTax,
+      description,
       dishes: dataDishes,
     },
     {
-      description,
-      orderNumber,
       orderType,
       table: table || '-',
+      orderNumber,
       totalPrice: totalPriseWithTax,
+      description,
       dishes: activeDishes,
     },
   ]

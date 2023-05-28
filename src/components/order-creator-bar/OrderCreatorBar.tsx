@@ -4,12 +4,13 @@ import { Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
-import { useNewOrderReducer } from 'hooks'
-import { OrderCreatorFormValues } from 'types'
+import { useOrderReducer } from 'hooks'
+
 import { ROUTES } from 'routes'
 import { useCreateOrderMutation, useUpdateTableStatusMutation } from 'store/api'
 import { OrderCreatorForm } from './order-creator-form'
 import { getFormedOrder, toggleMenuValues, unique } from './orderCreatorBar.utils'
+import { OrderCreatorFormValues, OrderActiveType } from 'types/COMMON_TYPES'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
@@ -18,13 +19,14 @@ const OrderCreatorBar: FC = () => {
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createOrder] = useCreateOrderMutation()
-  const { newOrder, dishes, createNewOrder, addActiveOrder } = useNewOrderReducer()
+  const { newOrder, dishes, activeOrder, createNewOrder, addActiveOrder, clearNewOrderState } =
+    useOrderReducer()
 
   const navigate = useNavigate()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormValues) => {
     const orderNumber = unique()
-    const orderInfo = { orderNumber, orderType, table, dishes: [] }
+    const orderInfo = { orderType, table, orderNumber, totalPrice: 0, dishes: [] }
 
     setOrderID(orderNumber)
     createNewOrder(orderInfo)
@@ -35,10 +37,11 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleCreateOrder = () => {
-    const [dataOrder, activeOrder] = getFormedOrder(newOrder)
+    const [orderDB, orderActive] = getFormedOrder(newOrder)
 
-    createOrder(dataOrder)
-    addActiveOrder(activeOrder)
+    createOrder(orderDB)
+    addActiveOrder(orderActive as OrderActiveType)
+    clearNewOrderState()
     navigate(ROUTES.ORDERS)
   }
 
@@ -47,11 +50,11 @@ const OrderCreatorBar: FC = () => {
   }
 
   useEffect(() => {
-    // if (dishes.length) {
-    //   console.log(dishes)
-    //   setToggleValue('dishes')
-    // }
-  }, [dishes])
+    if (activeOrder.active) {
+      setToggleValue('dishes')
+      setOrderID(activeOrder.orderNumber)
+    }
+  }, [activeOrder])
 
   return (
     <Stack flex="1" height="100%">
@@ -64,9 +67,9 @@ const OrderCreatorBar: FC = () => {
       {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
       {toggleValue === 'dishes' && (
         <OrderDetailsList
+          orderItems={dishes}
           isPicker
           orderId={orderID}
-          orderItems={dishes}
           onClick={handleCreateOrder}
         />
       )}

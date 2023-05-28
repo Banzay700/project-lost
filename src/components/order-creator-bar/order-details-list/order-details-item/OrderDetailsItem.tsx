@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { Card, ListItem } from '@mui/material'
 import { Picker } from 'UI/index'
 import cn from 'classnames'
-import { useNewOrderReducer } from 'hooks'
+import { useOrderReducer } from 'hooks'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
@@ -17,7 +17,7 @@ interface OrderItemProps {
 }
 
 const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total }) => {
-  const { dishes, addDish } = useNewOrderReducer()
+  const { dishes, addDish } = useOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
     const dish = dishes.find((item) => item.id === id)

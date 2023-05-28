@@ -53,9 +53,6 @@ const theme = createTheme(
         fontWeight: 600,
         lineHeight: '48px',
       },
-      h4: undefined,
-      h5: undefined,
-      h6: undefined,
       button: {
         textTransform: 'initial',
       },

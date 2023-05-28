@@ -1,37 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { OrderCreatorFormValues } from 'types'
-import { IDishes } from 'types/IOrder'
 
-type ActiveDishType = {
-  dishID: string
-  amount: number
-  dishTotalPrice: number
-  _id: string
-  title: string
-  price: number
-  picture: string
-}
-
-export type ActiveOrderType = {
-  orderType: string
-  table: string
-  orderNumber: number
-  description?: string
-  totalPrice: number
-  id: string
-  dishes: ActiveDishType[]
-}
-
-export interface NewOrderType extends OrderCreatorFormValues {
-  orderNumber: number
-  description?: string
-  dishes: IDishes[]
-  totalPrice?: number
-}
+import { OrderActiveType, DishType, NewOrderType } from 'types/COMMON_TYPES'
 
 interface NewOrderState {
   newOrder: NewOrderType
-  activeOrder: ActiveOrderType
+  activeOrder: OrderActiveType
 }
 
 const initialState: NewOrderState = {
@@ -50,7 +23,7 @@ const initialState: NewOrderState = {
     dishes: [],
     totalPrice: 0,
     description: '',
-    id: '',
+    active: false,
   },
 }
 
@@ -61,7 +34,7 @@ const ordersSlice = createSlice({
     openNewOrder: (state, action: PayloadAction<NewOrderType>) => {
       state.newOrder = action.payload
     },
-    addDishToOrder: (state, action: PayloadAction<IDishes>) => {
+    addDishToOrder: (state, action: PayloadAction<DishType>) => {
       const { payload } = action
       const { dishes } = state.newOrder
       const dish = dishes.find((dishEl) => dishEl.id === payload.id)
@@ -73,8 +46,21 @@ const ordersSlice = createSlice({
         dishes.push(payload)
       }
     },
-    addOrderToActive: (state, action: PayloadAction<ActiveOrderType>) => {
+    addOrderToActive: (state, action: PayloadAction<OrderActiveType>) => {
       state.activeOrder = action.payload
+    },
+    changeOrderStatus: (state) => {
+      state.activeOrder.active = !state.activeOrder.active
+    },
+    deleteNewOrder: (state) => {
+      state.newOrder = {
+        orderType: '',
+        table: '',
+        orderNumber: 0,
+        dishes: [],
+        totalPrice: 0,
+        description: '',
+      }
     },
     removeAllDishesFromOrder: (state) => {
       state.newOrder.dishes = []
@@ -82,6 +68,7 @@ const ordersSlice = createSlice({
   },
 })
 
-export const { openNewOrder, addDishToOrder, addOrderToActive } = ordersSlice.actions
+export const { openNewOrder, addDishToOrder, addOrderToActive, changeOrderStatus, deleteNewOrder } =
+  ordersSlice.actions
 
 export default ordersSlice.reducer
