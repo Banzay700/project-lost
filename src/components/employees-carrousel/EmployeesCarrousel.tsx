@@ -3,24 +3,23 @@ import { FC, useState } from 'react'
 import { Box } from '@mui/material'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import { IEmployee } from 'types/IEmployee'
 import EmployeesItem from './EmployeesItem'
 import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
 import s from './EmployeesCarrousel.module.scss'
-import { employeesInfo } from './mockData'
 
 interface EmployeesCarrouselProps {
   bgc: 'transparent' | 'brown'
+  employeesData: IEmployee[]
+  handleSetActiveSlide: (id: string) => void
+  chosenEmployee: string
 }
 
-const EmployeesCarrousel: FC<EmployeesCarrouselProps> = ({ bgc }) => {
-  const [chosenEmployee, setChosenEmployee] = useState('')
-
-  const handleSetActiveSlide = (id: string) => {
-    setChosenEmployee(id)
-  }
+const EmployeesCarrousel: FC<EmployeesCarrouselProps> = (props) => {
+  const { bgc, employeesData, chosenEmployee, handleSetActiveSlide } = props
 
   const employeesRender = () => {
-    return employeesInfo.map((item) => {
+    return employeesData.map((item) => {
       const isActive = chosenEmployee === item.id
 
       return (
