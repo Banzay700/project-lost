@@ -1,22 +1,87 @@
-import { IOrder } from 'types/IOrder'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { OrderCreatorFormValues } from 'types'
+import { IDishes } from 'types/IOrder'
 
-interface OrderState {
-  orders: IOrder[]
-  isLoading: boolean
-  error: string
+type ActiveDishType = {
+  dishID: string
+  amount: number
+  dishTotalPrice: number
+  _id: string
+  title: string
+  price: number
+  picture: string
 }
 
-const initialState: OrderState = {
-  orders: [],
-  isLoading: false,
-  error: '',
+export type ActiveOrderType = {
+  orderType: string
+  table: string
+  orderNumber: number
+  description?: string
+  totalPrice: number
+  id: string
+  dishes: ActiveDishType[]
 }
 
-export const orderSlice = createSlice({
-  name: 'order',
+export interface NewOrderType extends OrderCreatorFormValues {
+  orderNumber: number
+  description?: string
+  dishes: IDishes[]
+  totalPrice?: number
+}
+
+interface NewOrderState {
+  newOrder: NewOrderType
+  activeOrder: ActiveOrderType
+}
+
+const initialState: NewOrderState = {
+  newOrder: {
+    orderType: '',
+    table: '',
+    orderNumber: 0,
+    dishes: [],
+    totalPrice: 0,
+    description: '',
+  },
+  activeOrder: {
+    orderType: '',
+    table: '',
+    orderNumber: 0,
+    dishes: [],
+    totalPrice: 0,
+    description: '',
+    id: '',
+  },
+}
+
+const ordersSlice = createSlice({
+  name: 'orders',
   initialState,
-  reducers: {},
+  reducers: {
+    openNewOrder: (state, action: PayloadAction<NewOrderType>) => {
+      state.newOrder = action.payload
+    },
+    addDishToOrder: (state, action: PayloadAction<IDishes>) => {
+      const { payload } = action
+      const { dishes } = state.newOrder
+      const dish = dishes.find((dishEl) => dishEl.id === payload.id)
+
+      if (dish) {
+        dish.amount = payload.amount
+        dish.dishTotalPrice = payload.amount * payload.price
+      } else {
+        dishes.push(payload)
+      }
+    },
+    addOrderToActive: (state, action: PayloadAction<ActiveOrderType>) => {
+      state.activeOrder = action.payload
+    },
+    removeAllDishesFromOrder: (state) => {
+      state.newOrder.dishes = []
+    },
+  },
 })
 
-export default orderSlice.reducer
+export const { openNewOrder, addDishToOrder, addOrderToActive } = ordersSlice.actions
+
+export default ordersSlice.reducer

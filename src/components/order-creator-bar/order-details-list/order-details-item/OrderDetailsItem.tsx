@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 import { Card, ListItem } from '@mui/material'
-import { Picker } from 'UI'
+import { Picker } from 'UI/index'
 import cn from 'classnames'
-import s from './OrderDetailsItem.module.scss'
+import { useNewOrderReducer } from 'hooks'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
-import { useNewOrderReducer } from 'hooks/useNewOrderReducer.hook'
+import s from './OrderDetailsItem.module.scss'
 
 interface OrderItemProps {
   id: string

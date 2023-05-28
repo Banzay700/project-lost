@@ -1,26 +1,10 @@
 export interface IDishes {
   id: string
+  dishID?: number
   amount: number
   price: number
-  src: string
   title: string
-  totalPrice: number
-}
-
-interface IAdditionalFood {
-  id?: string
-  title: string
-  price: number
-  amount: number
-}
-
-interface IDeliveryDetails {
-  id?: string
-  phone: string
-  name: string
-  addresses: string
-  email?: string
-  dishID: string
+  dishTotalPrice: number
 }
 
 export interface IOrder {

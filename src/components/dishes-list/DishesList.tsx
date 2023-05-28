@@ -25,7 +25,7 @@ const DishesList: FC<DishesListProps> = ({ dishes }) => {
           <DishCard
             key={dish.id}
             id={dish.id}
-            image={dish.picture}
+            picture={dish.picture}
             title={dish.title}
             price={dish.price}
             description={dish.description}

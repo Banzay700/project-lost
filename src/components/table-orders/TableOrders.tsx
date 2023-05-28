@@ -1,10 +1,8 @@
 import { FC } from 'react'
 import { Table } from 'components/table'
-import { useGetAllOrdersQuery } from 'store/api/order.api'
-import { TableData, TableDataOrders } from 'types/TableType'
-import { DataTableCellFuncType } from 'types/DataTableCellType'
 import { IndicatorFilterBar } from 'components/indicator-filter-bar'
-import { useCreateBillMutation } from 'store/api'
+import { useCreateBillMutation, useGetAllOrdersQuery } from 'store/api'
+import { TableDataOrders, DataTableCellFuncType, TableData } from 'types'
 import { tableTitleOrder, dataTableCellOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
@@ -13,6 +11,7 @@ const TableOrders: FC = () => {
     console.log(value)
   }
   const [createBills] = useCreateBillMutation()
+
   return (
     <>
       <IndicatorFilterBar
@@ -26,8 +25,8 @@ const TableOrders: FC = () => {
       <Table
         data={dataOrders as TableDataOrders[]}
         tableTitles={tableTitleOrder}
-        dataTableCell={dataTableCellOrder as DataTableCellFuncType<TableData>}
-        // onClick={createBills}
+        dataTableCell={dataTableCellOrder as DataTableCellFuncType<TableDataOrders>}
+        onClick={createBills as (dataOrder: TableData) => void}
       />
     </>
   )
