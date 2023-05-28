@@ -5,4 +5,4 @@ export interface IEmployee {
   userImage: string
 }
 
-export type BtnValue = 'clear' | 'delete' | number
+export type BtnLoginValue = 'clear' | 'delete' | number

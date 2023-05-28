@@ -14,15 +14,8 @@ type InputProps = InputVariantPropsType & {
   valueExternal?: string
 }
 
-const Input: FC<InputProps> = ({
-  name,
-  label,
-  placeholder,
-  icon,
-  outlined,
-  type,
-  valueExternal,
-}) => {
+const Input: FC<InputProps> = (props) => {
+  const { name, label, placeholder, icon, outlined, type, valueExternal } = props
   const [field, meta, helpers] = useField(name)
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
 import { Input } from 'UI/input'
 import { Button } from 'UI/button'
-import { BtnValue } from 'types/IEmployee'
+import { BtnLoginValue } from 'types/IEmployee'
 import { DigitButtonsGroup } from '../digitButtonsGroup'
 import { initialValues, validationSchema } from './InputPassword.utils'
 
@@ -14,7 +14,7 @@ interface InputPasswordProps {
 const InputPassword: FC<InputPasswordProps> = ({ id }) => {
   const [password, setPasswordValue] = useState('')
 
-  const getValue = (v: BtnValue) => {
+  const getValue = (v: BtnLoginValue) => {
     if (typeof v === 'number') {
       setPasswordValue((prevState) => {
         // eslint-disable-next-line no-return-assign
