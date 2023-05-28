@@ -18,9 +18,11 @@ interface OrderPaymentFormProps {
 }
 
 const OrderPaymentForm: FC<OrderPaymentFormProps> = ({ children, isTip, isEmail, onSubmit }) => {
+  const formikConfig = { initialValues, validationSchema, onSubmit }
+
   return (
     <div className={s.formWrapper}>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik {...formikConfig}>
         <Form>
           <OrderPaymentMethod name="paymentMethod" />
           {children}
