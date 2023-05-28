@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { OrderActiveType, DishType, NewOrderType } from 'types/COMMON_TYPES'
+import { OrderActiveType, DishType, NewOrderType } from 'types/ORDERS_TYPES'
+import { emptyOrderState } from 'store/reducers/reducers.utils'
 
 interface OrderState {
   newOrder: NewOrderType
@@ -9,21 +10,11 @@ interface OrderState {
 
 const initialState: OrderState = {
   newOrder: {
-    orderType: '',
-    table: '',
-    orderNumber: 0,
-    dishes: [],
-    totalPrice: 0,
-    description: '',
+    ...emptyOrderState,
   },
   activeOrder: {
-    orderType: '',
-    table: '',
-    orderNumber: 0,
-    dishes: [],
-    totalPrice: 0,
-    description: '',
     active: false,
+    ...emptyOrderState,
   },
 }
 
@@ -54,12 +45,7 @@ const ordersSlice = createSlice({
     },
     deleteNewOrder: (state) => {
       state.newOrder = {
-        orderType: '',
-        table: '',
-        orderNumber: 0,
-        dishes: [],
-        totalPrice: 0,
-        description: '',
+        ...emptyOrderState,
       }
     },
     removeAllDishesFromOrder: (state) => {

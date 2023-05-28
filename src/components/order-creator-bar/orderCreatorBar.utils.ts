@@ -1,4 +1,4 @@
-import { NewOrderType } from 'types/COMMON_TYPES'
+import { NewOrderType } from 'types'
 
 export const toggleMenuValues = [
   { label: 'Order info', value: 'orderInfo' },
@@ -17,6 +17,7 @@ export const getFormedOrder = (order: NewOrderType) => {
     amount,
     dishTotalPrice,
   }))
+
   const activeDishes = dishes.map(({ id, amount, dishTotalPrice, title, picture }) => ({
     dishID: id,
     amount,
@@ -24,25 +25,20 @@ export const getFormedOrder = (order: NewOrderType) => {
     picture,
     title,
   }))
+
   const totalPrice = dataDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
   const totalPriseWithTax = Math.round(totalPrice * 1.1)
 
+  const commonReturnValues = {
+    orderType,
+    table: table || '-',
+    orderNumber,
+    totalPrice: totalPriseWithTax,
+    description,
+  }
+
   return [
-    {
-      orderType,
-      table: table || '-',
-      orderNumber,
-      totalPrice: totalPriseWithTax,
-      description,
-      dishes: dataDishes,
-    },
-    {
-      orderType,
-      table: table || '-',
-      orderNumber,
-      totalPrice: totalPriseWithTax,
-      description,
-      dishes: activeDishes,
-    },
+    { dishes: dataDishes, ...commonReturnValues },
+    { dishes: activeDishes, ...commonReturnValues },
   ]
 }

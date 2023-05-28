@@ -7,7 +7,7 @@ import {
   deleteNewOrder,
 } from 'store/reducers'
 
-import { OrderActiveType, DishType, NewOrderType } from 'types/COMMON_TYPES'
+import { OrderActiveType, DishType, NewOrderType } from 'types/ORDERS_TYPES'
 
 export const useOrderReducer = () => {
   const dispatch = useAppDispatch()

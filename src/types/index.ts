@@ -24,3 +24,12 @@ export type { DataSubCategoriesResponseType } from './DataCategoriesResponseType
 export type { ReturnChangePropsFilter } from './ReturnChangePropsFilter'
 export type { FreeTablesType } from './FreeTablesType'
 export type { ToggleMenuValuesType } from './ToggleMenuValuesType'
+
+/// EXPORTS FROM ORDERS_TYPES.ts
+export type { OrderCreatorFormValues } from './ORDERS_TYPES'
+export type { DishDBType } from './ORDERS_TYPES'
+export type { DishType } from './ORDERS_TYPES'
+export type { DishActiveType } from './ORDERS_TYPES'
+export type { NewOrderType } from './ORDERS_TYPES'
+export type { OrderDBType } from './ORDERS_TYPES'
+export type { OrderActiveType } from './ORDERS_TYPES'

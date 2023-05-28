@@ -18,11 +18,13 @@ export type DishType = {
   id: string
 }
 
-export type DishActiveType = Omit<DishType, 'price' | 'id'> & {
+export type DishActiveType = DishType & {
   dishID: string
+  price?: number
+  id?: string
 }
 
-export type CommonOrderType = {
+type CommonOrderType = {
   orderType: string
   table?: string
   orderNumber: number

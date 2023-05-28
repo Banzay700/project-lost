@@ -1,6 +1,5 @@
-import { TableDataOrders } from 'types'
-import { OrderActiveType, OrderDBType } from 'types/COMMON_TYPES'
-import { addOrderToActive } from 'store/reducers/order.slice'
+import { OrderActiveType, OrderDBType, TableDataOrders } from 'types'
+import { addOrderToActive } from '../reducers'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({

@@ -5,12 +5,11 @@ import { Stack } from '@mui/material'
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
 import { useOrderReducer } from 'hooks'
-
 import { ROUTES } from 'routes'
+import { OrderCreatorFormValues, OrderActiveType } from 'types'
 import { useCreateOrderMutation, useUpdateTableStatusMutation } from 'store/api'
 import { OrderCreatorForm } from './order-creator-form'
 import { getFormedOrder, toggleMenuValues, unique } from './orderCreatorBar.utils'
-import { OrderCreatorFormValues, OrderActiveType } from 'types/COMMON_TYPES'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')

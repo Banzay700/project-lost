@@ -1,13 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import { Box, Stack } from '@mui/material'
-import { OrderSummary } from 'components/index'
-import { Button, DetailsListTitle } from 'UI/index'
 
+import { OrderSummary } from 'components'
+import { Button, DetailsListTitle } from 'UI'
+import { DishType } from 'types'
+import { useSmoothScrollbar, useOrderReducer } from 'hooks'
 import { OrderDetailsItem } from './order-details-item'
-import s from './OrderDetailsList.module.scss'
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
-import { DishActiveType, DishType } from 'types/COMMON_TYPES'
-import { useOrderReducer } from 'hooks/useOrderReducer.hook'
 
 interface OrderListProps {
   orderItems: DishType[]
@@ -35,7 +33,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, o
       <DetailsListTitle title="Order details" orderId={orderId} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
-          {orderItemsState.map(({ id, title, picture, dishTotalPrice, amount }) => (
+          {orderItemsState.map(({ id, title, picture, dishTotalPrice }) => (
             <OrderDetailsItem
               key={id}
               id={id}

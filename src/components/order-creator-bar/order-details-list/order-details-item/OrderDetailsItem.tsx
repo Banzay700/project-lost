@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Card, ListItem } from '@mui/material'
-import { Picker } from 'UI/index'
 import cn from 'classnames'
+
+import { Picker } from 'UI'
 import { useOrderReducer } from 'hooks'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'

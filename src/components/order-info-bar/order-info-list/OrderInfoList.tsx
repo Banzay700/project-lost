@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
-import { OrderSummary } from 'components/index'
-import { Button, DetailsListTitle } from 'UI/index'
 
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+import { OrderSummary } from 'components'
+import { Button, DetailsListTitle } from 'UI'
+import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
-import { DishActiveType } from 'types/COMMON_TYPES'
+import { DishActiveType } from 'types'
 
 // TODO: check this type
 type OrderItemsType = {
