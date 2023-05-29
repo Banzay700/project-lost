@@ -18,9 +18,9 @@ const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell, onCl
     className: s.tableButton,
   })
   const [trigger] = useLazyGetOrderQuery()
-  const handleLineWrapperClick = (e) => {
+  const handleLineWrapperClick = (e: any) => {
     e.stopPropagation()
-    trigger(element.id) // pass the order id
+    // trigger(element.id)  pass the order id
   }
 
   return (

@@ -2,8 +2,8 @@ export interface UserType {
   id: string
   firstName: string
   secondName: string
-  userImage: string
   role: 'WAITER' | 'ADMIN' | 'COURIER'
+  userImage?: string
   phoneNumber?: string
   email?: string
 }

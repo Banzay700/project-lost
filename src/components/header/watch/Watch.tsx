@@ -1,12 +1,12 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 import { Stack, Avatar, Box, Menu, Typography } from '@mui/material'
 import { Button, MenuItem } from 'UI'
-import { DataUserType } from 'types'
+import { UserType } from 'types'
 import { stringAvatar, menuData, formatDateTime } from './watch.utils'
 import s from './Watch.module.scss'
 
 interface WatchProps {
-  dataUser: DataUserType
+  dataUser: UserType
 }
 
 const Watch: FC<WatchProps> = ({ dataUser }) => {
@@ -14,9 +14,10 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
-  const { name, surname, src } = dataUser
+  const { userImage, firstName, secondName } = dataUser
 
-  const avatarName = !!name && !!surname && { ...stringAvatar(`${name} ${surname}`) }
+  const avatarName = !!firstName &&
+    !!secondName && { ...stringAvatar(`${firstName} ${secondName}`) }
 
   const handleClickAvatar = (e: MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
 
@@ -47,7 +48,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
           size="default"
           color="secondary"
           onClick={handleClickAvatar}
-          icon={<Avatar src={src} {...avatarName} />}
+          icon={<Avatar src={userImage} {...avatarName} />}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (

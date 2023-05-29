@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export type LinkType = {
+export type LinkItemType = {
   link: string
   text?: string
   icon?: ReactNode

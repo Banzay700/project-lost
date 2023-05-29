@@ -36,7 +36,7 @@ export const dataTableCellOrder = ({
   className,
   onClick,
 }: DataTableCellType<TableDataOrders>) => {
-  const handleSendOrder = async (e) => {
+  const handleSendOrder = async (e: any) => {
     e.stopPropagation()
     const dataOrder = prepareBillsData(element)
 

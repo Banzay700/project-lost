@@ -1,9 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserResponseType, UserStateType, UserType } from 'types'
 
+const defaultUserState: UserType = {
+  id: 'Unknown',
+  firstName: 'Unknown',
+  secondName: 'Unknown',
+  role: 'WAITER',
+}
+
 const initialState: UserStateType = {
   isAuth: false,
-  user: {} as UserType,
+  user: defaultUserState,
   token: null,
 }
 

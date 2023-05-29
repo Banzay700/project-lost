@@ -1,4 +1,4 @@
-import { LinkType } from 'types/LinkType'
+import { LinkItemType } from 'types/ComponentsItemType/LinkItemType'
 
 const stringToColor = (string: string): string => {
   let hash = 0
@@ -37,7 +37,7 @@ export const formatDateTime = (date: Date) => {
   return `${time} ${dateString}`
 }
 
-export const menuData: LinkType[] = [
+export const menuData: LinkItemType[] = [
   {
     link: '/login',
     text: 'Log out',

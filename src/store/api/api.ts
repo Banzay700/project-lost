@@ -1,11 +1,11 @@
 import { BaseQueryFn, createApi } from '@reduxjs/toolkit/query/react'
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
-import { RootState } from 'store/store'
+import { RootState } from 'store'
 import { setUserData, setUserLogout } from 'store/reducers'
 import { UserResponseType } from 'types/UserType'
 import { API_CONST_USERS } from './api.utils'
 
-export const baseQuery = fetchBaseQuery({
+const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_BASE_URL,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {

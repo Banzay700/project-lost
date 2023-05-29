@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Typography } from '@mui/material'
 import cn from 'classnames'
-import { LinkType } from 'types/index'
+import { LinkItemType } from 'types/index'
 import s from './NavItem.module.scss'
 
 interface NavbarProps {
-  data: LinkType
+  data: LinkItemType
   active: 'activeLink' | string
   className: 'navItem' | string
   variant?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'

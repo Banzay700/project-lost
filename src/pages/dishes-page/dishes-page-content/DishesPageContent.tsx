@@ -7,9 +7,9 @@ import {
   useGetSubCategoriesInCategoryQuery,
 } from 'store/api/dish.api'
 import { correctionRouteLinkForRequest } from 'utils/firstLetterUpperCase'
-import { FilterMenuItemType } from 'types/FilterMenuItemType'
+import { FilterMenuItemType } from 'types/ComponentsItemType/FilterMenuItemType'
 import { correctionName } from 'utils/correctionName'
-import { ReturnChangePropsFilter } from 'types/ReturnChangePropsFilter'
+import { FilterChangeReturnType } from 'types/ComponentsReturnType/FilterChangeReturnType'
 import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
 const DishesPageContent: FC = () => {
@@ -37,7 +37,7 @@ const DishesPageContent: FC = () => {
       value: item.title,
     }))
 
-  const handleFilterProduct = ({ filterValue, titleValue }: ReturnChangePropsFilter) => {
+  const handleFilterProduct = ({ filterValue, titleValue }: FilterChangeReturnType) => {
     if (filterValue) {
       setSubcategory(filterValue)
     }

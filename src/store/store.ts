@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { dishReducer, newlyCreatedOrderReducer } from './reducers'
+import { dishReducer, ordersReducer, userReducer } from './reducers'
 
 import { api } from './api'
 
