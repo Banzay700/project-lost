@@ -1,10 +1,11 @@
 import { FC } from 'react'
+
 import { Navbar } from 'UI'
+import { useUserReducer } from 'hooks'
 import { Watch } from './watch'
 import { LogoWrapper } from './logo-wrapper'
-import { mockUser, navData } from './header.util'
+import { navData } from './header.util'
 import s from './Header.module.scss'
-import { useUserReducer } from 'hooks/useUserReducer.hook'
 
 const Header: FC = () => {
   const { userState } = useUserReducer()

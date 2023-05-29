@@ -25,7 +25,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({ label, linkTo, icon, classN
 
   useEffect(() => {
     if (!svgContent) fetchSvg()
-  }, [fetchSvg])
+  }, [fetchSvg]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ListItem className={cn(s.item, className)} sx={{ maxWidth: 77 }}>

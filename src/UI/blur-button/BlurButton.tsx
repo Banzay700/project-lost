@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material/'
 import { FC, ReactNode } from 'react'
-import s from './BlurButton.module.scss'
 import { ButtonLoginReturnType } from 'types/ComponentsReturnType/ButtonLoginReturnType'
+import s from './BlurButton.module.scss'
 
 interface BlurButtonProps {
   children: ReactNode

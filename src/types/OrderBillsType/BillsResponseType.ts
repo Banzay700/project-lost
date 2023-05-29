@@ -1,5 +1,4 @@
-import { CommonOrderBillsType, OrderResponseType } from 'types/OrderBillsType/index'
-import { BillsDishResponseType } from 'types/OrderBillsType/BillsDishResponseType'
+import { CommonOrderBillsType, BillsDishResponseType } from 'types'
 
 export type BillsResponseType = CommonOrderBillsType & {
   dishes?: BillsDishResponseType[]
