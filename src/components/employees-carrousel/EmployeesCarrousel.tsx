@@ -1,9 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Box } from '@mui/material'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import { UserType } from 'types/UserType/UserType'
+
+import { UserType } from 'types'
 import EmployeesItem from './EmployeesItem'
 import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
 import s from './EmployeesCarrousel.module.scss'

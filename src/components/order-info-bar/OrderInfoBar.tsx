@@ -4,8 +4,8 @@ import { ToggleMenu } from 'UI'
 import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
 import { useOrderReducer } from 'hooks'
 import { ROUTES } from 'routes'
-import { OrderInfoList } from './order-info-list'
 import { useNavigate } from 'react-router-dom'
+import { OrderInfoList } from './order-info-list'
 
 const OrderInfoBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('dishes')

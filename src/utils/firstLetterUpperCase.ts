@@ -1,3 +1,3 @@
-export const correctionRouteLinkForRequest = (str: string) => {
+export const firstLetterUpperCase = (str: string) => {
   return str[0].toUpperCase() + str.slice(1)
 }

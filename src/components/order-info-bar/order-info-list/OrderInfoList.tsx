@@ -7,17 +7,6 @@ import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
 import { OrderDishActiveType } from 'types'
 
-// TODO: check this type
-type OrderItemsType = {
-  dishID: string
-  amount: number
-  dishTotalPrice: number
-  id: string
-  title: string
-  price: number
-  picture: string
-}
-
 interface OrderListProps {
   orderItems: OrderDishActiveType[]
   isPicker?: boolean

@@ -1,16 +1,11 @@
-import { FC, useEffect, useRef, useState } from 'react'
-import { Box, Stack } from '@mui/material'
-import { DishesList, SearchFilterBar } from 'components'
+import { FC, useEffect, useState } from 'react'
+import { Stack } from '@mui/material'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import {
-  useGetDishesByCategoryAndFilterQuery,
-  useGetSubCategoriesInCategoryQuery,
-} from 'store/api/dish.api'
-import { correctionRouteLinkForRequest } from 'utils/firstLetterUpperCase'
-import { FilterMenuItemType } from 'types/ComponentsItemType/FilterMenuItemType'
-import { correctionName } from 'utils/correctionName'
-import { FilterChangeReturnType } from 'types/ComponentsReturnType/FilterChangeReturnType'
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+
+import { DishesList, SearchFilterBar } from 'components'
+import { useGetDishesByCategoryAndFilterQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
+import { firstLetterUpperCase, correctionName } from 'utils'
+import { FilterMenuItemType, FilterChangeReturnType } from 'types'
 
 const DishesPageContent: FC = () => {
   const location = useLocation()
@@ -23,9 +18,9 @@ const DishesPageContent: FC = () => {
     defaultSubcategory?.split(',') || ['all'],
   )
   const [search, setSearch] = useState(defaultSearch || '')
-  const { data } = useGetSubCategoriesInCategoryQuery(correctionRouteLinkForRequest(category || ''))
+  const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || ''))
   const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
-    category: correctionRouteLinkForRequest(category || ''),
+    category: firstLetterUpperCase(category || ''),
     subcategory: subcategory.some((item) => item === 'all') ? undefined : subcategory,
     search,
   })
@@ -68,7 +63,7 @@ const DishesPageContent: FC = () => {
 
   useEffect(() => {
     searchParamsUrl()
-  }, [subcategory, search])
+  }, [subcategory, search]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Stack sx={{ width: '100%', height: '100%' }}>

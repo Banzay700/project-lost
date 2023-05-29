@@ -20,6 +20,8 @@ export type {
   OrderResponseType,
   OrderActiveType,
   BillsResponseType,
+  CommonOrderBillsType,
+  BillsDishResponseType,
 } from './OrderBillsType'
 
 export type {

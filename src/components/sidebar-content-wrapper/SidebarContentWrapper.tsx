@@ -4,8 +4,6 @@ import { OrderCreatorBar, OrderPaymentBar, OrderInfoBar } from 'components'
 import { ROUTES } from 'routes'
 import { useRootLocationPath } from 'hooks'
 
-import s from './SidebarContentWrapper.module.scss'
-
 const SidebarContentWrapper: FC = () => {
   const location = useRootLocationPath()
 

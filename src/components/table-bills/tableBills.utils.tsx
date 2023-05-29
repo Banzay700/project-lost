@@ -15,7 +15,6 @@ export const tableTitleBills: string[] = [
 export const dataTableCellBills = ({
   element,
   className,
-  onClick,
 }: DataTableCellType<BillsResponseType>) => [
   {
     tableCell: (

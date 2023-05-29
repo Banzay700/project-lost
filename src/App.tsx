@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
+import React from 'react'
 import { AppRoutes } from 'routes'
-import { Login } from './components'
 
 const App = () => {
   return (

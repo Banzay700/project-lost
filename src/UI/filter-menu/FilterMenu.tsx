@@ -1,8 +1,8 @@
-import { FC, useEffect, useRef, useState } from 'react'
-import { Box, Menu, MenuItem, Select, SelectChangeEvent, Stack, Tab, Tabs } from '@mui/material'
+import { FC, useEffect, useState } from 'react'
+import { Stack } from '@mui/material'
 import { FilterMenuItemType } from 'types'
+
 import { DishFilterMenuItem } from './filter-menu-item'
-import { Button } from 'UI/button'
 
 interface FilterMenuProps {
   filterMenuItems: FilterMenuItemType[]
