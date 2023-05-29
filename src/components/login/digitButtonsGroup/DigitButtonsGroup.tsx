@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
 import { BlurButton } from 'UI/blur-button'
-import { BtnLoginValue } from 'types/IEmployee'
+import { ButtonLoginReturnType } from 'types/ComponentsReturnType/ButtonLoginReturnType'
 import { IconDelete } from 'assets'
 import digits from './digitButtonsGroup.utils'
 
 interface DigitButtonsGroupProps {
-  getValue: (value: BtnLoginValue) => void
+  getValue: (value: ButtonLoginReturnType) => void
 }
 
 const DigitButtonsGroup: FC<DigitButtonsGroupProps> = (props) => {

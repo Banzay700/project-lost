@@ -3,7 +3,6 @@ import { Card, Stack } from '@mui/material'
 import { IconMore } from 'assets'
 import { Button } from 'UI'
 import { useOrderReducer } from 'hooks'
-
 import DishCardModal from './DishCardModal'
 import { DishCardMedia } from './dish-card-media'
 import { DishCardTitle } from './dish-card-title'
@@ -29,7 +28,7 @@ const DishCard: FC<DishCardProps> = (props) => {
   const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
-    addDish({ id, price, title, amount: 1, picture, dishTotalPrice: price })
+    addDish({ dishID: id, price, title, amount: 1, picture, dishTotalPrice: price })
   }
 
   return (

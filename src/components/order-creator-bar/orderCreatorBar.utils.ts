@@ -1,4 +1,4 @@
-import { NewOrderType } from 'types'
+import { OrderResponseType } from 'types'
 
 export const toggleMenuValues = [
   { label: 'Order info', value: 'orderInfo' },
@@ -9,17 +9,17 @@ export const unique = () => {
   return Math.floor(Math.random() * 9000) + 1000
 }
 
-export const getFormedOrder = (order: NewOrderType) => {
+export const getFormedOrder = (order: OrderResponseType) => {
   const { orderType, orderNumber, table, description, dishes } = order
 
-  const dataDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
-    dishID: id,
+  const dataDishes = dishes.map(({ dishID, amount, dishTotalPrice }) => ({
+    dishID,
     amount,
     dishTotalPrice,
   }))
 
-  const activeDishes = dishes.map(({ id, amount, dishTotalPrice, title, picture }) => ({
-    dishID: id,
+  const activeDishes = dishes.map(({ dishID, amount, dishTotalPrice, title, picture }) => ({
+    dishID,
     amount,
     dishTotalPrice,
     picture,

@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TableDataBills } from 'types'
+import { BillsResponseType } from 'types'
 
 interface NewBillsAction {
-  newBill: TableDataBills
+  newBill: BillsResponseType
 }
 
 const initialState: NewBillsAction = {
-  newBill: {} as TableDataBills,
+  newBill: {} as BillsResponseType,
 }
 
 const billSlice = createSlice({
   name: 'billSlice',
   initialState,
   reducers: {
-    addBill: (state, action: PayloadAction<TableDataBills>) => {
+    addBill: (state, action: PayloadAction<BillsResponseType>) => {
       state.newBill = action.payload
     },
   },

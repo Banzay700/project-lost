@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
 import { Button, SelectInput, TableInfoBox } from 'UI'
-import { OrderCreatorFormValues } from 'types'
+import { OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
 import { RadioButtonsGroup } from './radio-buttons-group'
@@ -12,11 +12,11 @@ import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorF
 import s from './OrderCreatorForm.module.scss'
 
 interface OrderCreatorFormProps {
-  onSubmit: (values: OrderCreatorFormValues) => void
+  onSubmit: (values: OrderCreatorFormReturnType) => void
 }
 
 const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
-  const [formValues, setFormValues] = useState<OrderCreatorFormValues>(initialValue)
+  const [formValues, setFormValues] = useState<OrderCreatorFormReturnType>(initialValue)
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)

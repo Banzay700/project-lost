@@ -3,11 +3,11 @@ import { FormControl, Stack, RadioGroup } from '@mui/material'
 import { useField, useFormikContext } from 'formik'
 
 import { RadioButton } from 'UI'
-import { RadioGroupContentType } from 'types'
+import { RadioGroupItemType } from 'types'
 
 interface RadioButtonsGroupProps {
   name: string
-  content: RadioGroupContentType[]
+  content: RadioGroupItemType[]
   handleHideSelect: (value: string) => void
 }
 

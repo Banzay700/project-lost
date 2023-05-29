@@ -1,7 +1,7 @@
-import { LinkType } from 'types/LinkType'
+import { LinkItemType } from 'types/ComponentsItemType/LinkItemType'
 import { IconHome, IconNote, IconClock, IconReceipt } from 'assets'
 
-export const navData: LinkType[] = [
+export const navData: LinkItemType[] = [
   {
     link: '/home',
     text: 'Home',

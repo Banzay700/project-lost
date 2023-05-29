@@ -3,14 +3,14 @@ import { FC, useState } from 'react'
 import { Box } from '@mui/material'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import { IEmployee } from 'types/IEmployee'
+import { UserType } from 'types/UserType/UserType'
 import EmployeesItem from './EmployeesItem'
 import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
 import s from './EmployeesCarrousel.module.scss'
 
 interface EmployeesCarrouselProps {
   bgc: 'transparent' | 'brown'
-  employeesData: IEmployee[]
+  employeesData: UserType[]
   handleSetActiveSlide: (id: string) => void
   chosenEmployee: string
 }

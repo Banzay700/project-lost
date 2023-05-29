@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Table } from 'components/table'
-import { DataTableCellFuncType, TableData, TableDataBills } from 'types'
+import { DataTableCellFuncType, TableDataItem, BillsResponseType } from 'types'
 import { IndicatorFilterBar } from 'components/indicator-filter-bar'
 import { useGetAllBillsQuery } from 'store/api'
 import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
@@ -24,9 +24,9 @@ const TableBills: FC = () => {
         onChange={handleChangeFilter}
       />
       <Table
-        data={dataBills as TableDataBills[]}
+        data={dataBills as BillsResponseType[]}
         tableTitles={tableTitleBills}
-        dataTableCell={dataTableCellBills as DataTableCellFuncType<TableData>}
+        dataTableCell={dataTableCellBills as DataTableCellFuncType<TableDataItem>}
       />
     </>
   )

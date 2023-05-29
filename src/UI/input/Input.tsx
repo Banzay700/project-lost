@@ -3,11 +3,11 @@ import { TextField, TextFieldProps } from '@mui/material'
 import { useField } from 'formik'
 import cn from 'classnames'
 
-import { InputVariantPropsType } from 'types'
+import { InputVariantItemType } from 'types'
 import { IconWrapper } from './icon-wrapper'
 import s from './Input.module.scss'
 
-type InputProps = InputVariantPropsType & {
+type InputProps = InputVariantItemType & {
   placeholder: string
   name: string
   type?: string

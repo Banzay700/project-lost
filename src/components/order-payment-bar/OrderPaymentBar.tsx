@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
-import { OrderPaymentFormValuesType } from 'types'
+import { PaymentFormReturnType } from 'types'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'
@@ -20,7 +20,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount })
   const handleToggleTipStatus = () => setTipStatus((prevState) => !prevState)
   const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
 
-  const handleFormSubmit = (values: OrderPaymentFormValuesType) => {
+  const handleFormSubmit = (values: PaymentFormReturnType) => {
     console.log(values, orderNumber, totalAmount)
   }
 

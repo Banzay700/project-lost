@@ -1,9 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
-import { Input } from 'UI/input'
-import { Button } from 'UI/button'
-import { BtnLoginValue } from 'types/IEmployee'
+import { Input, Button } from 'UI'
+import { ButtonLoginReturnType } from 'types'
 import { DigitButtonsGroup } from '../digitButtonsGroup'
 import { initialValues, validationSchema } from './InputPassword.utils'
 
@@ -15,7 +14,7 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
   const [password, setPasswordValue] = useState('')
   const [formValues, setFormValues] = useState(initialValues)
 
-  const getPassword = (v: BtnLoginValue) => {
+  const getPassword = (v: ButtonLoginReturnType) => {
     if (typeof v === 'number') {
       setPasswordValue((prevState) => {
         // eslint-disable-next-line no-return-assign
@@ -28,7 +27,7 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
     }
   }
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values: any, actions: any) => {
     console.log(values)
 
     actions.resetForm()
@@ -49,13 +48,7 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
       enableReinitialize>
       <Form>
         <Stack spacing={8}>
-          <Input
-            placeholder="Enter your PIN"
-            name="password"
-            type="password"
-            outlined
-            valueExternal={password}
-          />
+          <Input placeholder="Enter your PIN" name="password" type="password" outlined />
 
           <DigitButtonsGroup getValue={getPassword} />
           <Button variant="contained" size="default" fullWidth>

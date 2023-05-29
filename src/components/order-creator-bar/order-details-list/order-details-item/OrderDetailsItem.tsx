@@ -21,7 +21,7 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total 
   const { dishes, addDish } = useOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
-    const dish = dishes.find((item) => item.id === id)
+    const dish = dishes.find((item) => item.dishID === id)
 
     if (dish) {
       addDish({ ...dish, amount: value })

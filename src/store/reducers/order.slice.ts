@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { OrderActiveType, DishType, NewOrderType } from 'types/ORDERS_TYPES'
+import { OrderActiveType, OrderDishResponseType, OrderResponseType } from 'types'
 import { emptyOrderState } from 'store/reducers/reducers.utils'
 
 interface OrderState {
-  newOrder: NewOrderType
+  newOrder: OrderResponseType
   activeOrder: OrderActiveType
 }
 
@@ -22,13 +22,13 @@ const ordersSlice = createSlice({
   name: 'orders',
   initialState,
   reducers: {
-    openNewOrder: (state, action: PayloadAction<NewOrderType>) => {
+    openNewOrder: (state, action: PayloadAction<OrderResponseType>) => {
       state.newOrder = action.payload
     },
-    addDishToOrder: (state, action: PayloadAction<DishType>) => {
+    addDishToOrder: (state, action: PayloadAction<OrderDishResponseType>) => {
       const { payload } = action
       const { dishes } = state.newOrder
-      const dish = dishes.find((dishEl) => dishEl.id === payload.id)
+      const dish = dishes.find((dishEl) => dishEl.dishID === payload.dishID)
 
       if (dish) {
         dish.amount = payload.amount

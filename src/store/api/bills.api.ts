@@ -1,14 +1,13 @@
-import { TableDataBills } from 'types'
-import { addBill } from 'store/reducers'
+import { BillsResponseType } from 'types'
 import { api } from './api'
 
 export const billsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllBills: builder.query<TableDataBills[], string>({
+    getAllBills: builder.query<BillsResponseType[], string>({
       query: () => ({ url: '/bills' }),
       providesTags: ['Bills'],
     }),
-    getOneBill: builder.query<TableDataBills, string>({
+    getOneBill: builder.query<BillsResponseType, string>({
       query: (id) => ({ url: `/bills:${id}` }),
       // onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
       //   const { data } = await queryFulfilled
@@ -18,7 +17,7 @@ export const billsApi = api.injectEndpoints({
       //   }
       // },
     }),
-    createBill: builder.mutation<TableDataBills, TableDataBills>({
+    createBill: builder.mutation<BillsResponseType, BillsResponseType>({
       query: (body) => ({ url: '/bills', method: 'POST', body }),
       invalidatesTags: ['Bills', 'Order'],
     }),

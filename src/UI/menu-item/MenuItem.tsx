@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItem as MenuItemMui } from '@mui/material'
-import { LinkType } from 'types'
+import { LinkItemType } from 'types'
 import s from './MenuItem.module.scss'
 
 interface MenuProps {
   onClose: () => void
   className?: string
-  data: LinkType
+  data: LinkItemType
 }
 
 const MenuItem: FC<MenuProps> = ({ onClose, className = '', data }) => {

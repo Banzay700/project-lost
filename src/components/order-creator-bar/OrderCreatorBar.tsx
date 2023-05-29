@@ -6,7 +6,7 @@ import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
 import { useOrderReducer } from 'hooks'
 import { ROUTES } from 'routes'
-import { OrderCreatorFormValues, OrderActiveType } from 'types'
+import { OrderCreatorFormReturnType, OrderActiveType } from 'types'
 import { useCreateOrderMutation, useUpdateTableStatusMutation } from 'store/api'
 import { OrderCreatorForm } from './order-creator-form'
 import { getFormedOrder, toggleMenuValues, unique } from './orderCreatorBar.utils'
@@ -23,7 +23,7 @@ const OrderCreatorBar: FC = () => {
 
   const navigate = useNavigate()
 
-  const handleFormSubmit = ({ orderType, table }: OrderCreatorFormValues) => {
+  const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderNumber = unique()
     const orderInfo = { orderType, table, orderNumber, totalPrice: 0, dishes: [] }
 

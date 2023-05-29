@@ -6,8 +6,7 @@ import {
   changeOrderStatus,
   deleteNewOrder,
 } from 'store/reducers'
-
-import { OrderActiveType, DishType, NewOrderType } from 'types/ORDERS_TYPES'
+import { OrderActiveType, OrderDishResponseType, OrderResponseType } from 'types'
 
 export const useOrderReducer = () => {
   const dispatch = useAppDispatch()
@@ -16,8 +15,8 @@ export const useOrderReducer = () => {
   const { dishes } = useAppSelector((state) => state.orders.newOrder)
   const activeOrder = useAppSelector((state) => state.orders.activeOrder)
 
-  const addDish = (dish: DishType) => dispatch(addDishToOrder(dish))
-  const createNewOrder = (order: NewOrderType) => dispatch(openNewOrder(order))
+  const addDish = (dish: OrderDishResponseType) => dispatch(addDishToOrder(dish))
+  const createNewOrder = (order: OrderResponseType) => dispatch(openNewOrder(order))
   const addActiveOrder = (order: OrderActiveType) => dispatch(addOrderToActive(order))
   const changeActiveOrderStatus = () => dispatch(changeOrderStatus())
   const clearNewOrderState = () => dispatch(deleteNewOrder())

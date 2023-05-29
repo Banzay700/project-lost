@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { LinkType } from 'types'
+import { LinkItemType } from 'types'
 import { NavItem } from './nav-item'
 
 interface NavbarProps {
-  data: LinkType[]
+  data: LinkItemType[]
   spacing?: number
   direction?: 'row' | 'column' | 'column-reverse' | 'row-reverse'
 }

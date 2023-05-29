@@ -1,16 +1,15 @@
 import { FC } from 'react'
 import { TableRow } from '@mui/material'
-import { useLazyGetOrderQuery } from 'store/api'
-import { TableData, DataTableCellFuncType } from 'types'
+import { TableDataItem, DataTableCellFuncType, OrderResponseType } from 'types'
 import { useRootLocationPath } from 'hooks/useRootLocationPath.hook'
-import { useGetOneBillQuery } from 'store/api/bills.api'
+import { useLazyGetOrderQuery } from 'store/api'
 import { TableLineItem } from './table-line-item'
 import s from './TableLineWrapper.module.scss'
 
 interface TableLineItemProps {
-  element: TableData
-  dataTableCell: DataTableCellFuncType<TableData>
-  onClick?: (dataOrder: TableData) => void
+  element: TableDataItem
+  dataTableCell: DataTableCellFuncType<TableDataItem>
+  onClick?: (dataOrder: TableDataItem) => void
 }
 
 const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell, onClick }) => {

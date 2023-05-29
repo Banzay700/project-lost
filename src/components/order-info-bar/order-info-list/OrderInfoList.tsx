@@ -5,7 +5,7 @@ import { OrderSummary } from 'components'
 import { Button, DetailsListTitle } from 'UI'
 import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
-import { DishActiveType } from 'types'
+import { OrderDishActiveType } from 'types'
 
 // TODO: check this type
 type OrderItemsType = {
@@ -19,7 +19,7 @@ type OrderItemsType = {
 }
 
 interface OrderListProps {
-  orderItems: DishActiveType[]
+  orderItems: OrderDishActiveType[]
   isPicker?: boolean
   orderId: number
   onClick?: () => void
@@ -31,7 +31,7 @@ const OrderInfoList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onCl
 
   return (
     <Stack sx={{ height: '100%' }}>
-      <DetailsListTitle title="Order details" orderId={orderId} />
+      <DetailsListTitle title="Order details" orderNumber={orderId} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
           {orderItems.map(({ dishID, title, picture, dishTotalPrice }) => (
