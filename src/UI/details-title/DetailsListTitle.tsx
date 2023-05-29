@@ -4,18 +4,18 @@ import s from './DetailsListTitle.module.scss'
 
 interface OrderDetailsTitleProps {
   title: string
-  orderId: number
+  orderNumber: number
 }
 
-const DetailsListTitle: FC<OrderDetailsTitleProps> = ({ title, orderId }) => {
+const DetailsListTitle: FC<OrderDetailsTitleProps> = ({ title, orderNumber }) => {
   return (
     <div className={s.wrapper}>
       <Typography variant="h1" component="p" color="secondary">
         {title}
       </Typography>
-      {orderId && (
+      {orderNumber && (
         <Typography variant="h3" component="p">
-          Order # {orderId}
+          Order # {orderNumber}
         </Typography>
       )}
     </div>

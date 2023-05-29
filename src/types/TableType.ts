@@ -1,7 +1,7 @@
 interface CommonTableData {
   id?: string
   orderType: 'takeAway' | 'dineIn' | 'delivery'
-  orderNumber: string
+  orderNumber: number
   table?: string
   description?: string
 }

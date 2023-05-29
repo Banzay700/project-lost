@@ -2,6 +2,7 @@ import { TableCell, Typography } from '@mui/material'
 import { TableNumber, Button, InfoChip } from 'UI'
 import { DataTableCellType, TableDataBills, TableDataOrders } from 'types'
 import { IconAddTipAmount } from 'assets'
+import { MouseEvent } from 'react'
 
 export const tableTitleOrder: string[] = [
   'Table Number',
@@ -36,11 +37,10 @@ export const dataTableCellOrder = ({
   className,
   onClick,
 }: DataTableCellType<TableDataOrders>) => {
-  const handleSendOrder = async (e) => {
+  const handleSendOrder = async (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     const dataOrder = prepareBillsData(element)
 
-    console.log('Click on button', e.currentTarget)
     if (onClick) {
       await onClick(dataOrder as TableDataBills)
     }
