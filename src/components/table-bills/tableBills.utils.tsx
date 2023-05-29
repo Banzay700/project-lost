@@ -52,7 +52,17 @@ export const dataTableCellBills = ({
   {
     tableCell: (
       <TableCell align="center">
-        <InfoChip type={element?.orderType} />
+        <InfoChip
+          type={
+            element?.orderType as
+              | 'takeAway'
+              | 'dineIn'
+              | 'delivery'
+              | 'closed'
+              | 'opened'
+              | undefined
+          }
+        />
       </TableCell>
     ),
   },

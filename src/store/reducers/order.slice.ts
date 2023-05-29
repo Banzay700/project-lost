@@ -28,7 +28,7 @@ const ordersSlice = createSlice({
     addDishToOrder: (state, action: PayloadAction<OrderDishResponseType>) => {
       const { payload } = action
       const { dishes } = state.newOrder
-      const dish = dishes.find((dishEl) => dishEl.id === payload.id)
+      const dish = dishes.find((dishEl) => dishEl.dishID === payload.dishID)
 
       if (dish) {
         dish.amount = payload.amount

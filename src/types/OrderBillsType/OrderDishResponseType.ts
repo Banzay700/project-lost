@@ -4,5 +4,5 @@ export type OrderDishResponseType = {
   title: string
   picture: string
   price: number
-  id: string
+  dishID: string
 }

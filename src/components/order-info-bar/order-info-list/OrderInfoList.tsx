@@ -31,7 +31,7 @@ const OrderInfoList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onCl
 
   return (
     <Stack sx={{ height: '100%' }}>
-      <DetailsListTitle title="Order details" orderId={orderId} />
+      <DetailsListTitle title="Order details" orderNumber={orderId} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
           {orderItems.map(({ dishID, title, picture, dishTotalPrice }) => (

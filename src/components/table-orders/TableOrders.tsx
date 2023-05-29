@@ -25,7 +25,7 @@ const TableOrders: FC = () => {
       <Table
         data={dataOrders as OrderResponseType[]}
         tableTitles={tableTitleOrder}
-        dataTableCell={dataTableCellOrder as DataTableCellFuncType<OrderResponseType>}
+        dataTableCell={dataTableCellOrder as DataTableCellFuncType<TableDataItem>}
         onClick={createBills as (dataOrder: TableDataItem) => void}
       />
     </>

@@ -12,14 +12,14 @@ export const unique = () => {
 export const getFormedOrder = (order: OrderResponseType) => {
   const { orderType, orderNumber, table, description, dishes } = order
 
-  const dataDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
-    dishID: id,
+  const dataDishes = dishes.map(({ dishID, amount, dishTotalPrice }) => ({
+    dishID,
     amount,
     dishTotalPrice,
   }))
 
-  const activeDishes = dishes.map(({ id, amount, dishTotalPrice, title, picture }) => ({
-    dishID: id,
+  const activeDishes = dishes.map(({ dishID, amount, dishTotalPrice, title, picture }) => ({
+    dishID,
     amount,
     dishTotalPrice,
     picture,

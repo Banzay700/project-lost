@@ -9,11 +9,11 @@ import { OrderPricingTotalInfo } from './order-total-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
 
 interface OrderPaymentBarProps {
-  orderId: number
+  orderNumber: number
   totalAmount: number
 }
 
-const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderId, totalAmount }) => {
+const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount }) => {
   const [tipStatus, setTipStatus] = useState(false)
   const [emailStatus, setEmailStatus] = useState(false)
 
@@ -21,7 +21,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderId, totalAmount }) => 
   const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
 
   const handleFormSubmit = (values: PaymentFormReturnType) => {
-    console.log(values)
+    console.log(values, orderNumber, totalAmount)
   }
 
   const handleToggleMenuChange = (value: string) => {
@@ -35,7 +35,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderId, totalAmount }) => 
         onChange={handleToggleMenuChange}
         defaultValue="orderInfo"
       />
-      <DetailsListTitle title="Order payment" orderId={orderId} />
+      <DetailsListTitle title="Order payment" orderNumber={orderNumber} />
       <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>
         <OrderPricingTotalInfo totalAmount={totalAmount} />
         <OrderPaymentForm isTip={tipStatus} isEmail={emailStatus} onSubmit={handleFormSubmit}>

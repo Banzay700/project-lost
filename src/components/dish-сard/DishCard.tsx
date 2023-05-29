@@ -28,7 +28,7 @@ const DishCard: FC<DishCardProps> = (props) => {
   const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
-    addDish({ id, price, title, amount: 1, picture, dishTotalPrice: price })
+    addDish({ dishID: id, price, title, amount: 1, picture, dishTotalPrice: price })
   }
 
   return (
