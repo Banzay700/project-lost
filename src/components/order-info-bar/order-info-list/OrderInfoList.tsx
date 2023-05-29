@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
-import { OrderSummary } from 'components/index'
-import { Button, DetailsListTitle } from 'UI/index'
 
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+import { OrderSummary } from 'components'
+import { Button, DetailsListTitle } from 'UI'
+import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
-import { useNewOrderReducer } from 'hooks/useNewOrderReducer.hook'
+import { DishActiveType } from 'types'
 
 // TODO: check this type
 type OrderItemsType = {
@@ -19,7 +19,7 @@ type OrderItemsType = {
 }
 
 interface OrderListProps {
-  orderItems: OrderItemsType[]
+  orderItems: DishActiveType[]
   isPicker?: boolean
   orderId: number
   onClick?: () => void
@@ -29,18 +29,15 @@ const OrderInfoList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onCl
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   const total = orderItems.reduce((acc, item) => acc + item.dishTotalPrice, 0)
 
-  const { activeOrder } = useNewOrderReducer()
-  console.log('activeOrder', activeOrder)
-
   return (
     <Stack sx={{ height: '100%' }}>
       <DetailsListTitle title="Order details" orderId={orderId} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
-          {orderItems.map(({ id, title, picture, dishTotalPrice }) => (
+          {orderItems.map(({ dishID, title, picture, dishTotalPrice }) => (
             <OrderDetailsItem
-              key={id}
-              id={id}
+              key={dishID}
+              id={dishID}
               title={title}
               total={dishTotalPrice}
               src={picture}

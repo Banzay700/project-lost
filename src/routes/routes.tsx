@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Layout, DishesPage, OrdersPage, BillsPage, DishesPageContent } from 'pages'
+import { Layout, DishesPage, OrdersPage, BillsPage, DishesPageContent, LoginPage } from 'pages'
 import { ROUTES } from './routes.utils'
 
 const AppRoutes = () => {
@@ -13,6 +13,7 @@ const AppRoutes = () => {
         </Route>
         <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
         <Route path={ROUTES.BILLS} element={<BillsPage />} />
+        <Route path="login" element={<LoginPage />} />
       </Route>
     </Routes>
   )

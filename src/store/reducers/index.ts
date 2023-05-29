@@ -1,6 +1,11 @@
 export { default as dishReducer } from './dish.slice'
-export { removeAllDishesFromOrder } from './dish.slice'
-export { openNewOrder, addDishToOrder, addOrderToActive } from './order.slice'
-export { addBill } from './bill.slice'
-export { default as billReducer } from './bill.slice'
 export { default as ordersReducer } from './order.slice'
+export { removeAllDishesFromOrder } from './dish.slice'
+export {
+  openNewOrder,
+  addDishToOrder,
+  addOrderToActive,
+  changeOrderStatus,
+  deleteNewOrder,
+} from './order.slice'
+export { default as billReducer, addBill } from './bill.slice'

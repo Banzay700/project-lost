@@ -49,6 +49,12 @@ declare module '@mui/material/styles' {
   // }
 }
 
+declare module '@mui/material/styles' {
+  interface TypeText {
+    addition: string
+  }
+}
+
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     dashNumb: true

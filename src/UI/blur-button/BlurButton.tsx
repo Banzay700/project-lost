@@ -1,11 +1,12 @@
 import { Button, Typography } from '@mui/material/'
 import { FC, ReactNode } from 'react'
+import { BtnLoginValue } from 'types/IEmployee'
 import s from './BlurButton.module.scss'
 
 interface BlurButtonProps {
   children: ReactNode
-  value: string | number
-  getValue: (value: 'clear' | 'delete' | number) => void
+  value: BtnLoginValue
+  getValue: (value: BtnLoginValue) => void
 }
 
 const BlurButton: FC<BlurButtonProps> = ({ children, value, getValue }) => {

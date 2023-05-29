@@ -1,5 +1,5 @@
-import { IOrder, OrderFormedType, RequiredIdOrder, TableDataOrders } from 'types'
-import { ActiveOrderType, addOrderToActive, NewOrderType } from 'store/reducers/order.slice'
+import { OrderActiveType, OrderDBType, TableDataOrders } from 'types'
+import { addOrderToActive } from '../reducers'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
@@ -9,7 +9,7 @@ export const orderApi = api.injectEndpoints({
       providesTags: ['Order'],
     }),
 
-    getOrder: builder.query<ActiveOrderType, string>({
+    getOrder: builder.query<OrderActiveType, string>({
       query: (id) => ({ url: `/orders/${id}` }),
       onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
@@ -20,17 +20,17 @@ export const orderApi = api.injectEndpoints({
       },
     }),
 
-    createOrder: builder.mutation<NewOrderType, OrderFormedType>({
+    createOrder: builder.mutation<OrderDBType, OrderDBType>({
       query: (data) => ({ url: '/orders', method: 'POST', body: data }),
       invalidatesTags: ['Order'],
     }),
 
-    updateOrder: builder.mutation<IOrder, RequiredIdOrder>({
+    updateOrder: builder.mutation<OrderDBType, OrderDBType>({
       query: (post) => ({ url: '/orders', method: 'PUT', body: post }),
       invalidatesTags: ['Order'],
     }),
 
-    deleteOrder: builder.mutation<IOrder, string>({
+    deleteOrder: builder.mutation<OrderDBType, string>({
       query: (id) => ({ url: `/orders/${id}`, method: 'DELETE' }),
       invalidatesTags: ['Order'],
     }),
@@ -40,8 +40,8 @@ export const orderApi = api.injectEndpoints({
 export const {
   useCreateOrderMutation,
   useDeleteOrderMutation,
+  useUpdateOrderMutation,
   useGetAllOrdersQuery,
   useGetOrderQuery,
-  useUpdateOrderMutation,
   useLazyGetOrderQuery,
 } = orderApi

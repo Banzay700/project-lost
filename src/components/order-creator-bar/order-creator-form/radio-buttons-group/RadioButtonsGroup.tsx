@@ -2,8 +2,8 @@ import { FC, ChangeEvent } from 'react'
 import { FormControl, Stack, RadioGroup } from '@mui/material'
 import { useField, useFormikContext } from 'formik'
 
-import { RadioButton } from 'UI/index'
-import { RadioGroupContentType } from 'types/index'
+import { RadioButton } from 'UI'
+import { RadioGroupContentType } from 'types'
 
 interface RadioButtonsGroupProps {
   name: string
