@@ -8,3 +8,4 @@ export {
   changeOrderStatus,
   deleteNewOrder,
 } from './order.slice'
+export { default as billReducer, addBill } from './bill.slice'
