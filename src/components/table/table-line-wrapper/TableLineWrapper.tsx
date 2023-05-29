@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { TableRow } from '@mui/material'
-import { TableData, DataTableCellFuncType } from 'types'
-import { useLazyGetOrderQuery } from 'store/api'
+import { TableDataItem, DataTableCellFuncType } from 'types'
+import { useLazyGetOrderQuery } from 'store'
 import { TableLineItem } from './table-line-item'
 import s from './TableLineWrapper.module.scss'
 
 interface TableLineItemProps {
-  element: TableData
-  dataTableCell: DataTableCellFuncType<TableData>
-  onClick?: (dataOrder: TableData) => void
+  element: TableDataItem
+  dataTableCell: DataTableCellFuncType<TableDataItem>
+  onClick?: (dataOrder: TableDataItem) => void
 }
 
 const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell, onClick }) => {
@@ -20,7 +20,7 @@ const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell, onCl
   const [trigger] = useLazyGetOrderQuery()
   const handleLineWrapperClick = (e: any) => {
     e.stopPropagation()
-    // trigger(element.id)  pass the order id
+    trigger(element.id) //pass the order id
   }
 
   return (

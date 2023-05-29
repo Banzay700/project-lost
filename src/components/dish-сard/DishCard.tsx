@@ -2,9 +2,7 @@ import { FC, useState } from 'react'
 import { Card, Stack } from '@mui/material'
 import { IconMore } from 'assets'
 import { Button } from 'UI'
-import { useNewOrderReducer } from 'hooks'
-
-import { IDishes } from 'types/IOrder'
+import { useOrderReducer } from 'hooks'
 import DishCardModal from './DishCardModal'
 import { DishCardMedia } from './dish-card-media'
 import { DishCardTitle } from './dish-card-title'
@@ -23,14 +21,14 @@ interface DishCardProps {
 const DishCard: FC<DishCardProps> = (props) => {
   const { picture, title, price, description, id, weightProduct } = props
   const [openModal, setOpenModal] = useState(false)
-  const { addDish } = useNewOrderReducer()
+  const { addDish } = useOrderReducer()
 
   const handleOpenModal = () => setOpenModal(true)
 
   const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
-    addDish({ id, price, title, amount: 1, picture, dishTotalPrice: price } as IDishes)
+    addDish({ id, price, title, amount: 1, picture, dishTotalPrice: price })
   }
 
   return (

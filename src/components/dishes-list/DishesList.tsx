@@ -1,11 +1,11 @@
 import { FC } from 'react'
-import { DishProductType } from 'types'
+import { DishType } from 'types'
 import { DishCard } from 'components'
 import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 import s from './DishesList.module.scss'
 
 interface DishesListProps {
-  dishes: DishProductType[]
+  dishes: DishType[]
 }
 
 const DishesList: FC<DishesListProps> = ({ dishes }) => {

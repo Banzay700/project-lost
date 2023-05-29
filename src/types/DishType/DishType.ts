@@ -1,13 +1,9 @@
-interface IAdditionalFood {
-  id?: string
-  title: string
-  price: number
-  weight?: number
-}
+import { DishAdditionalFood } from './DishAdditionalFood'
 
-export type DishProductType = {
+export type DishType = {
   id: string
   picture: string
+  type: string
   title: string
   price: number
   description: string
@@ -15,5 +11,5 @@ export type DishProductType = {
   subcategory?: string
   weight: number
   bonus?: number
-  additionalFood?: IAdditionalFood[]
+  additionalFood?: DishAdditionalFood[]
 }

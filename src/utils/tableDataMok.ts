@@ -1,6 +1,6 @@
-import { TableDataBills } from 'types'
+import { BillsResponseType } from 'types'
 
-export const dataMokBill: TableDataBills[] = [
+export const dataMokBill: BillsResponseType[] = [
   {
     id: '12312312',
     orderType: 'takeAway',

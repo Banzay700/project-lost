@@ -1,9 +1,10 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
 import { Button, SelectInput, TableInfoBox } from 'UI'
-import { OrderCreatorFormValues } from 'types'
+import { OrderCreatorFormReturnType } from 'types'
+import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
@@ -11,13 +12,16 @@ import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorF
 import s from './OrderCreatorForm.module.scss'
 
 interface OrderCreatorFormProps {
-  onSubmit: (values: OrderCreatorFormValues) => void
+  onSubmit: (values: OrderCreatorFormReturnType) => void
 }
 
 const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
+  const [formValues, setFormValues] = useState<OrderCreatorFormReturnType>(initialValue)
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)
+  const { newOrder, activeOrder } = useOrderReducer()
+  const { data } = useGetFreeTablesQuery()
 
   const handleValue = (value: string) => {
     setSelectValue(value)
@@ -29,11 +33,24 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
     setDisabled(value === MAIN_ORDER_TYPE)
   }
 
-  const { data } = useGetFreeTablesQuery()
+  useEffect(() => {
+    if (newOrder.orderType) {
+      setFormValues({ orderType: newOrder.orderType, table: newOrder.table })
+    } else if (activeOrder.active) {
+      setFormValues({ orderType: activeOrder.orderType, table: activeOrder.table })
+    }
+  }, [newOrder, activeOrder])
+
+  const formikConfig = {
+    onSubmit,
+    enableReinitialize: true,
+    validationSchema,
+    initialValues: formValues,
+  }
 
   return (
     <div className={s.newOrderForm}>
-      <Formik initialValues={initialValue} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik {...formikConfig}>
         <Form>
           <Stack spacing={6}>
             <RadioButtonsGroup

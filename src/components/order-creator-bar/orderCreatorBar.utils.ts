@@ -1,5 +1,4 @@
-import { NewOrderType } from 'store/reducers/order.slice'
-import { OrderFormedType } from 'types/OrderFormedType'
+import { OrderResponseType } from 'types'
 
 export const toggleMenuValues = [
   { label: 'Order info', value: 'orderInfo' },
@@ -10,24 +9,36 @@ export const unique = () => {
   return Math.floor(Math.random() * 9000) + 1000
 }
 
-export const getFormedOrder = (order: NewOrderType): OrderFormedType => {
+export const getFormedOrder = (order: OrderResponseType) => {
   const { orderType, orderNumber, table, description, dishes } = order
 
-  const filteredDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
+  const dataDishes = dishes.map(({ id, amount, dishTotalPrice }) => ({
     dishID: id,
     amount,
     dishTotalPrice,
   }))
 
-  const totalPrice = filteredDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
+  const activeDishes = dishes.map(({ id, amount, dishTotalPrice, title, picture }) => ({
+    dishID: id,
+    amount,
+    dishTotalPrice,
+    picture,
+    title,
+  }))
+
+  const totalPrice = dataDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
   const totalPriseWithTax = Math.round(totalPrice * 1.1)
 
-  return {
-    description,
-    orderNumber,
+  const commonReturnValues = {
     orderType,
     table: table || '-',
+    orderNumber,
     totalPrice: totalPriseWithTax,
-    dishes: filteredDishes,
+    description,
   }
+
+  return [
+    { dishes: dataDishes, ...commonReturnValues },
+    { dishes: activeDishes, ...commonReturnValues },
+  ]
 }

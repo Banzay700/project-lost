@@ -1,6 +1,6 @@
 export { useAppDispatch, useAppSelector } from './useRedux.hook'
 export { useHover } from './useHover.hook'
 export { useRootLocationPath } from './useRootLocationPath.hook'
-export { useNewOrderReducer } from './useNewOrderReducer.hook'
+export { useOrderReducer } from './useOrderReducer.hook'
 export { useSmoothScrollbar } from './useSmoothScrollbar.hook'
 export { useUserReducer } from './useUserReducer.hook'

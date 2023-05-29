@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { TableLineWrapper, TableHead } from 'UI'
-import { DataTableCellFuncType, TableData } from 'types'
+import { DataTableCellFuncType, TableDataItem } from 'types'
 import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
 
 interface TableProps {
-  data: TableData[] | undefined
+  data: TableDataItem[] | undefined
   tableTitles: string[]
-  dataTableCell: DataTableCellFuncType<TableData>
-  onClick?: (dataOrder: TableData) => void
+  dataTableCell: DataTableCellFuncType<TableDataItem>
+  onClick?: (dataOrder: TableDataItem) => void
 }
 
 const Table: FC<TableProps> = ({ data, tableTitles, dataTableCell, onClick }) => {

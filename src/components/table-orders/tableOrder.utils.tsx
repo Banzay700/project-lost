@@ -1,6 +1,6 @@
 import { TableCell, Typography } from '@mui/material'
 import { TableNumber, Button, InfoChip } from 'UI'
-import { DataTableCellType, TableDataBills, TableDataOrders } from 'types'
+import { DataTableCellType, BillsResponseType, OrderResponseType } from 'types'
 import { IconAddTipAmount } from 'assets'
 
 export const tableTitleOrder: string[] = [
@@ -11,7 +11,7 @@ export const tableTitleOrder: string[] = [
   'Actions',
 ]
 
-const prepareBillsData = (element: TableDataOrders) => {
+const prepareBillsData = (element: OrderResponseType) => {
   const { id, orderType, orderNumber, dishes, table, totalPrice, description } = element
   const modifiedData = dishes?.map(({ dishID, dishTotalPrice, amount }) => {
     return {
@@ -35,14 +35,14 @@ export const dataTableCellOrder = ({
   element,
   className,
   onClick,
-}: DataTableCellType<TableDataOrders>) => {
+}: DataTableCellType<OrderResponseType>) => {
   const handleSendOrder = async (e: any) => {
     e.stopPropagation()
     const dataOrder = prepareBillsData(element)
 
     console.log('Click on button', e.currentTarget)
     if (onClick) {
-      await onClick(dataOrder as TableDataBills)
+      await onClick(dataOrder as BillsResponseType)
     }
   }
 

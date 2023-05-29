@@ -1,10 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { dishReducer, ordersReducer, userReducer } from './reducers'
+import { ordersReducer, userReducer } from './reducers'
 
 import { api } from './api'
 
 const rootReducer = combineReducers({
-  dish: dishReducer,
   orders: ordersReducer,
   [api.reducerPath]: api.reducer,
   user: userReducer,

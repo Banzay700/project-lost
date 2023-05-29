@@ -4,23 +4,25 @@ import { Form, Formik } from 'formik'
 
 import { Button, Input } from 'UI'
 import { IconAddTipAmount, IconEmail } from 'assets'
-import { OrderPaymentFormValuesType } from 'types'
+import { PaymentFormReturnType } from 'types'
 import { OrderPaymentMethod } from './order-payment-method'
 import { initialValues, validationSchema } from './OrderPaymentForm.utils'
 
 import s from './OrderPaymentForm.module.scss'
 
 interface OrderPaymentFormProps {
-  onSubmit: (values: OrderPaymentFormValuesType) => void
+  onSubmit: (values: PaymentFormReturnType) => void
   children: ReactNode
   isTip: boolean
   isEmail: boolean
 }
 
 const OrderPaymentForm: FC<OrderPaymentFormProps> = ({ children, isTip, isEmail, onSubmit }) => {
+  const formikConfig = { initialValues, validationSchema, onSubmit }
+
   return (
     <div className={s.formWrapper}>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      <Formik {...formikConfig}>
         <Form>
           <OrderPaymentMethod name="paymentMethod" />
           {children}

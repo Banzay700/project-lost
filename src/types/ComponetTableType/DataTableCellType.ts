@@ -1,8 +1,8 @@
-import { TableCellType, TableData } from 'types'
+import { TableCellType, TableDataItem } from 'types/index'
 
 export type DataTableCellType<T> = {
   element: T
-  onClick?: (dataOrder: TableData) => void
+  onClick?: (dataOrder: TableDataItem) => void
   className?: string
 }
 

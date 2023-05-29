@@ -2,13 +2,13 @@ import { FC, useEffect } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 
-import { FreeTablesType } from 'types'
+import { TableFreeResponseType } from 'types'
 import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 
 interface SelectInputProps {
   name: string
   label: string
-  data: FreeTablesType[] | undefined
+  data: TableFreeResponseType[] | undefined
   handleValue: (value: string) => void
   hidden?: boolean
 }

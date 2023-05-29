@@ -1,6 +1,6 @@
 import { TableCell, Typography } from '@mui/material'
 import { TableNumber, InfoChip } from 'UI'
-import { DataTableCellType, TableDataBills } from 'types'
+import { DataTableCellType, BillsResponseType } from 'types'
 import { TableActionsBills } from './table-actions-bills'
 
 export const tableTitleBills: string[] = [
@@ -12,7 +12,11 @@ export const tableTitleBills: string[] = [
   'Actions',
 ]
 
-export const dataTableCellBills = ({ element, className, onClick }: DataTableCellType<TableDataBills>) => [
+export const dataTableCellBills = ({
+  element,
+  className,
+  onClick,
+}: DataTableCellType<BillsResponseType>) => [
   {
     tableCell: (
       <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
