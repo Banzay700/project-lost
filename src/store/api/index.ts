@@ -18,3 +18,11 @@ export {
   useGetSubCategoriesInCategoryQuery,
   useGetDishesByCategoryAndFilterQuery,
 } from './dish.api'
+
+export {
+  useGetAllUsersQuery,
+  useLogoutMutation,
+  useLoginMutation,
+  useRefreshQuery,
+  useUpdateUserMutation,
+} from './users.api'

@@ -26,6 +26,10 @@ export type {
 
 export type {
   UserType,
+  UserPassword,
+  UserAvatar,
+  UserUpdateAvatar,
+  UserUpdateInfo,
   UserPartialType,
   UserResponseType,
   UserRegistrationRequestType,

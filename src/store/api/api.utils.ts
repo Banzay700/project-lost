@@ -5,8 +5,8 @@ export const API_CONST_DISHES = {
 
 export const API_CONST_USERS = {
   USERS: 'users',
-  REGISTRATION: 'registration',
-  LOGIN: 'login',
-  LOGOUT: 'logout',
-  REFRESH: 'refresh',
+  REGISTRATION: 'users/registration',
+  LOGIN: 'users/login',
+  LOGOUT: 'users/logout',
+  REFRESH: 'users/refresh',
 }

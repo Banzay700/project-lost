@@ -3,11 +3,16 @@ import { Stack } from '@mui/material'
 import { useGetAllUsersQuery } from 'store/api/users.api'
 import { EmployeesCarrousel } from 'components/employees-carrousel'
 import { Button } from 'UI/button'
-import { InputPassword } from './input-password'
+import { UserLoginRequestType } from 'types/UserType'
+import { LoginForm } from './login-form'
 
 import s from './Login.module.scss'
 
-const Login: FC = () => {
+interface LoginProps {
+  onSubmit: (value: UserLoginRequestType) => void
+}
+
+const Login: FC<LoginProps> = ({ onSubmit }) => {
   const { data: users = [] } = useGetAllUsersQuery('')
   const [chosenEmployee, setChosenEmployee] = useState('')
 
@@ -27,7 +32,7 @@ const Login: FC = () => {
           chosenEmployee={chosenEmployee}
         />
         {chosenEmployee ? (
-          <InputPassword id={chosenEmployee} />
+          <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
         ) : (
           <Button variant="outlined" size="default" className={s.buttonBlur}>
             Login

@@ -39,11 +39,11 @@ export const formatDateTime = (date: Date) => {
 
 export const menuData: LinkItemType[] = [
   {
-    link: '/login',
-    text: 'Log out',
+    link: '/profile',
+    text: 'Profile',
   },
   {
-    link: '/settings',
-    text: 'Settings',
+    link: '/login',
+    text: 'Log out',
   },
 ]

@@ -6,6 +6,10 @@ const defaultUserState: UserType = {
   firstName: 'Unknown',
   secondName: 'Unknown',
   role: 'WAITER',
+  phoneNumber: '',
+  userImage: '',
+  email: '',
+  description: '',
 }
 
 const initialState: UserStateType = {
@@ -23,6 +27,9 @@ const userSlice = createSlice({
       state.user = action.payload.data
       state.token = action.payload.accessToken
     },
+    setUserInfo: (state, action: PayloadAction<UserType>) => {
+      state.user = action.payload
+    },
     updateUserData: (state, action: PayloadAction<UserType>) => {
       state.user = action.payload
     },
@@ -34,6 +41,6 @@ const userSlice = createSlice({
   },
 })
 
-export const { setUserData, updateUserData, setUserLogout } = userSlice.actions
+export const { setUserData, setUserInfo, updateUserData, setUserLogout } = userSlice.actions
 
 export default userSlice.reducer

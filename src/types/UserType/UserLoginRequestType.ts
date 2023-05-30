@@ -1,4 +1,4 @@
 export type UserLoginRequestType = {
-  id: string
+  userId: string
   password: string
 }

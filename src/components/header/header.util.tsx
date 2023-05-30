@@ -12,20 +12,15 @@ export const navData: LinkItemType[] = [
     text: 'Orders',
     icon: <IconReceipt style={{ marginRight: '11px' }} />,
   },
-  {
-    link: '/history',
-    text: 'History',
-    icon: <IconNote style={{ marginRight: '11px' }} />,
-  },
+
   {
     link: '/bills',
     text: 'Bills',
     icon: <IconClock style={{ marginRight: '11px' }} />,
   },
+  {
+    link: '/history',
+    text: 'History',
+    icon: <IconNote style={{ marginRight: '11px' }} />,
+  },
 ]
-
-// TODO: delete this mock
-export const mockUser = {
-  name: 'John Doe',
-  surname: 'Doe',
-}
