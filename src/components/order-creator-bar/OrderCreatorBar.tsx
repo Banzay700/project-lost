@@ -13,9 +13,9 @@ import {
   useUpdateOrderMutation,
   useUpdateTableStatusMutation,
 } from 'store/api'
+import { emptyOrderState } from 'store/reducers/reducers.utils'
 import { OrderCreatorForm } from './order-creator-form'
 import { toggleMenuValues, unique } from './orderCreatorBar.utils'
-import { emptyOrderState } from 'store/reducers/reducers.utils'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')

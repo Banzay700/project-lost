@@ -21,7 +21,7 @@ const OrderInfoList: FC<OrderListProps> = ({ isPicker, onClick }) => {
       <DetailsListTitle title="Order details" orderNumber={activeOrder.orderNumber} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
-          {activeOrder.dishes.map(({ dishID, title, picture, dishTotalPrice, amount }) => (
+          {activeOrder.dishes.map(({ dishID, title, picture, dishTotalPrice }) => (
             <OrderDetailsItem
               key={dishID}
               id={dishID}
