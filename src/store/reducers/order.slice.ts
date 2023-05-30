@@ -13,8 +13,8 @@ const initialState: OrderState = {
     ...emptyOrderState,
   },
   activeOrder: {
-    active: false,
     ...emptyOrderState,
+    active: false,
   },
 }
 
@@ -38,7 +38,7 @@ const ordersSlice = createSlice({
       }
     },
     addOrderToActive: (state, action: PayloadAction<OrderActiveType>) => {
-      state.activeOrder = action.payload
+      state.activeOrder = { ...action.payload, active: true }
     },
     changeOrderStatus: (state) => {
       state.activeOrder.active = !state.activeOrder.active

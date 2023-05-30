@@ -26,7 +26,7 @@ const OrderCreatorBar: FC = () => {
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderNumber = unique()
     const orderInfo = { orderType, table, orderNumber, totalPrice: 0, dishes: [] }
-
+    console.log('INFO FROM 1 OPEN ORDER STEP', orderInfo)
     setOrderID(orderNumber)
     createNewOrder(orderInfo)
 
@@ -34,7 +34,7 @@ const OrderCreatorBar: FC = () => {
     setToggleValue('dishes')
     setButtonDisabled(false)
   }
-
+  console.log('INFO FROM NEW_ORDER STATE', newOrder)
   const handleCreateOrder = () => {
     const [orderDB, orderActive] = getFormedOrder(newOrder)
 

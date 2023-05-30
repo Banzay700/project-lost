@@ -22,7 +22,7 @@ export const useOrderReducer = () => {
   const clearNewOrderState = () => dispatch(deleteNewOrder())
 
   const { orderType, table } = activeOrder
-
+  console.log(activeOrder)
   const orderFormExistingValues = { orderType, table }
 
   return {

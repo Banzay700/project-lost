@@ -14,10 +14,9 @@ const OrderInfoBar: FC = () => {
   const { activeOrder, changeActiveOrderStatus } = useOrderReducer()
 
   const handleUpdateOrder = () => {
-    changeActiveOrderStatus()
     navigate(ROUTES.DISHES)
   }
-
+  console.log('INFO FROM ACTIVE ORDER STATE', activeOrder)
   const handleToggleChange = (value: string) => {
     setToggleValue(value)
   }
