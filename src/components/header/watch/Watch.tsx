@@ -48,7 +48,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
           size="default"
           color="secondary"
           onClick={handleClickAvatar}
-          icon={<Avatar src={userImage} {...avatarName} />}
+          icon={<Avatar src={userImage || ''} {...avatarName} />}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (

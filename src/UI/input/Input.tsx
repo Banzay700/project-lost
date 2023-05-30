@@ -11,16 +11,25 @@ type InputProps = InputVariantItemType & {
   placeholder: string
   name: string
   type?: string
+  multiline?: boolean
+  maxRows?: number
+  minRows?: number
+  disabled?: boolean
 }
 
 const Input: FC<InputProps> = (props) => {
-  const { name, label, placeholder, icon, outlined, type } = props
+  const { name, label, placeholder, icon, outlined, type, multiline, maxRows, minRows, disabled } =
+    props
   const [field, meta] = useField(name)
 
   const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
   const textFieldConfig: TextFieldProps = {
     placeholder,
     label,
+    multiline,
+    maxRows,
+    minRows,
+    disabled,
     type: type || 'text',
     ...field,
     fullWidth: true,

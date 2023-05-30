@@ -1,7 +1,7 @@
 import { object, string } from 'yup'
 
 export const initialValues = {
-  id: '',
+  userId: '',
   password: '',
 }
 

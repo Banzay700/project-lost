@@ -1,4 +1,4 @@
-export interface UserType {
+export type UserType = {
   id: string
   firstName: string
   secondName: string
@@ -6,9 +6,24 @@ export interface UserType {
   userImage?: string
   phoneNumber?: string
   email?: string
+  description?: string
 }
 
-type UserIdType = Pick<UserType, 'id'>
-type UserWithoutId = Omit<UserType, 'id'>
+export type UserPassword = {
+  password: string
+}
+export type UserAvatar = {
+  picture: File[] | null
+}
+export type UserUpdateInfo = Pick<
+  UserType,
+  'firstName' | 'secondName' | 'phoneNumber' | 'email' | 'description'
+>
 
-export type UserPartialType = UserIdType & Partial<UserWithoutId>
+type UserIdType = Pick<UserType, 'id'>
+
+export type UserUpdateAvatar = {
+  body: FormData
+  id: string
+}
+export type UserPartialType = UserIdType & (UserUpdateInfo | UserPassword | FormData)

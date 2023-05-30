@@ -4,13 +4,14 @@ import { Stack } from '@mui/material'
 import { Input, Button } from 'UI'
 import { ButtonLoginReturnType, UserLoginRequestType } from 'types'
 import { DigitButtonsGroup } from '../digitButtonsGroup'
-import { initialValues, validationSchema } from './InputPassword.utils'
+import { initialValues, validationSchema } from './LoginForm.utils'
 
 interface InputPasswordProps {
-  id: string
+  userId: string
+  onSubmit: (value: UserLoginRequestType) => void
 }
 
-const InputPassword: FC<InputPasswordProps> = ({ id }) => {
+const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
   const [password, setPasswordValue] = useState('')
   const [formValues, setFormValues] = useState(initialValues)
 
@@ -28,15 +29,16 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
     values: UserLoginRequestType,
     actions: FormikHelpers<UserLoginRequestType>,
   ) => {
+    onSubmit(values)
     actions.resetForm()
     setPasswordValue('')
   }
 
   useEffect(() => {
-    const values = { id, password }
+    const values = { userId, password }
 
     setFormValues(values)
-  }, [password, id])
+  }, [password, userId])
 
   return (
     <Formik
@@ -57,4 +59,4 @@ const InputPassword: FC<InputPasswordProps> = ({ id }) => {
   )
 }
 
-export default InputPassword
+export default LoginForm

@@ -1,4 +1,11 @@
-export type { UserType, UserPartialType } from './UserType'
+export type {
+  UserType,
+  UserPassword,
+  UserAvatar,
+  UserUpdateInfo,
+  UserPartialType,
+  UserUpdateAvatar,
+} from './UserType'
 export type { UserRegistrationRequestType } from './UserRegistrationRequestType'
 export type { UserLoginRequestType } from './UserLoginRequestType'
 export type { UserResponseType } from './UserResponseType'

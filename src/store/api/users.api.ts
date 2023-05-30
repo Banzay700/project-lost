@@ -1,12 +1,13 @@
-import { UserPartialType, UserType } from 'types/UserType/UserType'
 import {
   UserLoginRequestType,
   UserLogoutResponseType,
   UserRegistrationRequestType,
   UserResponseType,
+  UserPartialType,
+  UserType,
+  UserUpdateAvatar,
 } from 'types'
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
-import { setUserData, setUserLogout, updateUserData } from 'store/reducers'
+import { setUserData, setUserInfo, setUserLogout } from 'store/reducers'
 import { api } from './api'
 import { API_CONST_USERS } from './api.utils'
 
@@ -16,90 +17,89 @@ export const usersApi = api.injectEndpoints({
       query: () => ({ url: API_CONST_USERS.USERS }),
     }),
     updateUser: builder.mutation<UserType, UserPartialType>({
-      queryFn: async (body, store, extraOptions, baseQuery) => {
-        const result = await baseQuery({
-          url: API_CONST_USERS.USERS,
-          method: 'POST',
-          body,
-        })
-
-        if (result.data) {
-          store.dispatch(updateUserData(result.data as UserType))
+      query: (body) => ({
+        url: `${API_CONST_USERS.USERS}/${body.id}`,
+        method: 'POST',
+        body,
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserInfo(data))
         }
-
-        return result.data
-          ? { data: result.data as UserType }
-          : { error: result.error as FetchBaseQueryError }
+      },
+    }),
+    updateUserAvatar: builder.mutation<UserType, UserUpdateAvatar>({
+      query: (body) => ({
+        url: `${API_CONST_USERS.USERS}/${body.id}`,
+        method: 'POST',
+        body: body.body,
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserInfo(data))
+        }
       },
     }),
     registration: builder.mutation<UserResponseType, UserRegistrationRequestType>({
-      queryFn: async (body, store, extraOptions, baseQuery) => {
-        const result = await baseQuery({
-          url: API_CONST_USERS.REGISTRATION,
-          method: 'POST',
-          body,
-        })
-
-        if (result.data) {
-          store.dispatch(setUserData(result.data as UserResponseType))
+      query: (body) => ({
+        url: API_CONST_USERS.REGISTRATION,
+        method: 'POST',
+        body,
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserData(data))
         }
-
-        return result.data
-          ? { data: result.data as UserResponseType }
-          : { error: result.error as FetchBaseQueryError }
       },
     }),
 
     login: builder.mutation<UserResponseType, UserLoginRequestType>({
-      queryFn: async (body, store, extraOptions, baseQuery) => {
-        const result = await baseQuery({
-          url: API_CONST_USERS.LOGIN,
-          method: 'POST',
-          body,
-        })
-
-        if (result.data) {
-          store.dispatch(setUserData(result.data as UserResponseType))
+      query: (body) => ({
+        url: API_CONST_USERS.LOGIN,
+        method: 'POST',
+        body,
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserData(data))
         }
-
-        return result.data
-          ? { data: result.data as UserResponseType }
-          : { error: result.error as FetchBaseQueryError }
       },
     }),
     logout: builder.mutation<UserLogoutResponseType, void>({
-      queryFn: async (body, store, extraOptions, baseQuery) => {
-        const result = await baseQuery({
-          url: API_CONST_USERS.LOGOUT,
-          method: 'POST',
-          body,
-        })
-
-        if (result.data) {
-          store.dispatch(setUserLogout())
+      query: () => ({
+        url: API_CONST_USERS.LOGOUT,
+        method: 'POST',
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserLogout())
         }
-
-        return result.data
-          ? { data: result.data as UserLogoutResponseType }
-          : { error: result.error as FetchBaseQueryError }
       },
     }),
-    refresh: builder.mutation<UserResponseType, void>({
-      queryFn: async (body, store, extraOptions, baseQuery) => {
-        const result = await baseQuery({
-          url: API_CONST_USERS.REFRESH,
-        })
-
-        if (result.data) {
-          store.dispatch(setUserData(result.data as UserResponseType))
+    refresh: builder.query<UserResponseType, void>({
+      query: () => ({
+        url: API_CONST_USERS.REFRESH,
+      }),
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(setUserData(data))
         }
-
-        return result.data
-          ? { data: result.data as UserResponseType }
-          : { error: result.error as FetchBaseQueryError }
       },
     }),
   }),
 })
 
-export const { useGetAllUsersQuery } = usersApi
+export const {
+  useGetAllUsersQuery,
+  useUpdateUserMutation,
+  useUpdateUserAvatarMutation,
+  useLogoutMutation,
+  useLoginMutation,
+  useRefreshQuery,
+} = usersApi

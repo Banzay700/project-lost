@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { setUserData, setUserLogout, updateUserData } from 'store/reducers'
-import { UserResponseType, UserType } from 'types/UserType'
+import { UserResponseType, UserType } from 'types'
 
 export const useUserReducer = () => {
   const dispatch = useAppDispatch()

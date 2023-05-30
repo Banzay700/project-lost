@@ -49,9 +49,9 @@ const theme = createTheme(
         lineHeight: '14px',
       },
       dashNumb: {
-        fontSize: '40px',
+        fontSize: '28px',
         fontWeight: 600,
-        lineHeight: '48px',
+        lineHeight: '32px',
       },
       button: {
         textTransform: 'initial',
