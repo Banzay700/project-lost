@@ -1,5 +1,6 @@
 import { OrderActiveType, OrderRequestType, OrderResponseType } from 'types'
-import { addOrderToActive } from '../reducers'
+import { convertOrderData } from 'utils'
+import { openOrder } from '../reducers'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
@@ -13,9 +14,10 @@ export const orderApi = api.injectEndpoints({
       query: (id) => ({ url: `/orders/${id}` }),
       onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
+        const { orderActive } = convertOrderData(data)
 
-        if (data) {
-          dispatch(addOrderToActive(data))
+        if (orderActive) {
+          dispatch(openOrder(orderActive))
         }
       },
     }),

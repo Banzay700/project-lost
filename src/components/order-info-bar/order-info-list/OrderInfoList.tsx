@@ -3,27 +3,25 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummary } from 'components'
 import { Button, DetailsListTitle } from 'UI'
-import { useSmoothScrollbar } from 'hooks'
+import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
-import { OrderDishActiveType } from 'types'
 
 interface OrderListProps {
-  orderItems: OrderDishActiveType[]
   isPicker?: boolean
-  orderId: number
   onClick?: () => void
 }
 
-const OrderInfoList: FC<OrderListProps> = ({ orderItems, isPicker, orderId, onClick }) => {
+const OrderInfoList: FC<OrderListProps> = ({ isPicker, onClick }) => {
+  const { activeOrder } = useOrderReducer()
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-  const total = orderItems.reduce((acc, item) => acc + item.dishTotalPrice, 0)
+  const total = activeOrder.dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
 
   return (
     <Stack sx={{ height: '100%' }}>
-      <DetailsListTitle title="Order details" orderNumber={orderId} />
+      <DetailsListTitle title="Order details" orderNumber={activeOrder.orderNumber} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
-          {orderItems.map(({ dishID, title, picture, dishTotalPrice }) => (
+          {activeOrder.dishes.map(({ dishID, title, picture, dishTotalPrice, amount }) => (
             <OrderDetailsItem
               key={dishID}
               id={dishID}

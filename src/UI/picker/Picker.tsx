@@ -6,10 +6,11 @@ import s from './Picker.module.scss'
 
 interface PickerProps {
   onChange: (value: number) => void
+  initialValue?: number
 }
 
-const Picker: FC<PickerProps> = ({ onChange }) => {
-  const [valuePicker, setValuePicker] = useState<number>(1)
+const Picker: FC<PickerProps> = ({ onChange, initialValue = 1 }) => {
+  const [valuePicker, setValuePicker] = useState<number>(initialValue)
   const isDisabled = valuePicker === 1 && true
 
   const handleIncrementValue = () => {

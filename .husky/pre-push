@@ -38,6 +38,6 @@ npm run lint ||
 # If it OK you can pull
 echo " "
 echo "------------------------------------------------------------------------------------------------"
-printf "    🚀🚀 ${BWhite}It looks good! You're a fucking ${BCyan}ROCKET!!!${NC} 🚀🚀\n";
+printf "    🚀🚀 ${BWhite}It looks good! You're a fucking ${BCyan}ROCKET!!!${NC} 🚀🚀 \n";
 echo "------------------------------------------------------------------------------------------------"
 echo " "

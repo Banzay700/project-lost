@@ -3,6 +3,7 @@ export { api } from './api'
 export {
   useCreateOrderMutation,
   useGetOrderQuery,
+  useUpdateOrderMutation,
   useLazyGetOrderQuery,
   useGetAllOrdersQuery,
 } from './order.api'

@@ -20,7 +20,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [hidden, setHidden] = useState(false)
-  const { newOrder, activeOrder } = useOrderReducer()
+  const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
 
   const handleValue = (value: string) => {
@@ -34,12 +34,10 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   useEffect(() => {
-    if (newOrder.orderType) {
-      setFormValues({ orderType: newOrder.orderType, table: newOrder.table })
-    } else if (activeOrder.active) {
+    if (activeOrder.status === 'open') {
       setFormValues({ orderType: activeOrder.orderType, table: activeOrder.table })
     }
-  }, [newOrder, activeOrder])
+  }, [activeOrder])
 
   const formikConfig = {
     onSubmit,

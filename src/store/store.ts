@@ -6,8 +6,8 @@ import { api } from './api'
 const rootReducer = combineReducers({
   orders: ordersReducer,
   bills: billReducer,
-  [api.reducerPath]: api.reducer,
   user: userReducer,
+  [api.reducerPath]: api.reducer,
 })
 
 export const store = configureStore({

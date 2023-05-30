@@ -1,7 +1,8 @@
-import { CommonOrderBillsType } from 'types/OrderBillsType/CommonOrderBillsType'
-import { OrderDishActiveType } from 'types/OrderBillsType/OrderDishActiveType'
+import { CommonOrderBillsType } from './CommonOrderBillsType'
+import { OrderDishActiveType } from './OrderDishActiveType'
+import { OrderStatusType } from './OrderStatusType'
 
 export type OrderActiveType = CommonOrderBillsType & {
-  active: boolean
+  status: OrderStatusType
   dishes: OrderDishActiveType[]
 }

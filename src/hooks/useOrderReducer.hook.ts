@@ -1,39 +1,36 @@
 import { useAppDispatch, useAppSelector } from 'hooks'
 import {
-  openNewOrder,
-  addDishToOrder,
-  addOrderToActive,
+  updateDishAmount,
+  openOrder,
   changeOrderStatus,
   deleteNewOrder,
+  addDishToOrder,
 } from 'store/reducers'
-import { OrderActiveType, OrderDishResponseType, OrderResponseType } from 'types'
+import { OrderActiveType, OrderDishResponseType, OrderStatusType } from 'types'
 
 export const useOrderReducer = () => {
   const dispatch = useAppDispatch()
 
-  const newOrder = useAppSelector((state) => state.orders.newOrder)
-  const { dishes } = useAppSelector((state) => state.orders.newOrder)
   const activeOrder = useAppSelector((state) => state.orders.activeOrder)
 
   const addDish = (dish: OrderDishResponseType) => dispatch(addDishToOrder(dish))
-  const createNewOrder = (order: OrderResponseType) => dispatch(openNewOrder(order))
-  const addActiveOrder = (order: OrderActiveType) => dispatch(addOrderToActive(order))
-  const changeActiveOrderStatus = () => dispatch(changeOrderStatus())
+  const openNewOrder = (order: OrderActiveType) => dispatch(openOrder(order))
+  const switchOrderStatus = (status: OrderStatusType) => dispatch(changeOrderStatus(status))
   const clearNewOrderState = () => dispatch(deleteNewOrder())
-
+  const changeDishAmount = (data: { id: string; amount: number }) =>
+    dispatch(updateDishAmount(data))
   const { orderType, table } = activeOrder
-  console.log(activeOrder)
+
   const orderFormExistingValues = { orderType, table }
 
   return {
-    newOrder,
-    dishes,
     activeOrder,
+    dishes: activeOrder.dishes,
     orderFormExistingValues,
-    createNewOrder,
     addDish,
-    addActiveOrder,
-    changeActiveOrderStatus,
+    openNewOrder,
+    switchOrderStatus,
+    changeDishAmount,
     clearNewOrderState,
   }
 }
