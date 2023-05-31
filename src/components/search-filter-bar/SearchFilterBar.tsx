@@ -12,21 +12,17 @@ interface SearchFilterBarProps {
   subcategories: FilterMenuItemType[]
   defaultValueInput?: string
   defaultValueFilter?: string[]
-  onChange: (props: OnChangeProps) => void
+  changeCategory: (filterValue: string[]) => void
+  changeTitle: (titleValue: string) => void
 }
 
 const SearchFilterBar: FC<SearchFilterBarProps> = ({
   subcategories,
-  onChange,
+  changeCategory,
+  changeTitle,
   defaultValueInput,
   defaultValueFilter,
 }) => {
-  const handleChangeInput = (value: string) => {
-    onChange({ titleValue: value })
-  }
-  const handleChangeFilter = (value: string[]) => {
-    onChange({ filterValue: value })
-  }
   return (
     <Stack
       sx={{
@@ -38,7 +34,7 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({
         gap: '24px',
       }}>
       <Box minWidth="30%">
-        <SearchInput onChange={handleChangeInput} defaultValue={defaultValueInput} />
+        <SearchInput onChange={changeTitle} defaultValue={defaultValueInput} />
       </Box>
       <Stack direction="row" sx={{ gap: '24px' }}>
         <Divider
@@ -50,7 +46,7 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({
         />
         <FilterMenu
           filterMenuItems={subcategories}
-          onChange={handleChangeFilter}
+          onChange={changeCategory}
           defaultValue={defaultValueFilter}
         />
       </Stack>

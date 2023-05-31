@@ -3,15 +3,13 @@ import { Table } from 'components/table'
 import { DataTableCellFuncType, TableDataItem, BillsResponseType } from 'types'
 import { IndicatorFilterBar } from 'components/indicator-filter-bar'
 import { useGetAllBillsQuery } from 'store/api'
+import { useSearchParamsType } from 'hooks'
 import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
-  const handleChangeFilter = (value: string[]) => {
-    // eslint-disable-next-line no-console
-    console.log(value)
-  }
+  const { type, handleChangeFilter } = useSearchParamsType()
+  const { data: dataBills } = useGetAllBillsQuery({ type })
 
-  const { data: dataBills } = useGetAllBillsQuery('')
   return (
     <>
       <IndicatorFilterBar
@@ -20,7 +18,7 @@ const TableBills: FC = () => {
           { value: 'dineIn', label: 'Dine in' },
           { value: 'takeAway', label: 'Take away' },
         ]}
-        indicatorName={['delivery', 'takeAway', 'dineIn']}
+        indicatorName={['delivery', 'dineIn', 'takeAway']}
         onChange={handleChangeFilter}
       />
       <Table

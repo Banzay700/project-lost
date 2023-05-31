@@ -5,14 +5,16 @@ import { FilterMenu } from 'UI/filter-menu'
 import { FilterMenuItemType } from 'types/ComponentsItemType/FilterMenuItemType'
 
 interface OrderFilterBarProps {
-  indicatorName: ['takeAway', 'dineIn'] | ['delivery', 'takeAway', 'dineIn']
+  indicatorName: ['dineIn', 'takeAway'] | ['delivery', 'dineIn', 'takeAway']
   filterMenuItems: FilterMenuItemType[]
+  defaultValue?: string[]
   onChange: (value: string[]) => void
 }
 
 const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
   indicatorName,
   filterMenuItems,
+  defaultValue,
   onChange,
 }) => {
   return (
@@ -31,7 +33,11 @@ const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
         ))}
       </Stack>
       <Stack>
-        <FilterMenu filterMenuItems={filterMenuItems} onChange={onChange} />
+        <FilterMenu
+          filterMenuItems={filterMenuItems}
+          onChange={onChange}
+          defaultValue={defaultValue}
+        />
       </Stack>
     </Stack>
   )

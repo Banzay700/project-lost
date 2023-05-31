@@ -22,6 +22,7 @@ export type {
   BillsResponseType,
   CommonOrderBillsType,
   BillsDishResponseType,
+  OrderBillsQueryRequest,
 } from './OrderBillsType'
 
 export type {
