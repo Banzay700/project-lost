@@ -5,6 +5,7 @@ export {
   deleteNewOrder,
   addDishToOrder,
   updateDishAmount,
+  removeDishOrder,
 } from './order.slice'
 export { default as billReducer, addBill } from './bill.slice'
 export {

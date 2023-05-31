@@ -8,5 +8,7 @@ export type { OrderResponseType } from './OrderResponseType'
 export type { OrderActiveType } from './OrderActiveType'
 export type { OrderStatusType } from './OrderStatusType'
 
+export type { OrderBillsQueryRequest } from './OrderBillsQueryRequest'
+
 export type { BillsResponseType } from './BillsResponseType'
 export type { BillsDishResponseType } from './BillsDishResponseType'

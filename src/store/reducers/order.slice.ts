@@ -50,10 +50,21 @@ const ordersSlice = createSlice({
         dishes.push(payload)
       }
     },
+    removeDishOrder: (state, action: PayloadAction<string>) => {
+      const { payload } = action
+      const { dishes } = state.activeOrder
+      state.activeOrder.dishes = dishes.filter((dishEl) => dishEl.dishID !== payload)
+    },
   },
 })
 
-export const { updateDishAmount, addDishToOrder, openOrder, changeOrderStatus, deleteNewOrder } =
-  ordersSlice.actions
+export const {
+  updateDishAmount,
+  addDishToOrder,
+  removeDishOrder,
+  openOrder,
+  changeOrderStatus,
+  deleteNewOrder,
+} = ordersSlice.actions
 
 export default ordersSlice.reducer

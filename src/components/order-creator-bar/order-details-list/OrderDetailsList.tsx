@@ -31,6 +31,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
               src={picture}
               amount={amount}
               isPicker={isPicker}
+              deleteIcon
             />
           ))}
         </Box>
