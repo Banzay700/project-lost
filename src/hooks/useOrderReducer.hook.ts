@@ -5,6 +5,7 @@ import {
   changeOrderStatus,
   deleteNewOrder,
   addDishToOrder,
+  removeDishOrder,
 } from 'store/reducers'
 import { OrderActiveType, OrderDishResponseType, OrderStatusType } from 'types'
 
@@ -14,6 +15,7 @@ export const useOrderReducer = () => {
   const activeOrder = useAppSelector((state) => state.orders.activeOrder)
 
   const addDish = (dish: OrderDishResponseType) => dispatch(addDishToOrder(dish))
+  const removeDish = (dishID: string) => dispatch(removeDishOrder(dishID))
   const openNewOrder = (order: OrderActiveType) => dispatch(openOrder(order))
   const switchOrderStatus = (status: OrderStatusType) => dispatch(changeOrderStatus(status))
   const clearNewOrderState = () => dispatch(deleteNewOrder())
@@ -28,6 +30,7 @@ export const useOrderReducer = () => {
     dishes: activeOrder.dishes,
     orderFormExistingValues,
     addDish,
+    removeDish,
     openNewOrder,
     switchOrderStatus,
     changeDishAmount,
