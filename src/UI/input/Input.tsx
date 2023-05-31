@@ -4,9 +4,9 @@ import { useField } from 'formik'
 import cn from 'classnames'
 
 import { InputVariantItemType } from 'types'
+import { FadeIn } from 'utils/index'
 import { IconWrapper } from './icon-wrapper'
 import s from './Input.module.scss'
-import { FadeIn } from 'utils/index'
 
 type InputProps = InputVariantItemType & {
   placeholder: string

@@ -6,11 +6,11 @@ import { Button, SelectInput, TableInfoBox } from 'UI'
 import { OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
+import { FadeIn } from 'utils/index'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 import s from './OrderCreatorForm.module.scss'
-import { FadeIn } from 'utils/index'
 
 interface OrderCreatorFormProps {
   onSubmit: (values: OrderCreatorFormReturnType) => void

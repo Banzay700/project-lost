@@ -4,11 +4,11 @@ import cn from 'classnames'
 
 import { Picker } from 'UI'
 import { useOrderReducer } from 'hooks'
+import { FadeIn } from 'utils/index'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
 import s from './OrderDetailsItem.module.scss'
-import { FadeIn } from 'utils/index'
 
 interface OrderItemProps {
   id: string

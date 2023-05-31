@@ -3,11 +3,11 @@ import { Stack } from '@mui/material'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { PaymentFormReturnType } from 'types'
+import { FadeIn } from 'utils'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
-import { FadeIn } from 'utils'
 
 interface OrderPaymentBarProps {
   orderNumber: number

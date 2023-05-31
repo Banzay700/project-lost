@@ -3,8 +3,8 @@ import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 
 import { TableFreeResponseType } from 'types'
-import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 import { FadeIn } from 'utils/index'
+import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
 
 interface SelectInputProps {
   name: string
