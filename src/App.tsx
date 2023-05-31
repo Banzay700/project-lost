@@ -5,7 +5,6 @@ import { AppRoutes } from 'routes'
 const App = () => {
   return (
     <Stack height="100vh">
-      {/* <Login /> */}
       <AppRoutes />
     </Stack>
   )

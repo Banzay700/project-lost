@@ -1,12 +1,22 @@
-import { OrderActiveType, OrderRequestType, OrderResponseType } from 'types'
+import { OrderActiveType, OrderRequestType, OrderResponseType, OrderBillsQueryRequest } from 'types'
 import { convertOrderData } from 'utils'
 import { openOrder } from '../reducers'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllOrders: builder.query<OrderResponseType[], string>({
-      query: () => ({ url: '/orders' }),
+    getAllOrders: builder.query<OrderResponseType[], OrderBillsQueryRequest>({
+      query: (body) => {
+        const params: OrderBillsQueryRequest = {}
+
+        if (body.type) {
+          params.type = body.type
+        }
+        return {
+          url: '/orders',
+          params,
+        }
+      },
       providesTags: ['Order'],
     }),
 
