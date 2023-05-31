@@ -1,10 +1,10 @@
 export {
   default as ordersReducer,
-  openNewOrder,
-  addDishToOrder,
-  addOrderToActive,
+  openOrder,
   changeOrderStatus,
   deleteNewOrder,
+  addDishToOrder,
+  updateDishAmount,
 } from './order.slice'
 export { default as billReducer, addBill } from './bill.slice'
 export {

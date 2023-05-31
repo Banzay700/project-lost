@@ -14,18 +14,15 @@ interface OrderItemProps {
   title: string
   src: string
   total: number
+  amount?: number
   isPicker?: boolean
 }
 
-const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total }) => {
-  const { dishes, addDish } = useOrderReducer()
+const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total, amount }) => {
+  const { changeDishAmount } = useOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
-    const dish = dishes.find((item) => item.dishID === id)
-
-    if (dish) {
-      addDish({ ...dish, amount: value })
-    }
+    changeDishAmount({ id, amount: value })
   }
 
   return (
@@ -35,7 +32,7 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total 
         <div className={s.description}>
           <OrderDetailsItemTitle title={title} />
           <OrderDetailsItemPriceInfo totalPriceItem={total}>
-            {isPicker && <Picker onChange={handleChangeOrderInfo} />}
+            {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
           </OrderDetailsItemPriceInfo>
         </div>
       </Card>

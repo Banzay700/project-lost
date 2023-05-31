@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Table } from 'components/table'
 import { DataTableCellFuncType, TableDataItem, BillsResponseType } from 'types'
-import { IndicatorFilterBar } from 'components/indicator-filter-bar'
+import { IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery } from 'store/api'
 import { useSearchParamsType } from 'hooks'
 import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
