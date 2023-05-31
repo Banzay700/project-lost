@@ -11,10 +11,10 @@ const OrderInfoBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('dishes')
   const [buttonDisabled] = useState(false)
   const navigate = useNavigate()
-  const { activeOrder, changeActiveOrderStatus } = useOrderReducer()
+  const { switchOrderStatus } = useOrderReducer()
 
   const handleUpdateOrder = () => {
-    changeActiveOrderStatus()
+    switchOrderStatus('update')
     navigate(ROUTES.DISHES)
   }
 
@@ -30,13 +30,7 @@ const OrderInfoBar: FC = () => {
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />
-      {toggleValue === 'dishes' && (
-        <OrderInfoList
-          orderItems={activeOrder.dishes}
-          orderId={activeOrder.orderNumber}
-          onClick={handleUpdateOrder}
-        />
-      )}
+      {toggleValue === 'dishes' && <OrderInfoList onClick={handleUpdateOrder} />}
     </Stack>
   )
 }

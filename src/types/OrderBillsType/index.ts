@@ -6,6 +6,7 @@ export type { OrderDishActiveType } from './OrderDishActiveType'
 export type { OrderRequestType } from './OrderRequestType'
 export type { OrderResponseType } from './OrderResponseType'
 export type { OrderActiveType } from './OrderActiveType'
+export type { OrderStatusType } from './OrderStatusType'
 
 export type { BillsResponseType } from './BillsResponseType'
 export type { BillsDishResponseType } from './BillsDishResponseType'

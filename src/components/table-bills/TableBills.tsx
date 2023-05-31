@@ -7,7 +7,6 @@ import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
   const handleChangeFilter = (value: string[]) => {
-    // eslint-disable-next-line no-console
     console.log(value)
   }
 
