@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
-import { IndicatorFilterBar } from 'components/indicator-filter-bar'
-import { useCreateBillMutation, useGetAllOrdersQuery } from 'store/api'
+import { Table, IndicatorFilterBar } from 'components'
 import { OrderResponseType, DataTableCellFuncType, TableDataItem } from 'types'
+import { useCreateBillMutation, useGetAllOrdersQuery } from 'store/api'
 import { tableTitleOrder, dataTableCellOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {

@@ -7,6 +7,7 @@ import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
+import { FadeIn } from 'utils'
 
 interface OrderPaymentBarProps {
   orderNumber: number
@@ -29,7 +30,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount })
   }
 
   return (
-    <>
+    <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <ToggleMenu
         menuItems={toggleMenuValues}
         onChange={handleToggleMenuChange}
@@ -45,7 +46,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount })
           />
         </OrderPaymentForm>
       </Stack>
-    </>
+    </FadeIn>
   )
 }
 

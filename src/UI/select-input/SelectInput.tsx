@@ -4,6 +4,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@m
 
 import { TableFreeResponseType } from 'types'
 import { menuItemsStyle, selectStyle, inputLabelStyle, formControlStyle } from './SelectInput.utils'
+import { FadeIn } from 'utils/index'
 
 interface SelectInputProps {
   name: string
@@ -34,16 +35,18 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, hid
   }, [orderType, name, setFieldValue])
 
   return hidden ? (
-    <FormControl sx={formControlStyle} fullWidth>
-      <InputLabel sx={inputLabelStyle}>Select table</InputLabel>
-      <Select {...field} label={label} sx={selectStyle} onChange={handleChange}>
-        {data?.map(({ id, number }) => (
-          <MenuItem key={id} value={number} sx={menuItemsStyle}>
-            {number}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <FadeIn delay={50}>
+      <FormControl sx={formControlStyle} fullWidth>
+        <InputLabel sx={inputLabelStyle}>Select table</InputLabel>
+        <Select {...field} label={label} sx={selectStyle} onChange={handleChange}>
+          {data?.map(({ id, number }) => (
+            <MenuItem key={id} value={number} sx={menuItemsStyle}>
+              {number}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </FadeIn>
   ) : null
 }
 

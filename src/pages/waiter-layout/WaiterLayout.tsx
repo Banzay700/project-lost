@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+
 import { Header, SidebarContentWrapper } from 'components'
 import { useRootLocationPath } from 'hooks'
 

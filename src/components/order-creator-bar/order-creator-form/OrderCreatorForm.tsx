@@ -10,6 +10,7 @@ import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 import s from './OrderCreatorForm.module.scss'
+import { FadeIn } from 'utils/index'
 
 interface OrderCreatorFormProps {
   onSubmit: (values: OrderCreatorFormReturnType) => void
@@ -47,7 +48,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   return (
-    <div className={s.newOrderForm}>
+    <FadeIn className={s.newOrderForm}>
       <Formik {...formikConfig}>
         <Form>
           <Stack spacing={6}>
@@ -72,7 +73,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
           </Stack>
         </Form>
       </Formik>
-    </div>
+    </FadeIn>
   )
 }
 

@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
+import { Table, IndicatorFilterBar } from 'components'
 import { DataTableCellFuncType, TableDataItem, BillsResponseType } from 'types'
-import { IndicatorFilterBar } from 'components/indicator-filter-bar'
+import { FadeIn } from 'utils'
 import { useGetAllBillsQuery } from 'store/api'
 import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
 

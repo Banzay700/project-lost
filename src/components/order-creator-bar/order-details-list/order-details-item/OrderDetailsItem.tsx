@@ -8,6 +8,7 @@ import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
 import s from './OrderDetailsItem.module.scss'
+import { FadeIn } from 'utils/index'
 
 interface OrderItemProps {
   id: string
@@ -26,17 +27,19 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total,
   }
 
   return (
-    <ListItem className={s.wrapper}>
-      <Card className={cn(s.card)}>
-        <OrderDetailsItemMedia src={src} alt={title} />
-        <div className={s.description}>
-          <OrderDetailsItemTitle title={title} />
-          <OrderDetailsItemPriceInfo totalPriceItem={total}>
-            {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
-          </OrderDetailsItemPriceInfo>
-        </div>
-      </Card>
-    </ListItem>
+    <FadeIn delay={50}>
+      <ListItem className={s.wrapper}>
+        <Card className={cn(s.card)}>
+          <OrderDetailsItemMedia src={src} alt={title} />
+          <div className={s.description}>
+            <OrderDetailsItemTitle title={title} />
+            <OrderDetailsItemPriceInfo totalPriceItem={total}>
+              {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
+            </OrderDetailsItemPriceInfo>
+          </div>
+        </Card>
+      </ListItem>
+    </FadeIn>
   )
 }
 

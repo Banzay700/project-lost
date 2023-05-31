@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Button } from 'UI'
 import { IconPlus } from 'assets'
 import { useOrderReducer } from 'hooks'
+import { FadeIn } from 'utils'
 
 interface DishCardPricingProps {
   price: number
@@ -30,14 +31,16 @@ const DishCardPricing: FC<DishCardPricingProps> = ({ price, onClickButton }) => 
         </Typography>
       </Stack>
       {isButton && (
-        <Button
-          variant="contained"
-          size="small"
-          color="secondary"
-          disableRipple={false}
-          icon={<IconPlus />}
-          onClick={onClickButton}
-        />
+        <FadeIn>
+          <Button
+            variant="contained"
+            size="small"
+            color="secondary"
+            disableRipple={false}
+            icon={<IconPlus />}
+            onClick={onClickButton}
+          />
+        </FadeIn>
       )}
     </CardContent>
   )

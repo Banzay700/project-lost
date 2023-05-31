@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { InputVariantItemType } from 'types'
 import { IconWrapper } from './icon-wrapper'
 import s from './Input.module.scss'
+import { FadeIn } from 'utils/index'
 
 type InputProps = InputVariantItemType & {
   placeholder: string
@@ -42,7 +43,11 @@ const Input: FC<InputProps> = (props) => {
     textFieldConfig.helperText = meta.error
   }
 
-  return <TextField {...textFieldConfig} />
+  return (
+    <FadeIn delay={50}>
+      <TextField {...textFieldConfig} />
+    </FadeIn>
+  )
 }
 
 export default Input
