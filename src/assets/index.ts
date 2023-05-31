@@ -23,5 +23,6 @@ export {
   IconIndicator,
   IconDelete,
   IconLogout,
+  IconCross,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

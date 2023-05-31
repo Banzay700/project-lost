@@ -1,27 +1,10 @@
-.wrapper {
-    width: 100%;
-    padding: 0;
-
-    &:hover {
-        transition: 1s;
-        background: rgba(248, 249, 253, 1)
-    }
-}
-
 .card {
-    width: 100%;
-    box-shadow: none;
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-    border-radius: 0;
-    background: inherit;
-    border-bottom: 1px solid #E4E4E4;
-}
-
-.description {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%;
+  box-shadow: none;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 0;
+  background: inherit;
+  border-bottom: 1px solid #e4e4e4;
 }
