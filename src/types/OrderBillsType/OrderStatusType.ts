@@ -1,1 +1,1 @@
-export type OrderStatusType = 'open' | 'update' | 'closed'
+export type OrderStatusType = 'none' | 'open' | 'update' | 'closed'

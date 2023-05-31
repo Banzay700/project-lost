@@ -2,6 +2,7 @@ import { CardContent, Typography, Stack } from '@mui/material'
 import { FC } from 'react'
 import { Button } from 'UI'
 import { IconPlus } from 'assets'
+import { useOrderReducer } from 'hooks'
 
 interface DishCardPricingProps {
   price: number
@@ -9,6 +10,8 @@ interface DishCardPricingProps {
 }
 
 const DishCardPricing: FC<DishCardPricingProps> = ({ price, onClickButton }) => {
+  const { activeOrder } = useOrderReducer()
+  const isButton = activeOrder.status === 'open' || activeOrder.status === 'update'
   return (
     <CardContent
       sx={{
@@ -26,13 +29,16 @@ const DishCardPricing: FC<DishCardPricingProps> = ({ price, onClickButton }) => 
           $ {price}
         </Typography>
       </Stack>
-      <Button
-        variant="contained"
-        size="small"
-        color="secondary"
-        icon={<IconPlus />}
-        onClick={onClickButton}
-      />
+      {isButton && (
+        <Button
+          variant="contained"
+          size="small"
+          color="secondary"
+          disableRipple={false}
+          icon={<IconPlus />}
+          onClick={onClickButton}
+        />
+      )}
     </CardContent>
   )
 }

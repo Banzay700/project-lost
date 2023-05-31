@@ -14,6 +14,7 @@ interface ButtonProps extends PropsWithChildren {
   type?: 'submit' | 'reset' | 'button'
   variantText?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
   fontWeight?: 400 | 500 | 600 | 700
+  disableRipple?: boolean
   disabled?: boolean
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   fullWidth?: boolean
@@ -31,12 +32,20 @@ const Button: FC<ButtonProps> = ({
   variantText,
   fontWeight,
   fullWidth = false,
+  disableRipple,
   disabled,
   className,
   children,
   onClick,
 }) => {
   const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
+  const buttonStyles = cn(
+    className,
+    s.wrapper,
+    { [s.boxFocus]: color !== 'secondary' },
+    { [s.sizeSmall]: size === 'small' },
+    { [s.sizeDefault]: size === 'default' },
+  )
 
   return (
     <ButtonMUI
@@ -45,20 +54,9 @@ const Button: FC<ButtonProps> = ({
       startIcon={startIcon}
       endIcon={endIcon}
       type={type || 'submit'}
-      className={cn(
-        className,
-        s.wrapper,
-        {
-          [s.boxFocus]: color !== 'secondary',
-        },
-        {
-          [s.sizeSmall]: size === 'small',
-        },
-        {
-          [s.sizeDefault]: size === 'default',
-        },
-      )}
+      className={buttonStyles}
       fullWidth={fullWidth}
+      disableRipple={disableRipple}
       disabled={disabled}
       onClick={onClick}>
       <Stack justifyContent="center" spacing="9px" alignItems="center">
