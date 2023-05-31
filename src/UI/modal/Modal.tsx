@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren, ReactNode } from 'react'
 import { Box, Dialog, DialogActions, DialogContent, DialogTitle, Stack } from '@mui/material'
-import s from './Modal.module.scss'
 import { IconCross } from 'assets'
 import { Button } from 'UI/button'
+import s from './Modal.module.scss'
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean
