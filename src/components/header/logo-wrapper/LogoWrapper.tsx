@@ -3,17 +3,28 @@ import { Stack } from '@mui/material'
 
 import { IconArrowLeft } from 'assets'
 import { Button, Logo } from 'UI'
-import s from './LogoWrapper.module.scss'
+import { UserType } from 'types/UserType'
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from 'routes/routes.utils'
 
-const LogoWrapper: FC = () => {
+const LogoWrapper: FC<UserType> = ({ role }) => {
+  const navigate = useNavigate()
+
+  const handleGoToAdminPanel = () => {
+    navigate(ROUTES.ADMIN_PANEL)
+  }
+
   return (
     <Stack alignItems="center" direction="row" spacing={4.8}>
-      <Button
-        variant="outlined"
-        size="default"
-        icon={<IconArrowLeft className={s.arrow} color="secondary" />}
-        color="secondary"
-      />
+      {role === 'ADMIN' && (
+        <Button
+          variant="outlined"
+          size="default"
+          icon={<IconArrowLeft color="secondary" />}
+          color="secondary"
+          onClick={handleGoToAdminPanel}
+        />
+      )}
       <Logo view="both" link="/" />
     </Stack>
   )

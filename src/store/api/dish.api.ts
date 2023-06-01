@@ -17,6 +17,12 @@ interface ParamsProps {
 
 export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
+    getSvg: builder.query<{ svg: string } | undefined, string | undefined>({
+      query: (icon) => ({
+        url: `${API_CONST_DISHES.STATIC}${icon}`,
+      }),
+    }),
+
     getDishesByCategoryAndFilter: builder.query<DishType[], DishesRequest>({
       query: ({ category, search, subcategory }) => {
         const params: ParamsProps = {
@@ -57,4 +63,6 @@ export const {
   useGetDishesByCategoryAndFilterQuery,
   useGetCategoriesQuery,
   useGetSubCategoriesInCategoryQuery,
+  useLazyGetSvgQuery,
+  useGetSvgQuery,
 } = dishApi

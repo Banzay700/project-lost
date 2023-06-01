@@ -10,9 +10,10 @@ import { Navigate } from 'react-router-dom'
 interface ProfileSidebarProps {
   user: UserType
   submitChangeAvatar: (value: UserAvatar) => void
+  isLogoutButton?: boolean
 }
 
-const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar }) => {
+const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar, isLogoutButton }) => {
   const [logout, { isSuccess }] = useLogoutMutation()
   const { firstName, secondName, userImage } = user
 
@@ -40,9 +41,11 @@ const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar }) =
         userImage={userImage}
         onSubmit={submitChangeAvatar}
       />
-      <Button variant="contained" size="small" startIcon={<IconLogout />} onClick={handleLogout}>
-        Logout
-      </Button>
+      {isLogoutButton && (
+        <Button variant="contained" size="small" startIcon={<IconLogout />} onClick={handleLogout}>
+          Logout
+        </Button>
+      )}
     </Stack>
   )
 }

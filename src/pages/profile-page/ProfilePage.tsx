@@ -7,7 +7,11 @@ import { useUpdateUserAvatarMutation } from 'store/api/users.api'
 import { ProfileSidebar } from './profile-sidebar'
 import { ProfileContent } from './profile-content'
 
-const ProfilePage: FC = () => {
+interface ProfilePageProps {
+  isLogoutButton?: boolean
+}
+
+const ProfilePage: FC<ProfilePageProps> = ({ isLogoutButton }) => {
   const { userState } = useUserReducer()
   const [update] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
@@ -29,7 +33,11 @@ const ProfilePage: FC = () => {
 
   return (
     <Stack direction="row" sx={{ width: '100%', height: '100%' }}>
-      <ProfileSidebar user={userState} submitChangeAvatar={handleSubmitChangeAvatar} />
+      <ProfileSidebar
+        user={userState}
+        submitChangeAvatar={handleSubmitChangeAvatar}
+        isLogoutButton={isLogoutButton}
+      />
       <ProfileContent
         user={userState}
         submitChangePassword={handleSubmitChangePassword}

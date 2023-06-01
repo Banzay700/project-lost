@@ -24,5 +24,15 @@ export {
   IconDelete,
   IconLogout,
   IconCross,
+  IconStatistics,
+  IconDishes,
+  IconUsers,
+  IconSetting,
+  IconSales,
+  IconMarketing,
+  IconBusinessSummary,
+  IconSavedReports,
+  IconFeedbacks,
+  IconRegistrationUser,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

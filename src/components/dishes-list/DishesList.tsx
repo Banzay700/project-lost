@@ -11,7 +11,6 @@ interface DishesListProps {
 
 const DishesList: FC<DishesListProps> = ({ dishes }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-
   return (
     <div
       style={{
