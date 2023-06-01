@@ -7,9 +7,10 @@ import { useOrderReducer } from 'hooks'
 interface CardItemTitleProps {
   title: string
   dishID: string
+  deleteIcon?: boolean
 }
 
-const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title, dishID }) => {
+const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title, dishID, deleteIcon }) => {
   const { removeDish } = useOrderReducer()
 
   const handleRemoveDishInOrder = () => {
@@ -20,11 +21,13 @@ const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title, dishID }) => {
       <Typography variant="h2" component="h3" color="secondary" fontWeight="600" flexGrow={1}>
         {title}
       </Typography>
-      <IconCross
-        color={theme.palette.primary.main}
-        onClick={handleRemoveDishInOrder}
-        style={{ cursor: 'pointer' }}
-      />
+      {deleteIcon && (
+        <IconCross
+          color={theme.palette.primary.main}
+          onClick={handleRemoveDishInOrder}
+          style={{ cursor: 'pointer' }}
+        />
+      )}
     </CardContent>
   )
 }

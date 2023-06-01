@@ -3,6 +3,7 @@ import { Stack } from '@mui/material'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { PaymentFormReturnType } from 'types'
+import { FadeIn } from 'utils'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'
@@ -29,7 +30,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount })
   }
 
   return (
-    <>
+    <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <ToggleMenu
         menuItems={toggleMenuValues}
         onChange={handleToggleMenuChange}
@@ -45,7 +46,7 @@ const OrderPaymentBar: FC<OrderPaymentBarProps> = ({ orderNumber, totalAmount })
           />
         </OrderPaymentForm>
       </Stack>
-    </>
+    </FadeIn>
   )
 }
 

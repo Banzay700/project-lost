@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { Indicator } from 'UI/indicator'
-import { FilterMenu } from 'UI/filter-menu'
-import { FilterMenuItemType } from 'types/ComponentsItemType/FilterMenuItemType'
+import { Indicator, FilterMenu } from 'UI'
+
+import { FilterMenuItemType } from 'types'
 
 interface OrderFilterBarProps {
   indicatorName: ['dineIn', 'takeAway'] | ['delivery', 'dineIn', 'takeAway']

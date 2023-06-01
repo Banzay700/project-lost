@@ -4,6 +4,7 @@ import { useField } from 'formik'
 import cn from 'classnames'
 
 import { InputVariantItemType } from 'types'
+import { FadeIn } from 'utils/index'
 import { IconWrapper } from './icon-wrapper'
 import s from './Input.module.scss'
 
@@ -42,7 +43,11 @@ const Input: FC<InputProps> = (props) => {
     textFieldConfig.helperText = meta.error
   }
 
-  return <TextField {...textFieldConfig} />
+  return (
+    <FadeIn delay={50}>
+      <TextField {...textFieldConfig} />
+    </FadeIn>
+  )
 }
 
 export default Input

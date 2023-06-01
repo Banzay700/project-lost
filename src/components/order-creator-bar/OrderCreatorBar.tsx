@@ -30,7 +30,7 @@ const OrderCreatorBar: FC = () => {
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderNumber = unique()
-    const orderInfo = { ...emptyOrderState, orderType, table, orderNumber }
+    const orderInfo = { ...emptyOrderState, orderType, table, orderNumber, status: 'open' as const }
 
     openNewOrder(orderInfo)
 
