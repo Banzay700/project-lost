@@ -1,6 +1,7 @@
 export const API_CONST_DISHES = {
   CATEGORIES: 'categories',
   DISHES: 'dishes',
+  STATIC: 'static',
 }
 
 export const API_CONST_USERS = {

@@ -12,7 +12,7 @@ const Header: FC = () => {
 
   return (
     <header className={s.header}>
-      <LogoWrapper />
+      <LogoWrapper {...userState} />
       <Navbar direction="row" data={navData} spacing={6.4} />
       <Watch dataUser={userState} />
     </header>
