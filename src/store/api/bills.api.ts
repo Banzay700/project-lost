@@ -1,4 +1,5 @@
-import { BillsResponseType, OrderBillsQueryRequest } from 'types'
+import { openNewBill } from 'store/reducers'
+import { BillsResponseType, OrderBillsQueryRequest, ModifiedDataType } from 'types'
 import { api } from './api'
 
 export const billsApi = api.injectEndpoints({
@@ -19,16 +20,16 @@ export const billsApi = api.injectEndpoints({
       providesTags: ['Bills'],
     }),
     getOneBill: builder.query<BillsResponseType, string>({
-      query: (id) => ({ url: `/bills:${id}` }),
-      // onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
-      //   const { data } = await queryFulfilled
-      //
-      //   if (data) {
-      //     dispatch(addBill(data))
-      //   }
-      // },
+      query: (id) => ({ url: `/bills/${id}` }),
+      onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+
+        if (data) {
+          dispatch(openNewBill(data))
+        }
+      },
     }),
-    createBill: builder.mutation<BillsResponseType, BillsResponseType>({
+    createBill: builder.mutation<BillsResponseType, ModifiedDataType>({
       query: (body) => ({ url: '/bills', method: 'POST', body }),
       invalidatesTags: ['Bills', 'Order'],
     }),

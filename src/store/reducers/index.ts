@@ -7,7 +7,7 @@ export {
   updateDishAmount,
   removeDishOrder,
 } from './order.slice'
-export { default as billReducer, addBill } from './bill.slice'
+export { default as billReducer, openNewBill } from './bill.slice'
 export {
   default as userReducer,
   setUserLogout,

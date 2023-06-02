@@ -13,12 +13,12 @@ const billSlice = createSlice({
   name: 'billSlice',
   initialState,
   reducers: {
-    addBill: (state, action: PayloadAction<BillsResponseType>) => {
+    openNewBill: (state, action: PayloadAction<BillsResponseType>) => {
       state.newBill = action.payload
     },
   },
 })
 
-export const { addBill } = billSlice.actions
+export const { openNewBill } = billSlice.actions
 
 export default billSlice.reducer

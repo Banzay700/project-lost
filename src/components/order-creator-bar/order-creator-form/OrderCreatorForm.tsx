@@ -34,7 +34,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   useEffect(() => {
-    if (activeOrder.status === 'open') {
+    if (activeOrder.storeStatus === 'open') {
       setFormValues({ orderType: activeOrder.orderType, table: activeOrder.table })
     }
   }, [activeOrder])

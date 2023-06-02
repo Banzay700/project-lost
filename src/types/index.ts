@@ -1,9 +1,4 @@
-export type {
-  DataTableCellType,
-  DataTableCellFuncType,
-  TableCellType,
-  TableDataItem,
-} from './ComponetTableType'
+export type { TableDataItem } from './ComponetTableType'
 
 export type {
   TableType,
@@ -23,7 +18,8 @@ export type {
   CommonOrderBillsType,
   BillsDishResponseType,
   OrderBillsQueryRequest,
-  OrderStatusType,
+  OderStoreStatusType,
+  ModifiedDataType,
 } from './OrderBillsType'
 
 export type {
@@ -57,4 +53,5 @@ export type {
   ButtonLoginReturnType,
   PaymentFormReturnType,
   OrderCreatorFormReturnType,
+  PaymentFormCollectType,
 } from './ComponentsReturnType'

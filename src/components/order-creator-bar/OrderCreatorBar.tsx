@@ -53,7 +53,7 @@ const OrderCreatorBar: FC = () => {
   }
 
   useEffect(() => {
-    if (activeOrder.status === 'update') {
+    if (activeOrder.storeStatus === 'update') {
       setToggleValue('dishes')
     }
   }, [activeOrder])
