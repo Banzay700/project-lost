@@ -1,5 +1,5 @@
-import { IconCash, IconMasterCard, IconVisa } from 'assets'
-import { PaymentMethodItemType } from 'types'
+import { IconCash, IconMasterCard, IconVisa } from 'assets/index'
+import { PaymentMethodItemType } from 'types/index'
 
 export const paymentMethodItems: PaymentMethodItemType[] = [
   { value: 'Cash', icon: <IconCash /> },

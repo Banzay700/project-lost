@@ -2,9 +2,9 @@ import { FC, ReactNode } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
-import { Button, Input } from 'UI'
-import { IconAddTipAmount, IconEmail } from 'assets'
-import { PaymentFormReturnType } from 'types'
+import { Button, Input } from 'UI/index'
+import { IconAddTipAmount, IconEmail } from 'assets/index'
+import { PaymentFormReturnType } from 'types/index'
 import { OrderPaymentMethod } from './order-payment-method'
 import { initialValues, validationSchema } from './OrderPaymentForm.utils'
 

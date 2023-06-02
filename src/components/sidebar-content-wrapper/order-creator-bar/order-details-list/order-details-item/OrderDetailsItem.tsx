@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Card, ListItem, Stack } from '@mui/material'
 
-import { Picker } from 'UI'
-import { useOrderReducer } from 'hooks'
+import { Picker } from 'UI/index'
+import { useOrderReducer } from 'hooks/index'
 import { FadeIn } from 'utils/index'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
@@ -35,7 +35,7 @@ const OrderDetailsItem: FC<OrderItemProps> = ({
   }
 
   return (
-    <FadeIn delay={50}>
+    <FadeIn delay={40}>
       <ListItem
         sx={{ width: '100%', p: 0, ':hover': { transition: '1s', background: '#F8F9FDFF' } }}>
         <Card className={s.card}>

@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 
-import { OrderDetailsList } from 'components'
-import { ToggleMenu } from 'UI'
-import { useOrderReducer } from 'hooks'
-import { ROUTES } from 'routes'
-import { OrderCreatorFormReturnType } from 'types'
-import { convertOrderData } from 'utils'
+import { OrderDetailsList } from 'components/index'
+import { ToggleMenu } from 'UI/index'
+import { useOrderReducer } from 'hooks/index'
+import { ROUTES } from 'routes/index'
+import { OrderCreatorFormReturnType } from 'types/index'
+import { convertOrderData } from 'utils/index'
 import {
   useCreateOrderMutation,
   useUpdateOrderMutation,

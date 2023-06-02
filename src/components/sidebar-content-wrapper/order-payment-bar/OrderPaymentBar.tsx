@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 
-import { DetailsListTitle, ToggleMenu } from 'UI'
-import { PaymentFormReturnType, PaymentFormCollectType } from 'types'
+import { DetailsListTitle, ToggleMenu } from 'UI/index'
+import { PaymentFormReturnType, PaymentFormCollectType } from 'types/index'
 import { useOrderReducer } from 'hooks/useOrderReducer.hook'
-import { FadeIn } from 'utils'
+import { FadeIn } from 'utils/index'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'

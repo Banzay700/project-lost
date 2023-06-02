@@ -11,7 +11,7 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ spacing, direction, data }) => {
   return (
-    <Stack spacing={spacing} direction={direction}>
+    <Stack spacing={spacing} direction={direction} justifyContent="space-between">
       {data.map((item) => (
         <NavItem
           key={item.link}

@@ -1,18 +1,17 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { Indicator, FilterMenu } from 'UI'
+import { FilterMenu } from 'UI'
 
 import { FilterMenuItemType } from 'types'
+import { IndicatorsGroup } from 'components/indicators-group'
 
 interface OrderFilterBarProps {
-  indicatorName: ['dineIn', 'takeAway'] | ['delivery', 'dineIn', 'takeAway']
   filterMenuItems: FilterMenuItemType[]
   defaultValue?: string[]
   onChange: (value: string[]) => void
 }
 
 const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
-  indicatorName,
   filterMenuItems,
   defaultValue,
   onChange,
@@ -27,11 +26,7 @@ const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
         justifyContent: 'space-between',
         gap: '24px',
       }}>
-      <Stack direction="row" spacing="32px">
-        {indicatorName.map((item) => (
-          <Indicator key={item} type={item} />
-        ))}
-      </Stack>
+      <IndicatorsGroup />
       <Stack>
         <FilterMenu
           filterMenuItems={filterMenuItems}

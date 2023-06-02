@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { ToggleMenu } from 'UI'
-import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
-import { useOrderReducer } from 'hooks'
-import { ROUTES } from 'routes'
+import { ToggleMenu } from 'UI/index'
+import { ORDER_TOGGLE_MENU_VALUES } from 'utils/index'
+import { useOrderReducer } from 'hooks/index'
+import { ROUTES } from 'routes/index'
 import { useNavigate } from 'react-router-dom'
 import { OrderInfoList } from './order-info-list'
 

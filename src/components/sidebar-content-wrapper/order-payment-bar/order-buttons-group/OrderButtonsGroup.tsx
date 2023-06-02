@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 
-import { Button } from 'UI'
-import { IconAddTipAmount, IconEmail } from 'assets'
+import { Button } from 'UI/index'
+import { IconAddTipAmount, IconEmail } from 'assets/index'
 import s from './OrderButtonsGroup.module.scss'
 
 interface OrderButtonsGroupProps {

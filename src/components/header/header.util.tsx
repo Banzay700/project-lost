@@ -1,5 +1,5 @@
 import { LinkItemType } from 'types/ComponentsItemType/LinkItemType'
-import { IconHome, IconNote, IconClock, IconReceipt } from 'assets'
+import { IconHome, IconNote, IconClock, IconReceipt, IconReservation } from 'assets'
 
 export const navData: LinkItemType[] = [
   {
@@ -17,6 +17,11 @@ export const navData: LinkItemType[] = [
     link: '/bills',
     text: 'Bills',
     icon: <IconClock style={{ marginRight: '11px' }} />,
+  },
+  {
+    link: '/reservation',
+    text: 'Reservation',
+    icon: <IconReservation style={{ marginRight: '11px' }} />,
   },
   {
     link: '/history',

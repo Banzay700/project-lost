@@ -2,7 +2,7 @@ import { ChangeEvent, FC } from 'react'
 import { FormControl, RadioGroup, Stack, Typography } from '@mui/material'
 import { useFormikContext } from 'formik'
 
-import { RadioIconInput } from 'UI'
+import { RadioIconInput } from 'UI/index'
 import { paymentMethodItems } from '../../orderPaymentBar.utils'
 
 interface OrderPaymentMethodProps {

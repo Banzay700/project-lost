@@ -34,5 +34,6 @@ export {
   IconSavedReports,
   IconFeedbacks,
   IconRegistrationUser,
+  IconReservation,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

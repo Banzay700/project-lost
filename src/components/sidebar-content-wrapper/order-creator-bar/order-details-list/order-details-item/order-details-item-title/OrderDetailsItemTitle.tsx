@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { CardContent, Typography } from '@mui/material'
-import { IconCross } from 'assets'
-import { theme } from 'theme'
-import { useOrderReducer } from 'hooks'
+import { IconCross } from 'assets/index'
+import { theme } from 'theme/index'
+import { useOrderReducer } from 'hooks/index'
 
 interface CardItemTitleProps {
   title: string
