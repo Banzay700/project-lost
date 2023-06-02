@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Table, IndicatorFilterBar } from 'components/table'
+import { Table } from 'components/table'
 import { IndicatorFilterBar } from 'components/indicator-filter-bar'
 import { useGetAllOrdersQuery } from 'store/api'
 import { useSearchParamsType } from 'hooks'

@@ -3,7 +3,7 @@ export const ROUTES = {
   DISHES: 'home',
   DISHES_CATEGORY: ':category',
   ORDERS: 'orders',
-  BILLS: '/bills',
+  BILLS: 'bills',
   LOGIN: 'login',
   PROFILE: 'profile',
   ADMIN_PANEL: 'admin',

@@ -33,8 +33,8 @@ const TableLineWrapper: FC<TableLineItemProps> = ({ element, active, setActive, 
 
   const { table, totalPrice, orderType, orderNumber, id, status } = element
 
-  const isBills = tableType === 'bills'
-  const cursor = location === 'bills' ? 'initial' : 'pointer'
+  const isBills = tableType === ROUTES.BILLS
+  const cursor = location === ROUTES.BILLS ? 'initial' : 'pointer'
   const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
 
   const handleLineWrapperClick = () => {
@@ -51,7 +51,7 @@ const TableLineWrapper: FC<TableLineItemProps> = ({ element, active, setActive, 
     e.stopPropagation()
     const dataOrder = prepareBillsData(element as OrderResponseType)
     await createBills(dataOrder)
-    navigate(ROUTES.BILLS)
+    navigate(`/${ROUTES.BILLS}`)
   }
 
   const handleSendBillsData = () => {
