@@ -46,6 +46,7 @@ export type {
   LinkItemType,
   FilterMenuItemType,
   PaymentMethodItemType,
+  SidebarTabItemType,
 } from './ComponentsItemType'
 
 export type {

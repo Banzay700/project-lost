@@ -6,4 +6,11 @@ export const ROUTES = {
   BILLS: '/bills',
   LOGIN: 'login',
   PROFILE: 'profile',
+  ADMIN_PANEL: 'admin',
+  ADMIN_STATISTICS: 'statistics',
+  ADMIN_STATISTICS_CATEGORY: ':statistics',
+  ADMIN_DISHES: 'dishes',
+  ADMIN_EMPLOYEES: 'employees',
+  ADMIN_EMPLOYEES_CATEGORY: ':employees',
+  ADMIN_SETTING: 'settings',
 }

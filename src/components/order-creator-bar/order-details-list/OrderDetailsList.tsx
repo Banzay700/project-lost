@@ -3,6 +3,7 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummary } from 'components'
 import { Button, DetailsListTitle } from 'UI'
+import { FadeIn } from 'utils'
 import { useSmoothScrollbar, useOrderReducer } from 'hooks'
 import { OrderDetailsItem } from './order-details-item'
 
@@ -17,7 +18,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
   const total = activeOrder.dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
 
   return (
-    <Stack sx={{ height: '100%' }}>
+    <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <DetailsListTitle title="Order details" orderNumber={activeOrder.orderNumber} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
@@ -30,6 +31,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
               src={picture}
               amount={amount}
               isPicker={isPicker}
+              deleteIcon
             />
           ))}
         </Box>
@@ -40,7 +42,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
           {activeOrder.storeStatus === 'update' ? 'Update order' : 'Create New Order'}
         </Button>
       </Stack>
-    </Stack>
+    </FadeIn>
   )
 }
 

@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
 import { Outlet } from 'react-router-dom'
-import { Header, SidebarContentWrapper } from 'components'
-import { useRootLocationPath } from 'hooks'
+
+import { Header, SidebarContentWrapper } from 'components/index'
+import { useRootLocationPath } from 'hooks/index'
 
 const WaiterLayout: FC = () => {
   const path = useRootLocationPath()

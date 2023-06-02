@@ -3,6 +3,7 @@ import { Card, ListItem, Stack } from '@mui/material'
 
 import { Picker } from 'UI'
 import { useOrderReducer } from 'hooks'
+import { FadeIn } from 'utils/index'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
@@ -15,9 +16,18 @@ interface OrderItemProps {
   total: number
   amount?: number
   isPicker?: boolean
+  deleteIcon?: boolean
 }
 
-const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total, amount }) => {
+const OrderDetailsItem: FC<OrderItemProps> = ({
+  id,
+  title,
+  src,
+  isPicker,
+  total,
+  amount,
+  deleteIcon,
+}) => {
   const { changeDishAmount } = useOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
@@ -25,17 +35,20 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total,
   }
 
   return (
-    <ListItem sx={{ width: '100%', p: 0, ':hover': { transition: '1s', background: '#F8F9FDFF' } }}>
-      <Card className={s.card}>
-        <OrderDetailsItemMedia src={src} alt={title} />
-        <Stack sx={{ justifyContent: 'space-between', width: '100%' }}>
-          <OrderDetailsItemTitle title={title} dishID={id} />
-          <OrderDetailsItemPriceInfo totalPriceItem={total}>
-            {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
-          </OrderDetailsItemPriceInfo>
-        </Stack>
-      </Card>
-    </ListItem>
+    <FadeIn delay={50}>
+      <ListItem
+        sx={{ width: '100%', p: 0, ':hover': { transition: '1s', background: '#F8F9FDFF' } }}>
+        <Card className={s.card}>
+          <OrderDetailsItemMedia src={src} alt={title} />
+          <Stack sx={{ justifyContent: 'space-between', width: '100%' }}>
+            <OrderDetailsItemTitle title={title} dishID={id} deleteIcon={deleteIcon} />
+            <OrderDetailsItemPriceInfo totalPriceItem={total}>
+              {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
+            </OrderDetailsItemPriceInfo>
+          </Stack>
+        </Card>
+      </ListItem>
+    </FadeIn>
   )
 }
 

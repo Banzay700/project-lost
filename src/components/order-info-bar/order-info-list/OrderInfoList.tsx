@@ -3,6 +3,7 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummary } from 'components'
 import { Button, DetailsListTitle } from 'UI'
+import { FadeIn } from 'utils'
 import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { OrderDetailsItem } from 'components/order-creator-bar/order-details-list/order-details-item'
 import { useDeleteOrderMutation } from 'store/api/order.api'
@@ -25,7 +26,7 @@ const OrderInfoList: FC<OrderListProps> = ({ isPicker, onClick }) => {
   }
 
   return (
-    <Stack sx={{ height: '100%' }}>
+    <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <DetailsListTitle title="Order details" orderNumber={activeOrder.orderNumber} />
       <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
         <Box style={{ height: '200px' }}>
@@ -58,7 +59,7 @@ const OrderInfoList: FC<OrderListProps> = ({ isPicker, onClick }) => {
           </Button>
         </Stack>
       </Stack>
-    </Stack>
+    </FadeIn>
   )
 }
 

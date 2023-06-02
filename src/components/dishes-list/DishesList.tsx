@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { DishType } from 'types'
 import { DishCard } from 'components'
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+import { useSmoothScrollbar } from 'hooks'
+
 import s from './DishesList.module.scss'
 
 interface DishesListProps {
@@ -10,7 +11,6 @@ interface DishesListProps {
 
 const DishesList: FC<DishesListProps> = ({ dishes }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-
   return (
     <div
       style={{

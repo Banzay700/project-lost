@@ -1,8 +1,9 @@
 import { FC } from 'react'
-import { Box, Stack } from '@mui/material'
-import { SidebarLeftList } from 'components'
+import { Box } from '@mui/material'
+import { SidebarLeftList } from 'components/index'
 import { useGetCategoriesQuery } from 'store/api/dish.api'
-import { Outlet } from 'react-router-dom'
+import { FadeIn } from 'utils/index'
+import DishesPageContent from './dishes-page-content/DishesPageContent'
 
 const DishesPage: FC = () => {
   const { data, isLoading } = useGetCategoriesQuery(null)
@@ -14,12 +15,12 @@ const DishesPage: FC = () => {
   }
 
   return (
-    <Stack direction="row" height="100%">
+    <FadeIn styles={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
       <Box borderRight="1px solid #e4e4e4">
         <SidebarLeftList sidebarItems={data} />
       </Box>
-      <Outlet />
-    </Stack>
+      <DishesPageContent defaultCategory={data[0].title.toLowerCase()} />
+    </FadeIn>
   )
 }
 

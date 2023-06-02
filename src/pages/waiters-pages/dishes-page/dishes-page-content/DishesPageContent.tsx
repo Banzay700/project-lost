@@ -1,22 +1,35 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Stack } from '@mui/material'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { DishesList, SearchFilterBar } from 'components'
+import { DishesList, SearchFilterBar } from 'components/index'
 import { useGetDishesByCategoryAndFilterQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
-import { firstLetterUpperCase, correctionName } from 'utils'
+import { firstLetterUpperCase, correctionName } from 'utils/index'
 import { FilterMenuItemType } from 'types'
 
-const DishesPageContent: FC = () => {
+interface DishesPageContentProps {
+  defaultCategory: string
+}
+
+const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const { category } = useParams()
   const searchParams = new URLSearchParams(location.search)
   const search = searchParams.get('search')
   const subcategory = searchParams.get('category')
-  const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || ''))
+
+  useEffect(() => {
+    if (!category) {
+      navigate(defaultCategory)
+    }
+  })
+
+  const { data } = useGetSubCategoriesInCategoryQuery(
+    firstLetterUpperCase(category || defaultCategory),
+  )
   const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
-    category: firstLetterUpperCase(category || ''),
+    category: firstLetterUpperCase(category || defaultCategory),
     subcategory,
     search,
   })

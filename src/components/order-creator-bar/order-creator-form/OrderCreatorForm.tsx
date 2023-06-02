@@ -6,6 +6,7 @@ import { Button, SelectInput, TableInfoBox } from 'UI'
 import { OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
+import { FadeIn } from 'utils/index'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
@@ -47,7 +48,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   return (
-    <div className={s.newOrderForm}>
+    <FadeIn className={s.newOrderForm}>
       <Formik {...formikConfig}>
         <Form>
           <Stack spacing={6}>
@@ -72,7 +73,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
           </Stack>
         </Form>
       </Formik>
-    </div>
+    </FadeIn>
   )
 }
 
