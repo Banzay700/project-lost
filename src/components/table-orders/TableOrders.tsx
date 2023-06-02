@@ -20,7 +20,7 @@ const TableOrders: FC = () => {
         defaultValue={type?.split(',')}
         onChange={handleChangeFilter}
       />
-      <Table data={dataOrders} tableTitles={tableTitleOrder} />
+      <Table data={dataOrders} tableTitles={tableTitleOrder} tableType="orders" />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TableCell } from '@mui/material'
-import { TableNumber } from 'UI'
+import s from './TableNumberColumn.module.scss'
 
 interface TableNumberColumnProps {
   table: string | undefined
@@ -9,7 +9,9 @@ interface TableNumberColumnProps {
 const TableNumberColumn: FC<TableNumberColumnProps> = ({ table }) => {
   return (
     <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-      <TableNumber tableNumber={table} />
+      <div className={s.tableNumber}>
+        <span>{table}</span>
+      </div>
     </TableCell>
   )
 }
