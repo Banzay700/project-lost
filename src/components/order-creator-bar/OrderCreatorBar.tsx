@@ -30,7 +30,13 @@ const OrderCreatorBar: FC = () => {
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderNumber = unique()
-    const orderInfo = { ...emptyOrderState, orderType, table, orderNumber, status: 'open' as const }
+    const orderInfo = {
+      ...emptyOrderState,
+      orderType,
+      table,
+      orderNumber,
+      storeStatus: 'open' as const,
+    }
 
     openNewOrder(orderInfo)
 
@@ -53,7 +59,7 @@ const OrderCreatorBar: FC = () => {
   }
 
   useEffect(() => {
-    if (activeOrder.status === 'update') {
+    if (activeOrder.storeStatus === 'update') {
       setToggleValue('dishes')
     }
   }, [activeOrder])

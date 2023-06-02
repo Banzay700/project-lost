@@ -2,11 +2,11 @@ import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
 
 interface OrderPricingTotalInfoProps {
-  tipAmount?: number
-  totalAmount: number
+  tipAmount?: string
+  totalPrice: number
 }
 
-const OrderTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, totalAmount }) => {
+const OrderTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, totalPrice }) => {
   return (
     <Stack padding="16px" borderRadius="12px" bgcolor="#F8F9FD" spacing="8px">
       <Stack direction="row" justifyContent="space-between">
@@ -19,10 +19,10 @@ const OrderTotalInfo: FC<OrderPricingTotalInfoProps> = ({ tipAmount, totalAmount
       </Stack>
       <Stack direction="row" justifyContent="space-between">
         <Typography variant="h2" component="p" color="secondary" fontWeight={400}>
-          Total Amount
+          Total Price
         </Typography>
         <Typography variant="h2" component="p" color="primary" fontWeight={600}>
-          $ {totalAmount || 0}
+          $ {totalPrice || 0}
         </Typography>
       </Stack>
     </Stack>

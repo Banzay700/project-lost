@@ -12,7 +12,7 @@ interface DishCardPricingProps {
 
 const DishCardPricing: FC<DishCardPricingProps> = ({ price, onClickButton }) => {
   const { activeOrder } = useOrderReducer()
-  const isButton = activeOrder.status === 'open' || activeOrder.status === 'update'
+  const isButton = activeOrder.storeStatus === 'open' || activeOrder.storeStatus === 'update'
   return (
     <CardContent
       sx={{

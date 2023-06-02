@@ -3,5 +3,5 @@ export const emptyOrderState = {
   orderNumber: 0,
   dishes: [],
   totalPrice: 0,
-  status: 'none' as const,
+  storeStatus: 'open' as const,
 }

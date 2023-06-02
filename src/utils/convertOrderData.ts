@@ -39,7 +39,7 @@ export const convertOrderData = (order: OrderActiveType): ConvertOrderDataType =
     orderDB: { dishes: dataDishes, ...commonReturnValues },
     orderActive: {
       dishes: activeDishes,
-      status: 'closed',
+      storeStatus: 'closed',
       ...commonReturnValues,
     } as OrderActiveType,
   }

@@ -1,43 +1,94 @@
-import { FC } from 'react'
+import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { TableRow } from '@mui/material'
-import { TableDataItem, DataTableCellFuncType } from 'types'
+import {
+  TableNumberColumn,
+  OrderNumberColumn,
+  TotalPriceColumn,
+  OrderTypeColumn,
+  StatusColumn,
+  ActionsOrdersColumn,
+  ActionsBillsColumn,
+} from 'UI'
 import { useRootLocationPath } from 'hooks'
-import { useLazyGetOrderQuery } from 'store/api'
-import { TableLineItem } from './table-line-item'
+import { useCreateBillMutation, useLazyGetOneBillQuery, useLazyGetOrderQuery } from 'store/api'
+import { OrderResponseType, TableDataItem } from 'types'
+import { ROUTES } from 'routes'
+import { prepareBillsData } from './tableLineWrapper.unils'
 import s from './TableLineWrapper.module.scss'
 
 interface TableLineItemProps {
   element: TableDataItem
-  dataTableCell: DataTableCellFuncType<TableDataItem>
-  onClick?: (dataOrder: TableDataItem) => void
+  active: string | null
+  setActive: Dispatch<SetStateAction<string | null>>
+  tableType?: string
 }
 
-const TableLineWrapper: FC<TableLineItemProps> = ({ element, dataTableCell, onClick }) => {
+const TableLineWrapper: FC<TableLineItemProps> = ({ element, active, setActive, tableType }) => {
   const location = useRootLocationPath()
-  const cursor = location === 'bills' ? 'initial' : 'pointer'
-
-  const dataCell = dataTableCell({
-    element,
-    onClick,
-    className: s.tableButton,
-  })
-
+  const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
+  const [createBills] = useCreateBillMutation()
+  const [getBill] = useLazyGetOneBillQuery()
+
+  const { table, totalPrice, orderType, orderNumber, id, status } = element
+
+  const isBills = tableType === ROUTES.BILLS
+  const cursor = location === ROUTES.BILLS ? 'initial' : 'pointer'
+  const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
+
   const handleLineWrapperClick = () => {
-    if (element.id) {
-      trigger(element.id)
+    if (id) {
+      trigger(id)
+
+      if (location === ROUTES.ORDERS) {
+        setActive(id)
+      }
     }
   }
 
-  // const { data } = useGetOneBillQuery(element.id)
-  // console.log(data)
+  const handleSendOrder = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    const dataOrder = prepareBillsData(element as OrderResponseType)
+    await createBills(dataOrder)
+    navigate(`/${ROUTES.BILLS}`)
+  }
+
+  const handleSendBillsData = () => {
+    if (id) {
+      getBill(id)
+      setActive(id)
+    }
+  }
+
+  if (status !== 'opened') return null
 
   return (
     <TableRow
       hover
-      sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor }}
+      sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor, backgroundColor }}
       onClick={handleLineWrapperClick}>
-      <TableLineItem key={element.id} data={dataCell} />
+      <TableNumberColumn table={table} />
+
+      <OrderNumberColumn orderNumber={orderNumber} />
+
+      <TotalPriceColumn totalPrice={totalPrice} />
+
+      {isBills && <StatusColumn status={status} />}
+
+      <OrderTypeColumn orderType={orderType} />
+
+      {isBills && (
+        <ActionsBillsColumn
+          status={status}
+          className={s.tableButton}
+          handleSendBillsData={handleSendBillsData}
+        />
+      )}
+
+      {!isBills && (
+        <ActionsOrdersColumn handleSendOrder={handleSendOrder} className={s.tableButton} />
+      )}
     </TableRow>
   )
 }

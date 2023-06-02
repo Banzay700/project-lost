@@ -13,7 +13,7 @@ export {
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
 } from './table.api'
-export { useCreateBillMutation, useGetAllBillsQuery } from './bills.api'
+export { useCreateBillMutation, useGetAllBillsQuery, useLazyGetOneBillQuery } from './bills.api'
 
 export {
   useGetSubCategoriesInCategoryQuery,

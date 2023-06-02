@@ -6,9 +6,11 @@ export type { OrderDishActiveType } from './OrderDishActiveType'
 export type { OrderRequestType } from './OrderRequestType'
 export type { OrderResponseType } from './OrderResponseType'
 export type { OrderActiveType } from './OrderActiveType'
-export type { OrderStatusType } from './OrderStatusType'
+export type { OderStoreStatusType } from './OderStoreStatusType'
 
 export type { OrderBillsQueryRequest } from './OrderBillsQueryRequest'
 
 export type { BillsResponseType } from './BillsResponseType'
 export type { BillsDishResponseType } from './BillsDishResponseType'
+
+export type { ModifiedDataType } from './ModifiedDataType'

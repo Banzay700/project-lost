@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { Table, IndicatorFilterBar } from 'components'
-import { DataTableCellFuncType, TableDataItem, BillsResponseType } from 'types'
+import { Table } from 'components/table'
+import { IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery } from 'store/api'
 import { useSearchParamsType } from 'hooks'
-import { tableTitleBills, dataTableCellBills } from './tableBills.utils'
+import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
   const { type, handleChangeFilter } = useSearchParamsType()
@@ -20,11 +20,7 @@ const TableBills: FC = () => {
         indicatorName={['delivery', 'dineIn', 'takeAway']}
         onChange={handleChangeFilter}
       />
-      <Table
-        data={dataBills as BillsResponseType[]}
-        tableTitles={tableTitleBills}
-        dataTableCell={dataTableCellBills as DataTableCellFuncType<TableDataItem>}
-      />
+      <Table data={dataBills} tableTitles={tableTitleBills} tableType="bills" />
     </>
   )
 }

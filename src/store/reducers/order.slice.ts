@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { OrderActiveType, OrderDishResponseType, OrderStatusType } from 'types'
+import { OrderActiveType, OrderDishResponseType, OderStoreStatusType } from 'types'
 import { emptyOrderState } from 'store/reducers/reducers.utils'
 
 interface OrderState {
@@ -20,8 +20,8 @@ const ordersSlice = createSlice({
     openOrder: (state, action: PayloadAction<OrderActiveType>) => {
       state.activeOrder = { ...action.payload }
     },
-    changeOrderStatus: (state, action: PayloadAction<OrderStatusType>) => {
-      state.activeOrder.status = action.payload
+    changeOrderStatus: (state, action: PayloadAction<OderStoreStatusType>) => {
+      state.activeOrder.storeStatus = action.payload
     },
     deleteNewOrder: (state) => {
       state.activeOrder = {
