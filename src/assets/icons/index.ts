@@ -36,3 +36,4 @@ export { ReactComponent as IconRegistrationUser } from './icon-registration-user
 export { ReactComponent as IconReservation } from './icon-reservation.svg'
 export { ReactComponent as IconPaper } from './icon-paper.svg'
 export { ReactComponent as IconCrossSmall } from './icon-cross-small.svg'
+export { ReactComponent as IconCheck } from './icon-check.svg'

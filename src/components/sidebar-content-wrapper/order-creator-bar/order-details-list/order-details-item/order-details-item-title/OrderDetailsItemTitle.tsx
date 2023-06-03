@@ -1,33 +1,16 @@
 import { FC } from 'react'
 import { CardContent, Typography } from '@mui/material'
-import { IconCross } from 'assets/index'
-import { theme } from 'theme/index'
-import { useOrderReducer } from 'hooks/index'
 
 interface CardItemTitleProps {
   title: string
-  dishID: string
-  deleteIcon?: boolean
 }
 
-const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title, dishID, deleteIcon }) => {
-  const { removeDish } = useOrderReducer()
-
-  const handleRemoveDishInOrder = () => {
-    removeDish(dishID)
-  }
+const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title }) => {
   return (
     <CardContent sx={{ flex: '1 0 auto', p: 0, display: 'flex' }}>
       <Typography variant="h2" component="h3" color="secondary" fontWeight="600" flexGrow={1}>
         {title}
       </Typography>
-      {deleteIcon && (
-        <IconCross
-          color={theme.palette.primary.main}
-          onClick={handleRemoveDishInOrder}
-          style={{ cursor: 'pointer' }}
-        />
-      )}
     </CardContent>
   )
 }
