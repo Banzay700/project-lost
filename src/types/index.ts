@@ -30,7 +30,6 @@ export type {
   UserUpdateInfo,
   UserPartialType,
   UserResponseType,
-  UserRegistrationRequestType,
   UserLoginRequestType,
   UserLogoutResponseType,
   UserStateType,
@@ -55,4 +54,5 @@ export type {
   PaymentFormReturnType,
   OrderCreatorFormReturnType,
   PaymentFormCollectType,
+  RegistrationFormReturnType,
 } from './ComponentsReturnType'

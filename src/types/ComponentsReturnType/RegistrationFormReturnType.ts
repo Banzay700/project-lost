@@ -1,4 +1,4 @@
-export type UserRegistrationRequest = {
+export type RegistrationFormReturnType = {
   firstName: string
   secondName: string
   password: string
@@ -6,5 +6,5 @@ export type UserRegistrationRequest = {
   phoneNumber?: string
   email?: string
   description?: string
-  picture?: File
+  picture?: File[] | string
 }

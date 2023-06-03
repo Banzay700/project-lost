@@ -16,5 +16,5 @@ export const useSearchParamsType = () => {
     }
   }
 
-  return { type, handleChangeFilter }
+  return { orderType: type, handleChangeFilter }
 }

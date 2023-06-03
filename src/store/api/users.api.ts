@@ -1,7 +1,6 @@
 import {
   UserLoginRequestType,
   UserLogoutResponseType,
-  UserRegistrationRequestType,
   UserResponseType,
   UserPartialType,
   UserType,
@@ -42,18 +41,12 @@ export const usersApi = api.injectEndpoints({
         }
       },
     }),
-    registration: builder.mutation<UserResponseType, UserRegistrationRequestType>({
+    registration: builder.mutation<{ data: string }, FormData>({
       query: (body) => ({
         url: API_CONST_USERS.REGISTRATION,
         method: 'POST',
         body,
       }),
-      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
-        const { data } = await queryFulfilled
-        if (data) {
-          dispatch(setUserData(data))
-        }
-      },
     }),
 
     login: builder.mutation<UserResponseType, UserLoginRequestType>({
@@ -99,6 +92,7 @@ export const {
   useGetAllUsersQuery,
   useUpdateUserMutation,
   useUpdateUserAvatarMutation,
+  useRegistrationMutation,
   useLogoutMutation,
   useLoginMutation,
   useRefreshQuery,

@@ -4,6 +4,7 @@ import { Input } from 'UI/input'
 import { UserType, UserUpdateInfo } from 'types'
 import { Button } from 'UI/button'
 import { Stack } from '@mui/material'
+import { InputsBasicUserInfo } from 'components/input-form'
 
 interface ProfileInputGroupProps {
   initialValues: UserType
@@ -25,20 +26,7 @@ const ProfileFormInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
-        <Input placeholder="First Name" name="firstName" label="First Name" disabled={isDisabled} />
-        <Input
-          placeholder="Second Name"
-          name="secondName"
-          label="Second Name"
-          disabled={isDisabled}
-        />
-        <Input placeholder="Email" name="email" label="Email" disabled={isDisabled} />
-        <Input
-          placeholder="Phone Number"
-          name="phoneNumber"
-          label="Phone Number"
-          disabled={isDisabled}
-        />
+        <InputsBasicUserInfo isDisabled={isDisabled} />
         <Input
           placeholder="About me"
           name="description"

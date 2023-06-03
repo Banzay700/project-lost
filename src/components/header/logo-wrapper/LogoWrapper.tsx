@@ -16,7 +16,7 @@ const LogoWrapper: FC<UserType> = ({ role }) => {
 
   return (
     <Stack alignItems="center" direction="row" spacing={4.8}>
-      {role === 'ADMIN' && (
+      {role === 'Admin' && (
         <Button
           variant="outlined"
           size="default"

@@ -1,4 +1,4 @@
-import { UserType } from 'types/UserType/UserType'
+import { UserType } from './UserType'
 
 export interface UserResponseType {
   accessToken: string

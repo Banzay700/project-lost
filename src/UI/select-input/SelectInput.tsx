@@ -37,7 +37,7 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, hid
   return hidden ? (
     <FadeIn delay={50}>
       <FormControl sx={formControlStyle} fullWidth>
-        <InputLabel sx={inputLabelStyle}>Select table</InputLabel>
+        <InputLabel sx={inputLabelStyle}>{label}</InputLabel>
         <Select {...field} label={label} sx={selectStyle} onChange={handleChange}>
           {data?.map(({ id, number }) => (
             <MenuItem key={id} value={number} sx={menuItemsStyle}>
