@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
 import { AdminEmployeesRegistrationPage } from './admin-employees-registration-page'
 import { adminEmployeesPageTabs, ROUTES_EMPLOYEES } from './adminEmployeesPage.utils'
+import { AdminEmployeesListPage } from './admin-employees-list-page'
 
 const AdminEmployeesPage: FC = () => {
   const { employees } = useParams()
@@ -22,6 +23,7 @@ const AdminEmployeesPage: FC = () => {
         title="Employees"
       />
       {employees === ROUTES_EMPLOYEES.REGISTRATION && <AdminEmployeesRegistrationPage />}
+      {employees === ROUTES_EMPLOYEES.EMPLOYEES && <AdminEmployeesListPage />}
     </>
   )
 }

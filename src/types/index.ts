@@ -24,6 +24,7 @@ export type {
 
 export type {
   UserType,
+  UserInLoginType,
   UserPassword,
   UserAvatar,
   UserUpdateAvatar,
@@ -33,6 +34,8 @@ export type {
   UserLoginRequestType,
   UserLogoutResponseType,
   UserStateType,
+  UserRequestType,
+  UserAllResponseType,
 } from './UserType'
 
 export type { DishType, DishAdditionalFood, DishSubCategoriesResponseType } from './DishType'

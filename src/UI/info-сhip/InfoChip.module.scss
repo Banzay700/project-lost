@@ -1,19 +1,29 @@
-.take-away{
-  background: #E5EDFE;
-  color: #3071FF;
+.take-away,
+.waiter {
+  background: #e5edfe;
+  color: #3071ff;
 }
 
-.dine-in, .closed{
-  background: #FFF5EE;
-  color: #FF5C00;
+.dine-in,
+.closed,
+.admin {
+  background: #fff5ee;
+  color: #ff5c00;
 }
 
-.delivery{
+.delivery,
+.courier {
   background: rgba(240, 180, 51, 0.16);
-  color: #F0B433;
+  color: #f0b433;
 }
 
-.opened{
-  background: #EEFFEE;
-  color: #35C335;
+.opened,
+.active {
+  background: #eeffee;
+  color: #35c335;
+}
+
+.inactive {
+  background: #f1f1f1;
+  color: #969696;
 }
