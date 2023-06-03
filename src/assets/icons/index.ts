@@ -33,3 +33,4 @@ export { ReactComponent as IconBusinessSummary } from './icon-business-summary.s
 export { ReactComponent as IconSavedReports } from './icon-saved-reports.svg'
 export { ReactComponent as IconFeedbacks } from './icon-feedbacks.svg'
 export { ReactComponent as IconRegistrationUser } from './icon-registration-user.svg'
+export { ReactComponent as IconCheck } from './icon-check.svg'
