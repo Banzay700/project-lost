@@ -7,7 +7,7 @@ import { tableTitleOrder } from './tableOrder.utils'
 const TableOrders: FC = () => {
   const { orderType, handleChangeFilter } = useSearchParamsType()
   const { data: dataOrders } = useGetAllOrdersQuery({ orderType })
-
+  console.log(orderType)
   return (
     <>
       <IndicatorFilterBar
