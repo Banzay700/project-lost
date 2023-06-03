@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
 import { Typography, Stack, Box } from '@mui/material'
-import { IconOval } from 'assets'
+import { IconOval } from 'assets/index'
 
-interface TablesInfoItemProps {
+interface InfoItemProps {
   data: { message: string; tableReservations: string[] }
 }
 
-const TablesInfoItem: FC<TablesInfoItemProps> = ({ data }) => {
+const InfoItem: FC<InfoItemProps> = ({ data }) => {
   return (
     <div>
       <Typography>{data.message}</Typography>
@@ -24,4 +24,4 @@ const TablesInfoItem: FC<TablesInfoItemProps> = ({ data }) => {
   )
 }
 
-export default TablesInfoItem
+export default InfoItem

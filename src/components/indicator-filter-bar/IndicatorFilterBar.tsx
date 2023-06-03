@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { FilterMenu } from 'UI'
+import { FilterMenu, PageActionsBar } from 'UI'
 
 import { FilterMenuItemType } from 'types'
-import { IndicatorsGroup } from 'components/indicators-group'
+import { IndicatorsGroup } from 'components'
 
 interface OrderFilterBarProps {
   filterMenuItems: FilterMenuItemType[]
@@ -11,21 +11,11 @@ interface OrderFilterBarProps {
   onChange: (value: string[]) => void
 }
 
-const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
-  filterMenuItems,
-  defaultValue,
-  onChange,
-}) => {
+const IndicatorFilterBar: FC<OrderFilterBarProps> = (props) => {
+  const { filterMenuItems, defaultValue, onChange } = props
+
   return (
-    <Stack
-      sx={{
-        p: '16px 24px',
-        borderBottom: '1px solid #E4E4E4',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: { xs: 'flex-start', md: 'center' },
-        justifyContent: 'space-between',
-        gap: '24px',
-      }}>
+    <PageActionsBar>
       <IndicatorsGroup />
       <Stack>
         <FilterMenu
@@ -34,7 +24,7 @@ const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
           defaultValue={defaultValue}
         />
       </Stack>
-    </Stack>
+    </PageActionsBar>
   )
 }
 

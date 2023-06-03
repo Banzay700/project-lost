@@ -2,14 +2,15 @@ import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
-import { Button, SelectInput, TableInfoBox } from 'UI/index'
-import { OrderCreatorFormReturnType } from 'types/index'
-import { useOrderReducer } from 'hooks/index'
+import { Button, SelectInput } from 'UI'
+import { OrderCreatorFormReturnType } from 'types'
+import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
-import { FadeIn } from 'utils/index'
+import { FadeIn } from 'utils'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
+import { InfoBox } from './info-box'
 import s from './OrderCreatorForm.module.scss'
 
 interface OrderCreatorFormProps {
@@ -66,7 +67,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
             />
           </Stack>
           <Stack sx={{ height: '100%' }}>
-            <TableInfoBox tableNumber={selectValue} />
+            <InfoBox tableNumber={selectValue} />
             <Button variant="contained" size="default" type="submit" disabled={disabled} fullWidth>
               Open New Order
             </Button>

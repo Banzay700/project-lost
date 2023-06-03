@@ -4,17 +4,12 @@ import '@fontsource/poppins/400.css'
 import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
-import '@fontsource/poppins/400-italic.css'
-import '@fontsource/poppins/500-italic.css'
-import '@fontsource/poppins/600-italic.css'
-import '@fontsource/poppins/700-italic.css'
 
 const themeWithBreakpoints = createTheme({})
 
 const theme = createTheme(
   {
     breakpoints: {
-      // default values
       values: {
         xs: 0,
         sm: 768,
@@ -82,6 +77,11 @@ const theme = createTheme(
           variantMapping: {
             dashNumb: 'p',
           },
+        },
+      },
+      MuiStack: {
+        defaultProps: {
+          borderColor: '#E4E4E4',
         },
       },
       MuiButton: {

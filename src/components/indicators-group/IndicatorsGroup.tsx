@@ -8,7 +8,7 @@ import { indicatorsNamesVariants } from './IndicatorsGroup.utils'
 const IndicatorsGroup: FC = () => {
   const path = useRootLocationPath()
   const { orders, bills, reservation } = indicatorsNamesVariants
-  const indicatorsNames = path === 'orders' ? orders : bills
+  const indicatorsNames = path === 'orders' ? orders : path === 'bills' ? bills : reservation
 
   return (
     <Stack direction="row" spacing="32px">

@@ -1,14 +1,16 @@
 import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
+
 import { IconIndicator } from 'assets'
 import { initIndicatorContent } from './indicator.utils'
 
 export interface IndicatorProps {
-  type: string
+  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved'
 }
 
 const Indicator: FC<IndicatorProps> = ({ type }) => {
   const indicator = initIndicatorContent(type)
+
   return (
     <Stack direction="row" alignItems="center" spacing="8px" sx={{ userSelect: 'none' }}>
       <IconIndicator color={indicator.color} />

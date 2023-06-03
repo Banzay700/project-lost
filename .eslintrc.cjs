@@ -31,6 +31,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'no-param-reassign': 0,
     'react/require-default-props': 0,
-    "no-console":0
+    "no-console":0,
+    "no-nested-ternary":0,
   },
 }

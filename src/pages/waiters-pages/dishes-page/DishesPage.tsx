@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Box } from '@mui/material'
-import { SidebarLeftList } from 'components/index'
+import { SidebarLeftList } from 'components'
 import { useGetCategoriesQuery } from 'store/api/dish.api'
-import { FadeIn } from 'utils/index'
+import { FadeIn } from 'utils'
 import DishesPageContent from './dishes-page-content/DishesPageContent'
 
 const DishesPage: FC = () => {
