@@ -34,6 +34,9 @@ export {
   IconSavedReports,
   IconFeedbacks,
   IconRegistrationUser,
+  IconReservation,
+  IconPaper,
+  IconCrossSmall,
   IconCheck,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

@@ -1,37 +1,22 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { Indicator, FilterMenu } from 'UI'
+import { FilterMenu, PageActionsBar } from 'UI'
 
 import { FilterMenuItemType } from 'types'
+import { IndicatorsGroup } from 'components'
 
 interface OrderFilterBarProps {
-  indicatorName: ['dineIn', 'takeAway'] | ['delivery', 'dineIn', 'takeAway']
   filterMenuItems: FilterMenuItemType[]
   defaultValue?: string[]
   onChange: (value: string[]) => void
 }
 
-const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
-  indicatorName,
-  filterMenuItems,
-  defaultValue,
-  onChange,
-}) => {
+const IndicatorFilterBar: FC<OrderFilterBarProps> = (props) => {
+  const { filterMenuItems, defaultValue, onChange } = props
+
   return (
-    <Stack
-      sx={{
-        p: '16px 24px',
-        borderBottom: '1px solid #E4E4E4',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: { xs: 'flex-start', md: 'center' },
-        justifyContent: 'space-between',
-        gap: '24px',
-      }}>
-      <Stack direction="row" spacing="32px">
-        {indicatorName.map((item) => (
-          <Indicator key={item} type={item} />
-        ))}
-      </Stack>
+    <PageActionsBar>
+      <IndicatorsGroup />
       <Stack>
         <FilterMenu
           filterMenuItems={filterMenuItems}
@@ -39,7 +24,7 @@ const IndicatorFilterBar: FC<OrderFilterBarProps> = ({
           defaultValue={defaultValue}
         />
       </Stack>
-    </Stack>
+    </PageActionsBar>
   )
 }
 

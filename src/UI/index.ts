@@ -16,7 +16,8 @@ export { SidebarLinkItem } from './sidebar-link-item'
 export { ToggleButton } from './toggle-button'
 export { FilterMenu } from './filter-menu'
 export { BlurButton } from './blur-button'
-export { TableInfoBox } from '../components/table-info-box'
+
+export { PageActionsBar } from './page-actions-bar'
 export {
   ActionsOrdersColumn,
   TableNumberColumn,

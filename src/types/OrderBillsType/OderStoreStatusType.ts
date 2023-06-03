@@ -1,1 +1,1 @@
-export type OderStoreStatusType = 'open' | 'update' | 'closed'
+export type OderStoreStatusType = 'none' | 'open' | 'update' | 'closed'

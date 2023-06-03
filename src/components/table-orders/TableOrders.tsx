@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
-import { IndicatorFilterBar } from 'components/indicator-filter-bar'
+import { IndicatorFilterBar, Table } from 'components'
 import { useGetAllOrdersQuery } from 'store/api'
 import { useSearchParamsType } from 'hooks'
 import { tableTitleOrder } from './tableOrder.utils'
@@ -16,7 +15,6 @@ const TableOrders: FC = () => {
           { value: 'dineIn', label: 'Dine in' },
           { value: 'takeAway', label: 'Take away' },
         ]}
-        indicatorName={['dineIn', 'takeAway']}
         defaultValue={orderType?.split(',')}
         onChange={handleChangeFilter}
       />

@@ -4,6 +4,7 @@ export const ROUTES = {
   DISHES_CATEGORY: ':category',
   ORDERS: 'orders',
   BILLS: 'bills',
+  RESERVATION: 'reservation',
   LOGIN: 'login',
   PROFILE: 'profile',
   ADMIN_PANEL: 'admin',

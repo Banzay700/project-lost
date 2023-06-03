@@ -5,6 +5,7 @@ import {
   DishesPage,
   OrdersPage,
   BillsPage,
+  ReservationPage,
   LoginPage,
   ProfilePage,
   AdminLayout,
@@ -35,6 +36,7 @@ const AppRoutes = () => {
               </Route>
               <Route path={ROUTES.ORDERS} element={<OrdersPage />} />
               <Route path={ROUTES.BILLS} element={<BillsPage />} />
+              <Route path={ROUTES.RESERVATION} element={<ReservationPage />} />
               <Route path={ROUTES.PROFILE} element={<ProfilePage isLogoutButton />} />
             </Route>
             <Route path={ROUTES.ADMIN_PANEL} element={<AdminLayout />}>

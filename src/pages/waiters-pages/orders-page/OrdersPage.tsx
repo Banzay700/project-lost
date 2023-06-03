@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TableOrders } from 'components/index'
+import { TableOrders } from 'components'
 
 const OrdersPage: FC = () => {
   return <TableOrders />
