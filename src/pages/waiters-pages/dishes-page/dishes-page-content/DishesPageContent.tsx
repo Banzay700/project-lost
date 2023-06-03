@@ -23,7 +23,7 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
     if (!category) {
       navigate(defaultCategory)
     }
-  })
+  }, [category, defaultCategory, navigate])
 
   const { data } = useGetSubCategoriesInCategoryQuery(
     firstLetterUpperCase(category || defaultCategory),

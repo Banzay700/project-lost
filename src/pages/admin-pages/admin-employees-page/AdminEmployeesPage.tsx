@@ -1,23 +1,29 @@
 import { FC } from 'react'
-import { SidebarTabItemType } from 'types/ComponentsItemType'
-import { IconRegistrationUser, IconUser } from 'assets/icons'
+import { IconUsers } from 'assets/icons'
 import { SidebarTabsList } from 'components/admin-component'
-
-const mokEmployees: SidebarTabItemType[] = [
-  {
-    linkTo: 'employees',
-    icon: <IconUser />,
-    label: 'Employees',
-  },
-  {
-    linkTo: 'registration-employees',
-    icon: <IconRegistrationUser />,
-    label: 'Registration employees',
-  },
-]
+import { useParams } from 'react-router-dom'
+import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
+import { AdminEmployeesRegistrationPage } from './admin-employees-registration-page'
+import { adminEmployeesPageTabs, ROUTES_EMPLOYEES } from './adminEmployeesPage.utils'
 
 const AdminEmployeesPage: FC = () => {
-  return <SidebarTabsList sidebarTabItems={mokEmployees} />
+  const { employees } = useParams()
+
+  useRelocateDefaultLocation({
+    isParams: employees,
+    relocateTo: adminEmployeesPageTabs[0].linkTo,
+  })
+
+  return (
+    <>
+      <SidebarTabsList
+        sidebarTabItems={adminEmployeesPageTabs}
+        titleIcon={<IconUsers />}
+        title="Employees"
+      />
+      {employees === ROUTES_EMPLOYEES.REGISTRATION && <AdminEmployeesRegistrationPage />}
+    </>
+  )
 }
 
 export default AdminEmployeesPage

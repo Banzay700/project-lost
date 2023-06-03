@@ -28,4 +28,5 @@ export {
   useLoginMutation,
   useRefreshQuery,
   useUpdateUserMutation,
+  useRegistrationMutation,
 } from './users.api'

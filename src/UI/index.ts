@@ -27,3 +27,4 @@ export {
   ActionsBillsColumn,
 } from './table-row-columns'
 export { Modal } from './modal'
+export { Snackbar } from './snackbar'

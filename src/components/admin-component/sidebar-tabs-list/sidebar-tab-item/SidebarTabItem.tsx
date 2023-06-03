@@ -12,7 +12,7 @@ interface SidebarTabItemProps {
 
 const SidebarTabItem: FC<SidebarTabItemProps> = ({ label, icon, linkTo }) => {
   return (
-    <ListItem sx={{ maxWidth: '220px', height: 'fit-content', p: 0 }}>
+    <ListItem sx={{ height: 'fit-content', p: 0 }}>
       <NavLink
         to={linkTo}
         className={({ isActive }) => (isActive ? cn(s.link, s.activeLink) : s.link)}>

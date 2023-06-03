@@ -22,7 +22,7 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
     }, delay)
 
     return () => clearTimeout(timeoutId)
-  }, [onChange, valueInput, defaultValue])
+  }, [valueInput, defaultValue]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (defaultValue) {
@@ -31,6 +31,7 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
       setValueInput('')
     }
   }, [defaultValue])
+
   return (
     <FormControl variant="standard" className={s.form}>
       <InputBase

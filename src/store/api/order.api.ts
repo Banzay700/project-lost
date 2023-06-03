@@ -9,8 +9,8 @@ export const orderApi = api.injectEndpoints({
       query: (body) => {
         const params: OrderBillsQueryRequest = {}
 
-        if (body.type) {
-          params.type = body.type
+        if (body.orderType) {
+          params.orderType = body.orderType
         }
         return {
           url: '/orders',

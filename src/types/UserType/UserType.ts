@@ -2,7 +2,7 @@ export type UserType = {
   id: string
   firstName: string
   secondName: string
-  role: 'WAITER' | 'ADMIN' | 'COURIER'
+  role: 'Waiter' | 'Admin' | 'Courier'
   userImage?: string
   phoneNumber?: string
   email?: string

@@ -38,6 +38,7 @@ const AppRoutes = () => {
               <Route path={ROUTES.PROFILE} element={<ProfilePage isLogoutButton />} />
             </Route>
             <Route path={ROUTES.ADMIN_PANEL} element={<AdminLayout />}>
+              <Route index element={<Navigate to={ROUTES.ADMIN_STATISTICS} />} />
               <Route path={ROUTES.ADMIN_STATISTICS} element={<AdminStatisticsPage />}>
                 <Route path={ROUTES.ADMIN_STATISTICS_CATEGORY} element={<AdminStatisticsPage />} />
               </Route>
