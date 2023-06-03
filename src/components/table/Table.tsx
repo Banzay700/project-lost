@@ -1,9 +1,10 @@
 import { FC, useState } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
-import { TableDataItem } from 'types'
-import { TableLineWrapper } from './table-line-wrapper'
+import { BillsResponseType, OrderResponseType, TableDataItem } from 'types'
 import { TableHead } from './table-head'
+import { TableOrdersLine } from './table-orders-line'
+import { TableBillsLine } from './table-bills-line'
 
 interface TableProps {
   data: TableDataItem[] | undefined
@@ -20,15 +21,24 @@ const Table: FC<TableProps> = ({ data, tableTitles, tableType }) => {
       <MuiTable aria-label="table" sx={{ width: '100%' }}>
         <TableHead data={tableTitles} />
         <TableBody>
-          {data?.map((element) => (
-            <TableLineWrapper
-              element={element}
-              key={element.id}
-              active={active}
-              setActive={setActive}
-              tableType={tableType}
-            />
-          ))}
+          {tableType === 'orders' &&
+            data?.map((element) => (
+              <TableOrdersLine
+                element={element as OrderResponseType}
+                active={active}
+                setActive={setActive}
+                key={element?.id}
+              />
+            ))}
+          {tableType === 'bills' &&
+            data?.map((element) => (
+              <TableBillsLine
+                element={element as BillsResponseType}
+                active={active}
+                setActive={setActive}
+                key={element?.id}
+              />
+            ))}
         </TableBody>
       </MuiTable>
     </TableContainer>
