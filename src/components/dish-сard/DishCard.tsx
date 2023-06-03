@@ -22,7 +22,6 @@ const DishCard: FC<DishCardProps> = (props) => {
   const { picture, title, price, description, id, weightProduct } = props
   const [openModal, setOpenModal] = useState(false)
   const { addDish } = useOrderReducer()
-
   const handleOpenModal = () => setOpenModal(true)
 
   const handleCloseModal = () => setOpenModal(false)

@@ -1,4 +1,4 @@
 export type OrderBillsQueryRequest = {
   status?: string | null
-  type?: string | null
+  orderType?: string | null
 }

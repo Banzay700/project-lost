@@ -31,6 +31,7 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
       setValueInput('')
     }
   }, [defaultValue])
+
   return (
     <FormControl variant="standard" className={s.form}>
       <InputBase

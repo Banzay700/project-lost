@@ -1,10 +1,9 @@
 import { Form, Formik } from 'formik'
 import { FC, useState } from 'react'
-import DropZone from 'react-formik-ui/dist/components/DropZone/DropZone'
 import { Button } from 'UI/button'
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { UserAvatar } from 'types'
-import s from './ProfileFormAvatar.module.scss'
+import { InputImage } from 'components/input-form'
 
 interface ProfileFormAvatarProps {
   userImage?: string
@@ -44,24 +43,20 @@ const ProfileFormAvatar: FC<ProfileFormAvatarProps> = ({
           gap: '10px',
           width: '100%',
         }}>
-        {isDisabled ? (
-          <img
-            src={
-              userImage ||
-              'https://res.cloudinary.com/dz5jl6tzt/image/upload/v1685188868/userAvatar_fbe972.webp'
-            }
-            className={s.dropzone}
-            alt="user avatar"
-          />
-        ) : (
-          <DropZone
-            className={s.dropzone}
-            name="picture"
-            placeholder="Drag and Drop a Dile here or click"
-            multiple={false}
-            accept={{ 'image/png': ['.png'], 'image/jpg': ['.jpg'], 'image/jpeg': ['.jpeg'] }}
-          />
-        )}
+        <Box sx={{ width: '300px', height: '300px' }}>
+          {isDisabled ? (
+            <img
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+              src={
+                userImage ||
+                'https://res.cloudinary.com/dz5jl6tzt/image/upload/v1685188868/userAvatar_fbe972.webp'
+              }
+              alt="user avatar"
+            />
+          ) : (
+            <InputImage view="round" />
+          )}
+        </Box>
         <Typography variant="h1" component="p" color="secondary" flexWrap="wrap" textAlign="center">
           {`${firstName} ${secondName}`}
         </Typography>

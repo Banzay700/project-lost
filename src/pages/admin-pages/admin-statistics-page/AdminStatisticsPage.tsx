@@ -7,7 +7,10 @@ import {
   IconMarketing,
   IconSales,
   IconSavedReports,
+  IconStatistics,
 } from 'assets'
+import { useParams } from 'react-router-dom'
+import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
 
 const mokStatistics: SidebarTabItemType[] = [
   {
@@ -38,7 +41,20 @@ const mokStatistics: SidebarTabItemType[] = [
 ]
 
 const AdminStatisticsPage: FC = () => {
-  return <SidebarTabsList sidebarTabItems={mokStatistics} />
+  const { statistics } = useParams()
+
+  useRelocateDefaultLocation({
+    isParams: statistics,
+    relocateTo: mokStatistics[0].linkTo,
+  })
+
+  return (
+    <SidebarTabsList
+      sidebarTabItems={mokStatistics}
+      title="Statistics"
+      titleIcon={<IconStatistics />}
+    />
+  )
 }
 
 export default AdminStatisticsPage

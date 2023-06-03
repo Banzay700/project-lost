@@ -5,7 +5,7 @@ const defaultUserState: UserType = {
   id: 'Unknown',
   firstName: 'Unknown',
   secondName: 'Unknown',
-  role: 'WAITER',
+  role: 'Waiter',
   phoneNumber: '',
   userImage: '',
   email: '',

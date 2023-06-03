@@ -6,8 +6,8 @@ import { useSearchParamsType } from 'hooks'
 import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
-  const { type, handleChangeFilter } = useSearchParamsType()
-  const { data: dataBills } = useGetAllBillsQuery({ type })
+  const { orderType, handleChangeFilter } = useSearchParamsType()
+  const { data: dataBills } = useGetAllBillsQuery({ orderType })
 
   return (
     <>

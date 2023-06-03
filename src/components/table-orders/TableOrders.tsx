@@ -5,8 +5,8 @@ import { useSearchParamsType } from 'hooks'
 import { tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
-  const { type, handleChangeFilter } = useSearchParamsType()
-  const { data: dataOrders } = useGetAllOrdersQuery({ type })
+  const { orderType, handleChangeFilter } = useSearchParamsType()
+  const { data: dataOrders } = useGetAllOrdersQuery({ orderType })
 
   return (
     <>
@@ -15,7 +15,7 @@ const TableOrders: FC = () => {
           { value: 'dineIn', label: 'Dine in' },
           { value: 'takeAway', label: 'Take away' },
         ]}
-        defaultValue={type?.split(',')}
+        defaultValue={orderType?.split(',')}
         onChange={handleChangeFilter}
       />
       <Table data={dataOrders} tableTitles={tableTitleOrder} tableType="orders" />
