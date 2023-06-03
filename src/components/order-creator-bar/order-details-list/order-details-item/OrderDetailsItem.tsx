@@ -1,12 +1,11 @@
-import { FC } from 'react'
-import { Card, ListItem, Stack } from '@mui/material'
+import { FC, useState } from 'react'
+import { Card, ListItem } from '@mui/material'
 
 import { Picker } from 'UI'
 import { useOrderReducer } from 'hooks'
-import { FadeIn } from 'utils/index'
-import { OrderDetailsItemMedia } from './order-details-item-media'
-import { OrderDetailsItemTitle } from './order-details-item-title'
-import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
+import { FadeIn } from 'utils'
+import { OrderDetailsItemContent } from './order-details-item-content'
+import { OrderDetailsDeleteCard } from './order-details-delete-card'
 import s from './OrderDetailsItem.module.scss'
 
 interface OrderItemProps {
@@ -16,18 +15,10 @@ interface OrderItemProps {
   total: number
   amount?: number
   isPicker?: boolean
-  deleteIcon?: boolean
 }
 
-const OrderDetailsItem: FC<OrderItemProps> = ({
-  id,
-  title,
-  src,
-  isPicker,
-  total,
-  amount,
-  deleteIcon,
-}) => {
+const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total, amount }) => {
+  const [isDeleteCard, setIsDeleteCard] = useState(false)
   const { changeDishAmount } = useOrderReducer()
 
   const handleChangeOrderInfo = (value: number) => {
@@ -39,13 +30,19 @@ const OrderDetailsItem: FC<OrderItemProps> = ({
       <ListItem
         sx={{ width: '100%', p: 0, ':hover': { transition: '1s', background: '#F8F9FDFF' } }}>
         <Card className={s.card}>
-          <OrderDetailsItemMedia src={src} alt={title} />
-          <Stack sx={{ justifyContent: 'space-between', width: '100%' }}>
-            <OrderDetailsItemTitle title={title} dishID={id} deleteIcon={deleteIcon} />
-            <OrderDetailsItemPriceInfo totalPriceItem={total}>
-              {isPicker && <Picker initialValue={amount} onChange={handleChangeOrderInfo} />}
-            </OrderDetailsItemPriceInfo>
-          </Stack>
+          {isDeleteCard ? (
+            <OrderDetailsDeleteCard id={id} handleDeleteCard={setIsDeleteCard} />
+          ) : (
+            <OrderDetailsItemContent title={title} src={src} total={total}>
+              {isPicker && (
+                <Picker
+                  initialValue={amount}
+                  onChange={handleChangeOrderInfo}
+                  handleDeleteCard={setIsDeleteCard}
+                />
+              )}
+            </OrderDetailsItemContent>
+          )}
         </Card>
       </ListItem>
     </FadeIn>
