@@ -12,9 +12,14 @@ export const orderApi = api.injectEndpoints({
         if (body.orderType) {
           params.orderType = body.orderType
         }
-        return {
-          url: '/orders',
-          params,
+        return { url: '/orders', params }
+      },
+      onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        const { orderActive } = convertOrderData(data[0] as OrderActiveType)
+
+        if (data) {
+          dispatch(openOrder(orderActive))
         }
       },
       providesTags: ['Order'],
@@ -50,10 +55,10 @@ export const orderApi = api.injectEndpoints({
 })
 
 export const {
+  useLazyGetOrderQuery,
+  useGetAllOrdersQuery,
+  useGetOrderQuery,
   useCreateOrderMutation,
   useDeleteOrderMutation,
   useUpdateOrderMutation,
-  useGetAllOrdersQuery,
-  useGetOrderQuery,
-  useLazyGetOrderQuery,
 } = orderApi
