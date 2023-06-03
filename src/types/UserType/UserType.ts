@@ -7,7 +7,10 @@ export type UserType = {
   phoneNumber?: string
   email?: string
   description?: string
+  status: 'active' | 'inactive'
 }
+
+export type UserInLoginType = Pick<UserType, 'id' | 'firstName' | 'secondName' | 'userImage'>
 
 export type UserPassword = {
   password: string

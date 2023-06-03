@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { useGetAllUsersQuery } from 'store/api/users.api'
+import { useGetUsersInLoginQuery } from 'store/api/users.api'
 import { EmployeesCarrousel } from 'components/employees-carrousel'
 import { Button } from 'UI/button'
 import { UserLoginRequestType } from 'types/UserType'
@@ -13,7 +13,7 @@ interface LoginProps {
 }
 
 const Login: FC<LoginProps> = ({ onSubmit }) => {
-  const { data: users = [] } = useGetAllUsersQuery('')
+  const { data: users = [] } = useGetUsersInLoginQuery()
   const [chosenEmployee, setChosenEmployee] = useState('')
 
   const handleSetActiveSlide = (id: string) => {

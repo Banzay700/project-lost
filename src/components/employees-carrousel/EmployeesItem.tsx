@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import classNames from 'classnames'
-import { UserType } from 'types/UserType/UserType'
+import { UserInLoginType, UserType } from 'types/UserType/UserType'
 import s from './EmployeesCarrousel.module.scss'
 
-interface EmployeesItemProps extends UserType {
+interface EmployeesItemProps extends UserInLoginType {
   isActive: boolean
   onClick: (id: string) => void
 }

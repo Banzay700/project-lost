@@ -5,6 +5,9 @@ import {
   UserPartialType,
   UserType,
   UserUpdateAvatar,
+  UserInLoginType,
+  UserRequestType,
+  UserAllResponseType,
 } from 'types'
 import { setUserData, setUserInfo, setUserLogout } from 'store/reducers'
 import { api } from './api'
@@ -12,9 +15,14 @@ import { API_CONST_USERS } from './api.utils'
 
 export const usersApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllUsers: builder.query<UserType[], string>({
-      query: () => ({ url: API_CONST_USERS.USERS }),
+    getUsersInLogin: builder.query<UserInLoginType[], void>({
+      query: () => ({ url: API_CONST_USERS.USERS_IN_LOGIN }),
     }),
+    getAllUsers: builder.query<UserAllResponseType, UserRequestType>({
+      query: (params) => ({ url: API_CONST_USERS.USERS, params }),
+      providesTags: ['Users'],
+    }),
+
     updateUser: builder.mutation<UserType, UserPartialType>({
       query: (body) => ({
         url: `${API_CONST_USERS.USERS}/${body.id}`,
@@ -34,6 +42,7 @@ export const usersApi = api.injectEndpoints({
         method: 'POST',
         body: body.body,
       }),
+      invalidatesTags: ['Users'],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
         if (data) {
@@ -47,6 +56,7 @@ export const usersApi = api.injectEndpoints({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Users'],
     }),
 
     login: builder.mutation<UserResponseType, UserLoginRequestType>({
@@ -90,6 +100,7 @@ export const usersApi = api.injectEndpoints({
 
 export const {
   useGetAllUsersQuery,
+  useGetUsersInLoginQuery,
   useUpdateUserMutation,
   useUpdateUserAvatarMutation,
   useRegistrationMutation,

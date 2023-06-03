@@ -26,6 +26,9 @@ export {
   TotalPriceColumn,
   StatusColumn,
   ActionsBillsColumn,
+  ColumnAction,
+  ColumnText,
+  ColumnInfoChip,
 } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'

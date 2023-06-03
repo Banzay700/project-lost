@@ -23,6 +23,7 @@ export {
 } from './dish.api'
 
 export {
+  useGetUsersInLoginQuery,
   useGetAllUsersQuery,
   useLogoutMutation,
   useLoginMutation,
