@@ -1,1 +1,1 @@
-export { default as DishFilterMenuItem } from './FilterMenuItem'
+export { default as FilterMenuItem } from './FilterMenuItem'

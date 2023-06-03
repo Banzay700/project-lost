@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import classNames from 'classnames'
-import { UserInLoginType, UserType } from 'types/UserType/UserType'
+import { UserInLoginType } from 'types/UserType/UserType'
 import s from './EmployeesCarrousel.module.scss'
 
 interface EmployeesItemProps extends UserInLoginType {

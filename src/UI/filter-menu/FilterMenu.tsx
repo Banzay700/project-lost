@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import { FilterMenuItemType } from 'types'
 
-import { DishFilterMenuItem } from './filter-menu-item'
+import { FilterMenuItem } from './filter-menu-item'
 
 interface FilterMenuProps {
   filterMenuItems: FilterMenuItemType[]
@@ -12,6 +12,7 @@ interface FilterMenuProps {
 
 const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChange }) => {
   const [filterItems, setFilterItems] = useState(defaultValue || ['all'])
+
   const handleChangeFilter = (value: string) => {
     const withoutAllCategory = filterItems.filter((item) => item !== 'all')
     if (value === 'all') {
@@ -31,27 +32,33 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
     }
   }
 
+  const handleChangeFilterWhenTwoItem = (value: string) => {
+    setFilterItems([value])
+    onChange([value])
+  }
+
   useEffect(() => {
-    if (defaultValue) {
-      setFilterItems(defaultValue)
-    }
+    setFilterItems(defaultValue || ['all'])
   }, [defaultValue])
+
+  const choiceHandle =
+    filterMenuItems.length > 2 ? handleChangeFilter : handleChangeFilterWhenTwoItem
 
   return (
     <Stack sx={{ gap: '8px' }} direction="row" flexWrap="wrap">
-      <DishFilterMenuItem
+      <FilterMenuItem
         value="all"
         label="All"
         isSelected={filterItems.some((item) => item === 'all')}
-        onChange={handleChangeFilter}
+        onChange={choiceHandle}
       />
       {filterMenuItems.map(({ value, label }) => (
-        <DishFilterMenuItem
+        <FilterMenuItem
           key={value}
           value={value}
           label={label}
           isSelected={filterItems.some((item) => item === value)}
-          onChange={handleChangeFilter}
+          onChange={choiceHandle}
         />
       ))}
     </Stack>

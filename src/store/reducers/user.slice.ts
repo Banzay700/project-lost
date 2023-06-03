@@ -9,6 +9,7 @@ const defaultUserState: UserType = {
   phoneNumber: '',
   userImage: '',
   email: '',
+  status: 'inactive',
   description: '',
 }
 
