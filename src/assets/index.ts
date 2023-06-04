@@ -38,5 +38,6 @@ export {
   IconPaper,
   IconCrossSmall,
   IconCheck,
+  IconShowPass,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'
