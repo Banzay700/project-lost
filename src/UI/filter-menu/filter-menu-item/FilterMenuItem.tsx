@@ -2,14 +2,14 @@ import { FC } from 'react'
 import { Button } from 'UI/button'
 import s from './FilterMenuItem.module.scss'
 
-interface DishFilterMenuItemProps {
+interface FilterMenuItemProps {
   value: string
   label: string
   onChange: (value: string) => void
   isSelected?: boolean
 }
 
-const FilterMenuItem: FC<DishFilterMenuItemProps> = ({ value, label, onChange, isSelected }) => {
+const FilterMenuItem: FC<FilterMenuItemProps> = ({ value, label, onChange, isSelected }) => {
   const handleClick = () => {
     onChange(value)
   }
