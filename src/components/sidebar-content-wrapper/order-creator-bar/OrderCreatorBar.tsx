@@ -47,7 +47,7 @@ const OrderCreatorBar: FC = () => {
 
   const handleCreateOrder = () => {
     const { orderDB, orderActive } = convertOrderData(activeOrder)
-
+    console.log(orderDB)
     createOrder(orderDB)
     updateOrder(orderDB)
     openNewOrder(orderActive)

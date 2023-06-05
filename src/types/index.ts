@@ -1,4 +1,4 @@
-export type { TableDataItem } from './ComponetTableType'
+export type { TableDataItem, OrderTypeOfElement } from './ComponetTableType'
 
 export type {
   TableType,
@@ -20,8 +20,8 @@ export type {
   OrderBillsQueryRequest,
   OderStoreStatusType,
   ModifiedDataType,
-  BillsResponseType,
   OrderResponseType,
+  BillsResponseType,
 } from './OrderBillsType'
 
 export type {

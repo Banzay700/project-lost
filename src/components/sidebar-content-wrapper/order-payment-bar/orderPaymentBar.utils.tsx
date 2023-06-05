@@ -9,5 +9,5 @@ export const paymentMethodItems: PaymentMethodItemType[] = [
 
 export const toggleMenuValues = [
   { label: 'Order info', value: 'Order info' },
-  { label: 'Offers', value: 'Offers' },
+  { label: 'Payment', value: 'Payment' },
 ]

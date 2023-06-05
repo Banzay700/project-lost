@@ -169,6 +169,25 @@ const theme = createTheme(
           },
         },
       },
+      MuiSwipeableDrawer: {
+        defaultProps: {
+          PaperProps: {
+            style: {
+              width: '45%',
+              height: '85%',
+              top: '15%',
+              boxShadow: 'none',
+            },
+          },
+          BackdropProps: {
+            style: {
+              height: '85%',
+              top: '15%',
+              backdropFilter: 'blur(2px)',
+            },
+          },
+        },
+      },
     },
     spacing: 5,
   },

@@ -3,7 +3,7 @@ import { TableCell } from '@mui/material'
 import { InfoChip } from 'UI/info-сhip'
 
 interface ColumnInfoChipProps {
-  type:
+  type?:
     | 'dineIn'
     | 'takeAway'
     | 'delivery'

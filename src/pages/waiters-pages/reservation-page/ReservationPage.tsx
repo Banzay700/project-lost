@@ -5,6 +5,7 @@ import { PageActionsBar } from 'UI'
 import { FadeIn } from 'utils'
 
 import { useActiveOrderStatus } from 'hooks/useActiveOrderStatus.hook'
+import { Drawer } from 'components/drawer'
 
 const ReservationPage: FC = () => {
   useActiveOrderStatus('none')
@@ -16,6 +17,7 @@ const ReservationPage: FC = () => {
       </PageActionsBar>
       <ReservationCanvas />
       <ReservationBottomBar />
+      <Drawer />
     </FadeIn>
   )
 }

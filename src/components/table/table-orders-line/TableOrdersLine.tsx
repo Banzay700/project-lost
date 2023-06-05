@@ -1,45 +1,40 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { TableRow } from '@mui/material'
-import {
-  ActionsOrdersColumn,
-  OrderNumberColumn,
-  OrderTypeColumn,
-  TableNumberColumn,
-  TotalPriceColumn,
-} from 'UI'
-import { ROUTES } from 'routes'
-import { useCreateBillMutation, useLazyGetOrderQuery } from 'store/api'
-import { OrderType } from 'types'
-import { prepareBillsData } from './tableOrdersLine.unils'
+import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI'
+import { OrderType, OrderTypeOfElement } from 'types'
+import { IconAddTipAmount } from 'assets'
 import s from './TableOrdersLine.module.scss'
 
 interface TableOrdersColumnProps {
   element: OrderType
-  active: string | null
-  setActive: Dispatch<SetStateAction<string | null>>
+  active: string | undefined
+  setActive: Dispatch<SetStateAction<string | undefined>>
+  onClickAction?: (id: string) => void
+  onClickLine?: (id: string) => void
 }
 
-const TableOrdersLine: FC<TableOrdersColumnProps> = ({ element, active, setActive }) => {
-  const navigate = useNavigate()
-  const [trigger] = useLazyGetOrderQuery()
-  const [createBills] = useCreateBillMutation()
-
+const TableOrdersLine: FC<TableOrdersColumnProps> = ({
+  element,
+  active,
+  setActive,
+  onClickAction,
+  onClickLine,
+}) => {
   const { table, totalPrice, orderType, orderNumber, id } = element
   const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
 
   const handleLineWrapperClick = () => {
-    if (id) {
-      trigger(id)
+    if (onClickLine && id) {
+      onClickLine(id)
       setActive(id)
     }
   }
 
-  const handleSendOrder = async (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSendOrder = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    const dataOrder = prepareBillsData(element as OrderType)
-    await createBills(dataOrder)
-    navigate(`/${ROUTES.BILLS}`)
+    if (onClickAction && id) {
+      onClickAction(id)
+    }
   }
 
   return (
@@ -49,13 +44,20 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({ element, active, setActiv
       onClick={handleLineWrapperClick}>
       <TableNumberColumn table={table} />
 
-      <OrderNumberColumn orderNumber={orderNumber} />
+      <ColumnText title={`#${orderNumber}`} textFontWeight={600} />
 
-      <TotalPriceColumn totalPrice={totalPrice} />
+      <ColumnText title={`$${totalPrice}`} textFontWeight={400} />
 
-      <OrderTypeColumn orderType={orderType} />
+      <ColumnInfoChip type={orderType as OrderTypeOfElement} />
 
-      <ActionsOrdersColumn handleSendOrder={handleSendOrder} className={s.tableButton} />
+      <ColumnAction
+        title="Close order"
+        onClick={handleSendOrder}
+        variant="contained"
+        size="small"
+        startIcon={<IconAddTipAmount />}
+        className={s.tableButton}
+      />
     </TableRow>
   )
 }

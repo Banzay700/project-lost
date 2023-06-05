@@ -1,12 +1,31 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { IndicatorFilterBar, Table } from 'components'
-import { useGetAllOrdersQuery } from 'store/api'
+import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
 import { useSearchParamsType } from 'hooks'
-import { tableTitleOrder } from './tableOrder.utils'
+
+import { ROUTES } from 'routes'
+import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
   const { orderType, handleChangeFilter } = useSearchParamsType()
   const { data } = useGetAllOrdersQuery({ orderType })
+
+  const navigate = useNavigate()
+  const [trigger] = useLazyGetOrderQuery()
+  const [createBills] = useCreateBillMutation()
+
+  const handleLineWrapperClick = (id: string) => trigger(id)
+
+  const handleSendOrder = (id: string) => {
+    const dataOrder = prepareBillsData(id, data?.data)
+    if (dataOrder) {
+      console.log(dataOrder)
+      createBills(dataOrder)
+      navigate(`/${ROUTES.BILLS}`)
+    }
+  }
+  console.log(data)
   return (
     <>
       <IndicatorFilterBar
@@ -17,7 +36,13 @@ const TableOrders: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleChangeFilter}
       />
-      <Table data={data?.data} tableTitles={tableTitleOrder} tableType="orders" />
+      <Table
+        data={data?.data}
+        tableTitles={tableTitleOrder}
+        tableType="orders"
+        onClickAction={handleSendOrder}
+        onClickLine={handleLineWrapperClick}
+      />
     </>
   )
 }

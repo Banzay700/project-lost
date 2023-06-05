@@ -1,53 +1,81 @@
-import { Dispatch, FC, SetStateAction } from 'react'
+import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { TableRow } from '@mui/material'
-import {
-  ActionsBillsColumn,
-  OrderNumberColumn,
-  OrderTypeColumn,
-  StatusColumn,
-  TableNumberColumn,
-  TotalPriceColumn,
-} from 'UI'
-import { useLazyGetOneBillQuery } from 'store/api'
-import { BillsType } from 'types'
+import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
+import { BillsType, OrderTypeOfElement } from 'types'
+import { IconAddTipAmount, IconPrinter } from 'assets'
 import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
   element: BillsType
-  active: string | null
-  setActive: Dispatch<SetStateAction<string | null>>
+  active: string | undefined
+  setActive: Dispatch<SetStateAction<string | undefined>>
+  onClickAction?: (id: string) => void
+  onClickLine?: (id: string) => void
 }
 
-const TableBillsLine: FC<TableBillsColumnProps> = ({ element, active, setActive }) => {
-  const [getBill] = useLazyGetOneBillQuery()
-
+const TableBillsLine: FC<TableBillsColumnProps> = ({
+  element,
+  active,
+  setActive,
+  onClickAction,
+  onClickLine,
+}) => {
   const { table, totalPrice, orderType, orderNumber, id, status } = element
   const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
 
-  const handleSendBillsData = () => {
-    if (id) {
-      getBill(id)
+  const handleSendBillsData = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    if (onClickAction && id) {
+      onClickAction(id)
+      setActive(id)
+    }
+  }
+
+  const handleLineWrapperClick = () => {
+    if (onClickLine && id) {
+      onClickLine(id)
       setActive(id)
     }
   }
 
   return (
-    <TableRow hover sx={{ '&:last-child td, &:last-child th': { border: 0 }, backgroundColor }}>
+    <TableRow
+      hover
+      sx={{
+        '&:last-child td, &:last-child th': { border: 0 },
+        cursor: 'pointer',
+        backgroundColor,
+      }}
+      onClick={handleLineWrapperClick}>
       <TableNumberColumn table={table} />
 
-      <OrderNumberColumn orderNumber={orderNumber} />
+      <ColumnText title={`#${orderNumber}`} textFontWeight={600} />
 
-      <TotalPriceColumn totalPrice={totalPrice} />
+      <ColumnText title={`$${totalPrice}`} textFontWeight={400} />
 
-      <StatusColumn status={status} />
+      <ColumnInfoChip type={status} />
 
-      <OrderTypeColumn orderType={orderType} />
+      <ColumnInfoChip type={orderType as OrderTypeOfElement} />
 
-      <ActionsBillsColumn
-        status={status}
-        className={s.tableButton}
-        handleSendBillsData={handleSendBillsData}
-      />
+      {status === 'opened' ? (
+        <ColumnAction
+          title="Pay Now"
+          onClick={handleSendBillsData}
+          size="small"
+          variant="contained"
+          startIcon={<IconAddTipAmount />}
+          className={s.tableButton}
+        />
+      ) : (
+        <ColumnAction
+          title="Print bill"
+          onClick={handleSendBillsData}
+          size="small"
+          variant="outlined"
+          startIcon={<IconPrinter />}
+          className={s.tableButton}
+        />
+      )}
     </TableRow>
   )
 }
