@@ -50,7 +50,7 @@ const AdminEmployeesListPage: FC = () => {
               data={data.data}
               tableTitles={tableHeaders}
               tableType="users"
-              onClick={handleClick}
+              onClickAction={handleClick}
             />
           )}
         </Stack>

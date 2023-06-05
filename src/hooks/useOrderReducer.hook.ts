@@ -13,7 +13,6 @@ export const useOrderReducer = () => {
   const dispatch = useAppDispatch()
 
   const activeOrder = useAppSelector((state) => state.orders.activeOrder)
-  const newBill = useAppSelector((state) => state.bills.newBill)
 
   const addDish = (dish: OrderDishType) => dispatch(addDishToOrder(dish))
   const removeDish = (dishID: string) => dispatch(removeDishOrder(dishID))
@@ -27,7 +26,6 @@ export const useOrderReducer = () => {
   const orderFormExistingValues = { orderType, table }
 
   return {
-    newBill,
     activeOrder,
     dishes: activeOrder.dishes,
     orderFormExistingValues,

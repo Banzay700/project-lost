@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { billReducer, ordersReducer, userReducer } from './reducers'
+import { billReducer, ordersReducer, userReducer, toggleValueBillsReducer } from './reducers'
 
 import { api } from './api'
 
@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer,
   bills: billReducer,
   user: userReducer,
+  toggleValue: toggleValueBillsReducer,
   [api.reducerPath]: api.reducer,
 })
 

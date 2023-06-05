@@ -8,6 +8,7 @@ export {
   removeDishOrder,
 } from './order.slice'
 export { default as billReducer, openNewBill } from './bill.slice'
+export { default as toggleValueBillsReducer, changeToggleValue } from './toggleValueBills.slice'
 export {
   default as userReducer,
   setUserLogout,
