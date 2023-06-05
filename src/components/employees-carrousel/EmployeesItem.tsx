@@ -21,9 +21,8 @@ const EmployeesItem: FC<EmployeesItemProps> = (props) => {
       spacing={2}
       alignItems="center"
       justifySelf={alignSelf}
-      className={cardClasses}
-      onClick={() => onClick(id)}>
-      <Box>
+      className={cardClasses}>
+      <Box onClick={() => onClick(id)}>
         <img src={userImage} alt={secondName} className={imgClasses} />
       </Box>
       <Typography variant="h3" component="div" color="#fff">

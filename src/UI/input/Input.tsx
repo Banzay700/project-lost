@@ -16,11 +16,23 @@ type InputProps = InputVariantItemType & {
   maxRows?: number
   minRows?: number
   disabled?: boolean
+  focus?: boolean
 }
 
 const Input: FC<InputProps> = (props) => {
-  const { name, label, placeholder, icon, outlined, type, multiline, maxRows, minRows, disabled } =
-    props
+  const {
+    name,
+    label,
+    placeholder,
+    icon,
+    outlined,
+    type,
+    multiline,
+    maxRows,
+    minRows,
+    disabled,
+    focus,
+  } = props
   const [field, meta] = useField(name)
 
   const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
@@ -45,7 +57,7 @@ const Input: FC<InputProps> = (props) => {
 
   return (
     <FadeIn delay={50}>
-      <TextField {...textFieldConfig} />
+      <TextField {...textFieldConfig} inputRef={(input) => focus && input && input.focus()} />
     </FadeIn>
   )
 }
