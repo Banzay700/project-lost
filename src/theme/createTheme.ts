@@ -161,6 +161,14 @@ const theme = createTheme(
           disableElevation: false,
         },
       },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            borderWidth: '0.5px',
+            borderColor: '#E4E4E4',
+          },
+        },
+      },
     },
     spacing: 5,
   },

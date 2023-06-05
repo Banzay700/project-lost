@@ -23,6 +23,6 @@ export const tablePlacementMap: TablePlacementType = {
     { tableNumber: 'T-10', seatsQuantity: 10 },
     { tableNumber: 'T-11', seatsQuantity: 4 },
     { tableNumber: 'T-12', seatsQuantity: 2 },
-    { tableNumber: 'T-12', seatsQuantity: 4 },
+    { tableNumber: 'T-13', seatsQuantity: 4 },
   ],
 }
