@@ -2,11 +2,13 @@
   width: 85vw;
   min-height: 165px;
   justify-content: center;
+  user-select: none;
 }
 
 .carrouselContainer {
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .carrouselItem {
