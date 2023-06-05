@@ -5,7 +5,11 @@ import { Button } from 'UI/index'
 import { BottomBarIcon } from './bottom-bar-icon'
 import { TablesIconsLine } from './tables-cards-line'
 
-const ReservationBottomBar: FC = () => {
+interface ReservationBottomBarProps {
+  toggleDrawer: () => void
+}
+
+const ReservationBottomBar: FC<ReservationBottomBarProps> = ({ toggleDrawer }) => {
   const activeLineStyle = {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -21,7 +25,7 @@ const ReservationBottomBar: FC = () => {
       <Stack sx={activeLineStyle}>
         <BottomBarIcon />
         <TablesIconsLine cards={['T-01', 'T-10']} />
-        <Button variant="contained" size="default" color="primary">
+        <Button variant="contained" size="default" color="primary" onClick={toggleDrawer}>
           Add Reservation
         </Button>
       </Stack>

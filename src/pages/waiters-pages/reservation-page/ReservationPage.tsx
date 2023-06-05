@@ -1,14 +1,16 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { IndicatorsGroup, ReservationBottomBar, ReservationCanvas } from 'components'
-import { PageActionsBar } from 'UI'
-import { FadeIn } from 'utils'
-
-import { useActiveOrderStatus } from 'hooks/useActiveOrderStatus.hook'
 import { Drawer } from 'components/drawer'
+import { PageActionsBar } from 'UI'
+import { useActiveOrderStatus } from 'hooks'
+import { FadeIn } from 'utils'
 
 const ReservationPage: FC = () => {
   useActiveOrderStatus('none')
+  const [state, setState] = useState(false)
+
+  const toggleDrawer = () => setState((prev) => !prev)
 
   return (
     <FadeIn styles={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -16,8 +18,8 @@ const ReservationPage: FC = () => {
         <IndicatorsGroup />
       </PageActionsBar>
       <ReservationCanvas />
-      <ReservationBottomBar />
-      <Drawer />
+      <ReservationBottomBar toggleDrawer={toggleDrawer} />
+      <Drawer state={state} toggleDrawer={toggleDrawer} />
     </FadeIn>
   )
 }
