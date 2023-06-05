@@ -17,7 +17,7 @@ export const orderApi = api.injectEndpoints({
       onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
         const { orderActive } = convertOrderData(data.data[0] as OrderActiveType)
-
+        console.log(data)
         if (data) {
           dispatch(openOrder(orderActive))
         }

@@ -35,7 +35,7 @@ const Input: FC<InputProps> = (props) => {
   } = props
   const [field, meta] = useField(name)
 
-  const inputClasses = cn(s.input, { [s.withIcon]: icon, [s.outlined]: outlined })
+  const inputClasses = cn({ [s.withIcon]: icon, [s.outlined]: outlined })
   const textFieldConfig: TextFieldProps = {
     placeholder,
     label,

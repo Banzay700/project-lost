@@ -25,6 +25,7 @@ const Table: FC<TableProps> = ({ tableNumber, seatsQuantity }) => {
     border: '2px solid',
     color: selected ? '#ff5c00' : '#e4e4e4',
     alignItems: 'center',
+    cursor: 'pointer',
   }
 
   const tableTextStyles = {

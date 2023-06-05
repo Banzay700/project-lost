@@ -24,14 +24,14 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({
         p: '16px 24px',
         borderBottom: '1px solid #E4E4E4',
         flexDirection: { xs: 'column', md: 'row' },
-        alignItems: { xs: 'flex-start', md: 'center' },
+        alignItems: { md: 'center' },
         justifyContent: 'space-between',
-        gap: '24px',
+        gap: { xs: '5px', md: '24px' },
       }}>
-      <Box minWidth="30%">
+      <Box minWidth="35%">
         <SearchInput onChange={changeTitle} defaultValue={defaultValueInput} />
       </Box>
-      <Stack direction="row" sx={{ gap: '24px' }}>
+      <Stack direction="row" sx={{ gap: '24px', justifyContent: 'flex-end' }}>
         <Divider
           orientation="vertical"
           flexItem
