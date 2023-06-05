@@ -72,6 +72,52 @@ const theme = createTheme(
       },
     },
     components: {
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            input: {
+              padding: '12px 16px',
+              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                border: '1px solid #ff5c00',
+              },
+              '&.Mui-focused.MuiFormLabel-root': {
+                color: '#ff5c00',
+              },
+            },
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            borderRadius: '16px',
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              border: '1px solid #ff5c00',
+            },
+            '&.Mui-focused .MuiInputAdornment-root': {
+              color: '#ff5c00',
+            },
+          },
+        },
+      },
+
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            left: '4px',
+            top: '-3px',
+            '&.Mui-focused': {
+              color: '#ff5c00',
+            },
+          },
+          shrink: { transform: 'translate(10px, -7px)', fontSize: '12px', color: '#c2c2c2' },
+        },
+      },
+      MuiFormLabel: {
+        styleOverrides: {
+          root: { color: '#c2c2c2' },
+        },
+      },
       MuiTypography: {
         defaultProps: {
           variantMapping: {
