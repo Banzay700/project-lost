@@ -25,6 +25,7 @@ export {
 export {
   useGetUsersInLoginQuery,
   useGetAllUsersQuery,
+  useLazyGetUserByIDQuery,
   useLogoutMutation,
   useLoginMutation,
   useRefreshQuery,

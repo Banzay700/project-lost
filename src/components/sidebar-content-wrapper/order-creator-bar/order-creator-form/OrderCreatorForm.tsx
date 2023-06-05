@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
 import { Button, SelectInput } from 'UI'
-import { OrderCreatorFormReturnType } from 'types'
+import { InputSelectItemType, OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
 import { useGetFreeTablesQuery } from 'store/api'
 import { FadeIn } from 'utils'
@@ -20,10 +20,14 @@ interface OrderCreatorFormProps {
 const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [formValues, setFormValues] = useState<OrderCreatorFormReturnType>(initialValue)
   const [selectValue, setSelectValue] = useState('')
+
   const [disabled, setDisabled] = useState(true)
-  const [hidden, setHidden] = useState(false)
+  const [hidden, setHidden] = useState(true)
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
+
+  const selectItem: InputSelectItemType[] | undefined =
+    data && data.map(({ number }) => ({ title: number, value: number }))
 
   const handleValue = (value: string) => {
     setSelectValue(value)
@@ -31,7 +35,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   const handleHideSelect = (value: string) => {
-    setHidden(value === MAIN_ORDER_TYPE)
+    setHidden(value !== MAIN_ORDER_TYPE)
     setDisabled(value === MAIN_ORDER_TYPE)
   }
 
@@ -62,7 +66,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
               name="table"
               label="Select table"
               hidden={hidden}
-              data={data}
+              data={selectItem}
               handleValue={handleValue}
             />
           </Stack>

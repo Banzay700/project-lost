@@ -1,17 +1,18 @@
 import { mixed, object, string, TestContext } from 'yup'
+import { InputSelectItemType } from 'types'
 
-export const selectMenuItems = [
+export const selectMenuItems: InputSelectItemType[] = [
   {
-    number: 'Waiter',
-    id: 'waiter',
+    value: 'Waiter',
+    title: 'Waiter',
   },
   {
-    number: 'Admin',
-    id: 'admin',
+    value: 'Admin',
+    title: 'Admin',
   },
   {
-    number: 'Courier',
-    id: 'courier',
+    value: 'Courier',
+    title: 'Courier',
   },
 ]
 export const validationSchema = object().shape({

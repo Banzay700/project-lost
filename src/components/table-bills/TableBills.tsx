@@ -7,7 +7,7 @@ import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
   const { orderType, handleChangeFilter } = useSearchParamsType()
-  const { data: dataBills } = useGetAllBillsQuery({ orderType })
+  const { data } = useGetAllBillsQuery({ orderType })
 
   return (
     <>
@@ -19,7 +19,7 @@ const TableBills: FC = () => {
         ]}
         onChange={handleChangeFilter}
       />
-      <Table data={dataBills} tableTitles={tableTitleBills} tableType="bills" />
+      <Table data={data?.data} tableTitles={tableTitleBills} tableType="bills" />
     </>
   )
 }

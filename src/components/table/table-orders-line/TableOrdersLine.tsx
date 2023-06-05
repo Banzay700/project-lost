@@ -10,12 +10,12 @@ import {
 } from 'UI'
 import { ROUTES } from 'routes'
 import { useCreateBillMutation, useLazyGetOrderQuery } from 'store/api'
-import { OrderResponseType } from 'types'
+import { OrderType } from 'types'
 import { prepareBillsData } from './tableOrdersLine.unils'
 import s from './TableOrdersLine.module.scss'
 
 interface TableOrdersColumnProps {
-  element: OrderResponseType
+  element: OrderType
   active: string | null
   setActive: Dispatch<SetStateAction<string | null>>
 }
@@ -37,7 +37,7 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({ element, active, setActiv
 
   const handleSendOrder = async (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    const dataOrder = prepareBillsData(element as OrderResponseType)
+    const dataOrder = prepareBillsData(element as OrderType)
     await createBills(dataOrder)
     navigate(`/${ROUTES.BILLS}`)
   }

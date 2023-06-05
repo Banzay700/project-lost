@@ -1,9 +1,6 @@
-import { CommonOrderBillsType, BillsDishResponseType } from 'types'
+import { BillsType } from './BillsType'
 
-export type BillsResponseType = CommonOrderBillsType & {
-  orderID: string
-  dishes?: BillsDishResponseType[]
-  tip?: number
-  email?: string
-  paymentMethod?: string
+export type BillsResponseType = {
+  data: BillsType[]
+  totalCount: number
 }

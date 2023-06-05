@@ -1,4 +1,4 @@
-export type BillsDishResponseType = {
+export type BillsDishType = {
   id?: string
   dishID: string
   amount: number

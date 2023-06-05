@@ -5,9 +5,10 @@
 .logo {
   display: flex;
   align-items: center;
+  color: #ff5c00;
 }
 
-.coca-text{
+.coca-text {
   @media (max-width: 768px) {
     display: none;
   }

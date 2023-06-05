@@ -9,11 +9,11 @@ import {
   TotalPriceColumn,
 } from 'UI'
 import { useLazyGetOneBillQuery } from 'store/api'
-import { BillsResponseType } from 'types'
+import { BillsType } from 'types'
 import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
-  element: BillsResponseType
+  element: BillsType
   active: string | null
   setActive: Dispatch<SetStateAction<string | null>>
 }

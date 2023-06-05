@@ -1,11 +1,11 @@
-import { OrderActiveType, OrderRequestType, OrderResponseType, OrderBillsQueryRequest } from 'types'
+import { OrderActiveType, OrderRequestType, OrderBillsQueryRequest, OrderResponseType } from 'types'
 import { convertOrderData } from 'utils'
 import { openOrder } from '../reducers'
 import { api } from './api'
 
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllOrders: builder.query<OrderResponseType[], OrderBillsQueryRequest>({
+    getAllOrders: builder.query<OrderResponseType, OrderBillsQueryRequest>({
       query: (body) => {
         const params: OrderBillsQueryRequest = {}
 
@@ -16,7 +16,7 @@ export const orderApi = api.injectEndpoints({
       },
       onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        const { orderActive } = convertOrderData(data[0] as OrderActiveType)
+        const { orderActive } = convertOrderData(data.data[0] as OrderActiveType)
 
         if (data) {
           dispatch(openOrder(orderActive))

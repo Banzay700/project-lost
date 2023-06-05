@@ -1,8 +1,9 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Box, Pagination, Stack } from '@mui/material'
-import { SearchFilterBar, Table } from 'components'
-import { useGetAllUsersQuery } from 'store/api'
+import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
+import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useParamsSearchFilter } from 'hooks'
+import { UserPartialType } from 'types'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
 const AdminEmployeesListPage: FC = () => {
@@ -15,9 +16,22 @@ const AdminEmployeesListPage: FC = () => {
     handlePagination,
   } = useParamsSearchFilter('role')
   const { data } = useGetAllUsersQuery({ role, field, page })
+  const [trigger, { data: user }] = useLazyGetUserByIDQuery()
+  const [updateUser] = useUpdateUserMutation()
+  const [isOpenModal, setIsOpenModal] = useState(false)
 
   const handleClick = (id: string) => {
-    console.log(id)
+    trigger(id)
+
+    setIsOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false)
+  }
+
+  const handleSubmitUpdateForm = (value: UserPartialType) => {
+    updateUser(value)
   }
 
   return (
@@ -49,10 +63,19 @@ const AdminEmployeesListPage: FC = () => {
             shape="rounded"
             color="primary"
             onChange={handlePagination}
-            defaultPage={Number(page)}
+            page={Number(page)}
           />
         )}
       </Stack>
+      {user && (
+        <ModalUpdateUserInfo
+          title={`${user.firstName} ${user.secondName}`}
+          initialValues={user}
+          isOpenModal={isOpenModal}
+          onCloseModal={handleCloseModal}
+          onSubmit={handleSubmitUpdateForm}
+        />
+      )}
     </Stack>
   )
 }
