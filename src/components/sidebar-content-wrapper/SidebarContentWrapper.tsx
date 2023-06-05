@@ -9,12 +9,12 @@ const SidebarContentWrapper: FC = () => {
 
   return (
     <Stack
-      height="100%"
-      direction="column"
-      width="100%"
-      maxWidth="360px"
-      minWidth="289px"
-      borderLeft="1px solid #E4E4E4">
+      sx={{
+        height: '100%',
+        width: '100%',
+        borderLeft: '1px solid #e4e4e4',
+        maxWidth: { xs: '289px', lg: '340px', xl: '360px' },
+      }}>
       <Stack flex="1">
         {location === ROUTES.DISHES && <OrderCreatorBar />}
         {location === ROUTES.BILLS && <OrderPaymentBar />}

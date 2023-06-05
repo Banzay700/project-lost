@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
-import { Form, Formik } from 'formik'
-import { Input } from 'UI/input'
-import { UserType, UserUpdateInfo } from 'types'
-import { Button } from 'UI/button'
 import { Stack } from '@mui/material'
-import { InputsBasicUserInfo } from 'components/input-form'
+import { Form, Formik } from 'formik'
+
+import { InputsBasicUserInfo } from 'components'
+import { Input, Button } from 'UI'
+import { UserType, UserUpdateInfo } from 'types'
 
 interface ProfileInputGroupProps {
   initialValues: UserType

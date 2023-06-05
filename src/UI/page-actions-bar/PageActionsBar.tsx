@@ -12,8 +12,8 @@ const PageActionsBar: FC<PageActionsBarProps> = ({ children }) => {
       sx={{
         p: '16px 24px',
         borderBottom: '1px solid #E4E4E4',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: { xs: 'flex-start', md: 'center' },
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         minHeight: '71px',
         gap: '24px',
