@@ -19,6 +19,7 @@ interface ButtonProps extends PropsWithChildren {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   fullWidth?: boolean
   className?: string
+  linkageToForm?: string
 }
 
 const Button: FC<ButtonProps> = ({
@@ -37,6 +38,7 @@ const Button: FC<ButtonProps> = ({
   className,
   children,
   onClick,
+  linkageToForm,
 }) => {
   const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
   const buttonStyles = cn(
@@ -58,7 +60,8 @@ const Button: FC<ButtonProps> = ({
       fullWidth={fullWidth}
       disableRipple={disableRipple}
       disabled={disabled}
-      onClick={onClick}>
+      onClick={onClick}
+      form={linkageToForm}>
       <Stack justifyContent="center" spacing="9px" alignItems="center">
         {icon && icon}
         {children && (

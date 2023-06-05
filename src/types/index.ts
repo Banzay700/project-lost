@@ -9,17 +9,19 @@ export type {
 
 export type {
   OrderDishRequestType,
-  OrderDishResponseType,
+  OrderDishType,
   OrderDishActiveType,
   OrderRequestType,
-  OrderResponseType,
+  OrderType,
   OrderActiveType,
-  BillsResponseType,
+  BillsType,
   CommonOrderBillsType,
-  BillsDishResponseType,
+  BillsDishType,
   OrderBillsQueryRequest,
   OderStoreStatusType,
   ModifiedDataType,
+  BillsResponseType,
+  OrderResponseType,
 } from './OrderBillsType'
 
 export type {
@@ -49,6 +51,7 @@ export type {
   FilterMenuItemType,
   PaymentMethodItemType,
   SidebarTabItemType,
+  InputSelectItemType,
 } from './ComponentsItemType'
 
 export type {

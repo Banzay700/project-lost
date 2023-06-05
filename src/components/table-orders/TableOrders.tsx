@@ -6,7 +6,7 @@ import { tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
   const { orderType, handleChangeFilter } = useSearchParamsType()
-  const { data: dataOrders } = useGetAllOrdersQuery({ orderType })
+  const { data } = useGetAllOrdersQuery({ orderType })
   return (
     <>
       <IndicatorFilterBar
@@ -17,7 +17,7 @@ const TableOrders: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleChangeFilter}
       />
-      <Table data={dataOrders} tableTitles={tableTitleOrder} tableType="orders" />
+      <Table data={data?.data} tableTitles={tableTitleOrder} tableType="orders" />
     </>
   )
 }

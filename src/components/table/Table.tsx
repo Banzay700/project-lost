@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
-import { BillsResponseType, OrderResponseType, TableDataItem, UserType } from 'types'
+import { BillsType, OrderType, TableDataItem, UserType } from 'types'
 import { TableHead } from './table-head'
 import { TableOrdersLine } from './table-orders-line'
 import { TableBillsLine } from './table-bills-line'
@@ -26,7 +26,7 @@ const Table: FC<TableProps> = ({ data, tableTitles, tableType, onClick }) => {
           {tableType === 'orders' &&
             data?.map((element) => (
               <TableOrdersLine
-                element={element as OrderResponseType}
+                element={element as OrderType}
                 active={active}
                 setActive={setActive}
                 key={element?.id}
@@ -35,7 +35,7 @@ const Table: FC<TableProps> = ({ data, tableTitles, tableType, onClick }) => {
           {tableType === 'bills' &&
             data?.map((element) => (
               <TableBillsLine
-                element={element as BillsResponseType}
+                element={element as BillsType}
                 active={active}
                 setActive={setActive}
                 key={element?.id}

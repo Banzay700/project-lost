@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 
 export const useParamsSearchFilter = (params: string) => {
   const location = useLocation()
@@ -38,6 +38,11 @@ export const useParamsSearchFilter = (params: string) => {
       navigate(`?${searchParams.toString()}`)
     }
   }
+
+  useEffect(() => {
+    searchParams.set('page', '1')
+    navigate(`?${searchParams.toString()}`)
+  }, [field, type]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     params: type || undefined,

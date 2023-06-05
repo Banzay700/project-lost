@@ -20,3 +20,4 @@ export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-componen
 export { InputImage, InputsBasicUserInfo } from './input-form'
 export { IndicatorsGroup } from './indicators-group'
 export { ReservationBottomBar } from './reservation-bottom-bar'
+export { ModalUpdateUserInfo } from './modal-components'

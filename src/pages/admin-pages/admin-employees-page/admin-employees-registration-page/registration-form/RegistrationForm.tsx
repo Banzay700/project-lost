@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Form, Formik, FormikHelpers } from 'formik'
 import { InputImage, InputsBasicUserInfo } from 'components'
 import { Input } from 'UI/input'
@@ -13,6 +13,8 @@ interface RegistrationFormProps {
 }
 
 const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }) => {
+  const [formValues, setFormValues] = useState(initialValues)
+
   const handleSubmit = (
     value: RegistrationFormReturnType,
     { resetForm }: FormikHelpers<RegistrationFormReturnType>,
@@ -21,9 +23,13 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
     resetForm()
   }
 
+  useEffect(() => {
+    setFormValues(initialValues)
+  }, [initialValues])
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
       enableReinitialize>
@@ -38,13 +44,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
           </Box>
         </Stack>
         <Box width="20%">
-          <SelectInput
-            name="role"
-            label="Role"
-            data={selectMenuItems}
-            handleValue={() => {}}
-            hidden
-          />
+          <SelectInput name="role" label="Role" data={selectMenuItems} />
         </Box>
         <Input
           placeholder="Notes send email"

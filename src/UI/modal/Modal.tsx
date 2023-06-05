@@ -7,6 +7,7 @@ import s from './Modal.module.scss'
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean
   title: string
+  linkageToForm?: string
   isIconExit?: boolean
   actionAdditionalComponent?: ReactNode
   onClose: () => void
@@ -18,6 +19,7 @@ const Modal: FC<ModalProps> = ({
   title,
   isIconExit,
   actionAdditionalComponent,
+  linkageToForm,
   onClose,
   onSubmit,
   children,
@@ -58,6 +60,7 @@ const Modal: FC<ModalProps> = ({
           variant="contained"
           size="default"
           type="submit"
+          linkageToForm={linkageToForm}
           onClick={handleSubmit}
           className={s.button}>
           Submit

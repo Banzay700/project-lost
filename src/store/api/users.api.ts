@@ -10,6 +10,7 @@ import {
   UserAllResponseType,
 } from 'types'
 import { setUserData, setUserInfo, setUserLogout } from 'store/reducers'
+import { RootState } from 'store/store'
 import { api } from './api'
 import { API_CONST_USERS } from './api.utils'
 
@@ -17,21 +18,28 @@ export const usersApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUsersInLogin: builder.query<UserInLoginType[], void>({
       query: () => ({ url: API_CONST_USERS.USERS_IN_LOGIN }),
+      providesTags: ['Users'],
     }),
     getAllUsers: builder.query<UserAllResponseType, UserRequestType>({
       query: (params) => ({ url: API_CONST_USERS.USERS, params }),
       providesTags: ['Users'],
     }),
-
+    getUserByID: builder.query<UserType, string>({
+      query: (id) => ({ url: `${API_CONST_USERS.USERS}/${id}` }),
+      providesTags: ['Users'],
+    }),
     updateUser: builder.mutation<UserType, UserPartialType>({
       query: (body) => ({
         url: `${API_CONST_USERS.USERS}/${body.id}`,
         method: 'POST',
         body,
       }),
-      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+      invalidatesTags: ['Users'],
+      onQueryStarted: async (_, { dispatch, getState, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        if (data) {
+        const { user } = (getState() as RootState).user
+
+        if (data.id === user.id) {
           dispatch(setUserInfo(data))
         }
       },
@@ -101,6 +109,7 @@ export const usersApi = api.injectEndpoints({
 export const {
   useGetAllUsersQuery,
   useGetUsersInLoginQuery,
+  useLazyGetUserByIDQuery,
   useUpdateUserMutation,
   useUpdateUserAvatarMutation,
   useRegistrationMutation,

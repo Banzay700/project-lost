@@ -1,4 +1,4 @@
-export type OrderDishResponseType = {
+export type OrderDishType = {
   amount: number
   dishTotalPrice: number
   title: string

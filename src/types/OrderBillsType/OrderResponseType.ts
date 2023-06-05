@@ -1,6 +1,6 @@
-import { CommonOrderBillsType } from 'types/OrderBillsType/CommonOrderBillsType'
-import { OrderDishResponseType } from 'types/OrderBillsType/OrderDishResponseType'
+import { OrderType } from './OrderType'
 
-export type OrderResponseType = CommonOrderBillsType & {
-  dishes: OrderDishResponseType[]
+export type OrderResponseType = {
+  data: OrderType[]
+  totalCount: number
 }
