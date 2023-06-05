@@ -12,10 +12,7 @@ export const billsApi = api.injectEndpoints({
           params.orderType = body.orderType
         }
 
-        return {
-          url: '/bills',
-          params,
-        }
+        return { url: '/bills', params }
       },
       providesTags: ['Bills'],
     }),
