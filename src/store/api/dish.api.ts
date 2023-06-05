@@ -1,4 +1,4 @@
-import { DishSubCategoriesResponseType, DishType, SidebarItemType } from 'types'
+import { DishesResponseType, DishSubCategoriesResponseType, DishType, SidebarItemType } from 'types'
 import { api } from './api'
 import { API_CONST_DISHES } from './api.utils'
 // localhost:5001/api/dishes?category=Pizza&q=tomatoes&subcategory=Round_pizza
@@ -22,7 +22,7 @@ export const dishApi = api.injectEndpoints({
       }),
     }),
 
-    getDishesByCategoryAndFilter: builder.query<DishType[], DishesRequest>({
+    getDishesByCategoryAndFilter: builder.query<DishesResponseType, DishesRequest>({
       query: ({ category, search }) => {
         const params: ParamsProps = {
           category,

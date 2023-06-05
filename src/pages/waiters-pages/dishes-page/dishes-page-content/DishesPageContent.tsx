@@ -72,7 +72,7 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
           defaultValueInput={search || ''}
         />
       )}
-      {dishes && <DishesList dishes={dishes} />}
+      {dishes && <DishesList dishes={dishes.data} />}
     </Stack>
   )
 }

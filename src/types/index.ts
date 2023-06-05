@@ -40,7 +40,12 @@ export type {
   UserAllResponseType,
 } from './UserType'
 
-export type { DishType, DishAdditionalFood, DishSubCategoriesResponseType } from './DishType'
+export type {
+  DishType,
+  DishAdditionalFood,
+  DishSubCategoriesResponseType,
+  DishesResponseType,
+} from './DishType'
 
 export type {
   ToggleMenuItemType,
