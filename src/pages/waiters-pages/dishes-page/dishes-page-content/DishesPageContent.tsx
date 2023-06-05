@@ -29,8 +29,8 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
     firstLetterUpperCase(category || defaultCategory),
   )
   const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
-    category: firstLetterUpperCase(category || defaultCategory),
-    subcategory,
+    category: firstLetterUpperCase(subcategory || category || defaultCategory),
+    // subcategory,
     search,
   })
 

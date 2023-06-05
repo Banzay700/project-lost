@@ -8,7 +8,6 @@ export type DishType = {
   price: number
   description: string
   category?: string
-  subcategory?: string
   weight: number
   bonus?: number
   additionalFood?: DishAdditionalFood[]

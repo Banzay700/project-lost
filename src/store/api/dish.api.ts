@@ -6,12 +6,11 @@ import { API_CONST_DISHES } from './api.utils'
 interface DishesRequest {
   category: string
   search?: string | null
-  subcategory?: string | null
 }
 
 interface ParamsProps {
   category: string
-  q?: string
+  search?: string
   subcategory?: string
 }
 
@@ -24,16 +23,13 @@ export const dishApi = api.injectEndpoints({
     }),
 
     getDishesByCategoryAndFilter: builder.query<DishType[], DishesRequest>({
-      query: ({ category, search, subcategory }) => {
+      query: ({ category, search }) => {
         const params: ParamsProps = {
           category,
         }
 
         if (search) {
-          params.q = search
-        }
-        if (subcategory) {
-          params.subcategory = subcategory
+          params.search = search
         }
 
         return {
