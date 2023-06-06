@@ -1,35 +1,26 @@
-import { FC, useState } from 'react'
-import { Stack } from '@mui/material'
+import { FC } from 'react'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
-import { useAppDispatch, useAppSelector, useBillsReducer, useSmoothScrollbar } from 'hooks'
-import { PaymentFormReturnType, PaymentFormCollectType } from 'types'
-import { FadeIn } from 'utils'
+import { useAppDispatch, useAppSelector, useBillsReducer } from 'hooks'
 import { changeToggleValue } from 'store/reducers'
-import { OrderPaymentForm } from './order-payment-form'
-import { OrderButtonsGroup } from './order-buttons-group'
-import { OrderPricingTotalInfo } from './order-total-info'
+import { useUpdateBillMutation } from 'store/api'
+import { PaymentFormReturnType } from 'types'
+import { FadeIn } from 'utils'
+import { PaymentToggleInfo } from './payment-toggle-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
+import OrderToggleList from './order-toggle-list/OrderToggleList'
 
 const OrderPaymentBar: FC = () => {
   const dispatch = useAppDispatch()
-  const [tipStatus, setTipStatus] = useState(false)
-  const [emailStatus, setEmailStatus] = useState(false)
-  const [formData, setFormData] = useState<PaymentFormCollectType>()
   const { newBill } = useBillsReducer()
-  const { orderNumber, totalPrice, dishes } = newBill
+  const [updateBill] = useUpdateBillMutation()
   const toggleValue = useAppSelector((state) => state.toggleValue.toggleValue)
 
-  const handleToggleTipStatus = () => setTipStatus((prevState) => !prevState)
-  const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
-  const containerRef = useSmoothScrollbar<HTMLDivElement>()
+  const buttonDisabled = newBill.status === 'closed'
+  const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
 
-  const handleFormSubmit = (values: PaymentFormReturnType) => {
-    if (orderNumber && totalPrice) {
-      setFormData({ ...values, orderNumber, totalPrice })
-      console.log({ ...values, orderNumber, totalPrice })
-    }
-  }
+  const handleFormSubmit = (values: PaymentFormReturnType) =>
+    updateBill({ ...newBill, ...values, status: 'closed' })
 
   const handleToggleMenuChange = (value: string) => dispatch(changeToggleValue(value))
 
@@ -39,36 +30,13 @@ const OrderPaymentBar: FC = () => {
         menuItems={toggleMenuValues}
         onChange={handleToggleMenuChange}
         defaultValue={toggleValue}
+        buttonDisabled={buttonDisabled}
       />
-      <DetailsListTitle title="Order payment" orderNumber={orderNumber} />
-      <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>
-        {toggleValue === 'Payment' && (
-          <>
-            <OrderPricingTotalInfo totalPrice={totalPrice} tipAmount={formData?.tipAmount} />
-            <OrderPaymentForm isTip={tipStatus} isEmail={emailStatus} onSubmit={handleFormSubmit}>
-              <OrderButtonsGroup
-                setTipStatus={handleToggleTipStatus}
-                setEmailStatus={handleToggleEmailStatus}
-              />
-            </OrderPaymentForm>
-          </>
-        )}
-        {/* {toggleValue === 'Order info' && ( */}
-        {/*  <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}> */}
-        {/*    <Box style={{ height: '200px' }}> */}
-        {/*      {dishes?.map(({ dishID, title, price, amount}) => ( */}
-        {/*        <OrderDetailsItem */}
-        {/*          key={dishID} */}
-        {/*          id={dishID} */}
-        {/*          title={title} */}
-        {/*          total={price} */}
-        {/*          amount={amount} */}
-        {/*        /> */}
-        {/*      ))} */}
-        {/*    </Box> */}
-        {/*  </div> */}
-        {/* )} */}
-      </Stack>
+      <DetailsListTitle title={detailsListTitle} orderNumber={newBill.orderNumber} />
+      {toggleValue === 'Payment' && (
+        <PaymentToggleInfo onSubmit={handleFormSubmit} newBill={newBill} />
+      )}
+      {toggleValue === 'Order info' && <OrderToggleList newBill={newBill} />}
     </FadeIn>
   )
 }

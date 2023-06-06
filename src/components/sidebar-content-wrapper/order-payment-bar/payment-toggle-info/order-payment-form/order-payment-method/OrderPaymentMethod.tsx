@@ -3,7 +3,7 @@ import { FormControl, RadioGroup, Stack, Typography } from '@mui/material'
 import { useFormikContext } from 'formik'
 
 import { RadioIconInput } from 'UI/index'
-import { paymentMethodItems } from '../../orderPaymentBar.utils'
+import { paymentMethodItems } from './OrderPaymentMethod.utils'
 
 interface OrderPaymentMethodProps {
   name: string
