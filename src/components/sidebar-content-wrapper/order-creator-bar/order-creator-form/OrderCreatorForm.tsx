@@ -22,7 +22,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
 
   const [disabled, setDisabled] = useState(true)
-  const [hidden, setHidden] = useState(true)
+  const [isSelect, setIsSelect] = useState(true)
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
 
@@ -35,7 +35,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   const handleHideSelect = (value: string) => {
-    setHidden(value !== MAIN_ORDER_TYPE)
+    // setIsSelect(value === MAIN_ORDER_TYPE)
     setDisabled(value === MAIN_ORDER_TYPE)
   }
 
@@ -43,13 +43,13 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
     if (activeOrder.storeStatus === 'open') {
       setFormValues({ orderType: activeOrder.orderType, table: activeOrder.table })
     }
-  }, [activeOrder])
+  }, [activeOrder, setFormValues])
 
   const formikConfig = {
     onSubmit,
     enableReinitialize: true,
     validationSchema,
-    initialValues: formValues,
+    initialValues: formValues || initialValue,
   }
 
   return (
@@ -62,13 +62,14 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
               content={radioButtonGroupContent}
               handleHideSelect={handleHideSelect}
             />
-            <SelectInput
-              name="table"
-              label="Select table"
-              hidden={hidden}
-              data={selectItem}
-              handleValue={handleValue}
-            />
+            {isSelect && (
+              <SelectInput
+                name="table"
+                label="Select table"
+                data={selectItem}
+                handleValue={handleValue}
+              />
+            )}
           </Stack>
           <Stack sx={{ height: '100%' }}>
             <InfoBox tableNumber={selectValue} />

@@ -3,6 +3,7 @@ import { TableRow } from '@mui/material'
 import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
 import { BillsType, OrderTypeOfElement } from 'types'
 import { IconAddTipAmount, IconPrinter } from 'assets'
+import { useLazySendEmailQuery } from 'store/api'
 import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
@@ -22,6 +23,15 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
 }) => {
   const { table, totalPrice, orderType, orderNumber, id, status } = element
   const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
+  const [sendEmail] = useLazySendEmailQuery()
+
+  const handleSendEmail = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    if (id) {
+      sendEmail(id)
+      console.log(element)
+    }
+  }
 
   const handleSendBillsData = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
@@ -69,7 +79,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
       ) : (
         <ColumnAction
           title="Print bill"
-          onClick={handleSendBillsData}
+          onClick={handleSendEmail}
           size="small"
           variant="outlined"
           startIcon={<IconPrinter />}

@@ -14,6 +14,12 @@ export const billsApi = api.injectEndpoints({
 
         return { url: '/bills', params }
       },
+      onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled
+        if (data) {
+          dispatch(openNewBill(data.data[0]))
+        }
+      },
       providesTags: ['Bills'],
     }),
     getOneBill: builder.query<BillsType, string>({
@@ -30,6 +36,13 @@ export const billsApi = api.injectEndpoints({
       query: (body) => ({ url: '/bills', method: 'POST', body }),
       invalidatesTags: ['Bills', 'Order'],
     }),
+    updateBill: builder.mutation<BillsType, BillsType>({
+      query: (post) => ({ url: `/bills`, method: 'PUT', body: post }),
+      invalidatesTags: ['Bills'],
+    }),
+    sendEmail: builder.query<string, string>({
+      query: (id) => ({ url: `bills/send/${id}` }),
+    }),
   }),
 })
 
@@ -38,4 +51,6 @@ export const {
   useGetAllBillsQuery,
   useLazyGetOneBillQuery,
   useGetOneBillQuery,
+  useLazySendEmailQuery,
+  useUpdateBillMutation,
 } = billsApi

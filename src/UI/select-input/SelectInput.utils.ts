@@ -1,14 +1,3 @@
-export const formControlStyle = {
-  borderRadius: '16px',
-  '& .MuiInputBase-root': { borderRadius: '16px', color: '#FF5C00' },
-  '& .MuiSelect-select': { padding: '12px 16px', borderColor: '#FF5C00' },
-}
-
-export const inputLabelStyle = {
-  color: '#C2C2C2',
-  top: '-3px',
-}
-
 export const menuItemsStyle = {
   '&.MuiMenuItem-root': {
     borderRadius: '16px',
