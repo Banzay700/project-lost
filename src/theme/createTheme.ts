@@ -125,7 +125,7 @@ const theme = createTheme(
       },
       MuiFormLabel: {
         styleOverrides: {
-          root: { color: '#c2c2c2', backgroundColor: '#fff' },
+          root: { color: '#c2c2c2', backgroundColor: 'inherit' },
         },
       },
       MuiTypography: {
