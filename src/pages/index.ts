@@ -9,5 +9,5 @@ export {
   AdminLayout,
   AdminStatisticsPage,
   AdminEmployeesPage,
-  AdminDishesPage,
+  AdminRestaurantPage,
 } from './admin-pages'

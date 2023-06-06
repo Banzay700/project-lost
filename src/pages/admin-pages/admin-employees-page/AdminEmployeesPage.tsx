@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { IconUsers } from 'assets/icons'
-import { SidebarTabsList } from 'components/admin-component'
+import { SidebarTabsList } from 'components/admin-components'
 import { useParams } from 'react-router-dom'
 import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
 import { AdminEmployeesRegistrationPage } from './admin-employees-registration-page'

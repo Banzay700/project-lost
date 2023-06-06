@@ -1,5 +1,5 @@
 export type UserRequestType = {
   role?: string
-  field?: string
+  search?: string
   page?: string
 }

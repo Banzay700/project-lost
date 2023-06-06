@@ -1,37 +1,40 @@
-import { FC, useEffect } from 'react'
-import { Stack } from '@mui/material'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { FC } from 'react'
+import { Pagination, Stack } from '@mui/material'
+import { useParams } from 'react-router-dom'
 
-import { DishesList, SearchFilterBar } from 'components/index'
+import { DishesList, SearchFilterBar } from 'components'
 import { useGetDishesByCategoryAndFilterQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
-import { firstLetterUpperCase, correctionName } from 'utils/index'
+import { firstLetterUpperCase, correctionName } from 'utils'
 import { FilterMenuItemType } from 'types'
+import { useParamsSearchFilter, useRelocateDefaultLocation } from 'hooks'
 
 interface DishesPageContentProps {
   defaultCategory: string
 }
 
 const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
-  const location = useLocation()
-  const navigate = useNavigate()
   const { category } = useParams()
-  const searchParams = new URLSearchParams(location.search)
-  const search = searchParams.get('search')
-  const subcategory = searchParams.get('category')
+  useRelocateDefaultLocation({
+    isParams: category,
+    relocateTo: defaultCategory,
+  })
 
-  useEffect(() => {
-    if (!category) {
-      navigate(defaultCategory)
-    }
-  }, [category, defaultCategory, navigate])
+  const {
+    params: subCategory,
+    search,
+    page,
+    handleFilterTitle,
+    handleFilterCategory,
+    handlePagination,
+  } = useParamsSearchFilter('category')
 
   const { data } = useGetSubCategoriesInCategoryQuery(
     firstLetterUpperCase(category || defaultCategory),
   )
   const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
-    category: firstLetterUpperCase(subcategory || category || defaultCategory),
-    // subcategory,
+    category: subCategory || firstLetterUpperCase(category || defaultCategory),
     search,
+    page,
   })
 
   const filterMenu: FilterMenuItemType[] | undefined =
@@ -41,38 +44,30 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
       value: item.title,
     }))
 
-  const handleFilterCategory = (filterValue: string[]) => {
-    if (!filterValue.some((item) => item === 'all')) {
-      searchParams.set('category', filterValue.join(','))
-      navigate(`?${searchParams.toString()}`)
-    } else {
-      searchParams.delete('category')
-      navigate(`?${searchParams.toString()}`)
-    }
-  }
-
-  const handleFilterTitle = (titleValue: string) => {
-    if (titleValue) {
-      searchParams.set('search', titleValue)
-      navigate(`?${searchParams.toString()}`)
-    } else {
-      searchParams.delete('search')
-      navigate(`?${searchParams.toString()}`)
-    }
-  }
-
   return (
-    <Stack sx={{ width: '100%', height: '100%' }}>
+    <Stack sx={{ width: '100%', height: '100%', background: '#F8F9FD' }}>
       {filterMenu && (
         <SearchFilterBar
           subcategories={filterMenu}
           changeCategory={handleFilterCategory}
           changeTitle={handleFilterTitle}
-          defaultValueFilter={subcategory?.split(',')}
+          defaultValueFilter={subCategory?.split(',')}
           defaultValueInput={search || ''}
         />
       )}
       {dishes && <DishesList dishes={dishes.data} />}
+      <Stack sx={{ alignItems: 'center', marginRight: '50px', p: '20px' }}>
+        {dishes && (
+          <Pagination
+            count={Math.ceil(dishes.totalCount / 8)}
+            variant="text"
+            shape="rounded"
+            color="primary"
+            onChange={handlePagination}
+            page={Number(page)}
+          />
+        )}
+      </Stack>
     </Stack>
   )
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box, Divider, Stack } from '@mui/material'
-import { FilterMenu, SearchInput } from 'UI'
-import { FilterMenuItemType } from 'types'
+import { FilterMenu, SearchInput } from 'UI/index'
+import { FilterMenuItemType } from 'types/index'
 
 interface SearchFilterBarProps {
   subcategories: FilterMenuItemType[]
@@ -21,6 +21,7 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({
   return (
     <Stack
       sx={{
+        background: 'white',
         p: '16px 24px',
         borderBottom: '1px solid #E4E4E4',
         flexDirection: { xs: 'column', md: 'row' },

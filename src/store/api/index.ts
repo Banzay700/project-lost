@@ -24,6 +24,7 @@ export {
 export {
   useGetSubCategoriesInCategoryQuery,
   useGetDishesByCategoryAndFilterQuery,
+  useGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
 } from './dish.api'
