@@ -1,8 +1,7 @@
-import { FC, useState } from 'react'
-import { PaymentFormCollectType, PaymentFormReturnType, BillsType } from 'types'
-
-import { DetailsListTitle } from 'UI/details-title'
 import { Stack } from '@mui/material'
+import { FC, useState } from 'react'
+
+import { PaymentFormCollectType, PaymentFormReturnType, BillsType } from 'types'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'

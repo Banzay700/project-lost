@@ -1,4 +1,4 @@
-import { DishesResponseType, DishSubCategoriesResponseType, DishType, SidebarItemType } from 'types'
+import { DishesResponseType, DishSubCategoriesResponseType, SidebarItemType } from 'types'
 import { api } from './api'
 import { API_CONST_DISHES } from './api.utils'
 // localhost:5001/api/dishes?category=Pizza&q=tomatoes&subcategory=Round_pizza
