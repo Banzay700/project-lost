@@ -4,4 +4,5 @@ export type BillsDishType = {
   amount: number
   price: number
   title?: string
+  picture?: string
 }

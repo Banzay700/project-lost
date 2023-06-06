@@ -20,12 +20,10 @@ const TableOrders: FC = () => {
   const handleSendOrder = (id: string) => {
     const dataOrder = prepareBillsData(id, data?.data)
     if (dataOrder) {
-      console.log(dataOrder)
       createBills(dataOrder)
       navigate(`/${ROUTES.BILLS}`)
     }
   }
-  console.log(data)
   return (
     <>
       <IndicatorFilterBar
