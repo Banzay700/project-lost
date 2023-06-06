@@ -27,7 +27,6 @@ const OrderPaymentBar: FC = () => {
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     if (orderNumber && totalPrice) {
       setFormData({ ...values, orderNumber, totalPrice })
-      console.log({ ...values, orderNumber, totalPrice })
     }
   }
 

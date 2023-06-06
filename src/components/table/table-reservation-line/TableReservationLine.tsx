@@ -8,7 +8,7 @@ interface TableReservationLineProps {
 }
 
 const TableReservationLine: FC<TableReservationLineProps> = ({ element }) => {
-  const { table, username, id, time, order } = element
+  const { table, username, time, order } = element
   return (
     <TableRow hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
       <ColumnText title={username} />

@@ -72,6 +72,19 @@ const theme = createTheme(
       },
     },
     components: {
+      MuiSelect: {
+        styleOverrides: {
+          select: {
+            padding: '12px 16px',
+            borderColor: '#FF5C00',
+            borderRadius: '16px',
+            color: '#828487',
+            '&:focus': {
+              color: '#FF5C00',
+            },
+          },
+        },
+      },
       MuiTextField: {
         styleOverrides: {
           root: {
@@ -100,22 +113,19 @@ const theme = createTheme(
           },
         },
       },
-
       MuiInputLabel: {
         styleOverrides: {
           root: {
             left: '4px',
             top: '-3px',
-            '&.Mui-focused': {
-              color: '#ff5c00',
-            },
+            '&.Mui-focused': { color: '#ff5c00' },
           },
           shrink: { transform: 'translate(10px, -7px)', fontSize: '12px', color: '#c2c2c2' },
         },
       },
       MuiFormLabel: {
         styleOverrides: {
-          root: { color: '#c2c2c2' },
+          root: { color: '#c2c2c2', backgroundColor: '#fff' },
         },
       },
       MuiTypography: {
