@@ -11,7 +11,7 @@ import {
   AdminLayout,
   AdminStatisticsPage,
   AdminEmployeesPage,
-  AdminDishesPage,
+  AdminRestaurantPage,
 } from 'pages'
 import { useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -44,7 +44,9 @@ const AppRoutes = () => {
               <Route path={ROUTES.ADMIN_STATISTICS} element={<AdminStatisticsPage />}>
                 <Route path={ROUTES.ADMIN_STATISTICS_CATEGORY} element={<AdminStatisticsPage />} />
               </Route>
-              <Route path={ROUTES.ADMIN_DISHES} element={<AdminDishesPage />} />
+              <Route path={ROUTES.ADMIN_RESTAURANT} element={<AdminRestaurantPage />}>
+                <Route path={ROUTES.ADMIN_RESTAURANT_CATEGORY} element={<AdminRestaurantPage />} />
+              </Route>
               <Route path={ROUTES.ADMIN_EMPLOYEES} element={<AdminEmployeesPage />}>
                 <Route path={ROUTES.ADMIN_EMPLOYEES_CATEGORY} element={<AdminEmployeesPage />} />
               </Route>

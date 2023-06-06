@@ -4,9 +4,10 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
 import { UserInLoginType } from 'types'
-import EmployeesItem from './EmployeesItem'
+
 import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
 import s from './EmployeesCarrousel.module.scss'
+import { EmployeesCarrouselItem } from './employees-carrousel-item'
 
 interface EmployeesCarrouselProps {
   bgc: 'transparent' | 'brown'
@@ -23,7 +24,12 @@ const EmployeesCarrousel: FC<EmployeesCarrouselProps> = (props) => {
       const isActive = chosenEmployee === item.id
 
       return (
-        <EmployeesItem key={item.id} {...item} onClick={handleSetActiveSlide} isActive={isActive} />
+        <EmployeesCarrouselItem
+          key={item.id}
+          {...item}
+          onClick={handleSetActiveSlide}
+          isActive={isActive}
+        />
       )
     })
   }

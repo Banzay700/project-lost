@@ -18,6 +18,12 @@ export { FilterMenu } from './filter-menu'
 export { BlurButton } from './blur-button'
 
 export { PageActionsBar } from './page-actions-bar'
-export { TableNumberColumn, ColumnAction, ColumnText, ColumnInfoChip } from './table-row-columns'
+export {
+  TableNumberColumn,
+  ColumnAction,
+  ColumnText,
+  ColumnInfoChip,
+  ColumnSkeleton,
+} from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'

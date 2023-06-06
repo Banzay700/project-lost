@@ -9,13 +9,13 @@ import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 const AdminEmployeesListPage: FC = () => {
   const {
     params: role,
-    field,
+    search,
     page,
     handleFilterTitle,
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('role')
-  const { data } = useGetAllUsersQuery({ role, field, page })
+  const { data, isLoading } = useGetAllUsersQuery({ role, search, page })
   const [trigger, { data: user }] = useLazyGetUserByIDQuery()
   const [updateUser] = useUpdateUserMutation()
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -42,24 +42,23 @@ const AdminEmployeesListPage: FC = () => {
           changeCategory={handleFilterCategory}
           changeTitle={handleFilterTitle}
           defaultValueFilter={role?.split(',')}
-          defaultValueInput={field || ''}
+          defaultValueInput={search || ''}
         />
         <Stack sx={{ height: '90%' }}>
-          {data && (
-            <Table
-              data={data.data}
-              tableTitles={tableHeaders}
-              tableType="users"
-              onClickAction={handleClick}
-            />
-          )}
+          <Table
+            data={data?.data}
+            tableTitles={tableHeaders}
+            tableType="users"
+            onClickAction={handleClick}
+            isLoading={isLoading}
+          />
         </Stack>
       </Box>
       <Stack sx={{ alignItems: 'flex-end', marginRight: '50px', height: '10%' }}>
         {data && (
           <Pagination
             count={Math.ceil(data.totalCount / 8)}
-            variant="outlined"
+            variant="text"
             shape="rounded"
             color="primary"
             onChange={handlePagination}

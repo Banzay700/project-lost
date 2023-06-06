@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { FilterMenu, PageActionsBar } from 'UI'
+import { FilterMenu, PageActionsBar } from 'UI/index'
 
-import { FilterMenuItemType } from 'types'
-import { IndicatorsGroup } from 'components'
+import { FilterMenuItemType } from 'types/index'
+import { IndicatorsGroup } from 'components/index'
 
 interface OrderFilterBarProps {
   filterMenuItems: FilterMenuItemType[]

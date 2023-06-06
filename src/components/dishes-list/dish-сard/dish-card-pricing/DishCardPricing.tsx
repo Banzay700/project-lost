@@ -1,9 +1,9 @@
 import { CardContent, Typography, Stack } from '@mui/material'
 import { FC } from 'react'
-import { Button } from 'UI'
-import { IconPlus } from 'assets'
-import { useActiveOrderStatus } from 'hooks'
-import { FadeIn } from 'utils'
+import { Button } from 'UI/index'
+import { IconPlus } from 'assets/index'
+import { useActiveOrderStatus } from 'hooks/index'
+import { FadeIn } from 'utils/index'
 
 interface DishCardPricingProps {
   price: number

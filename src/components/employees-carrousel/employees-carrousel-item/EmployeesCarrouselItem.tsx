@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import classNames from 'classnames'
-import { UserInLoginType } from 'types/UserType/UserType'
-import s from './EmployeesCarrousel.module.scss'
+import { UserInLoginType } from 'types'
+import s from './EmployeesCarrouselItem.module.scss'
 
 interface EmployeesItemProps extends UserInLoginType {
   isActive: boolean
   onClick: (id: string) => void
 }
-const EmployeesItem: FC<EmployeesItemProps> = (props) => {
+const EmployeesCarrouselItem: FC<EmployeesItemProps> = (props) => {
   const { id, firstName, secondName, userImage, isActive, onClick } = props
 
   const imgClasses = classNames(s.img, { [s.activeImg]: isActive })
@@ -32,4 +32,4 @@ const EmployeesItem: FC<EmployeesItemProps> = (props) => {
   )
 }
 
-export default EmployeesItem
+export default EmployeesCarrouselItem

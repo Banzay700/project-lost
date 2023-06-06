@@ -1,4 +1,4 @@
-import { BillsType, OrderType, UserType } from 'types'
+import { BillsType, DishType, OrderType, UserType } from 'types'
 
 export type Reservation = {
   username: string
@@ -8,4 +8,4 @@ export type Reservation = {
   id?: string
 }
 
-export type TableDataItem = BillsType | OrderType | Reservation | UserType
+export type TableDataItem = BillsType | OrderType | Reservation | UserType | DishType

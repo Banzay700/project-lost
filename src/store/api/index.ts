@@ -18,6 +18,7 @@ export { useCreateBillMutation, useGetAllBillsQuery, useLazyGetOneBillQuery } fr
 export {
   useGetSubCategoriesInCategoryQuery,
   useGetDishesByCategoryAndFilterQuery,
+  useGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
 } from './dish.api'

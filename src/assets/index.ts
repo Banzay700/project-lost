@@ -39,5 +39,6 @@ export {
   IconCrossSmall,
   IconCheck,
   IconShowPass,
+  IconCreateDish,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

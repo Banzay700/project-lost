@@ -1,18 +1,21 @@
 import { FC, useEffect, useState } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
-import { BillsType, OrderType, TableDataItem, UserType } from 'types'
+import { BillsType, DishType, OrderType, TableDataItem, UserType } from 'types'
 import { Reservation } from 'types/ComponetTableType/TableDataItem'
+import { TableDishLine } from './table-dish-line'
 import { TableHead } from './table-head'
 import { TableOrdersLine } from './table-orders-line'
 import { TableBillsLine } from './table-bills-line'
 import TableReservationLine from './table-reservation-line/TableReservationLine'
 import { TableUsersLine } from './table-users-line'
+import TableSkeletonLine from './table-skeleton-line/TableSkeletonLine'
 
 interface TableProps {
   data: TableDataItem[] | undefined
   tableTitles: string[]
-  tableType?: string
+  tableType: string
+  isLoading?: boolean
   onClickAction?: (id: string) => void
   onClickLine?: (id: string) => void
   alignHead?: 'inherit' | 'center' | 'left' | 'right' | 'justify' | undefined
@@ -22,6 +25,7 @@ const Table: FC<TableProps> = ({
   data,
   tableTitles,
   tableType,
+  isLoading,
   onClickAction,
   onClickLine,
   alignHead,
@@ -36,11 +40,20 @@ const Table: FC<TableProps> = ({
     }
   }, [data])
 
+  let skeleton
+
+  if (isLoading) {
+    skeleton = ['100', '200', '300', '400', '500', '600', '700', '800'].map((value) => (
+      <TableSkeletonLine key={value} size={tableTitles} />
+    ))
+  }
+
   return (
     <TableContainer ref={containerRef} sx={{ overflow: 'auto' }}>
       <MuiTable aria-label="table" sx={{ width: '100%' }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>
+          {skeleton}
           {tableType === 'orders' &&
             data?.map((element) => (
               <TableOrdersLine
@@ -71,6 +84,11 @@ const Table: FC<TableProps> = ({
             onClickAction &&
             data?.map((user) => (
               <TableUsersLine key={user.id} user={user as UserType} onClickAction={onClickAction} />
+            ))}
+          {tableType === 'dishes' &&
+            onClickAction &&
+            data?.map((dish) => (
+              <TableDishLine key={dish.id} dish={dish as DishType} onClickAction={onClickAction} />
             ))}
         </TableBody>
       </MuiTable>

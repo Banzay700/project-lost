@@ -6,12 +6,13 @@ export const useParamsSearchFilter = (params: string) => {
   const navigate = useNavigate()
   const searchParams = new URLSearchParams(location.search)
   const type = searchParams.get(params)
-  const field = searchParams.get('search')
+  const search = searchParams.get('search')
   const page = searchParams.get('page')
 
   const handleFilterCategory = (value: string[]) => {
-    if (!value.some((item) => item === 'all')) {
+    if (value.some((item) => item !== 'all')) {
       searchParams.set(params, value.join(','))
+      searchParams.set('page', '1')
       navigate(`?${searchParams.toString()}`)
     } else {
       searchParams.delete(params)
@@ -22,6 +23,7 @@ export const useParamsSearchFilter = (params: string) => {
   const handleFilterTitle = (value: string) => {
     if (value) {
       searchParams.set('search', value)
+      searchParams.set('page', '1')
       navigate(`?${searchParams.toString()}`)
     } else {
       searchParams.delete('search')
@@ -39,14 +41,14 @@ export const useParamsSearchFilter = (params: string) => {
     }
   }
 
-  useEffect(() => {
-    searchParams.set('page', '1')
-    navigate(`?${searchParams.toString()}`)
-  }, [field, type]) // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   searchParams.set('page', page || '1')
+  //   navigate(`?${searchParams.toString()}`)
+  // }, [search, type]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     params: type || undefined,
-    field: field || undefined,
+    search: search || undefined,
     page: page || '1',
     handleFilterCategory,
     handleFilterTitle,

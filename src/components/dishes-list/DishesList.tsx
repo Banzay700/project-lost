@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { DishType } from 'types'
-import { DishCard } from 'components'
+import { DishCard } from './dish-сard'
 import { useSmoothScrollbar } from 'hooks'
 
 import s from './DishesList.module.scss'
@@ -16,7 +16,6 @@ const DishesList: FC<DishesListProps> = ({ dishes }) => {
       style={{
         width: '100%',
         height: '100%',
-        background: '#F8F9FD',
         overflowY: 'auto',
       }}
       ref={containerRef}>
