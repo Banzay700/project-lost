@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 
@@ -32,7 +32,7 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, hid
 
   // useEffect(() => {
   //   setFieldValue(name, '')
-  // }, [orderType, name, setFieldValue])
+  // }, [name, setFieldValue])
 
   return !hidden ? (
     <FadeIn delay={50}>
