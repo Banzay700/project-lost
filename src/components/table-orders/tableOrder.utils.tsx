@@ -10,10 +10,9 @@ export const tableTitleOrder: string[] = [
 
 export const prepareBillsData = (id: string, data: OrderType[] | undefined) => {
   if (!data) return false
-
   const activeOrder = data.find((order) => order.id === id)
-  if (!activeOrder) return false
 
+  if (!activeOrder) return false
   const { totalPrice, dishes } = activeOrder
   const modifiedData = dishes?.map(({ dishID, dishTotalPrice, amount }) => {
     return {

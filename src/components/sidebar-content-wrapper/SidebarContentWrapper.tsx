@@ -17,8 +17,8 @@ const SidebarContentWrapper: FC = () => {
       }}>
       <Stack flex="1">
         {location === ROUTES.DISHES && <OrderCreatorBar />}
-        {location === ROUTES.BILLS && <OrderPaymentBar />}
         {location === ROUTES.ORDERS && <OrderInfoBar />}
+        {location === ROUTES.BILLS && <OrderPaymentBar />}
       </Stack>
     </Stack>
   )
