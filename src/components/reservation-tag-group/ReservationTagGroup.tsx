@@ -15,7 +15,13 @@ const ReservationTagGroup = () => {
     console.log(selectedValue)
   }
 
-  return tags.map((item) => <CheckboxItem key={item} text={item} onChange={handleChange} />)
+  return (
+    <>
+      {tags.map((item) => (
+        <CheckboxItem key={item} text={item} onChange={handleChange} />
+      ))}
+    </>
+  )
 }
 
 export default ReservationTagGroup
