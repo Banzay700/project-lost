@@ -36,7 +36,7 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, act
           onChange={handleChange}>
           {data?.map(({ title, value }) => (
             <MenuItem key={title} value={value} sx={menuItemsStyle}>
-              {value}
+              {title}
             </MenuItem>
           ))}
         </Select>

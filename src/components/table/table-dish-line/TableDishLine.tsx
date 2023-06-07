@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
 import { TableRow } from '@mui/material'
 import { ColumnAction, ColumnInfoChip, ColumnText } from 'UI/table-row-columns'
 import { DishType } from 'types/DishType'
@@ -6,17 +6,22 @@ import { correctionName } from 'utils/correctionName'
 
 interface TableDishLineProps {
   dish: DishType
-  onClickAction: (id: string) => void
+  onClickAction?: (id: string) => void
+  onClickLine?: (id: string) => void
 }
 
-const TableDishLine: FC<TableDishLineProps> = ({ dish, onClickAction }) => {
+const TableDishLine: FC<TableDishLineProps> = ({ dish, onClickAction, onClickLine }) => {
   const { title, category, price, status, id } = dish
 
-  const handleClickAction = () => {
-    onClickAction(id)
+  const handleClickAction = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    if (onClickAction) onClickAction(id)
+  }
+  const handleClickLine = () => {
+    if (onClickLine) onClickLine(id)
   }
   return (
-    <TableRow hover>
+    <TableRow hover onClick={handleClickLine} sx={{ cursor: 'pointer' }}>
       <ColumnText title={title} />
       <ColumnText title={correctionName(category?.title || '')} textFontWeight={400} />
       <ColumnText title={`$${price}`} textFontWeight={600} />

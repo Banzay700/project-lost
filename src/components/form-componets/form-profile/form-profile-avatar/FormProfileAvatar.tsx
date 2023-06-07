@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik'
 import { FC, useState } from 'react'
 import { Button } from 'UI/button'
 import { Box, Stack, Typography } from '@mui/material'
-import { UserAvatar } from 'types'
+import { UserAvatar } from 'types/index'
 import { InputImage } from 'components/input-form'
 
 interface ProfileFormAvatarProps {
@@ -12,7 +12,7 @@ interface ProfileFormAvatarProps {
   onSubmit: (value: UserAvatar) => void
 }
 
-const ProfileFormAvatar: FC<ProfileFormAvatarProps> = ({
+const FormProfileAvatar: FC<ProfileFormAvatarProps> = ({
   userImage,
   firstName,
   secondName,
@@ -84,4 +84,4 @@ const ProfileFormAvatar: FC<ProfileFormAvatarProps> = ({
   )
 }
 
-export default ProfileFormAvatar
+export default FormProfileAvatar

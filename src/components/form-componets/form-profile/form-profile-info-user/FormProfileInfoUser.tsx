@@ -2,16 +2,16 @@ import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
-import { InputsBasicUserInfo } from 'components'
-import { Input, Button } from 'UI'
-import { UserType, UserUpdateInfo } from 'types'
+import { InputsBasicUserInfo } from 'components/index'
+import { Input, Button } from 'UI/index'
+import { UserType, UserUpdateInfo } from 'types/index'
 
 interface ProfileInputGroupProps {
   initialValues: UserType
   onSubmit: (value: UserUpdateInfo) => void
 }
 
-const ProfileFormInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubmit }) => {
+const FormProfileInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubmit }) => {
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleIsDisabledInput = () => {
@@ -65,4 +65,4 @@ const ProfileFormInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
   )
 }
 
-export default ProfileFormInfoUser
+export default FormProfileInfoUser

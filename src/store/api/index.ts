@@ -23,6 +23,8 @@ export {
 
 export {
   useGetSubCategoriesInCategoryQuery,
+  useGetDishByIdQuery,
+  useLazyGetDishByIdQuery,
   useGetDishesByCategoryAndFilterQuery,
   useGetCategoriesQuery,
   useLazyGetSvgQuery,

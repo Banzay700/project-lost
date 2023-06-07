@@ -45,6 +45,7 @@ export type {
   DishAdditionalFood,
   DishSubCategoriesResponseType,
   DishesResponseType,
+  DishPartialType,
 } from './DishType'
 
 export type {
