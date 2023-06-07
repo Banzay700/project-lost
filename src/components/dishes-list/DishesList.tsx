@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { DishType } from 'types'
-import { DishCard } from './dish-сard'
 import { useSmoothScrollbar } from 'hooks'
+import { DishCard } from './dish-сard'
 
 import s from './DishesList.module.scss'
 

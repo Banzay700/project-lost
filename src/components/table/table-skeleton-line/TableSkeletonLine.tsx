@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import s from './TableSkeletonLine.module.scss'
 import { TableRow } from '@mui/material'
 import { ColumnSkeleton } from 'UI/table-row-columns'
 

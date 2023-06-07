@@ -1,9 +1,8 @@
 import { FC, useState } from 'react'
 import { CheckboxItem } from './CheckboxItem'
 import { tags } from './utils'
-import s from './ReservationTagGroup.module.scss'
 
-const ReservationTagGroup = () => {
+const ReservationTagGroup: FC = () => {
   const [selectedValue, setValue] = useState<string[]>([])
 
   const handleChange = (value: string, isChecked: boolean) => {

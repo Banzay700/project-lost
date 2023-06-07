@@ -16,37 +16,6 @@ declare module '@mui/material/styles' {
       lineHeight: CSSProperties['lineHeight']
     }
   }
-
-  // interface Theme {
-  //   status: {
-  //     danger: React.CSSProperties['color'];
-  //   };
-  // }
-  //
-  // interface Palette {
-  //   neutral: Palette['primary'];
-  // }
-  //
-  // interface PaletteOptions {
-  //   neutral: PaletteOptions['primary'];
-  // }
-  //
-  // interface ThemeOptions {
-  //   status: {
-  //     danger: React.CSSProperties['color'];
-  //   };
-  // }
-  // interface PaletteColor {
-  //   s?: {
-  //     addition?: string
-  //   }
-  // }
-  //
-  // interface SimplePaletteColorOptions {
-  //   text?: {
-  //     addition?: string
-  //   }
-  // }
 }
 
 declare module '@mui/material/styles' {

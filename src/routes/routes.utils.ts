@@ -1,5 +1,3 @@
-import { ROUTES_RESTAURANT } from 'pages/admin-pages/admin-restaurant-page/adminRestaurantPage.utils'
-
 export const ROUTES = {
   HOME: '/',
   DISHES: 'home',

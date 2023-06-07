@@ -22,7 +22,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [selectValue, setSelectValue] = useState('')
 
   const [disabled, setDisabled] = useState(true)
-  const [isSelect, setIsSelect] = useState(true)
+  const [isSelect, setIsSelect] = useState(false)
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
 
@@ -35,7 +35,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }
 
   const handleHideSelect = (value: string) => {
-    // setIsSelect(value === MAIN_ORDER_TYPE)
+    setIsSelect(value === MAIN_ORDER_TYPE)
     setDisabled(value === MAIN_ORDER_TYPE)
   }
 
@@ -45,16 +45,13 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
     }
   }, [activeOrder, setFormValues])
 
-  const formikConfig = {
-    onSubmit,
-    enableReinitialize: true,
-    validationSchema,
-    initialValues: formValues || initialValue,
-  }
-
   return (
     <FadeIn className={s.newOrderForm}>
-      <Formik {...formikConfig}>
+      <Formik
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+        initialValues={formValues}
+        enableReinitialize>
         <Form>
           <Stack spacing={6}>
             <RadioButtonsGroup
@@ -67,6 +64,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
                 name="table"
                 label="Select table"
                 data={selectItem}
+                active={!!selectValue}
                 handleValue={handleValue}
               />
             )}

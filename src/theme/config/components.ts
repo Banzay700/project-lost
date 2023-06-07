@@ -1,4 +1,62 @@
 export const components = {
+  MuiSelect: {
+    styleOverrides: {
+      select: {
+        padding: '12px 16px',
+        borderColor: '#FF5C00',
+        borderRadius: '16px',
+        '&:focus': {
+          color: '#FF5C00',
+        },
+      },
+      icon: {
+        color: 'currentColor',
+      },
+    },
+  },
+  MuiTextField: {
+    styleOverrides: {
+      root: {
+        input: {
+          padding: '12px 16px',
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            border: '1px solid #ff5c00',
+          },
+          '&.Mui-focused.MuiFormLabel-root': {
+            color: '#ff5c00',
+          },
+        },
+      },
+    },
+  },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: {
+        borderRadius: '16px',
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          border: '1px solid #ff5c00',
+        },
+        '&.Mui-focused .MuiInputAdornment-root': {
+          color: '#ff5c00',
+        },
+      },
+    },
+  },
+  MuiInputLabel: {
+    styleOverrides: {
+      root: {
+        left: '4px',
+        top: '-3px',
+        '&.Mui-focused': { color: '#ff5c00' },
+      },
+      shrink: { transform: 'translate(10px, -7px)', fontSize: '12px', color: '#c2c2c2' },
+    },
+  },
+  MuiFormLabel: {
+    styleOverrides: {
+      root: { color: '#c2c2c2', backgroundColor: 'inherit' },
+    },
+  },
   MuiTypography: {
     defaultProps: {
       variantMapping: {
@@ -13,6 +71,9 @@ export const components = {
   },
   MuiButton: {
     styleOverrides: {
+      button: {
+        textTransform: 'none',
+      },
       root: {
         ':focus': {
           outline: 'none',
@@ -39,6 +100,33 @@ export const components = {
       disableRipple: true,
       disableFocusRipple: true,
       disableElevation: false,
+    },
+  },
+  MuiDivider: {
+    styleOverrides: {
+      root: {
+        borderWidth: '0.5px',
+        borderColor: '#E4E4E4',
+      },
+    },
+  },
+  MuiSwipeableDrawer: {
+    defaultProps: {
+      PaperProps: {
+        style: {
+          width: '45%',
+          height: '85%',
+          top: '15%',
+          boxShadow: 'none',
+        },
+      },
+      BackdropProps: {
+        style: {
+          height: '85%',
+          top: '15%',
+          backdropFilter: 'blur(2px)',
+        },
+      },
     },
   },
 }

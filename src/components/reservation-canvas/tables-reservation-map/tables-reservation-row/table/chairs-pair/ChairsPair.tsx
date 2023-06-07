@@ -5,8 +5,8 @@ const ChairsPair: FC = () => {
   const commonChairProps = {
     position: 'absolute',
     bgcolor: '#FFFFFF',
-    width: '14px',
-    height: '50px',
+    width: { xs: '12px', lg: '14px' },
+    height: { xs: '39px', lg: '50px' },
     borderRadius: '30px',
     border: '1px solid #E4E4E4',
     top: '50%',

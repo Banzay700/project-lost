@@ -4,10 +4,10 @@ import { useGetDishesByCategoryAndFilterQuery } from 'store/api'
 import { SearchFilterBar } from 'components'
 import { Box, Pagination, Stack } from '@mui/material'
 import { useParamsSearchFilter } from 'hooks'
-import { dishesTableTitles, filterItems } from './adminDishesListPage.utils'
 import { useGetCategoriesQuery } from 'store/api/dish.api'
 import { FilterMenuItemType } from 'types/ComponentsItemType'
 import { correctionName } from 'utils/correctionName'
+import { dishesTableTitles } from './adminDishesListPage.utils'
 
 const AdminDishesListPage: FC = () => {
   const {

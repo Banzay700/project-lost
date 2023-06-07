@@ -1,8 +1,5 @@
 import { FC } from 'react'
-import { Box } from '@mui/material'
 
-import { OrderDetailsItem } from 'components/sidebar-content-wrapper/order-creator-bar/order-details-list/order-details-item'
-import { OrderSummary } from 'components/order-summary'
 import { useSmoothScrollbar } from 'hooks'
 import { BillsType } from 'types'
 
@@ -12,7 +9,7 @@ interface OrderToggleListProps {
 
 const OrderToggleList: FC<OrderToggleListProps> = ({ newBill }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-  const total = newBill.dishes?.reduce((acc, item) => acc + item.price, 0)
+  // const total = newBill.dishes?.reduce((acc, item) => acc + item.price, 0)
 
   return (
     <>
