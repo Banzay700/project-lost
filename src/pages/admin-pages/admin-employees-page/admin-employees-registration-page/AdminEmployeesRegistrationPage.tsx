@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import { RegistrationFormReturnType } from 'types'
 import { useRegistrationMutation } from 'store/api'
 import { Snackbar } from 'UI'
-import { RegistrationForm } from './registration-form'
+import { FormRegistration } from 'components'
 import { initialValues } from './adminEmployeesRegistrationPage.utils'
 
 const AdminEmployeesRegistrationPage: FC = () => {
@@ -26,7 +26,7 @@ const AdminEmployeesRegistrationPage: FC = () => {
   // TODO доделать
   return (
     <Box sx={{ width: '100%', height: '100%', p: '24px' }}>
-      <RegistrationForm initialValues={initialValues} onSubmit={handleSubmitRegistrationForm} />
+      <FormRegistration initialValues={initialValues} onSubmit={handleSubmitRegistrationForm} />
       <Snackbar isError={isError} isSuccess={isSuccess} />
     </Box>
   )

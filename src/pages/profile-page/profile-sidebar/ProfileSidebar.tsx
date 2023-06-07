@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { ProfileFormAvatar } from 'components/profile-form'
+import { FormProfileAvatar } from 'components'
 import { UserAvatar, UserType } from 'types/UserType'
 import { Button } from 'UI/button'
 import { IconLogout } from 'assets/icons'
@@ -35,7 +35,7 @@ const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar, isL
         alignItems: 'start',
         justifyContent: 'space-between',
       }}>
-      <ProfileFormAvatar
+      <FormProfileAvatar
         firstName={firstName}
         secondName={secondName}
         userImage={userImage}

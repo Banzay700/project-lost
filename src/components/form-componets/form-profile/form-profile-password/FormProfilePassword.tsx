@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Form, Formik } from 'formik'
-import { UserPassword } from 'types'
-import { Input, Button } from 'UI'
+import { UserPassword } from 'types/index'
+import { Input, Button } from 'UI/index'
 import { Stack } from '@mui/material'
 
 interface ProfileFormChangePasswordProps {
@@ -9,7 +9,7 @@ interface ProfileFormChangePasswordProps {
   onSubmit: (value: UserPassword) => void
 }
 
-const ProfileFormPassword: FC<ProfileFormChangePasswordProps> = ({ initialValues, onSubmit }) => {
+const FormProfilePassword: FC<ProfileFormChangePasswordProps> = ({ initialValues, onSubmit }) => {
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleIsDisabled = () => {
@@ -51,4 +51,4 @@ const ProfileFormPassword: FC<ProfileFormChangePasswordProps> = ({ initialValues
   )
 }
 
-export default ProfileFormPassword
+export default FormProfilePassword

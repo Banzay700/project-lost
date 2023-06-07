@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TableRow } from '@mui/material'
-import { ColumnSkeleton } from 'UI/table-row-columns'
+import { ColumnSkeleton } from 'UI'
 
 interface TableSkeletonLineProps {
   size: string[]

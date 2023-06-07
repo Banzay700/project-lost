@@ -14,7 +14,6 @@ const InputImage: FC<InputImageProps> = ({ view }) => {
     { [s.round]: view === 'round' },
     { [s.squareRounding]: view === 'squareRounding' },
   )
-
   return (
     <Box
       sx={{

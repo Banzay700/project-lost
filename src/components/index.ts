@@ -14,14 +14,23 @@ export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 export { TableOrders } from './table-orders'
 export { TableBills } from './table-bills'
 export { Login } from './login'
-export { ProfileFormInfoUser, ProfileFormPassword, ProfileFormAvatar } from './profile-form'
+export {
+  FormProfileInfoUser,
+  FormProfilePassword,
+  FormProfileAvatar,
+  FormUpdateDish,
+  FormUpdateUserInfo,
+  FormRegistration,
+} from './form-componets'
 
 export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
-export { InputImage, InputsBasicUserInfo } from './input-form'
+export { InputImage, InputsBasicUserInfo, InputsCreateDish } from './input-form'
 
 export { IndicatorsGroup } from './indicators-group'
 export { ReservationBottomBar } from './reservation-bottom-bar'
-export { ModalUpdateUserInfo } from './modal-components'
+
+export { ModalUpdateUserInfo, ModalDishDetailInfo, ModalUpdateDishInfo } from './modal-components'
+
 export { ReservationCanvas } from './reservation-canvas'
 export { ReservationTagGroup } from './reservation-tag-group'

@@ -1,5 +1,5 @@
 import { mixed, object, string, TestContext } from 'yup'
-import { InputSelectItemType } from 'types'
+import { InputSelectItemType } from 'types/index'
 
 export const selectMenuItems: InputSelectItemType[] = [
   {

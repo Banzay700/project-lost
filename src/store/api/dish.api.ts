@@ -1,4 +1,10 @@
-import { DishesResponseType, DishSubCategoriesResponseType, SidebarItemType } from 'types'
+import {
+  DishesResponseType,
+  DishPartialType,
+  DishSubCategoriesResponseType,
+  DishType,
+  SidebarItemType,
+} from 'types'
 import { api } from './api'
 import { API_CONST_DISHES } from './api.utils'
 
@@ -16,12 +22,6 @@ interface ParamsProps {
 
 export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getSvg: builder.query<{ svg: string } | undefined, string | undefined>({
-      query: (icon) => ({
-        url: `${API_CONST_DISHES.STATIC}${icon}`,
-      }),
-    }),
-
     getDishesByCategoryAndFilter: builder.query<DishesResponseType, DishesRequest>({
       query: ({ category, search, page }) => {
         const params: ParamsProps = {
@@ -42,6 +42,25 @@ export const dishApi = api.injectEndpoints({
       },
       providesTags: ['Dish'],
     }),
+    getDishById: builder.query<DishType, string>({
+      query: (id) => ({
+        url: `${API_CONST_DISHES.DISHES}/${id}`,
+      }),
+      providesTags: ['Dish'],
+    }),
+    updateDish: builder.mutation<DishType, DishPartialType>({
+      query: (body) => ({
+        url: API_CONST_DISHES.DISHES,
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: ['Dish'],
+    }),
+    getSvg: builder.query<{ svg: string } | undefined, string | undefined>({
+      query: (icon) => ({
+        url: `${API_CONST_DISHES.STATIC}${icon}`,
+      }),
+    }),
     getCategories: builder.query<SidebarItemType[], null>({
       query: () => ({
         url: API_CONST_DISHES.CATEGORIES,
@@ -60,6 +79,8 @@ export const dishApi = api.injectEndpoints({
 
 export const {
   useGetDishesByCategoryAndFilterQuery,
+  useGetDishByIdQuery,
+  useLazyGetDishByIdQuery,
   useGetCategoriesQuery,
   useGetSubCategoriesInCategoryQuery,
   useLazyGetSvgQuery,

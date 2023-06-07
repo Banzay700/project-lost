@@ -1,4 +1,4 @@
-import { InputSelectItemType } from 'types'
+import { InputSelectItemType } from 'types/index'
 
 export const selectInputItemsStatus: InputSelectItemType[] = [
   { value: 'active', title: 'Active' },
