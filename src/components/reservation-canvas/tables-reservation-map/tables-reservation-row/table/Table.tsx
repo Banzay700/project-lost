@@ -29,8 +29,8 @@ const Table: FC<TableProps> = ({ tableNumber, seatsQuantity }) => {
   }
 
   const tableTextStyles = {
-    width: '84px',
-    height: '84px',
+    width: { xs: '64px', lg: '84px' },
+    height: { xs: '64px', lg: '84px' },
     bgcolor: reserved ? '#fff5ee' : '#ecf6ff',
     borderRadius: '50%',
     alignItems: 'center',

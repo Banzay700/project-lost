@@ -5,7 +5,7 @@ import { tablePlacementMap } from './ReservationCanvas.utils'
 
 const ReservationCanvas: FC = () => {
   return (
-    <Box sx={{ flex: 1, bgcolor: '#F8F9FD', p: { xs: '1% 5%', xl: '1% 12%' } }}>
+    <Box sx={{ flex: 1, bgcolor: '#f8f9fd', p: { xs: '1% 5%', xl: '1% 12%' } }}>
       <TablesReservationMap placementMap={tablePlacementMap} />
     </Box>
   )

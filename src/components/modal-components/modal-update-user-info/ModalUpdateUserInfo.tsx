@@ -24,6 +24,7 @@ const ModalUpdateUserInfo: FC<ModalUpdateUserInfoProps> = ({
   useEffect(() => {
     setFormValues(initialValues)
   }, [initialValues])
+
   return (
     <Modal
       isOpen={isOpenModal}

@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { SidebarTabsList } from 'components/admin-components'
 import { IconDineIn } from 'assets'
-import { adminRestaurantPageTabs, ROUTES_RESTAURANT } from './adminRestaurantPage.utils'
 import { useParams } from 'react-router-dom'
 import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
+import { adminRestaurantPageTabs, ROUTES_RESTAURANT } from './adminRestaurantPage.utils'
 import { AdminDishesListPage } from './admin-dishes-list-page'
 import { AdminCreateDishPage } from './admin-create-dish-page'
 

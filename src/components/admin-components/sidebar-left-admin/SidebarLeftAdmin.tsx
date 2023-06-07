@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { IconDineIn, IconDishes, IconSetting, IconStatistics, IconUsers } from 'assets'
+import { IconDineIn, IconSetting, IconStatistics, IconUsers } from 'assets'
 import { SidebarItemType } from 'types'
 import { SidebarLeftList } from 'components'
 

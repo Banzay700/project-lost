@@ -1,9 +1,9 @@
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import { Box } from '@mui/material'
 import { SidebarLeftList } from 'components'
 import { FadeIn } from 'utils'
-import { DishesPageContent } from './dishes-page-content'
 import { useGetCategoriesQuery } from 'store/api'
+import { DishesPageContent } from './dishes-page-content'
 
 const DishesPage: FC = () => {
   const { data, isLoading } = useGetCategoriesQuery(null)
