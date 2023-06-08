@@ -3,7 +3,7 @@ import { Pagination, Stack } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
 import { DishesList, SearchFilterBar } from 'components'
-import { useGetDishesByCategoryAndFilterQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
+import { useGetDishesQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
 import { firstLetterUpperCase, correctionName } from 'utils'
 import { FilterMenuItemType } from 'types'
 import { useParamsSearchFilter, useRelocateDefaultLocation } from 'hooks'
@@ -31,7 +31,7 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
   const { data } = useGetSubCategoriesInCategoryQuery(
     firstLetterUpperCase(category || defaultCategory),
   )
-  const { data: dishes } = useGetDishesByCategoryAndFilterQuery({
+  const { data: dishes } = useGetDishesQuery({
     category: subCategory || firstLetterUpperCase(category || defaultCategory),
     search,
     page,

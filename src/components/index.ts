@@ -21,11 +21,17 @@ export {
   FormUpdateDish,
   FormUpdateUserInfo,
   FormRegistration,
+  FormCreateDish,
 } from './form-componets'
 
 export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
-export { InputImage, InputsBasicUserInfo, InputsCreateDish } from './input-form'
+export {
+  InputImage,
+  InputsBasicUserInfo,
+  InputsCreateDish,
+  InputImageWithPreviewAvatar,
+} from './input-form'
 
 export { IndicatorsGroup } from './indicators-group'
 export { ReservationBottomBar } from './reservation-bottom-bar'

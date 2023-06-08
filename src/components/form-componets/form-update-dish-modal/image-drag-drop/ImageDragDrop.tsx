@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
-import { InputImage } from 'components'
+import { InputImageWithPreviewAvatar } from 'components'
 import { Button } from 'UI'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { useFormikContext } from 'formik'
 
 interface ImageDragDropProps {
@@ -27,24 +27,12 @@ const ImageDragDrop: FC<ImageDragDropProps> = ({ defaultPicture, pictureAlt }) =
       sx={{
         gap: '20px',
       }}>
-      <Box sx={{ width: '300px', height: '300px' }}>
-        {changePicture ? (
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: '16px',
-              border: '1px solid #e4e4e4',
-            }}
-            src={defaultPicture}
-            alt={pictureAlt}
-          />
-        ) : (
-          <InputImage view="squareRounding" />
-        )}
-      </Box>
-
+      <InputImageWithPreviewAvatar
+        isDisabled={changePicture}
+        picture={defaultPicture}
+        pictureAlt={pictureAlt}
+        view="squareRounding"
+      />
       {changePicture ? (
         <Button
           variant="outlined"

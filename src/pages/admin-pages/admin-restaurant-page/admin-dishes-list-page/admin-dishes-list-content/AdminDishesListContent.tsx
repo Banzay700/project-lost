@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Box, Pagination, Stack } from '@mui/material'
 import { SearchFilterBar, Table } from 'components'
 import { useParamsSearchFilter } from 'hooks'
-import { useGetCategoriesQuery, useGetDishesByCategoryAndFilterQuery } from 'store/api'
+import { useGetCategoriesQuery, useGetDishesQuery } from 'store/api'
 import { FilterMenuItemType } from 'types'
 import { correctionName } from 'utils'
 import { dishesTableTitles } from './adminDishesListContent.utils'
@@ -25,7 +25,7 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
     handlePagination,
   } = useParamsSearchFilter('category')
   const { data: categories } = useGetCategoriesQuery(null)
-  const { data, isLoading } = useGetDishesByCategoryAndFilterQuery({ category, page, search })
+  const { data, isLoading } = useGetDishesQuery({ category, page, search, status: 'all' })
   const categoriesValues: FilterMenuItemType[] | undefined =
     categories && categories.map(({ title }) => ({ value: title, label: correctionName(title) }))
 

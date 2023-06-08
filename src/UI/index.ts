@@ -27,3 +27,4 @@ export {
 } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'
+export { RadioButtonWithoutIcon } from './radio-button-without-icon'

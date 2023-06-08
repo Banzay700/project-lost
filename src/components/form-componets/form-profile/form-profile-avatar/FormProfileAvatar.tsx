@@ -1,9 +1,7 @@
 import { Form, Formik } from 'formik'
 import { FC, useState } from 'react'
-import { Button } from 'UI/button'
-import { Box, Stack, Typography } from '@mui/material'
 import { UserAvatar } from 'types/index'
-import { InputImage } from 'components/input-form'
+import { ProfilePicture } from './profile-picture'
 
 interface ProfileFormAvatarProps {
   userImage?: string
@@ -43,42 +41,12 @@ const FormProfileAvatar: FC<ProfileFormAvatarProps> = ({
           gap: '10px',
           width: '100%',
         }}>
-        <Box sx={{ width: '300px', height: '300px' }}>
-          {isDisabled ? (
-            <img
-              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
-              src={
-                userImage ||
-                'https://res.cloudinary.com/dz5jl6tzt/image/upload/v1685188868/userAvatar_fbe972.webp'
-              }
-              alt="user avatar"
-            />
-          ) : (
-            <InputImage view="round" />
-          )}
-        </Box>
-        <Typography variant="h1" component="p" color="secondary" flexWrap="wrap" textAlign="center">
-          {`${firstName} ${secondName}`}
-        </Typography>
-        {isDisabled ? (
-          <Button variant="outlined" size="small" type="button" onClick={handleIsDisabled}>
-            Change avatar
-          </Button>
-        ) : (
-          <Stack direction="row" sx={{ width: '100%', gap: '20px' }}>
-            <Button
-              variant="outlined"
-              size="small"
-              type="button"
-              onClick={handleIsDisabled}
-              fullWidth>
-              Cancel
-            </Button>
-            <Button variant="contained" size="small" type="submit" fullWidth>
-              Save Avatar
-            </Button>
-          </Stack>
-        )}
+        <ProfilePicture
+          isDisabled={isDisabled}
+          userImage={userImage}
+          title={`${firstName} ${secondName}`}
+          handleIsDisabled={handleIsDisabled}
+        />
       </Form>
     </Formik>
   )
