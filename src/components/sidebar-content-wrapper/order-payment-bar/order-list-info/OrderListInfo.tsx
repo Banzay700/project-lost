@@ -7,7 +7,7 @@ interface OrderToggleListProps {
   newBill: BillsType
 }
 
-const OrderToggleList: FC<OrderToggleListProps> = ({ newBill }) => {
+const OrderListBar: FC<OrderToggleListProps> = ({ newBill }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   // const total = newBill.dishes?.reduce((acc, item) => acc + item.price, 0)
 
@@ -32,4 +32,4 @@ const OrderToggleList: FC<OrderToggleListProps> = ({ newBill }) => {
   )
 }
 
-export default OrderToggleList
+export default OrderListBar
