@@ -1,1 +1,1 @@
-export { default as PaymentToggleInfo } from './PaymentToggleInfo'
+export { default as PaymentListInfo } from './PaymentListInfo'

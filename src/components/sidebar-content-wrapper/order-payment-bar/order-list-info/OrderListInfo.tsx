@@ -3,11 +3,11 @@ import { FC } from 'react'
 import { useSmoothScrollbar } from 'hooks'
 import { BillsType } from 'types'
 
-interface OrderToggleListProps {
+interface OrderListInfoProps {
   newBill: BillsType
 }
 
-const OrderListBar: FC<OrderToggleListProps> = ({ newBill }) => {
+const OrderListInfo: FC<OrderListInfoProps> = ({ newBill }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   // const total = newBill.dishes?.reduce((acc, item) => acc + item.price, 0)
 
@@ -32,4 +32,4 @@ const OrderListBar: FC<OrderToggleListProps> = ({ newBill }) => {
   )
 }
 
-export default OrderListBar
+export default OrderListInfo

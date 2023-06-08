@@ -1,1 +1,1 @@
-export { default as OrderListBar } from './OrderToggleList'
+export { default as OrderListInfo } from './OrderListInfo'
