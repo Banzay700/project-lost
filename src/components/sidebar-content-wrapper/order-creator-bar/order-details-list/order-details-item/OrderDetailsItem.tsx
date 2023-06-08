@@ -1,8 +1,6 @@
 import { FC, useState } from 'react'
 import { Card, ListItem } from '@mui/material'
 
-import { Picker } from 'UI'
-import { useOrderReducer } from 'hooks'
 import { FadeIn } from 'utils'
 import { OrderDetailsItemContent } from './order-details-item-content'
 import { OrderDetailsDeleteCard } from './order-details-delete-card'
@@ -14,16 +12,10 @@ interface OrderItemProps {
   src: string
   total: number
   amount?: number
-  isPicker?: boolean
 }
 
-const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total, amount }) => {
+const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, total, amount }) => {
   const [isDeleteCard, setIsDeleteCard] = useState(false)
-  const { changeDishAmount } = useOrderReducer()
-
-  const handleChangeOrderInfo = (value: number) => {
-    changeDishAmount({ id, amount: value })
-  }
 
   return (
     <FadeIn delay={50}>
@@ -33,15 +25,14 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, isPicker, total,
           {isDeleteCard ? (
             <OrderDetailsDeleteCard id={id} handleDeleteCard={setIsDeleteCard} />
           ) : (
-            <OrderDetailsItemContent title={title} src={src} total={total}>
-              {isPicker && (
-                <Picker
-                  initialValue={amount}
-                  onChange={handleChangeOrderInfo}
-                  handleDeleteCard={setIsDeleteCard}
-                />
-              )}
-            </OrderDetailsItemContent>
+            <OrderDetailsItemContent
+              id={id}
+              title={title}
+              src={src}
+              total={total}
+              amount={amount}
+              handleDeleteCard={setIsDeleteCard}
+            />
           )}
         </Card>
       </ListItem>

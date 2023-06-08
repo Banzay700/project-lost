@@ -10,9 +10,11 @@ export {
 
 export {
   useGetFreeTablesQuery,
+  useGetTableStatusQuery,
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
-} from './table.api'
+  useLazyGetTableStatusQuery,
+} from './tables.api'
 export {
   useCreateBillMutation,
   useGetAllBillsQuery,
