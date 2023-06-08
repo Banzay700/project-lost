@@ -23,10 +23,13 @@ export {
 
 export {
   useGetSubCategoriesInCategoryQuery,
+  useLazyGetSubCategoriesInCategoryQuery,
   useGetDishByIdQuery,
   useLazyGetDishByIdQuery,
-  useGetDishesByCategoryAndFilterQuery,
+  useGetDishesQuery,
+  useUpdateDishMutation,
   useGetCategoriesQuery,
+  useLazyGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
 } from './dish.api'

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useLazyGetDishByIdQuery } from 'store/api'
+import { useLazyGetDishByIdQuery, useUpdateDishMutation } from 'store/api'
 import { ModalDishDetailInfo, ModalUpdateDishInfo } from 'components'
 import { Stack } from '@mui/material'
 import { useIsModal } from 'hooks'
@@ -12,19 +12,32 @@ const AdminDishesListPage: FC = () => {
   const { isOpen: isOpenUpdateInfo, handleToggleIsOpenModal: handleToggleIsOpenModalUpdateInfo } =
     useIsModal()
   const [trigger, { data: dish }] = useLazyGetDishByIdQuery()
+  const [update] = useUpdateDishMutation()
 
   const handleClickAction = (id: string) => {
-    trigger(id)
+    if (dish?.id !== id) trigger(id)
+
     handleToggleIsOpenModalUpdateInfo(100)
   }
 
   const handleClickLine = (id: string) => {
-    trigger(id)
+    if (dish?.id !== id) trigger(id)
     handleToggleIsOpenModalDetailInfo(100)
   }
 
   const handleUpdateDish = (value: DishPartialType) => {
-    console.log(value)
+    const formData = new FormData()
+    const { picture, ...data } = value
+
+    Object.entries(data).forEach(([keys, values]) => {
+      if (values) {
+        formData.append(keys, values.toString())
+      }
+    })
+    if (typeof picture !== 'string' && picture) {
+      formData.append('picture', picture[0])
+    }
+    update(formData)
   }
 
   return (

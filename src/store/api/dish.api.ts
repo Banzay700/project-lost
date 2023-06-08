@@ -1,10 +1,4 @@
-import {
-  DishesResponseType,
-  DishPartialType,
-  DishSubCategoriesResponseType,
-  DishType,
-  SidebarItemType,
-} from 'types'
+import { DishesResponseType, DishSubCategoriesResponseType, DishType, SidebarItemType } from 'types'
 import { api } from './api'
 import { API_CONST_DISHES } from './api.utils'
 
@@ -12,28 +6,27 @@ interface DishesRequest {
   category?: string
   search?: string | null
   page?: string
+  status?: string
 }
 
 interface ParamsProps {
   category?: string
   search?: string
   page?: string
+  status?: string
 }
 
 export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getDishesByCategoryAndFilter: builder.query<DishesResponseType, DishesRequest>({
-      query: ({ category, search, page }) => {
+    getDishes: builder.query<DishesResponseType, DishesRequest>({
+      query: ({ category, search, status, page }) => {
         const params: ParamsProps = {
           page: page || '1',
         }
 
-        if (search) {
-          params.search = search
-        }
-        if (category) {
-          params.category = category
-        }
+        if (search) params.search = search
+        if (category) params.category = category
+        if (status) params.status = status
 
         return {
           url: API_CONST_DISHES.DISHES,
@@ -48,7 +41,7 @@ export const dishApi = api.injectEndpoints({
       }),
       providesTags: ['Dish'],
     }),
-    updateDish: builder.mutation<DishType, DishPartialType>({
+    updateDish: builder.mutation<DishType, FormData>({
       query: (body) => ({
         url: API_CONST_DISHES.DISHES,
         method: 'PUT',
@@ -78,11 +71,14 @@ export const dishApi = api.injectEndpoints({
 })
 
 export const {
-  useGetDishesByCategoryAndFilterQuery,
+  useGetDishesQuery,
   useGetDishByIdQuery,
   useLazyGetDishByIdQuery,
+  useUpdateDishMutation,
   useGetCategoriesQuery,
+  useLazyGetCategoriesQuery,
   useGetSubCategoriesInCategoryQuery,
+  useLazyGetSubCategoriesInCategoryQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
 } = dishApi

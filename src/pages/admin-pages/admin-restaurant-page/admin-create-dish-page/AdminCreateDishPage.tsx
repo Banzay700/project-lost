@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import { FormCreateDish } from 'components'
 
 const AdminCreateDishPage: FC = () => {
-  return <div>AdminCreateDishPage</div>
+  return <FormCreateDish />
 }
 
 export default AdminCreateDishPage

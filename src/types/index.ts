@@ -58,6 +58,7 @@ export type {
   PaymentMethodItemType,
   SidebarTabItemType,
   InputSelectItemType,
+  RadioButtonWithoutIconItemType,
 } from './ComponentsItemType'
 
 export type {

@@ -2,3 +2,4 @@ export { FormProfileInfoUser, FormProfileAvatar, FormProfilePassword } from './f
 export { FormUpdateDish } from './form-update-dish-modal'
 export { FormUpdateUserInfo } from './form-update-user-info-modal'
 export { FormRegistration } from './form-registration'
+export { FormCreateDish } from './form-create-dish'
