@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { Button } from 'UI'
 import { IconMinus, IconPlus } from 'assets'
 import { Typography } from '@mui/material'
+import { useRootLocationPath } from 'hooks'
 import s from './Picker.module.scss'
 
 interface PickerProps {
@@ -12,6 +13,7 @@ interface PickerProps {
 
 const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard }) => {
   const [valuePicker, setValuePicker] = useState<number>(initialValue)
+  const { isHomeLocation } = useRootLocationPath()
 
   const handleIncrementValue = () => {
     setValuePicker((prevState) => prevState + 1)
@@ -28,7 +30,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
     }
   }
 
-  return (
+  return isHomeLocation ? (
     <div className={s.wrapper}>
       <Button
         variant="contained"
@@ -50,7 +52,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
         onClick={handleIncrementValue}
       />
     </div>
-  )
+  ) : null
 }
 
 export default Picker

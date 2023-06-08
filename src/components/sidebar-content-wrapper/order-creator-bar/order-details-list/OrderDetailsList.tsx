@@ -8,11 +8,10 @@ import { useSmoothScrollbar, useOrderReducer } from 'hooks/index'
 import { OrderDetailsItem } from './order-details-item'
 
 interface OrderListProps {
-  isPicker?: boolean
   onClick?: () => void
 }
 
-const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
+const OrderDetailsList: FC<OrderListProps> = ({ onClick }) => {
   const { activeOrder } = useOrderReducer()
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   const total = activeOrder.dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
@@ -30,7 +29,6 @@ const OrderDetailsList: FC<OrderListProps> = ({ isPicker, onClick }) => {
               total={dishTotalPrice}
               src={picture}
               amount={amount}
-              isPicker={isPicker}
             />
           ))}
         </Box>

@@ -7,12 +7,12 @@ type OrderStatusType = OderStoreStatusType | undefined
 
 export const useActiveOrderStatus = (orderStatus?: OrderStatusType) => {
   const { activeOrder, switchOrderStatus } = useOrderReducer()
-  const pathname = useRootLocationPath()
+  const { isHomeLocation } = useRootLocationPath()
   const isDishButton = activeOrder.storeStatus === 'open' || activeOrder.storeStatus === 'update'
 
   useEffect(() => {
     if (orderStatus) {
-      if (pathname !== 'home') {
+      if (!isHomeLocation) {
         switchOrderStatus(orderStatus)
       }
     }

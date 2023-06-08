@@ -12,7 +12,8 @@ interface SidebarLeftListProps {
 }
 
 const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background }) => {
-  const rootLocationPath = useRootLocationPath()
+  const { location } = useRootLocationPath()
+
   return (
     <List className={s.list} sx={{ background }}>
       {sidebarItems.map(({ title, id, picture, icon }) => (
@@ -20,7 +21,7 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background })
           key={id}
           label={correctionName(title)}
           linkIconSVG={picture}
-          linkTo={`/${rootLocationPath}/${title.toLowerCase()}`}
+          linkTo={`/${location}/${title.toLowerCase()}`}
           className={s.listItem}>
           {icon}
         </SidebarLinkItem>
