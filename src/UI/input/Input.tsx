@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { TextField, TextFieldProps } from '@mui/material'
 import { useField } from 'formik'
 import cn from 'classnames'
@@ -17,6 +17,8 @@ type InputProps = InputVariantItemType & {
   minRows?: number
   disabled?: boolean
   focus?: boolean
+  maxLength?: number
+  onInput?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: FC<InputProps> = (props) => {
@@ -32,6 +34,8 @@ const Input: FC<InputProps> = (props) => {
     minRows,
     disabled,
     focus,
+    maxLength,
+    onInput,
   } = props
   const [field, meta] = useField(name)
 
@@ -48,6 +52,9 @@ const Input: FC<InputProps> = (props) => {
     fullWidth: true,
     InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},
     className: inputClasses,
+    inputProps: {
+      maxLength,
+    },
   }
 
   if (meta.touched && meta.error) {
@@ -57,7 +64,11 @@ const Input: FC<InputProps> = (props) => {
 
   return (
     <FadeIn delay={50}>
-      <TextField {...textFieldConfig} inputRef={(input) => focus && input && input.focus()} />
+      <TextField
+        {...textFieldConfig}
+        inputRef={(input) => focus && input && input.focus()}
+        onInput={onInput}
+      />
     </FadeIn>
   )
 }

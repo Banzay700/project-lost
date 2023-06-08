@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 
 import { Picker } from 'UI'
 import { useOrderReducer } from 'hooks'
@@ -19,6 +19,7 @@ interface OrderDetailsItemContentProps {
 const OrderDetailsItemContent: FC<OrderDetailsItemContentProps> = (props) => {
   const { id, title, src, total, amount, handleDeleteCard } = props
   const { changeDishAmount } = useOrderReducer()
+  const initialPrice = total / (amount || 0)
 
   const handleChangeOrderInfo = (value: number) => {
     changeDishAmount({ id, amount: value })
@@ -36,6 +37,9 @@ const OrderDetailsItemContent: FC<OrderDetailsItemContentProps> = (props) => {
             handleDeleteCard={handleDeleteCard}
           />
         </OrderDetailsItemPriceInfo>
+        <Typography variant="h3">
+          {amount}x{initialPrice}$
+        </Typography>
       </Stack>
     </>
   )

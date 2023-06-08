@@ -16,7 +16,6 @@ interface OrderItemProps {
 
 const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, total, amount }) => {
   const [isDeleteCard, setIsDeleteCard] = useState(false)
-
   return (
     <FadeIn delay={50}>
       <ListItem

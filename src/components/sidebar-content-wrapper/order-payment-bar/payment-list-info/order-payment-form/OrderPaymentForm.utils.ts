@@ -1,4 +1,4 @@
-import { object, string } from 'yup'
+import { number, object, string } from 'yup'
 
 export const initialValues = {
   paymentMethod: '',
@@ -8,6 +8,6 @@ export const initialValues = {
 
 export const validationSchema = object().shape({
   paymentMethod: string().required(),
-  tipAmount: string(),
+  tipAmount: number().integer(),
   email: string().email(),
 })
