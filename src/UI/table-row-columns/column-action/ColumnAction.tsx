@@ -3,7 +3,7 @@ import { TableCell } from '@mui/material'
 import { Button } from 'UI/button'
 
 interface ColumnActionProps {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void // TODO: ?
   title: string
   columnAlign?: 'center' | 'left' | 'right'
   size?: 'small' | 'default'

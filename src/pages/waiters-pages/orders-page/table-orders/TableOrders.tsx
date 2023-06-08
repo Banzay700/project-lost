@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { IndicatorFilterBar, Table } from 'components'
+import { IndicatorFilterBar, Table } from 'components/index'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
-import { useSearchParamsType } from 'hooks'
+import { useSearchParamsType } from 'hooks/index'
 
-import { ROUTES } from 'routes'
+import { ROUTES } from 'routes/index'
 import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
