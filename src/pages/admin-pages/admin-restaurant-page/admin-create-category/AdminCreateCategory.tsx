@@ -2,9 +2,8 @@ import { FC } from 'react'
 import { CreateDishCategoryForm } from 'components'
 import { Box } from '@mui/material'
 
-interface AdminCreateCategoryProps {
-  '': any
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface AdminCreateCategoryProps {}
 
 const AdminCreateCategory: FC<AdminCreateCategoryProps> = () => {
   return (
