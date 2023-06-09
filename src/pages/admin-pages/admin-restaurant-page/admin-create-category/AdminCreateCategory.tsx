@@ -2,7 +2,9 @@ import { FC } from 'react'
 import { CreateDishCategoryForm } from 'components'
 import { Box } from '@mui/material'
 
-interface AdminCreateCategoryProps {}
+interface AdminCreateCategoryProps {
+  '': any
+}
 
 const AdminCreateCategory: FC<AdminCreateCategoryProps> = () => {
   return (
