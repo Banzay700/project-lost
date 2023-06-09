@@ -1,14 +1,18 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import { Stack } from '@mui/material'
+import { TableType } from 'types'
+import { Table } from './table'
 
 interface TablesReservationRowProps {
-  children: ReactNode
+  sector: TableType[]
 }
 
-const TablesReservationRow: FC<TablesReservationRowProps> = ({ children }) => {
+const TablesReservationRow: FC<TablesReservationRowProps> = ({ sector }) => {
   return (
     <Stack sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-      {children}
+      {sector.map(({ number, seats, reservation }) => (
+        <Table key={number} tableNumber={number} seats={seats} reservation={reservation} />
+      ))}
     </Stack>
   )
 }

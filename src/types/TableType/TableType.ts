@@ -1,9 +1,10 @@
-import { TableReservationInfoType } from './TableReservationInfoType'
+import { ReservationCanvasType } from '../ReservationsTypes'
 
 export type TableType = {
-  id?: string
+  id: string
   number: string
   seats: number
-  status?: boolean
-  reservationInfo?: TableReservationInfoType[]
+  status: boolean
+  sector: number
+  reservation?: ReservationCanvasType
 }

@@ -5,6 +5,7 @@ export type {
   TableReservationInfoType,
   TableMessageResponseType,
   TableFreeResponseType,
+  TableCanvasResponseType,
 } from './TableType'
 
 export type {
@@ -23,6 +24,8 @@ export type {
   OrderResponseType,
   BillsResponseType,
 } from './OrderBillsType'
+
+export type { ReservationCanvasType } from './ReservationsTypes'
 
 export type {
   UserType,
