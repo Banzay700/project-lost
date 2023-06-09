@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { DishType } from 'types'
-import { DishCard } from './dish-сard'
 import { useSmoothScrollbar } from 'hooks'
+import { DishCard } from './dish-сard'
 
 import s from './DishesList.module.scss'
 
@@ -21,15 +21,7 @@ const DishesList: FC<DishesListProps> = ({ dishes }) => {
       ref={containerRef}>
       <div className={s.gridContainer}>
         {dishes.map((dish) => (
-          <DishCard
-            key={dish.id}
-            id={dish.id}
-            picture={dish.picture}
-            title={dish.title}
-            price={dish.price}
-            description={dish.description}
-            weightProduct={dish.weight}
-          />
+          <DishCard key={dish.id} dish={dish} />
         ))}
       </div>
     </div>

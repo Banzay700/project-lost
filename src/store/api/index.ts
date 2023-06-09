@@ -10,9 +10,13 @@ export {
 
 export {
   useGetFreeTablesQuery,
+  useGetTableStatusQuery,
+  useGetTablesCanvasQuery,
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
-} from './table.api'
+  useLazyGetTableStatusQuery,
+} from './tables.api'
+
 export {
   useCreateBillMutation,
   useGetAllBillsQuery,
@@ -23,8 +27,14 @@ export {
 
 export {
   useGetSubCategoriesInCategoryQuery,
-  useGetDishesByCategoryAndFilterQuery,
+  useLazyGetSubCategoriesInCategoryQuery,
+  useGetDishByIdQuery,
+  useLazyGetDishByIdQuery,
+  useGetDishesQuery,
+  useCreateDishMutation,
+  useUpdateDishMutation,
   useGetCategoriesQuery,
+  useLazyGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
 } from './dish.api'

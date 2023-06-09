@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { ProfileFormInfoUser, ProfileFormPassword } from 'components/profile-form'
+import { ProfileInfoUserForm, ProfilePasswordForm } from 'components/form-componets/profile-form'
 import { UserPassword, UserType, UserUpdateInfo } from 'types'
 
 interface ProfileContentProps {
@@ -23,10 +23,10 @@ const ProfileContent: FC<ProfileContentProps> = ({
       </Box>
       <Stack direction="row" sx={{ width: '100%', gap: '20px', p: '40px' }}>
         <Stack sx={{ width: '70%', gap: '20px' }}>
-          <ProfileFormInfoUser onSubmit={submitChangeUserInfo} initialValues={user} />
+          <ProfileInfoUserForm onSubmit={submitChangeUserInfo} initialValues={user} />
         </Stack>
         <Box sx={{ width: '30%' }}>
-          <ProfileFormPassword onSubmit={submitChangePassword} initialValues={{ password: '' }} />
+          <ProfilePasswordForm onSubmit={submitChangePassword} initialValues={{ password: '' }} />
         </Box>
       </Stack>
     </Stack>

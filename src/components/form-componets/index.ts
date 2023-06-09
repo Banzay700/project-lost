@@ -1,0 +1,6 @@
+export { ProfileInfoUserForm, ProfileAvatarForm, ProfilePasswordForm } from './profile-form'
+export { UpdateDishForm } from './update-dish-form-modal'
+export { UpdateUserInfoForm } from './update-user-info-form-modal'
+export { RegistrationForm } from './registration-form'
+export { CreateDishForm } from './create-dish-form'
+export { CreateDishCategoryForm } from './create-dish-category-form'

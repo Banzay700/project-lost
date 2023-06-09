@@ -86,9 +86,13 @@ const Table: FC<TableProps> = ({
               <TableUsersLine key={user.id} user={user as UserType} onClickAction={onClickAction} />
             ))}
           {tableType === 'dishes' &&
-            onClickAction &&
             data?.map((dish) => (
-              <TableDishLine key={dish.id} dish={dish as DishType} onClickAction={onClickAction} />
+              <TableDishLine
+                key={dish.id}
+                dish={dish as DishType}
+                onClickAction={onClickAction}
+                onClickLine={onClickLine}
+              />
             ))}
         </TableBody>
       </MuiTable>

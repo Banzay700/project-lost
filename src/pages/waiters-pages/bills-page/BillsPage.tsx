@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { TableBills } from 'components/index'
+
 import { useActiveOrderStatus } from 'hooks/useActiveOrderStatus.hook'
+import { TableBills } from './table-bills'
 
 const BillsPage: FC = () => {
   useActiveOrderStatus('none')

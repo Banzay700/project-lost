@@ -1,22 +1,22 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 
-import { InputSelectItemType, TableFreeResponseType } from 'types'
+import { InputSelectItemType } from 'types'
 import { FadeIn } from 'utils'
-import { menuItemsStyle, selectStyle } from './SelectInput.utils'
+import { menuItemsStyle, selectDefaultStyle, selectActiveStyle } from './SelectInput.utils'
 
 interface SelectInputProps {
   name: string
   label: string
   data: InputSelectItemType[] | undefined
   handleValue?: (value: string) => void
+  active?: boolean
 }
 
-const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue }) => {
+const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, active }) => {
   const [field] = useField(name)
-  const { setFieldValue, values } = useFormikContext<{ table: string; orderType: string }>()
-  const { table } = values
+  const { setFieldValue } = useFormikContext<{ table: string; orderType: string }>()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFieldValue(name, event.target.value)
@@ -25,25 +25,18 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue }) =
     }
   }
 
-  if (table) {
-    selectStyle.backgroundColor = '#FFF5EE'
-    selectStyle['& .MuiOutlinedInput-notchedOutline'].borderColor = '#FF5C00'
-    // inputLabelStyle.color = '#FF5C00'
-  }
-
   return (
     <FadeIn delay={50}>
       <FormControl fullWidth>
-        <InputLabel>{label}</InputLabel>
+        <InputLabel sx={{ color: active ? '#ff5c00' : '#c2c2c2' }}>{label}</InputLabel>
         <Select
           {...field}
           label={label}
-          defaultValue={field.value}
-          sx={selectStyle}
+          sx={active ? selectActiveStyle : selectDefaultStyle}
           onChange={handleChange}>
           {data?.map(({ title, value }) => (
             <MenuItem key={title} value={value} sx={menuItemsStyle}>
-              {value}
+              {title}
             </MenuItem>
           ))}
         </Select>

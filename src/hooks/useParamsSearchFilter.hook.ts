@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ChangeEvent, useEffect } from 'react'
+import { ChangeEvent } from 'react'
 
 export const useParamsSearchFilter = (params: string) => {
   const location = useLocation()

@@ -5,4 +5,5 @@ export type BillsDishType = {
   price: number
   title?: string
   picture?: string
+  dishTotalPrice?: number
 }

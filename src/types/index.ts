@@ -5,6 +5,7 @@ export type {
   TableReservationInfoType,
   TableMessageResponseType,
   TableFreeResponseType,
+  TableCanvasResponseType,
 } from './TableType'
 
 export type {
@@ -23,6 +24,8 @@ export type {
   OrderResponseType,
   BillsResponseType,
 } from './OrderBillsType'
+
+export type { ReservationCanvasType } from './ReservationsTypes'
 
 export type {
   UserType,
@@ -45,6 +48,7 @@ export type {
   DishAdditionalFood,
   DishSubCategoriesResponseType,
   DishesResponseType,
+  DishPartialType,
 } from './DishType'
 
 export type {
@@ -57,6 +61,7 @@ export type {
   PaymentMethodItemType,
   SidebarTabItemType,
   InputSelectItemType,
+  RadioButtonWithoutIconItemType,
 } from './ComponentsItemType'
 
 export type {
@@ -66,4 +71,5 @@ export type {
   OrderCreatorFormReturnType,
   PaymentFormCollectType,
   RegistrationFormReturnType,
+  CreateDishFormReturnType,
 } from './ComponentsReturnType'

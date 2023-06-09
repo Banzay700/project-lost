@@ -71,6 +71,7 @@ const AdminEmployeesListPage: FC = () => {
           title={`${user.firstName} ${user.secondName}`}
           initialValues={user}
           isOpenModal={isOpenModal}
+          linkageToForm="update-user"
           onCloseModal={handleCloseModal}
           onSubmit={handleSubmitUpdateForm}
         />

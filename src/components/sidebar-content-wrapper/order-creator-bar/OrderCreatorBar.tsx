@@ -1,57 +1,34 @@
-import { useNavigate } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
-import { useOrderReducer } from 'hooks'
-import { ROUTES } from 'routes'
+import { useOrderReducer, useOrderProcessingLogicHook } from 'hooks'
 import { OrderCreatorFormReturnType } from 'types'
-import { convertOrderData } from 'utils'
-import {
-  useCreateOrderMutation,
-  useUpdateOrderMutation,
-  useUpdateTableStatusMutation,
-} from 'store/api'
-import { emptyOrderState } from 'store/reducers/reducers.utils'
+import { useUpdateTableStatusMutation } from 'store/api'
+
 import { OrderCreatorForm } from './order-creator-form'
-import { toggleMenuValues, unique } from './orderCreatorBar.utils'
+import { toggleMenuValues, updateOrderState } from './orderCreatorBar.utils'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
   const [buttonDisabled, setButtonDisabled] = useState(true)
-
-  const [updateTableStatus] = useUpdateTableStatusMutation()
-  const [createOrder] = useCreateOrderMutation()
-  const [updateOrder] = useUpdateOrderMutation()
   const { activeOrder, openNewOrder } = useOrderReducer()
-
-  const navigate = useNavigate()
+  const [updateTableStatus] = useUpdateTableStatusMutation()
+  const orderProcessing = useOrderProcessingLogicHook()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
-    const orderNumber = unique()
-    const orderInfo = {
-      ...emptyOrderState,
-      orderType,
-      table,
-      orderNumber,
-      storeStatus: 'open' as const,
-    }
-
-    openNewOrder(orderInfo)
+    const orderInfo = updateOrderState({ orderType, table })
 
     if (table) updateTableStatus(table)
+
+    openNewOrder(orderInfo)
     setToggleValue('dishes')
     setButtonDisabled(false)
   }
 
-  const handleCreateOrder = () => {
-    const { orderDB, orderActive } = convertOrderData(activeOrder)
-    console.log(orderDB)
-    createOrder(orderDB)
-    updateOrder(orderDB)
-    openNewOrder(orderActive)
-    navigate(ROUTES.ORDERS)
+  const handleCreateOrder = async () => {
+    await orderProcessing(setToggleValue)
   }
 
   const handleToggleChange = (value: string) => {
@@ -73,7 +50,7 @@ const OrderCreatorBar: FC = () => {
         buttonDisabled={buttonDisabled}
       />
       {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
-      {toggleValue === 'dishes' && <OrderDetailsList isPicker onClick={handleCreateOrder} />}
+      {toggleValue === 'dishes' && <OrderDetailsList onClick={handleCreateOrder} />}
     </Stack>
   )
 }

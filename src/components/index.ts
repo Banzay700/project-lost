@@ -1,4 +1,5 @@
-export { OrderSummary } from './order-summary'
+export { OrderSummaryWrapper } from './order-summary-wrapper'
+export { OrderDetailsItem } from './order-details-item'
 export { OrderDetailsList } from 'components/sidebar-content-wrapper/order-creator-bar/order-details-list'
 export { OrderPaymentBar } from './sidebar-content-wrapper/order-payment-bar'
 export { OrderInfoBar } from './sidebar-content-wrapper/order-info-bar'
@@ -11,16 +12,30 @@ export { SidebarContentWrapper } from './sidebar-content-wrapper'
 export { Table } from './table'
 export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 
-export { TableOrders } from './table-orders'
-export { TableBills } from './table-bills'
 export { Login } from './login'
-export { ProfileFormInfoUser, ProfileFormPassword, ProfileFormAvatar } from './profile-form'
+export {
+  ProfileInfoUserForm,
+  ProfilePasswordForm,
+  ProfileAvatarForm,
+  UpdateDishForm,
+  UpdateUserInfoForm,
+  RegistrationForm,
+  CreateDishForm,
+  CreateDishCategoryForm,
+} from './form-componets'
 
 export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
-export { InputImage, InputsBasicUserInfo } from './input-form'
+export {
+  InputImage,
+  InputsBasicUserInfo,
+  InputsCreateDish,
+  InputImageWithPreviewAvatar,
+} from './input-form'
 
 export { IndicatorsGroup } from './indicators-group'
 export { ReservationBottomBar } from './reservation-bottom-bar'
-export { ModalUpdateUserInfo } from './modal-components'
+
+export { ModalUpdateUserInfo, ModalDishDetailInfo, ModalUpdateDishInfo } from './modal-components'
+
 export { ReservationCanvas } from './reservation-canvas'

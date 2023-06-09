@@ -1,4 +1,5 @@
 export const emptyOrderState = {
+  table: '',
   orderType: '',
   orderNumber: 0,
   dishes: [],

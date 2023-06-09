@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import { RegistrationFormReturnType } from 'types'
 import { useRegistrationMutation } from 'store/api'
 import { Snackbar } from 'UI'
-import { RegistrationForm } from './registration-form'
+import { RegistrationForm } from 'components'
 import { initialValues } from './adminEmployeesRegistrationPage.utils'
 
 const AdminEmployeesRegistrationPage: FC = () => {

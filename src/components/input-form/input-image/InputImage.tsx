@@ -14,7 +14,6 @@ const InputImage: FC<InputImageProps> = ({ view }) => {
     { [s.round]: view === 'round' },
     { [s.squareRounding]: view === 'squareRounding' },
   )
-
   return (
     <Box
       sx={{
@@ -28,7 +27,12 @@ const InputImage: FC<InputImageProps> = ({ view }) => {
         name="picture"
         placeholder="Drag and Drop a Dile here or click"
         multiple={false}
-        accept={{ 'image/png': ['.png'], 'image/jpg': ['.jpg'], 'image/jpeg': ['.jpeg'] }}
+        accept={{
+          'image/png': ['.png'],
+          'image/jpg': ['.jpg'],
+          'image/jpeg': ['.jpeg'],
+          'image/svg+xml': ['.svg'],
+        }}
       />
     </Box>
   )

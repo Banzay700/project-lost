@@ -1,33 +1,30 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Card, Stack } from '@mui/material'
-import { IconMore } from 'assets/index'
-import { Button } from 'UI/index'
-import { useOrderReducer } from 'hooks/index'
-import DishCardModal from './DishCardModal'
+import { IconMore } from 'assets'
+import { Button } from 'UI'
+import { useIsModal, useOrderReducer } from 'hooks'
+import { DishType } from 'types/DishType'
+import { ModalDishDetailInfo } from 'components'
 import { DishCardMedia } from './dish-card-media'
 import { DishCardTitle } from './dish-card-title'
 import { DishCardPricing } from './dish-card-pricing'
 import s from './DishCard.module.scss'
 
 interface DishCardProps {
-  id: string
-  picture: string
-  title: string
-  price: number
-  description: string
-  weightProduct: number
+  dish: DishType
 }
 
-const DishCard: FC<DishCardProps> = (props) => {
-  const { picture, title, price, description, id, weightProduct } = props
-  const [openModal, setOpenModal] = useState(false)
+const DishCard: FC<DishCardProps> = ({ dish }) => {
+  const { picture, title, price, id } = dish
+  const { isOpen, handleToggleIsOpenModal } = useIsModal()
   const { addDish } = useOrderReducer()
-  const handleOpenModal = () => setOpenModal(true)
-
-  const handleCloseModal = () => setOpenModal(false)
 
   const handleAddProductToOrder = () => {
     addDish({ dishID: id, price, title, amount: 1, picture, dishTotalPrice: price })
+  }
+
+  const handleClickDetailInfo = () => {
+    handleToggleIsOpenModal()
   }
 
   return (
@@ -35,7 +32,7 @@ const DishCard: FC<DishCardProps> = (props) => {
       <Button
         variant="text"
         size="small"
-        onClick={handleOpenModal}
+        onClick={handleClickDetailInfo}
         icon={<IconMore />}
         className={s.icon}
       />
@@ -48,11 +45,10 @@ const DishCard: FC<DishCardProps> = (props) => {
           <DishCardPricing price={price} onClickButton={handleAddProductToOrder} />
         </Stack>
       </Stack>
-      <DishCardModal
-        open={openModal}
-        onClose={handleCloseModal}
-        description={description}
-        weightProduct={weightProduct}
+      <ModalDishDetailInfo
+        dish={dish}
+        isOpenModal={isOpen}
+        onCloseModal={handleToggleIsOpenModal}
       />
     </Card>
   )
