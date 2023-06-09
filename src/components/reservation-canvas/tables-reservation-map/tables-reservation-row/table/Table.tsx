@@ -1,21 +1,23 @@
 import { FC, useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 
+import { ReservationCanvasType } from 'types'
+import { IconInfo } from 'assets/icons'
 import { ChairsPair } from './chairs-pair'
 import { ChairLine } from './chair-line'
 
 interface TableProps {
   tableNumber: string
-  seatsQuantity: number
+  seats: number
+  reservation?: ReservationCanvasType
 }
 
-const Table: FC<TableProps> = ({ tableNumber, seatsQuantity }) => {
+const Table: FC<TableProps> = ({ tableNumber, seats, reservation }) => {
   const [selected, setSelected] = useState(false)
-  const [reserved, setReserved] = useState(false)
 
   const handleSelected = () => {
     setSelected(!selected)
-    setReserved(!reserved)
+    console.log(reservation)
   }
 
   const tableStyles = {
@@ -26,12 +28,14 @@ const Table: FC<TableProps> = ({ tableNumber, seatsQuantity }) => {
     color: selected ? '#ff5c00' : '#e4e4e4',
     alignItems: 'center',
     cursor: 'pointer',
+    position: 'relative',
   }
 
   const tableTextStyles = {
     width: { xs: '64px', lg: '84px' },
     height: { xs: '64px', lg: '84px' },
-    bgcolor: reserved ? '#fff5ee' : '#ecf6ff',
+    color: reservation ? '#ff5c00' : '#e4e4e4',
+    bgcolor: reservation ? '#fff5ee' : '#ecf6ff',
     borderRadius: '50%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -40,13 +44,14 @@ const Table: FC<TableProps> = ({ tableNumber, seatsQuantity }) => {
   return (
     <Box onClick={handleSelected} sx={{ display: 'inlineBlock', position: 'relative' }}>
       <ChairsPair />
-      <ChairLine specifiedSeatsQuantity={seatsQuantity} />
+      <ChairLine specifiedSeatsQuantity={seats} />
       <Stack sx={tableStyles}>
+        {reservation && <IconInfo style={{ position: 'absolute', top: '5px', right: '8px' }} />}
         <Stack sx={tableTextStyles}>
-          <Typography color={reserved ? '#ff5c00' : '#3395f0'}>{tableNumber}</Typography>
+          <Typography color={reservation ? '#ff5c00' : '#3395f0'}>{tableNumber}</Typography>
         </Stack>
       </Stack>
-      <ChairLine specifiedSeatsQuantity={seatsQuantity} />
+      <ChairLine specifiedSeatsQuantity={seats} />
     </Box>
   )
 }
