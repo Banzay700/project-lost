@@ -2,9 +2,9 @@ import { FC, useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 
 import { ReservationCanvasType } from 'types'
+import { IconInfo } from 'assets/icons'
 import { ChairsPair } from './chairs-pair'
 import { ChairLine } from './chair-line'
-import { IconInfo } from 'assets/icons'
 
 interface TableProps {
   tableNumber: string
