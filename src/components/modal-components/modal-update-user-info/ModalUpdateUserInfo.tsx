@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Modal } from 'UI'
 import { UserPartialType } from 'types'
-import { FormUpdateUserInfo } from 'components'
+import { UpdateUserInfoForm } from 'components'
 
 interface ModalUpdateUserInfoProps {
   isOpenModal: boolean
@@ -27,7 +27,7 @@ const ModalUpdateUserInfo: FC<ModalUpdateUserInfoProps> = ({
       onClose={onCloseModal}
       linkageToForm={linkageToForm}
       colorHeader="primary">
-      <FormUpdateUserInfo
+      <UpdateUserInfoForm
         onSubmit={onSubmit}
         linkageToForm={linkageToForm}
         initialValues={initialValues}

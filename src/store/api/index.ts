@@ -31,6 +31,7 @@ export {
   useGetDishByIdQuery,
   useLazyGetDishByIdQuery,
   useGetDishesQuery,
+  useCreateDishMutation,
   useUpdateDishMutation,
   useGetCategoriesQuery,
   useLazyGetCategoriesQuery,
