@@ -6,21 +6,23 @@ import { changeToggleValue } from 'store/reducers'
 import { useUpdateBillMutation } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
-import { PaymentToggleInfo } from './payment-toggle-info'
+import { PaymentListInfo } from './payment-list-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
-import OrderToggleList from './order-toggle-list/OrderToggleList'
+import { OrderListInfo } from './order-list-info'
 
 const OrderPaymentBar: FC = () => {
   const dispatch = useAppDispatch()
-  const { newBill } = useBillsReducer()
+  const { newBill, relocateBills } = useBillsReducer()
   const [updateBill] = useUpdateBillMutation()
   const toggleValue = useAppSelector((state) => state.toggleValue.toggleValue)
 
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
 
-  const handleFormSubmit = (values: PaymentFormReturnType) =>
+  const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
+    relocateBills({ ...newBill, ...values, status: 'closed' })
+  }
 
   const handleToggleMenuChange = (value: string) => dispatch(changeToggleValue(value))
 
@@ -34,9 +36,9 @@ const OrderPaymentBar: FC = () => {
       />
       <DetailsListTitle title={detailsListTitle} orderNumber={newBill.orderNumber} />
       {toggleValue === 'Payment' && (
-        <PaymentToggleInfo onSubmit={handleFormSubmit} newBill={newBill} />
+        <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
       )}
-      {toggleValue === 'Order info' && <OrderToggleList newBill={newBill} />}
+      {toggleValue === 'Order info' && <OrderListInfo newBill={newBill} />}
     </FadeIn>
   )
 }

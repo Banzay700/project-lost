@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
 import { OrderCreatorBar, OrderPaymentBar, OrderInfoBar } from 'components'
-import { ROUTES } from 'routes'
 import { useRootLocationPath } from 'hooks'
 
 const SidebarContentWrapper: FC = () => {
-  const location = useRootLocationPath()
+  const { isHomeLocation, isOrdersLocation, isBillsLocation } = useRootLocationPath()
 
   return (
     <Stack
@@ -16,9 +15,9 @@ const SidebarContentWrapper: FC = () => {
         maxWidth: { xs: '289px', lg: '340px', xl: '360px' },
       }}>
       <Stack flex="1">
-        {location === ROUTES.DISHES && <OrderCreatorBar />}
-        {location === ROUTES.ORDERS && <OrderInfoBar />}
-        {location === ROUTES.BILLS && <OrderPaymentBar />}
+        {isHomeLocation && <OrderCreatorBar />}
+        {isOrdersLocation && <OrderInfoBar />}
+        {isBillsLocation && <OrderPaymentBar />}
       </Stack>
     </Stack>
   )

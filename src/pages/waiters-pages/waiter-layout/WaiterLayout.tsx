@@ -3,12 +3,11 @@ import { Stack } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 
 import { Header, SidebarContentWrapper } from 'components'
-import { ROUTES } from 'routes'
 import { useRootLocationPath } from 'hooks'
 
 const WaiterLayout: FC = () => {
-  const path = useRootLocationPath()
-  const isSidebar = path !== ROUTES.PROFILE && path !== ROUTES.RESERVATION
+  const { isProfileLocation, isReservationLocation } = useRootLocationPath()
+  const isSidebar = !isProfileLocation && !isReservationLocation
 
   return (
     <Stack direction="column" height="100%">

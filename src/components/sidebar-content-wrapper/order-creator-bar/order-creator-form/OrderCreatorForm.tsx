@@ -26,7 +26,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
 
-  const selectItem: InputSelectItemType[] | undefined =
+  const selectItems: InputSelectItemType[] | undefined =
     data && data.map(({ number }) => ({ title: number, value: number }))
 
   const handleValue = (value: string) => {
@@ -63,7 +63,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
               <SelectInput
                 name="table"
                 label="Select table"
-                data={selectItem}
+                data={selectItems}
                 active={!!selectValue}
                 handleValue={handleValue}
               />

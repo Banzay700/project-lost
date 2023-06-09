@@ -11,8 +11,8 @@ export { SidebarContentWrapper } from './sidebar-content-wrapper'
 export { Table } from './table'
 export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 
-export { TableOrders } from './table-orders'
-export { TableBills } from './table-bills'
+export { TableOrders } from '../pages/waiters-pages/orders-page/table-orders'
+export { TableBills } from '../pages/waiters-pages/bills-page/table-bills'
 export { Login } from './login'
 export {
   FormProfileInfoUser,

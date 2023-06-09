@@ -1,29 +1,39 @@
 import { Stack } from '@mui/material'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { PaymentFormCollectType, PaymentFormReturnType, BillsType } from 'types'
+import { useLazySendEmailQuery } from 'store/api'
 import { OrderPaymentForm } from './order-payment-form'
 import { OrderButtonsGroup } from './order-buttons-group'
 import { OrderPricingTotalInfo } from './order-total-info'
 
-interface OrderPaymentToggleInfoProps {
+interface PaymentListInfoProps {
   onSubmit: (values: PaymentFormReturnType) => void
   newBill: BillsType
 }
 
-const PaymentToggleInfo: FC<OrderPaymentToggleInfoProps> = ({ onSubmit, newBill }) => {
+const PaymentListInfo: FC<PaymentListInfoProps> = ({ onSubmit, newBill }) => {
   const [tipStatus, setTipStatus] = useState(false)
   const [emailStatus, setEmailStatus] = useState(false)
   const [formData, setFormData] = useState<PaymentFormCollectType>()
-
+  const [submittedBills, setSubmittedBills] = useState<BillsType>()
   const { orderNumber, totalPrice, id } = newBill
+  const [sendEmail] = useLazySendEmailQuery()
 
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     if (orderNumber && totalPrice && id) {
-      setFormData({ ...values, orderNumber, totalPrice })
       onSubmit(values)
+      setFormData({ ...values, orderNumber, totalPrice })
+      setSubmittedBills({ ...newBill, ...values })
     }
   }
+
+  useEffect(() => {
+    if (submittedBills?.email && submittedBills.id) {
+      sendEmail(submittedBills.id)
+      console.log(submittedBills)
+    }
+  }, [sendEmail, submittedBills])
 
   const handleToggleTipStatus = () => setTipStatus((prevState) => !prevState)
   const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
@@ -40,4 +50,4 @@ const PaymentToggleInfo: FC<OrderPaymentToggleInfoProps> = ({ onSubmit, newBill 
   )
 }
 
-export default PaymentToggleInfo
+export default PaymentListInfo

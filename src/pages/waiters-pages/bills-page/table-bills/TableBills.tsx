@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { Table, IndicatorFilterBar } from 'components'
+import { Table, IndicatorFilterBar } from 'components/index'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
-import { useAppDispatch, useBillsReducer, useSearchParamsType } from 'hooks'
+import { useAppDispatch, useBillsReducer, useSearchParamsType } from 'hooks/index'
 import { changeToggleValue } from 'store/reducers'
 import { tableTitleBills } from './tableBills.utils'
 

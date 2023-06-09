@@ -1,4 +1,4 @@
-import { OrderType } from 'types'
+import { OrderType } from 'types/index'
 
 export const tableTitleOrder: string[] = [
   'Table Number',
