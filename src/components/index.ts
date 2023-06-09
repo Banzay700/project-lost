@@ -21,7 +21,7 @@ export {
   FormUpdateDish,
   FormUpdateUserInfo,
   FormRegistration,
-  FormCreateDish,
+  CreateDishForm,
 } from './form-componets'
 
 export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'

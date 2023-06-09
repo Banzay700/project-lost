@@ -68,4 +68,5 @@ export type {
   OrderCreatorFormReturnType,
   PaymentFormCollectType,
   RegistrationFormReturnType,
+  CreateDishFormReturnType,
 } from './ComponentsReturnType'

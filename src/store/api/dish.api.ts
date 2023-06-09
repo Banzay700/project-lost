@@ -41,6 +41,13 @@ export const dishApi = api.injectEndpoints({
       }),
       providesTags: ['Dish'],
     }),
+    createDish: builder.mutation<DishType, FormData>({
+      query: (body) => ({
+        url: API_CONST_DISHES.DISHES,
+        method: 'POST',
+        body,
+      }),
+    }),
     updateDish: builder.mutation<DishType, FormData>({
       query: (body) => ({
         url: API_CONST_DISHES.DISHES,
@@ -74,6 +81,7 @@ export const {
   useGetDishesQuery,
   useGetDishByIdQuery,
   useLazyGetDishByIdQuery,
+  useCreateDishMutation,
   useUpdateDishMutation,
   useGetCategoriesQuery,
   useLazyGetCategoriesQuery,
