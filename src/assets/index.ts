@@ -40,6 +40,7 @@ export {
   IconCheck,
   IconShowPass,
   IconCreateDish,
+  IconInfo,
   IconCreateCategory,
 } from './icons'
 export { LogoCocaImg, LogoCocaText } from './logo-type'

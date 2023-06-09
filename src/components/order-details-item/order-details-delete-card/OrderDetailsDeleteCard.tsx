@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
 
-import { IconCheck, IconCross } from 'assets'
-import { useOrderReducer } from 'hooks'
+import { IconCheck, IconCross } from 'assets/index'
+import { useOrderReducer } from 'hooks/index'
 
 interface OrderDetailsDeleteCardProps {
   id: string

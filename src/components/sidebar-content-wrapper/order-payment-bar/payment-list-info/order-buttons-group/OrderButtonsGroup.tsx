@@ -33,6 +33,7 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
         className={s.button}
         fontWeight={400}
         variantText="h3"
+        type="button"
         onClick={handleToggleTipStatus}>
         Add tip amount
       </Button>
@@ -45,6 +46,7 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
         className={s.button}
         fontWeight={400}
         variantText="h3"
+        type="button"
         onClick={handleToggleEmailStatus}>
         Email
       </Button>

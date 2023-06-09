@@ -1,4 +1,9 @@
-import { TableFreeResponseType, TableType, TableMessageResponseType } from 'types'
+import {
+  TableFreeResponseType,
+  TableType,
+  TableMessageResponseType,
+  TableCanvasResponseType,
+} from 'types'
 import { api } from './api'
 
 export const tablesApi = api.injectEndpoints({
@@ -6,6 +11,10 @@ export const tablesApi = api.injectEndpoints({
     getFreeTables: builder.query<TableFreeResponseType[], void>({
       query: () => ({ url: '/tables/free' }),
       providesTags: ['Table'],
+    }),
+
+    getTablesCanvas: builder.query<TableCanvasResponseType[], void>({
+      query: () => ({ url: '/tables/canvas' }),
     }),
 
     getTableStatus: builder.query<string, string>({
@@ -26,6 +35,7 @@ export const tablesApi = api.injectEndpoints({
 
 export const {
   useGetFreeTablesQuery,
+  useGetTablesCanvasQuery,
   useLazyGetTableStatusQuery,
   useGetTableStatusQuery,
   useGetTableReservationForCurrentDayQuery,
