@@ -32,9 +32,6 @@ export const WeekCalendar: FC<WeekCalendarProps> = (props) => {
       const day = dayjs(item).format('DD')
       const weekDay = dayjs(item).format('ddd')
 
-      if (i === 0) {
-        return 'calendar-icon'
-      }
       return (
         <WeekCalendarItem
           // eslint-disable-next-line react/no-array-index-key
@@ -51,6 +48,16 @@ export const WeekCalendar: FC<WeekCalendarProps> = (props) => {
   return (
     <Stack sx={{ gap: '12px' }}>
       <Stack sx={{ flexDirection: 'row', border: '1px solid #E4E4E4', borderRadius: '16px' }}>
+        <Stack
+          sx={{
+            width: '64px',
+            height: '64px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: 'transparent',
+          }}>
+          calendar-icon
+        </Stack>
         {week()}
       </Stack>
     </Stack>

@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
 
 interface WeekCalendarItemProps {
-  day: any
-  weekDay: any
+  day: string
+  weekDay: string
   active: boolean
   onClick: () => void
 }
