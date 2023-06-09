@@ -3,7 +3,7 @@ import { CardContent, Typography } from '@mui/material'
 import s from './OrderDetailsItemPriceInfo.module.scss'
 
 interface OrderItemPriceInfoProps extends PropsWithChildren {
-  totalPriceItem: number
+  totalPriceItem: number | undefined
 }
 
 const OrderDetailsItemPriceInfo: FC<OrderItemPriceInfoProps> = ({ totalPriceItem, children }) => {

@@ -37,7 +37,7 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
             {isTip && (
               <Input
                 placeholder="Tip Amount"
-                name="tipAmount"
+                name="tip"
                 label="Tip Amount"
                 icon={<IconAddTipAmount />}
                 onInput={onInput}

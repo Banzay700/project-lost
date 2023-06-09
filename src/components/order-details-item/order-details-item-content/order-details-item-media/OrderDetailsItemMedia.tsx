@@ -3,8 +3,8 @@ import { CardMedia } from '@mui/material'
 import s from './OrderDetailsItemMedia.module.scss'
 
 interface CardItemMediaProps {
-  src: string
-  alt: string
+  src: string | undefined
+  alt: string | undefined
 }
 
 const OrderDetailsItemMedia: FC<CardItemMediaProps> = ({ src, alt }) => {

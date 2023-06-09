@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
 
-import { OrderSummary } from 'components'
+import { OrderSummaryWrapper } from 'components'
 import { Button, DetailsListTitle } from 'UI'
 import { FadeIn } from 'utils'
 import { useOrderReducer, useSmoothScrollbar, useUserReducer } from 'hooks'
-import { OrderDetailsItem } from 'components/sidebar-content-wrapper/order-creator-bar/order-details-list/order-details-item'
+import { OrderDetailsItem } from 'components/order-details-item'
 import { useDeleteOrderMutation } from 'store/api/order.api'
 import { useUpdateTableStatusMutation } from 'store/api'
 
@@ -51,7 +51,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
         </Box>
       </div>
       <Stack sx={{ gap: '24px', p: '18px 16px', borderTop: '1px solid #e4e4e4' }}>
-        <OrderSummary tax={10} total={total} />
+        <OrderSummaryWrapper tax={10} total={total} />
         <Stack direction="row" spacing={2.5}>
           <Button variant="contained" size="default" type="submit" fullWidth onClick={onClick}>
             Update Order

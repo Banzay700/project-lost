@@ -20,13 +20,14 @@ const OrderPaymentBar: FC = () => {
   const { firstName, secondName } = userState
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
+  const handleToggleMenuChange = (value: string) => dispatch(changeToggleValue(value))
 
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })
+    handleToggleMenuChange('Order info')
   }
 
-  const handleToggleMenuChange = (value: string) => dispatch(changeToggleValue(value))
   return (
     <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <ToggleMenu

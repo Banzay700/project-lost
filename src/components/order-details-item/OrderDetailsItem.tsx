@@ -1,21 +1,22 @@
 import { FC, useState } from 'react'
 import { Card, ListItem } from '@mui/material'
 
-import { FadeIn } from 'utils'
+import { FadeIn } from 'utils/index'
 import { OrderDetailsItemContent } from './order-details-item-content'
 import { OrderDetailsDeleteCard } from './order-details-delete-card'
 import s from './OrderDetailsItem.module.scss'
 
 interface OrderItemProps {
   id: string
-  title: string
-  src: string
-  total: number
+  title: string | undefined
+  src: string | undefined
+  total: number | undefined
   amount?: number
 }
 
 const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, total, amount }) => {
   const [isDeleteCard, setIsDeleteCard] = useState(false)
+
   return (
     <FadeIn delay={50}>
       <ListItem
