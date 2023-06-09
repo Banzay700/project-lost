@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Modal } from 'UI'
 import { DishPartialType, DishType } from 'types'
-import { FormUpdateDish } from 'components/form-componets'
+import { UpdateDishForm } from 'components/form-componets'
 
 interface ModalUpdateDishInfoProps {
   isOpenModal: boolean
@@ -27,7 +27,7 @@ const ModalUpdateDishInfo: FC<ModalUpdateDishInfoProps> = ({
       onClose={onCloseModal}
       linkageToForm={linkageToForm}
       colorHeader="primary">
-      <FormUpdateDish
+      <UpdateDishForm
         initialValues={initialValues}
         onSubmit={onSubmit}
         linkageToForm={linkageToForm}

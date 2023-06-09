@@ -11,7 +11,7 @@ interface ProfileInputGroupProps {
   onSubmit: (value: UserUpdateInfo) => void
 }
 
-const FormProfileInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubmit }) => {
+const ProfileInfoUserForm: FC<ProfileInputGroupProps> = ({ initialValues, onSubmit }) => {
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleIsDisabledInput = () => {
@@ -65,4 +65,4 @@ const FormProfileInfoUser: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
   )
 }
 
-export default FormProfileInfoUser
+export default ProfileInfoUserForm

@@ -10,7 +10,7 @@ interface ProfileFormAvatarProps {
   onSubmit: (value: UserAvatar) => void
 }
 
-const FormProfileAvatar: FC<ProfileFormAvatarProps> = ({
+const ProfileAvatarForm: FC<ProfileFormAvatarProps> = ({
   userImage,
   firstName,
   secondName,
@@ -52,4 +52,4 @@ const FormProfileAvatar: FC<ProfileFormAvatarProps> = ({
   )
 }
 
-export default FormProfileAvatar
+export default ProfileAvatarForm

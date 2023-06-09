@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { Form, Formik } from 'formik'
 import { SelectInput } from 'UI'
 import { UserPartialType } from 'types'
-import { selectInputItemsRole, selectInputItemsStatus } from './formUpdateUserInfo.utils'
+import { selectInputItemsRole, selectInputItemsStatus } from './updateUserInfoForm.utils'
 
 interface FormUpdateUserInfoProps {
   initialValues: UserPartialType
@@ -10,7 +10,7 @@ interface FormUpdateUserInfoProps {
   onSubmit: (value: UserPartialType) => void
 }
 
-const FormUpdateUserInfo: FC<FormUpdateUserInfoProps> = ({
+const UpdateUserInfoForm: FC<FormUpdateUserInfoProps> = ({
   initialValues,
   linkageToForm,
   onSubmit,
@@ -31,4 +31,4 @@ const FormUpdateUserInfo: FC<FormUpdateUserInfoProps> = ({
   )
 }
 
-export default FormUpdateUserInfo
+export default UpdateUserInfoForm

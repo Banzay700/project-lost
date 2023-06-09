@@ -4,7 +4,7 @@ import { InputsBasicUserInfo } from 'components'
 import { RegistrationFormReturnType } from 'types'
 import { SelectInput, Button, Input } from 'UI'
 import { Box, Stack } from '@mui/material'
-import { selectMenuItems, validationSchema } from './formRegistration.utils'
+import { selectMenuItems, validationSchema } from './registrationForm.utils'
 import RegistrationPicture from './registration-picutre/RegistrationPicture'
 
 interface RegistrationFormProps {
@@ -12,7 +12,7 @@ interface RegistrationFormProps {
   onSubmit: (values: RegistrationFormReturnType) => void
 }
 
-const FormRegistration: FC<RegistrationFormProps> = ({ initialValues, onSubmit }) => {
+const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }) => {
   const [formValues, setFormValues] = useState(initialValues)
   const handleSubmit = (
     value: RegistrationFormReturnType,
@@ -51,7 +51,7 @@ const FormRegistration: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
           maxRows={6}
           minRows={6}
         />
-        <Box sx={{ width: '200px' }}>
+        <Box sx={{ width: '400px' }}>
           <Button variant="contained" size="default" fullWidth>
             Registration
           </Button>
@@ -61,4 +61,4 @@ const FormRegistration: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
   )
 }
 
-export default FormRegistration
+export default RegistrationForm

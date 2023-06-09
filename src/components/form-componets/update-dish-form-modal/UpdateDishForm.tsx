@@ -11,7 +11,7 @@ interface FormCreateDishProps {
   onSubmit: (value: DishPartialType) => void
 }
 
-const FormUpdateDish: FC<FormCreateDishProps> = ({ initialValues, linkageToForm, onSubmit }) => {
+const UpdateDishForm: FC<FormCreateDishProps> = ({ initialValues, linkageToForm, onSubmit }) => {
   const { category, additionalFood, type, bonus, ...values } = initialValues
   const [formValues, setFormValues] = useState(values)
   useEffect(() => {
@@ -37,4 +37,4 @@ const FormUpdateDish: FC<FormCreateDishProps> = ({ initialValues, linkageToForm,
   )
 }
 
-export default FormUpdateDish
+export default UpdateDishForm

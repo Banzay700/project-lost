@@ -9,7 +9,7 @@ interface ProfileFormChangePasswordProps {
   onSubmit: (value: UserPassword) => void
 }
 
-const FormProfilePassword: FC<ProfileFormChangePasswordProps> = ({ initialValues, onSubmit }) => {
+const ProfilePasswordForm: FC<ProfileFormChangePasswordProps> = ({ initialValues, onSubmit }) => {
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleIsDisabled = () => {
@@ -51,4 +51,4 @@ const FormProfilePassword: FC<ProfileFormChangePasswordProps> = ({ initialValues
   )
 }
 
-export default FormProfilePassword
+export default ProfilePasswordForm
