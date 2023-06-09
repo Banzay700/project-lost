@@ -1,8 +1,8 @@
-import { FC, ReactNode } from 'react'
+import { ChangeEvent, FC, ReactNode } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
-import { Button, Input } from 'UI/index'
+import { Button, Input } from 'UI'
 import { IconAddTipAmount, IconEmail } from 'assets/index'
 import { PaymentFormReturnType } from 'types/index'
 import { OrderPaymentMethod } from './order-payment-method'
@@ -15,9 +15,16 @@ interface OrderPaymentFormProps {
   children: ReactNode
   isTip: boolean
   isEmail: boolean
+  onInput: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const OrderPaymentForm: FC<OrderPaymentFormProps> = ({ children, isTip, isEmail, onSubmit }) => {
+const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
+  children,
+  isTip,
+  isEmail,
+  onSubmit,
+  onInput,
+}) => {
   const formikConfig = { initialValues, validationSchema, onSubmit }
 
   return (
@@ -30,9 +37,11 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({ children, isTip, isEmail,
             {isTip && (
               <Input
                 placeholder="Tip Amount"
-                name="tipAmount"
+                name="tip"
                 label="Tip Amount"
                 icon={<IconAddTipAmount />}
+                onInput={onInput}
+                maxLength={6}
               />
             )}
             {isEmail && (

@@ -1,4 +1,5 @@
-export { OrderSummary } from './order-summary'
+export { OrderSummaryWrapper } from './order-summary-wrapper'
+export { OrderDetailsItem } from './order-details-item'
 export { OrderDetailsList } from 'components/sidebar-content-wrapper/order-creator-bar/order-details-list'
 export { OrderPaymentBar } from './sidebar-content-wrapper/order-payment-bar'
 export { OrderInfoBar } from './sidebar-content-wrapper/order-info-bar'

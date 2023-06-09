@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { CardContent, Typography } from '@mui/material'
 
 interface CardItemTitleProps {
-  title: string
+  title: string | undefined
 }
 
 const OrderDetailsItemTitle: FC<CardItemTitleProps> = ({ title }) => {
