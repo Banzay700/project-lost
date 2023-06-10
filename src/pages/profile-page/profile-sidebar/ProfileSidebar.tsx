@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { ProfileAvatarForm } from 'components'
-import { UserAvatar, UserType } from 'types/UserType'
-import { Button } from 'UI/button'
-import { IconLogout } from 'assets/icons'
-import { useLogoutMutation } from 'store/api'
 import { Navigate } from 'react-router-dom'
+
+import { ProfileAvatarForm } from 'components'
+import { Button } from 'UI'
+import { UserAvatar, UserType } from 'types'
+import { Icon } from 'assets'
+import { useLogoutMutation } from 'store/api'
 
 interface ProfileSidebarProps {
   user: UserType
@@ -42,7 +43,7 @@ const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar, isL
         onSubmit={submitChangeAvatar}
       />
       {isLogoutButton && (
-        <Button variant="contained" size="small" startIcon={<IconLogout />} onClick={handleLogout}>
+        <Button variant="contained" size="small" startIcon={<Icon.Logout />} onClick={handleLogout}>
           Logout
         </Button>
       )}

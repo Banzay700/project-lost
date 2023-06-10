@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Typography, Stack, Box } from '@mui/material'
-import { IconOval } from 'assets/index'
+import { Icon } from 'assets'
 
 interface InfoItemProps {
   data: { message: string; tableReservations: string[] }
@@ -15,7 +15,7 @@ const InfoItem: FC<InfoItemProps> = ({ data }) => {
         {data.tableReservations &&
           data.tableReservations.map((time: string) => (
             <Box key={time} sx={{ display: 'flex' }}>
-              <IconOval />
+              <Icon.Oval />
               <Typography>{time}</Typography>
             </Box>
           ))}

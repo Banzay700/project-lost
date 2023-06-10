@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Card, Stack } from '@mui/material'
-import { IconMore } from 'assets'
+import { Icon } from 'assets'
 import { Button } from 'UI'
 import { useIsModal, useOrderReducer } from 'hooks'
 import { DishType } from 'types/DishType'
@@ -33,7 +33,7 @@ const DishCard: FC<DishCardProps> = ({ dish }) => {
         variant="text"
         size="small"
         onClick={handleClickDetailInfo}
-        icon={<IconMore />}
+        icon={<Icon.More />}
         className={s.icon}
       />
       <Stack spacing="12px" height="100%">

@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { CreateDishCategoryForm } from 'components'
 import { Box } from '@mui/material'
+import { CreateDishCategoryForm } from 'components'
 
-interface AdminCreateCategoryProps {}
-
-const AdminCreateCategory: FC<AdminCreateCategoryProps> = () => {
+const AdminCreateCategory: FC = () => {
   return (
     <Box sx={{ width: '100%', height: '100%', p: '24px' }}>
       <CreateDishCategoryForm />

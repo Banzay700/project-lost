@@ -1,8 +1,9 @@
 import { FC, useState } from 'react'
-import { InputImageWithPreviewAvatar } from 'components'
-import { Box, Stack } from '@mui/material'
-import { Button } from 'UI/button'
 import { useFormikContext } from 'formik'
+import { Stack } from '@mui/material'
+
+import { InputImageWithPreviewAvatar } from 'components'
+import { Button } from 'UI'
 
 interface UpdateCategoryPictureProps {
   picture: string

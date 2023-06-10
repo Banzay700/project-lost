@@ -2,7 +2,7 @@ import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { TableRow } from '@mui/material'
 import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
 import { BillsType, OrderTypeOfElement } from 'types'
-import { IconAddTipAmount, IconPrinter } from 'assets'
+import { Icon } from 'assets'
 import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
@@ -62,7 +62,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           onClick={handleSendBillsData}
           size="small"
           variant="contained"
-          startIcon={<IconAddTipAmount />}
+          startIcon={<Icon.Tip />}
           className={s.tableButton}
         />
       ) : (
@@ -70,7 +70,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           title="Print bill"
           size="small"
           variant="outlined"
-          startIcon={<IconPrinter />}
+          startIcon={<Icon.Printer />}
           className={s.tableButton}
         />
       )}

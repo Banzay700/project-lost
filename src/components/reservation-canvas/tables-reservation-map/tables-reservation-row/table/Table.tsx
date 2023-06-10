@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 
 import { ReservationCanvasType } from 'types'
-import { IconInfo } from 'assets/icons'
+import { Icon } from 'assets'
 import { ChairsPair } from './chairs-pair'
 import { ChairLine } from './chair-line'
 
@@ -46,7 +46,7 @@ const Table: FC<TableProps> = ({ tableNumber, seats, reservation }) => {
       <ChairsPair />
       <ChairLine specifiedSeatsQuantity={seats} />
       <Stack sx={tableStyles}>
-        {reservation && <IconInfo style={{ position: 'absolute', top: '5px', right: '8px' }} />}
+        {reservation && <Icon.Info style={{ position: 'absolute', top: '5px', right: '8px' }} />}
         <Stack sx={tableTextStyles}>
           <Typography color={reservation ? '#ff5c00' : '#3395f0'}>{tableNumber}</Typography>
         </Stack>

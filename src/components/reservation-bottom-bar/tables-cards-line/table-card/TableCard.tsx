@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { IconCrossSmall } from 'assets'
+import { Icon } from 'assets'
 
 interface TableCardProps {
   tableNumber: string
@@ -27,7 +27,7 @@ const TableCard: FC<TableCardProps> = ({ tableNumber }) => {
   return (
     <Box sx={boxStyle}>
       <Stack sx={stackStyle}>
-        <IconCrossSmall />
+        <Icon.CrossSmall />
       </Stack>
       <Typography variant="subtitle1" color="secondary">
         {tableNumber}

@@ -1,31 +1,31 @@
 import { LinkItemType } from 'types'
-import { IconHome, IconClock, IconReceipt, IconReservation } from 'assets'
+import { Icon } from 'assets'
 
 export const navData: LinkItemType[] = [
   {
     link: '/home',
     text: 'Home',
-    icon: <IconHome style={{ marginRight: '11px' }} />,
+    icon: <Icon.Home style={{ marginRight: '11px' }} />,
   },
   {
     link: '/orders',
     text: 'Orders',
-    icon: <IconReceipt style={{ marginRight: '11px' }} />,
+    icon: <Icon.Receipt style={{ marginRight: '11px' }} />,
   },
 
   {
     link: '/bills',
     text: 'Bills',
-    icon: <IconClock style={{ marginRight: '11px' }} />,
+    icon: <Icon.Clock style={{ marginRight: '11px' }} />,
   },
   {
     link: '/reservation',
     text: 'Reservation',
-    icon: <IconReservation style={{ marginRight: '11px' }} />,
+    icon: <Icon.Reservation style={{ marginRight: '11px' }} />,
   },
   // {
   //   link: '/history',
   //   text: 'History',
-  //   icon: <IconNote style={{ marginRight: '11px' }} />,
+  //   icon: <Icon.Note style={{ marginRight: '11px' }} />,
   // },
 ]
