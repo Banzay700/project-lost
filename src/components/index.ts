@@ -39,4 +39,3 @@ export { ReservationBottomBar } from './reservation-bottom-bar'
 export { ModalUpdateUserInfo, ModalDishDetailInfo, ModalUpdateDishInfo } from './modal-components'
 
 export { ReservationCanvas } from './reservation-canvas'
-export { ReservationTagGroup } from './reservation-tag-group'

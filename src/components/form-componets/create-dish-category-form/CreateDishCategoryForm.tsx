@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
-import { CreateCategoryPicture } from './create-category-picture'
 import { Input } from 'UI/input'
+import { CreateCategoryPicture } from './create-category-picture'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CreateDishCategoryFormProps {}
 
 const CreateDishCategoryForm: FC<CreateDishCategoryFormProps> = () => {

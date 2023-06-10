@@ -1,18 +1,20 @@
 import { Checkbox } from '@mui/material'
 import { FC } from 'react'
 import { Button } from 'UI/button'
+import { FuncArgs } from './ReservationTagGroup.utils'
 
 interface CheckboxItemProps {
   text: string
-  onChange: (value: string, isChecked: boolean) => void
+  value: string
+  onChange: ({ value, isChecked }: FuncArgs) => void
 }
 
 export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
-  const { text, onChange } = props
+  const { text, value, onChange } = props
 
   return (
     <Checkbox
-      value={text}
+      value={value}
       icon={
         <Button variant="outlined" size="default" color="secondary">
           {text}
@@ -24,9 +26,7 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
         </Button>
       }
       onChange={(e) => {
-        const isChecked = e.target.checked
-        const { value } = e.target
-        onChange(value, isChecked)
+        onChange({ value: e.target.value, isChecked: e.target.checked })
       }}
     />
   )

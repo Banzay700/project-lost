@@ -1,0 +1,58 @@
+.calendarWrapper {
+  position: relative;
+}
+
+.mainWrapper {
+  width: 240px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: -6px 7px 54px -24px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 10;
+}
+
+.calendarHeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ff5c00;
+}
+
+.weekDaysWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.weekDayCell {
+  height: 30px;
+  width: 30px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ba4b4;
+}
+
+.calendarContentWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.calendarDayCell {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  margin: 2px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(#ff5c00, 0.15);
+  }
+}
