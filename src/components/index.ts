@@ -36,6 +36,11 @@ export {
 export { IndicatorsGroup } from './indicators-group'
 export { ReservationBottomBar } from './reservation-bottom-bar'
 
-export { ModalUpdateUserInfo, ModalDishDetailInfo, ModalUpdateDishInfo } from './modal-components'
+export {
+  ModalUpdateUserInfo,
+  ModalDishDetailInfo,
+  ModalUpdateDishInfo,
+  ModalCreateCategory,
+} from './modal-components'
 
 export { ReservationCanvas } from './reservation-canvas'

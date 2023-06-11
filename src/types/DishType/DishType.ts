@@ -1,5 +1,14 @@
 import { DishAdditionalFood } from './DishAdditionalFood'
 
+type CategoryType = {
+  title: string
+  id: string
+  parent: {
+    id: string
+    title: string
+  }
+}
+
 export type DishType = {
   id: string
   picture: string
@@ -7,7 +16,7 @@ export type DishType = {
   title: string
   price: number
   description: string
-  category: { title: string; id: string }
+  category: CategoryType
   status: 'active' | 'inactive'
   weight: number
   bonus?: number

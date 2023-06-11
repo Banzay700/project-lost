@@ -37,6 +37,7 @@ export {
   useLazyGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
+  useCreateCategoryMutation,
 } from './dish.api'
 
 export {

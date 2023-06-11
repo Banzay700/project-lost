@@ -44,7 +44,7 @@ const CreateDishCategoryFormItem: FC = () => {
   const subcategoryMeta = getFieldMeta('subcategory')
 
   return (
-    <Stack>
+    <Stack sx={{ width: '100%' }}>
       <Stack sx={{ gap: '10px' }}>
         <SelectInput
           name="category"
@@ -53,7 +53,7 @@ const CreateDishCategoryFormItem: FC = () => {
           handleValue={handleChangeCategory}
         />
         {subCategory && (
-          <Stack direction="row" sx={{ gap: '10px', width: '100%' }}>
+          <Stack direction="row" sx={{ gap: '10px', width: '100%', alignItems: 'center' }}>
             {!isNewSubcategory && (
               <RadioGroup sx={{ flexDirection: 'row', gap: '10px' }}>
                 {categoryState?.map(({ name, value, label }) => (
@@ -87,7 +87,7 @@ const CreateDishCategoryFormItem: FC = () => {
         <FormHelperText error sx={{ ml: '14px' }}>
           {categoryMeta.error}
         </FormHelperText>
-      )}{' '}
+      )}
       {subcategoryMeta.touched && subcategoryMeta.error && (
         <FormHelperText error sx={{ ml: '14px' }}>
           {subcategoryMeta.error}

@@ -8,4 +8,9 @@ export type Reservation = {
   id?: string
 }
 
+export type Categories = {
+  category: string
+  subcategories: string[]
+}
+
 export type TableDataItem = BillsType | OrderType | Reservation | UserType | DishType
