@@ -4,7 +4,9 @@ import { Stack } from '@mui/material'
 import { Input } from 'UI/input'
 import { CreateCategoryPicture } from './create-category-picture'
 
-const CreateDishCategoryForm: FC = () => {
+interface CreateDishCategoryFormProps {}
+
+const CreateDishCategoryForm: FC<CreateDishCategoryFormProps> = () => {
   const handleSubmit = (value: any) => {
     console.log(value)
   }
