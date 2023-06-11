@@ -18,9 +18,4 @@ export const adminRestaurantPageTabs: SidebarTabItemType[] = [
     icon: <IconCreateDish />,
     label: 'Create dish',
   },
-  {
-    linkTo: ROUTES_RESTAURANT.CREATE_CATEGORY,
-    icon: <IconCreateCategory />,
-    label: 'Create Category',
-  },
 ]

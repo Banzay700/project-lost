@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Box, Pagination, Stack } from '@mui/material'
 import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
-import { useParamsSearchFilter } from 'hooks'
+import { useIsModal, useParamsSearchFilter } from 'hooks'
 import { UserPartialType } from 'types'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
@@ -18,20 +18,16 @@ const AdminEmployeesListPage: FC = () => {
   const { data, isLoading } = useGetAllUsersQuery({ role, search, page })
   const [trigger, { data: user }] = useLazyGetUserByIDQuery()
   const [updateUser] = useUpdateUserMutation()
-  const [isOpenModal, setIsOpenModal] = useState(false)
+  const { isOpen, handleToggleIsOpenModal } = useIsModal()
 
   const handleClick = (id: string) => {
     trigger(id)
-
-    setIsOpenModal(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsOpenModal(false)
+    handleToggleIsOpenModal()
   }
 
   const handleSubmitUpdateForm = (value: UserPartialType) => {
     updateUser(value)
+    handleToggleIsOpenModal()
   }
 
   return (
@@ -70,9 +66,9 @@ const AdminEmployeesListPage: FC = () => {
         <ModalUpdateUserInfo
           title={`${user.firstName} ${user.secondName}`}
           initialValues={user}
-          isOpenModal={isOpenModal}
+          isOpenModal={isOpen}
           linkageToForm="update-user"
-          onCloseModal={handleCloseModal}
+          onCloseModal={handleToggleIsOpenModal}
           onSubmit={handleSubmitUpdateForm}
         />
       )}

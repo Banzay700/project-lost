@@ -12,8 +12,10 @@ interface FormCreateDishProps {
 }
 
 const UpdateDishForm: FC<FormCreateDishProps> = ({ initialValues, linkageToForm, onSubmit }) => {
-  const { category, additionalFood, type, bonus, ...values } = initialValues
+  const { category, additionalFood, bonus, ...values } = initialValues
+
   const [formValues, setFormValues] = useState(values)
+
   useEffect(() => {
     setFormValues(values)
   }, [values])

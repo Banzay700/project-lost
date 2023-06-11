@@ -1,9 +1,10 @@
 import { CreateDishFormReturnType } from 'types'
-import { mixed, number, object, string, TestContext } from 'yup'
+import { mixed, number, object, ref, string, TestContext } from 'yup'
 
 export const initialValues: CreateDishFormReturnType = {
-  globalCategory: '',
   category: '',
+  subcategory: '',
+  newSubcategory: '',
   title: '',
   price: '',
   weight: '',
@@ -42,8 +43,16 @@ export const validationSchema = object().shape({
       },
     ),
   description: string().min(10),
-  category: string().required('Please enter the category'),
-  globalCategory: string().required('Please enter category'),
+  subcategory: string().test(
+    'subcategory',
+    'Please enter either subcategory or new category',
+    function checkedNewCategory(subcategory) {
+      const newCategory = this.resolve(ref('newSubcategory')) as string | undefined
+      return !!subcategory || !!newCategory
+    },
+  ),
+  category: string().required('Please enter category'),
+
   weight: number()
     .typeError('Weight must be a number')
     .positive()

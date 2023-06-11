@@ -63,7 +63,7 @@ const Input: FC<InputProps> = (props) => {
   }
 
   return (
-    <FadeIn delay={50}>
+    <FadeIn delay={50} styles={{ width: '100%' }}>
       <TextField
         {...textFieldConfig}
         inputRef={(input) => focus && input && input.focus()}

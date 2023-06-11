@@ -32,7 +32,6 @@ const Modal: FC<ModalProps> = ({
 
   const handleSubmit = () => {
     if (onSubmit) onSubmit(true)
-    handleClose()
   }
 
   return (

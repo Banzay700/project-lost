@@ -38,6 +38,7 @@ const AdminDishesListPage: FC = () => {
       formData.append('picture', picture[0])
     }
     update(formData)
+    handleToggleIsOpenModalUpdateInfo()
   }
 
   return (
