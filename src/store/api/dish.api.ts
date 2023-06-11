@@ -74,6 +74,14 @@ export const dishApi = api.injectEndpoints({
         },
       }),
     }),
+    createCategory: builder.mutation<void, FormData>({
+      query: (body) => ({
+        url: API_CONST_DISHES.CATEGORIES,
+        method: 'POST',
+        body,
+        invalidatesTags: ['Dish'],
+      }),
+    }),
   }),
 })
 
@@ -89,4 +97,5 @@ export const {
   useLazyGetSubCategoriesInCategoryQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
+  useCreateCategoryMutation,
 } = dishApi

@@ -33,9 +33,8 @@ const Modal: FC<ModalProps> = ({
     onClose()
   }
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = () => {
     if (onSubmit) onSubmit(true)
-    handleClose(e)
   }
 
   return (

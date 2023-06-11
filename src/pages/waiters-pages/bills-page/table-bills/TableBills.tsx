@@ -7,11 +7,11 @@ import { changeToggleValue } from 'store/reducers'
 import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
+  const dispatch = useAppDispatch()
+  const { newBill } = useBillsReducer()
   const { orderType, handleChangeFilter } = useSearchParamsType()
   const { data } = useGetAllBillsQuery({ orderType })
   const [getBill] = useLazyGetOneBillQuery()
-  const dispatch = useAppDispatch()
-  const { newBill } = useBillsReducer()
 
   const handleSendBillsData = (id: string) => {
     getBill(id)
@@ -25,7 +25,6 @@ const TableBills: FC = () => {
     dispatch(changeToggleValue('Order info'))
   }
 
-  // console.log(data?.data)
   return (
     <>
       <IndicatorFilterBar
@@ -40,6 +39,7 @@ const TableBills: FC = () => {
         data={data?.data}
         tableTitles={tableTitleBills}
         tableType="bills"
+        tableMinWidth="750px"
         onClickAction={handleSendBillsData}
         onClickLine={handleLineBillsData}
       />

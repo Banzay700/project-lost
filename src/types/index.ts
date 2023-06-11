@@ -72,4 +72,5 @@ export type {
   PaymentFormCollectType,
   RegistrationFormReturnType,
   CreateDishFormReturnType,
+  CreateCategoryFormReturnType,
 } from './ComponentsReturnType'

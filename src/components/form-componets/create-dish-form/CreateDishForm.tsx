@@ -10,15 +10,15 @@ import { CreateDishPictureFormItem } from './create-dish-picture-form-item'
 
 interface CreateDishFormProps {
   onSubmit: (values: CreateDishFormReturnType) => void
+  createCategory: () => void
 }
 
-const CreateDishForm: FC<CreateDishFormProps> = ({ onSubmit }) => {
+const CreateDishForm: FC<CreateDishFormProps> = ({ createCategory, onSubmit }) => {
   const handleSubmit = (
     value: CreateDishFormReturnType,
     { resetForm }: FormikHelpers<CreateDishFormReturnType>,
   ) => {
-    const { globalCategory, ...values } = value
-    onSubmit(values)
+    onSubmit(value)
     resetForm()
   }
 
@@ -31,7 +31,19 @@ const CreateDishForm: FC<CreateDishFormProps> = ({ onSubmit }) => {
         <Stack direction="row" sx={{ width: '100%', gap: '20px' }}>
           <Stack sx={{ gap: '20px', width: '100%' }}>
             <InputsCreateDish />
-            <CreateDishCategoryFormItem />
+            <Stack direction="row" sx={{ gap: '20px' }}>
+              <CreateDishCategoryFormItem />
+              <Box sx={{ width: '200px' }}>
+                <Button
+                  variant="contained"
+                  size="default"
+                  fullWidth
+                  onClick={createCategory}
+                  type="button">
+                  Create Category
+                </Button>
+              </Box>
+            </Stack>
           </Stack>
           <CreateDishPictureFormItem />
         </Stack>
