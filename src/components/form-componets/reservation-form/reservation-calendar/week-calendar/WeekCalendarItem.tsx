@@ -13,7 +13,7 @@ export const WeekCalendarItem: FC<WeekCalendarItemProps> = (props) => {
   return (
     <Stack
       sx={{
-        width: '64px',
+        width: '70px',
         height: '64px',
         alignItems: 'center',
         justifyContent: 'center',

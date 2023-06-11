@@ -1,17 +1,19 @@
 import { FC, useState, useEffect } from 'react'
 import { Typography } from '@mui/material'
+import { useField, Field } from 'formik'
 import { CheckboxItem } from './CheckboxItem'
 import { tags, FuncArgs } from './ReservationTagGroup.utils'
-import { SetFormValues } from '../ReservationForm.utils'
 import s from './ReservationTagGroup.module.scss'
 
 interface ReservationTagGroupProps {
   label: string
-  handleSetFormValues: (fieldName: string, value: SetFormValues) => void
+  name: string
 }
 
 const ReservationTagGroup: FC<ReservationTagGroupProps> = (props) => {
-  const { handleSetFormValues, label } = props
+  const { label, name } = props
+
+  const [, , helpers] = useField(name)
 
   const [selectedTags, setTags] = useState<string[]>([])
 
@@ -24,19 +26,23 @@ const ReservationTagGroup: FC<ReservationTagGroupProps> = (props) => {
   }
 
   useEffect(() => {
-    handleSetFormValues('tags', selectedTags)
+    helpers.setValue(selectedTags, true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags])
 
   return (
-    <>
-      <Typography variant="h3" component="p">
-        {label}
-      </Typography>
-      {tags.map((item) => (
-        <CheckboxItem key={item.value} {...item} onChange={handleChange} />
-      ))}
-    </>
+    <Field name={name}>
+      {() => (
+        <>
+          <Typography variant="h3" component="p">
+            {label}
+          </Typography>
+          {tags.map((item) => (
+            <CheckboxItem key={item.value} {...item} onChange={handleChange} />
+          ))}
+        </>
+      )}
+    </Field>
   )
 }
 

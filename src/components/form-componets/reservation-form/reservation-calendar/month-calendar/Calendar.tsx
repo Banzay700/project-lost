@@ -1,13 +1,15 @@
 /* eslint-disable react/no-array-index-key */
 import { FC, useCallback, useMemo, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
-import s from './ReservationCalendar.module.scss'
+import { Stack } from '@mui/material'
+import { IconArrow } from 'assets/icons'
+import s from './Calendar.module.scss'
 
 interface CalendarProps {
   handleSetChosenDay: (day: Date) => void
 }
 
-export const Calendar: FC<CalendarProps> = (props) => {
+const Calendar: FC<CalendarProps> = (props) => {
   const { handleSetChosenDay } = props
 
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs())
@@ -54,13 +56,15 @@ export const Calendar: FC<CalendarProps> = (props) => {
     <div className={s.mainWrapper}>
       <div className={s.calendarHeaderWrapper}>
         <h3>{selectedDate.clone().format('MMM YYYY')}</h3>
-        <div>
-          <span onClick={() => setSelectedDate((date) => date.subtract(1, 'month'))}>
-            leftArrow
-          </span>
+        <Stack direction="row" gap="12px">
+          <Stack onClick={() => setSelectedDate((date) => date.subtract(1, 'month'))}>
+            <IconArrow style={{ rotate: '180deg', cursor: 'pointer', fill: '#FF5C00' }} />
+          </Stack>
 
-          <span onClick={() => setSelectedDate((date) => date.add(1, 'month'))}> rightArrow</span>
-        </div>
+          <Stack onClick={() => setSelectedDate((date) => date.add(1, 'month'))}>
+            <IconArrow style={{ cursor: 'pointer', fill: '#FF5C00' }} />
+          </Stack>
+        </Stack>
       </div>
       <div className={s.weekDaysWrapper}>
         {generateWeeksOfTheMonth[0].map((day, index) => (
@@ -85,3 +89,5 @@ export const Calendar: FC<CalendarProps> = (props) => {
     </div>
   )
 }
+
+export default Calendar
