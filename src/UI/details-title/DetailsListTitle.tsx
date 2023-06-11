@@ -20,7 +20,7 @@ const DetailsListTitle: FC<OrderDetailsTitleProps> = ({
       <Typography variant="h1" component="p" color="secondary">
         {title}
       </Typography>
-      {orderNumber && (
+      {!!orderNumber && (
         <Typography variant="h3" component="p">
           Order # {orderNumber}
         </Typography>

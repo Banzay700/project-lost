@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { useAppDispatch, useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
 import { changeToggleValue } from 'store/reducers'
-import { useUpdateBillMutation } from 'store/api'
+import { useLazySendEmailQuery, useUpdateBillMutation } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
 import { PaymentListInfo } from './payment-list-info'
@@ -16,7 +16,7 @@ const OrderPaymentBar: FC = () => {
   const { newBill, relocateBills } = useBillsReducer()
   const [updateBill] = useUpdateBillMutation()
   const toggleValue = useAppSelector((state) => state.toggleValue.toggleValue)
-
+  const [sendEmail] = useLazySendEmailQuery()
   const { firstName, secondName } = userState
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
@@ -25,6 +25,7 @@ const OrderPaymentBar: FC = () => {
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })
+    if (newBill.id) sendEmail(newBill.id)
     handleToggleMenuChange('Order info')
   }
 

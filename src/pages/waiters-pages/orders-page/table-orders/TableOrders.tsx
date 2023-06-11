@@ -2,12 +2,13 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IndicatorFilterBar, Table } from 'components/index'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
-import { useSearchParamsType } from 'hooks/index'
+import { useOrderReducer, useSearchParamsType } from 'hooks'
 
-import { ROUTES } from 'routes/index'
+import { ROUTES } from 'routes'
 import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
+  const { clearNewOrderState } = useOrderReducer()
   const { orderType, handleChangeFilter } = useSearchParamsType()
   const { data } = useGetAllOrdersQuery({ orderType })
 
@@ -22,6 +23,7 @@ const TableOrders: FC = () => {
     if (dataOrder) {
       createBills(dataOrder)
       navigate(`/${ROUTES.BILLS}`)
+      clearNewOrderState()
     }
   }
   return (
@@ -38,6 +40,7 @@ const TableOrders: FC = () => {
         data={data?.data}
         tableTitles={tableTitleOrder}
         tableType="orders"
+        tableMinWidth="660px"
         onClickAction={handleSendOrder}
         onClickLine={handleLineWrapperClick}
       />
