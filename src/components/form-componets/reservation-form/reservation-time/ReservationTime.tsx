@@ -10,11 +10,11 @@ const ReservationTime: FC<ReservationTimeProps> = (props) => {
   const { label } = props
 
   return (
-    <Stack sx={{ gap: '12px' }}>
+    <Stack sx={{ gap: '12px', marginTop: '12px' }}>
       <Typography variant="h3" component="p">
         {label}
       </Typography>
-      <Stack direction="row" justifyContent="space-around">
+      <Stack direction="row" justifyContent="space-around" gap="22px">
         <Input type="number" placeholder="hours" name="hours" label="hours" />
         <Input type="number" placeholder="minutes" name="minutes" label="minutes" />
       </Stack>

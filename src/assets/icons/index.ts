@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export { ReactComponent as IconAddTipAmount } from './icon-add-tip-amount.svg'
 export { ReactComponent as IconAway } from './icon-away.svg'
 export { ReactComponent as IconCash } from './icon-cash.svg'
@@ -13,7 +12,6 @@ export { ReactComponent as IconPlus } from './icon-plus.svg'
 export { ReactComponent as IconSearch } from './icon-search.svg'
 export { ReactComponent as IconUser } from './icon-user.svg'
 export { ReactComponent as IconVisa } from './icon-visa.svg'
-export { ReactComponent as TestIcon } from './icon-test-sidebar-left.svg'
 export { ReactComponent as IconHome } from './icon-home.svg'
 export { ReactComponent as IconNote } from './icon-note.svg'
 export { ReactComponent as IconClock } from './icon-clock.svg'

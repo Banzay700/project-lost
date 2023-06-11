@@ -4,4 +4,8 @@ export interface ReservationFormType {
   hours: string
   minutes: string
   partySize: number
+  name: string
+  email: string
+  phoneNumber: string
+  note: string
 }

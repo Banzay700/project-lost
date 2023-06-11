@@ -35,7 +35,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
     <Field name={name}>
       {() => (
         <>
-          <Stack justifyContent="space-between" direction="row" marginBottom="12px">
+          <Stack justifyContent="space-between" direction="row">
             <Typography variant="h3" component="p">
               {label}
             </Typography>
