@@ -24,7 +24,7 @@ const ReservationBottomBar: FC<ReservationBottomBarProps> = ({ toggleDrawer }) =
     <Box sx={{ p: '24px', bgcolor: '#F8F9FD' }}>
       <Stack sx={activeLineStyle}>
         <BottomBarIcon />
-        <TablesIconsLine cards={['T-01', 'T-10']} />
+        <TablesIconsLine />
         <Button variant="contained" size="default" color="primary" onClick={toggleDrawer}>
           Add Reservation
         </Button>

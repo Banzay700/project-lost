@@ -15,6 +15,7 @@ export {
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
   useLazyGetTableStatusQuery,
+  useLazyGetTablesCanvasQuery,
 } from './tables.api'
 
 export {
@@ -49,3 +50,5 @@ export {
   useUpdateUserMutation,
   useRegistrationMutation,
 } from './users.api'
+
+export { useUpdateReservationMutation } from './reservation.api'

@@ -10,8 +10,8 @@ interface TablesReservationRowProps {
 const TablesReservationRow: FC<TablesReservationRowProps> = ({ sector }) => {
   return (
     <Stack sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-      {sector.map(({ number, seats, reservation }) => (
-        <Table key={number} tableNumber={number} seats={seats} reservation={reservation} />
+      {sector.map((table) => (
+        <Table key={table.number} table={table} />
       ))}
     </Stack>
   )

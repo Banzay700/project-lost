@@ -25,7 +25,7 @@ export type {
   BillsResponseType,
 } from './OrderBillsType'
 
-export type { ReservationCanvasType } from './ReservationsTypes'
+export type { ReservationCanvasType, ReservationRequestType } from './ReservationsTypes'
 
 export type {
   UserType,

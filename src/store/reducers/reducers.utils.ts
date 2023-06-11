@@ -6,3 +6,11 @@ export const emptyOrderState = {
   totalPrice: 0,
   storeStatus: 'none' as const,
 }
+
+export const emptyActiveTableState = {
+  id: '',
+  number: '',
+  seats: 0,
+  status: '',
+  sector: 0,
+}

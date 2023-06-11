@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
-import { Input } from 'UI/input'
+
+import { Input } from 'UI'
 import { CreateCategoryPicture } from './create-category-picture'
 
 const CreateDishCategoryForm: FC = () => {

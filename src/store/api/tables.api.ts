@@ -36,6 +36,7 @@ export const tablesApi = api.injectEndpoints({
 export const {
   useGetFreeTablesQuery,
   useGetTablesCanvasQuery,
+  useLazyGetTablesCanvasQuery,
   useLazyGetTableStatusQuery,
   useGetTableStatusQuery,
   useGetTableReservationForCurrentDayQuery,

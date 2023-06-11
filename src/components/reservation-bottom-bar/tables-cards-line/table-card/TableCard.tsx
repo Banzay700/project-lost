@@ -1,17 +1,21 @@
 import { FC } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { Icon } from 'assets'
+import { useReservationReducer } from 'hooks/useReservationReducer.hook'
 
 interface TableCardProps {
   tableNumber: string
 }
 
 const TableCard: FC<TableCardProps> = ({ tableNumber }) => {
+  const { clearActiveTableStore } = useReservationReducer()
+
   const boxStyle = {
     position: 'relative',
-    p: '12px 11px',
+    p: '13px 0',
     borderRadius: '8px',
     border: '1px solid #E4E4E4',
+    minWidth: '57px',
   }
   const stackStyle = {
     position: 'absolute',
@@ -26,10 +30,10 @@ const TableCard: FC<TableCardProps> = ({ tableNumber }) => {
 
   return (
     <Box sx={boxStyle}>
-      <Stack sx={stackStyle}>
+      <Stack sx={stackStyle} onClick={clearActiveTableStore}>
         <Icon.CrossSmall />
       </Stack>
-      <Typography variant="subtitle1" color="secondary">
+      <Typography variant="subtitle1" color="secondary" textAlign="center">
         {tableNumber}
       </Typography>
     </Box>
