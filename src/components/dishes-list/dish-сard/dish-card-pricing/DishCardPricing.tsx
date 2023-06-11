@@ -1,9 +1,9 @@
 import { CardContent, Typography, Stack } from '@mui/material'
 import { FC } from 'react'
-import { Button } from 'UI/index'
-import { IconPlus } from 'assets/index'
-import { useActiveOrderStatus } from 'hooks/index'
-import { FadeIn } from 'utils/index'
+import { Button } from 'UI'
+import { Icon } from 'assets'
+import { useActiveOrderStatus } from 'hooks'
+import { FadeIn } from 'utils'
 
 interface DishCardPricingProps {
   price: number
@@ -37,7 +37,7 @@ const DishCardPricing: FC<DishCardPricingProps> = ({ price, onClickButton }) => 
             size="small"
             color="secondary"
             disableRipple={false}
-            icon={<IconPlus />}
+            icon={<Icon.Plus />}
             onClick={onClickButton}
           />
         </FadeIn>

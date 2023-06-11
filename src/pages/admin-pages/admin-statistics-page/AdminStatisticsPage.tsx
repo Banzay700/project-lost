@@ -1,41 +1,34 @@
-import { SidebarTabsList } from 'components/index'
-import { FC } from 'react'
-import { SidebarTabItemType } from 'types'
-import {
-  IconBusinessSummary,
-  IconFeedbacks,
-  IconMarketing,
-  IconSales,
-  IconSavedReports,
-  IconStatistics,
-} from 'assets'
 import { useParams } from 'react-router-dom'
-import { useRelocateDefaultLocation } from 'hooks/useRelocateDefaultLocation.hook'
+import { FC } from 'react'
+import { SidebarTabsList } from 'components'
+import { SidebarTabItemType } from 'types'
+import { Icon } from 'assets'
+import { useRelocateDefaultLocation } from 'hooks'
 
 const mokStatistics: SidebarTabItemType[] = [
   {
     linkTo: 'sales',
-    icon: <IconSales />,
+    icon: <Icon.Sales />,
     label: 'Sales',
   },
   {
     linkTo: 'marketing',
-    icon: <IconMarketing />,
+    icon: <Icon.Marketing />,
     label: 'Marketing',
   },
   {
     linkTo: 'business-summary',
-    icon: <IconBusinessSummary />,
+    icon: <Icon.Summary />,
     label: 'Business Summary',
   },
   {
     linkTo: 'saved-reports',
-    icon: <IconSavedReports />,
+    icon: <Icon.SavedReports />,
     label: 'Saved Reports',
   },
   {
     linkTo: 'feedbacks',
-    icon: <IconFeedbacks />,
+    icon: <Icon.Feedbacks />,
     label: 'Feedbacks',
   },
 ]
@@ -52,7 +45,7 @@ const AdminStatisticsPage: FC = () => {
     <SidebarTabsList
       sidebarTabItems={mokStatistics}
       title="Statistics"
-      titleIcon={<IconStatistics />}
+      titleIcon={<Icon.Statistics />}
     />
   )
 }

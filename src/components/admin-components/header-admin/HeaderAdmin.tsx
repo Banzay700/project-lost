@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { Logo } from 'UI/logo'
 import { ROUTES } from 'routes/routes.utils'
 import { Button } from 'UI/button'
-import { IconArrowLeft } from 'assets/icons'
+import { Icon } from 'assets'
 import { useNavigate } from 'react-router-dom'
 
 const HeaderAdmin: FC = () => {
@@ -27,7 +27,7 @@ const HeaderAdmin: FC = () => {
       <Button
         variant="contained"
         size="small"
-        endIcon={<IconArrowLeft style={{ transform: 'scale(-1, 1)' }} />}
+        endIcon={<Icon.ArrowLeft style={{ transform: 'scale(-1, 1)' }} />}
         onClick={handleNavigateFood}>
         Food
       </Button>

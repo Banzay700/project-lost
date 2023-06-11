@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
 
-import { IconCheck, IconCross } from 'assets/index'
-import { useOrderReducer } from 'hooks/index'
+import { Icon } from 'assets'
+import { useOrderReducer } from 'hooks'
 
 interface OrderDetailsDeleteCardProps {
   id: string
@@ -23,12 +23,12 @@ const OrderDetailsDeleteCard: FC<OrderDetailsDeleteCardProps> = ({ id, handleDel
         <Stack
           onClick={handleRemoveDish}
           sx={{ cursor: 'pointer', '&:hover': { color: '#ff5c00' } }}>
-          <IconCheck style={{ width: '35px', height: '35px' }} />
+          <Icon.Check style={{ width: '35px', height: '35px' }} />
         </Stack>
         <Stack
           onClick={handleCancelRemoveDish}
           sx={{ cursor: 'pointer', '&:hover': { color: '#ff5c00' } }}>
-          <IconCross style={{ width: '35px', height: '35px' }} />
+          <Icon.Cross style={{ width: '35px', height: '35px' }} />
         </Stack>
       </Stack>
     </Stack>

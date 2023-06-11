@@ -37,12 +37,12 @@ export const orderApi = api.injectEndpoints({
     }),
 
     createOrder: builder.mutation<OrderRequestType, OrderRequestType>({
-      query: (data) => ({ url: '/orders', method: 'POST', body: data }),
+      query: (body) => ({ url: '/orders', method: 'POST', body }),
       invalidatesTags: ['Order'],
     }),
 
     updateOrder: builder.mutation<OrderRequestType, OrderRequestType>({
-      query: (post) => ({ url: '/orders', method: 'PUT', body: post }),
+      query: (body) => ({ url: '/orders', method: 'PUT', body }),
       invalidatesTags: ['Order'],
     }),
 

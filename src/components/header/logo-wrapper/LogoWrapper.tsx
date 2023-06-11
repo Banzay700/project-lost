@@ -1,10 +1,10 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Stack } from '@mui/material'
 
-import { IconArrowLeft } from 'assets'
 import { Button, Logo } from 'UI'
-import { UserType } from 'types/UserType'
-import { useNavigate } from 'react-router-dom'
+import { Icon } from 'assets'
+import { UserType } from 'types'
 import { ROUTES } from 'routes/routes.utils'
 
 const LogoWrapper: FC<UserType> = ({ role }) => {
@@ -20,7 +20,7 @@ const LogoWrapper: FC<UserType> = ({ role }) => {
         <Button
           variant="outlined"
           size="default"
-          icon={<IconArrowLeft color="secondary" />}
+          icon={<Icon.ArrowLeft color="secondary" />}
           color="secondary"
           onClick={handleGoToAdminPanel}
         />

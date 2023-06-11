@@ -15,6 +15,7 @@ export {
   useGetTableReservationForCurrentDayQuery,
   useUpdateTableStatusMutation,
   useLazyGetTableStatusQuery,
+  useLazyGetTablesCanvasQuery,
 } from './tables.api'
 
 export {
@@ -37,6 +38,7 @@ export {
   useLazyGetCategoriesQuery,
   useLazyGetSvgQuery,
   useGetSvgQuery,
+  useCreateCategoryMutation,
 } from './dish.api'
 
 export {
@@ -49,3 +51,5 @@ export {
   useUpdateUserMutation,
   useRegistrationMutation,
 } from './users.api'
+
+export { useUpdateReservationMutation } from './reservation.api'
