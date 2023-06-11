@@ -1,7 +1,7 @@
-import { FC, PropsWithChildren, ReactNode } from 'react'
+import { FC, PropsWithChildren, ReactNode, SyntheticEvent } from 'react'
 import { Box, Dialog, DialogActions, DialogContent, DialogTitle, Stack } from '@mui/material'
-import { IconCross } from 'assets'
-import { Button } from 'UI/button'
+import { Button } from 'UI'
+import { Icon } from 'assets'
 import s from './Modal.module.scss'
 
 interface ModalProps extends PropsWithChildren {
@@ -28,7 +28,10 @@ const Modal: FC<ModalProps> = ({
   onSubmit,
   children,
 }) => {
-  const handleClose = () => onClose()
+  const handleClose = (e: SyntheticEvent) => {
+    e.stopPropagation()
+    onClose()
+  }
 
   const handleSubmit = () => {
     if (onSubmit) onSubmit(true)
@@ -42,9 +45,13 @@ const Modal: FC<ModalProps> = ({
       <DialogTitle sx={{ p: '24px' }} color={colorHeader}>
         <Stack
           direction="row"
-          sx={{ justifyContent: 'space-between', alignItems: 'center', gap: '50px' }}>
+          sx={{
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '50px',
+          }}>
           {title}
-          {isIconExit && <IconCross onClick={handleClose} style={{ cursor: 'pointer' }} />}
+          {isIconExit && <Icon.Cross onClick={handleClose} style={{ cursor: 'pointer' }} />}
         </Stack>
       </DialogTitle>
       <DialogContent dividers sx={{ p: '24px 0', margin: '0 24px' }}>

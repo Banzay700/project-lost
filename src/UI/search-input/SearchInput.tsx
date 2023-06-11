@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { FormControl, InputAdornment, InputBase } from '@mui/material'
-import { IconSearch } from 'assets'
+import { Icon } from 'assets'
 import s from './SearchInput.module.scss'
 
 interface SearchInputProps {
@@ -42,7 +42,7 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
         className={s.input}
         startAdornment={
           <InputAdornment position="start">
-            <IconSearch className={s.icon} />
+            <Icon.Search className={s.icon} />
           </InputAdornment>
         }
       />

@@ -1,10 +1,14 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Stack } from '@mui/material'
-import { useGetTablesCanvasQuery } from 'store/api'
+import { useLazyGetTablesCanvasQuery } from 'store/api'
 import { TablesReservationRow } from './tables-reservation-row'
 
 const TablesReservationMap: FC = () => {
-  const { data } = useGetTablesCanvasQuery()
+  const [trigger, { data }] = useLazyGetTablesCanvasQuery()
+
+  useEffect(() => {
+    trigger()
+  }, [data]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Stack sx={{ height: '100%', justifyContent: 'space-between' }}>

@@ -2,7 +2,7 @@ import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { TableRow } from '@mui/material'
 import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI'
 import { OrderType, OrderTypeOfElement } from 'types'
-import { IconAddTipAmount } from 'assets'
+import { Icon } from 'assets'
 import s from './TableOrdersLine.module.scss'
 
 interface TableOrdersColumnProps {
@@ -55,7 +55,7 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({
         onClick={handleSendOrder}
         variant="contained"
         size="small"
-        startIcon={<IconAddTipAmount />}
+        startIcon={<Icon.Tip />}
         className={s.tableButton}
       />
     </TableRow>
