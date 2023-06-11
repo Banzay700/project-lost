@@ -17,9 +17,10 @@ const CreateDishForm: FC<CreateDishFormProps> = ({ onSubmit }) => {
     value: CreateDishFormReturnType,
     { resetForm }: FormikHelpers<CreateDishFormReturnType>,
   ) => {
-    const { globalCategory, ...values } = value
-    onSubmit(values)
-    resetForm()
+    // const { category, ...values } = value
+    // onSubmit(values)
+    console.log(value)
+    // resetForm()
   }
 
   return (

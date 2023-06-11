@@ -1,11 +1,12 @@
 export type CreateDishFormReturnType = {
-  globalCategory?: string
   category: string
+  subcategory?: string
+  newSubcategory?: string
   title: string
   price: string
   weight: string
-  picture?: File[] | string
+  picture: File[] | string
   status: 'active' | 'inactive'
-  description?: string
+  description: string
   type: 'dish'
 }

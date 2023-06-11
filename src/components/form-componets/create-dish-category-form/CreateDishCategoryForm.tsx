@@ -1,12 +1,10 @@
 import { FC } from 'react'
 import { Form, Formik } from 'formik'
 import { Stack } from '@mui/material'
-import { CreateCategoryPicture } from './create-category-picture'
 import { Input } from 'UI/input'
+import { CreateCategoryPicture } from './create-category-picture'
 
-interface CreateDishCategoryFormProps {}
-
-const CreateDishCategoryForm: FC<CreateDishCategoryFormProps> = () => {
+const CreateDishCategoryForm: FC = () => {
   const handleSubmit = (value: any) => {
     console.log(value)
   }
