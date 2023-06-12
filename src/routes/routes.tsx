@@ -31,6 +31,7 @@ const AppRoutes = () => {
           <>
             <Route path="/" element={<WaiterLayout />}>
               <Route index element={<Navigate to={ROUTES.DISHES} />} />
+              <Route path={ROUTES.DISHES} element={<Navigate to="pizza" />} />
               <Route path={ROUTES.DISHES} element={<DishesPage />}>
                 <Route path={ROUTES.DISHES_CATEGORY} element={<DishesPage />} />
               </Route>

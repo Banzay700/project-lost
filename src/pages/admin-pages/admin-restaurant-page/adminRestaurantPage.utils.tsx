@@ -1,10 +1,9 @@
 import { SidebarTabItemType } from 'types/ComponentsItemType'
-import { IconCreateCategory, IconCreateDish, IconDishes } from 'assets'
+import { IconCreateDish, IconDishes } from 'assets'
 
 export const ROUTES_RESTAURANT = {
   DISHES: 'dishes',
   CREATE_DISH: 'create-dish',
-  CREATE_CATEGORY: 'create-category',
 }
 
 export const adminRestaurantPageTabs: SidebarTabItemType[] = [
