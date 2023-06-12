@@ -1,6 +1,7 @@
 import { SidebarTabItemType } from 'types'
 import { Icon } from 'assets'
 
+
 export const ROUTES_RESTAURANT = {
   DISHES: 'dishes',
   CREATE_DISH: 'create-dish',

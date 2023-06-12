@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { Stack } from '@mui/material'
+import { IconCalendar } from 'assets/icons'
 import { WeekCalendarItem } from './WeekCalendarItem'
 
 interface WeekCalendarProps {
@@ -17,7 +18,7 @@ const generateWeek = (day: Dayjs): Date[] => {
   return dates
 }
 
-export const WeekCalendar: FC<WeekCalendarProps> = (props) => {
+const WeekCalendar: FC<WeekCalendarProps> = (props) => {
   const { handleSetChosenDay, startDay } = props
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -46,7 +47,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = (props) => {
   }
 
   return (
-    <Stack sx={{ gap: '12px' }}>
+    <Stack direction="row" justifyContent="center" sx={{ gap: '12px' }}>
       <Stack sx={{ flexDirection: 'row', border: '1px solid #E4E4E4', borderRadius: '16px' }}>
         <Stack
           sx={{
@@ -56,10 +57,12 @@ export const WeekCalendar: FC<WeekCalendarProps> = (props) => {
             justifyContent: 'center',
             bgcolor: 'transparent',
           }}>
-          calendar-icon
+          <IconCalendar />
         </Stack>
         {week()}
       </Stack>
     </Stack>
   )
 }
+
+export default WeekCalendar
