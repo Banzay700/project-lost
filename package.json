@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest --watch=false",
+    "test": "vitest --watch=true",
     "lint": "eslint --ext .ts,.tsx --fix .",
     "types": "tsc --noEmit",
     "prepare": "husky install"

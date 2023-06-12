@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import InfoChip from './InfoChip'
+import '@testing-library/jest-dom'
+import { InfoChip } from '.'
 import s from './InfoChip.module.scss'
 
 describe('testing InfoChip', () => {
@@ -33,7 +34,7 @@ describe('testing InfoChip', () => {
     const wrapper = content.parentElement
 
     expect(content).toBeInTheDocument()
-    expect(wrapper).toHaveClass(s.open)
+    expect(wrapper).toHaveClass(s.opened)
   })
   test('props closed', () => {
     render(<InfoChip type="closed" />)
@@ -41,6 +42,6 @@ describe('testing InfoChip', () => {
     const wrapper = content.parentElement
 
     expect(content).toBeInTheDocument()
-    expect(wrapper).toHaveClass(s.close)
+    expect(wrapper).toHaveClass(s.closed)
   })
 })

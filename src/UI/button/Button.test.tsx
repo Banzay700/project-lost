@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Button from './Button'
+import { vi } from 'vitest'
+import { Button } from '.'
 
 describe('testing button', () => {
   test('button children', () => {
@@ -142,15 +143,15 @@ describe('testing button', () => {
     )
     expect(screen.getByRole('button')).toHaveClass('test')
   })
-  // test('button handleClick', () => {
-  //   const handleClick = jest.fn()
-  //   render(
-  //     <Button variant="text" size="default" onClick={handleClick}>
-  //       Click me
-  //     </Button>,
-  //   )
-  //   const button = screen.getByRole('button')
-  //   fireEvent.click(button)
-  //   expect(handleClick).toBeCalled()
-  // })
+  test('button handleClick', () => {
+    const handleClick = vi.fn()
+    render(
+      <Button variant="text" size="default" onClick={handleClick}>
+        Click me
+      </Button>,
+    )
+    const button = screen.getByRole('button')
+    fireEvent.click(button)
+    expect(handleClick).toBeCalled()
+  })
 })

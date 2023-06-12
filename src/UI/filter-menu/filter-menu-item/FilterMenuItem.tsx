@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Button } from 'UI/button'
+import { Button } from 'UI'
 import s from './FilterMenuItem.module.scss'
 
 interface FilterMenuItemProps {

@@ -37,4 +37,52 @@ describe('testing input', () => {
     const iconElement = container.querySelector('[data-testid="icon"]')
     expect(iconElement).toBeInTheDocument()
   })
+  test('props type password', () => {
+    const { container } = render(
+      <Formik initialValues={{ testName: '' }} onSubmit={() => {}}>
+        <Form>
+          <Input type="password" name="testName" placeholder="test" label="testLabel" />
+        </Form>
+      </Formik>,
+    )
+    const inputElement = container.querySelector('input')
+    expect(inputElement).toHaveAttribute('type', 'password')
+  })
+  test('props type number', () => {
+    const { container } = render(
+      <Formik initialValues={{ testName: '' }} onSubmit={() => {}}>
+        <Form>
+          <Input type="number" name="testName" placeholder="test" label="testLabel" />
+        </Form>
+      </Formik>,
+    )
+    const inputElement = container.querySelector('input')
+    expect(inputElement).toHaveAttribute('type', 'number')
+  })
+  test('render props multiline', () => {
+    const { container } = render(
+      <Formik initialValues={{ testName: '' }} onSubmit={() => {}}>
+        <Form>
+          <Input name="testName" placeholder="test" label="testLabel" multiline />
+        </Form>
+      </Formik>,
+    )
+    const textAreaElement = container.querySelector('textarea')
+
+    expect(textAreaElement).toBeInTheDocument()
+    expect(textAreaElement).toHaveClass('MuiInputBase-inputMultiline')
+  })
+  test('render props multiline', () => {
+    const { container } = render(
+      <Formik initialValues={{ testName: '' }} onSubmit={() => {}}>
+        <Form>
+          <Input name="testName" placeholder="test" label="testLabel" disabled />
+        </Form>
+      </Formik>,
+    )
+    const input = container.querySelector('input')
+
+    expect(input).toBeInTheDocument()
+    expect(input).toBeDisabled()
+  })
 })
