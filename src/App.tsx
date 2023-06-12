@@ -5,9 +5,9 @@ import { ReservationForm } from 'components/form-componets/reservation-form'
 
 const App = () => {
   return (
+    // <ReservationForm />
     <Stack height="100vh">
       <AppRoutes />
-      {/* <ReservationForm /> */}
     </Stack>
   )
 }

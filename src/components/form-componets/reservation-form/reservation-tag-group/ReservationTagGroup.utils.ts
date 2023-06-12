@@ -5,8 +5,3 @@ export const tags = [
   { value: 'privateDining', text: 'Private Dining' },
   { value: 'firstTime', text: 'First time' },
 ]
-
-export type FuncArgs = {
-  value: string
-  isChecked: boolean
-}

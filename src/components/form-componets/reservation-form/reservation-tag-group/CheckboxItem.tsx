@@ -1,19 +1,21 @@
 import { Checkbox } from '@mui/material'
 import { FC } from 'react'
 import { Button } from 'UI/button'
-import { FuncArgs } from './ReservationTagGroup.utils'
+import { FieldInputProps } from 'formik'
 
 interface CheckboxItemProps {
   text: string
   value: string
-  onChange: ({ value, isChecked }: FuncArgs) => void
+  field: FieldInputProps<string>
+  checked: boolean
 }
-
 export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
-  const { text, value, onChange } = props
+  const { text, value, field, checked } = props
 
   return (
     <Checkbox
+      {...field}
+      checked={checked}
       value={value}
       icon={
         <Button variant="outlined" size="default" color="secondary">
@@ -25,9 +27,6 @@ export const CheckboxItem: FC<CheckboxItemProps> = (props) => {
           {text}
         </Button>
       }
-      onChange={(e) => {
-        onChange({ value: e.target.value, isChecked: e.target.checked })
-      }}
     />
   )
 }

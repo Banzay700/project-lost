@@ -10,13 +10,16 @@ import s from './ReservationCalendar.module.scss'
 interface ReservationCalendarProps {
   label: string
   name: string
+  isFormReset: boolean
+  setFormReset: (status: boolean) => void
 }
 
 const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   const [chosenDay, setChosenDay] = useState<Date>(new Date())
   const [isShowCalendar, setShowCalendar] = useState(false)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
-  const { label, name } = props
+  const { label, name, setFormReset, isFormReset } = props
   const [, , helpers] = useField(name)
 
   const handleSetChosenDay = (day: Date) => {
@@ -30,6 +33,19 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
     handleSetFormValues(chosenDay)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenDay])
+
+  console.log(activeIndex)
+
+  // useEffect(() => {
+  //   // console.log(isFormReset)
+
+  //   if (isFormReset) {
+  //     setActiveIndex(null)
+  //     console.log(activeIndex)
+  //     // setFormReset(false)
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isFormReset])
 
   return (
     <Field name={name}>
@@ -55,6 +71,8 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
           <WeekCalendar
             startDay={chosenDay}
             handleSetChosenDay={(day) => handleSetFormValues(day)}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         </>
       )}

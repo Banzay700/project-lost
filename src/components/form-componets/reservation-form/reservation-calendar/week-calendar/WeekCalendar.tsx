@@ -7,6 +7,8 @@ import { WeekCalendarItem } from './WeekCalendarItem'
 interface WeekCalendarProps {
   startDay: Date
   handleSetChosenDay: (day: Date) => void
+  activeIndex: number | null
+  setActiveIndex: (s: number) => void
 }
 
 const generateWeek = (day: Dayjs): Date[] => {
@@ -19,9 +21,7 @@ const generateWeek = (day: Dayjs): Date[] => {
 }
 
 const WeekCalendar: FC<WeekCalendarProps> = (props) => {
-  const { handleSetChosenDay, startDay } = props
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const { handleSetChosenDay, startDay, activeIndex, setActiveIndex } = props
 
   const handleItemClicked = (index: number, day: Date) => {
     setActiveIndex(index)
