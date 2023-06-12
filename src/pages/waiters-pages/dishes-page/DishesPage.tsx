@@ -21,7 +21,7 @@ const DishesPage: FC = () => {
       <Box borderRight="1px solid #e4e4e4">
         <SidebarLeftList sidebarItems={data} />
       </Box>
-      <DishesPageContent defaultCategory={data[0].title.toLowerCase()} />
+      <DishesPageContent />
     </FadeIn>
   )
 }

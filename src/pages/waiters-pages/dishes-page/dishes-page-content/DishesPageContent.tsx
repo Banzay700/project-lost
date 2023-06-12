@@ -6,18 +6,10 @@ import { DishesList, SearchFilterBar } from 'components'
 import { useGetDishesQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
 import { firstLetterUpperCase, correctionName } from 'utils'
 import { FilterMenuItemType } from 'types'
-import { useParamsSearchFilter, useRelocateDefaultLocation } from 'hooks'
+import { useParamsSearchFilter } from 'hooks'
 
-interface DishesPageContentProps {
-  defaultCategory: string
-}
-
-const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
+const DishesPageContent: FC = () => {
   const { category } = useParams()
-  useRelocateDefaultLocation({
-    isParams: category,
-    relocateTo: defaultCategory,
-  })
 
   const {
     params: subCategory,
@@ -28,11 +20,9 @@ const DishesPageContent: FC<DishesPageContentProps> = ({ defaultCategory }) => {
     handlePagination,
   } = useParamsSearchFilter('category')
 
-  const { data } = useGetSubCategoriesInCategoryQuery(
-    firstLetterUpperCase(category || defaultCategory),
-  )
+  const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || 'pizza'))
   const { data: dishes } = useGetDishesQuery({
-    category: subCategory || firstLetterUpperCase(category || defaultCategory),
+    category: subCategory || firstLetterUpperCase(category || 'pizza'),
     search,
     page,
   })
