@@ -1,25 +1,25 @@
-import { Divider, Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { FC, useState } from 'react'
+import { useField, Field } from 'formik'
 import { PartySizeItem } from './party-size-item'
-import { SetFormValues } from '../ReservationForm.utils'
 
 interface ReservationPartySizeProps {
   label: string
+  name: string
   seats: number
-  handleSetFormValues: (fieldName: string, value: SetFormValues) => void
 }
 
 const PartySize: FC<ReservationPartySizeProps> = (props) => {
-  const { label, seats, handleSetFormValues } = props
+  const { label, seats, name } = props
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [, , helpers] = useField(name)
 
   const handleItemClicked = (index: number) => {
     setActiveIndex(index)
-    handleSetFormValues('partySize', index + 1)
+    helpers.setValue(index + 1, true)
   }
 
   const partySize = Array.from({ length: seats }, (_, i) => {
-    const isLastElement = i !== seats - 1
     return (
       <div key={i}>
         <PartySizeItem
@@ -28,20 +28,30 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
           active={activeIndex === i}
           onClick={() => handleItemClicked(i)}
         />
-        {isLastElement && <Divider key={i} />}
       </div>
     )
   })
 
   return (
-    <Stack sx={{ gap: '12px' }}>
-      <Typography variant="h3" component="p">
-        {label}
-      </Typography>
-      <Stack sx={{ flexDirection: 'row', border: '1px solid #E4E4E4', borderRadius: '16px' }}>
-        {partySize}
-      </Stack>
-    </Stack>
+    <Field name={name}>
+      {() => (
+        <Stack sx={{ gap: '12px' }}>
+          <Typography variant="h3" component="p">
+            {label}
+          </Typography>
+          <Stack
+            sx={{
+              border: '1px solid #E4E4E4',
+              borderRadius: '16px',
+              flexDirection: 'row',
+              alignSelf: 'center',
+              maxWidth: 'fit-content',
+            }}>
+            {partySize}
+          </Stack>
+        </Stack>
+      )}
+    </Field>
   )
 }
 

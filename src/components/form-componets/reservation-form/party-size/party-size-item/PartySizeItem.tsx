@@ -11,7 +11,7 @@ const PartySizeItem: FC<PartySizeItemProps> = ({ number, active, onClick }) => {
   return (
     <Stack
       sx={{
-        width: '64px',
+        width: '70px',
         height: '64px',
         alignItems: 'center',
         justifyContent: 'center',
