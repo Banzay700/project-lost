@@ -1,7 +1,8 @@
 import { array, number, object, string } from 'yup'
+import { ReservationFormType } from 'types/ComponentsReturnType'
 
-export const initialValues = {
-  tags: [''],
+export const initialValues: Partial<ReservationFormType> = {
+  tags: [],
   date: '',
   hours: '',
   minutes: '',
