@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
-import { Button } from 'UI'
-import { IconMinus, IconPlus } from 'assets'
 import { Typography } from '@mui/material'
+import { Button } from 'UI'
+import { Icon } from 'assets'
 import { useRootLocationPath } from 'hooks'
 import s from './Picker.module.scss'
 
@@ -36,7 +36,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
         variant="contained"
         size="small"
         color="secondary"
-        icon={<IconMinus />}
+        icon={<Icon.Minus />}
         onClick={handleDecrementValue}
       />
       <div className={s.value}>
@@ -48,7 +48,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
         variant="contained"
         size="small"
         color="secondary"
-        icon={<IconPlus />}
+        icon={<Icon.Plus />}
         onClick={handleIncrementValue}
       />
     </div>

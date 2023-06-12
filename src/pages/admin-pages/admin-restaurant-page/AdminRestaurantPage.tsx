@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { SidebarTabsList } from 'components'
-import { IconDineIn } from 'assets'
+import { Icon } from 'assets'
 import { useParams } from 'react-router-dom'
 import { useRelocateDefaultLocation } from 'hooks'
 import { adminRestaurantPageTabs, ROUTES_RESTAURANT } from './adminRestaurantPage.utils'
@@ -18,7 +18,7 @@ const AdminRestaurantPage: FC = () => {
     <>
       <SidebarTabsList
         sidebarTabItems={adminRestaurantPageTabs}
-        titleIcon={<IconDineIn width={35} height={35} />}
+        titleIcon={<Icon.DineIn width={35} height={35} />}
         title="Restaurant"
       />
       {restaurant === ROUTES_RESTAURANT.DISHES && <AdminDishesListPage />}

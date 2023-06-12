@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import { FormHelperText, RadioGroup, Stack } from '@mui/material'
+import { useFormikContext } from 'formik'
 import { Button, Input, RadioButtonWithoutIcon, SelectInput } from 'UI'
 import { InputSelectItemType, RadioButtonWithoutIconItemType } from 'types'
-import { useGetCategoriesQuery, useLazyGetSubCategoriesInCategoryQuery } from 'store/api'
+import { Icon } from 'assets'
 import { correctionName } from 'utils'
-import { useFormikContext } from 'formik'
-import { IconCross, IconPlus } from 'assets/icons'
+import { useGetCategoriesQuery, useLazyGetSubCategoriesInCategoryQuery } from 'store/api'
 
 const CreateDishCategoryFormItem: FC = () => {
   const { setFieldValue, getFieldMeta } = useFormikContext()
@@ -65,7 +65,7 @@ const CreateDishCategoryFormItem: FC = () => {
               <Button
                 variant="text"
                 size="small"
-                icon={<IconPlus />}
+                icon={<Icon.Plus />}
                 type="button"
                 onClick={handleToggleIsNewSubcategory}
               />
@@ -77,7 +77,7 @@ const CreateDishCategoryFormItem: FC = () => {
                   name="newSubcategory"
                   label="New Subcategory"
                 />
-                <IconCross style={{ cursor: 'pointer' }} onClick={handleToggleIsNewSubcategory} />
+                <Icon.Cross style={{ cursor: 'pointer' }} onClick={handleToggleIsNewSubcategory} />
               </Stack>
             )}
           </Stack>

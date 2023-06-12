@@ -1,43 +1,66 @@
-import { FC, useState } from 'react'
-import { Form, Formik } from 'formik'
+import { FC } from 'react'
+import { Form, Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
+import { Stack } from '@mui/material'
 import { ReservationFormType } from 'types/ComponentsReturnType'
 import { ReservationTagGroup } from './reservation-tag-group'
 import { PartySize } from './party-size'
 import { ReservationCalendar } from './reservation-calendar'
-import { initialValues, validationSchema, SetFormValues } from './ReservationForm.utils'
+import { ReservationTime } from './reservation-time'
+import { GuestDetail } from './guest-detail'
+import { initialValues, validationSchema } from './ReservationForm.utils'
+import s from './ReservationForm.module.scss'
 
 const ReservationForm: FC = () => {
-  const [formValues, setFormValues] = useState(initialValues)
+  const handleFormSubmit = (
+    values: ReservationFormType,
+    actions: FormikHelpers<ReservationFormType>,
+  ) => {
+    // TODO set action type
+    const valuesForSendToDB = ({
+      hours,
+      minutes,
+      ...rest
+    }: {
+      hours: string
+      minutes: string
+    }) => ({
+      ...rest,
+      time: `${hours}:${minutes}`,
+    })
 
-  const handleSetFormValues = (fieldName: string, value: SetFormValues) => {
-    setFormValues((prevState) => ({ ...prevState, [fieldName]: value }))
+    console.log(valuesForSendToDB(values))
+    actions.resetForm()
   }
 
-  const handleFormSubmit = (values: ReservationFormType, actions: any) => {
-    console.log(values)
-    actions.resetForm()
-    setFormValues(initialValues)
+  const handleFormReset = (
+    values: ReservationFormType,
+    formikBag: FormikHelpers<ReservationFormType>,
+  ) => {
+    formikBag.resetForm()
   }
 
   return (
-    <div style={{ maxWidth: '500px' }}>
+    <div style={{ maxWidth: '631px' }}>
       <Formik
-        initialValues={formValues || initialValues}
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}
-        enableReinitialize>
-        <Form>
-          <PartySize
-            label="Select party size"
-            seats={8}
-            handleSetFormValues={handleSetFormValues}
-          />
-          <ReservationCalendar label="Select date" handleSetFormValues={handleSetFormValues} />
-          <ReservationTagGroup label="Tag" handleSetFormValues={handleSetFormValues} />
-          <Button variant="contained" size="default" type="submit">
-            Add to reservation
-          </Button>
+        onReset={handleFormReset}>
+        <Form className={s.reservationForm}>
+          <ReservationTagGroup name="tags" label="Tag" />
+          <ReservationCalendar name="date" label="Select date" />
+          <ReservationTime label="Select time" />
+          <PartySize label="Select party size" seats={8} name="partySize" />
+          <GuestDetail />
+          <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
+            <Button variant="outlined" size="default" type="reset" fullWidth>
+              Cancel
+            </Button>
+            <Button variant="contained" size="default" type="submit" fullWidth>
+              Add to reservation
+            </Button>
+          </Stack>
         </Form>
       </Formik>
     </div>

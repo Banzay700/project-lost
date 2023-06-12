@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { CSSProperties, FC, useEffect, useState } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
 import { BillsType, DishType, OrderType, TableDataItem, UserType } from 'types'
@@ -19,6 +19,7 @@ interface TableProps {
   onClickAction?: (id: string) => void
   onClickLine?: (id: string) => void
   alignHead?: 'inherit' | 'center' | 'left' | 'right' | 'justify' | undefined
+  tableMinWidth?: CSSProperties['minWidth']
 }
 
 const Table: FC<TableProps> = ({
@@ -29,6 +30,7 @@ const Table: FC<TableProps> = ({
   onClickAction,
   onClickLine,
   alignHead,
+  tableMinWidth,
 }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   const [active, setActive] = useState<string | undefined>()
@@ -49,8 +51,8 @@ const Table: FC<TableProps> = ({
   }
 
   return (
-    <TableContainer ref={containerRef} sx={{ overflow: 'auto' }}>
-      <MuiTable aria-label="table" sx={{ width: '100%' }}>
+    <TableContainer ref={containerRef}>
+      <MuiTable aria-label="table" sx={{ width: '100%', minWidth: tableMinWidth }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>
           {skeleton}

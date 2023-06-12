@@ -1,5 +1,5 @@
-import { SidebarTabItemType } from 'types/ComponentsItemType'
-import { IconRegistrationUser, IconUser } from 'assets/icons'
+import { Icon } from 'assets'
+import { SidebarTabItemType } from 'types'
 
 export const ROUTES_EMPLOYEES = {
   EMPLOYEES: 'employees',
@@ -9,12 +9,12 @@ export const ROUTES_EMPLOYEES = {
 export const adminEmployeesPageTabs: SidebarTabItemType[] = [
   {
     linkTo: ROUTES_EMPLOYEES.EMPLOYEES,
-    icon: <IconUser />,
+    icon: <Icon.User />,
     label: 'Employees',
   },
   {
     linkTo: ROUTES_EMPLOYEES.REGISTRATION,
-    icon: <IconRegistrationUser />,
+    icon: <Icon.RegistrationUser />,
     label: 'Registration',
   },
 ]

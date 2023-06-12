@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
 import { Button, Input } from 'UI'
-import { IconAddTipAmount, IconEmail } from 'assets/index'
+import { Icon } from 'assets'
 import { PaymentFormReturnType } from 'types/index'
 import { OrderPaymentMethod } from './order-payment-method'
 import { initialValues, validationSchema } from './OrderPaymentForm.utils'
@@ -39,13 +39,13 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
                 placeholder="Tip Amount"
                 name="tip"
                 label="Tip Amount"
-                icon={<IconAddTipAmount />}
+                icon={<Icon.Tip />}
                 onInput={onInput}
                 maxLength={6}
               />
             )}
             {isEmail && (
-              <Input placeholder="Email" name="email" label="Email" icon={<IconEmail />} />
+              <Input placeholder="Email" name="email" label="Email" icon={<Icon.Email />} />
             )}
           </Stack>
           <Button variant="contained" size="default" type="submit" fullWidth>

@@ -45,7 +45,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
     filterMenuItems.length > 2 ? handleChangeFilter : handleChangeFilterWhenTwoItem
 
   return (
-    <Stack sx={{ gap: '8px' }} direction="row" flexWrap="wrap">
+    <Stack sx={{ gap: '8px', width: '100%', overflowX: 'auto' }} direction="row" flexWrap="wrap">
       <FilterMenuItem
         value="all"
         label="All"

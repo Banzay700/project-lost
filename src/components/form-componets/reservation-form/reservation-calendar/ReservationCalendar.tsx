@@ -2,57 +2,63 @@
 import { FC, useState, useEffect } from 'react'
 import { Typography, Stack } from '@mui/material'
 import dayjs from 'dayjs'
-import { SetFormValues } from '../ReservationForm.utils'
-import { Calendar } from './Calendar'
-import { WeekCalendar } from './WeekCalendar'
+import { useField, Field } from 'formik'
+import { Calendar } from './month-calendar'
+import { WeekCalendar } from './week-calendar'
 import s from './ReservationCalendar.module.scss'
 
 interface ReservationCalendarProps {
   label: string
-  handleSetFormValues: (fieldName: string, value: SetFormValues) => void
+  name: string
 }
 
 const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   const [chosenDay, setChosenDay] = useState<Date>(new Date())
   const [isShowCalendar, setShowCalendar] = useState(false)
 
-  const { label, handleSetFormValues } = props
+  const { label, name } = props
+  const [, , helpers] = useField(name)
 
   const handleSetChosenDay = (day: Date) => {
     setChosenDay(day)
     setShowCalendar(false)
   }
 
-  useEffect(() => {
-    handleSetFormValues('date', chosenDay)
+  const handleSetFormValues = (day: Date) => helpers.setValue(dayjs(day).format('YYYY-MM-DD'), true)
 
+  useEffect(() => {
+    handleSetFormValues(chosenDay)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenDay])
 
   return (
-    <>
-      <Stack justifyContent="space-between" direction="row">
-        <Typography variant="h3" component="span">
-          {label}
-        </Typography>
-        <Typography
-          variant="h3"
-          component="span"
-          onClick={() => setShowCalendar((prevState) => !prevState)}
-          style={{ cursor: 'pointer' }}>
-          {dayjs(chosenDay).format('MMM YYYY')}
-        </Typography>
-      </Stack>
-      {isShowCalendar && (
-        <div className={s.calendarWrapper}>
-          <Calendar handleSetChosenDay={handleSetChosenDay} />
-        </div>
+    <Field name={name}>
+      {() => (
+        <>
+          <Stack justifyContent="space-between" direction="row">
+            <Typography variant="h3" component="p">
+              {label}
+            </Typography>
+            <Typography
+              variant="h3"
+              component="p"
+              onClick={() => setShowCalendar((prevState) => !prevState)}
+              className={s.monthPicker}>
+              {dayjs(chosenDay).format('MMM YYYY')}
+            </Typography>
+          </Stack>
+          {isShowCalendar && (
+            <div className={s.calendarWrapper}>
+              <Calendar handleSetChosenDay={handleSetChosenDay} />
+            </div>
+          )}
+          <WeekCalendar
+            startDay={chosenDay}
+            handleSetChosenDay={(day) => handleSetFormValues(day)}
+          />
+        </>
       )}
-      <WeekCalendar
-        startDay={chosenDay}
-        handleSetChosenDay={(day) => handleSetFormValues('date', day)}
-      />
-    </>
+    </Field>
   )
 }
 
