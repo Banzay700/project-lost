@@ -6,6 +6,7 @@ import { changeToggleValue } from 'store/reducers'
 import { useLazySendEmailQuery, useUpdateBillMutation } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
+import { Stack } from '@mui/material'
 import { PaymentListInfo } from './payment-list-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
 import { OrderListInfo } from './order-list-info'
@@ -37,16 +38,18 @@ const OrderPaymentBar: FC = () => {
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />
-      <DetailsListTitle
-        title={detailsListTitle}
-        orderNumber={newBill.orderNumber}
-        staffName={firstName}
-        staffSurname={secondName}
-      />
-      {toggleValue === 'Payment' && (
-        <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
-      )}
-      {toggleValue === 'Order info' && <OrderListInfo newBill={newBill} />}
+      <Stack sx={{ height: 'calc(100% - 70px)' }}>
+        <DetailsListTitle
+          title={detailsListTitle}
+          orderNumber={newBill.orderNumber}
+          staffName={firstName}
+          staffSurname={secondName}
+        />
+        {toggleValue === 'Payment' && (
+          <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
+        )}
+        {toggleValue === 'Order info' && <OrderListInfo newBill={newBill} />}
+      </Stack>
     </FadeIn>
   )
 }

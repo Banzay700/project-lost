@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
@@ -49,8 +49,10 @@ const OrderCreatorBar: FC = () => {
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />
-      {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
-      {toggleValue === 'dishes' && <OrderDetailsList onClick={handleCreateOrder} />}
+      <Box sx={{ height: 'calc(100% - 70px)' }}>
+        {toggleValue === 'orderInfo' && <OrderCreatorForm onSubmit={handleFormSubmit} />}
+        {toggleValue === 'dishes' && <OrderDetailsList onClick={handleCreateOrder} />}
+      </Box>
     </Stack>
   )
 }

@@ -5,12 +5,13 @@ import { api } from './api'
 export const billsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllBills: builder.query<BillsResponseType, OrderBillsQueryRequest>({
-      query: (body) => {
+      query: ({ status, page, orderType, limit }) => {
         const params: OrderBillsQueryRequest = {}
 
-        if (body.orderType) {
-          params.orderType = body.orderType
-        }
+        if (orderType) params.orderType = orderType
+        if (status) params.status = status
+        if (page) params.page = page
+        if (limit) params.limit = limit
 
         return { url: '/bills', params }
       },

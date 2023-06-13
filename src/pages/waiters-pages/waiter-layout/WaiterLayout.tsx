@@ -10,11 +10,11 @@ const WaiterLayout: FC = () => {
   const isSidebar = !isProfileLocation && !isReservationLocation
 
   return (
-    <Stack direction="column" height="100%">
-      <Stack height="7.42%">
+    <Stack direction="column" height="100%" width="100%">
+      <Stack height="76px">
         <Header />
       </Stack>
-      <Stack direction="row" flex="1" height="92.58%">
+      <Stack direction="row" flex="1" height="calc(100% - 76px)">
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />
         </Stack>

@@ -25,6 +25,7 @@ const DishesPageContent: FC = () => {
     category: subCategory || firstLetterUpperCase(category || 'pizza'),
     search,
     page,
+    limit: 12,
   })
 
   const filterMenu: FilterMenuItemType[] | undefined =
@@ -46,7 +47,7 @@ const DishesPageContent: FC = () => {
         />
       )}
       {dishes && <DishesList dishes={dishes.data} />}
-      <Stack sx={{ alignItems: 'center', marginRight: '50px', p: '20px' }}>
+      <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
         {dishes && (
           <Pagination
             count={Math.ceil(dishes.totalCount / 8)}

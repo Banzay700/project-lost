@@ -10,4 +10,8 @@
     border-radius: 80px;
     z-index: 0;
   }
+
+  & :global .MuiTabs-flexContainer {
+    height: 100%;
+  }
 }
