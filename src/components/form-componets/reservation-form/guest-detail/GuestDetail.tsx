@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Typography, Stack } from '@mui/material'
 import { Input } from 'UI/input'
 
-const GuestDetail = () => {
+const GuestDetail: FC = () => {
   return (
     <Stack sx={{ gap: '12px', marginTop: '24px' }}>
       <Typography variant="h1" component="div" color="black">

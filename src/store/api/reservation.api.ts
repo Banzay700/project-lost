@@ -7,7 +7,11 @@ export const reservationApi = api.injectEndpoints({
       query: (body) => ({ url: `reservation`, method: 'PUT', body }),
       invalidatesTags: ['Reservation'],
     }),
+    getReservationsByDate: builder.query<ReservationRequestType[], string>({
+      query: (date) => ({ url: `reservation/date/${date}` }),
+      providesTags: ['Reservation'],
+    }),
   }),
 })
 
-export const { useUpdateReservationMutation } = reservationApi
+export const { useUpdateReservationMutation, useLazyGetReservationsByDateQuery } = reservationApi

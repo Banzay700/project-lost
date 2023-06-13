@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { Stack } from '@mui/material'
-import { IconCalendar } from 'assets/icons'
+import { Icon } from 'assets'
 import { WeekCalendarItem } from './WeekCalendarItem'
 
 interface WeekCalendarProps {
@@ -57,7 +57,7 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
             justifyContent: 'center',
             bgcolor: 'transparent',
           }}>
-          <IconCalendar />
+          <Icon.Calendar />
         </Stack>
         {week()}
       </Stack>

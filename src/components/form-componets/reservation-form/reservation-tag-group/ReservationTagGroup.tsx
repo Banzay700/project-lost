@@ -3,7 +3,6 @@ import { Typography } from '@mui/material'
 import { useField, Field } from 'formik'
 import { CheckboxItem } from './CheckboxItem'
 import { tags, FuncArgs } from './ReservationTagGroup.utils'
-import s from './ReservationTagGroup.module.scss'
 
 interface ReservationTagGroupProps {
   label: string
