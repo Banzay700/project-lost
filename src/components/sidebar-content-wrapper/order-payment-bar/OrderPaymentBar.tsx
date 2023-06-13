@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
-import { useAppDispatch, useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
-import { changeToggleValue } from 'store/reducers'
+import { useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
 import { useLazySendEmailQuery, useUpdateBillMutation } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
@@ -12,29 +11,30 @@ import { toggleMenuValues } from './orderPaymentBar.utils'
 import { OrderListInfo } from './order-list-info'
 
 const OrderPaymentBar: FC = () => {
-  const dispatch = useAppDispatch()
   const { userState } = useUserReducer()
-  const { newBill, relocateBills } = useBillsReducer()
-  const [updateBill] = useUpdateBillMutation()
-  const toggleValue = useAppSelector((state) => state.toggleValue.toggleValue)
-  const [sendEmail] = useLazySendEmailQuery()
+  const { newBill, relocateBills, changeToggle } = useBillsReducer()
+
   const { firstName, secondName } = userState
+  const toggleValue = useAppSelector((state) => state.bills.toggleValue)
+
+  const [updateBill] = useUpdateBillMutation()
+  const [sendEmail] = useLazySendEmailQuery()
+
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
-  const handleToggleMenuChange = (value: string) => dispatch(changeToggleValue(value))
 
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })
     if (newBill.id) sendEmail(newBill.id)
-    handleToggleMenuChange('Order info')
+    changeToggle('Order info')
   }
 
   return (
     <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <ToggleMenu
         menuItems={toggleMenuValues}
-        onChange={handleToggleMenuChange}
+        onChange={changeToggle}
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />

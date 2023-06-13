@@ -31,7 +31,7 @@ const AdminEmployeesListPage: FC = () => {
   }
 
   return (
-    <Stack sx={{ width: '100%', height: '100%' }}>
+    <Stack sx={{ width: '100%', height: '100%', overflow: 'auto' }}>
       <SearchFilterBar
         subcategories={filterItems}
         changeCategory={handleFilterCategory}

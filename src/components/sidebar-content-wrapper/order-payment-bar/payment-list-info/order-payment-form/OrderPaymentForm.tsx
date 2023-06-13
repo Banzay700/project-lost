@@ -15,7 +15,7 @@ interface OrderPaymentFormProps {
   children: ReactNode
   isTip: boolean
   isEmail: boolean
-  onInput: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
@@ -23,7 +23,7 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
   isTip,
   isEmail,
   onSubmit,
-  onInput,
+  onChange,
 }) => {
   const formikConfig = { initialValues, validationSchema, onSubmit }
 
@@ -40,7 +40,7 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
                 name="tip"
                 label="Tip Amount"
                 icon={<Icon.Tip />}
-                onInput={onInput}
+                onChange={onChange}
                 maxLength={6}
               />
             )}

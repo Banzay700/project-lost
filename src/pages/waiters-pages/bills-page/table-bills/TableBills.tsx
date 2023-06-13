@@ -2,14 +2,12 @@ import { FC } from 'react'
 
 import { Table, IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
-import { useAppDispatch, useBillsReducer, useParamsSearchFilter } from 'hooks'
-import { changeToggleValue } from 'store/reducers'
+import { useBillsReducer, useParamsSearchFilter } from 'hooks/index'
 import { Pagination, Stack } from '@mui/material'
 import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
-  const dispatch = useAppDispatch()
-  const { newBill } = useBillsReducer()
+  const { newBill, changeToggle } = useBillsReducer()
   const {
     params: orderType,
     page,
@@ -21,18 +19,18 @@ const TableBills: FC = () => {
 
   const handleSendBillsData = (id: string) => {
     getBill(id)
-    dispatch(changeToggleValue('Payment'))
+    changeToggle('Payment')
   }
 
   const handleLineBillsData = (id: string) => {
     if (newBill.id !== id) {
       getBill(id)
     }
-    dispatch(changeToggleValue('Order info'))
+    changeToggle('Order info')
   }
 
   return (
-    <Stack sx={{ height: '100%' }}>
+    <>
       <IndicatorFilterBar
         filterMenuItems={[
           { value: 'delivery', label: 'Delivery' },
@@ -69,7 +67,7 @@ const TableBills: FC = () => {
           />
         )}
       </Stack>
-    </Stack>
+    </>
   )
 }
 
