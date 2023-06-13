@@ -14,9 +14,7 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
   const { setFieldValue } = useFormikContext()
   const [field] = useField(name)
 
-  const handleItemClicked = (index: number) => {
-    setFieldValue(name, index)
-  }
+  const handleItemClicked = (index: number) => setFieldValue(name, index)
 
   const partySize = Array.from({ length: seats }, (_, i) => {
     const number = i + 1

@@ -35,8 +35,7 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
 
       return (
         <WeekCalendarItem
-          // eslint-disable-next-line react/no-array-index-key
-          key={`d${i}`}
+          key={dayjs().unix()}
           weekDay={weekDay}
           day={day}
           active={activeIndex === i}

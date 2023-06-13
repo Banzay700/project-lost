@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
+import { Table } from 'components'
 import { ReservationRequestType } from 'types'
 import { tableTitleReservation } from './tableReservation.utils'
 
