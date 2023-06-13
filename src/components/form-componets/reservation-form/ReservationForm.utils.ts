@@ -13,6 +13,14 @@ export const initialValues: Partial<ReservationFormType> = {
   note: '',
 }
 
+export const tags = [
+  { value: 'vip', title: 'VIP' },
+  { value: 'birthday', title: 'Birthday' },
+  { value: 'anniversary', title: 'Anniversary' },
+  { value: 'privateDining', title: 'Private Dining' },
+  { value: 'firstTime', title: 'First time' },
+]
+
 export const validationSchema = object().shape({
   tags: array(),
   date: string().required(),
