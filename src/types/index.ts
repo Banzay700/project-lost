@@ -62,6 +62,7 @@ export type {
   SidebarTabItemType,
   InputSelectItemType,
   RadioButtonWithoutIconItemType,
+  CheckboxTagGroupItem,
 } from './ComponentsItemType'
 
 export type {

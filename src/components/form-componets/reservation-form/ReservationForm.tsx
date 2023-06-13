@@ -3,12 +3,12 @@ import { Form, Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
 import { ReservationFormType } from 'types/ComponentsReturnType'
-import { ReservationTagGroup } from './reservation-tag-group'
+import { CheckboxTagGroup } from '../../input-form/checkbox-tag-group'
 import { PartySize } from './party-size'
 import { ReservationCalendar } from './reservation-calendar'
 import { ReservationTime } from './reservation-time'
 import { GuestDetail } from './guest-detail'
-import { initialValues, validationSchema } from './ReservationForm.utils'
+import { initialValues, tags, validationSchema } from './ReservationForm.utils'
 import s from './ReservationForm.module.scss'
 
 const ReservationForm: FC = () => {
@@ -48,7 +48,7 @@ const ReservationForm: FC = () => {
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}>
         <Form className={s.reservationForm}>
-          <ReservationTagGroup name="tags" label="Tag" />
+          <CheckboxTagGroup name="tags" label="Tag" data={tags} />
           <ReservationCalendar
             name="date"
             label="Select date"

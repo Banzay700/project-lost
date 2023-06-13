@@ -31,6 +31,7 @@ export {
   InputsBasicUserInfo,
   InputsCreateDish,
   InputImageWithPreviewAvatar,
+  CheckboxTagGroup,
 } from './input-form'
 
 export { IndicatorsGroup } from './indicators-group'
