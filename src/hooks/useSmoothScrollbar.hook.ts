@@ -1,14 +1,18 @@
 import { RefObject, useEffect, useRef } from 'react'
 import Scrollbar from 'smooth-scrollbar'
 
-export const useSmoothScrollbar = <T extends HTMLElement>(): RefObject<T> => {
+export const useSmoothScrollbar = <T extends HTMLElement>(width?: string): RefObject<T> => {
   const containerRef = useRef<T>(null)
 
   useEffect(() => {
     const container = containerRef.current
 
     if (container) {
-      Scrollbar.init(container, { damping: 0.1 })
+      const scrollbar = Scrollbar.init(container, { damping: 0.1 })
+
+      if (width) {
+        scrollbar.track.yAxis.element.style.width = width
+      }
     }
 
     return () => {
@@ -16,7 +20,7 @@ export const useSmoothScrollbar = <T extends HTMLElement>(): RefObject<T> => {
         Scrollbar.destroy(container)
       }
     }
-  }, [])
+  }, [width])
 
   return containerRef
 }

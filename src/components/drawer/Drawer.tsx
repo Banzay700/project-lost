@@ -4,6 +4,7 @@ import { SwipeableDrawer, Stack } from '@mui/material/'
 import { Button } from 'UI'
 import { useLazyGetReservationsByDateQuery } from 'store/api'
 import { ReservationCalendar } from 'components/form-componets/reservation-form/reservation-calendar'
+import { ReservationForm } from 'components/form-componets/reservation-form'
 import { TableReservation } from './table-reservation'
 import { SelectDateWrapper } from './select-date-wrapper'
 
@@ -21,18 +22,19 @@ const Drawer: FC<DrawerProps> = ({ state, toggleDrawer }) => {
 
   return (
     <SwipeableDrawer anchor="right" open={state} onClose={toggleDrawer} onOpen={toggleDrawer}>
-      <SelectDateWrapper>
-        <ReservationCalendar label="Select date" name="date" onChange={handleCalendarValue} />
-      </SelectDateWrapper>
-      <Stack
-        direction="column"
-        justifyContent="space-between"
-        sx={{ height: '100%', p: '33px 24px 24px' }}>
-        <TableReservation data={data} />
-        <Button size="default" variant="contained">
-          Add new reservation
-        </Button>
-      </Stack>
+      <ReservationForm />
+      {/* <SelectDateWrapper> */}
+      {/*  <ReservationCalendar label="Select date" name="date" onChange={handleCalendarValue} /> */}
+      {/* </SelectDateWrapper> */}
+      {/* <Stack */}
+      {/*  direction="column" */}
+      {/*  justifyContent="space-between" */}
+      {/*  sx={{ height: '100%', p: '33px 24px 24px' }}> */}
+      {/*  <TableReservation data={data} /> */}
+      {/*  <Button size="default" variant="contained"> */}
+      {/*    Add new reservation */}
+      {/*  </Button> */}
+      {/* </Stack> */}
     </SwipeableDrawer>
   )
 }

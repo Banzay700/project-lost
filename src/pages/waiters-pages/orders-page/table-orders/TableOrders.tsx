@@ -2,15 +2,21 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IndicatorFilterBar, Table } from 'components/index'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
-import { useOrderReducer, useSearchParamsType } from 'hooks'
+import { useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
+import { Pagination, Stack } from '@mui/material'
 import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
   const { clearNewOrderState } = useOrderReducer()
-  const { orderType, handleChangeFilter } = useSearchParamsType()
-  const { data } = useGetAllOrdersQuery({ orderType })
+  const {
+    params: orderType,
+    page,
+    handleFilterCategory,
+    handlePagination,
+  } = useParamsSearchFilter('orderType')
+  const { data, isLoading } = useGetAllOrdersQuery({ orderType, page, limit: 7 })
 
   const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
@@ -34,9 +40,10 @@ const TableOrders: FC = () => {
           { value: 'takeAway', label: 'Take away' },
         ]}
         defaultValue={orderType?.split(',')}
-        onChange={handleChangeFilter}
+        onChange={handleFilterCategory}
       />
       <Table
+        isLoading={isLoading}
         data={data?.data}
         tableTitles={tableTitleOrder}
         tableType="orders"
@@ -44,6 +51,25 @@ const TableOrders: FC = () => {
         onClickAction={handleSendOrder}
         onClickLine={handleLineWrapperClick}
       />
+      <Stack
+        sx={{
+          height: 'fit-content',
+          alignItems: 'flex-end',
+          marginRight: '30px',
+          p: { md: '20px', xs: '10px' },
+          flex: 0,
+        }}>
+        {data && (
+          <Pagination
+            count={Math.ceil(data.totalCount / 7)}
+            variant="text"
+            shape="rounded"
+            color="primary"
+            onChange={handlePagination}
+            page={Number(page)}
+          />
+        )}
+      </Stack>
     </>
   )
 }

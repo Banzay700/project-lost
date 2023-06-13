@@ -16,8 +16,7 @@ export {
   default as userReducer,
 } from './user.slice'
 
-export { openNewBill, default as billReducer } from './bill.slice'
-export { changeToggleValue, default as toggleValueBillsReducer } from './toggleValueBills.slice'
+export { openNewBill, changeToggleValue, default as billReducer } from './bill.slice'
 export {
   addActiveTable,
   clearActiveTable,

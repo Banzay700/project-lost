@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Pagination, Stack } from '@mui/material'
+import { Pagination, Stack } from '@mui/material'
 import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
@@ -31,26 +31,30 @@ const AdminEmployeesListPage: FC = () => {
   }
 
   return (
-    <Stack sx={{ width: '100%', height: '100%', gap: '20px' }}>
-      <Box sx={{ height: '90%' }}>
-        <SearchFilterBar
-          subcategories={filterItems}
-          changeCategory={handleFilterCategory}
-          changeTitle={handleFilterTitle}
-          defaultValueFilter={role?.split(',')}
-          defaultValueInput={search || ''}
-        />
-        <Stack sx={{ height: '90%' }}>
-          <Table
-            data={data?.data}
-            tableTitles={tableHeaders}
-            tableType="users"
-            onClickAction={handleClick}
-            isLoading={isLoading}
-          />
-        </Stack>
-      </Box>
-      <Stack sx={{ alignItems: 'flex-end', marginRight: '50px', height: '10%' }}>
+    <Stack sx={{ width: '100%', height: '100%', overflow: 'auto' }}>
+      <SearchFilterBar
+        subcategories={filterItems}
+        changeCategory={handleFilterCategory}
+        changeTitle={handleFilterTitle}
+        defaultValueFilter={role?.split(',')}
+        defaultValueInput={search || ''}
+      />
+      <Table
+        tableMinWidth="660px"
+        data={data?.data}
+        tableTitles={tableHeaders}
+        tableType="users"
+        onClickAction={handleClick}
+        isLoading={isLoading}
+      />
+      <Stack
+        sx={{
+          height: 'fit-content',
+          alignItems: 'flex-end',
+          marginRight: '30px',
+          p: { md: '20px', xs: '10px' },
+          flex: 0,
+        }}>
         {data && (
           <Pagination
             count={Math.ceil(data.totalCount / 8)}

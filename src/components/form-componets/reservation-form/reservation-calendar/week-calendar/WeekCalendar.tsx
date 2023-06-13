@@ -35,7 +35,7 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
 
       return (
         <WeekCalendarItem
-          key={dayjs().unix()}
+          key={day}
           weekDay={weekDay}
           day={day}
           active={activeIndex === i}

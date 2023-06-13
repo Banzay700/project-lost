@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Tabs } from '@mui/material'
+import { Stack, Tabs } from '@mui/material'
 import { ToggleMenuItemType } from 'types'
 import { ToggleMenuItem } from './toggle-menu-item'
 import s from './ToggleMenu.module.scss'
@@ -24,7 +24,15 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange, defaultValue, bu
   }, [defaultValue])
 
   return (
-    <Box sx={{ padding: '7px 15px' }}>
+    <Stack
+      sx={{
+        width: '100%',
+        height: 70,
+        maxHeight: 70,
+        minHeight: 70,
+        justifyContent: 'center',
+        p: '12px 16px',
+      }}>
       <Tabs value={selectedItem} className={s.wrapper} centered textColor="secondary">
         {menuItems.map(({ label, value }) => (
           <ToggleMenuItem
@@ -37,7 +45,7 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange, defaultValue, bu
           />
         ))}
       </Tabs>
-    </Box>
+    </Stack>
   )
 }
 

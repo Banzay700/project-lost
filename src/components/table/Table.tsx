@@ -7,9 +7,9 @@ import { TableDishLine } from './table-dish-line'
 import { TableHead } from './table-head'
 import { TableOrdersLine } from './table-orders-line'
 import { TableBillsLine } from './table-bills-line'
-import TableReservationLine from './table-reservation-line/TableReservationLine'
+import { TableReservationLine } from './table-reservation-line'
 import { TableUsersLine } from './table-users-line'
-import TableSkeletonLine from './table-skeleton-line/TableSkeletonLine'
+import { TableSkeletonLine } from './table-skeleton-line'
 
 interface TableProps {
   data: TableDataItem[] | undefined
@@ -51,7 +51,7 @@ const Table: FC<TableProps> = ({
   }
 
   return (
-    <TableContainer ref={containerRef}>
+    <TableContainer ref={containerRef} sx={{ height: '100%' }}>
       <MuiTable aria-label="table" sx={{ width: '100%', minWidth: tableMinWidth }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>

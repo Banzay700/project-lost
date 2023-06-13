@@ -16,6 +16,7 @@ export { SidebarLinkItem } from './sidebar-link-item'
 export { ToggleButton } from './toggle-button'
 export { FilterMenu } from './filter-menu'
 export { BlurButton } from './blur-button'
+export { CheckboxButtonInGroup } from './checkbox-button-group'
 export { PageActionsBar } from './page-actions-bar'
 export {
   TableNumberColumn,

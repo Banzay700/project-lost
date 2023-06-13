@@ -16,6 +16,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   const { label, name, onChange } = props
   const [chosenDay, setChosenDay] = useState<Date>(new Date())
   const [isShowCalendar, setShowCalendar] = useState(false)
+  // const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const [field] = useField(name)
   const { setFieldValue } = useFormikContext()

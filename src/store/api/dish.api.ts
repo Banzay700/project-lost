@@ -7,6 +7,7 @@ interface DishesRequest {
   search?: string | null
   page?: string
   status?: string
+  limit?: number
 }
 
 interface ParamsProps {
@@ -14,12 +15,13 @@ interface ParamsProps {
   search?: string
   page?: string
   status?: string
+  limit?: number
 }
 
 export const dishApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getDishes: builder.query<DishesResponseType, DishesRequest>({
-      query: ({ category, search, status, page }) => {
+      query: ({ category, search, status, page, limit }) => {
         const params: ParamsProps = {
           page: page || '1',
         }
@@ -27,6 +29,7 @@ export const dishApi = api.injectEndpoints({
         if (search) params.search = search
         if (category) params.category = category
         if (status) params.status = status
+        if (limit) params.limit = limit
 
         return {
           url: API_CONST_DISHES.DISHES,
