@@ -25,7 +25,7 @@ const DetailsListTitle: FC<OrderDetailsTitleProps> = ({
           Order # {orderNumber}
         </Typography>
       )}
-      {staffName && (
+      {staffName && staffSurname && (
         <Typography variant="subtitle1" component="p">
           Waiter: {staffName} {staffSurname}
         </Typography>
