@@ -15,8 +15,8 @@ const ReservationTime: FC<ReservationTimeProps> = (props) => {
         {label}
       </Typography>
       <Stack direction="row" justifyContent="space-around" gap="22px">
-        <Input type="number" placeholder="hours" name="hours" label="hours" />
-        <Input type="number" placeholder="minutes" name="minutes" label="minutes" />
+        <Input type="number" placeholder="Hours" name="hours" label="hours" />
+        <Input type="number" placeholder="Minutes" name="minutes" label="minutes" />
       </Stack>
     </Stack>
   )

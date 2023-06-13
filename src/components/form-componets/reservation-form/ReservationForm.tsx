@@ -3,7 +3,7 @@ import { Form, Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
 import { ReservationFormType } from 'types/ComponentsReturnType'
-import { CheckboxTagGroup } from '../../input-form/checkbox-tag-group'
+import { CheckboxTagGroup } from 'components/input-form/checkbox-tag-group'
 import { PartySize } from './party-size'
 import { ReservationCalendar } from './reservation-calendar'
 import { ReservationTime } from './reservation-time'
@@ -11,12 +11,17 @@ import { GuestDetail } from './guest-detail'
 import { initialValues, tags, validationSchema } from './ReservationForm.utils'
 import s from './ReservationForm.module.scss'
 
-const ReservationForm: FC = () => {
+interface ReservationFormProps {
+  cancelHandleFunc: (status: boolean) => void
+}
+
+const ReservationForm: FC<ReservationFormProps> = (props) => {
+  const { cancelHandleFunc } = props
+
   const handleFormSubmit = (
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,
   ) => {
-    // TODO set action type
     const valuesForSendToDB = ({
       hours,
       minutes,
@@ -33,15 +38,10 @@ const ReservationForm: FC = () => {
     actions.resetForm()
   }
 
-  const handleFormReset = (
-    values: ReservationFormType,
-    formikBag: FormikHelpers<ReservationFormType>,
-  ) => {
-    formikBag.resetForm()
-  }
+  const handleFormReset = () => cancelHandleFunc(false)
 
   return (
-    <div style={{ maxWidth: '631px' }}>
+    <Stack style={{ height: '100% ' }} justifyContent="center" alignItems="center">
       <Formik
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
@@ -58,7 +58,7 @@ const ReservationForm: FC = () => {
               size="default"
               type="reset"
               fullWidth
-              onClick={() => handleFormReset}>
+              onClick={handleFormReset}>
               Cancel
             </Button>
             <Button variant="contained" size="default" type="submit" fullWidth>
@@ -67,7 +67,7 @@ const ReservationForm: FC = () => {
           </Stack>
         </Form>
       </Formik>
-    </div>
+    </Stack>
   )
 }
 

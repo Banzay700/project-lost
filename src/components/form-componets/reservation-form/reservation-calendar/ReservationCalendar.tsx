@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import { Typography, Stack, Box } from '@mui/material'
 import dayjs from 'dayjs'
 import { useField, useFormikContext } from 'formik'
+import { IconTickDown } from 'assets/icons'
 import { Calendar } from './month-calendar'
 import { WeekCalendar } from './week-calendar'
 import s from './ReservationCalendar.module.scss'
@@ -16,7 +17,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   const { label, name, onChange } = props
   const [chosenDay, setChosenDay] = useState<Date>(new Date())
   const [isShowCalendar, setShowCalendar] = useState(false)
-  // const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const [field] = useField(name)
   const { setFieldValue } = useFormikContext()
@@ -38,26 +39,44 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenDay])
 
+  useEffect(() => {
+    if (!field.value) {
+      setActiveIndex(null)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [field.value])
+
   return (
     <Box {...field}>
-      <Stack justifyContent="space-between" direction="row" alignItems="center">
-        <Typography variant="h3" component="p">
-          {label}
-        </Typography>
-        <Typography
-          variant="h3"
-          component="p"
-          onClick={() => setShowCalendar((prevState) => !prevState)}
-          className={s.monthPicker}>
-          {monthAndYearFormat}
-        </Typography>
+      <Stack direction="row" justifyContent="center" style={{ marginTop: '12px' }}>
+        <Stack gap="12px" style={{ maxWidth: 'fit-content' }}>
+          <Stack justifyContent="space-between" direction="row" alignItems="center">
+            <Typography variant="h3" component="span">
+              {label}
+            </Typography>
+            <Typography
+              variant="h3"
+              component="span"
+              onClick={() => setShowCalendar((prevState) => !prevState)}
+              className={s.monthPicker}>
+              <Stack direction="row" alignItems="center">
+                {monthAndYearFormat} <IconTickDown height="15px" width="15px" />
+              </Stack>
+            </Typography>
+          </Stack>
+          <WeekCalendar
+            startDay={chosenDay}
+            handleSetChosenDay={(day) => handleSetFormValues(day)}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        </Stack>
       </Stack>
       {isShowCalendar && (
         <div className={s.calendarWrapper}>
           <Calendar handleSetChosenDay={handleSetChosenDay} />
         </div>
       )}
-      <WeekCalendar startDay={chosenDay} handleSetChosenDay={(day) => handleSetFormValues(day)} />
     </Box>
   )
 }

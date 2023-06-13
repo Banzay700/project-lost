@@ -4,26 +4,4 @@
 
 .monthPicker {
   cursor: pointer;
-  &:before {
-    content: '';
-    position: relative;
-    right: -67px;
-    top: 12px;
-    display: block;
-    height: 7px;
-    width: 2px;
-    background-color: #828487;
-    rotate: 329deg;
-  }
-  &:after {
-    content: '';
-    position: relative;
-    right: -73px;
-    top: -16px;
-    display: block;
-    height: 8px;
-    width: 2px;
-    background-color: #828487;
-    rotate: 53deg;
-  }
 }
