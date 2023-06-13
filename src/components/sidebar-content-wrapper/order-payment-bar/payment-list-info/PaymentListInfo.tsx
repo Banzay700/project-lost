@@ -15,20 +15,20 @@ const PaymentListInfo: FC<PaymentListInfoProps> = ({ onSubmit, newBill }) => {
   const [inputValue, setInputValue] = useState('')
   const [tipStatus, setTipStatus] = useState(false)
   const [emailStatus, setEmailStatus] = useState(false)
+  const totalPrice = newBill.totalPrice + Number(inputValue)
+
   const handleFormSubmit = (values: PaymentFormReturnType) => onSubmit(values)
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)
-
   const handleToggleTipStatus = () => setTipStatus((prevState) => !prevState)
   const handleToggleEmailStatus = () => setEmailStatus((prevState) => !prevState)
   return (
     <Stack spacing="32px" sx={{ p: '16px', flex: 1 }}>
-      <OrderPricingTotalInfo totalPrice={newBill.totalPrice} tipAmount={inputValue} />
+      <OrderPricingTotalInfo totalPrice={totalPrice} tipAmount={inputValue} />
       <OrderPaymentForm
         isTip={tipStatus}
         isEmail={emailStatus}
         onSubmit={handleFormSubmit}
-        onInput={handleChange}>
+        onChange={handleChange}>
         <OrderButtonsGroup
           setTipStatus={handleToggleTipStatus}
           setEmailStatus={handleToggleEmailStatus}

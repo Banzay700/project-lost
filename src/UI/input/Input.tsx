@@ -18,7 +18,7 @@ type InputProps = InputVariantItemType & {
   disabled?: boolean
   focus?: boolean
   maxLength?: number
-  onInput?: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: FC<InputProps> = (props) => {
@@ -35,7 +35,7 @@ const Input: FC<InputProps> = (props) => {
     disabled,
     focus,
     maxLength,
-    onInput,
+    onChange,
   } = props
   const [field, meta] = useField(name)
 
@@ -54,6 +54,7 @@ const Input: FC<InputProps> = (props) => {
     className: inputClasses,
     inputProps: {
       maxLength,
+      onChange,
     },
   }
 
@@ -64,11 +65,7 @@ const Input: FC<InputProps> = (props) => {
 
   return (
     <FadeIn delay={50} styles={{ width: '100%' }}>
-      <TextField
-        {...textFieldConfig}
-        inputRef={(input) => focus && input && input.focus()}
-        onInput={onInput}
-      />
+      <TextField {...textFieldConfig} inputRef={(input) => focus && input && input.focus()} />
     </FadeIn>
   )
 }

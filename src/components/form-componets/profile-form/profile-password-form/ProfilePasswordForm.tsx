@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik'
 import { UserPassword } from 'types/index'
 import { Input, Button } from 'UI/index'
 import { Stack } from '@mui/material'
+import { validationSchema } from './profilePasswordForm.utils'
 
 interface ProfileFormChangePasswordProps {
   initialValues: UserPassword
@@ -20,9 +21,10 @@ const ProfilePasswordForm: FC<ProfileFormChangePasswordProps> = ({ initialValues
     onSubmit(value)
     setIsDisabled(true)
   }
+  const formikConfig = { initialValues, validationSchema, onSubmit: handleSubmit }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik {...formikConfig}>
       <Form style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
         {isDisabled ? (
           <Button variant="outlined" size="default" type="button" onClick={handleIsDisabled}>
