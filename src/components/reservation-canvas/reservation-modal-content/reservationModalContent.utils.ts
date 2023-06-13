@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { ReservationCanvasType } from 'types/ReservationsTypes'
+import { FilterMenuItemType } from 'types/ComponentsItemType'
 
 export const convertToDate = (timestamp: number) => {
   const dateTimeString = dayjs.unix(timestamp).format('DD-MM HH:mm')
@@ -20,12 +21,12 @@ export const prepareReservationData = ({
   reservation: ReservationCanvasType
   date: string
   time: string
-}) => {
+}): FilterMenuItemType[] => {
   return [
     { label: 'Reservation time:', value: time },
     { label: 'Reservation date:', value: date },
-    { label: 'Client Name:', value: reservation?.clientName },
-    { label: 'Contact number:', value: reservation?.phoneNumber },
-    { label: 'Party size:', value: `${reservation?.persons} guests` },
+    { label: 'Client Name:', value: reservation.clientName },
+    { label: 'Contact number:', value: reservation.phoneNumber },
+    { label: 'Party size:', value: `${reservation.persons} guests` },
   ]
 }
