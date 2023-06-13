@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Stack height="100vh">
       <AppRoutes />
-      {/*<ReservationForm />*/}
+      {/* <ReservationForm /> */}
     </Stack>
   )
 }

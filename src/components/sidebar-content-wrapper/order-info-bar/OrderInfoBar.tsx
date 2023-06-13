@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { ToggleMenu } from 'UI'
 import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
 import { useOrderReducer } from 'hooks'
@@ -30,7 +30,9 @@ const OrderInfoBar: FC = () => {
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />
-      {toggleValue === 'dishes' && <OrderInfoList onClick={handleUpdateOrder} />}
+      <Box sx={{ height: 'calc(100% - 70px)' }}>
+        {toggleValue === 'dishes' && <OrderInfoList onClick={handleUpdateOrder} />}
+      </Box>
     </Stack>
   )
 }

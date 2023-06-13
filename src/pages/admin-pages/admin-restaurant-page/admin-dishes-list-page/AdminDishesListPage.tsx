@@ -42,7 +42,7 @@ const AdminDishesListPage: FC = () => {
   }
 
   return (
-    <Stack sx={{ width: '100%', height: '100%', gap: '20px' }}>
+    <Stack sx={{ width: '100%', height: '100%', overflow: 'auto' }}>
       <AdminDishesListContent onClickLine={handleClickLine} onClickAction={handleClickAction} />
       {dish && (
         <ModalDishDetailInfo

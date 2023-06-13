@@ -21,10 +21,11 @@ const DishesPageContent: FC = () => {
   } = useParamsSearchFilter('category')
 
   const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || 'pizza'))
-  const { data: dishes } = useGetDishesQuery({
+  const { data: dishes, isLoading } = useGetDishesQuery({
     category: subCategory || firstLetterUpperCase(category || 'pizza'),
     search,
     page,
+    limit: 12,
   })
 
   const filterMenu: FilterMenuItemType[] | undefined =
@@ -45,11 +46,11 @@ const DishesPageContent: FC = () => {
           defaultValueInput={search || ''}
         />
       )}
-      {dishes && <DishesList dishes={dishes.data} />}
-      <Stack sx={{ alignItems: 'center', marginRight: '50px', p: '20px' }}>
+      {<DishesList dishes={dishes?.data} isLoading={isLoading} />}
+      <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
         {dishes && (
           <Pagination
-            count={Math.ceil(dishes.totalCount / 8)}
+            count={Math.ceil(dishes.totalCount / 12)}
             variant="text"
             shape="rounded"
             color="primary"

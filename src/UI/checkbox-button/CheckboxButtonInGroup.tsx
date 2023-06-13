@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import s from './CheckboxButtonWithoutIcon.module.scss'
 import { Checkbox } from '@mui/material'
 import { Button } from 'UI/button'
-import { FieldInputProps, useField } from 'formik'
+import { FieldInputProps } from 'formik'
 
 interface CheckboxButtonWithoutIconProps {
   title: string

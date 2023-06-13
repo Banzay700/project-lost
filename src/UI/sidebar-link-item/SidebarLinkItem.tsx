@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
-import { ListItem, Stack, Typography } from '@mui/material'
+import { ListItem, Stack, Theme, Typography, useMediaQuery } from '@mui/material'
 import cn from 'classnames'
 import { NavLink } from 'react-router-dom'
 import { useGetSvgQuery } from 'store/api'
@@ -18,6 +18,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   className,
   children,
 }) => {
+  const isThameLgSize = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'))
   let iconSVG
   if (linkIconSVG) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -28,15 +29,17 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   }
 
   return (
-    <ListItem className={cn(s.item, className)} sx={{ maxWidth: 77 }}>
+    <ListItem className={cn(s.item, className)}>
       <NavLink
         to={linkTo}
         className={({ isActive }) => (isActive ? cn(s.link, s.activeLink) : s.link)}>
         {children}
         {iconSVG && <Stack dangerouslySetInnerHTML={{ __html: iconSVG }} />}
-        <Typography variant="subtitle1" component="p">
-          {label}
-        </Typography>
+        {isThameLgSize && (
+          <Typography variant="subtitle1" component="p">
+            {label}
+          </Typography>
+        )}
       </NavLink>
     </ListItem>
   )

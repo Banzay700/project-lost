@@ -44,7 +44,6 @@ const Button: FC<ButtonProps> = ({
   const buttonStyles = cn(
     className,
     s.wrapper,
-    { [s.boxFocus]: color !== 'secondary' },
     { [s.sizeSmall]: size === 'small' },
     { [s.sizeDefault]: size === 'default' },
   )

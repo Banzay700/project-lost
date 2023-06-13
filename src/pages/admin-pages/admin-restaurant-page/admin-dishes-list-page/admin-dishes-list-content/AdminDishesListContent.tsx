@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Pagination, Stack } from '@mui/material'
+import { Pagination, Stack } from '@mui/material'
 import { SearchFilterBar, Table } from 'components'
 import { useParamsSearchFilter } from 'hooks'
 import { useGetCategoriesQuery, useGetDishesQuery } from 'store/api'
@@ -31,28 +31,32 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
 
   return (
     <>
-      <Box sx={{ height: '90%' }}>
-        {categoriesValues && (
-          <SearchFilterBar
-            subcategories={categoriesValues}
-            changeCategory={handleFilterCategory}
-            changeTitle={handleFilterTitle}
-            defaultValueFilter={category?.split(',')}
-            defaultValueInput={search || ''}
-          />
-        )}
-        <Stack sx={{ height: '90%' }}>
-          <Table
-            data={data?.data}
-            isLoading={isLoading}
-            tableTitles={dishesTableTitles}
-            tableType="dishes"
-            onClickAction={onClickAction}
-            onClickLine={onClickLine}
-          />
-        </Stack>
-      </Box>
-      <Stack sx={{ alignItems: 'flex-end', marginRight: '50px', p: '20px' }}>
+      {categoriesValues && (
+        <SearchFilterBar
+          subcategories={categoriesValues}
+          changeCategory={handleFilterCategory}
+          changeTitle={handleFilterTitle}
+          defaultValueFilter={category?.split(',')}
+          defaultValueInput={search || ''}
+        />
+      )}
+      <Table
+        tableMinWidth="660px"
+        data={data?.data}
+        isLoading={isLoading}
+        tableTitles={dishesTableTitles}
+        tableType="dishes"
+        onClickAction={onClickAction}
+        onClickLine={onClickLine}
+      />
+      <Stack
+        sx={{
+          height: 'fit-content',
+          alignItems: 'flex-end',
+          marginRight: '30px',
+          p: { md: '20px', xs: '10px' },
+          flex: 0,
+        }}>
         {data && (
           <Pagination
             count={Math.ceil(data.totalCount / 8)}

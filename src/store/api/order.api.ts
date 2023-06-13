@@ -6,12 +6,13 @@ import { api } from './api'
 export const orderApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllOrders: builder.query<OrderResponseType, OrderBillsQueryRequest>({
-      query: (body) => {
+      query: ({ page, orderType, status, limit }) => {
         const params: OrderBillsQueryRequest = {}
 
-        if (body.orderType) {
-          params.orderType = body.orderType
-        }
+        if (orderType) params.orderType = orderType
+        if (page) params.page = page
+        if (status) params.status = status
+        if (limit) params.limit = limit
         return { url: '/orders', params }
       },
       onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
