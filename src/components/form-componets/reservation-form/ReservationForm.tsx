@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Form, Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
@@ -12,12 +12,11 @@ import { initialValues, tags, validationSchema } from './ReservationForm.utils'
 import s from './ReservationForm.module.scss'
 
 const ReservationForm: FC = () => {
-  const [isFormReset, setFormReset] = useState(false)
-
   const handleFormSubmit = (
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,
   ) => {
+    // TODO set action type
     const valuesForSendToDB = ({
       hours,
       minutes,
@@ -32,13 +31,13 @@ const ReservationForm: FC = () => {
 
     console.log(valuesForSendToDB(values))
     actions.resetForm()
-    setFormReset(true)
   }
 
-  const handleFormReset = (formikBag: FormikHelpers<ReservationFormType>) => {
+  const handleFormReset = (
+    values: ReservationFormType,
+    formikBag: FormikHelpers<ReservationFormType>,
+  ) => {
     formikBag.resetForm()
-    setFormReset(true)
-    console.log(isFormReset)
   }
 
   return (
@@ -49,12 +48,7 @@ const ReservationForm: FC = () => {
         onSubmit={handleFormSubmit}>
         <Form className={s.reservationForm}>
           <CheckboxTagGroup name="tags" label="Tag" data={tags} />
-          <ReservationCalendar
-            name="date"
-            label="Select date"
-            isFormReset={isFormReset}
-            setFormReset={setFormReset}
-          />
+          <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
           <PartySize label="Select party size" seats={8} name="partySize" />
           <GuestDetail />

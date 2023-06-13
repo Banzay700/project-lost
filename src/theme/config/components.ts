@@ -114,16 +114,12 @@ export const components = {
     defaultProps: {
       PaperProps: {
         style: {
-          width: '45%',
-          height: '85%',
-          top: '15%',
+          width: '40%',
           boxShadow: 'none',
         },
       },
       BackdropProps: {
         style: {
-          height: '85%',
-          top: '15%',
           backdropFilter: 'blur(2px)',
         },
       },

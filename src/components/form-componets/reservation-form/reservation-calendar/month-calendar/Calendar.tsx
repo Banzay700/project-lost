@@ -1,8 +1,7 @@
-/* eslint-disable react/no-array-index-key */
 import { FC, useCallback, useMemo, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { Stack } from '@mui/material'
-import { IconArrow } from 'assets/icons'
+import { Icon } from 'assets'
 import s from './Calendar.module.scss'
 
 interface CalendarProps {
@@ -58,28 +57,28 @@ const Calendar: FC<CalendarProps> = (props) => {
         <h3>{selectedDate.clone().format('MMM YYYY')}</h3>
         <Stack direction="row" gap="12px">
           <Stack onClick={() => setSelectedDate((date) => date.subtract(1, 'month'))}>
-            <IconArrow style={{ rotate: '180deg', cursor: 'pointer', fill: '#FF5C00' }} />
+            <Icon.Arrow style={{ rotate: '180deg', cursor: 'pointer', fill: '#FF5C00' }} />
           </Stack>
 
           <Stack onClick={() => setSelectedDate((date) => date.add(1, 'month'))}>
-            <IconArrow style={{ cursor: 'pointer', fill: '#FF5C00' }} />
+            <Icon.Arrow style={{ cursor: 'pointer', fill: '#FF5C00' }} />
           </Stack>
         </Stack>
       </div>
       <div className={s.weekDaysWrapper}>
-        {generateWeeksOfTheMonth[0].map((day, index) => (
-          <div className={s.weekDayCell} key={`week-day-${index}`}>
+        {generateWeeksOfTheMonth[0].map((day) => (
+          <div className={s.weekDayCell} key={dayjs().unix()}>
             {dayjs(day).format('dd')}
           </div>
         ))}
       </div>
-      {generateWeeksOfTheMonth.map((week, weekIndex) => (
-        <div className={s.calendarContentWrapper} key={`week-${weekIndex}`}>
-          {week.map((day, dayIndex) => (
+      {generateWeeksOfTheMonth.map((week) => (
+        <div className={s.calendarContentWrapper} key={dayjs().unix()}>
+          {week.map((day) => (
             <div
               className={s.calendarDayCell}
               style={{ color: colorVariant(day) }}
-              key={`day-${dayIndex}`}
+              key={dayjs().unix()}
               onClick={() => handleSetChosenDay(day)}>
               {day.getDate()}
             </div>

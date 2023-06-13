@@ -1,26 +1,46 @@
-import { FC } from 'react'
+import { FC, SyntheticEvent } from 'react'
+import { Stack, Typography } from '@mui/material'
+
 import { Icon } from 'assets'
-import { Stack } from '@mui/material'
+import { FadeIn } from 'utils'
 
 interface ModalContentPopupProps {
   message: string
-  isOpen: boolean
-  handleConfirm: () => void
+  handleConfirm: (e: SyntheticEvent) => void
   handleReject: () => void
 }
 
+const iconWrapperStyle = {
+  cursor: 'pointer',
+  transition: 'color 0.2s ease-in-out',
+  '&:hover': { color: '#FF5C00' },
+}
+
+const iconStyle = { width: '35px', height: '35px' }
+
 const ModalContentPopup: FC<ModalContentPopupProps> = (props) => {
-  const { message, isOpen, handleConfirm, handleReject } = props
-  return isOpen ? (
-    <Stack>
-      <Stack onClick={handleConfirm}>
-        <Icon.Check />
+  const { message, handleConfirm, handleReject } = props
+  return (
+    <FadeIn styles={{ paddingBottom: '24px' }}>
+      <Typography sx={{ paddingTop: '35px' }} align="center">
+        {message}
+      </Typography>
+      <Stack
+        sx={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          padding: '60px 0 ',
+          borderBottom: '1px solid #0000001f',
+        }}>
+        <Stack sx={iconWrapperStyle} onClick={handleConfirm}>
+          <Icon.Check style={iconStyle} />
+        </Stack>
+        <Stack sx={iconWrapperStyle}>
+          <Icon.Cross style={iconStyle} onClick={handleReject} />
+        </Stack>
       </Stack>
-      <Stack>
-        <Icon.Check onClick={handleReject} />
-      </Stack>
-    </Stack>
-  ) : null
+    </FadeIn>
+  )
 }
 
 export default ModalContentPopup

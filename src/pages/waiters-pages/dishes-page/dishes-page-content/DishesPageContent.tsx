@@ -46,7 +46,7 @@ const DishesPageContent: FC = () => {
           defaultValueInput={search || ''}
         />
       )}
-      {<DishesList dishes={dishes?.data} isLoading={isLoading} />}
+      <DishesList dishes={dishes?.data} isLoading={isLoading} />
       <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
         {dishes && (
           <Pagination

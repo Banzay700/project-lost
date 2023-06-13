@@ -1,9 +1,7 @@
 import { FC } from 'react'
 import { Card, Skeleton, Stack, Typography } from '@mui/material'
 
-interface DishCardSkeletonProps {}
-
-const DishCardSkeleton: FC<DishCardSkeletonProps> = () => {
+const DishCardSkeleton: FC = () => {
   return (
     <Card
       sx={{

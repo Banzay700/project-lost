@@ -1,14 +1,12 @@
 import { FC, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { Stack } from '@mui/material'
-import { IconCalendar } from 'assets/icons'
+import { Icon } from 'assets'
 import { WeekCalendarItem } from './WeekCalendarItem'
 
 interface WeekCalendarProps {
   startDay: Date
   handleSetChosenDay: (day: Date) => void
-  activeIndex: number | null
-  setActiveIndex: (s: number) => void
 }
 
 const generateWeek = (day: Dayjs): Date[] => {
@@ -21,7 +19,9 @@ const generateWeek = (day: Dayjs): Date[] => {
 }
 
 const WeekCalendar: FC<WeekCalendarProps> = (props) => {
-  const { handleSetChosenDay, startDay, activeIndex, setActiveIndex } = props
+  const { handleSetChosenDay, startDay } = props
+
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const handleItemClicked = (index: number, day: Date) => {
     setActiveIndex(index)
@@ -35,8 +35,7 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
 
       return (
         <WeekCalendarItem
-          // eslint-disable-next-line react/no-array-index-key
-          key={`d${i}`}
+          key={day}
           weekDay={weekDay}
           day={day}
           active={activeIndex === i}
@@ -57,7 +56,7 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
             justifyContent: 'center',
             bgcolor: 'transparent',
           }}>
-          <IconCalendar />
+          <Icon.Calendar />
         </Stack>
         {week()}
       </Stack>

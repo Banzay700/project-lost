@@ -18,14 +18,15 @@ export const WeekCalendarItem: FC<WeekCalendarItemProps> = (props) => {
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
+        gap: '2px',
         bgcolor: active ? '#FFF5EE' : 'transparent',
       }}
       onClick={onClick}>
-      <Typography fontWeight={600} color={active ? 'primary' : 'secondary'}>
-        {day}
+      <Typography variant="subtitle1" color={active ? 'primary' : 'text'}>
+        {weekDay}
       </Typography>
       <Typography fontWeight={600} color={active ? 'primary' : 'secondary'}>
-        {weekDay}
+        {day}
       </Typography>
     </Stack>
   )

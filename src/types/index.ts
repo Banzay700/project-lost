@@ -74,4 +74,5 @@ export type {
   RegistrationFormReturnType,
   CreateDishFormReturnType,
   CreateCategoryFormReturnType,
+  ReservationFormType,
 } from './ComponentsReturnType'

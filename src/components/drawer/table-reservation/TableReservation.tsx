@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { Table } from 'components/table'
+import { Table } from 'components'
+import { ReservationRequestType } from 'types'
 import { tableTitleReservation } from './tableReservation.utils'
 
 const dataMok = [
@@ -12,7 +13,12 @@ const dataMok = [
   },
 ]
 
-const TableReservation: FC = () => {
+interface TableReservationProps {
+  data?: ReservationRequestType[]
+}
+
+const TableReservation: FC<TableReservationProps> = ({ data }) => {
+  console.log(data)
   return <Table data={dataMok} tableTitles={tableTitleReservation} tableType="reservation" />
 }
 

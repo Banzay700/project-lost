@@ -6,9 +6,10 @@ interface FadeInProps {
   delay?: number
   styles?: CSSProperties
   className?: string
+  onClick?: () => void
 }
 
-const FadeIn: FC<FadeInProps> = ({ children, delay = 80, styles, className }) => {
+const FadeIn: FC<FadeInProps> = ({ children, delay = 80, styles, className, onClick }) => {
   const animationConfig = useSpring({
     from: { opacity: 0 },
     delay,
@@ -17,7 +18,7 @@ const FadeIn: FC<FadeInProps> = ({ children, delay = 80, styles, className }) =>
 
   const style = { ...animationConfig, ...styles }
   return (
-    <animated.div className={className} style={style}>
+    <animated.div className={className} style={style} onClick={onClick}>
       {children}
     </animated.div>
   )
