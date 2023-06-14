@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mui/material'
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { HeaderAdmin, SidebarLeftAdmin } from 'components/index'
+import { HeaderAdmin, SidebarLeftAdmin } from 'components'
 
 const AdminLayout: FC = () => {
   return (

@@ -3,6 +3,7 @@ import { ROUTES } from 'routes'
 
 type RootLocationPathType = {
   location: string
+  pathname: string
   isHomeLocation: boolean
   isOrdersLocation: boolean
   isBillsLocation: boolean
@@ -21,6 +22,7 @@ export const useRootLocationPath = (): RootLocationPathType => {
 
   return {
     location,
+    pathname,
     isHomeLocation,
     isOrdersLocation,
     isBillsLocation,
