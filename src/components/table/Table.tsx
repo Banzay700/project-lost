@@ -55,7 +55,7 @@ const Table: FC<TableProps> = ({
   }
 
   return (
-    <TableContainer ref={containerRef}>
+    <TableContainer ref={containerRef} sx={{ flex: 1 }}>
       <MuiTable aria-label="table" sx={{ width: '100%', minWidth: tableMinWidth }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>

@@ -22,19 +22,17 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background, i
   }
 
   return (
-    <FadeIn>
-      <List className={s.list} sx={{ background }} ref={containerRef}>
-        {sidebarItems?.map(({ title, id, picture, icon }) => (
-          <SidebarLinkItem
-            key={id}
-            label={correctionName(title)}
-            linkIconSVG={picture}
-            linkTo={`/${location}/${title.toLowerCase()}`}>
-            {icon}
-          </SidebarLinkItem>
-        ))}
-      </List>
-    </FadeIn>
+    <List className={s.list} sx={{ background }} ref={containerRef}>
+      {sidebarItems?.map(({ title, id, picture, icon }) => (
+        <SidebarLinkItem
+          key={id}
+          label={correctionName(title)}
+          linkIconSVG={picture}
+          linkTo={`/${location}/${title.toLowerCase()}`}>
+          {icon}
+        </SidebarLinkItem>
+      ))}
+    </List>
   )
 }
 
