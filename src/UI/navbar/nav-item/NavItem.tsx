@@ -15,15 +15,15 @@ interface NavbarProps {
 
 const NavItem: FC<NavbarProps> = (props) => {
   const { data, active, className, variant, fontWeight } = props
-  const { icon, text, link } = data
+  const { icon, title, link } = data
   return (
     <NavLink
       to={link}
       className={({ isActive }) => (isActive ? cn(s[className], s[active]) : s[className])}>
       {!!icon && icon}
-      {!!text && (
+      {!!title && (
         <Typography variant={variant || 'h2'} fontWeight={fontWeight || 500}>
-          {text}
+          {title}
         </Typography>
       )}
     </NavLink>

@@ -12,6 +12,7 @@ const PageActionsBar: FC<PageActionsBarProps> = ({ children }) => {
   return (
     <Stack
       sx={{
+        minHeight: isSmallScreen ? 'fit-content' : '71px',
         p: '16px 24px',
         borderBottom: '1px solid #E4E4E4',
         flexDirection: isSmallScreen ? 'column' : 'row',

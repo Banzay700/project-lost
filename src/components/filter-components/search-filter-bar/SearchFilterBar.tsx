@@ -4,7 +4,7 @@ import { FilterMenu, SearchInput } from 'UI/index'
 import { FilterMenuItemType } from 'types/index'
 
 interface SearchFilterBarProps {
-  subcategories: FilterMenuItemType[]
+  subcategories?: FilterMenuItemType[]
   defaultValueInput?: string
   defaultValueFilter?: string[]
   changeCategory: (filterValue: string[]) => void

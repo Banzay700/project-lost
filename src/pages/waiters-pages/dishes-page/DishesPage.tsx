@@ -8,18 +8,10 @@ import { DishesPageContent } from './dishes-page-content'
 const DishesPage: FC = () => {
   const { data, isLoading } = useGetCategoriesQuery(null)
 
-  if (isLoading) {
-    return <div>loading...</div>
-  }
-
-  if (!data) {
-    return <div>Server Error</div>
-  }
-
   return (
     <FadeIn styles={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
       <Box borderRight="1px solid #e4e4e4">
-        <SidebarLeftList sidebarItems={data} />
+        <SidebarLeftList sidebarItems={data} isLoading={isLoading} />
       </Box>
       <DishesPageContent />
     </FadeIn>

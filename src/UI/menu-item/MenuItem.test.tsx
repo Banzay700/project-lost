@@ -6,7 +6,7 @@ import { MenuItem } from '.'
 
 describe('testing MenuItem', () => {
   const mokMenuItem: LinkItemType = {
-    text: 'testTitle',
+    title: 'testTitle',
     icon: <div data-testid="icon">TestIcon</div>,
     link: 'testLink',
   }

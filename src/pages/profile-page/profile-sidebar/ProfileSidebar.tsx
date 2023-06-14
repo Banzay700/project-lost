@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { Navigate } from 'react-router-dom'
 
 import { ProfileAvatarForm } from 'components'
@@ -43,9 +43,16 @@ const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar, isL
         onSubmit={submitChangeAvatar}
       />
       {isLogoutButton && (
-        <Button variant="contained" size="small" startIcon={<Icon.Logout />} onClick={handleLogout}>
-          Logout
-        </Button>
+        <Box sx={{ width: '100px' }}>
+          <Button
+            variant="contained"
+            size="small"
+            startIcon={<Icon.Logout />}
+            onClick={handleLogout}
+            fullWidth>
+            Log out
+          </Button>
+        </Box>
       )}
     </Stack>
   )

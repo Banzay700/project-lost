@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { DishType } from 'types'
 import { useSmoothScrollbar } from 'hooks'
-import { generateArray } from 'utils'
+import { DishesListSkeleton } from 'UI'
 import { DishCard } from './dish-сard'
 
 import s from './DishesList.module.scss'
-import { DishCardSkeleton } from './dish-card-skeleton'
 
 interface DishesListProps {
   dishes?: DishType[]
@@ -14,11 +13,6 @@ interface DishesListProps {
 
 const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-  const newArray = generateArray(12)
-  let skeleton
-  if (isLoading) {
-    skeleton = newArray.map((item) => <DishCardSkeleton key={item} />)
-  }
 
   return (
     <div
@@ -29,7 +23,7 @@ const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
       }}
       ref={containerRef}>
       <div className={s.gridContainer}>
-        {skeleton}
+        {isLoading && <DishesListSkeleton />}
         {dishes?.map((dish) => (
           <DishCard key={dish.id} dish={dish} />
         ))}
