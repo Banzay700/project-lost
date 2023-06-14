@@ -6,6 +6,7 @@
 
 .dine-in,
 .closed,
+.done,
 .admin {
   background: #fff5ee;
   color: #ff5c00;
@@ -26,4 +27,8 @@
 .inactive {
   background: #f1f1f1;
   color: #969696;
+}
+.cancelled{
+  background: rgba(255, 228, 228, 0.75);
+  color: red;
 }

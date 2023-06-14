@@ -1,8 +1,14 @@
 import { CSSProperties, FC, useEffect, useState } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
-import { BillsType, DishType, OrderType, TableDataItem, UserType } from 'types'
-import { Reservation } from 'types/ComponetTableType/TableDataItem'
+import {
+  BillsType,
+  DishType,
+  OrderType,
+  TableDataItem,
+  UserType,
+  ReservationRequestType,
+} from 'types'
 import { TableLineSkeleton } from 'UI'
 import { TableDishLine } from './table-dish-line'
 import { TableHead } from './table-head'
@@ -49,7 +55,7 @@ const Table: FC<TableProps> = ({
   }
 
   return (
-    <TableContainer ref={containerRef} sx={{ height: '100%' }}>
+    <TableContainer ref={containerRef}>
       <MuiTable aria-label="table" sx={{ width: '100%', minWidth: tableMinWidth }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>
@@ -78,7 +84,7 @@ const Table: FC<TableProps> = ({
             ))}
           {tableType === 'reservation' &&
             data?.map((element) => (
-              <TableReservationLine element={element as Reservation} key={element?.id} />
+              <TableReservationLine element={element as ReservationRequestType} key={element?.id} />
             ))}
           {tableType === 'users' &&
             onClickAction &&

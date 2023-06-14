@@ -14,6 +14,8 @@ interface ColumnInfoChipProps {
     | 'courier'
     | 'active'
     | 'inactive'
+    | 'cancelled'
+    | 'done'
   columnAlign?: 'center' | 'left' | 'right'
 }
 
