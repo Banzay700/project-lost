@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { Logo } from 'UI/logo'
 import { ROUTES } from 'routes/routes.utils'
 import { Button } from 'UI/button'
@@ -24,13 +24,16 @@ const HeaderAdmin: FC = () => {
         borderBottom: '1px solid #e4e4e4',
       }}>
       <Logo link={`/${ROUTES.ADMIN_PANEL}`} view="both" />
-      <Button
-        variant="contained"
-        size="small"
-        endIcon={<Icon.ArrowLeft style={{ transform: 'scale(-1, 1)' }} />}
-        onClick={handleNavigateFood}>
-        Food
-      </Button>
+      <Box width="100px">
+        <Button
+          variant="contained"
+          size="small"
+          endIcon={<Icon.ArrowLeft style={{ transform: 'scale(-1, 1)' }} />}
+          onClick={handleNavigateFood}
+          fullWidth>
+          Food
+        </Button>
+      </Box>
     </Stack>
   )
 }

@@ -5,7 +5,7 @@ import { FilterMenuItemType } from 'types'
 import { FilterMenuItem } from './filter-menu-item'
 
 interface FilterMenuProps {
-  filterMenuItems: FilterMenuItemType[]
+  filterMenuItems?: FilterMenuItemType[]
   defaultValue?: string[]
   onChange: (value: string[]) => void
 }
@@ -21,7 +21,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
     } else if (filterItems.some((item) => item === value)) {
       setFilterItems((prevState) => prevState.filter((item) => item !== value))
       onChange(filterItems.filter((item) => item !== value))
-    } else if (filterMenuItems.length === withoutAllCategory.length + 1) {
+    } else if (filterMenuItems?.length === withoutAllCategory.length + 1) {
       setFilterItems(['all'])
       onChange(['all'])
     } else {
@@ -42,7 +42,9 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
   }, [defaultValue])
 
   const choiceHandle =
-    filterMenuItems.length > 2 ? handleChangeFilter : handleChangeFilterWhenTwoItem
+    filterMenuItems && filterMenuItems.length > 2
+      ? handleChangeFilter
+      : handleChangeFilterWhenTwoItem
 
   return (
     <Stack sx={{ gap: '8px', width: '100%', overflowX: 'auto' }} direction="row" flexWrap="wrap">
@@ -52,7 +54,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
         isSelected={filterItems.some((item) => item === 'all')}
         onChange={choiceHandle}
       />
-      {filterMenuItems.map(({ value, label }) => (
+      {filterMenuItems?.map(({ value, label }) => (
         <FilterMenuItem
           key={value}
           value={value}

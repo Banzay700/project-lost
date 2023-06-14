@@ -10,12 +10,21 @@ interface MenuProps {
 }
 
 const MenuItem: FC<MenuProps> = ({ data, className, onClose }) => {
-  const { link, text, icon } = data
+  const { link, title, icon } = data
   return (
-    <MenuItemMui onClick={onClose}>
-      <Link className={className} to={link}>
+    <MenuItemMui onClick={onClose} sx={{ minWidth: '200px', p: 0 }}>
+      <Link
+        className={className}
+        to={link}
+        style={{
+          width: '100%',
+          padding: '6px 10px',
+          display: 'flex',
+          gap: '10px',
+          alignItems: 'center',
+        }}>
         {!!icon && icon}
-        {text}
+        {title}
       </Link>
     </MenuItemMui>
   )

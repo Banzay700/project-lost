@@ -37,15 +37,13 @@ const DishesPageContent: FC = () => {
 
   return (
     <Stack sx={{ width: '100%', height: '100%', background: '#F8F9FD' }}>
-      {filterMenu && (
-        <SearchFilterBar
-          subcategories={filterMenu}
-          changeCategory={handleFilterCategory}
-          changeTitle={handleFilterTitle}
-          defaultValueFilter={subCategory?.split(',')}
-          defaultValueInput={search || ''}
-        />
-      )}
+      <SearchFilterBar
+        subcategories={filterMenu}
+        changeCategory={handleFilterCategory}
+        changeTitle={handleFilterTitle}
+        defaultValueFilter={subCategory?.split(',')}
+        defaultValueInput={search || ''}
+      />
       <DishesList dishes={dishes?.data} isLoading={isLoading} />
       <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
         {dishes && (

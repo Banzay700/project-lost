@@ -18,14 +18,9 @@ export { FilterMenu } from './filter-menu'
 export { BlurButton } from './blur-button'
 export { CheckboxButtonInGroup } from './checkbox-button-group'
 export { PageActionsBar } from './page-actions-bar'
-export {
-  TableNumberColumn,
-  ColumnAction,
-  ColumnText,
-  ColumnInfoChip,
-  ColumnSkeleton,
-} from './table-row-columns'
+export { TableNumberColumn, ColumnAction, ColumnText, ColumnInfoChip } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'
 export { RadioButtonWithoutIcon } from './radio-button-without-icon'
 export { ModalContentPopup } from './modal-content-popup'
+export { SidebarLinkListSkeleton, TableLineSkeleton, DishesListSkeleton } from './skeleton'

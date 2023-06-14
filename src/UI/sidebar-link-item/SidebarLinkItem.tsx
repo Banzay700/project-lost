@@ -18,7 +18,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   className,
   children,
 }) => {
-  const isThameLgSize = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'))
+  const isThemeLgSize = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'))
   let iconSVG
   if (linkIconSVG) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -35,7 +35,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
         className={({ isActive }) => (isActive ? cn(s.link, s.activeLink) : s.link)}>
         {children}
         {iconSVG && <Stack dangerouslySetInnerHTML={{ __html: iconSVG }} />}
-        {isThameLgSize && (
+        {isThemeLgSize && (
           <Typography variant="subtitle1" component="p">
             {label}
           </Typography>

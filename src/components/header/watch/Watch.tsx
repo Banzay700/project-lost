@@ -1,8 +1,9 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
-import { Stack, Avatar, Box, Menu, Typography } from '@mui/material'
+import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
 import { Button, MenuItem } from 'UI'
 import { UserType } from 'types'
-import { stringAvatar, menuData, formatDateTime } from './watch.utils'
+import { useLogoutMutation } from 'store/api'
+import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
 import s from './Watch.module.scss'
 
 interface WatchProps {
@@ -12,6 +13,7 @@ interface WatchProps {
 const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date())
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [logout] = useLogoutMutation()
   const open = Boolean(anchorEl)
 
   const { userImage, firstName, secondName } = dataUser
@@ -22,6 +24,11 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
   const handleClickAvatar = (e: MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
 
   const handleCloseAvatar = () => setAnchorEl(null)
+
+  const handleLogout = () => {
+    handleCloseAvatar()
+    logout()
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,7 +59,11 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (
-            <MenuItem data={item} key={item.text} onClose={handleCloseAvatar} />
+            <MenuItem data={item} key={item.title} onClose={handleCloseAvatar} />
+          ))}
+          <Divider />
+          {menuDataAction.map((item) => (
+            <MenuItem data={item} key={item.title} onClose={handleLogout} />
           ))}
         </Menu>
       </Box>

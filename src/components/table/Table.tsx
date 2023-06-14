@@ -3,13 +3,13 @@ import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
 import { BillsType, DishType, OrderType, TableDataItem, UserType } from 'types'
 import { Reservation } from 'types/ComponetTableType/TableDataItem'
+import { TableLineSkeleton } from 'UI'
 import { TableDishLine } from './table-dish-line'
 import { TableHead } from './table-head'
 import { TableOrdersLine } from './table-orders-line'
 import { TableBillsLine } from './table-bills-line'
 import { TableReservationLine } from './table-reservation-line'
 import { TableUsersLine } from './table-users-line'
-import { TableSkeletonLine } from './table-skeleton-line'
 
 interface TableProps {
   data: TableDataItem[] | undefined
@@ -45,9 +45,7 @@ const Table: FC<TableProps> = ({
   let skeleton
 
   if (isLoading) {
-    skeleton = ['100', '200', '300', '400', '500', '600', '700', '800'].map((value) => (
-      <TableSkeletonLine key={value} size={tableTitles} />
-    ))
+    skeleton = <TableLineSkeleton sizeColumn={tableTitles} />
   }
 
   return (

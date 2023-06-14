@@ -1,4 +1,5 @@
-import { LinkItemType } from 'types/ComponentsItemType/LinkItemType'
+import { LinkItemType } from 'types'
+import { Icon } from 'assets'
 
 const stringToColor = (string: string): string => {
   let hash = 0
@@ -40,10 +41,15 @@ export const formatDateTime = (date: Date) => {
 export const menuData: LinkItemType[] = [
   {
     link: '/profile',
-    text: 'Profile',
+    title: 'Profile',
+    icon: <Icon.User width={24} height={24} />,
   },
+]
+
+export const menuDataAction: LinkItemType[] = [
   {
     link: '/login',
-    text: 'Log out',
+    title: 'Log out',
+    icon: <Icon.Logout width={24} height={24} />,
   },
 ]
