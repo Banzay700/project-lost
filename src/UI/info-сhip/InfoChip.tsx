@@ -4,7 +4,19 @@ import { spacesBetweenCapitalsLetters } from 'utils'
 import s from './InfoChip.module.scss'
 
 interface InfoTagProps {
-  type: string | undefined
+  type?:
+    | 'dineIn'
+    | 'takeAway'
+    | 'delivery'
+    | 'opened'
+    | 'closed'
+    | 'admin'
+    | 'waiter'
+    | 'courier'
+    | 'active'
+    | 'inactive'
+    | 'cancelled'
+    | 'done'
 }
 
 const InfoChip: FC<InfoTagProps> = ({ type }) => {
