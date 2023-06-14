@@ -61,24 +61,24 @@ const Calendar: FC<CalendarProps> = (props) => {
           </Stack>
 
           <Stack onClick={() => setSelectedDate((date) => date.add(1, 'month'))}>
-            <Icon.Arrow style={{ cursor: 'pointer', fill: '#FF5C00' }} />
+            <Icon.Arrow style={{ cursor: 'pointer', fill: '#FF5C00', marginTop: '-1px' }} />
           </Stack>
         </Stack>
       </div>
       <div className={s.weekDaysWrapper}>
         {generateWeeksOfTheMonth[0].map((day) => (
-          <div className={s.weekDayCell} key={dayjs().unix()}>
+          <div className={s.weekDayCell} key={dayjs(day).format('DD/MM')}>
             {dayjs(day).format('dd')}
           </div>
         ))}
       </div>
       {generateWeeksOfTheMonth.map((week) => (
-        <div className={s.calendarContentWrapper} key={dayjs().unix()}>
+        <div className={s.calendarContentWrapper} key={week.toString()}>
           {week.map((day) => (
             <div
               className={s.calendarDayCell}
               style={{ color: colorVariant(day) }}
-              key={dayjs().unix()}
+              key={dayjs(day).format('DD/MM')}
               onClick={() => handleSetChosenDay(day)}>
               {day.getDate()}
             </div>
