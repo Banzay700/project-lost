@@ -6,7 +6,11 @@ import { useLazyGetReservationsByDateQuery } from 'store/api'
 import { SelectDateWrapper } from './select-date-wrapper'
 import { TableReservation } from './table-reservation'
 
-const ReservationInfoList: FC = () => {
+interface ReservationInfoListProps {
+  handleShowForm: () => void
+}
+
+const ReservationInfoList: FC<ReservationInfoListProps> = ({ handleShowForm }) => {
   const [trigger, { data }] = useLazyGetReservationsByDateQuery()
 
   const handleCalendarValue = (value: string) => {
@@ -23,7 +27,7 @@ const ReservationInfoList: FC = () => {
         justifyContent="space-between"
         sx={{ height: '100%', p: '33px 24px 24px' }}>
         <TableReservation data={data} />
-        <Button size="default" variant="contained">
+        <Button size="default" variant="contained" onClick={handleShowForm}>
           Add new reservation
         </Button>
       </Stack>

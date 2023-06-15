@@ -6,7 +6,7 @@ import { ModalContentPopup } from 'UI'
 import { ROUTES } from 'routes'
 import { ReservationCanvasType } from 'types'
 import { useLazyGetTablesCanvasQuery, useUpdateReservationMutation } from 'store/api'
-import { convertToDate, prepareReservationData } from './reservationModalContent.utils'
+import { prepareReservationData } from './reservationModalContent.utils'
 import { ReservationModalInfo } from './reservation-modal-info'
 
 interface ReservationModalContentProps {
@@ -18,9 +18,8 @@ const ReservationModalContent: FC<ReservationModalContentProps> = (props) => {
   const { reservation, onCloseModal } = props
   const [popup, setPopup] = useState(false)
   const navigate = useNavigate()
-  const { date, time } = convertToDate(reservation.booking)
   const [updateReservation] = useUpdateReservationMutation()
-  const [trigger] = useLazyGetTablesCanvasQuery()
+  const [getTableCanvasDataTrigger] = useLazyGetTablesCanvasQuery()
 
   const handleOpenOrder = () => {
     updateReservation({ ...reservation, status: 'done' })
@@ -30,13 +29,13 @@ const ReservationModalContent: FC<ReservationModalContentProps> = (props) => {
   const handleCancelReservation = (e: SyntheticEvent) => {
     e.stopPropagation()
     updateReservation({ ...reservation, status: 'cancelled' })
-    trigger()
+    getTableCanvasDataTrigger()
     onCloseModal()
   }
 
   const handleTogglePopup = () => setPopup(!popup)
 
-  const reservationInfo = prepareReservationData({ reservation, date, time })
+  const reservationInfo = prepareReservationData(reservation)
 
   return (
     <Box>

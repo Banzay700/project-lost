@@ -52,4 +52,8 @@ export {
   useRegistrationMutation,
 } from './users.api'
 
-export { useUpdateReservationMutation, useLazyGetReservationsByDateQuery } from './reservation.api'
+export {
+  useCreateReservationMutation,
+  useUpdateReservationMutation,
+  useLazyGetReservationsByDateQuery,
+} from './reservation.api'

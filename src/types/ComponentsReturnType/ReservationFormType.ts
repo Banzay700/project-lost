@@ -1,10 +1,10 @@
 export interface ReservationFormType {
-  tags: string[]
+  tags?: string[]
   date: string
   hours: string
   minutes: string
-  partySize: number
-  name: string
+  persons: number
+  clientName: string
   email: string
   phoneNumber: string
   note: string

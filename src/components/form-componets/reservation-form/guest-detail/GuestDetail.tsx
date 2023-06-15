@@ -9,7 +9,7 @@ const GuestDetail: FC = () => {
         Guest detail
       </Typography>
       <Stack sx={{ gap: '12px' }}>
-        <Input type="text" placeholder="Full name" name="name" label="Full name" />
+        <Input type="text" placeholder="Full name" name="clientName" label="Full name" />
       </Stack>
       <Stack flexDirection="row" gap="22px" justifyContent="space-between">
         <Stack sx={{ gap: '12px' }}>

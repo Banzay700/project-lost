@@ -11,9 +11,15 @@ interface DrawerProps {
 const Drawer: FC<DrawerProps> = ({ state, toggleDrawer }) => {
   const [isShowForm, setShowForm] = useState(false)
 
+  const handleShowForm = () => setShowForm(!isShowForm)
+
   return (
     <SwipeableDrawer anchor="right" open={state} onClose={toggleDrawer} onOpen={toggleDrawer}>
-      {isShowForm ? <ReservationForm cancelHandleFunc={setShowForm} /> : <ReservationInfoList />}
+      {isShowForm ? (
+        <ReservationForm cancelHandleFunc={handleShowForm} />
+      ) : (
+        <ReservationInfoList handleShowForm={handleShowForm} />
+      )}
     </SwipeableDrawer>
   )
 }

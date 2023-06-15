@@ -7,7 +7,7 @@ import {
   OrderType,
   TableDataItem,
   UserType,
-  ReservationRequestType,
+  ReservationResponseType,
 } from 'types'
 import { TableLineSkeleton } from 'UI'
 import { TableDishLine } from './table-dish-line'
@@ -84,7 +84,10 @@ const Table: FC<TableProps> = ({
             ))}
           {tableType === 'reservation' &&
             data?.map((element) => (
-              <TableReservationLine element={element as ReservationRequestType} key={element?.id} />
+              <TableReservationLine
+                element={element as ReservationResponseType}
+                key={element?.id}
+              />
             ))}
           {tableType === 'users' &&
             onClickAction &&
