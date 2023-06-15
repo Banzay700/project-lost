@@ -34,7 +34,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ onClick }) => {
       </div>
       <Stack sx={{ gap: '24px', p: '18px 16px', borderTop: '1px solid #e4e4e4' }}>
         <OrderSummaryWrapper tax={10} total={total} />
-        <Button variant="contained" size="default" type="submit" fullWidth onClick={onClick}>
+        <Button variant="contained" size="medium" type="submit" fullWidth onClick={onClick}>
           {activeOrder.storeStatus === 'update' ? 'Update order' : 'Create New Order'}
         </Button>
       </Stack>

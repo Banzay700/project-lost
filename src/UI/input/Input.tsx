@@ -1,12 +1,11 @@
 import { ChangeEvent, FC } from 'react'
-import { TextField, TextFieldProps } from '@mui/material'
+import { TextFieldProps } from '@mui/material'
 import { useField } from 'formik'
-import cn from 'classnames'
 
 import { InputVariantItemType } from 'types'
 import { FadeIn } from 'utils'
 import { IconWrapper } from './icon-wrapper'
-import s from './Input.module.scss'
+import { InputWrapper } from './Input.styled'
 
 type InputProps = InputVariantItemType & {
   placeholder: string
@@ -39,7 +38,7 @@ const Input: FC<InputProps> = (props) => {
   } = props
   const [field, meta] = useField(name)
 
-  const inputClasses = cn({ [s.withIcon]: icon, [s.outlined]: outlined })
+  const inputStyle = icon ? 'withIcon' : 'outlined'
   const textFieldConfig: TextFieldProps = {
     placeholder,
     label,
@@ -51,12 +50,12 @@ const Input: FC<InputProps> = (props) => {
     ...field,
     fullWidth: true,
     InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},
-    className: inputClasses,
     inputProps: {
       maxLength,
       onChange,
     },
   }
+  console.log('test')
 
   if (meta.touched && meta.error) {
     textFieldConfig.error = true
@@ -65,7 +64,11 @@ const Input: FC<InputProps> = (props) => {
 
   return (
     <FadeIn delay={50} styles={{ width: '100%' }}>
-      <TextField {...textFieldConfig} inputRef={(input) => focus && input && input.focus()} />
+      <InputWrapper
+        {...textFieldConfig}
+        inputStyle={inputStyle}
+        inputRef={(input) => focus && input && input.focus()}
+      />
     </FadeIn>
   )
 }

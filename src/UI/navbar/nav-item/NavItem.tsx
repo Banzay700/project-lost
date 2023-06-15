@@ -16,7 +16,7 @@ const NavItem: FC<NavbarProps> = (props) => {
   const { data, active, className, variant, fontWeight } = props
   const { icon, title, link } = data
   return (
-    <CustomNavLink linkTo={link} className={s[className]} isActiveClassName={s[active]}>
+    <CustomNavLink linkTo={link}>
       {!!icon && icon}
       {!!title && (
         <Typography variant={variant || 'h2'} fontWeight={fontWeight || 500}>

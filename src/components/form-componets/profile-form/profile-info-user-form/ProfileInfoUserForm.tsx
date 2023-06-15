@@ -42,7 +42,7 @@ const ProfileInfoUserForm: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
         {isDisabled ? (
           <Button
             variant="outlined"
-            size="default"
+            size="medium"
             fullWidth
             onClick={handleIsDisabledInput}
             type="button">
@@ -52,13 +52,13 @@ const ProfileInfoUserForm: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
           <Stack direction="row" sx={{ gap: '20px' }}>
             <Button
               variant="outlined"
-              size="default"
+              size="medium"
               type="button"
               fullWidth
               onClick={handleIsDisabledInput}>
               Cancel
             </Button>
-            <Button variant="contained" size="default" type="submit" fullWidth>
+            <Button variant="contained" size="medium" type="submit" fullWidth>
               Save change
             </Button>
           </Stack>

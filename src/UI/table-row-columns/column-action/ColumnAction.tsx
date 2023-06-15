@@ -6,7 +6,7 @@ interface ColumnActionProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void // TODO: ?
   title: string
   columnAlign?: 'center' | 'left' | 'right'
-  size?: 'small' | 'default'
+  size?: 'small' | 'medium'
   variant?: 'contained' | 'outlined'
   startIcon?: ReactNode
   endIcon?: ReactNode

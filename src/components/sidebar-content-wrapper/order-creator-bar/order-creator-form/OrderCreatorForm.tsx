@@ -71,7 +71,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
           </Stack>
           <Stack sx={{ height: '100%' }}>
             <InfoBox tableNumber={selectValue} />
-            <Button variant="contained" size="default" type="submit" disabled={disabled} fullWidth>
+            <Button variant="contained" size="medium" type="submit" disabled={disabled} fullWidth>
               Open New Order
             </Button>
           </Stack>

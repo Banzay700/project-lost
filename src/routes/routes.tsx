@@ -56,7 +56,7 @@ const AppRoutes = () => {
           </>
         ) : (
           <>
-            <Route path="/" element={<Navigate to={ROUTES.LOGIN} />} />
+            <Route index element={<Navigate to={ROUTES.LOGIN} />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
           </>
         )}

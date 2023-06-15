@@ -26,7 +26,7 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
     <Stack direction="row" gap={4} sx={{ maxHeight: '86px' }}>
       <Button
         variant="contained"
-        size="default"
+        size="medium"
         color={tipActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Tip />}
@@ -39,7 +39,7 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
       </Button>
       <Button
         variant="contained"
-        size="default"
+        size="medium"
         color={emailActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Email />}

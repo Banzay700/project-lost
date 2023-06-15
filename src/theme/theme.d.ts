@@ -21,6 +21,10 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/styles' {
   interface TypeText {
     addition: string
+    gradient: string
+    border: {
+      primary: string
+    }
   }
 }
 

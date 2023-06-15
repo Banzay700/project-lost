@@ -1,7 +1,6 @@
 import { FC } from 'react'
-import { Chip } from '@mui/material'
 import { spacesBetweenCapitalsLetters } from 'utils'
-import s from './InfoChip.module.scss'
+import { InfoChipWrapper } from './InfoChip.styled'
 
 interface InfoTagProps {
   type?:
@@ -21,7 +20,7 @@ interface InfoTagProps {
 
 const InfoChip: FC<InfoTagProps> = ({ type }) => {
   const label = spacesBetweenCapitalsLetters(type)
-  return <Chip label={label} className={type && s[type]} />
+  return <InfoChipWrapper label={label} type={type} />
 }
 
 export default InfoChip

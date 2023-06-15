@@ -59,7 +59,7 @@ const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
             focus={isFocus}
           />
           <DigitButtonsGroup getValue={getPassword} />
-          <Button variant="contained" size="default" fullWidth>
+          <Button variant="contained" size="medium" fullWidth>
             Login
           </Button>
         </Stack>

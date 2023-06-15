@@ -63,7 +63,7 @@ const Modal: FC<ModalProps> = ({
           {!isIconExit && (
             <Button
               variant="outlined"
-              size="default"
+              size="medium"
               type="button"
               onClick={handleClose}
               className={s.button}>
@@ -72,7 +72,7 @@ const Modal: FC<ModalProps> = ({
           )}
           <Button
             variant="contained"
-            size="default"
+            size="medium"
             type="submit"
             linkageToForm={linkageToForm}
             onClick={handleSubmit}

@@ -34,7 +34,7 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
         {chosenEmployee ? (
           <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
         ) : (
-          <Button variant="outlined" size="default" className={s.buttonBlur}>
+          <Button variant="outlined" size="medium" className={s.buttonBlur}>
             Login
           </Button>
         )}

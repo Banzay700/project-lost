@@ -35,9 +35,8 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   return (
     <ListItem className={cn(s.item, className)}>
       <CustomNavLink
+        variant="sidebarTabs"
         linkTo={linkTo}
-        className={s.link}
-        isActiveClassName={s.activeLink}
         registeredPathname={pathname}
         registeredLinkTo={registeredLinkTo}>
         {children}

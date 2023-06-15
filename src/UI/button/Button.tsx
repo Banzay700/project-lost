@@ -1,12 +1,10 @@
-import ButtonMUI from '@mui/material/Button'
 import { FC, PropsWithChildren, ReactElement, ReactNode, MouseEvent } from 'react'
 import { Typography, Stack } from '@mui/material'
-import cn from 'classnames'
-import s from './Button.module.scss'
+import { ButtonWrapper } from './Button.styled'
 
 interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
-  size: 'small' | 'default'
+  size: 'small' | 'medium'
   color?: 'secondary' | 'primary'
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
@@ -41,21 +39,16 @@ const Button: FC<ButtonProps> = ({
   linkageToForm,
 }) => {
   const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
-  const buttonStyles = cn(
-    className,
-    s.wrapper,
-    { [s.sizeSmall]: size === 'small' },
-    { [s.sizeDefault]: size === 'default' },
-  )
 
   return (
-    <ButtonMUI
+    <ButtonWrapper
+      size={size}
       variant={variant}
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
       type={type || 'submit'}
-      className={buttonStyles}
+      className={className}
       fullWidth={fullWidth}
       disableRipple={disableRipple}
       disabled={disabled}
@@ -69,7 +62,7 @@ const Button: FC<ButtonProps> = ({
           </Typography>
         )}
       </Stack>
-    </ButtonMUI>
+    </ButtonWrapper>
   )
 }
 
