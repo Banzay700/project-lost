@@ -1,13 +1,16 @@
 import { FC } from 'react'
-import { Table } from 'components/index'
-import { ReservationRequestType } from 'types/index'
-import { tableTitleReservation } from './tableReservation.utils'
+import { Table } from 'components'
+import { ReservationResponseType } from 'types'
+import { prepareDataReservation, tableTitleReservation } from './tableReservation.utils'
 
 interface TableReservationProps {
-  data: ReservationRequestType[] | undefined
+  data: ReservationResponseType[] | undefined
 }
 
 const TableReservation: FC<TableReservationProps> = ({ data }) => {
+  // const testData = prepareDataReservation(data)
+  // console.log(testData)
+  // console.log(data)
   return <Table data={data} tableTitles={tableTitleReservation} tableType="reservation" />
 }
 

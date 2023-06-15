@@ -1,6 +1,7 @@
 export type ReservationCanvasType = {
   id: string
-  booking: number
+  date: string
+  time: string
   persons: number
   clientName: string
   phoneNumber: string

@@ -1,20 +1,12 @@
-type TableItems = {
-  id: string
-  number: number
-  seats: number
-  sector: number
-  status: string
-}
-
 export type ReservationRequestType = {
-  id: string
-  booking: number
+  tags?: string[]
+  table: string
+  date: string
+  time: string
+  persons: number
   clientName: string
-  phoneNumber: string
-  status: 'cancelled' | 'done' | 'active'
-  table?: TableItems
   email?: string
-  visitTag?: string
-  notes?: string
+  phoneNumber: string
+  note?: string
   user?: string
 }

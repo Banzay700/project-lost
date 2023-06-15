@@ -1,17 +1,30 @@
+import dayjs from 'dayjs'
 import { array, number, object, string } from 'yup'
-import { ReservationFormType } from 'types/ComponentsReturnType'
+import { ReservationFormType, TableType } from 'types'
 
 export const initialValues: Partial<ReservationFormType> = {
   tags: [],
   date: '',
   hours: '',
   minutes: '',
-  partySize: 0,
-  name: '',
+  persons: 0,
+  clientName: '',
   email: '',
   phoneNumber: '',
   note: '',
 }
+
+export const validationSchema = object().shape({
+  tags: array(),
+  date: string().required(),
+  hours: number().integer().min(0).max(24).required(),
+  minutes: number().integer().min(0).max(60).required(),
+  persons: number(),
+  clientName: string().required(),
+  email: string().email(),
+  phoneNumber: string().min(10).required(),
+  note: string(),
+})
 
 export const tags = [
   { value: 'vip', title: 'VIP' },
@@ -21,14 +34,14 @@ export const tags = [
   { value: 'firstTime', title: 'First time' },
 ]
 
-export const validationSchema = object().shape({
-  tags: array(),
-  date: string().required(),
-  hours: number().integer().min(0).max(24).required(),
-  minutes: number().integer().min(0).max(60).required(),
-  partySize: number(),
-  name: string().required(),
-  email: string().email(),
-  phoneNumber: string().min(10),
-  note: string(),
-})
+export const prepareReservationData = (values: ReservationFormType, activeTable: TableType) => {
+  const { date, hours, minutes, ...rest } = values
+  const time = `${hours}:${minutes}`
+
+  return {
+    ...rest,
+    time,
+    date: dayjs(date).format('YYYY-MM-DD'),
+    table: activeTable.id,
+  }
+}

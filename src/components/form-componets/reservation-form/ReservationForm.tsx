@@ -2,43 +2,45 @@ import { FC } from 'react'
 import { Form, Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
-import { ReservationFormType } from 'types/ComponentsReturnType'
-import { CheckboxTagGroup } from 'components/input-form/checkbox-tag-group'
+
+import { CheckboxTagGroup } from 'components'
+import { useReservationReducer } from 'hooks'
+import { ReservationFormType } from 'types'
+import { useCreateReservationMutation, useLazyGetTablesCanvasQuery } from 'store/api'
 import { PartySize } from './party-size'
 import { ReservationCalendar } from './reservation-calendar'
 import { ReservationTime } from './reservation-time'
 import { GuestDetail } from './guest-detail'
-import { initialValues, tags, validationSchema } from './ReservationForm.utils'
+import {
+  initialValues,
+  prepareReservationData,
+  tags,
+  validationSchema,
+} from './ReservationForm.utils'
 import s from './ReservationForm.module.scss'
 
 interface ReservationFormProps {
-  cancelHandleFunc: (status: boolean) => void
+  cancelHandleFunc: () => void
 }
 
 const ReservationForm: FC<ReservationFormProps> = (props) => {
   const { cancelHandleFunc } = props
+  const { activeTable } = useReservationReducer()
+  const [addNewReservation] = useCreateReservationMutation()
+  const [getTableCanvasDataTrigger] = useLazyGetTablesCanvasQuery()
 
   const handleFormSubmit = (
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,
   ) => {
-    const valuesForSendToDB = ({
-      hours,
-      minutes,
-      ...rest
-    }: {
-      hours: string
-      minutes: string
-    }) => ({
-      ...rest,
-      time: `${hours}:${minutes}`,
-    })
+    const reservationInfo = prepareReservationData(values, activeTable)
 
-    console.log(valuesForSendToDB(values))
+    addNewReservation(reservationInfo)
+    getTableCanvasDataTrigger()
     actions.resetForm()
   }
 
-  const handleFormReset = () => cancelHandleFunc(false)
+  const handleFormReset = () => cancelHandleFunc()
 
   return (
     <Stack style={{ height: '100% ' }} justifyContent="center" alignItems="center">
@@ -50,7 +52,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
           <CheckboxTagGroup name="tags" label="Tag" data={tags} />
           <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
-          <PartySize label="Select party size" seats={8} name="partySize" />
+          <PartySize label="Select party size" seats={8} name="persons" />
           <GuestDetail />
           <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
             <Button
