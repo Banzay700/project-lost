@@ -14,7 +14,6 @@ export const useRelocateDefaultLocation = ({
 
   useEffect(() => {
     if (!isParams) {
-      console.log('navigate')
       navigate(relocateTo)
     }
   }, [isParams, relocateTo, navigate])

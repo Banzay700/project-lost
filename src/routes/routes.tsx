@@ -56,11 +56,11 @@ const AppRoutes = () => {
           </>
         ) : (
           <>
-            <Route index element={<Navigate to={ROUTES.LOGIN} />} />
+            <Route path="/" element={<Navigate to={ROUTES.LOGIN} />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
           </>
         )}
-        <Route path="*" element={<div>Not Found</div>} />
+        <Route index element={<div>Not Found</div>} />
       </Route>
     </Routes>
   )

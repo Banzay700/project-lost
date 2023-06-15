@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { NavLink } from 'react-router-dom'
 import { Typography } from '@mui/material'
-import cn from 'classnames'
-import { LinkItemType } from 'types/index'
+import { LinkItemType } from 'types'
+import { CustomNavLink } from 'UI'
 import s from './NavItem.module.scss'
 
 interface NavbarProps {
@@ -17,16 +16,14 @@ const NavItem: FC<NavbarProps> = (props) => {
   const { data, active, className, variant, fontWeight } = props
   const { icon, title, link } = data
   return (
-    <NavLink
-      to={link}
-      className={({ isActive }) => (isActive ? cn(s[className], s[active]) : s[className])}>
+    <CustomNavLink linkTo={link} className={s[className]} isActiveClassName={s[active]}>
       {!!icon && icon}
       {!!title && (
         <Typography variant={variant || 'h2'} fontWeight={fontWeight || 500}>
           {title}
         </Typography>
       )}
-    </NavLink>
+    </CustomNavLink>
   )
 }
 

@@ -10,7 +10,6 @@ export const useParamsSearchFilter = (params: string) => {
   const page = searchParams.get('page')
 
   const handleFilterCategory = (value: string[]) => {
-    console.log(value)
     if (value.some((item) => item !== 'all')) {
       searchParams.set(params, value.join(','))
       searchParams.set('page', '1')
