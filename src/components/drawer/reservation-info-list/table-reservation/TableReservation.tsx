@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Table } from 'components'
 import { ReservationResponseType } from 'types'
-import { prepareDataReservation, tableTitleReservation } from './tableReservation.utils'
+import { tableTitleReservation } from './tableReservation.utils'
 
 interface TableReservationProps {
   data: ReservationResponseType[] | undefined
