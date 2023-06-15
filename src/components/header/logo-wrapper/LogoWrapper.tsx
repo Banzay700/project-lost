@@ -6,11 +6,14 @@ import { Button, Logo } from 'UI'
 import { Icon } from 'assets'
 import { UserType } from 'types'
 import { ROUTES } from 'routes/routes.utils'
+import { useOrderReducer } from 'hooks/useOrderReducer.hook'
 
 const LogoWrapper: FC<UserType> = ({ role }) => {
   const navigate = useNavigate()
+  const { clearNewOrderState } = useOrderReducer()
 
   const handleGoToAdminPanel = () => {
+    clearNewOrderState()
     navigate(ROUTES.ADMIN_PANEL)
   }
 
