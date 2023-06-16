@@ -1,11 +1,12 @@
 import { FC } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 import { TableType } from 'types'
 import { useReservationReducer } from 'hooks/useReservationReducer.hook'
 import { ChairsPair } from './chairs-pair'
 import { ChairLine } from './chair-line'
 import { ReservationInfo } from './reservation-info'
+import { TableText, TableWrapper } from './Table.styled'
 
 interface TableProps {
   table: TableType
@@ -20,37 +21,16 @@ const Table: FC<TableProps> = ({ table }) => {
     addTableToStore(table)
   }
 
-  const tableStyles = {
-    p: '22px',
-    borderRadius: '16px',
-    bgcolor: ' #ffffff',
-    border: '2px solid',
-    color: isSelected ? '#ff5c00' : '#e4e4e4',
-    alignItems: 'center',
-    cursor: 'pointer',
-    position: 'relative',
-  }
-
-  const tableTextStyles = {
-    width: { xs: '64px', lg: '84px' },
-    height: { xs: '64px', lg: '84px' },
-    color: reservation ? '#ff5c00' : '#e4e4e4',
-    bgcolor: reservation ? '#fff5ee' : '#ecf6ff',
-    borderRadius: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-
   return (
     <Box sx={{ display: 'inlineBlock', position: 'relative' }} onClick={handleSelected}>
       <ChairsPair />
       <ChairLine specifiedSeatsQuantity={seats} />
-      <Stack sx={tableStyles}>
+      <TableWrapper selected={isSelected}>
         <ReservationInfo info={reservation} />
-        <Stack sx={tableTextStyles}>
-          <Typography color={reservation ? '#ff5c00' : '#3395f0'}>{number}</Typography>
-        </Stack>
-      </Stack>
+        <TableText info={reservation}>
+          <Typography color="currentColor">{number}</Typography>
+        </TableText>
+      </TableWrapper>
       <ChairLine specifiedSeatsQuantity={seats} />
     </Box>
   )

@@ -1,6 +1,6 @@
 type IndicatorContent = {
   color: string
-  text: 'Dine in' | 'Take away' | 'Delivery' | 'Available' | 'Reserved' | 'default'
+  text: 'Dine in' | 'Take away' | 'Delivery' | 'Available' | 'Reserved' | 'Overdue' | 'default'
 }
 
 export const initIndicatorContent = (type: string): IndicatorContent => {
@@ -19,6 +19,9 @@ export const initIndicatorContent = (type: string): IndicatorContent => {
 
     case 'reserved':
       return { color: '#FF5C00', text: 'Reserved' }
+
+    case 'overdue':
+      return { color: '#f3362d', text: 'Overdue' }
 
     default:
       return { color: 'gray', text: 'default' }
