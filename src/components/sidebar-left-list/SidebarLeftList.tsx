@@ -1,18 +1,16 @@
 import { FC } from 'react'
-import { List } from '@mui/material'
 import { SidebarItemType } from 'types'
 import { SidebarLinkItem, SidebarLinkListSkeleton } from 'UI'
 import { correctionName } from 'utils'
 import { useRootLocationPath, useSmoothScrollbar } from 'hooks'
-import s from './SidebarLeftList.module.scss'
+import { SidebarWrapper } from './SidebarLeftList.styled'
 
 interface SidebarLeftListProps {
   sidebarItems?: SidebarItemType[]
-  background?: string
   isLoading?: boolean
 }
 
-const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background, isLoading }) => {
+const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, isLoading }) => {
   const { location, pathname } = useRootLocationPath()
   const containerRef = useSmoothScrollbar<HTMLUListElement>('2px')
 
@@ -24,7 +22,7 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background, i
   const registeredLinkTo = pathSplit.slice(0, pathSplit.length - 1).join('/')
 
   return (
-    <List className={s.list} sx={{ background }} ref={containerRef}>
+    <SidebarWrapper ref={containerRef}>
       {sidebarItems?.map(({ title, id, picture, icon }) => (
         <SidebarLinkItem
           registeredLinkTo={registeredLinkTo}
@@ -35,7 +33,7 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background, i
           {icon}
         </SidebarLinkItem>
       ))}
-    </List>
+    </SidebarWrapper>
   )
 }
 

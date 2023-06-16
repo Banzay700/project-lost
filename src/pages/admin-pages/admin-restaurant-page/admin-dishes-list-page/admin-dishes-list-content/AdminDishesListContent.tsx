@@ -25,25 +25,30 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
     handlePagination,
   } = useParamsSearchFilter('category')
   const { data: categories } = useGetCategoriesQuery(null)
-  const { data, isLoading } = useGetDishesQuery({ category, page, search, status: 'all' })
+  const { data, isFetching } = useGetDishesQuery({
+    category,
+    page,
+    search,
+    status: 'all',
+    limit: 7,
+  })
   const categoriesValues: FilterMenuItemType[] | undefined =
     categories && categories.map(({ title }) => ({ value: title, label: correctionName(title) }))
 
   return (
     <>
-      {categoriesValues && (
-        <SearchFilterBar
-          subcategories={categoriesValues}
-          changeCategory={handleFilterCategory}
-          changeTitle={handleFilterTitle}
-          defaultValueFilter={category?.split(',')}
-          defaultValueInput={search || ''}
-        />
-      )}
+      <SearchFilterBar
+        subcategories={categoriesValues}
+        changeCategory={handleFilterCategory}
+        changeTitle={handleFilterTitle}
+        defaultValueFilter={category?.split(',')}
+        defaultValueInput={search || ''}
+      />
+
       <Table
         tableMinWidth="660px"
         data={data?.data}
-        isLoading={isLoading}
+        isLoading={isFetching}
         tableTitles={dishesTableTitles}
         tableType="dishes"
         onClickAction={onClickAction}
@@ -59,7 +64,7 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 8)}
+            count={Math.ceil(data.totalCount / 7)}
             variant="text"
             shape="rounded"
             color="primary"

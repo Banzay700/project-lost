@@ -14,7 +14,7 @@ const TableBills: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isLoading } = useGetAllBillsQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 7 })
   const [getBill] = useLazyGetOneBillQuery()
 
   const handleSendBillsData = (id: string) => {
@@ -40,7 +40,7 @@ const TableBills: FC = () => {
         onChange={handleFilterCategory}
       />
       <Table
-        isLoading={isLoading}
+        isLoading={isFetching}
         data={data?.data}
         tableTitles={tableTitleBills}
         tableType="bills"
