@@ -3,7 +3,7 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderDetailsList } from 'components'
 import { ToggleMenu } from 'UI'
-import { useOrderReducer, useOrderProcessingLogic } from 'hooks'
+import { useOrderReducer, useOrderProcessingLogic, useUserReducer } from 'hooks'
 import { OrderCreatorFormReturnType } from 'types'
 import { useUpdateTableStatusMutation } from 'store/api'
 
@@ -14,11 +14,12 @@ const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const { activeOrder, openNewOrder } = useOrderReducer()
+  const { userState } = useUserReducer()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const orderProcessing = useOrderProcessingLogic()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
-    const orderInfo = updateOrderState({ orderType, table })
+    const orderInfo = updateOrderState({ orderType, table, user: userState.id })
 
     if (table) updateTableStatus(table)
 

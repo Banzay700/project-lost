@@ -5,7 +5,7 @@ import { Icon } from 'assets'
 import { initIndicatorContent } from './indicator.utils'
 
 export interface IndicatorProps {
-  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved'
+  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved' | 'overdue'
 }
 
 const Indicator: FC<IndicatorProps> = ({ type }) => {

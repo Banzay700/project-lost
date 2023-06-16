@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/material'
-import dayjs, { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
 import { ReservationCanvasType } from 'types/ReservationsTypes'
 
 interface TableWrapperProps {

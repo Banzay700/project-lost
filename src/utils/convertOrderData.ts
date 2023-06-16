@@ -1,20 +1,12 @@
-import { OrderActiveType, OrderRequestType } from 'types/OrderBillsType'
+import { OrderActiveType, OrderDishActiveType, OrderDishRequestType, OrderRequestType } from 'types'
 
 type ConvertOrderDataType = {
   orderDB: OrderRequestType
   orderActive: OrderActiveType
 }
 
-export const convertOrderData = (order: OrderActiveType, user: string): ConvertOrderDataType => {
-  const { orderType, orderNumber, table, description, dishes, id } = order
-
-  const dataDishes = dishes.map(({ dishID, amount, dishTotalPrice }) => ({
-    dishID,
-    amount,
-    dishTotalPrice,
-  }))
-
-  const activeDishes = dishes.map(({ dishID, amount, dishTotalPrice, title, picture, price }) => ({
+const convertActiveDishes = (dishes: OrderDishActiveType[]) => {
+  return dishes.map(({ dishID, amount, dishTotalPrice, title, picture, price }) => ({
     dishID,
     amount,
     dishTotalPrice,
@@ -22,7 +14,20 @@ export const convertOrderData = (order: OrderActiveType, user: string): ConvertO
     price,
     title,
   }))
+}
 
+const convertRequestDishes = (dishes: OrderDishRequestType[]) => {
+  return dishes.map(({ dishID, amount, dishTotalPrice }) => ({
+    dishID,
+    amount,
+    dishTotalPrice,
+  }))
+}
+
+export const convertOrderData = (order: OrderActiveType): ConvertOrderDataType => {
+  const { orderType, orderNumber, table, description, dishes, id, user } = order
+  const dataDishes = convertRequestDishes(dishes)
+  const activeDishes = convertActiveDishes(dishes)
   const totalPrice = dataDishes.reduce((acc, { dishTotalPrice }) => acc + dishTotalPrice, 0)
   const totalPriseWithTax = Math.round(totalPrice * 1.1)
 
@@ -36,7 +41,7 @@ export const convertOrderData = (order: OrderActiveType, user: string): ConvertO
   }
 
   return {
-    orderDB: { dishes: dataDishes, user, ...commonReturnValues },
+    orderDB: { dishes: dataDishes, ...commonReturnValues, user },
     orderActive: {
       dishes: activeDishes,
       storeStatus: 'closed',

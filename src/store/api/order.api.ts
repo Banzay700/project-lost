@@ -26,12 +26,12 @@ export const orderApi = api.injectEndpoints({
     }),
 
     getOrder: builder.query<OrderActiveType, string>({
-      query: (id) => ({ url: `/orders/${id}` }),
+      query: (id: string) => ({ url: `/orders/${id}` }),
       onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        const { orderActive } = convertOrderData(data)
 
-        if (orderActive) {
+        if (data) {
+          const { orderActive } = convertOrderData(data)
           dispatch(openOrder(orderActive))
         }
       },

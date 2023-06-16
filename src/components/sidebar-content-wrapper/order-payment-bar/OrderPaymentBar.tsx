@@ -2,11 +2,7 @@ import { FC } from 'react'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
-import {
-  useLazySendEmailQuery,
-  useUpdateBillMutation,
-  useUpdateTableStatusMutation,
-} from 'store/api'
+import { useUpdateBillMutation, useUpdateTableStatusMutation } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
 import { Stack } from '@mui/material'
