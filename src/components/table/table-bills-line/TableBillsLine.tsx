@@ -66,9 +66,12 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
       ) : (
         <ColumnAction
           title="Print bill"
+          type="print"
           size="small"
           variant="outlined"
           startIcon={<Icon.Printer />}
+
+          element={element}
         />
       )}
     </TableRow>
