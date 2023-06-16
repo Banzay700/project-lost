@@ -28,7 +28,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const { activeTable } = useReservationReducer()
   const [addNewReservation] = useCreateReservationMutation()
   const [getTableCanvasDataTrigger] = useLazyGetTablesCanvasQuery()
-
+  console.log(activeTable.seats)
   const handleFormSubmit = (
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,

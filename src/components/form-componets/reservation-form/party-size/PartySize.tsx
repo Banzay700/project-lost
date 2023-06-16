@@ -31,7 +31,7 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
   })
 
   return (
-    <Stack {...field} sx={{ gap: '12px' }}>
+    <Stack {...field} sx={{ gap: '12px', width: '100%' }}>
       <Typography variant="h3" component="p">
         {label}
       </Typography>

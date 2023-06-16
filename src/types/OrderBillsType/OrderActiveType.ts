@@ -5,4 +5,5 @@ import { OderStoreStatusType } from './OderStoreStatusType'
 export type OrderActiveType = CommonOrderBillsType & {
   storeStatus: OderStoreStatusType
   dishes: OrderDishActiveType[]
+  user?: string
 }

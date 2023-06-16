@@ -155,7 +155,7 @@ There are also many other keys to play with.
 
 #### Custom key creation:
 
-To create your own key in the printing house, you need to write in theme.d.ts:
+To create your own key in the printing house, you need to write in mui.d.ts:
 
 ```ts
 import { CSSProperties } from "react";

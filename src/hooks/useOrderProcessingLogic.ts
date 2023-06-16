@@ -1,18 +1,20 @@
-import { useOrderReducer } from 'hooks/useOrderReducer.hook'
-import { ROUTES } from 'routes/routes.utils'
 import { useNavigate } from 'react-router-dom'
+
+import { useOrderReducer } from 'hooks'
+import { ROUTES } from 'routes'
+import { convertOrderData } from 'utils'
 import {
   useCreateOrderMutation,
   useLazyGetTableStatusQuery,
   useUpdateOrderMutation,
   useUpdateTableStatusMutation,
 } from 'store/api'
-import { convertOrderData } from 'utils/convertOrderData'
 import { emptyOrderState } from 'store/reducers/reducers.utils'
 
-export const useOrderProcessingLogicHook = () => {
+export const useOrderProcessingLogic = () => {
   const navigate = useNavigate()
   const { activeOrder, openNewOrder } = useOrderReducer()
+
   const { orderDB, orderActive } = convertOrderData(activeOrder)
 
   const [updateTableStatus] = useUpdateTableStatusMutation()

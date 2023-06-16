@@ -6,7 +6,7 @@ import { initIndicatorContent } from './indicator.utils'
 import { IndicatorWrapper } from './Indicator.styled'
 
 export interface IndicatorProps {
-  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved'
+  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved' | 'overdue'
 }
 
 const Indicator: FC<IndicatorProps> = ({ type }) => {

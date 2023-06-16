@@ -63,7 +63,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
             fullWidth
             onClick={handleDeleteOrder}
             disabled={!activeOrder.id}>
-            Reject Order
+            Cancel Order
           </Button>
         </Stack>
       </Stack>

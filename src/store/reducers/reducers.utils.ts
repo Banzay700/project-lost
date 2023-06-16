@@ -5,6 +5,7 @@ export const emptyOrderState = {
   dishes: [],
   totalPrice: 0,
   storeStatus: 'none' as const,
+  user: '',
 }
 
 export const emptyActiveTableState = {
