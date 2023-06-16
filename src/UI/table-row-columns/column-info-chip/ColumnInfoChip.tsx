@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TableCell } from '@mui/material'
-import { InfoChip } from 'UI/info-сhip'
+import { InfoChip } from 'UI'
 
 interface ColumnInfoChipProps {
   type?:

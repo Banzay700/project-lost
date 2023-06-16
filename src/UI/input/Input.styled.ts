@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { TextField } from '@mui/material'
 
 interface InputWrapperProps {
-  inputStyle?: 'withIcon' | 'outlined'
+  $styles?: 'withIcon' | 'outlined'
 }
 
 const StyleWithIcon = css`
@@ -26,5 +26,5 @@ const StyleOutlined = css`
 `
 
 export const InputWrapper = styled(TextField)<InputWrapperProps>`
-  ${({ inputStyle }) => (inputStyle === 'withIcon' ? StyleWithIcon : StyleOutlined)}
+  ${({ $styles }) => ($styles === 'withIcon' ? StyleWithIcon : StyleOutlined)}
 `

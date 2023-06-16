@@ -135,14 +135,6 @@ describe('testing button', () => {
     expect(icon).toBeInTheDocument()
     expect(screen.getByText('Click me')).toBeInTheDocument()
   })
-  test('button with custom classname', () => {
-    render(
-      <Button variant="text" size="medium" className="test">
-        Click me
-      </Button>,
-    )
-    expect(screen.getByRole('button')).toHaveClass('test')
-  })
   test('button handleClick', () => {
     const handleClick = vi.fn()
     render(

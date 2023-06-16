@@ -12,7 +12,6 @@ export { SidebarContentWrapper } from './sidebar-content-wrapper'
 export { Table } from './table'
 export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 
-export { Login } from './login'
 export {
   ProfileInfoUserForm,
   ProfilePasswordForm,
@@ -22,6 +21,7 @@ export {
   RegistrationForm,
   CreateDishForm,
   CreateDishCategoryForm,
+  LoginForm,
 } from './form-componets'
 
 export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
@@ -32,6 +32,7 @@ export {
   InputsCreateDish,
   InputImageWithPreviewAvatar,
   CheckboxTagGroup,
+  DigitButtonsGroup,
 } from './input-form'
 
 export { IndicatorsGroup } from './indicators-group'

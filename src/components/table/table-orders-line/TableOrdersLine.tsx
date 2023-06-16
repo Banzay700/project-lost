@@ -3,7 +3,6 @@ import { TableRow } from '@mui/material'
 import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI'
 import { OrderType, OrderTypeOfElement } from 'types'
 import { Icon } from 'assets'
-import s from './TableOrdersLine.module.scss'
 
 interface TableOrdersColumnProps {
   element: OrderType
@@ -56,7 +55,6 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({
         variant="contained"
         size="small"
         startIcon={<Icon.Tip />}
-        className={s.tableButton}
       />
     </TableRow>
   )

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { theme } from 'theme/index'
 
 interface NavLinkWrapperProps {
-  variant?: 'sidebarTabs' | 'tabs'
+  $variant?: 'sidebarTabs' | 'tabs'
 }
 
 const commonStyles = css`
@@ -68,7 +68,7 @@ const styleVariantNotTabs = css`
 export const NavLinkWrapper = styled(NavLink)<NavLinkWrapperProps>`
   ${commonStyles}
 
-  ${({ variant }) => variant === 'sidebarTabs' && styleVariantSidebarTabs}
-  ${({ variant }) => variant === 'tabs' && styleVariantTabs}
-  ${({ variant }) => !variant && styleVariantNotTabs}
+  ${({ $variant }) => $variant === 'sidebarTabs' && styleVariantSidebarTabs}
+  ${({ $variant }) => $variant === 'tabs' && styleVariantTabs}
+  ${({ $variant }) => !$variant && styleVariantNotTabs}
 `

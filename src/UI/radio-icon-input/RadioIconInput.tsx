@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
-import { FormControl, Radio } from '@mui/material'
+import { FormControl } from '@mui/material'
 
-import s from './RadioIconInput.module.scss'
+import { RadioWrapper } from './RadioIconInput.styled'
 
 interface RadioIconInputProps {
   icon: ReactNode
@@ -11,7 +11,7 @@ interface RadioIconInputProps {
 const RadioIconInput: FC<RadioIconInputProps> = ({ icon, value }) => {
   return (
     <FormControl fullWidth>
-      <Radio className={s.wrapper} checkedIcon={icon} value={value} icon={icon} />
+      <RadioWrapper checkedIcon={icon} value={value} icon={icon} />
     </FormControl>
   )
 }

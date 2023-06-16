@@ -1,6 +1,6 @@
 import { FC, MouseEvent, ReactNode } from 'react'
 import { TableCell } from '@mui/material'
-import { Button } from 'UI/button'
+import { Button } from 'UI'
 
 interface ColumnActionProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void // TODO: ?
@@ -11,7 +11,6 @@ interface ColumnActionProps {
   startIcon?: ReactNode
   endIcon?: ReactNode
   icon?: ReactNode
-  className?: string
 }
 
 const ColumnAction: FC<ColumnActionProps> = ({
@@ -23,7 +22,6 @@ const ColumnAction: FC<ColumnActionProps> = ({
   startIcon,
   endIcon,
   onClick,
-  className,
 }) => {
   return (
     <TableCell align={columnAlign || 'center'}>
@@ -34,7 +32,8 @@ const ColumnAction: FC<ColumnActionProps> = ({
         startIcon={startIcon}
         endIcon={endIcon}
         icon={icon}
-        className={className}>
+        maxWidth="150px"
+        fullWidth>
         {title}
       </Button>
     </TableCell>

@@ -3,7 +3,7 @@ import { Form, Formik, FormikHelpers } from 'formik'
 import { Stack } from '@mui/material'
 import { Input, Button } from 'UI'
 import { ButtonLoginReturnType, UserLoginRequestType } from 'types'
-import { DigitButtonsGroup } from '../digitButtonsGroup'
+import { DigitButtonsGroup } from 'components'
 import { initialValues, validationSchema } from './LoginForm.utils'
 
 interface InputPasswordProps {

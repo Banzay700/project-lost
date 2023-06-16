@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { TableCell } from '@mui/material'
-import s from './TableNumberColumn.module.scss'
+import { TableCell, Typography } from '@mui/material'
+import { TableNumberColumnContent } from './TableNumberColumn.styled'
 
 interface TableNumberColumnProps {
   table: string | undefined
@@ -9,9 +9,11 @@ interface TableNumberColumnProps {
 const TableNumberColumn: FC<TableNumberColumnProps> = ({ table }) => {
   return (
     <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-      <div className={s.tableNumber}>
-        <span>{table}</span>
-      </div>
+      <TableNumberColumnContent>
+        <Typography component="span" variant="h3" fontWeight={600} color="primary">
+          {table}
+        </Typography>
+      </TableNumberColumnContent>
     </TableCell>
   )
 }

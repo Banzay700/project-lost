@@ -30,7 +30,6 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
         color={tipActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Tip />}
-        className={s.button}
         fontWeight={400}
         variantText="h3"
         type="button"
@@ -43,7 +42,6 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
         color={emailActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Email />}
-        className={s.button}
         fontWeight={400}
         variantText="h3"
         type="button"

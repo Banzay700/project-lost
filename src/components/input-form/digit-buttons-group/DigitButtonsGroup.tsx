@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { BlurButton } from 'UI'
-import { ButtonLoginReturnType } from 'types'
-import { Icon } from 'assets'
+import { BlurButton } from 'UI/index'
+import { ButtonLoginReturnType } from 'types/index'
+import { Icon } from 'assets/index'
 import digits from './digitButtonsGroup.utils'
 
 interface DigitButtonsGroupProps {

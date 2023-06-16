@@ -17,7 +17,7 @@ const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, background, i
   const containerRef = useSmoothScrollbar<HTMLUListElement>('2px')
 
   if (isLoading) {
-    return <SidebarLinkListSkeleton className={s.list} />
+    return <SidebarLinkListSkeleton />
   }
 
   const pathSplit = pathname.split('/')

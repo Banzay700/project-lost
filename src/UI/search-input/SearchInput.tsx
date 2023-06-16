@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { FormControl, InputAdornment, InputBase } from '@mui/material'
+import { InputAdornment } from '@mui/material'
 import { Icon } from 'assets'
-import s from './SearchInput.module.scss'
+import { FormControlWrapper, InputWrapper } from './SearchInput.styled'
 
 interface SearchInputProps {
   defaultValue?: string
@@ -16,7 +16,7 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
   }
 
   useEffect(() => {
-    const delay = 500 // Задержка в миллисекундах
+    const delay = 500
     const timeoutId = setTimeout(() => {
       onChange(valueInput)
     }, delay)
@@ -33,20 +33,19 @@ const SearchInput: FC<SearchInputProps> = ({ defaultValue, onChange }) => {
   }, [defaultValue])
 
   return (
-    <FormControl variant="standard" className={s.form}>
-      <InputBase
+    <FormControlWrapper variant="standard">
+      <InputWrapper
         type="search"
         onChange={handleInputChange}
         value={valueInput}
         placeholder="Search..."
-        className={s.input}
         startAdornment={
           <InputAdornment position="start">
-            <Icon.Search className={s.icon} />
+            <Icon.Search />
           </InputAdornment>
         }
       />
-    </FormControl>
+    </FormControlWrapper>
   )
 }
 

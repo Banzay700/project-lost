@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { FilterMenuItemWrapper } from './FilterMenuItem.styled'
+import { Button } from 'UI'
 
 interface FilterMenuItemProps {
   value: string
@@ -13,15 +13,16 @@ const FilterMenuItem: FC<FilterMenuItemProps> = ({ value, label, onChange, isSel
     onChange(value)
   }
   return (
-    <FilterMenuItemWrapper
+    <Button
       variantText="h3"
       fontWeight={400}
       color={isSelected ? 'primary' : 'secondary'}
       onClick={handleClick}
-      size="medium"
-      variant="outlined">
+      size="small"
+      variant="outlined"
+      filterMenuStyle>
       {label}
-    </FilterMenuItemWrapper>
+    </Button>
   )
 }
 

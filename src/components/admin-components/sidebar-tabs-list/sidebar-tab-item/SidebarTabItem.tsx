@@ -2,7 +2,6 @@ import { FC, ReactNode } from 'react'
 import { ListItem, Stack, Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import { CustomNavLink } from 'UI'
-import s from './SidebarTabItem.module.scss'
 
 interface SidebarTabItemProps {
   linkTo: string

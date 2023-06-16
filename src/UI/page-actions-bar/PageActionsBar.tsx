@@ -1,28 +1,12 @@
-import { FC, ReactNode } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
-import { Stack, Theme, useMediaQuery } from '@mui/material'
+import { Theme, useMediaQuery } from '@mui/material'
+import { PageActionsBarWrapper } from './PageActionsBar.styled'
 
-interface PageActionsBarProps {
-  children: ReactNode
-}
-
-const PageActionsBar: FC<PageActionsBarProps> = ({ children }) => {
+const PageActionsBar: FC<PropsWithChildren> = ({ children }) => {
   const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(890))
 
-  return (
-    <Stack
-      sx={{
-        minHeight: isSmallScreen ? 'fit-content' : '71px',
-        p: '16px 24px',
-        borderBottom: '1px solid #E4E4E4',
-        flexDirection: isSmallScreen ? 'column' : 'row',
-        alignItems: isSmallScreen ? 'start' : 'center',
-        justifyContent: 'space-between',
-        gap: '24px',
-      }}>
-      {children}
-    </Stack>
-  )
+  return <PageActionsBarWrapper $isSmallScreen={isSmallScreen}>{children}</PageActionsBarWrapper>
 }
 
 export default PageActionsBar

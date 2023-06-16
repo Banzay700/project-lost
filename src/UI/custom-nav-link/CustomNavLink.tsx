@@ -35,7 +35,7 @@ const CustomNavLink: FC<CustomNavLinkProps> = ({
   }
 
   return (
-    <NavLinkWrapper to={linkTo} variant={variant} onClick={handleClick}>
+    <NavLinkWrapper to={linkTo} $variant={variant} onClick={handleClick}>
       {children}
     </NavLinkWrapper>
   )

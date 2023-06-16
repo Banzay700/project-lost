@@ -15,7 +15,7 @@ describe('testing MenuItem', () => {
     const testFn = vi.fn()
     render(
       <BrowserRouter>
-        <MenuItem data={mokMenuItem} onClose={testFn} className="test-class" />
+        <MenuItem data={mokMenuItem} onClose={testFn} />
       </BrowserRouter>,
     )
     const element = screen.getByText('testTitle')
@@ -26,7 +26,6 @@ describe('testing MenuItem', () => {
 
     expect(element).toBeInTheDocument()
     expect(element).toHaveAttribute('href', '/testLink')
-    expect(element).toHaveClass('test-class')
 
     expect(iconElement).toBeInTheDocument()
   })

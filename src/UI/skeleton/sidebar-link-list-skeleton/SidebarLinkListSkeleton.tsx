@@ -1,33 +1,23 @@
 import { FC } from 'react'
-import { ListItem, List, Skeleton, Theme, useMediaQuery } from '@mui/material'
+import { Skeleton, Theme, useMediaQuery } from '@mui/material'
 import { generateArray } from 'utils/generateArray'
+import {
+  SidebarLinkListSkeletonWrapper,
+  SidebarListWrapper,
+} from './SidebarLinkListSkeleton.styled'
 
-interface SidebarLinkItemsSkeletonProps {
-  className?: string
-}
-
-const SidebarLinkListSkeleton: FC<SidebarLinkItemsSkeletonProps> = ({ className }) => {
+const SidebarLinkListSkeleton: FC = () => {
   const isThemeLgSize = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'))
   const generateArr = generateArray(6)
   return (
-    <List className={className}>
+    <SidebarListWrapper>
       {generateArr.map((item) => (
-        <ListItem
-          key={item}
-          sx={{
-            width: '100%',
-            padding: 0,
-            marginBottom: '12px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            p: '12px 6px',
-          }}>
+        <SidebarLinkListSkeletonWrapper key={item}>
           <Skeleton variant="rounded" width="35px" height="35px" />
           {isThemeLgSize && <Skeleton animation="wave" width="35px" height="20px" />}
-        </ListItem>
+        </SidebarLinkListSkeletonWrapper>
       ))}
-    </List>
+    </SidebarListWrapper>
   )
 }
 

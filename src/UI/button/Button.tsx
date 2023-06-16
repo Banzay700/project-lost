@@ -6,6 +6,8 @@ interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
   size: 'small' | 'medium'
   color?: 'secondary' | 'primary'
+  maxWidth?: string
+  blur?: boolean
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
   icon?: ReactNode | ReactElement
@@ -16,16 +18,18 @@ interface ButtonProps extends PropsWithChildren {
   disabled?: boolean
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   fullWidth?: boolean
-  className?: string
   linkageToForm?: string
+  filterMenuStyle?: boolean
 }
 
 const Button: FC<ButtonProps> = ({
   variant,
   size,
+  maxWidth,
   color,
   startIcon,
   endIcon,
+  blur,
   icon,
   type,
   variantText,
@@ -33,22 +37,24 @@ const Button: FC<ButtonProps> = ({
   fullWidth = false,
   disableRipple,
   disabled,
-  className,
   children,
   onClick,
   linkageToForm,
+  filterMenuStyle,
 }) => {
   const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
 
   return (
     <ButtonWrapper
+      sx={{ maxWidth }}
+      $filterMenuStyle={filterMenuStyle}
       size={size}
+      $blur={blur}
       variant={variant}
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
       type={type || 'submit'}
-      className={className}
       fullWidth={fullWidth}
       disableRipple={disableRipple}
       disabled={disabled}

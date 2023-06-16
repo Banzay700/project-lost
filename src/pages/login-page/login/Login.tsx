@@ -1,12 +1,11 @@
 import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
-import { useGetUsersInLoginQuery } from 'store/api/users.api'
-import { EmployeesCarrousel } from 'components/employees-carrousel'
-import { Button } from 'UI/button'
-import { UserLoginRequestType } from 'types/UserType'
-import { LoginForm } from './login-form'
+import { useGetUsersInLoginQuery } from 'store/api'
+import { EmployeesCarrousel, LoginForm } from 'components'
+import { Button } from 'UI'
+import { UserLoginRequestType } from 'types'
 
-import s from './Login.module.scss'
+import { LoginWrapper } from './Login.styled'
 
 interface LoginProps {
   onSubmit: (value: UserLoginRequestType) => void
@@ -23,7 +22,7 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
   const gap = chosenEmployee ? '44px' : '114px'
 
   return (
-    <Stack alignItems="center" justifyContent="center" className={s.wrapper}>
+    <LoginWrapper>
       <Stack flexDirection="column" alignItems="center" gap={gap}>
         <EmployeesCarrousel
           bgc="transparent"
@@ -34,12 +33,12 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
         {chosenEmployee ? (
           <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
         ) : (
-          <Button variant="outlined" size="medium" className={s.buttonBlur}>
+          <Button variant="outlined" size="medium" fullWidth maxWidth="400px" blur>
             Login
           </Button>
         )}
       </Stack>
-    </Stack>
+    </LoginWrapper>
   )
 }
 

@@ -38,7 +38,7 @@ const Input: FC<InputProps> = (props) => {
   } = props
   const [field, meta] = useField(name)
 
-  const inputStyle = icon ? 'withIcon' : 'outlined'
+  const styles = icon ? 'withIcon' : 'outlined'
   const textFieldConfig: TextFieldProps = {
     placeholder,
     label,
@@ -55,7 +55,6 @@ const Input: FC<InputProps> = (props) => {
       onChange,
     },
   }
-  console.log('test')
 
   if (meta.touched && meta.error) {
     textFieldConfig.error = true
@@ -66,7 +65,7 @@ const Input: FC<InputProps> = (props) => {
     <FadeIn delay={50} styles={{ width: '100%' }}>
       <InputWrapper
         {...textFieldConfig}
-        inputStyle={inputStyle}
+        $styles={styles}
         inputRef={(input) => focus && input && input.focus()}
       />
     </FadeIn>

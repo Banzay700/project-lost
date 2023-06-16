@@ -1,21 +1,29 @@
 import { FC } from 'react'
-import { Icon } from 'assets'
-import { SidebarItemType } from 'types'
 import { SidebarLeftList } from 'components'
-
-const mok: SidebarItemType[] = [
-  {
-    id: 'statistics',
-    icon: <Icon.Statistics />,
-    title: 'Statistics',
-  },
-  { id: 'restaurant', icon: <Icon.DineIn width={35} height={35} />, title: 'Restaurant' },
-  { id: 'employees', icon: <Icon.Users />, title: 'Employees' },
-  { id: 'settings', icon: <Icon.Setting />, title: 'Settings' },
-]
+import { Stack } from '@mui/material'
+import { useLogoutMutation } from 'store/api'
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from 'routes'
+import { LogoutWrapper } from './SidebarLeftAdmin.styled'
+import { sidebarLeftAdminMenu } from './sidebarLeftAdmin.utils'
 
 const SidebarLeftAdmin: FC = () => {
-  return <SidebarLeftList sidebarItems={mok} background="#19191C" />
+  const [logout] = useLogoutMutation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate(`/${ROUTES.LOGIN}`)
+  }
+
+  return (
+    <Stack sx={{ background: '#19191C' }}>
+      <SidebarLeftList sidebarItems={sidebarLeftAdminMenu} background="#19191C" />
+      <Stack sx={{ p: '16px', alignItems: 'center' }}>
+        <LogoutWrapper onClick={handleLogout} />
+      </Stack>
+    </Stack>
+  )
 }
 
 export default SidebarLeftAdmin

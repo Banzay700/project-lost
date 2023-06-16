@@ -1,17 +1,15 @@
 import { FC, PropsWithChildren } from 'react'
-import { ListItem, Stack, Theme, Typography, useMediaQuery } from '@mui/material'
-import cn from 'classnames'
+import { Stack, Theme, Typography, useMediaQuery } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import { useGetSvgQuery } from 'store/api'
 import { CustomNavLink } from 'UI'
-import s from './SidebarLinkItem.module.scss'
+import { SidebarLinkItemWrapper } from './SidebarLinkItem.styled'
 
 interface SidebarLeftItemProps extends PropsWithChildren {
   label: string
   linkTo: string
   linkIconSVG?: string
   registeredLinkTo?: string
-  className?: string
 }
 const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   label,
@@ -19,7 +17,6 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   linkIconSVG,
   registeredLinkTo,
   children,
-  className,
 }) => {
   const isThemeLgSize = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'))
   let iconSVG
@@ -33,7 +30,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
   const { pathname } = useLocation()
 
   return (
-    <ListItem className={cn(s.item, className)}>
+    <SidebarLinkItemWrapper>
       <CustomNavLink
         variant="sidebarTabs"
         linkTo={linkTo}
@@ -47,7 +44,7 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
           </Typography>
         )}
       </CustomNavLink>
-    </ListItem>
+    </SidebarLinkItemWrapper>
   )
 }
 
