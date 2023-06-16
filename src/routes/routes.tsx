@@ -24,9 +24,9 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      {isLoading && <Route path="*" element={<LoaderPage />} />}
-
       <Route path="/" element={<Layout />}>
+        {isLoading && <Route path="*" element={<LoaderPage />} />}
+
         {isAuthUser ? (
           <>
             <Route path="/" element={<WaiterLayout />}>
