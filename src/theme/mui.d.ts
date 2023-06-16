@@ -1,5 +1,18 @@
 import { CSSProperties } from 'react'
 
+declare module '@mui/material/styles/createPalette' {
+  interface PaletteColor {
+    lightGrey?: string
+    white?: string
+    extraLight?: string
+    lightBlue?: string
+    blue?: string
+    darkRed?: string
+    red?: string
+    lightRed?: string
+  }
+}
+
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     dashNumb: {

@@ -5,7 +5,7 @@ type ConvertOrderDataType = {
   orderActive: OrderActiveType
 }
 
-export const convertOrderData = (order: OrderActiveType): ConvertOrderDataType => {
+export const convertOrderData = (order: OrderActiveType, user: string): ConvertOrderDataType => {
   const { orderType, orderNumber, table, description, dishes, id } = order
 
   const dataDishes = dishes.map(({ dishID, amount, dishTotalPrice }) => ({
@@ -36,7 +36,7 @@ export const convertOrderData = (order: OrderActiveType): ConvertOrderDataType =
   }
 
   return {
-    orderDB: { dishes: dataDishes, ...commonReturnValues },
+    orderDB: { dishes: dataDishes, user, ...commonReturnValues },
     orderActive: {
       dishes: activeDishes,
       storeStatus: 'closed',

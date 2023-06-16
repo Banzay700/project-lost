@@ -9,11 +9,13 @@ import {
 } from 'store/api'
 import { convertOrderData } from 'utils/convertOrderData'
 import { emptyOrderState } from 'store/reducers/reducers.utils'
+import { useUserReducer } from 'hooks/useUserReducer.hook'
 
-export const useOrderProcessingLogicHook = () => {
+export const useOrderProcessingLogic = () => {
   const navigate = useNavigate()
+  const { userState } = useUserReducer()
   const { activeOrder, openNewOrder } = useOrderReducer()
-  const { orderDB, orderActive } = convertOrderData(activeOrder)
+  const { orderDB, orderActive } = convertOrderData(activeOrder, userState.id)
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createOrder] = useCreateOrderMutation()

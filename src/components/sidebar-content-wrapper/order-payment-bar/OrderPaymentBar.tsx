@@ -2,7 +2,11 @@ import { FC } from 'react'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
-import { useLazySendEmailQuery, useUpdateBillMutation } from 'store/api'
+import {
+  useLazySendEmailQuery,
+  useUpdateBillMutation,
+  useUpdateTableStatusMutation,
+} from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
 import { Stack } from '@mui/material'
@@ -18,15 +22,17 @@ const OrderPaymentBar: FC = () => {
   const toggleValue = useAppSelector((state) => state.bills.toggleValue)
 
   const [updateBill] = useUpdateBillMutation()
-  const [sendEmail] = useLazySendEmailQuery()
+  const [updateTableStatus] = useUpdateTableStatusMutation()
+  // const [sendEmail] = useLazySendEmailQuery()
 
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
-
+  console.log('newBill', newBill)
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })
-    if (newBill.id) sendEmail(newBill.id)
+    updateTableStatus(newBill.table)
+    // if (newBill.id) sendEmail(newBill.id) TODO: fix nodemailer
     changeToggle('Order info')
   }
 
