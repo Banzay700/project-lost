@@ -12,6 +12,7 @@ import {
   AdminStatisticsPage,
   AdminEmployeesPage,
   AdminRestaurantPage,
+  LoaderPage,
 } from 'pages'
 import { useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -21,11 +22,10 @@ const AppRoutes = () => {
   const { isAuthUser } = useUserReducer()
   const { isLoading } = useRefreshQuery()
 
-  if (isLoading) {
-    return <div>loading...</div>
-  }
   return (
     <Routes>
+      {isLoading && <Route path="*" element={<LoaderPage />} />}
+
       <Route path="/" element={<Layout />}>
         {isAuthUser ? (
           <>

@@ -18,7 +18,7 @@ const SidebarLeftAdmin: FC = () => {
 
   return (
     <Stack sx={{ background: '#19191C' }}>
-      <SidebarLeftList sidebarItems={sidebarLeftAdminMenu} background="#19191C" />
+      <SidebarLeftList sidebarItems={sidebarLeftAdminMenu} />
       <Stack sx={{ p: '16px', alignItems: 'center' }}>
         <LogoutWrapper onClick={handleLogout} />
       </Stack>

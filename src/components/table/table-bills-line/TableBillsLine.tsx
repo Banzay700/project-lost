@@ -3,7 +3,6 @@ import { TableRow } from '@mui/material'
 import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
 import { BillsType, OrderTypeOfElement } from 'types'
 import { Icon } from 'assets'
-import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
   element: BillsType

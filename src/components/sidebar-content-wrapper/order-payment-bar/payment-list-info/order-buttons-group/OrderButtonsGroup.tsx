@@ -3,7 +3,6 @@ import { Stack } from '@mui/material'
 
 import { Button } from 'UI/index'
 import { Icon } from 'assets'
-import s from './OrderButtonsGroup.module.scss'
 
 interface OrderButtonsGroupProps {
   setTipStatus: () => void

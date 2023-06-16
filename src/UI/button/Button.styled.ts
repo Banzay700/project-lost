@@ -10,7 +10,6 @@ const StyleBlur = css`
   background: rgba(67, 67, 67, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.24);
   backdrop-filter: blur(8px);
-  padding: 12px 158px;
 `
 
 const FilterMenuStyle = css`
