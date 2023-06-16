@@ -1,9 +1,9 @@
-import { Button } from '@mui/material'
-import styled, { css } from 'styled-components'
+import { Button, styled, css } from '@mui/material'
+// import { css } from 'styled-components'
 
 interface ButtonProps {
-  $blur?: boolean
-  $filterMenuStyle?: boolean
+  blur?: boolean
+  filterMenuStyle?: boolean
 }
 
 const StyleBlur = css`
@@ -17,11 +17,13 @@ const FilterMenuStyle = css`
   transition: 0.5s;
 `
 
-export const ButtonWrapper = styled(Button)<ButtonProps>`
+export const ButtonWrapper = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'blur' && prop !== 'filterMenuStyle',
+})<ButtonProps>`
   border-radius: 58px;
   box-shadow: none;
   min-width: 0;
-  ${({ $blur }) => $blur && StyleBlur}
+  ${({ blur }) => blur && StyleBlur}
   &:focus {
     box-shadow: none;
   }
@@ -32,7 +34,7 @@ export const ButtonWrapper = styled(Button)<ButtonProps>`
 
   && {
     &.MuiButton-sizeSmall {
-      padding: ${({ $filterMenuStyle }) => ($filterMenuStyle ? '8px 16px' : '8px')};
+      padding: ${({ filterMenuStyle }) => (filterMenuStyle ? '8px 16px' : '8px')};
     }
 
     &.MuiButton-sizeMedium {
@@ -40,5 +42,5 @@ export const ButtonWrapper = styled(Button)<ButtonProps>`
     }
   }
 
-  ${({ $filterMenuStyle }) => $filterMenuStyle && FilterMenuStyle}
+  ${({ filterMenuStyle }) => filterMenuStyle && FilterMenuStyle}
 `

@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { Stack, Tabs } from '@mui/material'
+import { Stack, Tabs, styled } from '@mui/material'
 
 export const ToggleMenuWrapper = styled(Stack)`
   width: 100%;

@@ -1,5 +1,4 @@
-import { Box, Card } from '@mui/material'
-import styled from 'styled-components'
+import { Box, Card, styled } from '@mui/material'
 
 export const DishWrapper = styled(Card)`
   width: 100%;

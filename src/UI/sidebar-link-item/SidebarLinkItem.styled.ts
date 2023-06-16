@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { ListItem } from '@mui/material'
+import { ListItem, styled } from '@mui/material'
 
 export const SidebarLinkItemWrapper = styled(ListItem)`
   width: 100%;

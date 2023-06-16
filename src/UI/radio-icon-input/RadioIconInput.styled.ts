@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { Radio } from '@mui/material'
+import { Radio, styled } from '@mui/material'
 
 export const RadioWrapper = styled(Radio)`
   transition: 0.5s;

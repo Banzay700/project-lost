@@ -1,8 +1,8 @@
+import { styled } from '@mui/material'
 import { Icon } from 'assets'
-import styled from 'styled-components'
-import { theme } from 'theme'
 
-export const LogoutWrapper = styled(Icon.Logout)`
+export const LogoutWrapper = styled(Icon.Logout)(
+  ({ theme }) => `
   width: 35px;
   height: 35px;
   cursor: pointer;
@@ -10,4 +10,5 @@ export const LogoutWrapper = styled(Icon.Logout)`
   &:hover {
     color: ${theme.palette.primary.main};
   }
-`
+`,
+)

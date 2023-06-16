@@ -1,5 +1,4 @@
-import { Stack } from '@mui/material'
-import styled from 'styled-components'
+import { Stack, styled } from '@mui/material'
 
 export const TableNumberColumnContent = styled(Stack)`
   width: 54px;

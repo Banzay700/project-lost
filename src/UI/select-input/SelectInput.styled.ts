@@ -1,6 +1,4 @@
-import { MenuItem, Select } from '@mui/material'
-import styled, { css } from 'styled-components'
-import { theme } from 'theme'
+import { MenuItem, Select, styled, css } from '@mui/material'
 
 const selectActiveStyle = css`
   color: #ff5c00;
@@ -31,11 +29,14 @@ const selectDefaultStyle = css`
   }
 `
 
-export const SelectWrapper = styled(Select)<{ $active?: boolean }>`
+export const SelectWrapper = styled(Select, {
+  shouldForwardProp: (prop) => prop !== '$active',
+})<{ $active?: boolean }>`
   ${({ $active }) => ($active ? selectActiveStyle : selectDefaultStyle)}
 `
 
-export const MenuItemWrapper = styled(MenuItem)`
+export const MenuItemWrapper = styled(MenuItem)(
+  ({ theme }) => `
   && {
     &.MuiMenuItem-root {
       border-radius: 16px;
@@ -48,4 +49,5 @@ export const MenuItemWrapper = styled(MenuItem)`
       color: #FFA07A;
     },
   }
-`
+`,
+)

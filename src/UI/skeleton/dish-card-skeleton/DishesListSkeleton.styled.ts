@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { Card } from '@mui/material'
+import { Card, styled } from '@mui/material'
 
 export const DishesListSkeletonWrapper = styled(Card)`
   width: 100%;

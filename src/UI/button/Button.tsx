@@ -47,9 +47,9 @@ const Button: FC<ButtonProps> = ({
   return (
     <ButtonWrapper
       sx={{ maxWidth }}
-      $filterMenuStyle={filterMenuStyle}
+      filterMenuStyle={filterMenuStyle}
       size={size}
-      $blur={blur}
+      blur={blur}
       variant={variant}
       color={color}
       startIcon={startIcon}

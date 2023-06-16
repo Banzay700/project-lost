@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { Stack } from '@mui/material'
+import { Stack, styled } from '@mui/material'
 
 export const IndicatorWrapper = styled(Stack)`
   user-select: none;

@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { theme } from 'theme/index'
+import { Box, styled } from '@mui/material'
 
-const Loader = styled.div`
+const Loader = styled(Box)(
+  ({ theme }) => `
   border: 16px solid #f3f3f3;
   border-top: 16px solid ${theme.palette.primary.main};
   border-radius: 50%;
@@ -29,5 +29,6 @@ const Loader = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`,
+)
 export default Loader

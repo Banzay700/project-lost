@@ -1,11 +1,10 @@
-import styled from 'styled-components'
-import { Dialog, Stack } from '@mui/material'
+import { Dialog, Stack, styled } from '@mui/material'
 
 export const ModalWrapper = styled(Dialog)`
   border-radius: 16px;
 
   && {
-    &.MuiPaper-root {
+    & .MuiDialog-paper {
       min-width: 500px;
     }
   }

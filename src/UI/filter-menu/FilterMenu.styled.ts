@@ -1,5 +1,4 @@
-import { Stack } from '@mui/material'
-import styled from 'styled-components'
+import { Stack, styled } from '@mui/material'
 
 export const FilterMenuWrapper = styled(Stack)`
   gap: 8px;

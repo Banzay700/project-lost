@@ -1,5 +1,4 @@
-import { Box, FormControlLabel, Stack } from '@mui/material'
-import styled, { css } from 'styled-components'
+import { Box, css, FormControlLabel, Stack, styled } from '@mui/material'
 import { theme } from 'theme'
 
 interface RadioStyledProps {
@@ -16,7 +15,9 @@ const isCheckedStyle = css`
   transition: color 0.2s ease;
 `
 
-export const RadioIconWrapper = styled(Stack)<RadioStyledProps>`
+export const RadioIconWrapper = styled(Stack, {
+  shouldForwardProp: (prop) => prop !== '$isChecked',
+})<RadioStyledProps>`
   position: absolute;
   width: 30px;
   height: 30px;
@@ -29,17 +30,17 @@ export const RadioIconWrapper = styled(Stack)<RadioStyledProps>`
   ${({ $isChecked }) => $isChecked && isCheckedStyle}
 `
 
-export const FormControlLabelWrapper = styled(FormControlLabel)<RadioStyledProps>(
-  ({ $isChecked }) => ({
-    width: '100%',
-    marginLeft: '0',
-    borderRadius: '16px',
-    padding: '6px 14px 6px 57px',
-    justifyContent: 'space-between',
-    border: '1px solid',
-    borderColor: $isChecked ? theme.palette.primary.main : '#C2C2C2',
-    color: $isChecked ? theme.palette.primary.main : '#C2C2C2',
-    transition: 'all 0.2s ease',
-    backgroundColor: $isChecked ? '#FFF8F5' : '#fff',
-  }),
-)
+export const FormControlLabelWrapper = styled(FormControlLabel, {
+  shouldForwardProp: (prop) => prop !== '$isChecked',
+})<RadioStyledProps>(({ $isChecked }) => ({
+  width: '100%',
+  marginLeft: '0',
+  borderRadius: '16px',
+  padding: '6px 14px 6px 57px',
+  justifyContent: 'space-between',
+  border: '1px solid',
+  borderColor: $isChecked ? theme.palette.primary.main : '#C2C2C2',
+  color: $isChecked ? theme.palette.primary.main : '#C2C2C2',
+  transition: 'all 0.2s ease',
+  backgroundColor: $isChecked ? '#FFF8F5' : '#fff',
+}))

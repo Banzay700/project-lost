@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { Tab } from '@mui/material'
+import { Tab, styled } from '@mui/material'
 
 export const ToggleMenuItemWrapper = styled(Tab)`
   z-index: 1;

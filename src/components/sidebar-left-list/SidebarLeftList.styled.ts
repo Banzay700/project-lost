@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { List } from '@mui/material'
+import { List, styled } from '@mui/material'
 
 export const SidebarWrapper = styled(List)`
   width: 110px;

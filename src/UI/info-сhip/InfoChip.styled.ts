@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components'
-import { Chip } from '@mui/material'
+import { Chip, styled, css } from '@mui/material'
 
 interface InfoChipWrapperProps {
   $type?:
@@ -47,7 +46,9 @@ const defaultStyle = css`
   color: #969696;
 `
 
-export const InfoChipWrapper = styled(Chip)<InfoChipWrapperProps>(({ $type }) => {
+export const InfoChipWrapper = styled(Chip, {
+  shouldForwardProp: (prop) => prop !== '$type',
+})<InfoChipWrapperProps>(({ $type }) => {
   if ($type === 'waiter' || $type === 'takeAway') return BlueStyle
 
   if ($type === 'dineIn' || $type === 'closed' || $type === 'done' || $type === 'admin')

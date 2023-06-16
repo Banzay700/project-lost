@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components'
 import { Icon } from 'assets'
-import { Stack } from '@mui/material'
+import { Stack, styled, css } from '@mui/material'
 
 const IconStyle = css`
   width: 35px;

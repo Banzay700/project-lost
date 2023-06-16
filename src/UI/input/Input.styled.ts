@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components'
-import { TextField } from '@mui/material'
+import { TextField, styled, css } from '@mui/material'
 
 interface InputWrapperProps {
   $styles?: 'withIcon' | 'outlined'
@@ -25,6 +24,8 @@ const StyleOutlined = css`
   }
 `
 
-export const InputWrapper = styled(TextField)<InputWrapperProps>`
+export const InputWrapper = styled(TextField, {
+  shouldForwardProp: (prop) => prop !== '$styles',
+})<InputWrapperProps>`
   ${({ $styles }) => ($styles === 'withIcon' ? StyleWithIcon : StyleOutlined)}
 `

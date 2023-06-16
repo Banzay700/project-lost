@@ -1,8 +1,6 @@
-import { Button } from '@mui/material/'
-import styled from 'styled-components'
-import { theme } from 'theme'
+import { Button, styled } from '@mui/material/'
 
-export const ButtonWrapper = styled(Button)(() => ({
+export const ButtonWrapper = styled(Button)(({ theme }) => ({
   background: 'rgba(67, 67, 67, 0.1)',
   border: '1px solid rgba(255, 255, 255, 0.24)',
   backdropFilter: 'blur(8px)',
