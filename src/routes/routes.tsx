@@ -22,14 +22,16 @@ const AppRoutes = () => {
   const { isAuthUser } = useUserReducer()
   const { isLoading } = useRefreshQuery()
 
+  if (isLoading) {
+    return <LoaderPage />
+  }
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        {isLoading && <Route path="*" element={<LoaderPage />} />}
-        {isAuthUser ? (
+        {isAuthUser && !isLoading ? (
           <>
+            <Route path="/" element={<Navigate to={ROUTES.DISHES} />} />
             <Route path="/" element={<WaiterLayout />}>
-              <Route index element={<Navigate to={ROUTES.DISHES} />} />
               <Route path={ROUTES.DISHES} element={<Navigate to="pizza" />} />
               <Route path={ROUTES.DISHES} element={<DishesPage />}>
                 <Route path={ROUTES.DISHES_CATEGORY} element={<DishesPage />} />
@@ -59,7 +61,7 @@ const AppRoutes = () => {
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
           </>
         )}
-        <Route index element={<div>Not Found</div>} />
+        <Route path="*" element={<div>Not Found</div>} />
       </Route>
     </Routes>
   )

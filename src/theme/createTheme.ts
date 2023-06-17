@@ -1,4 +1,4 @@
-import { createTheme, ThemeOptions } from '@mui/material'
+import { createTheme } from '@mui/material'
 import { enUS } from '@mui/material/locale'
 import { breakpoints, typography, components, palette } from './config'
 import '@fontsource/poppins/400.css'

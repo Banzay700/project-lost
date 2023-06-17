@@ -3,6 +3,7 @@ import { Stack, Theme, Typography, useMediaQuery } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import { useGetSvgQuery } from 'store/api'
 import { CustomNavLink } from 'UI'
+import { FadeIn } from 'utils/index'
 import { SidebarLinkItemWrapper } from './SidebarLinkItem.styled'
 
 interface SidebarLeftItemProps extends PropsWithChildren {
@@ -31,19 +32,21 @@ const SidebarLinkItem: FC<SidebarLeftItemProps> = ({
 
   return (
     <SidebarLinkItemWrapper>
-      <CustomNavLink
-        variant="sidebarTabs"
-        linkTo={linkTo}
-        registeredPathname={pathname}
-        registeredLinkTo={registeredLinkTo}>
-        {children}
-        {iconSVG && <Stack dangerouslySetInnerHTML={{ __html: iconSVG }} />}
-        {isThemeLgSize && (
-          <Typography variant="subtitle1" component="p">
-            {label}
-          </Typography>
-        )}
-      </CustomNavLink>
+      <FadeIn styles={{ height: '100%', width: '100%' }}>
+        <CustomNavLink
+          variant="sidebarTabs"
+          linkTo={linkTo}
+          registeredPathname={pathname}
+          registeredLinkTo={registeredLinkTo}>
+          {children}
+          {iconSVG && <Stack dangerouslySetInnerHTML={{ __html: iconSVG }} />}
+          {isThemeLgSize && (
+            <Typography variant="subtitle1" component="p">
+              {label}
+            </Typography>
+          )}
+        </CustomNavLink>
+      </FadeIn>
     </SidebarLinkItemWrapper>
   )
 }

@@ -1,4 +1,5 @@
-import { List, styled } from '@mui/material'
+import { List } from '@mui/material'
+import styled from 'styled-components'
 
 export const SidebarWrapper = styled(List)`
   width: 110px;
@@ -8,6 +9,7 @@ export const SidebarWrapper = styled(List)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   //TODO переделать с брекпоинтами
   @media (max-width: 1280px) {
     width: 90px;
