@@ -7,23 +7,43 @@ interface ReservationPartySizeProps {
   label: string
   name: string
   seats: number
+  maxSeats: number
 }
 
 const PartySize: FC<ReservationPartySizeProps> = (props) => {
-  const { label, seats, name } = props
+  const { label, maxSeats, name, seats } = props
   const { setFieldValue } = useFormikContext()
   const [field] = useField(name)
 
-  const handleItemClicked = (index: number) => setFieldValue(name, index)
+  const handleItemClicked = (index: number) => {
+    if (!!maxSeats && index <= maxSeats) {
+      setFieldValue(name, index)
+    } else if (!maxSeats) {
+      setFieldValue(name, index)
+    }
+  }
+
+  const isActive = (number: number) => {
+    if (field.value !== number) {
+      return false
+    }
+    if (!!maxSeats && number <= maxSeats && field.value === number) {
+      return true
+    }
+    if (!maxSeats && field.value === number) {
+      return true
+    }
+    return false
+  }
 
   const partySize = Array.from({ length: seats }, (_, i) => {
-    const number = i + 1
+    const number = seats >= maxSeats ? i + 1 : i + (maxSeats - seats) + 1
     return (
       <div key={number}>
         <PartySizeItem
           key={number}
           number={number}
-          active={field.value === number}
+          active={isActive(number)}
           onClick={() => handleItemClicked(number)}
         />
       </div>
@@ -31,7 +51,7 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
   })
 
   return (
-    <Stack {...field} sx={{ gap: '12px', width: '100%' }}>
+    <Stack {...field} sx={{ gap: '12px' }}>
       <Typography variant="h3" component="p">
         {label}
       </Typography>
@@ -41,7 +61,8 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
           borderRadius: '16px',
           flexDirection: 'row',
           alignSelf: 'center',
-          maxWidth: 'fit-content',
+          maxWidth: '98%',
+          flexWrap: 'wrap',
           overflow: 'hidden',
         }}>
         {partySize}

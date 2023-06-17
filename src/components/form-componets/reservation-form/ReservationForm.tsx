@@ -28,7 +28,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const { activeTable } = useReservationReducer()
   const [addNewReservation] = useCreateReservationMutation()
   const [getTableCanvasDataTrigger] = useLazyGetTablesCanvasQuery()
-  console.log(activeTable.seats)
+
   const handleFormSubmit = (
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,
@@ -43,7 +43,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const handleFormReset = () => cancelHandleFunc()
 
   return (
-    <Stack style={{ height: '100% ' }} justifyContent="center" alignItems="center">
+    <Stack style={{ height: '100% ', maxWidth: '95%' }} justifyContent="center" alignItems="center">
       <Formik
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
@@ -52,7 +52,12 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
           <CheckboxTagGroup name="tags" label="Tag" data={tags} />
           <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
-          <PartySize label="Select party size" seats={8} name="persons" />
+          <PartySize
+            label="Select party size"
+            maxSeats={activeTable.seats}
+            seats={8}
+            name="persons"
+          />
           <GuestDetail />
           <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
             <Button
