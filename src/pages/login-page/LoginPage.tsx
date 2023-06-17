@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { Login } from 'components'
 import { useLoginMutation } from 'store/api'
 import { UserLoginRequestType } from 'types/UserType'
 import { Navigate } from 'react-router-dom'
+import { Login } from './login'
 
 const LoginPage: FC = () => {
   const [login, { isSuccess }] = useLoginMutation()

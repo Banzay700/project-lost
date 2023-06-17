@@ -23,10 +23,10 @@ const ReservationModalInfo: FC<ReservationModalInfoProps> = (props) => {
         ))}
       </Stack>
       <Stack sx={{ flexDirection: 'row', gap: '10px', paddingTop: '24px' }}>
-        <Button variant="contained" size="default" fullWidth onClick={handleOpenOrder}>
+        <Button variant="contained" size="medium" fullWidth onClick={handleOpenOrder}>
           Open order
         </Button>
-        <Button variant="outlined" size="default" fullWidth onClick={handleShowPopup}>
+        <Button variant="outlined" size="medium" fullWidth onClick={handleShowPopup}>
           Cancel reservation
         </Button>
       </Stack>

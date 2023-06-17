@@ -36,7 +36,7 @@ const CreateDishForm: FC<CreateDishFormProps> = ({ createCategory, onSubmit }) =
               <Box sx={{ width: '200px' }}>
                 <Button
                   variant="contained"
-                  size="default"
+                  size="medium"
                   fullWidth
                   onClick={createCategory}
                   type="button">
@@ -48,7 +48,7 @@ const CreateDishForm: FC<CreateDishFormProps> = ({ createCategory, onSubmit }) =
           <CreateDishPictureFormItem />
         </Stack>
         <Box sx={{ width: '400px' }}>
-          <Button variant="contained" size="default" fullWidth>
+          <Button variant="contained" size="medium" fullWidth>
             Submit
           </Button>
         </Box>

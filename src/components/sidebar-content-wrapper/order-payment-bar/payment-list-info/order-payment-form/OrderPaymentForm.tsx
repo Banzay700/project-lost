@@ -48,7 +48,7 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
               <Input placeholder="Email" name="email" label="Email" icon={<Icon.Email />} />
             )}
           </Stack>
-          <Button variant="contained" size="default" type="submit" fullWidth>
+          <Button variant="contained" size="medium" type="submit" fullWidth>
             Submit
           </Button>
         </Form>

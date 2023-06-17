@@ -12,6 +12,7 @@ import {
   AdminStatisticsPage,
   AdminEmployeesPage,
   AdminRestaurantPage,
+  LoaderPage,
 } from 'pages'
 import { useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -21,12 +22,10 @@ const AppRoutes = () => {
   const { isAuthUser } = useUserReducer()
   const { isLoading } = useRefreshQuery()
 
-  if (isLoading) {
-    return <div>loading...</div>
-  }
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        {isLoading && <Route path="*" element={<LoaderPage />} />}
         {isAuthUser ? (
           <>
             <Route path="/" element={<WaiterLayout />}>
@@ -56,7 +55,7 @@ const AppRoutes = () => {
           </>
         ) : (
           <>
-            <Route path="/" element={<Navigate to={ROUTES.LOGIN} />} />
+            <Route index element={<Navigate to={ROUTES.LOGIN} />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
           </>
         )}

@@ -27,7 +27,7 @@ const ProfilePasswordForm: FC<ProfileFormChangePasswordProps> = ({ initialValues
     <Formik {...formikConfig}>
       <Form style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
         {isDisabled ? (
-          <Button variant="outlined" size="default" type="button" onClick={handleIsDisabled}>
+          <Button variant="outlined" size="medium" type="button" onClick={handleIsDisabled}>
             Change password
           </Button>
         ) : (

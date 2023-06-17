@@ -21,7 +21,7 @@ const TableDishLine: FC<TableDishLineProps> = ({ dish, onClickAction, onClickLin
     if (onClickLine) onClickLine(id)
   }
   return (
-    <TableRow hover onClick={handleClickLine} sx={{ cursor: 'pointer' }}>
+    <TableRow hover onClick={handleClickLine} sx={{ cursor: 'pointer', height: '88px' }}>
       <ColumnText title={title} />
       <ColumnText title={correctionName(category?.title || '')} textFontWeight={400} />
       <ColumnText title={`$${price}`} textFontWeight={600} />

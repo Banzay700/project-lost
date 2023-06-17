@@ -13,14 +13,7 @@ const Navbar: FC<NavbarProps> = ({ spacing, direction, data }) => {
   return (
     <Stack spacing={spacing} direction={direction} justifyContent="space-between">
       {data.map((item) => (
-        <NavItem
-          key={item.link}
-          data={item}
-          variant="h2"
-          fontWeight={500}
-          className="navItem"
-          active="activeLink"
-        />
+        <NavItem key={item.link} data={item} variant="h2" fontWeight={500} />
       ))}
     </Stack>
   )

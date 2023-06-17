@@ -7,11 +7,11 @@ interface TableLineSkeletonProps {
 }
 
 const TableLineSkeleton: FC<TableLineSkeletonProps> = ({ sizeColumn }) => {
-  const generateArr = generateArray(8)
+  const generateArr = generateArray(7)
   return (
     <>
       {generateArr.map((itemRow) => (
-        <TableRow key={itemRow}>
+        <TableRow key={itemRow} sx={{ height: '88px' }}>
           {sizeColumn?.map((itemColumn) => (
             <TableCell key={itemColumn}>
               <Typography component="p">

@@ -1,25 +1,23 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import { LogoCocaImg, LogoCocaText } from 'assets'
-import cn from 'classnames'
-import s from './Logo.module.scss'
+import { Theme, useMediaQuery } from '@mui/material'
+import { LogoWrapper } from './Logo.styled'
 
 interface LogoProps {
   link: string
-  classImg?: string
-  classText?: string
   view: 'img' | 'text' | 'both'
 }
 
-const Logo: FC<LogoProps> = ({ link, classText, classImg, view }) => {
+const Logo: FC<LogoProps> = ({ link, view }) => {
+  const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up(820))
   const viewImg = view === 'img' || view === 'both'
   const viewText = view === 'text' || view === 'both'
 
   return (
-    <Link to={link} className={s.logo}>
-      {viewImg && <LogoCocaImg className={cn(s.coca, classImg && classImg)} />}
-      {viewText && <LogoCocaText className={cn(s.cocaText, classText && classText)} />}
-    </Link>
+    <LogoWrapper to={link}>
+      {viewImg && <LogoCocaImg style={{ marginRight: '8px' }} />}
+      {viewText && isSmallScreen && <LogoCocaText />}
+    </LogoWrapper>
   )
 }
 

@@ -3,7 +3,6 @@ import { Stack } from '@mui/material'
 
 import { Button } from 'UI/index'
 import { Icon } from 'assets'
-import s from './OrderButtonsGroup.module.scss'
 
 interface OrderButtonsGroupProps {
   setTipStatus: () => void
@@ -26,11 +25,10 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
     <Stack direction="row" gap={4} sx={{ maxHeight: '86px' }}>
       <Button
         variant="contained"
-        size="default"
+        size="medium"
         color={tipActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Tip />}
-        className={s.button}
         fontWeight={400}
         variantText="h3"
         type="button"
@@ -39,11 +37,10 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
       </Button>
       <Button
         variant="contained"
-        size="default"
+        size="medium"
         color={emailActive ? 'primary' : 'secondary'}
         fullWidth
         icon={<Icon.Email />}
-        className={s.button}
         fontWeight={400}
         variantText="h3"
         type="button"

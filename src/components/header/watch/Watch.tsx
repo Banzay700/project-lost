@@ -52,7 +52,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
       <Box>
         <Button
           variant="text"
-          size="default"
+          size="medium"
           color="secondary"
           onClick={handleClickAvatar}
           icon={<Avatar src={userImage || ''} {...avatarName} />}

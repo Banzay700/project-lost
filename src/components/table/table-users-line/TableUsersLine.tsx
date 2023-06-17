@@ -15,7 +15,7 @@ const TableUsersLine: FC<TableUsersLineProps> = ({ user, onClickAction }) => {
     onClickAction(id)
   }
   return (
-    <TableRow>
+    <TableRow sx={{ height: '88px' }}>
       <ColumnText title={`${firstName} ${secondName}`} />
       <ColumnText title={phoneNumber || 'Not specified'} columnAlign="center" />
       <ColumnText title={email || 'Not specified'} columnAlign="center" />

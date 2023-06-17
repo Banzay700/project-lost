@@ -3,7 +3,6 @@ import { TableRow } from '@mui/material'
 import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
 import { BillsType, OrderTypeOfElement } from 'types'
 import { Icon } from 'assets'
-import s from './TableBillsLine.module.scss'
 
 interface TableBillsColumnProps {
   element: BillsType
@@ -63,7 +62,6 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           size="small"
           variant="contained"
           startIcon={<Icon.Tip />}
-          className={s.tableButton}
         />
       ) : (
         <ColumnAction
@@ -72,7 +70,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           size="small"
           variant="outlined"
           startIcon={<Icon.Printer />}
-          className={s.tableButton}
+
           element={element}
         />
       )}

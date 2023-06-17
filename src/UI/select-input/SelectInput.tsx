@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { useField, useFormikContext } from 'formik'
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
+import { FormControl, InputLabel, SelectChangeEvent } from '@mui/material'
 
 import { InputSelectItemType } from 'types'
 import { FadeIn } from 'utils'
-import { menuItemsStyle, selectDefaultStyle, selectActiveStyle } from './SelectInput.utils'
+import { MenuItemWrapper, SelectWrapper } from './SelectInput.styled'
 
 interface SelectInputProps {
   name: string
@@ -18,10 +18,10 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, act
   const [field] = useField(name)
   const { setFieldValue } = useFormikContext<{ table: string; orderType: string }>()
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setFieldValue(name, event.target.value)
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    setFieldValue(name, event.target.value as string)
     if (handleValue) {
-      handleValue(event.target.value)
+      handleValue(event.target.value as string)
     }
   }
 
@@ -29,17 +29,13 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, act
     <FadeIn delay={50}>
       <FormControl fullWidth>
         <InputLabel sx={{ color: active ? '#ff5c00' : '#c2c2c2' }}>{label}</InputLabel>
-        <Select
-          {...field}
-          label={label}
-          sx={active ? selectActiveStyle : selectDefaultStyle}
-          onChange={handleChange}>
+        <SelectWrapper {...field} label={label} $active={active} onChange={handleChange}>
           {data?.map(({ title, value }) => (
-            <MenuItem key={title} value={value} sx={menuItemsStyle}>
+            <MenuItemWrapper key={title} value={value}>
               {title}
-            </MenuItem>
+            </MenuItemWrapper>
           ))}
-        </Select>
+        </SelectWrapper>
       </FormControl>
     </FadeIn>
   )

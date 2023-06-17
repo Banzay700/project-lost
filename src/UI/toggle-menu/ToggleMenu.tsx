@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from 'react'
-import { Stack, Tabs } from '@mui/material'
 import { ToggleMenuItemType } from 'types'
 import { ToggleMenuItem } from './toggle-menu-item'
-import s from './ToggleMenu.module.scss'
+import { TabsWrapper, ToggleMenuWrapper } from './ToggleMenu.styled'
 
 interface ToggleMenuProps {
   menuItems: ToggleMenuItemType[]
@@ -24,16 +23,8 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange, defaultValue, bu
   }, [defaultValue])
 
   return (
-    <Stack
-      sx={{
-        width: '100%',
-        height: 70,
-        maxHeight: 70,
-        minHeight: 70,
-        justifyContent: 'center',
-        p: '12px 16px',
-      }}>
-      <Tabs value={selectedItem} className={s.wrapper} centered textColor="secondary">
+    <ToggleMenuWrapper>
+      <TabsWrapper value={selectedItem} centered textColor="secondary">
         {menuItems.map(({ label, value }) => (
           <ToggleMenuItem
             buttonDisabled={buttonDisabled}
@@ -44,8 +35,8 @@ const ToggleMenu: FC<ToggleMenuProps> = ({ menuItems, onChange, defaultValue, bu
             onClick={handleChangeMenuItem}
           />
         ))}
-      </Tabs>
-    </Stack>
+      </TabsWrapper>
+    </ToggleMenuWrapper>
   )
 }
 

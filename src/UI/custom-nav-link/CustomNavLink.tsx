@@ -1,19 +1,17 @@
 import { FC, PropsWithChildren } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import cn from 'classnames'
+import { useLocation } from 'react-router-dom'
+import { NavLinkWrapper } from './CustomNavLink.styled'
 
-interface CustomNavLinkProps extends PropsWithChildren {
+export interface CustomNavLinkProps extends PropsWithChildren {
   linkTo: string
-  className?: string
-  isActiveClassName?: string
+  variant?: 'sidebarTabs' | 'tabs'
   registeredPathname?: string
   registeredLinkTo?: string
 }
 
 const CustomNavLink: FC<CustomNavLinkProps> = ({
   linkTo,
-  className,
-  isActiveClassName,
+  variant,
   children,
   registeredPathname,
   registeredLinkTo,
@@ -37,12 +35,9 @@ const CustomNavLink: FC<CustomNavLinkProps> = ({
   }
 
   return (
-    <NavLink
-      to={linkTo}
-      className={({ isActive }) => (isActive ? cn(className, isActiveClassName) : className)}
-      onClick={handleClick}>
+    <NavLinkWrapper to={linkTo} $variant={variant} onClick={handleClick}>
       {children}
-    </NavLink>
+    </NavLinkWrapper>
   )
 }
 

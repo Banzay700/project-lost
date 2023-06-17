@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { Card, Skeleton, Stack, Typography } from '@mui/material'
-import { generateArray } from 'utils/generateArray'
+import { Skeleton, Stack, Typography } from '@mui/material'
+import { generateArray } from 'utils'
+import { DishesListSkeletonWrapper } from './DishesListSkeleton.styled'
 
 const DishesListSkeleton: FC = () => {
   const generateArr = generateArray(12)
@@ -8,16 +9,7 @@ const DishesListSkeleton: FC = () => {
   return (
     <>
       {generateArr.map((item) => (
-        <Card
-          key={item}
-          sx={{
-            width: '100%',
-            maxWidth: '220px',
-            minWidth: '190px',
-            height: '100%',
-            borderRadius: '16px',
-            p: '12px',
-          }}>
+        <DishesListSkeletonWrapper key={item}>
           <Stack spacing="12px" height="100%">
             <Skeleton
               animation="wave"
@@ -44,7 +36,7 @@ const DishesListSkeleton: FC = () => {
               </Typography>
             </Stack>
           </Stack>
-        </Card>
+        </DishesListSkeletonWrapper>
       ))}
     </>
   )

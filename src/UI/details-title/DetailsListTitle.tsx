@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Typography } from '@mui/material'
-import s from './DetailsListTitle.module.scss'
+import { DetailsListTitleWrapper } from './DetailsListTitle.styled'
 
 interface OrderDetailsTitleProps {
   title: string
@@ -16,7 +16,7 @@ const DetailsListTitle: FC<OrderDetailsTitleProps> = ({
   staffSurname,
 }) => {
   return (
-    <div className={s.wrapper}>
+    <DetailsListTitleWrapper>
       <Typography variant="h1" component="p" color="secondary">
         {title}
       </Typography>
@@ -30,7 +30,7 @@ const DetailsListTitle: FC<OrderDetailsTitleProps> = ({
           Waiter: {staffName} {staffSurname}
         </Typography>
       )}
-    </div>
+    </DetailsListTitleWrapper>
   )
 }
 

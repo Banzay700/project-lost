@@ -27,7 +27,7 @@ const ReservationInfoList: FC<ReservationInfoListProps> = ({ handleShowForm }) =
         justifyContent="space-between"
         sx={{ height: '100%', p: '33px 24px 24px' }}>
         <TableReservation data={data} />
-        <Button size="default" variant="contained" onClick={handleShowForm}>
+        <Button size="medium" variant="contained" onClick={handleShowForm}>
           Add new reservation
         </Button>
       </Stack>

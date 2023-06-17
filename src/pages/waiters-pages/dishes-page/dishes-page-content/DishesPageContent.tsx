@@ -21,7 +21,11 @@ const DishesPageContent: FC = () => {
   } = useParamsSearchFilter('category')
 
   const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || 'pizza'))
-  const { data: dishes, isLoading } = useGetDishesQuery({
+  const {
+    data: dishes,
+
+    isFetching,
+  } = useGetDishesQuery({
     category: subCategory || firstLetterUpperCase(category || 'pizza'),
     search,
     page,
@@ -44,7 +48,7 @@ const DishesPageContent: FC = () => {
         defaultValueFilter={subCategory?.split(',')}
         defaultValueInput={search || ''}
       />
-      <DishesList dishes={dishes?.data} isLoading={isLoading} />
+      <DishesList dishes={dishes?.data} isLoading={isFetching} />
       <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
         {dishes && (
           <Pagination

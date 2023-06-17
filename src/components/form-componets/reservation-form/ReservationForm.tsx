@@ -57,13 +57,13 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
           <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
             <Button
               variant="outlined"
-              size="default"
+              size="medium"
               type="reset"
               fullWidth
               onClick={handleFormReset}>
               Cancel
             </Button>
-            <Button variant="contained" size="default" type="submit" fullWidth>
+            <Button variant="contained" size="medium" type="submit" fullWidth>
               Add to reservation
             </Button>
           </Stack>

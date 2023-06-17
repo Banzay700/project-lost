@@ -3,7 +3,7 @@ import { Typography } from '@mui/material'
 import { Button } from 'UI'
 import { Icon } from 'assets'
 import { useRootLocationPath } from 'hooks'
-import s from './Picker.module.scss'
+import { PickerWrapper, ValueWrapper } from './Picker.styled'
 
 interface PickerProps {
   onChange: (value: number) => void
@@ -31,7 +31,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
   }
 
   return isHomeLocation ? (
-    <div className={s.wrapper}>
+    <PickerWrapper>
       <Button
         variant="contained"
         size="small"
@@ -39,11 +39,11 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
         icon={<Icon.Minus />}
         onClick={handleDecrementValue}
       />
-      <div className={s.value}>
+      <ValueWrapper>
         <Typography variant="h3" component="p" fontWeight="600" color="text.secondary">
           {valuePicker}
         </Typography>
-      </div>
+      </ValueWrapper>
       <Button
         variant="contained"
         size="small"
@@ -51,7 +51,7 @@ const Picker: FC<PickerProps> = ({ initialValue = 1, onChange, handleDeleteCard 
         icon={<Icon.Plus />}
         onClick={handleIncrementValue}
       />
-    </div>
+    </PickerWrapper>
   ) : null
 }
 

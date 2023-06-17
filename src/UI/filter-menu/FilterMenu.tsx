@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react'
-import { Stack } from '@mui/material'
 import { FilterMenuItemType } from 'types'
 
 import { FilterMenuItem } from './filter-menu-item'
+import { FilterMenuWrapper } from './FilterMenu.styled'
 
 interface FilterMenuProps {
   filterMenuItems?: FilterMenuItemType[]
@@ -47,7 +47,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
       : handleChangeFilterWhenTwoItem
 
   return (
-    <Stack sx={{ gap: '8px', width: '100%', overflowX: 'auto' }} direction="row" flexWrap="wrap">
+    <FilterMenuWrapper direction="row">
       <FilterMenuItem
         value="all"
         label="All"
@@ -63,7 +63,7 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
           onChange={choiceHandle}
         />
       ))}
-    </Stack>
+    </FilterMenuWrapper>
   )
 }
 

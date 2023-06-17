@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Checkbox } from '@mui/material'
-import { Button } from 'UI/button'
+import { Button } from 'UI'
 import { FieldInputProps } from 'formik'
 
 interface CheckboxButtonWithoutIconProps {
@@ -24,12 +24,12 @@ const CheckboxButtonInGroup: FC<CheckboxButtonWithoutIconProps> = ({
       {...field}
       value={value}
       icon={
-        <Button variant="outlined" size="default" color="secondary">
+        <Button variant="outlined" size="medium" color="secondary">
           {title}
         </Button>
       }
       checkedIcon={
-        <Button variant="outlined" size="default">
+        <Button variant="contained" size="medium">
           {title}
         </Button>
       }

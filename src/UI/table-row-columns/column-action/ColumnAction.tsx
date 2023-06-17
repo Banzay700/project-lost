@@ -1,19 +1,19 @@
 import { FC, MouseEvent, ReactNode } from 'react'
 import { TableCell } from '@mui/material'
-import { PDFDownloadLink } from '@react-pdf/renderer'
 import { Button, PDFDoc } from 'UI'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import { BillsType } from 'types'
+
 
 interface ColumnActionProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   title: string
   columnAlign?: 'center' | 'left' | 'right'
-  size?: 'small' | 'default'
+  size?: 'small' | 'medium'
   variant?: 'contained' | 'outlined'
   startIcon?: ReactNode
   endIcon?: ReactNode
   icon?: ReactNode
-  className?: string
   element?: BillsType
   type?: 'print'
 }
@@ -26,11 +26,11 @@ const ColumnAction: FC<ColumnActionProps> = ({
   icon,
   startIcon,
   endIcon,
+                                               element,
+                                               type,
   onClick,
-  className,
-  element,
-  type,
 }) => {
+
   return (
     <TableCell align={columnAlign || 'center'}>
       {type === 'print' ? (
@@ -42,7 +42,9 @@ const ColumnAction: FC<ColumnActionProps> = ({
             startIcon={startIcon}
             endIcon={endIcon}
             icon={icon}
-            className={className}>
+            maxWidth="150px"
+            fullWidth
+>
             {title}
           </Button>
         </PDFDownloadLink>
@@ -54,7 +56,9 @@ const ColumnAction: FC<ColumnActionProps> = ({
           startIcon={startIcon}
           endIcon={endIcon}
           icon={icon}
-          className={className}>
+          maxWidth="150px"
+          fullWidth
+>
           {title}
         </Button>
       )}

@@ -1,14 +1,14 @@
 import { FC } from 'react'
-import { Card, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { Icon } from 'assets'
 import { Button } from 'UI'
 import { useIsModal, useOrderReducer } from 'hooks'
-import { DishType } from 'types/DishType'
+import { DishType } from 'types'
 import { ModalDishDetailInfo } from 'components'
 import { DishCardMedia } from './dish-card-media'
 import { DishCardTitle } from './dish-card-title'
 import { DishCardPricing } from './dish-card-pricing'
-import s from './DishCard.module.scss'
+import { DishButtonWrapper, DishWrapper } from './DishCard.styled'
 
 interface DishCardProps {
   dish: DishType
@@ -28,14 +28,10 @@ const DishCard: FC<DishCardProps> = ({ dish }) => {
   }
 
   return (
-    <Card className={s.card}>
-      <Button
-        variant="text"
-        size="small"
-        onClick={handleClickDetailInfo}
-        icon={<Icon.More />}
-        className={s.icon}
-      />
+    <DishWrapper>
+      <DishButtonWrapper>
+        <Button variant="text" size="small" onClick={handleClickDetailInfo} icon={<Icon.More />} />
+      </DishButtonWrapper>
       <Stack spacing="12px" height="100%">
         <DishCardMedia title={title} image={picture} />
         <Stack
@@ -50,7 +46,7 @@ const DishCard: FC<DishCardProps> = ({ dish }) => {
         isOpenModal={isOpen}
         onCloseModal={handleToggleIsOpenModal}
       />
-    </Card>
+    </DishWrapper>
   )
 }
 

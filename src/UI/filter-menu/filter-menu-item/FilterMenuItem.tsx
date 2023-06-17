@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Button } from 'UI'
-import s from './FilterMenuItem.module.scss'
 
 interface FilterMenuItemProps {
   value: string
@@ -18,10 +17,10 @@ const FilterMenuItem: FC<FilterMenuItemProps> = ({ value, label, onChange, isSel
       variantText="h3"
       fontWeight={400}
       color={isSelected ? 'primary' : 'secondary'}
-      className={s.toggleButton}
       onClick={handleClick}
-      size="default"
-      variant="outlined">
+      size="small"
+      variant="outlined"
+      filterMenuStyle>
       {label}
     </Button>
   )

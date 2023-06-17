@@ -3,7 +3,6 @@ import { Radio } from '@mui/material'
 import { Button } from 'UI'
 import { useField } from 'formik'
 import { RadioButtonWithoutIconItemType } from 'types'
-import s from './RadioButtonWithoutIcon.module.scss'
 
 const RadioButtonWithoutIcon: FC<RadioButtonWithoutIconItemType> = ({ name, value, label }) => {
   const [field] = useField(name)
@@ -19,7 +18,7 @@ const RadioButtonWithoutIcon: FC<RadioButtonWithoutIconItemType> = ({ name, valu
         </Button>
       }
       checkedIcon={
-        <Button variant="contained" size="small" fullWidth className={s.button}>
+        <Button variant="contained" size="small" fullWidth>
           {label}
         </Button>
       }

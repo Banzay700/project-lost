@@ -16,7 +16,7 @@ const TableOrders: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isLoading } = useGetAllOrdersQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 7 })
 
   const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
@@ -43,7 +43,7 @@ const TableOrders: FC = () => {
         onChange={handleFilterCategory}
       />
       <Table
-        isLoading={isLoading}
+        isLoading={isFetching}
         data={data?.data}
         tableTitles={tableTitleOrder}
         tableType="orders"

@@ -1,13 +1,13 @@
-import ButtonMUI from '@mui/material/Button'
 import { FC, PropsWithChildren, ReactElement, ReactNode, MouseEvent } from 'react'
 import { Typography, Stack } from '@mui/material'
-import cn from 'classnames'
-import s from './Button.module.scss'
+import { ButtonWrapper } from './Button.styled'
 
 interface ButtonProps extends PropsWithChildren {
   variant: 'contained' | 'outlined' | 'text'
-  size: 'small' | 'default'
+  size: 'small' | 'medium'
   color?: 'secondary' | 'primary'
+  maxWidth?: string
+  blur?: boolean
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
   icon?: ReactNode | ReactElement
@@ -18,16 +18,18 @@ interface ButtonProps extends PropsWithChildren {
   disabled?: boolean
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   fullWidth?: boolean
-  className?: string
   linkageToForm?: string
+  filterMenuStyle?: boolean
 }
 
 const Button: FC<ButtonProps> = ({
   variant,
   size,
+  maxWidth,
   color,
   startIcon,
   endIcon,
+  blur,
   icon,
   type,
   variantText,
@@ -35,27 +37,24 @@ const Button: FC<ButtonProps> = ({
   fullWidth = false,
   disableRipple,
   disabled,
-  className,
   children,
   onClick,
   linkageToForm,
+  filterMenuStyle,
 }) => {
   const variantTextSize = variantText || (size === 'small' && 'h3') || 'h2'
-  const buttonStyles = cn(
-    className,
-    s.wrapper,
-    { [s.sizeSmall]: size === 'small' },
-    { [s.sizeDefault]: size === 'default' },
-  )
 
   return (
-    <ButtonMUI
+    <ButtonWrapper
+      sx={{ maxWidth }}
+      filterMenuStyle={filterMenuStyle}
+      size={size}
+      blur={blur}
       variant={variant}
       color={color}
       startIcon={startIcon}
       endIcon={endIcon}
       type={type || 'submit'}
-      className={buttonStyles}
       fullWidth={fullWidth}
       disableRipple={disableRipple}
       disabled={disabled}
@@ -69,7 +68,7 @@ const Button: FC<ButtonProps> = ({
           </Typography>
         )}
       </Stack>
-    </ButtonMUI>
+    </ButtonWrapper>
   )
 }
 

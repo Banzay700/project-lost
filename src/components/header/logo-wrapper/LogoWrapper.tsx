@@ -22,7 +22,7 @@ const LogoWrapper: FC<UserType> = ({ role }) => {
       {role === 'Admin' && (
         <Button
           variant="outlined"
-          size="default"
+          size="medium"
           icon={<Icon.ArrowLeft color="secondary" />}
           color="secondary"
           onClick={handleGoToAdminPanel}

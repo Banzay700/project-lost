@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren, ReactNode, SyntheticEvent } from 'react'
-import { Box, Dialog, DialogActions, DialogContent, DialogTitle, Stack } from '@mui/material'
+import { Box, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import { Button } from 'UI'
 import { Icon } from 'assets'
-import s from './Modal.module.scss'
+import { ModalTitleContainer, ModalWrapper } from './Modal.styled'
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean
@@ -38,21 +38,12 @@ const Modal: FC<ModalProps> = ({
   }
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={handleClose}
-      sx={{ borderRadius: '16px', '.MuiPaper-root': { minWidth: '500px' } }}>
+    <ModalWrapper open={isOpen} onClose={handleClose}>
       <DialogTitle sx={{ p: '24px' }} color={colorHeader}>
-        <Stack
-          direction="row"
-          sx={{
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '50px',
-          }}>
+        <ModalTitleContainer>
           {title}
           {isIconExit && <Icon.Cross onClick={handleClose} style={{ cursor: 'pointer' }} />}
-        </Stack>
+        </ModalTitleContainer>
       </DialogTitle>
       <DialogContent dividers sx={{ p: '24px 0', margin: '0 24px' }}>
         {children}
@@ -63,25 +54,27 @@ const Modal: FC<ModalProps> = ({
           {!isIconExit && (
             <Button
               variant="outlined"
-              size="default"
+              size="medium"
               type="button"
               onClick={handleClose}
-              className={s.button}>
+              fullWidth
+              maxWidth="150px">
               Cancel
             </Button>
           )}
           <Button
             variant="contained"
-            size="default"
+            size="medium"
             type="submit"
             linkageToForm={linkageToForm}
             onClick={handleSubmit}
-            className={s.button}>
+            fullWidth
+            maxWidth="150px">
             Submit
           </Button>
         </DialogActions>
       )}
-    </Dialog>
+    </ModalWrapper>
   )
 }
 

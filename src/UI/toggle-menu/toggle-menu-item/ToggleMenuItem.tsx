@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Tab, Typography } from '@mui/material'
-import s from './ToggleMenuItem.module.scss'
+import { Typography } from '@mui/material'
+import { ToggleMenuItemWrapper } from './ToggleMenuItem.styled'
 
 interface ToggleMenuItemProps {
   label: string
@@ -24,9 +24,8 @@ const ToggleMenuItem: FC<ToggleMenuItemProps> = ({
   }
 
   return (
-    <Tab
+    <ToggleMenuItemWrapper
       disabled={buttonDisabled}
-      className={s.tabItem}
       onClick={handleChange}
       label={
         <Typography variant="h3" component="p" color={isSelected}>

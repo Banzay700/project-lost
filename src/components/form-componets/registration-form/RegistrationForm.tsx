@@ -52,7 +52,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
           minRows={6}
         />
         <Box sx={{ width: '400px' }}>
-          <Button variant="contained" size="default" fullWidth>
+          <Button variant="contained" size="medium" fullWidth>
             Registration
           </Button>
         </Box>

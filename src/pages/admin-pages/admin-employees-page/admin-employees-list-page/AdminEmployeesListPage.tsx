@@ -15,7 +15,7 @@ const AdminEmployeesListPage: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('role')
-  const { data, isLoading } = useGetAllUsersQuery({ role, search, page })
+  const { data, isFetching } = useGetAllUsersQuery({ role, search, page, limit: 7 })
   const [trigger, { data: user }] = useLazyGetUserByIDQuery()
   const [updateUser] = useUpdateUserMutation()
   const { isOpen, handleToggleIsOpenModal } = useIsModal()
@@ -45,7 +45,7 @@ const AdminEmployeesListPage: FC = () => {
         tableTitles={tableHeaders}
         tableType="users"
         onClickAction={handleClick}
-        isLoading={isLoading}
+        isLoading={isFetching}
       />
       <Stack
         sx={{
@@ -57,7 +57,7 @@ const AdminEmployeesListPage: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 8)}
+            count={Math.ceil(data.totalCount / 7)}
             variant="text"
             shape="rounded"
             color="primary"

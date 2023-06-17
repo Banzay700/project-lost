@@ -6,7 +6,7 @@ import { Button } from '.'
 describe('testing button', () => {
   test('button children', () => {
     render(
-      <Button variant="contained" size="default">
+      <Button variant="contained" size="medium">
         Click me
       </Button>,
     )
@@ -14,7 +14,7 @@ describe('testing button', () => {
   })
   test('button variant contained and color primary', () => {
     render(
-      <Button variant="contained" size="default">
+      <Button variant="contained" size="medium">
         Click me
       </Button>,
     )
@@ -23,7 +23,7 @@ describe('testing button', () => {
   })
   test('button variant outlined and color secondary', () => {
     render(
-      <Button variant="outlined" size="default" color="secondary">
+      <Button variant="outlined" size="medium" color="secondary">
         Click me
       </Button>,
     )
@@ -32,7 +32,7 @@ describe('testing button', () => {
   })
   test('button variant text', () => {
     render(
-      <Button variant="text" size="default">
+      <Button variant="text" size="medium">
         Click me
       </Button>,
     )
@@ -40,7 +40,7 @@ describe('testing button', () => {
   })
   test('button fullWidth', () => {
     render(
-      <Button variant="text" size="default" fullWidth>
+      <Button variant="text" size="medium" fullWidth>
         Click me
       </Button>,
     )
@@ -48,7 +48,7 @@ describe('testing button', () => {
   })
   test('button disabled', () => {
     render(
-      <Button variant="text" size="default" disabled>
+      <Button variant="text" size="medium" disabled>
         Click me
       </Button>,
     )
@@ -56,7 +56,7 @@ describe('testing button', () => {
   })
   test('button disabled', () => {
     render(
-      <Button variant="text" size="default" disabled>
+      <Button variant="text" size="medium" disabled>
         Click me
       </Button>,
     )
@@ -64,7 +64,7 @@ describe('testing button', () => {
   })
   test('button type submit', () => {
     render(
-      <Button variant="text" size="default" type="submit">
+      <Button variant="text" size="medium" type="submit">
         Click me
       </Button>,
     )
@@ -72,7 +72,7 @@ describe('testing button', () => {
   })
   test('button type reset', () => {
     render(
-      <Button variant="text" size="default" type="reset">
+      <Button variant="text" size="medium" type="reset">
         Click me
       </Button>,
     )
@@ -80,7 +80,7 @@ describe('testing button', () => {
   })
   test('button type button', () => {
     render(
-      <Button variant="text" size="default" type="button">
+      <Button variant="text" size="medium" type="button">
         Click me
       </Button>,
     )
@@ -90,7 +90,7 @@ describe('testing button', () => {
     render(
       <Button
         variant="text"
-        size="default"
+        size="medium"
         type="button"
         icon={<div data-testid="icon">Icon</div>}
       />,
@@ -105,7 +105,7 @@ describe('testing button', () => {
     render(
       <Button
         variant="text"
-        size="default"
+        size="medium"
         type="button"
         endIcon={<div data-testid="icon">Icon</div>}>
         Click me
@@ -122,7 +122,7 @@ describe('testing button', () => {
     render(
       <Button
         variant="text"
-        size="default"
+        size="medium"
         type="button"
         startIcon={<div data-testid="icon">Icon</div>}>
         Click me
@@ -135,18 +135,10 @@ describe('testing button', () => {
     expect(icon).toBeInTheDocument()
     expect(screen.getByText('Click me')).toBeInTheDocument()
   })
-  test('button with custom classname', () => {
-    render(
-      <Button variant="text" size="default" className="test">
-        Click me
-      </Button>,
-    )
-    expect(screen.getByRole('button')).toHaveClass('test')
-  })
   test('button handleClick', () => {
     const handleClick = vi.fn()
     render(
-      <Button variant="text" size="default" onClick={handleClick}>
+      <Button variant="text" size="medium" onClick={handleClick}>
         Click me
       </Button>,
     )

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { DishType } from 'types'
 import { useSmoothScrollbar } from 'hooks'
 import { DishesListSkeleton } from 'UI'
@@ -13,6 +13,11 @@ interface DishesListProps {
 
 const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
+  const [isLoadingDish, setIsLoadingDish] = useState(isLoading)
+
+  useEffect(() => {
+    setIsLoadingDish(isLoading)
+  }, [isLoading])
 
   return (
     <div
@@ -23,10 +28,8 @@ const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
       }}
       ref={containerRef}>
       <div className={s.gridContainer}>
-        {isLoading && <DishesListSkeleton />}
-        {dishes?.map((dish) => (
-          <DishCard key={dish.id} dish={dish} />
-        ))}
+        {isLoadingDish && <DishesListSkeleton />}
+        {!isLoading && dishes?.map((dish) => <DishCard key={dish.id} dish={dish} />)}
       </div>
     </div>
   )
