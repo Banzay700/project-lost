@@ -70,7 +70,6 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           size="small"
           variant="outlined"
           startIcon={<Icon.Printer />}
-
           element={element}
         />
       )}

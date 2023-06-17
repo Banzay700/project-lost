@@ -4,7 +4,6 @@ import { Button, PDFDoc } from 'UI'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { BillsType } from 'types'
 
-
 interface ColumnActionProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   title: string
@@ -26,11 +25,10 @@ const ColumnAction: FC<ColumnActionProps> = ({
   icon,
   startIcon,
   endIcon,
-                                               element,
-                                               type,
+  element,
+  type,
   onClick,
 }) => {
-
   return (
     <TableCell align={columnAlign || 'center'}>
       {type === 'print' ? (
@@ -43,8 +41,7 @@ const ColumnAction: FC<ColumnActionProps> = ({
             endIcon={endIcon}
             icon={icon}
             maxWidth="150px"
-            fullWidth
->
+            fullWidth>
             {title}
           </Button>
         </PDFDownloadLink>
@@ -57,8 +54,7 @@ const ColumnAction: FC<ColumnActionProps> = ({
           endIcon={endIcon}
           icon={icon}
           maxWidth="150px"
-          fullWidth
->
+          fullWidth>
           {title}
         </Button>
       )}

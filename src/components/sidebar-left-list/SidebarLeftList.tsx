@@ -12,28 +12,27 @@ interface SidebarLeftListProps {
 
 const SidebarLeftList: FC<SidebarLeftListProps> = ({ sidebarItems, isLoading }) => {
   const { location, pathname } = useRootLocationPath()
-  const containerRef = useSmoothScrollbar<HTMLUListElement>('2px')
-
-  if (isLoading) {
-    return <SidebarLinkListSkeleton />
-  }
+  const containerRef = useSmoothScrollbar<HTMLDivElement>('2px')
 
   const pathSplit = pathname.split('/')
   const registeredLinkTo = pathSplit.slice(0, pathSplit.length - 1).join('/')
 
   return (
-    <SidebarWrapper ref={containerRef}>
-      {sidebarItems?.map(({ title, id, picture, icon }) => (
-        <SidebarLinkItem
-          registeredLinkTo={registeredLinkTo}
-          key={id}
-          label={correctionName(title)}
-          linkIconSVG={picture}
-          linkTo={`/${location}/${title.toLowerCase()}`}>
-          {icon}
-        </SidebarLinkItem>
-      ))}
-    </SidebarWrapper>
+    <div ref={containerRef} style={{ height: '100%' }}>
+      <SidebarWrapper>
+        {isLoading && <SidebarLinkListSkeleton />}
+        {sidebarItems?.map(({ title, id, picture, icon }) => (
+          <SidebarLinkItem
+            registeredLinkTo={registeredLinkTo}
+            key={id}
+            label={correctionName(title)}
+            linkIconSVG={picture}
+            linkTo={`/${location}/${title.toLowerCase()}`}>
+            {icon}
+          </SidebarLinkItem>
+        ))}
+      </SidebarWrapper>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ const DishesPage: FC = () => {
 
   return (
     <FadeIn styles={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
-      <Box borderRight="1px solid #e4e4e4">
+      <Box borderRight="1px solid #e4e4e4" sx={{ height: '100%' }}>
         <SidebarLeftList sidebarItems={data} isLoading={isLoading} />
       </Box>
       <DishesPageContent />
