@@ -37,6 +37,7 @@ const TableBills: FC = () => {
           { value: 'dineIn', label: 'Dine in' },
           { value: 'takeAway', label: 'Take away' },
         ]}
+        defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
       <Table
