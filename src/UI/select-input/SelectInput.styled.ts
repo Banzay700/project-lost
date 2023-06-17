@@ -1,10 +1,11 @@
 import { MenuItem, Select, styled, css } from '@mui/material'
+import { withProps } from 'utils/withProps'
 
 const selectActiveStyle = css`
   color: #ff5c00;
   background-color: #fff5ee;
   && {
-    &.MuiOutlinedInput-notchedOutline {
+    & .MuiOutlinedInput-notchedOutline {
       border-width: 1px;
       border-color: #ff5c00;
     }
@@ -29,10 +30,8 @@ const selectDefaultStyle = css`
   }
 `
 
-export const SelectWrapper = styled(Select, {
-  shouldForwardProp: (prop) => prop !== '$active',
-})<{ $active?: boolean }>`
-  ${({ $active }) => ($active ? selectActiveStyle : selectDefaultStyle)}
+export const SelectWrapper = styled(Select, withProps('active'))<{ active?: boolean }>`
+  ${({ active }) => (active ? selectActiveStyle : selectDefaultStyle)}
 `
 
 export const MenuItemWrapper = styled(MenuItem)(

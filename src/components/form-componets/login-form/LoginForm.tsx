@@ -13,14 +13,11 @@ interface InputPasswordProps {
 
 const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
   const [password, setPasswordValue] = useState('')
-  const [isFocus, setIsFocus] = useState(false)
   const [formValues, setFormValues] = useState(initialValues)
 
   const getPassword = (value: ButtonLoginReturnType) => {
-    setIsFocus(false)
     if (typeof value === 'number') {
       setPasswordValue((prevState) => prevState + String(value))
-      setIsFocus(true)
     } else if (value === 'clear') {
       setPasswordValue('')
     } else if (value === 'delete') {
@@ -51,13 +48,7 @@ const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
       enableReinitialize>
       <Form>
         <Stack spacing={8}>
-          <Input
-            placeholder="Enter your PIN"
-            name="password"
-            type="password"
-            outlined
-            focus={isFocus}
-          />
+          <Input placeholder="Enter your PIN" name="password" type="password" outlined focus />
           <DigitButtonsGroup getValue={getPassword} />
           <Button variant="contained" size="medium" fullWidth>
             Login

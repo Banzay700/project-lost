@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Input } from 'UI/input'
+import { Input } from 'UI'
 
 interface InputsBasicUserInfoProps {
   isDisabled?: boolean

@@ -1,6 +1,8 @@
 import { Stack, styled } from '@mui/material'
 import dayjs from 'dayjs'
-import { ReservationCanvasType } from 'types/ReservationsTypes'
+
+import { ReservationCanvasType } from 'types'
+import { withProps } from 'utils'
 
 interface TableWrapperProps {
   selected: boolean
@@ -10,7 +12,10 @@ interface TableTextProps {
   info?: ReservationCanvasType
 }
 
-export const TableWrapper = styled(Stack)<TableWrapperProps>(({ theme, selected }) => ({
+export const TableWrapper = styled(
+  Stack,
+  withProps('selected'),
+)<TableWrapperProps>(({ theme, selected }) => ({
   padding: '22px',
   borderRadius: '16px',
   backgroundColor: theme.palette.background.default,
@@ -22,7 +27,10 @@ export const TableWrapper = styled(Stack)<TableWrapperProps>(({ theme, selected 
   color: selected ? theme.palette.primary.main : theme.palette.primary.lightGrey,
 }))
 
-export const TableText = styled(Stack)<TableTextProps>(({ theme, info }) => {
+export const TableText = styled(
+  Stack,
+  withProps('info'),
+)<TableTextProps>(({ theme, info }) => {
   const dateTimeString = dayjs(`${info?.date} ${info?.time}`)
   const currentTime = dayjs()
   const isPast = dateTimeString.isBefore(currentTime)

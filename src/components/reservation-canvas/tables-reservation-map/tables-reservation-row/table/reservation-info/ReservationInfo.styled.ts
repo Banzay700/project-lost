@@ -1,13 +1,17 @@
 import { Box, styled } from '@mui/material'
+import dayjs from 'dayjs'
 
 import { ReservationCanvasType } from 'types'
-import dayjs from 'dayjs'
+import { withProps } from 'utils'
 
 interface IconWrapperProps {
   info?: ReservationCanvasType
 }
 
-export const IconWrapper = styled(Box)<IconWrapperProps>(({ theme, info }) => {
+export const IconWrapper = styled(
+  Box,
+  withProps('info'),
+)<IconWrapperProps>(({ theme, info }) => {
   const { palette } = theme
   const dateTimeString = dayjs(`${info?.date} ${info?.time}`)
   const currentTime = dayjs()

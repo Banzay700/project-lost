@@ -15,11 +15,11 @@ const RadioButton: FC<RadioControlLabelProps> = ({ value, selectedValue, icon, l
 
   return (
     <RadioButtonWrapper>
-      <RadioIconWrapper $isChecked={isChecked}>{icon}</RadioIconWrapper>
+      <RadioIconWrapper isChecked={isChecked}>{icon}</RadioIconWrapper>
       <FormControlLabelWrapper
         control={<Radio sx={{ color: '#C2C2C2' }} />}
         label={label}
-        $isChecked={isChecked}
+        isChecked={isChecked}
         labelPlacement="start"
         value={value}
       />

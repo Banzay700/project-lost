@@ -29,7 +29,7 @@ const SelectInput: FC<SelectInputProps> = ({ name, label, data, handleValue, act
     <FadeIn delay={50}>
       <FormControl fullWidth>
         <InputLabel sx={{ color: active ? '#ff5c00' : '#c2c2c2' }}>{label}</InputLabel>
-        <SelectWrapper {...field} label={label} $active={active} onChange={handleChange}>
+        <SelectWrapper {...field} label={label} active={active} onChange={handleChange}>
           {data?.map(({ title, value }) => (
             <MenuItemWrapper key={title} value={value}>
               {title}

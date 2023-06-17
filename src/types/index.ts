@@ -60,7 +60,7 @@ export type {
   ToggleMenuItemType,
   SidebarItemType,
   RadioGroupItemType,
-  InputVariantItemType,
+  InputPropsType,
   LinkItemType,
   FilterMenuItemType,
   PaymentMethodItemType,
