@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react'
-import { Typography, Stack, Box } from '@mui/material'
+import { Typography, Stack, Box, useTheme, useMediaQuery } from '@mui/material'
 import dayjs from 'dayjs'
 import { useField, useFormikContext } from 'formik'
 import { IconTickDown } from 'assets/icons'
@@ -22,6 +22,9 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   const [field] = useField(name)
   const { setFieldValue } = useFormikContext()
   const monthAndYearFormat = dayjs(chosenDay).format('MMM YYYY')
+
+  const theme = useTheme()
+  const matchesLG = useMediaQuery(theme.breakpoints.down('lg'))
 
   const handleSetChosenDay = (day: Date) => {
     setChosenDay(day)
@@ -49,7 +52,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
   return (
     <Box {...field}>
       <Stack direction="row" justifyContent="center" style={{ marginTop: '12px' }}>
-        <Stack gap="12px" style={{ maxWidth: 'fit-content' }}>
+        <Stack gap="12px" style={{ maxWidth: '95%' }}>
           <Stack justifyContent="space-between" direction="row" alignItems="center">
             <Typography variant="h3" component="span">
               {label}
@@ -69,6 +72,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
             handleSetChosenDay={(day) => handleSetFormValues(day)}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
+            maxDaysInWeek={matchesLG ? 5 : 7}
           />
         </Stack>
       </Stack>
