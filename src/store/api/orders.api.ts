@@ -3,7 +3,7 @@ import { convertOrderData } from 'utils'
 import { openOrder } from '../reducers'
 import { api } from './api'
 
-export const orderApi = api.injectEndpoints({
+export const ordersApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllOrders: builder.query<OrderResponseType, OrderBillsQueryRequest>({
       query: ({ page, orderType, status, limit }) => {
@@ -61,4 +61,4 @@ export const {
   useCreateOrderMutation,
   useDeleteOrderMutation,
   useUpdateOrderMutation,
-} = orderApi
+} = ordersApi

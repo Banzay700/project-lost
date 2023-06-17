@@ -23,7 +23,7 @@ const OrderPaymentBar: FC = () => {
 
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
-  // console.log('newBill', newBill)
+
   const handleFormSubmit = (values: PaymentFormReturnType) => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })

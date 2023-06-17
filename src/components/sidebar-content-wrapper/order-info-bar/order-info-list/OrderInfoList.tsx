@@ -5,9 +5,8 @@ import { OrderSummaryWrapper } from 'components'
 import { Button, DetailsListTitle } from 'UI'
 import { FadeIn } from 'utils'
 import { useOrderReducer, useSmoothScrollbar, useUserReducer } from 'hooks'
+import { useUpdateTableStatusMutation, useDeleteOrderMutation } from 'store/api'
 import { OrderDetailsItem } from 'components/order-details-item'
-import { useDeleteOrderMutation } from 'store/api/order.api'
-import { useUpdateTableStatusMutation } from 'store/api'
 
 interface OrderListProps {
   onClick?: () => void

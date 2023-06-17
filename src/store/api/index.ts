@@ -6,7 +6,8 @@ export {
   useUpdateOrderMutation,
   useLazyGetOrderQuery,
   useGetAllOrdersQuery,
-} from './order.api'
+  useDeleteOrderMutation,
+} from './orders.api'
 
 export {
   useGetFreeTablesQuery,
@@ -56,4 +57,6 @@ export {
   useCreateReservationMutation,
   useUpdateReservationMutation,
   useLazyGetReservationsByDateQuery,
+  useGetReservationInfoQuery,
+  useLazyGetReservationInfoQuery,
 } from './reservation.api'

@@ -5,12 +5,12 @@ import { Form, Formik } from 'formik'
 import { Button, SelectInput } from 'UI'
 import { InputSelectItemType, OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
-import { useGetFreeTablesQuery } from 'store/api'
 import { FadeIn } from 'utils'
+import { useGetFreeTablesQuery, useLazyGetReservationInfoQuery } from 'store/api'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
-import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 import { InfoBox } from './info-box'
+import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
 import s from './OrderCreatorForm.module.scss'
 
 interface OrderCreatorFormProps {
@@ -25,6 +25,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [isSelect, setIsSelect] = useState(false)
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
+  const [getReservationInfo, { data: reservationInfo }] = useLazyGetReservationInfoQuery()
 
   const selectItems: InputSelectItemType[] | undefined =
     data && data.map(({ number }) => ({ title: number, value: number }))
@@ -32,6 +33,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const handleValue = (value: string) => {
     setSelectValue(value)
     setDisabled(false)
+    getReservationInfo(value)
   }
 
   const handleHideSelect = (value: string) => {
@@ -70,7 +72,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
             )}
           </Stack>
           <Stack sx={{ height: '100%' }}>
-            <InfoBox tableNumber={selectValue} />
+            <InfoBox data={reservationInfo} />
             <Button variant="contained" size="medium" type="submit" disabled={disabled} fullWidth>
               Open New Order
             </Button>

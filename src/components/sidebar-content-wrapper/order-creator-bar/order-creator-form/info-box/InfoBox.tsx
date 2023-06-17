@@ -1,16 +1,14 @@
 import { FC } from 'react'
 
-import { useGetTableReservationForCurrentDayQuery } from 'store/api'
 import { FadeIn } from 'utils'
+import { ReservationInfoResponseType } from 'types'
 import { InfoItem } from './info-item'
 
 interface InfoBoxProps {
-  tableNumber: string
+  data?: ReservationInfoResponseType
 }
 
-const InfoBox: FC<InfoBoxProps> = ({ tableNumber }) => {
-  const { data } = useGetTableReservationForCurrentDayQuery(tableNumber)
-
+const InfoBox: FC<InfoBoxProps> = ({ data }) => {
   return (
     <FadeIn styles={{ flex: '1 1 auto', padding: '20px' }}>
       {data && <InfoItem data={data} />}

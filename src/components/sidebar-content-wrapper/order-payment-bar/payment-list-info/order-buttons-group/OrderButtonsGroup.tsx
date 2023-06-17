@@ -33,7 +33,7 @@ const OrderButtonsGroup: FC<OrderButtonsGroupProps> = ({ setTipStatus, setEmailS
         variantText="h3"
         type="button"
         onClick={handleToggleTipStatus}>
-        Add tip amount
+        Add tip
       </Button>
       <Button
         variant="contained"

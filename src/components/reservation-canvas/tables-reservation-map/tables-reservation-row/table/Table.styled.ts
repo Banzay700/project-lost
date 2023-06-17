@@ -18,6 +18,7 @@ export const TableWrapper = styled(Stack)<TableWrapperProps>(({ theme, selected 
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
+  [theme.breakpoints.down(1035)]: { padding: '18px' },
   color: selected ? theme.palette.primary.main : theme.palette.primary.lightGrey,
 }))
 

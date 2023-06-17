@@ -29,6 +29,7 @@ export type {
   ReservationCanvasType,
   ReservationResponseType,
   ReservationRequestType,
+  ReservationInfoResponseType,
 } from './ReservationsTypes'
 
 export type {
