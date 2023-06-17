@@ -12,7 +12,7 @@ interface DishesListProps {
 
 const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-
+  const justifyContent = dishes && dishes?.length > 6 ? 'center' : 'start'
   return (
     <div
       style={{
@@ -21,7 +21,7 @@ const DishesList: FC<DishesListProps> = ({ dishes, isLoading }) => {
         overflowY: 'auto',
       }}
       ref={containerRef}>
-      <GridWrapper>
+      <GridWrapper style={{ justifyContent }}>
         {isLoading && <DishesListSkeleton />}
         {!isLoading && dishes?.map((dish) => <DishCard key={dish.id} dish={dish} />)}
       </GridWrapper>
