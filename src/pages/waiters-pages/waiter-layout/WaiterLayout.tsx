@@ -10,7 +10,7 @@ const WaiterLayout: FC = () => {
   const isSidebar = !isProfileLocation && !isReservationLocation
 
   return (
-    <Stack direction="column" height="100%" width="100%">
+    <>
       <Stack height="76px">
         <Header />
       </Stack>
@@ -20,7 +20,7 @@ const WaiterLayout: FC = () => {
         </Stack>
         {isSidebar && <SidebarContentWrapper />}
       </Stack>
-    </Stack>
+    </>
   )
 }
 

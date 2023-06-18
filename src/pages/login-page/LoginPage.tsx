@@ -12,7 +12,7 @@ const LoginPage: FC = () => {
   }
 
   if (isSuccess) {
-    return <Navigate to="/" />
+    return <Navigate to="/home" />
   }
 
   return <Login onSubmit={handleSubmitLogin} />

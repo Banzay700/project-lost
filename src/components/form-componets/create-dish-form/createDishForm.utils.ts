@@ -1,5 +1,6 @@
 import { CreateDishFormReturnType } from 'types'
-import { mixed, number, object, ref, string, TestContext } from 'yup'
+import { validatePicture, validateDish } from 'utils'
+import { object, string } from 'yup'
 
 export const initialValues: CreateDishFormReturnType = {
   category: '',
@@ -15,47 +16,13 @@ export const initialValues: CreateDishFormReturnType = {
 }
 
 export const validationSchema = object().shape({
-  title: string().min(3).required('Please enter the product name'),
+  title: validateDish.title(true),
   type: string(),
-  price: number()
-    .typeError('Weight must be a number')
-    .positive()
-    .min(1)
-    .required('Please enter the normal price'),
-  picture: mixed()
-    .nullable()
-    .test(
-      'picture',
-      'The file must be an image or less than 5 MB',
-      function validatePicture(this: TestContext, value) {
-        if (!value) return true
-
-        const files = value as File[]
-
-        const file = files[0]
-
-        if (!file.type.startsWith('image/')) {
-          return false
-        }
-
-        const maxSize = 6 * 1024 * 1024
-        return file.size <= maxSize
-      },
-    ),
-  description: string().min(10),
-  subcategory: string().test(
-    'subcategory',
-    'Please enter either subcategory or new category',
-    function checkedNewCategory(subcategory) {
-      const newCategory = this.resolve(ref('newSubcategory')) as string | undefined
-      return !!subcategory || !!newCategory
-    },
-  ),
-  category: string().required('Please enter category'),
-
-  weight: number()
-    .typeError('Weight must be a number')
-    .positive()
-    .required('Please enter the normal weight'),
-  status: string().required('Please enter your status'),
+  price: validateDish.price(true),
+  picture: validatePicture,
+  description: validateDish.description(),
+  subcategory: validateDish.subcategories,
+  category: validateDish.category(true),
+  weight: validateDish.weight(true),
+  status: validateDish.status(true),
 })

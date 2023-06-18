@@ -8,8 +8,8 @@ import { correctionName } from 'utils'
 import { useGetCategoriesQuery, useLazyGetSubCategoriesInCategoryQuery } from 'store/api'
 
 const CreateDishCategoryFormItem: FC = () => {
-  const { setFieldValue, getFieldMeta } = useFormikContext()
-  const [categoryState, setCategoryState] = useState<RadioButtonWithoutIconItemType[]>()
+  const { setFieldValue, getFieldMeta, isSubmitting } = useFormikContext()
+  const [categoryState, setCategoryState] = useState<RadioButtonWithoutIconItemType[] | null>()
   const [trigger, { data: subCategory }] = useLazyGetSubCategoriesInCategoryQuery()
   const { data: category } = useGetCategoriesQuery(null)
   const [isNewSubcategory, setIsNewSubcategory] = useState(false)
@@ -23,6 +23,7 @@ const CreateDishCategoryFormItem: FC = () => {
     setIsNewSubcategory(false)
     trigger(value)
   }
+
   useEffect(() => {
     if (subCategory) {
       const valueRadio: RadioButtonWithoutIconItemType[] = subCategory.map((item) => ({
@@ -33,6 +34,12 @@ const CreateDishCategoryFormItem: FC = () => {
       setCategoryState(valueRadio)
     }
   }, [subCategory])
+
+  useEffect(() => {
+    if (isSubmitting) {
+      setCategoryState(null)
+    }
+  }, [isSubmitting])
 
   const handleToggleIsNewSubcategory = () => {
     setFieldValue('subcategory', '')
@@ -52,7 +59,7 @@ const CreateDishCategoryFormItem: FC = () => {
           data={selectCategory}
           handleValue={handleChangeCategory}
         />
-        {subCategory && (
+        {categoryState && (
           <Stack direction="row" sx={{ gap: '10px', width: '100%', alignItems: 'center' }}>
             {!isNewSubcategory && (
               <RadioGroup sx={{ flexDirection: 'row', gap: '10px' }}>

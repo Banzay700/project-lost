@@ -5,7 +5,7 @@ import { RegistrationFormReturnType } from 'types'
 import { SelectInput, Button, Input } from 'UI'
 import { Box, Stack } from '@mui/material'
 import { selectMenuItems, validationSchema } from './registrationForm.utils'
-import RegistrationPicture from './registration-picutre/RegistrationPicture'
+import { RegistrationPicture } from './registration-picutre'
 
 interface RegistrationFormProps {
   initialValues: RegistrationFormReturnType

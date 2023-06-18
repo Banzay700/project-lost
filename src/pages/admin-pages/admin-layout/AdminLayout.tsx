@@ -5,7 +5,7 @@ import { HeaderAdmin, SidebarLeftAdmin } from 'components'
 
 const AdminLayout: FC = () => {
   return (
-    <Stack direction="column" height="100%" width="100%">
+    <>
       <Box height="76px">
         <HeaderAdmin />
       </Box>
@@ -13,7 +13,7 @@ const AdminLayout: FC = () => {
         <SidebarLeftAdmin />
         <Outlet />
       </Stack>
-    </Stack>
+    </>
   )
 }
 

@@ -7,3 +7,7 @@ export { convertOrderData } from './convertOrderData'
 export { default as FadeIn } from './FadeIn'
 export { generateArray } from './generateArray'
 export { withProps } from './withProps'
+
+export { validateUser } from './validateSchemaUserItems'
+export { validateDish } from './validateSchemaDishItems'
+export { validatePicture } from './validateSchemaPicture'

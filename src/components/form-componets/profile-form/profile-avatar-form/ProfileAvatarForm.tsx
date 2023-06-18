@@ -1,7 +1,8 @@
-import { Form, Formik } from 'formik'
+import { Form, Formik, FormikHelpers } from 'formik'
 import { FC, useState } from 'react'
-import { UserAvatar } from 'types/index'
+import { RegistrationFormReturnType, UserAvatar } from 'types'
 import { ProfilePicture } from './profile-picture'
+import { initialValues, validationSchema } from './profileAvatarForm.utils'
 
 interface ProfileFormAvatarProps {
   userImage?: string
@@ -27,12 +28,14 @@ const ProfileAvatarForm: FC<ProfileFormAvatarProps> = ({
     setIsDisabled((prevState) => !prevState)
   }
 
+  const formikConfig = {
+    initialValues,
+    validationSchema,
+    onSubmit: handleSubmit,
+  }
+
   return (
-    <Formik
-      initialValues={{
-        picture: null,
-      }}
-      onSubmit={handleSubmit}>
+    <Formik {...formikConfig}>
       <Form
         style={{
           display: 'flex',

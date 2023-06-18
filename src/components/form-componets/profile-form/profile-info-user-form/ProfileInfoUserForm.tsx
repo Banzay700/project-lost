@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik'
 import { InputsBasicUserInfo } from 'components/index'
 import { Input, Button } from 'UI/index'
 import { UserType, UserUpdateInfo } from 'types/index'
-import { validationSchema } from './ProfileInfoUserForm.utils'
+import { validationSchema } from './profileInfoUserForm.utils'
 
 interface ProfileInputGroupProps {
   initialValues: UserType
@@ -24,10 +24,14 @@ const ProfileInfoUserForm: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
     setIsDisabled(true)
   }
 
-  const formikConfig = { initialValues, validationSchema, onSubmit: handleSubmit }
+  const formikConfig = {
+    initialValues,
+    validationSchema,
+    onSubmit: handleSubmit,
+  }
 
   return (
-    <Formik {...formikConfig}>
+    <Formik {...formikConfig} enableReinitialize>
       <Form style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
         <InputsBasicUserInfo isDisabled={isDisabled} />
         <Input
