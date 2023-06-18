@@ -32,9 +32,12 @@ export const palette = {
   background: {
     default: '#fff',
     paper: '#fff',
+    accent: '#fff5ee',
     main: '#f8f9fd',
   },
   border: {
     default: '#e4e4e4',
+    dark: '#c2c2c2',
+    accent: '#ffa07a',
   },
 }

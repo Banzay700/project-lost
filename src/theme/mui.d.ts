@@ -15,14 +15,18 @@ declare module '@mui/material/styles/createPalette' {
   interface Palette {
     border: {
       default: string
+      accent: string
+      dark: string
     }
     background: {
       main: string
+      accent: string
     }
   }
 
   interface TypeBackground {
     main: string
+    accent: string
   }
 }
 

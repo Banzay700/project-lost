@@ -1,52 +1,48 @@
 import { MenuItem, Select, styled, css } from '@mui/material'
-import { withProps } from 'utils/withProps'
+import { theme } from 'theme'
+import { withProps } from 'utils'
 
-const selectActiveStyle = css`
-  color: #ff5c00;
-  background-color: #fff5ee;
-  && {
-    & .MuiOutlinedInput-notchedOutline {
-      border-width: 1px;
-      border-color: #ff5c00;
-    }
+const selectDefault = css({
+  color: theme.palette.text.primary,
+  backgroundColor: theme.palette.background.default,
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderWidth: 1,
+    borderColor: theme.palette.border.dark,
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    border: '1px solid',
+    borderColor: theme.palette.border.accent,
+  },
+})
 
-    &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #ffa07a;
-    }
-  }
-`
-const selectDefaultStyle = css`
-  color: #828487;
-  background-color: #ffffff;
-  && {
-    &.MuiOutlinedInput-notchedOutline {
-      border-width: 1px;
-      border-color: #c2c2c2;
-    }
-
-    &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: 1px solid #ffa07a;
-    }
-  }
-`
+const selectActiveStyle = css({
+  color: theme.palette.primary.main,
+  backgroundColor: theme.palette.background.accent,
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderWidth: 1,
+    borderColor: theme.palette.primary.main,
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    border: '1px solid',
+    borderColor: theme.palette.border.accent,
+  },
+})
 
 export const SelectWrapper = styled(Select, withProps('active'))<{ active?: boolean }>`
-  ${({ active }) => (active ? selectActiveStyle : selectDefaultStyle)}
+  ${({ active }) => (active ? selectActiveStyle : selectDefault)}
 `
 
-export const MenuItemWrapper = styled(MenuItem)(
-  ({ theme }) => `
-  && {
-    &.MuiMenuItem-root {
-      border-radius: 16px;
-      margin: 6px 8px;
-      border: 1px solid ${theme.palette.text.border};
-    }
-    &.Mui-selected {
-      background-color: #FFF5EE;
-      border: 1px solid #FFA07A;
-      color: #FFA07A;
-    },
-  }
-`,
-)
+export const MenuItemWrapper = styled(MenuItem)(() => ({
+  '&.MuiMenuItem-root': {
+    borderRadius: 16,
+    margin: '6px 8px',
+    border: '1px solid',
+    borderColor: theme.palette.border.default,
+  },
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.background.accent,
+    border: '1px solid',
+    borderColor: theme.palette.border.accent,
+    color: theme.palette.primary.light,
+  },
+}))
