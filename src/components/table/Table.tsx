@@ -26,6 +26,7 @@ interface TableProps {
   onClickLine?: (id: string) => void
   alignHead?: 'inherit' | 'center' | 'left' | 'right' | 'justify' | undefined
   tableMinWidth?: CSSProperties['minWidth']
+  tableMaxHeight?: CSSProperties['maxHeight']
 }
 
 const Table: FC<TableProps> = ({
@@ -37,6 +38,7 @@ const Table: FC<TableProps> = ({
   onClickLine,
   alignHead,
   tableMinWidth,
+  tableMaxHeight,
 }) => {
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
   const [active, setActive] = useState<string | undefined>()
@@ -55,7 +57,7 @@ const Table: FC<TableProps> = ({
   }
 
   return (
-    <TableContainer ref={containerRef} sx={{ flex: 1 }}>
+    <TableContainer ref={containerRef} sx={{ flex: 1, maxHeight: tableMaxHeight }}>
       <MuiTable aria-label="table" sx={{ width: '100%', minWidth: tableMinWidth }}>
         <TableHead data={tableTitles} align={alignHead} />
         <TableBody>
@@ -85,8 +87,8 @@ const Table: FC<TableProps> = ({
           {tableType === 'reservation' &&
             data?.map((element) => (
               <TableReservationLine
-                element={element as ReservationResponseType}
                 key={element?.id}
+                element={element as ReservationResponseType}
               />
             ))}
           {tableType === 'users' &&

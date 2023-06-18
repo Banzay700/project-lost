@@ -1,6 +1,6 @@
-import { Form, Formik, FormikHelpers } from 'formik'
+import { Form, Formik } from 'formik'
 import { FC, useState } from 'react'
-import { RegistrationFormReturnType, UserAvatar } from 'types'
+import { UserAvatar } from 'types'
 import { ProfilePicture } from './profile-picture'
 import { initialValues, validationSchema } from './profileAvatarForm.utils'
 
