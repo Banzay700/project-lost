@@ -6,5 +6,5 @@ export const initialValues = {
 }
 
 export const validationSchema = object().shape({
-  password: string().required(),
+  password: string().required('Password is required'),
 })

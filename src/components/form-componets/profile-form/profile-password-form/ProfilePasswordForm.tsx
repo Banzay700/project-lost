@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Form, Formik } from 'formik'
-import { UserPassword } from 'types/index'
-import { Input, Button } from 'UI/index'
+import { UserPassword } from 'types'
+import { Input, Button } from 'UI'
 import { Stack } from '@mui/material'
 import { validationSchema } from './profilePasswordForm.utils'
 

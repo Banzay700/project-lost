@@ -1,8 +1,12 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Form, Formik } from 'formik'
 import { SelectInput } from 'UI'
 import { UserPartialType } from 'types'
-import { selectInputItemsRole, selectInputItemsStatus } from './updateUserInfoForm.utils'
+import {
+  selectInputItemsRole,
+  selectInputItemsStatus,
+  validationSchema,
+} from './updateUserInfoForm.utils'
 
 interface FormUpdateUserInfoProps {
   initialValues: UserPartialType
@@ -15,14 +19,13 @@ const UpdateUserInfoForm: FC<FormUpdateUserInfoProps> = ({
   linkageToForm,
   onSubmit,
 }) => {
-  const [formValues, setFormValues] = useState(initialValues)
-
-  useEffect(() => {
-    setFormValues(initialValues)
-  }, [initialValues])
+  const formikConfig = {
+    initialValues,
+    validationSchema,
+  }
 
   return (
-    <Formik initialValues={formValues} onSubmit={onSubmit} enableReinitialize>
+    <Formik {...formikConfig} onSubmit={onSubmit} enableReinitialize>
       <Form id={linkageToForm} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <SelectInput name="role" label="Role" data={selectInputItemsRole} />
         <SelectInput name="status" label="Status" data={selectInputItemsStatus} />

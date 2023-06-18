@@ -2,7 +2,11 @@ import { FC } from 'react'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
 import { useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
-import { useUpdateBillMutation, useUpdateTableStatusMutation } from 'store/api'
+import {
+  useLazySendEmailQuery,
+  useUpdateBillMutation,
+  useUpdateTableStatusMutation,
+} from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
 import { Stack } from '@mui/material'
@@ -19,7 +23,7 @@ const OrderPaymentBar: FC = () => {
 
   const [updateBill] = useUpdateBillMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
-  // const [sendEmail] = useLazySendEmailQuery()
+  const [sendEmail] = useLazySendEmailQuery()
 
   const buttonDisabled = newBill.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
@@ -28,7 +32,7 @@ const OrderPaymentBar: FC = () => {
     updateBill({ ...newBill, ...values, status: 'closed' })
     relocateBills({ ...newBill, ...values, status: 'closed' })
     updateTableStatus(newBill.table)
-    // if (newBill.id) sendEmail(newBill.id) TODO: fix nodemailer
+    if (newBill.id) sendEmail(newBill.id)
     changeToggle('Order info')
   }
 

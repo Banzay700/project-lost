@@ -1,5 +1,3 @@
-export { Layout } from './layout'
-
 export { OrdersPage, WaiterLayout, DishesPage, BillsPage, ReservationPage } from './waiters-pages'
 export { LoaderPage } from './loader-page'
 export { LoginPage } from './login-page'
