@@ -8,9 +8,6 @@ interface TableReservationProps {
 }
 
 const TableReservation: FC<TableReservationProps> = ({ data }) => {
-  // const testData = prepareDataReservation(data)
-  // console.log(testData)
-  // console.log(data)
   return <Table data={data} tableTitles={tableTitleReservation} tableType="reservation" />
 }
 

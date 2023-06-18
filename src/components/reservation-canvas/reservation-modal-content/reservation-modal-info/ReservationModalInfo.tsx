@@ -12,6 +12,7 @@ interface ReservationModalInfoProps {
 
 const ReservationModalInfo: FC<ReservationModalInfoProps> = (props) => {
   const { info, handleOpenOrder, handleShowPopup } = props
+
   return (
     <FadeIn>
       <Stack sx={{ gap: '5px', paddingBottom: '24px', borderBottom: '1px solid #0000001f' }}>
