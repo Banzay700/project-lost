@@ -11,6 +11,19 @@ declare module '@mui/material/styles/createPalette' {
     red?: string
     lightRed?: string
   }
+
+  interface Palette {
+    border: {
+      default: string
+    }
+    background: {
+      main: string
+    }
+  }
+
+  interface TypeBackground {
+    main: string
+  }
 }
 
 declare module '@mui/material/styles' {

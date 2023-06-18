@@ -1,3 +1,5 @@
+// add disabled style for textField
+
 export const components = {
   MuiSelect: {
     styleOverrides: {
@@ -17,6 +19,9 @@ export const components = {
   MuiTextField: {
     styleOverrides: {
       root: {
+        '& .MuiInputBase-input.Mui-disabled': {
+          WebkitTextFillColor: '#828487',
+        },
         input: {
           padding: '12px 16px',
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {

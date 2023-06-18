@@ -29,6 +29,7 @@ export type {
   ReservationCanvasType,
   ReservationResponseType,
   ReservationRequestType,
+  ReservationInfoResponseType,
 } from './ReservationsTypes'
 
 export type {
@@ -59,7 +60,7 @@ export type {
   ToggleMenuItemType,
   SidebarItemType,
   RadioGroupItemType,
-  InputVariantItemType,
+  InputPropsType,
   LinkItemType,
   FilterMenuItemType,
   PaymentMethodItemType,
