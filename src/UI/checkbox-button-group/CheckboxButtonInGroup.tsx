@@ -29,7 +29,7 @@ const CheckboxButtonInGroup: FC<CheckboxButtonWithoutIconProps> = ({
         </Button>
       }
       checkedIcon={
-        <Button variant="contained" size="medium">
+        <Button variant="outlined" size="medium" color="primary">
           {title}
         </Button>
       }

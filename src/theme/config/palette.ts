@@ -23,6 +23,7 @@ export const palette = {
     primary: '#828487',
     secondary: '#19191C',
     addition: '#fff',
+    grey: '9ba4b4',
     // TODO add object ...
     gradient: 'linear-gradient(218.57deg, #ffab18 -6.67%, #ff2197 137.69%)',
     border: {

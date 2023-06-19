@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { ItemWrapper } from './PartySizeItem.styled'
 
 interface PartySizeItemProps {
   number: number
@@ -8,21 +9,12 @@ interface PartySizeItemProps {
 }
 
 const PartySizeItem: FC<PartySizeItemProps> = ({ number, active, onClick }) => {
-  const itemWrapper = {
-    width: '70px',
-    height: '64px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-    bgcolor: active ? '#FFF5EE' : 'transparent',
-  }
-
   return (
-    <Stack sx={itemWrapper} onClick={onClick}>
+    <ItemWrapper onClick={onClick} active={active}>
       <Typography fontWeight={600} color={active ? 'primary' : 'secondary'}>
         {number}
       </Typography>
-    </Stack>
+    </ItemWrapper>
   )
 }
 
