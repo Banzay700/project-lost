@@ -18,7 +18,7 @@ const CheckboxTagGroup: FC<ReservationTagGroupProps> = (props) => {
       <Typography variant="h3" component="p">
         {label}
       </Typography>
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" flexWrap="wrap" gap="12px">
         {data.map((item) => (
           <Field key={item.value} name={name} value={item.value}>
             {({ field }: FieldProps) => (

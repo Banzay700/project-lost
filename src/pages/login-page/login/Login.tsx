@@ -4,7 +4,7 @@ import { useGetUsersInLoginQuery } from 'store/api'
 import { EmployeesCarrousel, LoginForm } from 'components'
 import { Button } from 'UI'
 import { UserLoginRequestType } from 'types'
-
+import { FadeIn } from 'utils'
 import { LoginWrapper } from './Login.styled'
 
 interface LoginProps {
@@ -25,13 +25,14 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
     <LoginWrapper>
       <Stack flexDirection="column" alignItems="center" gap={gap}>
         <EmployeesCarrousel
-          bgc="transparent"
           employeesData={users}
           handleSetActiveSlide={handleSetActiveSlide}
           chosenEmployee={chosenEmployee}
         />
         {chosenEmployee ? (
-          <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
+          <FadeIn>
+            <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
+          </FadeIn>
         ) : (
           <Button variant="outlined" size="medium" fullWidth maxWidth="400px" blur>
             Login

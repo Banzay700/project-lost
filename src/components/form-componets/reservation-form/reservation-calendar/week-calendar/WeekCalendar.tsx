@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
-import { Stack, useTheme, useMediaQuery } from '@mui/material'
+import { useTheme, useMediaQuery } from '@mui/material'
 import { Icon } from 'assets'
 import { WeekCalendarItem } from './WeekCalendarItem'
+import { WeekWrapper, WeekInnerWrapper, ItemWrapper } from './WeekCalendar.styled'
 
 interface WeekCalendarProps {
   startDay: Date
@@ -50,23 +51,16 @@ const WeekCalendar: FC<WeekCalendarProps> = (props) => {
   }
 
   return (
-    <Stack direction="row" justifyContent="center" sx={{ gap: '12px', maxWidth: '95%' }}>
-      <Stack sx={{ flexDirection: 'row', border: '1px solid #E4E4E4', borderRadius: '16px' }}>
+    <WeekWrapper>
+      <WeekInnerWrapper>
         {matchesMD && (
-          <Stack
-            sx={{
-              width: '64px',
-              height: '64px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              bgcolor: 'transparent',
-            }}>
+          <ItemWrapper>
             <Icon.Calendar />
-          </Stack>
+          </ItemWrapper>
         )}
         {week()}
-      </Stack>
-    </Stack>
+      </WeekInnerWrapper>
+    </WeekWrapper>
   )
 }
 

@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Form, Formik, FormikHelpers } from 'formik'
+import { Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
-
 import { CheckboxTagGroup } from 'components'
 import { useReservationReducer } from 'hooks'
 import { ReservationFormType } from 'types'
@@ -17,7 +16,11 @@ import {
   tags,
   validationSchema,
 } from './ReservationForm.utils'
-import s from './ReservationForm.module.scss'
+import {
+  ReservationFormStyle,
+  ReservationFormWrapper,
+  ButtonWrapper,
+} from './ReservationForm.styled'
 
 interface ReservationFormProps {
   cancelHandleFunc: () => void
@@ -43,12 +46,12 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const handleFormReset = () => cancelHandleFunc()
 
   return (
-    <Stack style={{ height: '100% ', maxWidth: '95%' }} justifyContent="center" alignItems="center">
+    <ReservationFormWrapper>
       <Formik
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}>
-        <Form className={s.reservationForm}>
+        <ReservationFormStyle>
           <CheckboxTagGroup name="tags" label="Tag" data={tags} />
           <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
@@ -59,7 +62,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
             name="persons"
           />
           <GuestDetail />
-          <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
+          <ButtonWrapper>
             <Button
               variant="outlined"
               size="medium"
@@ -71,10 +74,10 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
             <Button variant="contained" size="medium" type="submit" fullWidth>
               Add to reservation
             </Button>
-          </Stack>
-        </Form>
+          </ButtonWrapper>
+        </ReservationFormStyle>
       </Formik>
-    </Stack>
+    </ReservationFormWrapper>
   )
 }
 
