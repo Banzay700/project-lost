@@ -19,12 +19,14 @@ declare module '@mui/material/styles/createPalette' {
     background: {
       main: string
       gradient: string
+      lightMain: string
     }
   }
 
   interface TypeBackground {
     main: string
     gradient: string
+    lightMain: string
   }
 }
 

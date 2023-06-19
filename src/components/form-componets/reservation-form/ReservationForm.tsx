@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
-import { Stack } from '@mui/material'
 import { CheckboxTagGroup } from 'components'
 import { useReservationReducer } from 'hooks'
 import { ReservationFormType } from 'types'
@@ -55,12 +54,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
           <CheckboxTagGroup name="tags" label="Tag" data={tags} />
           <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
-          <PartySize
-            label="Select party size"
-            maxSeats={activeTable.seats}
-            seats={8}
-            name="persons"
-          />
+          <PartySize label="Select party size" name="persons" maxSeats={activeTable.seats} />
           <GuestDetail />
           <ButtonWrapper>
             <Button
