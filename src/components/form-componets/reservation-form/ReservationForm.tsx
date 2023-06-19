@@ -56,12 +56,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
             <CheckboxTagGroup name="tags" label="Visit Tags" data={tags} />
             <ReservationCalendar name="date" label="Select date" />
             <ReservationTime label="Select time" />
-            <PartySize
-              label="Select party size"
-              maxSeats={activeTable.seats}
-              seats={8}
-              name="persons"
-            />
+            <PartySize label="Select party size" name="persons" maxSeats={activeTable.seats} />
             <GuestDetail />
           </Stack>
           <ButtonWrapper>

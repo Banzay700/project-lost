@@ -14,17 +14,40 @@ import {
   LoaderPage,
   NotFoundPage,
 } from 'pages'
-import { useUserReducer } from 'hooks'
+import { useRootLocationPath, useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
 import { ROUTES } from './routes.utils'
+import ErrorContent from '../UI/error-content/ErrorContent'
+
+type YourErrorType = {
+  status: number
+  data: string
+}
 
 const AppRoutes = () => {
   const { isAuthUser } = useUserReducer()
-  const { isLoading } = useRefreshQuery()
+  const { isLoading, error } = useRefreshQuery()
+  const { isLoginLocation, isRootLocation } = useRootLocationPath()
 
   if (isLoading) {
     return <LoaderPage />
   }
+
+  if (
+    (error as YourErrorType)?.status === 401 &&
+    !isAuthUser &&
+    !isLoginLocation &&
+    !isRootLocation
+  ) {
+    return (
+      <ErrorContent
+        title="ooops! you not authenticated"
+        status={(error as YourErrorType).status}
+        errorMessage={(error as YourErrorType).data}
+      />
+    )
+  }
+
   return (
     <Routes>
       {isAuthUser && !isLoading ? (

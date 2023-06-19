@@ -22,6 +22,7 @@ declare module '@mui/material/styles/createPalette' {
       main: string
       accent: string
       gradient: string
+      lightMain: string
     }
   }
 
@@ -29,6 +30,7 @@ declare module '@mui/material/styles/createPalette' {
     main: string
     accent: string
     gradient: string
+    lightMain: string
   }
 }
 

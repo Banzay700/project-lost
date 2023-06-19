@@ -3,17 +3,21 @@ import { withProps } from 'utils'
 
 type ItemWrapperProps = {
   active: boolean
+  isDisabled?: boolean
 }
 
 export const ItemWrapper = styled(
   Stack,
-  withProps('active'),
-)<ItemWrapperProps>(
-  ({ active, theme }) => `
-    width: 64px;
-    height: 64px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: ${active ? theme.palette.primary.extraLight : 'transparent'}`,
-)
+  withProps('active', 'isDisabled'),
+)<ItemWrapperProps>(({ active, theme, isDisabled }) => ({
+  minWidth: '64px',
+  minHeight: '64px',
+  height: '64px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  userSelect: 'none',
+  background: `${
+    (isDisabled && theme.palette.background.main) || (active && theme.palette.background.lightMain)
+  }`,
+}))
