@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Form, Formik, FormikHelpers } from 'formik'
+import { Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
 
@@ -17,7 +17,11 @@ import {
   tags,
   validationSchema,
 } from './ReservationForm.utils'
-import s from './ReservationForm.module.scss'
+import {
+  ReservationFormStyle,
+  ReservationFormWrapper,
+  ButtonWrapper,
+} from './ReservationForm.styled'
 
 interface ReservationFormProps {
   cancelHandleFunc: () => void
@@ -43,31 +47,38 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const handleFormReset = () => cancelHandleFunc()
 
   return (
-    <Formik
-      initialValues={initialValues as ReservationFormType}
-      validationSchema={validationSchema}
-      onSubmit={handleFormSubmit}>
-      <Form>
-        {/*<CheckboxTagGroup name="tags" label="Tag" data={tags} />*/}
-        {/*<ReservationCalendar name="date" label="Select date" />*/}
-        <ReservationTime label="Select time" />
-        <PartySize
-          label="Select party size"
-          maxSeats={activeTable.seats}
-          seats={8}
-          name="persons"
-        />
-        <GuestDetail />
-        <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
-          <Button variant="outlined" size="medium" type="reset" fullWidth onClick={handleFormReset}>
-            Cancel
-          </Button>
-          <Button variant="contained" size="medium" type="submit" fullWidth>
-            Add to reservation
-          </Button>
-        </Stack>
-      </Form>
-    </Formik>
+    <ReservationFormWrapper>
+      <Formik
+        initialValues={initialValues as ReservationFormType}
+        validationSchema={validationSchema}
+        onSubmit={handleFormSubmit}>
+        <ReservationFormStyle>
+          <CheckboxTagGroup name="tags" label="Tag" data={tags} />
+          <ReservationCalendar name="date" label="Select date" />
+          <ReservationTime label="Select time" />
+          <PartySize
+            label="Select party size"
+            maxSeats={activeTable.seats}
+            seats={8}
+            name="persons"
+          />
+          <GuestDetail />
+          <ButtonWrapper>
+            <Button
+              variant="outlined"
+              size="medium"
+              type="reset"
+              fullWidth
+              onClick={handleFormReset}>
+              Cancel
+            </Button>
+            <Button variant="contained" size="medium" type="submit" fullWidth>
+              Add to reservation
+            </Button>
+          </ButtonWrapper>
+        </ReservationFormStyle>
+      </Formik>
+    </ReservationFormWrapper>
   )
 }
 

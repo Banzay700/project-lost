@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Box } from '@mui/material'
-import { InputImage } from 'components/input-form'
+import { InputImage } from 'components'
+import { ImageWrapper } from './InputImageWithPrewiewAvatar.styled'
 
 interface InputImageWithPreviewAvatarProps {
   isDisabled: boolean
@@ -22,16 +23,7 @@ const InputImageWithPreviewAvatar: FC<InputImageWithPreviewAvatarProps> = ({
   return (
     <Box sx={{ width: width || '300px', height: height || '300px' }}>
       {isDisabled ? (
-        <img
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            borderRadius: view === 'round' ? '50%' : '16px',
-          }}
-          src={picture || ''}
-          alt={pictureAlt}
-        />
+        <ImageWrapper $view={view} src={picture || ''} alt={pictureAlt} />
       ) : (
         <InputImage view={view} />
       )}

@@ -4,7 +4,7 @@ import { Button, MenuItem } from 'UI'
 import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
 import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
-import s from './Watch.module.scss'
+import { WatchContainer } from './Watch.styled'
 
 interface WatchProps {
   dataUser: UserType
@@ -44,11 +44,11 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
 
   return (
     <Stack spacing={3.2} direction="row" alignItems="center">
-      <Box className={s.time} color="text.secondary">
+      <WatchContainer color="text.secondary">
         <Typography variant="h3" position="absolute">
           {formattedDate}
         </Typography>
-      </Box>
+      </WatchContainer>
       <Box>
         <Button
           variant="text"

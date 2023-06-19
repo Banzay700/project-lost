@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { Box, Stack } from '@mui/material'
 
 import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
-import { Button, DetailsListTitle } from 'UI/index'
-import { FadeIn } from 'utils/index'
-import { useSmoothScrollbar, useOrderReducer } from 'hooks/index'
+import { Button, DetailsListTitle } from 'UI'
+import { FadeIn } from 'utils'
+import { useSmoothScrollbar, useOrderReducer } from 'hooks'
 
 interface OrderListProps {
   onClick?: () => void

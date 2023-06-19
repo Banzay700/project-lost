@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { IndicatorFilterBar, Table } from 'components/index'
+import { Pagination, Stack } from '@mui/material'
+import { IndicatorFilterBar, Table } from 'components'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
 import { useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
-import { Pagination, Stack } from '@mui/material'
 import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
 
 const TableOrders: FC = () => {

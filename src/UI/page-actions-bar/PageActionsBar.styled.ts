@@ -9,7 +9,7 @@ export const PageActionsBarWrapper = styled(Stack, {
 })<PageActionsBarWrapperProps>(({ $isSmallScreen, theme }) => ({
   minHeight: $isSmallScreen ? 'fit-content' : '71px',
   padding: '16px 24px',
-  borderBottom: `1px solid ${theme.palette.text.border}`,
+  borderBottom: `1px solid ${theme.palette.border.default}`,
   flexDirection: $isSmallScreen ? 'column' : 'row',
   justifyContent: 'space-between',
   gap: '24px',

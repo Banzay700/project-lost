@@ -83,7 +83,7 @@ const status = (isRequired?: boolean) => {
   return schema
 }
 
-export const validateUser = {
+export const validationUser = {
   firstName,
   secondName,
   email,

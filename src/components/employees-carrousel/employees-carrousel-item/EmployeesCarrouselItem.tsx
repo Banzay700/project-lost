@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
-import classNames from 'classnames'
+import { Box, Typography, useTheme } from '@mui/material'
 import { UserInLoginType } from 'types'
-import s from './EmployeesCarrouselItem.module.scss'
+import { Img, StackWrapper } from './EmployeesCarrouselItem.styled'
 
 interface EmployeesItemProps extends UserInLoginType {
   isActive: boolean
@@ -11,24 +10,15 @@ interface EmployeesItemProps extends UserInLoginType {
 const EmployeesCarrouselItem: FC<EmployeesItemProps> = (props) => {
   const { id, firstName, secondName, userImage, isActive, onClick } = props
 
-  const imgClasses = classNames(s.img, { [s.activeImg]: isActive })
-  const cardClasses = classNames(s.carrouselItem, { [s.active]: isActive })
-  const alignSelf = isActive ? 'start' : 'center'
-
   return (
-    <Stack
-      direction="column"
-      spacing={2}
-      alignItems="center"
-      justifySelf={alignSelf}
-      className={cardClasses}>
+    <StackWrapper spacing={2} isActive={isActive}>
       <Box onClick={() => onClick(id)}>
-        <img src={userImage} alt={secondName} className={imgClasses} />
+        <Img src={userImage} alt={secondName} isActive={isActive} />
       </Box>
-      <Typography variant="h3" component="div" color="#fff">
+      <Typography variant="h3" component="div" color={useTheme().palette.text.addition}>
         {`${firstName} ${secondName}`}
       </Typography>
-    </Stack>
+    </StackWrapper>
   )
 }
 

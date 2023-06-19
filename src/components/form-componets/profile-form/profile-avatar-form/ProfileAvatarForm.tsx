@@ -1,6 +1,5 @@
-import { FC, useState } from 'react'
 import { Form, Formik } from 'formik'
-
+import { FC, useState } from 'react'
 import { UserAvatar } from 'types'
 import { ProfilePicture } from './profile-picture'
 import { initialValues, validationSchema } from './profileAvatarForm.utils'

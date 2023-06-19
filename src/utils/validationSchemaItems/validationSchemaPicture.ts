@@ -1,6 +1,6 @@
 import { mixed, TestContext } from 'yup'
 
-export const validatePicture = mixed()
+export const validationPicture = mixed()
   .nullable()
   .test(
     'picture',

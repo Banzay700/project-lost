@@ -38,10 +38,10 @@ export const convertOrderData = (order: OrderActiveType): ConvertOrderDataType =
     orderNumber,
     totalPrice: totalPriseWithTax,
     description,
+    user,
   }
-
   return {
-    orderDB: { dishes: dataDishes, ...commonReturnValues, user },
+    orderDB: { dishes: dataDishes, ...commonReturnValues },
     orderActive: {
       dishes: activeDishes,
       storeStatus: 'closed',

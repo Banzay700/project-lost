@@ -2,10 +2,15 @@ import { FC, useState, useEffect } from 'react'
 import { Typography, Stack, Box, useTheme, useMediaQuery } from '@mui/material'
 import dayjs from 'dayjs'
 import { useField, useFormikContext } from 'formik'
-import { IconTickDown } from 'assets/icons'
 import { Calendar } from './month-calendar'
 import { WeekCalendar } from './week-calendar'
-import s from './ReservationCalendar.module.scss'
+import {
+  CalendarWrapper,
+  WeekWrapper,
+  WeekOuterWrapper,
+  InnerWrapper,
+  IconTickDownSmall,
+} from './ReservationCalendar.styled'
 
 interface ReservationCalendarProps {
   label: string
@@ -51,9 +56,9 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
 
   return (
     <Box {...field}>
-      <Stack direction="row" justifyContent="center" style={{ marginTop: '12px' }}>
-        <Stack gap="12px" style={{ maxWidth: '95%' }}>
-          <Stack justifyContent="space-between" direction="row" alignItems="center">
+      <WeekWrapper>
+        <WeekOuterWrapper>
+          <InnerWrapper>
             <Typography variant="h3" component="span">
               {label}
             </Typography>
@@ -61,12 +66,12 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
               variant="h3"
               component="span"
               onClick={() => setShowCalendar((prevState) => !prevState)}
-              className={s.monthPicker}>
+              style={{ cursor: 'pointer' }}>
               <Stack direction="row" alignItems="center">
-                {monthAndYearFormat} <IconTickDown height="15px" width="15px" />
+                {monthAndYearFormat} <IconTickDownSmall />
               </Stack>
             </Typography>
-          </Stack>
+          </InnerWrapper>
           <WeekCalendar
             startDay={chosenDay}
             handleSetChosenDay={(day) => handleSetFormValues(day)}
@@ -74,12 +79,12 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
             setActiveIndex={setActiveIndex}
             maxDaysInWeek={matchesLG ? 5 : 7}
           />
-        </Stack>
-      </Stack>
+        </WeekOuterWrapper>
+      </WeekWrapper>
       {isShowCalendar && (
-        <div className={s.calendarWrapper}>
+        <CalendarWrapper>
           <Calendar handleSetChosenDay={handleSetChosenDay} />
-        </div>
+        </CalendarWrapper>
       )}
     </Box>
   )
