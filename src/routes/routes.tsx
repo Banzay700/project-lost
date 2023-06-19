@@ -12,6 +12,7 @@ import {
   AdminEmployeesPage,
   AdminRestaurantPage,
   LoaderPage,
+  NotFoundPage,
 } from 'pages'
 import { useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -59,7 +60,7 @@ const AppRoutes = () => {
           <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         </>
       )}
-      <Route path="*" element={<div>Not Found</div>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

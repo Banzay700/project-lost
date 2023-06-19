@@ -1,6 +1,6 @@
 import { InputSelectItemType } from 'types'
 import { object } from 'yup'
-import { validateUser } from 'utils'
+import { validationUser } from 'utils'
 
 export const selectInputItemsStatus: InputSelectItemType[] = [
   { value: 'active', title: 'Active' },
@@ -14,6 +14,6 @@ export const selectInputItemsRole: InputSelectItemType[] = [
 ]
 
 export const validationSchema = object().shape({
-  role: validateUser.role(),
-  status: validateUser.status(),
+  role: validationUser.role(),
+  status: validationUser.status(),
 })

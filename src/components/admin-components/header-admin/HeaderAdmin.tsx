@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { Box, Stack } from '@mui/material'
-import { Logo } from 'UI/logo'
-import { ROUTES } from 'routes/routes.utils'
-import { Button } from 'UI/button'
+import { Box } from '@mui/material'
+import { Logo, Button } from 'UI'
+import { ROUTES } from 'routes'
 import { Icon } from 'assets'
 import { useNavigate } from 'react-router-dom'
+import { HeaderAdminWrapper } from './HeaderAdmin.styled'
 
 const HeaderAdmin: FC = () => {
   const navigate = useNavigate()
@@ -14,15 +14,7 @@ const HeaderAdmin: FC = () => {
   }
 
   return (
-    <Stack
-      direction="row"
-      sx={{
-        height: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        p: '0 24px',
-        borderBottom: '1px solid #e4e4e4',
-      }}>
+    <HeaderAdminWrapper>
       <Logo link={`/${ROUTES.ADMIN_PANEL}`} view="both" />
       <Box width="100px">
         <Button
@@ -34,7 +26,7 @@ const HeaderAdmin: FC = () => {
           Food
         </Button>
       </Box>
-    </Stack>
+    </HeaderAdminWrapper>
   )
 }
 

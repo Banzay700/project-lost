@@ -40,7 +40,7 @@ export const MenuItemWrapper = styled(MenuItem)(
     &.MuiMenuItem-root {
       border-radius: 16px;
       margin: 6px 8px;
-      border: 1px solid ${theme.palette.text.border};
+      border: 1px solid ${theme.palette.border.default};
     }
     &.Mui-selected {
       background-color: #FFF5EE;

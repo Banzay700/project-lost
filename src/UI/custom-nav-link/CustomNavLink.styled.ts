@@ -23,12 +23,12 @@ const styleVariantSidebarTabs = css`
   justify-content: center;
 
   &:hover {
-    background: ${theme.palette.text.gradient};
+    background: ${theme.palette.background.gradient};
     color: ${theme.palette.primary.contrastText};
   }
 
   &.active {
-    background: ${theme.palette.text.gradient};
+    background: ${theme.palette.background.gradient};
     color: ${theme.palette.primary.contrastText};
   }
 `

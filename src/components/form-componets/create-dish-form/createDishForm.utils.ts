@@ -1,5 +1,5 @@
 import { CreateDishFormReturnType } from 'types'
-import { validatePicture, validateDish } from 'utils'
+import { validationPicture, validationDish } from 'utils'
 import { object, string } from 'yup'
 
 export const initialValues: CreateDishFormReturnType = {
@@ -16,13 +16,13 @@ export const initialValues: CreateDishFormReturnType = {
 }
 
 export const validationSchema = object().shape({
-  title: validateDish.title(true),
+  title: validationDish.title(true),
   type: string(),
-  price: validateDish.price(true),
-  picture: validatePicture,
-  description: validateDish.description(),
-  subcategory: validateDish.subcategories,
-  category: validateDish.category(true),
-  weight: validateDish.weight(true),
-  status: validateDish.status(true),
+  price: validationDish.price(true),
+  picture: validationPicture,
+  description: validationDish.description(),
+  subcategory: validationDish.subcategories,
+  category: validationDish.category(true),
+  weight: validationDish.weight(true),
+  status: validationDish.status(true),
 })

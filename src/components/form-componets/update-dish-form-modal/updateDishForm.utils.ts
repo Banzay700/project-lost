@@ -1,11 +1,11 @@
 import { object } from 'yup'
-import { validateDish, validatePicture } from 'utils'
+import { validationDish, validationPicture } from 'utils'
 
 export const validationSchema = object().shape({
-  title: validateDish.title(),
-  price: validateDish.price(),
-  weight: validateDish.weight(),
-  status: validateDish.status(),
-  description: validateDish.description(),
-  picture: validatePicture,
+  title: validationDish.title(),
+  price: validationDish.price(),
+  weight: validationDish.weight(),
+  status: validationDish.status(),
+  description: validationDish.description(),
+  picture: validationPicture,
 })

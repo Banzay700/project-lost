@@ -7,7 +7,7 @@ export const DetailsListTitleWrapper = styled(Box)(
   display: flex;
   flex-direction: column;
   gap: 4px;
-  border-top: 1px solid ${theme.palette.text.border.primary};
-  border-bottom: 1px solid ${theme.palette.text.border.primary};
+  border-top: 1px solid ${theme.palette.border.default};
+  border-bottom: 1px solid ${theme.palette.border.default};
 `,
 )

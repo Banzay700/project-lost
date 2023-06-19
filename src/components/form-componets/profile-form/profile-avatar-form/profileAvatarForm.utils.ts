@@ -1,5 +1,5 @@
 import { object } from 'yup'
-import { validatePicture } from 'utils'
+import { validationPicture } from 'utils'
 import { UserAvatar } from 'types'
 
 export const initialValues: UserAvatar = {
@@ -7,5 +7,5 @@ export const initialValues: UserAvatar = {
 }
 
 export const validationSchema = object().shape({
-  picture: validatePicture,
+  picture: validationPicture,
 })

@@ -68,4 +68,4 @@ const status = (isRequired?: boolean) => {
   return schema
 }
 
-export const validateDish = { title, price, description, subcategories, category, weight, status }
+export const validationDish = { title, price, description, subcategories, category, weight, status }
