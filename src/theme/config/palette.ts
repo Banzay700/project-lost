@@ -28,11 +28,14 @@ export const palette = {
   background: {
     default: '#fff',
     paper: '#fff',
+    accent: '#fff5ee',
     main: '#f8f9fd',
     lightMain: '#ffe2cc',
     gradient: 'linear-gradient(218.57deg, #ffab18 -6.67%, #ff2197 137.69%)',
   },
   border: {
     default: '#e4e4e4',
+    dark: '#c2c2c2',
+    accent: '#ffa07a',
   },
 }

@@ -30,7 +30,7 @@ const Login: FC<LoginProps> = ({ onSubmit }) => {
           chosenEmployee={chosenEmployee}
         />
         {chosenEmployee ? (
-          <FadeIn>
+          <FadeIn delay={100}>
             <LoginForm userId={chosenEmployee} onSubmit={onSubmit} />
           </FadeIn>
         ) : (

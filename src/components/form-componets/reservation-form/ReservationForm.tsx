@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
+import { Stack, Typography } from '@mui/material'
+
 import { CheckboxTagGroup } from 'components'
 import { useReservationReducer } from 'hooks'
 import { ReservationFormType } from 'types'
@@ -15,11 +17,7 @@ import {
   tags,
   validationSchema,
 } from './ReservationForm.utils'
-import {
-  ReservationFormStyle,
-  ReservationFormWrapper,
-  ButtonWrapper,
-} from './ReservationForm.styled'
+import { ReservationFormWrapper, ButtonWrapper, FormWrapper } from './ReservationForm.styled'
 
 interface ReservationFormProps {
   cancelHandleFunc: () => void
@@ -46,30 +44,35 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
 
   return (
     <ReservationFormWrapper>
+      <Typography variant="h1" color="primary.main" sx={{ marginBottom: '30px' }}>
+        New Reservation
+      </Typography>
       <Formik
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}>
-        <ReservationFormStyle>
-          <CheckboxTagGroup name="tags" label="Tag" data={tags} />
-          <ReservationCalendar name="date" label="Select date" />
-          <ReservationTime label="Select time" />
-          <PartySize label="Select party size" name="persons" maxSeats={activeTable.seats} />
-          <GuestDetail />
+        <FormWrapper>
+          <Stack flex={1} gap="16px">
+            <CheckboxTagGroup name="tags" label="Visit Tags" data={tags} />
+            <ReservationCalendar name="date" label="Select date" />
+            <ReservationTime label="Select time" />
+            <PartySize label="Select party size" name="persons" maxSeats={activeTable.seats} />
+            <GuestDetail />
+          </Stack>
           <ButtonWrapper>
             <Button
               variant="outlined"
               size="medium"
               type="reset"
-              fullWidth
-              onClick={handleFormReset}>
+              onClick={handleFormReset}
+              fullWidth>
               Cancel
             </Button>
             <Button variant="contained" size="medium" type="submit" fullWidth>
               Add to reservation
             </Button>
           </ButtonWrapper>
-        </ReservationFormStyle>
+        </FormWrapper>
       </Formik>
     </ReservationFormWrapper>
   )
