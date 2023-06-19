@@ -15,9 +15,7 @@ const Indicator: FC<IndicatorProps> = ({ type }) => {
   return (
     <IndicatorWrapper>
       <Icon.Indicator color={indicator.color} />
-      <Typography variant="h3" component="p">
-        {indicator.text}
-      </Typography>
+      <Typography variant="h3">{indicator.text}</Typography>
     </IndicatorWrapper>
   )
 }

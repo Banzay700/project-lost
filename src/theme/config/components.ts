@@ -1,5 +1,3 @@
-// add disabled style for textField
-
 export const components = {
   MuiSelect: {
     styleOverrides: {
@@ -119,7 +117,7 @@ export const components = {
     defaultProps: {
       PaperProps: {
         style: {
-          width: '40%',
+          width: '45%',
           boxShadow: 'none',
         },
       },

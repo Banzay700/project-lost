@@ -43,38 +43,31 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
   const handleFormReset = () => cancelHandleFunc()
 
   return (
-    <Stack style={{ height: '100% ', maxWidth: '95%' }} justifyContent="center" alignItems="center">
-      <Formik
-        initialValues={initialValues as ReservationFormType}
-        validationSchema={validationSchema}
-        onSubmit={handleFormSubmit}>
-        <Form className={s.reservationForm}>
-          <CheckboxTagGroup name="tags" label="Tag" data={tags} />
-          <ReservationCalendar name="date" label="Select date" />
-          <ReservationTime label="Select time" />
-          <PartySize
-            label="Select party size"
-            maxSeats={activeTable.seats}
-            seats={8}
-            name="persons"
-          />
-          <GuestDetail />
-          <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
-            <Button
-              variant="outlined"
-              size="medium"
-              type="reset"
-              fullWidth
-              onClick={handleFormReset}>
-              Cancel
-            </Button>
-            <Button variant="contained" size="medium" type="submit" fullWidth>
-              Add to reservation
-            </Button>
-          </Stack>
-        </Form>
-      </Formik>
-    </Stack>
+    <Formik
+      initialValues={initialValues as ReservationFormType}
+      validationSchema={validationSchema}
+      onSubmit={handleFormSubmit}>
+      <Form>
+        {/*<CheckboxTagGroup name="tags" label="Tag" data={tags} />*/}
+        {/*<ReservationCalendar name="date" label="Select date" />*/}
+        <ReservationTime label="Select time" />
+        <PartySize
+          label="Select party size"
+          maxSeats={activeTable.seats}
+          seats={8}
+          name="persons"
+        />
+        <GuestDetail />
+        <Stack sx={{ marginTop: '24px', flexDirection: 'row', gap: '12px' }}>
+          <Button variant="outlined" size="medium" type="reset" fullWidth onClick={handleFormReset}>
+            Cancel
+          </Button>
+          <Button variant="contained" size="medium" type="submit" fullWidth>
+            Add to reservation
+          </Button>
+        </Stack>
+      </Form>
+    </Formik>
   )
 }
 
