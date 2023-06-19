@@ -26,7 +26,7 @@ export const Img = styled(
   withProps('isActive'),
 )<ImgProps>(
   ({ isActive, theme }) => `
-  border: 5px solid ${theme.palette.text.border.primary};
+  border: 5px solid ${theme.palette.border.default};
   border-radius: 50%;
   width:  ${isActive ? '124px' : '100px'};
   height: ${isActive ? '124px' : '100px'};

@@ -10,7 +10,7 @@ export const ReservationFormWrapper = styled(Stack)`
 
 export const ReservationFormStyle = styled(Form)`
   gap: 12px;
-  max-width: 95%;
+  max-width: 100%;
 `
 export const ButtonWrapper = styled(Stack)`
   margin-top: 24px;

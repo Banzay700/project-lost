@@ -1,62 +1,73 @@
-import { Stack, Typography } from '@mui/material'
-import { FC } from 'react'
+import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { FC, useRef, useState } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { PartySizeItem } from './party-size-item'
-import { PartySizeWrapper } from './PartySize.styled'
+import {
+  PartySizeButtonScroll,
+  PartySizeButtonScrollWrapper,
+  PartySizeWrapper,
+} from './PartySize.styled'
+import { partySizeArray } from './partySize.utils'
 
 interface ReservationPartySizeProps {
   label: string
   name: string
-  seats: number
   maxSeats: number
 }
 
-const PartySize: FC<ReservationPartySizeProps> = (props) => {
-  const { label, maxSeats, name, seats } = props
+const PartySize: FC<ReservationPartySizeProps> = ({ label, name, maxSeats }) => {
   const { setFieldValue } = useFormikContext()
+  const { breakpoints } = useTheme()
+  const isScreenLarge = useMediaQuery(breakpoints.down('xl'))
   const [field] = useField(name)
+  const [isSelected, setIsSelected] = useState<number>(0)
 
-  const handleItemClicked = (index: number) => {
-    if (!!maxSeats && index <= maxSeats) {
-      setFieldValue(name, index)
-    } else if (!maxSeats) {
-      setFieldValue(name, index)
-    }
+  const handleClickItem = (value: number) => {
+    setIsSelected(value)
+    setFieldValue(name, value)
   }
 
-  const isActive = (number: number) => {
-    if (field.value !== number) {
-      return false
-    }
-    if (!!maxSeats && number <= maxSeats && field.value === number) {
-      return true
-    }
-    if (!maxSeats && field.value === number) {
-      return true
-    }
-    return false
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const scrollStep = 100
+
+  const handleScrollLeft = () => {
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft -= scrollStep
   }
 
-  const partySize = Array.from({ length: seats }, (_, i) => {
-    const number = seats >= maxSeats ? i + 1 : i + (maxSeats - seats) + 1
-    return (
-      <div key={number}>
-        <PartySizeItem
-          key={number}
-          number={number}
-          active={isActive(number)}
-          onClick={() => handleItemClicked(number)}
-        />
-      </div>
-    )
-  })
+  const handleScrollRight = () => {
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft += scrollStep
+  }
+
+  const partySize = partySizeArray(maxSeats)
 
   return (
-    <Stack {...field} sx={{ gap: '12px' }}>
+    <Stack {...field} sx={{ gap: '12px', width: '100%' }}>
       <Typography variant="h3" component="p">
         {label}
       </Typography>
-      <PartySizeWrapper>{partySize}</PartySizeWrapper>
+      <Stack direction="row" width="100%">
+        {isScreenLarge && (
+          <PartySizeButtonScrollWrapper>
+            <PartySizeButtonScroll onClick={handleScrollLeft} />
+          </PartySizeButtonScrollWrapper>
+        )}
+        <PartySizeWrapper ref={scrollContainerRef}>
+          {partySize.map((number) => (
+            <PartySizeItem
+              maxSeats={maxSeats}
+              key={number}
+              value={number}
+              isActiveValue={isSelected}
+              onClick={handleClickItem}
+            />
+          ))}
+        </PartySizeWrapper>
+        {isScreenLarge && (
+          <PartySizeButtonScrollWrapper>
+            <PartySizeButtonScroll transformRight onClick={handleScrollRight} />
+          </PartySizeButtonScrollWrapper>
+        )}
+      </Stack>
     </Stack>
   )
 }
