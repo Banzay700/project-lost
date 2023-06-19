@@ -1,6 +1,6 @@
-import { validateUser } from 'utils'
+import { validationUser } from 'utils'
 import { object } from 'yup'
 
 export const validationSchema = object().shape({
-  password: validateUser.password(true),
+  password: validationUser.password(true),
 })

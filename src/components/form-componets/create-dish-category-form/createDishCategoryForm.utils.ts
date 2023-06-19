@@ -1,6 +1,6 @@
 import { CreateCategoryFormReturnType } from 'types'
 import { object, string } from 'yup'
-import { validatePicture } from 'utils'
+import { validationPicture } from 'utils'
 
 export const initialValues: CreateCategoryFormReturnType = {
   type: 'category',
@@ -10,5 +10,5 @@ export const initialValues: CreateCategoryFormReturnType = {
 
 export const validationSchema = object().shape({
   title: string().required('Please enter category'),
-  picture: validatePicture,
+  picture: validationPicture,
 })

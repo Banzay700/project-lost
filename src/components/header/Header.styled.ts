@@ -7,6 +7,6 @@ export const HeaderWrapper = styled(Stack)(
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  border-bottom: 1px solid ${theme.palette.text.border.primary};
+  border-bottom: 1px solid ${theme.palette.border.default};
 `,
 )

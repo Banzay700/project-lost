@@ -3,6 +3,8 @@ export { LoaderPage } from './loader-page'
 export { LoginPage } from './login-page'
 export { ProfilePage } from './profile-page'
 
+export { NotFoundPage } from './error-pages'
+
 export {
   AdminLayout,
   AdminStatisticsPage,

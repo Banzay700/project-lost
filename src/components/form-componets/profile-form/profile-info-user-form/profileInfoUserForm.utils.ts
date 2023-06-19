@@ -1,10 +1,10 @@
 import { object, string } from 'yup'
-import { validateUser } from 'utils'
+import { validationUser } from 'utils'
 
 export const validationSchema = object().shape({
-  firstName: validateUser.firstName(),
-  secondName: validateUser.secondName(),
-  email: validateUser.email(),
-  phoneNumber: validateUser.phoneNumber(),
+  firstName: validationUser.firstName(),
+  secondName: validationUser.secondName(),
+  email: validationUser.email(),
+  phoneNumber: validationUser.phoneNumber(),
   description: string(),
 })

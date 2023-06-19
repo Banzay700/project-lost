@@ -23,7 +23,7 @@ const AdminEmployeesRegistrationPage: FC = () => {
     }
     createUser(formData)
   }
-  // TODO доделать
+
   return (
     <Box sx={{ width: '100%', height: '100%', p: '24px' }}>
       <RegistrationForm initialValues={initialValues} onSubmit={handleSubmitRegistrationForm} />

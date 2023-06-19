@@ -6,6 +6,5 @@ export const LoaderPageWrapper = styled(Stack)`
   height: 100%;
   justify-content: center;
   align-items: center;
-  background: url(/login-background_11zon2.webp) center center / cover no-repeat; //TODO не совсем ясно как работает
   image-rendering: pixelated;
 `

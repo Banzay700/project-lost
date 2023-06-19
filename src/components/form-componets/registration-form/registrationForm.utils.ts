@@ -1,6 +1,6 @@
 import { object } from 'yup'
 import { InputSelectItemType } from 'types'
-import { validateUser, validatePicture } from 'utils'
+import { validationUser, validationPicture } from 'utils'
 
 export const selectMenuItems: InputSelectItemType[] = [
   {
@@ -17,11 +17,11 @@ export const selectMenuItems: InputSelectItemType[] = [
   },
 ]
 export const validationSchema = object().shape({
-  firstName: validateUser.firstName(true),
-  secondName: validateUser.secondName(true),
-  email: validateUser.email(),
-  phoneNumber: validateUser.phoneNumber(),
-  password: validateUser.password(true),
-  role: validateUser.role(),
-  picture: validatePicture,
+  firstName: validationUser.firstName(true),
+  secondName: validationUser.secondName(true),
+  email: validationUser.email(),
+  phoneNumber: validationUser.phoneNumber(),
+  password: validationUser.password(true),
+  role: validationUser.role(),
+  picture: validationPicture,
 })

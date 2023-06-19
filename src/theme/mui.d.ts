@@ -18,11 +18,13 @@ declare module '@mui/material/styles/createPalette' {
     }
     background: {
       main: string
+      gradient: string
     }
   }
 
   interface TypeBackground {
     main: string
+    gradient: string
   }
 }
 
@@ -49,9 +51,6 @@ declare module '@mui/material/styles' {
     addition: string
     grey: string
     gradient: string
-    border: {
-      primary: string
-    }
   }
 }
 
