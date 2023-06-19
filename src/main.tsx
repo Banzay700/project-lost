@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { CssBaseline, StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { Provider } from 'react-redux'
+import { AppRoutes } from 'routes'
 
 import { store } from 'store'
 import { theme } from 'theme'
-import App from './App'
 import './style/index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
           <CssBaseline />
-          <App />
+          <AppRoutes />
         </StyledEngineProvider>
       </ThemeProvider>
     </BrowserRouter>
