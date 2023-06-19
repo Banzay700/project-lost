@@ -1,16 +1,12 @@
 import { FC, useState, useEffect } from 'react'
-import { Typography, Stack, Box, useTheme, useMediaQuery } from '@mui/material'
+import { Stack } from '@mui/material'
 import dayjs from 'dayjs'
 import { useField, useFormikContext } from 'formik'
-import { Icon } from 'assets'
+
 import { Calendar } from './month-calendar'
 import { WeekCalendar } from './week-calendar'
-import {
-  CalendarWrapper,
-  WeekWrapper,
-  WeekOuterWrapper,
-  InnerWrapper,
-} from './ReservationCalendar.styled'
+import { CalendarLabels } from './calendar-labels'
+import { CalendarWrapper } from './ReservationCalendar.styled'
 
 interface ReservationCalendarProps {
   label: string
@@ -18,19 +14,15 @@ interface ReservationCalendarProps {
   onChange?: (value: string) => void
 }
 
-const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
-  const { label, name, onChange } = props
+const ReservationCalendar: FC<ReservationCalendarProps> = ({ label, name, onChange }) => {
   const [chosenDay, setChosenDay] = useState<Date>(new Date())
   const [isShowCalendar, setShowCalendar] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const [field] = useField(name)
   const { setFieldValue } = useFormikContext()
-  const monthAndYearFormat = dayjs(chosenDay).format('MMM YYYY')
 
-  const theme = useTheme()
-  const matchesLG = useMediaQuery(theme.breakpoints.down('lg'))
-
+  const handleShowCalendar = () => setShowCalendar((prevState) => !prevState)
   const handleSetChosenDay = (day: Date) => {
     setChosenDay(day)
     setShowCalendar(false)
@@ -38,55 +30,38 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
 
   const handleSetFormValues = (day: Date) => {
     const selectDate = dayjs(day).format('YYYY-MM-DD')
+
     setFieldValue(name, selectDate)
     if (onChange) onChange(selectDate)
   }
 
   useEffect(() => {
-    handleSetFormValues(chosenDay)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chosenDay])
+    if (!field.value) setActiveIndex(null)
+  }, [field.value]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (!field.value) {
-      setActiveIndex(null)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [field.value])
+    handleSetFormValues(chosenDay)
+  }, [chosenDay]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Box {...field}>
-      <WeekWrapper>
-        <WeekOuterWrapper>
-          <InnerWrapper>
-            <Typography variant="h3" component="span">
-              {label}
-            </Typography>
-            <Typography
-              variant="h3"
-              component="span"
-              onClick={() => setShowCalendar((prevState) => !prevState)}
-              style={{ cursor: 'pointer' }}>
-              <Stack direction="row" alignItems="center">
-                {monthAndYearFormat} <Icon.TickDown />
-              </Stack>
-            </Typography>
-          </InnerWrapper>
+    <>
+      <Stack {...field} direction="row" width="100%">
+        <Stack width="100%" gap="10px">
+          <CalendarLabels label={label} chosenDate={chosenDay} showCalendar={handleShowCalendar} />
           <WeekCalendar
             startDay={chosenDay}
             handleSetChosenDay={(day) => handleSetFormValues(day)}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
-            maxDaysInWeek={matchesLG ? 5 : 7}
           />
-        </WeekOuterWrapper>
-      </WeekWrapper>
+        </Stack>
+      </Stack>
       {isShowCalendar && (
         <CalendarWrapper>
           <Calendar handleSetChosenDay={handleSetChosenDay} />
         </CalendarWrapper>
       )}
-    </Box>
+    </>
   )
 }
 

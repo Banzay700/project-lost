@@ -11,13 +11,11 @@ const StyleWithIcon = css`
     padding: 12px 16px 12px 0;
   }
 `
-
 const StyleOutlined = css`
   input {
     text-align: center;
   }
 `
-
 const StyleDefault = css`
   input {
     text-align: start;

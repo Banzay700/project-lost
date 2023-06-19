@@ -14,7 +14,7 @@ const CheckboxTagGroup: FC<ReservationTagGroupProps> = (props) => {
   const { label, name, data } = props
 
   return (
-    <Stack gap="12px">
+    <Stack gap="10px">
       <Typography variant="h3" component="p">
         {label}
       </Typography>

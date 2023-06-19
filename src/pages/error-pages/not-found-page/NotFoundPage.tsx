@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { NotFoundPageErrorTitle, NotFoundPageWrapper } from './NotFoundPage.styled'
 import { Stack, Typography } from '@mui/material'
 import { Button } from 'UI'
 import { useNavigate } from 'react-router-dom'
 import { FadeIn } from 'utils/index'
+import { NotFoundPageErrorTitle, NotFoundPageWrapper } from './NotFoundPage.styled'
 
 const NotFoundPage: FC = () => {
   const navigate = useNavigate()

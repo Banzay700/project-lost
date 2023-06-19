@@ -7,11 +7,10 @@ import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 
-export const themeWithBreakpoints = createTheme({ breakpoints }, enUS)
+export const themeWithBreakpoints = createTheme({ breakpoints, palette }, enUS)
 const theme = createTheme(
   {
     ...themeWithBreakpoints,
-    palette,
     typography: {
       fontFamily: 'Poppins',
       h1: {
@@ -70,6 +69,11 @@ const theme = createTheme(
       MuiSelect: {
         styleOverrides: {
           select: {
+            [themeWithBreakpoints.breakpoints.down('lg')]: {
+              fontSize: '14px',
+              lineHeight: 1.5,
+              padding: '11px 16px',
+            },
             padding: '12px 16px',
             borderColor: '#FF5C00',
             borderRadius: '16px',

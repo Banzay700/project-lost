@@ -10,7 +10,6 @@ interface DrawerProps {
 
 const Drawer: FC<DrawerProps> = ({ state, toggleDrawer }) => {
   const [isShowForm, setShowForm] = useState(false)
-
   const handleShowForm = () => setShowForm(!isShowForm)
 
   return (

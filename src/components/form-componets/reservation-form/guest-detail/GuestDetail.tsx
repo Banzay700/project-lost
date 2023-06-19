@@ -4,16 +4,13 @@ import { Input } from 'UI/input'
 
 const GuestDetail: FC = () => {
   return (
-    <Stack sx={{ gap: '12px', marginTop: '24px' }}>
-      <Typography variant="h1" component="div" color="black">
+    <Stack sx={{ gap: '10px' }}>
+      <Typography variant="h3" component="p">
         Guest detail
       </Typography>
-
       <Input type="text" placeholder="Full name" name="clientName" label="Full name" />
-
       <Stack flexDirection="row" gap="22px" justifyContent="space-between">
         <Input type="text" placeholder="Enter email address" name="email" label="Email" />
-
         <Input
           type="text"
           placeholder="Enter phone number"

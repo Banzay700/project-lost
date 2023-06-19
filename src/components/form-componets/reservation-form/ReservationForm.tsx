@@ -17,11 +17,7 @@ import {
   tags,
   validationSchema,
 } from './ReservationForm.utils'
-import {
-  ReservationFormStyle,
-  ReservationFormWrapper,
-  ButtonWrapper,
-} from './ReservationForm.styled'
+import { ReservationFormWrapper, ButtonWrapper, FormWrapper } from './ReservationForm.styled'
 
 interface ReservationFormProps {
   cancelHandleFunc: () => void
@@ -55,31 +51,33 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}>
-        <ReservationFormStyle>
-          <CheckboxTagGroup name="tags" label="Visit Tags" data={tags} />
-          <ReservationCalendar name="date" label="Select date" />
-          <ReservationTime label="Select time" />
-          <PartySize
-            label="Select party size"
-            maxSeats={activeTable.seats}
-            seats={8}
-            name="persons"
-          />
-          <GuestDetail />
+        <FormWrapper>
+          <Stack flex={1} gap="16px">
+            <CheckboxTagGroup name="tags" label="Visit Tags" data={tags} />
+            <ReservationCalendar name="date" label="Select date" />
+            <ReservationTime label="Select time" />
+            <PartySize
+              label="Select party size"
+              maxSeats={activeTable.seats}
+              seats={8}
+              name="persons"
+            />
+            <GuestDetail />
+          </Stack>
           <ButtonWrapper>
             <Button
               variant="outlined"
               size="medium"
               type="reset"
-              fullWidth
-              onClick={handleFormReset}>
+              onClick={handleFormReset}
+              fullWidth>
               Cancel
             </Button>
             <Button variant="contained" size="medium" type="submit" fullWidth>
               Add to reservation
             </Button>
           </ButtonWrapper>
-        </ReservationFormStyle>
+        </FormWrapper>
       </Formik>
     </ReservationFormWrapper>
   )
