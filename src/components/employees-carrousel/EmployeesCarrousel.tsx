@@ -1,23 +1,19 @@
 import { FC } from 'react'
-import { Box } from '@mui/material'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-
 import { UserInLoginType } from 'types'
-
-import { responsive, carrouselBGC } from './EmployeesCarrousel.utils'
-import s from './EmployeesCarrousel.module.scss'
+import { responsive } from './EmployeesCarrousel.utils'
 import { EmployeesCarrouselItem } from './employees-carrousel-item'
+import { BoxWrapper } from './EmployeesCarrousel.styled'
 
 interface EmployeesCarrouselProps {
-  bgc: 'transparent' | 'brown'
   employeesData: UserInLoginType[]
   handleSetActiveSlide: (id: string) => void
   chosenEmployee: string
 }
 
 const EmployeesCarrousel: FC<EmployeesCarrouselProps> = (props) => {
-  const { bgc, employeesData, chosenEmployee, handleSetActiveSlide } = props
+  const { employeesData, chosenEmployee, handleSetActiveSlide } = props
 
   const employeesRender = () => {
     return employeesData.map((item) => {
@@ -35,17 +31,11 @@ const EmployeesCarrousel: FC<EmployeesCarrouselProps> = (props) => {
   }
 
   return (
-    <Box sx={{ bgcolor: carrouselBGC[bgc], display: 'inline-block' }}>
-      <Carousel
-        arrows={false}
-        infinite
-        draggable
-        responsive={responsive}
-        containerClass={s.carrouselWrapper}
-        sliderClass={s.carrouselContainer}>
+    <BoxWrapper>
+      <Carousel arrows={false} infinite draggable responsive={responsive}>
         {employeesRender()}
       </Carousel>
-    </Box>
+    </BoxWrapper>
   )
 }
 

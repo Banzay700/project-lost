@@ -23,6 +23,7 @@ export const palette = {
     primary: '#828487',
     secondary: '#19191C',
     addition: '#fff',
+     grey: '9ba4b4',
   },
   background: {
     default: '#fff',

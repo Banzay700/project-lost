@@ -11,9 +11,4 @@ const responsive = {
   },
 }
 
-const carrouselBGC = {
-  brown: '#291d1a',
-  transparent: 'unset',
-}
-
-export { responsive, carrouselBGC }
+export { responsive }
