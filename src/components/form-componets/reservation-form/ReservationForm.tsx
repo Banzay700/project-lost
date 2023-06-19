@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { Button } from 'UI'
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 
 import { CheckboxTagGroup } from 'components'
 import { useReservationReducer } from 'hooks'
@@ -48,12 +48,15 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
 
   return (
     <ReservationFormWrapper>
+      <Typography variant="h1" color="primary.main" sx={{ marginBottom: '30px' }}>
+        New Reservation
+      </Typography>
       <Formik
         initialValues={initialValues as ReservationFormType}
         validationSchema={validationSchema}
         onSubmit={handleFormSubmit}>
         <ReservationFormStyle>
-          <CheckboxTagGroup name="tags" label="Tag" data={tags} />
+          <CheckboxTagGroup name="tags" label="Visit Tags" data={tags} />
           <ReservationCalendar name="date" label="Select date" />
           <ReservationTime label="Select time" />
           <PartySize

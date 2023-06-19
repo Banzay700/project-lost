@@ -20,22 +20,17 @@ export const ItemWrapper = styled(Stack)`
   background-color: transparent;
 `
 export const WeekWrapper = styled(Stack)`
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 12px;
+  //flex-direction: row;
+  //justify-content: center;
+  //margin-top: 12px;
 `
 export const WeekOuterWrapper = styled(Stack)`
-  flex-direction: column;
-  gap: 12px;
-  max-width: 95%;
+  //flex-direction: column;
+  //gap: 12px;
+  //max-width: 95%;
 `
 export const InnerWrapper = styled(Stack)`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const IconTickDownSmall = styled(IconTickDown)`
-  height: 15px;
-  width: 15px;
+  //flex-direction: row;
+  //justify-content: space-between;
+  //align-items: center;
 `

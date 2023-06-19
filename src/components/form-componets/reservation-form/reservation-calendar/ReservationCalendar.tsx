@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import { Typography, Stack, Box, useTheme, useMediaQuery } from '@mui/material'
 import dayjs from 'dayjs'
 import { useField, useFormikContext } from 'formik'
+import { Icon } from 'assets'
 import { Calendar } from './month-calendar'
 import { WeekCalendar } from './week-calendar'
 import {
@@ -9,7 +10,6 @@ import {
   WeekWrapper,
   WeekOuterWrapper,
   InnerWrapper,
-  IconTickDownSmall,
 } from './ReservationCalendar.styled'
 
 interface ReservationCalendarProps {
@@ -68,7 +68,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = (props) => {
               onClick={() => setShowCalendar((prevState) => !prevState)}
               style={{ cursor: 'pointer' }}>
               <Stack direction="row" alignItems="center">
-                {monthAndYearFormat} <IconTickDownSmall />
+                {monthAndYearFormat} <Icon.TickDown />
               </Stack>
             </Typography>
           </InnerWrapper>
