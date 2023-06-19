@@ -14,7 +14,7 @@ export const PDFDoc: FC<PDFDocProps> = ({ element }) => {
   return (
     <Document>
       <Page key={element?.id} style={styles.body}>
-        <Text style={styles.header}>Bills</Text>
+        <Text style={styles.header}>Bill</Text>
         <Text style={styles.section}>Order Number: #{element?.orderNumber}</Text>
         <Text style={styles.section}>Order Type: {orderType}</Text>
         <Text style={styles.section}>Total Price: ${element?.totalPrice}</Text>

@@ -2,6 +2,7 @@ import { Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { PartySizeItem } from './party-size-item'
+import { PartySizeWrapper } from './PartySize.styled'
 
 interface ReservationPartySizeProps {
   label: string
@@ -55,18 +56,7 @@ const PartySize: FC<ReservationPartySizeProps> = (props) => {
       <Typography variant="h3" component="p">
         {label}
       </Typography>
-      <Stack
-        sx={{
-          border: '1px solid #E4E4E4',
-          borderRadius: '16px',
-          flexDirection: 'row',
-          alignSelf: 'center',
-          maxWidth: '98%',
-          flexWrap: 'wrap',
-          overflow: 'hidden',
-        }}>
-        {partySize}
-      </Stack>
+      <PartySizeWrapper>{partySize}</PartySizeWrapper>
     </Stack>
   )
 }

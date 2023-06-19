@@ -1,9 +1,9 @@
 import { FC } from 'react'
+import { Pagination, Stack } from '@mui/material'
 
 import { Table, IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
 import { useBillsReducer, useParamsSearchFilter } from 'hooks/index'
-import { Pagination, Stack } from '@mui/material'
 import { tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {

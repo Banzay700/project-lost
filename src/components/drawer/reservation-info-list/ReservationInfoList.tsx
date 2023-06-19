@@ -23,6 +23,7 @@ const ReservationInfoList: FC<ReservationInfoListProps> = ({ handleShowForm }) =
         <ReservationCalendar label="Select date" name="date" onChange={handleCalendarValue} />
       </SelectDateWrapper>
       <Stack
+        spacing={10}
         direction="column"
         justifyContent="space-between"
         sx={{ height: '100%', p: '33px 24px 24px' }}>

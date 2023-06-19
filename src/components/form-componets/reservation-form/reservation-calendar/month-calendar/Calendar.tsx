@@ -1,8 +1,16 @@
 import { FC, useCallback, useMemo, useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { Stack } from '@mui/material'
-import { Icon } from 'assets'
-import s from './Calendar.module.scss'
+import {
+  CalendarHeaderWrapper,
+  MainWrapper,
+  LeftArrow,
+  RightArrow,
+  WeekDaysWrapper,
+  WeekDayCell,
+  CalendarContentWrapper,
+  CalendarDayCell,
+} from './Calendar.styled'
 
 interface CalendarProps {
   handleSetChosenDay: (day: Date) => void
@@ -52,40 +60,37 @@ const Calendar: FC<CalendarProps> = (props) => {
   }, [generateFirstDayOfEachWeek, firstDayOfFirstWeekOfMonth, generateWeek])
 
   return (
-    <div className={s.mainWrapper}>
-      <div className={s.calendarHeaderWrapper}>
+    <MainWrapper>
+      <CalendarHeaderWrapper>
         <h3>{selectedDate.clone().format('MMM YYYY')}</h3>
         <Stack direction="row" gap="12px">
           <Stack onClick={() => setSelectedDate((date) => date.subtract(1, 'month'))}>
-            <Icon.Arrow style={{ rotate: '180deg', cursor: 'pointer', fill: '#FF5C00' }} />
+            <LeftArrow />
           </Stack>
 
           <Stack onClick={() => setSelectedDate((date) => date.add(1, 'month'))}>
-            <Icon.Arrow style={{ cursor: 'pointer', fill: '#FF5C00', marginTop: '-1px' }} />
+            <RightArrow />
           </Stack>
         </Stack>
-      </div>
-      <div className={s.weekDaysWrapper}>
+      </CalendarHeaderWrapper>
+      <WeekDaysWrapper>
         {generateWeeksOfTheMonth[0].map((day) => (
-          <div className={s.weekDayCell} key={dayjs(day).format('DD/MM')}>
-            {dayjs(day).format('dd')}
-          </div>
+          <WeekDayCell key={dayjs(day).format('DD/MM')}>{dayjs(day).format('dd')}</WeekDayCell>
         ))}
-      </div>
+      </WeekDaysWrapper>
       {generateWeeksOfTheMonth.map((week) => (
-        <div className={s.calendarContentWrapper} key={week.toString()}>
+        <CalendarContentWrapper key={week.toString()}>
           {week.map((day) => (
-            <div
-              className={s.calendarDayCell}
+            <CalendarDayCell
               style={{ color: colorVariant(day) }}
               key={dayjs(day).format('DD/MM')}
               onClick={() => handleSetChosenDay(day)}>
               {day.getDate()}
-            </div>
+            </CalendarDayCell>
           ))}
-        </div>
+        </CalendarContentWrapper>
       ))}
-    </div>
+    </MainWrapper>
   )
 }
 
