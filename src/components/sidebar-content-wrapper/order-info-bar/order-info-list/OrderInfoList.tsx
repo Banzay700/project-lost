@@ -16,7 +16,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
   const [deleteOrder] = useDeleteOrderMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-  const { user, id, table, orderNumber, dishes } = activeOrder
+  const { id, table, orderNumber, dishes } = activeOrder
   const total = dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
 
   const handleDeleteOrder = async () => {

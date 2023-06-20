@@ -14,11 +14,11 @@ const CheckboxTagGroup: FC<ReservationTagGroupProps> = (props) => {
   const { label, name, data } = props
 
   return (
-    <Stack gap="12px">
+    <Stack gap="10px">
       <Typography variant="h3" component="p">
         {label}
       </Typography>
-      <Stack direction="row" justifyContent="space-between" flexWrap="wrap" gap="12px">
+      <Stack direction="row" flexWrap="wrap" gap="12px">
         {data.map((item) => (
           <Field key={item.value} name={name} value={item.value}>
             {({ field }: FieldProps) => (

@@ -10,13 +10,13 @@ import {
   WeekDayCell,
   CalendarContentWrapper,
   CalendarDayCell,
-} from './Calendar.styled'
+} from './MonthCalendar.styled'
 
 interface CalendarProps {
   handleSetChosenDay: (day: Date) => void
 }
 
-const Calendar: FC<CalendarProps> = (props) => {
+const MonthCalendar: FC<CalendarProps> = (props) => {
   const { handleSetChosenDay } = props
 
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs())
@@ -67,7 +67,6 @@ const Calendar: FC<CalendarProps> = (props) => {
           <Stack onClick={() => setSelectedDate((date) => date.subtract(1, 'month'))}>
             <LeftArrow />
           </Stack>
-
           <Stack onClick={() => setSelectedDate((date) => date.add(1, 'month'))}>
             <RightArrow />
           </Stack>
@@ -94,4 +93,4 @@ const Calendar: FC<CalendarProps> = (props) => {
   )
 }
 
-export default Calendar
+export default MonthCalendar

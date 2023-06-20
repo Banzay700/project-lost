@@ -1,19 +1,18 @@
-import styled from 'styled-components'
+import { Stack, styled } from '@mui/material'
 import { Form } from 'formik'
-import { Stack } from '@mui/material'
 
 export const ReservationFormWrapper = styled(Stack)`
   height: 100%;
-  justify-content: center;
-  align-items: center;
-`
-
-export const ReservationFormStyle = styled(Form)`
-  gap: 12px;
-  max-width: 100%;
+  width: 100%;
+  padding: 40px 30px;
 `
 export const ButtonWrapper = styled(Stack)`
-  margin-top: 24px;
   flex-direction: row;
   gap: 12px;
+  width: 100%;
+`
+export const FormWrapper = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `

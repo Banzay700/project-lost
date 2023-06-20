@@ -18,18 +18,18 @@ const CheckboxButtonInGroup: FC<CheckboxButtonWithoutIconProps> = ({
 }) => {
   return (
     <Checkbox
-      sx={{ p: 0 }}
+      sx={{ p: 0, flex: 1, width: '100%' }}
       disableRipple
       checked={checked}
       {...field}
       value={value}
       icon={
-        <Button variant="outlined" size="medium" color="secondary">
+        <Button variant="outlined" size="small" color="secondary" fullWidth>
           {title}
         </Button>
       }
       checkedIcon={
-        <Button variant="outlined" size="medium" color="primary">
+        <Button variant="outlined" size="small" color="primary" fullWidth>
           {title}
         </Button>
       }

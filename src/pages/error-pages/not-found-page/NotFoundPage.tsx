@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ErrorContent } from 'UI/error-content'
+import { ErrorContent } from 'UI'
 
 const NotFoundPage: FC = () => {
   return (
