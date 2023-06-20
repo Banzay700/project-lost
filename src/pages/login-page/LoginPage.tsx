@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { Login } from './login'
 
 const LoginPage: FC = () => {
-  const [login, { isSuccess }] = useLoginMutation()
+  const [login, { isSuccess, isError, error }] = useLoginMutation()
 
   const handleSubmitLogin = (value: UserLoginRequestType) => {
     login(value)
@@ -15,7 +15,7 @@ const LoginPage: FC = () => {
     return <Navigate to="/home" />
   }
 
-  return <Login onSubmit={handleSubmitLogin} />
+  return <Login onSubmit={handleSubmitLogin} isError={isError} error={error} />
 }
 
 export default LoginPage
