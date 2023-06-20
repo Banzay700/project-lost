@@ -18,7 +18,7 @@ const ProfileContent: FC<ProfileContentProps> = ({
     <Stack sx={{ width: '100%' }}>
       <Box sx={{ p: '16px 40px', borderBottom: '1px solid #e4e4e4' }}>
         <Typography variant="dashNumb" component="p" color="secondary" flexWrap="wrap">
-          Coca profile
+          Profile
         </Typography>
       </Box>
       <Stack direction="row" sx={{ width: '100%', gap: '20px', p: '40px' }}>

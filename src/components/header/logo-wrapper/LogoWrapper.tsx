@@ -28,7 +28,7 @@ const LogoWrapper: FC<UserType> = ({ role }) => {
           onClick={handleGoToAdminPanel}
         />
       )}
-      <Logo view="both" link="/" />
+      <Logo link="/home" />
     </Stack>
   )
 }
