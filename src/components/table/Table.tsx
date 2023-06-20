@@ -63,6 +63,7 @@ const Table: FC<TableProps> = ({
         <TableBody>
           {skeleton}
           {tableType === 'orders' &&
+            !isLoading &&
             data?.map((element) => (
               <TableOrdersLine
                 element={element as OrderType}
@@ -74,6 +75,7 @@ const Table: FC<TableProps> = ({
               />
             ))}
           {tableType === 'bills' &&
+            !isLoading &&
             data?.map((element) => (
               <TableBillsLine
                 element={element as BillsType}
@@ -85,6 +87,7 @@ const Table: FC<TableProps> = ({
               />
             ))}
           {tableType === 'reservation' &&
+            !isLoading &&
             data?.map((element) => (
               <TableReservationLine
                 key={element?.id}
@@ -92,11 +95,13 @@ const Table: FC<TableProps> = ({
               />
             ))}
           {tableType === 'users' &&
+            !isLoading &&
             onClickAction &&
             data?.map((user) => (
               <TableUsersLine key={user.id} user={user as UserType} onClickAction={onClickAction} />
             ))}
           {tableType === 'dishes' &&
+            !isLoading &&
             data?.map((dish) => (
               <TableDishLine
                 key={dish.id}

@@ -4,14 +4,22 @@ import { Button } from 'UI'
 interface FilterMenuItemProps {
   value: string
   label: string
+  minWidth?: string
   onChange: (value: string) => void
   isSelected?: boolean
 }
 
-const FilterMenuItem: FC<FilterMenuItemProps> = ({ value, label, onChange, isSelected }) => {
+const FilterMenuItem: FC<FilterMenuItemProps> = ({
+  value,
+  label,
+  minWidth,
+  onChange,
+  isSelected,
+}) => {
   const handleClick = () => {
     onChange(value)
   }
+
   return (
     <Button
       variantText="h3"
@@ -20,7 +28,8 @@ const FilterMenuItem: FC<FilterMenuItemProps> = ({ value, label, onChange, isSel
       onClick={handleClick}
       size="small"
       variant="outlined"
-      filterMenuStyle>
+      filterMenuStyle
+      minWidth={minWidth}>
       {label}
     </Button>
   )

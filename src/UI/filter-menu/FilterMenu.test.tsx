@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { vi } from 'vitest'
 import { FilterMenuItemType } from 'types'
+import { BrowserRouter } from 'react-router-dom'
 import { FilterMenu } from '.'
 
 describe('testing filter menu', () => {
@@ -16,7 +17,11 @@ describe('testing filter menu', () => {
 
   test('render filter menu', () => {
     const testFunc = vi.fn()
-    render(<FilterMenu filterMenuItems={filterMenuMokWithTwoChildren} onChange={testFunc} />)
+    render(
+      <BrowserRouter>
+        <FilterMenu filterMenuItems={filterMenuMokWithTwoChildren} onChange={testFunc} />
+      </BrowserRouter>,
+    )
     const defaultElement = screen.getByText('All')
     const firstElement = screen.getByText('Test1')
     const secondElement = screen.getByText('Test2')
@@ -26,7 +31,11 @@ describe('testing filter menu', () => {
   })
   test('fire event click in all children', () => {
     const testFunc = vi.fn()
-    render(<FilterMenu filterMenuItems={filterMenuMokWithManyChildren} onChange={testFunc} />)
+    render(
+      <BrowserRouter>
+        <FilterMenu filterMenuItems={filterMenuMokWithManyChildren} onChange={testFunc} />
+      </BrowserRouter>,
+    )
 
     const button1 = screen.getByText('Test1')
     const button2 = screen.getByText('Test2')
@@ -45,7 +54,11 @@ describe('testing filter menu', () => {
   })
   test('fire event click in two children', () => {
     const testFunc = vi.fn()
-    render(<FilterMenu filterMenuItems={filterMenuMokWithManyChildren} onChange={testFunc} />)
+    render(
+      <BrowserRouter>
+        <FilterMenu filterMenuItems={filterMenuMokWithManyChildren} onChange={testFunc} />
+      </BrowserRouter>,
+    )
 
     const button1 = screen.getByText('Test1')
     const button2 = screen.getByText('Test2')
@@ -61,7 +74,11 @@ describe('testing filter menu', () => {
 
   test('fire event click with 2 children', () => {
     const testFunc = vi.fn()
-    render(<FilterMenu filterMenuItems={filterMenuMokWithTwoChildren} onChange={testFunc} />)
+    render(
+      <BrowserRouter>
+        <FilterMenu filterMenuItems={filterMenuMokWithTwoChildren} onChange={testFunc} />
+      </BrowserRouter>,
+    )
 
     const buttonOne = screen.getByText('Test1')
     const buttonTwo = screen.getByText('Test2')
@@ -81,11 +98,13 @@ describe('testing filter menu', () => {
     const testFunc = vi.fn()
 
     render(
-      <FilterMenu
-        filterMenuItems={filterMenuMokWithTwoChildren}
-        onChange={testFunc}
-        defaultValue={['test1']}
-      />,
+      <BrowserRouter>
+        <FilterMenu
+          filterMenuItems={filterMenuMokWithTwoChildren}
+          onChange={testFunc}
+          defaultValue={['test1']}
+        />
+      </BrowserRouter>,
     )
     const button = screen.getByText('Test1')
     const parentButton = button.closest('button')

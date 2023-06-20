@@ -1,17 +1,27 @@
+import { useControlScrollWithButton } from 'hooks'
 import { FC, useEffect, useState } from 'react'
 import { FilterMenuItemType } from 'types'
 
+import { Stack } from '@mui/material'
 import { FilterMenuItem } from './filter-menu-item'
-import { FilterMenuWrapper } from './FilterMenu.styled'
+import { ButtonScroll, ButtonScrollWrapper, FilterMenuWrapper } from './FilterMenu.styled'
 
 interface FilterMenuProps {
   filterMenuItems?: FilterMenuItemType[]
   defaultValue?: string[]
+  isControlScroll?: boolean
   onChange: (value: string[]) => void
 }
 
-const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChange }) => {
+const FilterMenu: FC<FilterMenuProps> = ({
+  filterMenuItems,
+  isControlScroll,
+  defaultValue,
+  onChange,
+}) => {
   const [filterItems, setFilterItems] = useState(defaultValue || ['all'])
+  const { scrollContainerRef, handleScrollRight, handleScrollLeft } =
+    useControlScrollWithButton<HTMLDivElement>()
 
   const handleChangeFilter = (value: string) => {
     const withoutAllCategory = filterItems.filter((item) => item !== 'all')
@@ -46,24 +56,39 @@ const FilterMenu: FC<FilterMenuProps> = ({ filterMenuItems, defaultValue, onChan
       ? handleChangeFilter
       : handleChangeFilterWhenTwoItem
 
+  const isLengthItem = filterMenuItems && filterMenuItems?.length > 3
   return (
-    <FilterMenuWrapper direction="row">
-      <FilterMenuItem
-        value="all"
-        label="All"
-        isSelected={filterItems.some((item) => item === 'all')}
-        onChange={choiceHandle}
-      />
-      {filterMenuItems?.map(({ value, label }) => (
+    <Stack width="100%" direction="row" justifyContent="center" flex={0}>
+      {isLengthItem && isControlScroll && (
+        <ButtonScrollWrapper>
+          <ButtonScroll onClick={handleScrollLeft} />
+        </ButtonScrollWrapper>
+      )}
+      <FilterMenuWrapper direction="row" ref={scrollContainerRef} isControlScroll={isControlScroll}>
         <FilterMenuItem
-          key={value}
-          value={value}
-          label={label}
-          isSelected={filterItems.some((item) => item === value)}
+          minWidth={isControlScroll ? 'fit-content' : ''}
+          value="all"
+          label="All"
+          isSelected={filterItems.some((item) => item === 'all')}
           onChange={choiceHandle}
         />
-      ))}
-    </FilterMenuWrapper>
+        {filterMenuItems?.map(({ value, label }) => (
+          <FilterMenuItem
+            minWidth={isControlScroll ? 'fit-content' : ''}
+            key={value}
+            value={value}
+            label={label}
+            isSelected={filterItems.some((item) => item === value)}
+            onChange={choiceHandle}
+          />
+        ))}
+      </FilterMenuWrapper>
+      {isLengthItem && isControlScroll && (
+        <ButtonScrollWrapper>
+          <ButtonScroll onClick={handleScrollRight} transformRight />
+        </ButtonScrollWrapper>
+      )}
+    </Stack>
   )
 }
 

@@ -7,6 +7,7 @@ interface ButtonProps extends PropsWithChildren {
   size: 'small' | 'medium'
   color?: 'secondary' | 'primary'
   maxWidth?: string
+  minWidth?: string
   blur?: boolean
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
@@ -26,6 +27,7 @@ const Button: FC<ButtonProps> = ({
   variant,
   size,
   maxWidth,
+  minWidth,
   color,
   startIcon,
   endIcon,
@@ -46,7 +48,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <ButtonWrapper
-      sx={{ maxWidth }}
+      sx={{ maxWidth, minWidth }}
       filterMenuStyle={filterMenuStyle}
       size={size}
       blur={blur}
