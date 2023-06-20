@@ -6,7 +6,7 @@ describe('testing Logo', () => {
   test('Logo with props link and render props view img', () => {
     const { container } = render(
       <BrowserRouter>
-        <Logo link="test" view="img" />
+        <Logo link="test" />
       </BrowserRouter>,
     )
     const logoElement = container.querySelector('a')
@@ -22,7 +22,7 @@ describe('testing Logo', () => {
   test('Render props view text', () => {
     const { container } = render(
       <BrowserRouter>
-        <Logo link="test" view="text" />
+        <Logo link="test" />
       </BrowserRouter>,
     )
     const logoImg = container.querySelector('.test-img')
@@ -35,7 +35,7 @@ describe('testing Logo', () => {
   test('Render props view both', () => {
     const { container } = render(
       <BrowserRouter>
-        <Logo link="test" view="both" />
+        <Logo link="test" />
       </BrowserRouter>,
     )
     const logoImg = container.querySelector('.test-img')

@@ -15,7 +15,7 @@ const HeaderAdmin: FC = () => {
 
   return (
     <HeaderAdminWrapper>
-      <Logo link={`/${ROUTES.ADMIN_PANEL}`} view="both" />
+      <Logo link={`/${ROUTES.ADMIN_PANEL}`} />
       <Box width="100px">
         <Button
           variant="contained"
