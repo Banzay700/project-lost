@@ -5,6 +5,7 @@ const firstName = (isRequired?: boolean) => {
     .min(2, 'Too Short! Please enter no more than 20, and no less than 2')
     .max(20, 'Too Long! Please enter no more than 20, and no less than 2')
     .matches(/\p{Lu}/u, 'First Name must contain at least one uppercase letter')
+    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ]+$/, 'Enter only numbers or letters')
 
   if (isRequired) {
     schema = schema.required('First Name is required')
@@ -18,6 +19,7 @@ const secondName = (isRequired?: boolean) => {
     .min(2, 'Too Short! Please enter no more than 20, and no less than 2')
     .max(20, 'Too Long! Please enter no more than 20, and no less than 2')
     .matches(/\p{Lu}/u, 'First Name must contain at least one uppercase letter')
+    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ]+$/, 'Enter only numbers or letters')
 
   if (isRequired) {
     schema = schema.required('Second Name is required')
