@@ -3,7 +3,7 @@ import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
 import { Button, MenuItem } from 'UI'
 import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
 import { WatchContainer } from './Watch.styled'
 
@@ -16,7 +16,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [logout, { isSuccess }] = useLogoutMutation()
   const open = Boolean(anchorEl)
-
+  const navigate = useNavigate()
   const { userImage, firstName, secondName } = dataUser
 
   const avatarName = !!firstName &&
@@ -68,7 +68,12 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
           ))}
           <Divider />
           {menuDataAction.map((item) => (
-            <MenuItem data={item} key={item.title} onClose={handleLogout} />
+            <MenuItem
+              data={item}
+              key={item.title}
+              typeButton={item.typeButton}
+              onClose={handleLogout}
+            />
           ))}
         </Menu>
       </Box>
