@@ -3,6 +3,7 @@ import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
 import { Button, MenuItem } from 'UI'
 import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
+import { Navigate } from 'react-router-dom'
 import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
 import { WatchContainer } from './Watch.styled'
 
@@ -13,7 +14,7 @@ interface WatchProps {
 const Watch: FC<WatchProps> = ({ dataUser }) => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date())
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [logout] = useLogoutMutation()
+  const [logout, { isSuccess }] = useLogoutMutation()
   const open = Boolean(anchorEl)
 
   const { userImage, firstName, secondName } = dataUser
@@ -41,6 +42,10 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
   }, [])
 
   const formattedDate = formatDateTime(currentDateTime)
+
+  if (isSuccess) {
+    return <Navigate to="/login" />
+  }
 
   return (
     <Stack spacing={3.2} direction="row" alignItems="center">

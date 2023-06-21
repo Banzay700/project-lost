@@ -2,18 +2,19 @@ import { FC } from 'react'
 import { SidebarLeftList } from 'components'
 import { Stack } from '@mui/material'
 import { useLogoutMutation } from 'store/api'
-import { useNavigate } from 'react-router-dom'
-import { ROUTES } from 'routes'
+import { Navigate } from 'react-router-dom'
 import { LogoutWrapper } from './SidebarLeftAdmin.styled'
 import { sidebarLeftAdminMenu } from './sidebarLeftAdmin.utils'
 
 const SidebarLeftAdmin: FC = () => {
-  const [logout] = useLogoutMutation()
-  const navigate = useNavigate()
+  const [logout, { isSuccess }] = useLogoutMutation()
 
   const handleLogout = () => {
     logout()
-    navigate(`/${ROUTES.LOGIN}`)
+  }
+
+  if (isSuccess) {
+    return <Navigate to="/login" />
   }
 
   return (
