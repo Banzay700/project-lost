@@ -12,13 +12,14 @@ interface ReservationBottomBarProps {
 
 const ReservationBottomBar: FC<ReservationBottomBarProps> = ({ toggleDrawer }) => {
   const { palette } = useTheme()
+
   return (
     <Box sx={{ p: { lg: '24px', xs: '14px' }, bgcolor: palette.background.main }}>
       <ReservationBarWrapper>
         <BottomBarIcon />
         <TablesIconsLine />
         <Button variant="contained" size="medium" color="primary" onClick={toggleDrawer}>
-          Add Reservation
+          All Reservations
         </Button>
       </ReservationBarWrapper>
     </Box>

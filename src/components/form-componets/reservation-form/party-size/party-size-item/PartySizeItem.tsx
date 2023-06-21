@@ -24,6 +24,7 @@ const PartySizeItem: FC<PartySizeItemProps> = ({ value, maxSeats, isActiveValue,
       active={isActiveValue === value}
       isDisabled={!isDisabled}>
       <Typography
+        variant="h2"
         fontWeight={600}
         color={isDisabled ? (isActiveValue === value ? 'primary' : 'secondary') : 'text.gray'}>
         {value}

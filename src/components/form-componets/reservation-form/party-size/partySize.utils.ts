@@ -1,3 +1,5 @@
+export const SCROLL_STEP = 270
+
 export const partySizeArray = (maxSeats: number) => {
   const lengthPartySize = 8
 

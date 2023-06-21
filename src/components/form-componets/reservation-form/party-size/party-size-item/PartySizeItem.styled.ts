@@ -11,8 +11,8 @@ export const ItemWrapper = styled(
   withProps('active', 'isDisabled'),
 )<ItemWrapperProps>(({ active, theme, isDisabled }) => ({
   minWidth: '64px',
-  minHeight: '64px',
-  height: '64px',
+  padding: '17px 0px',
+  width: '100%',
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',

@@ -1,4 +1,11 @@
 import { styled, Stack } from '@mui/material'
+import { FadeIn } from 'utils/index'
+
+export const ListWrapper = styled(FadeIn)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
 
 export const ReservationInfoWrapper = styled(Stack)`
   flex-direction: column;

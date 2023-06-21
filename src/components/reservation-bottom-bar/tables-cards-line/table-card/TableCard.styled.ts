@@ -1,6 +1,7 @@
 import { Stack, styled } from '@mui/material'
+import { FadeIn } from 'utils'
 
-export const TableCardWrapper = styled('div')(({ theme }) => ({
+export const TableCardWrapper = styled(FadeIn)(({ theme }) => ({
   position: 'relative',
   padding: '13px 0',
   borderRadius: '8px',

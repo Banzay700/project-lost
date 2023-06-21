@@ -13,18 +13,17 @@ import { ReservationTime } from './reservation-time'
 import { GuestDetail } from './guest-detail'
 import {
   initialValues,
-  prepareReservationData,
   tags,
   validationSchema,
+  prepareReservationData,
 } from './ReservationForm.utils'
 import { ReservationFormWrapper, ButtonWrapper, FormWrapper } from './ReservationForm.styled'
 
 interface ReservationFormProps {
-  cancelHandleFunc: () => void
+  handleShowForm: () => void
 }
 
-const ReservationForm: FC<ReservationFormProps> = (props) => {
-  const { cancelHandleFunc } = props
+const ReservationForm: FC<ReservationFormProps> = ({ handleShowForm }) => {
   const { activeTable } = useReservationReducer()
   const [addNewReservation] = useCreateReservationMutation()
   const [getTableCanvasDataTrigger] = useLazyGetTablesCanvasQuery()
@@ -36,11 +35,10 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
     const reservationInfo = prepareReservationData(values, activeTable)
 
     addNewReservation(reservationInfo)
+    handleShowForm()
     getTableCanvasDataTrigger()
     actions.resetForm()
   }
-
-  const handleFormReset = () => cancelHandleFunc()
 
   return (
     <ReservationFormWrapper>
@@ -64,7 +62,7 @@ const ReservationForm: FC<ReservationFormProps> = (props) => {
               variant="outlined"
               size="medium"
               type="reset"
-              onClick={handleFormReset}
+              onClick={handleShowForm}
               fullWidth>
               Cancel
             </Button>

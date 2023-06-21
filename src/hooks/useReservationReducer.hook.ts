@@ -8,6 +8,7 @@ export const useReservationReducer = () => {
   const activeTable = useAppSelector((state) => state.reservation.activeTable)
   const addTableToStore = (table: TableType) => dispatch(addActiveTable(table))
   const clearActiveTableStore = () => dispatch(clearActiveTable())
+  const isActiveTable = activeTable.number !== ''
 
-  return { activeTable, addTableToStore, clearActiveTableStore }
+  return { activeTable, isActiveTable, addTableToStore, clearActiveTableStore }
 }
