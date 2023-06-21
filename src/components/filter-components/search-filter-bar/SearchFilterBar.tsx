@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { Box, Divider, Stack } from '@mui/material'
-import { FilterMenu, SearchInput } from 'UI/index'
-import { FilterMenuItemType } from 'types/index'
-import { SearchFilterBarWrapper } from 'components/filter-components/search-filter-bar/SearchFilterBar.styled'
+import { FilterMenu, SearchInput } from 'UI'
+import { FilterMenuItemType } from 'types'
+import { SearchFilterBarWrapper } from './SearchFilterBar.styled'
 
 interface SearchFilterBarProps {
   subcategories?: FilterMenuItemType[]
@@ -21,23 +20,13 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({
 }) => {
   return (
     <SearchFilterBarWrapper>
-      <Box minWidth="35%">
-        <SearchInput onChange={changeTitle} defaultValue={defaultValueInput} />
-      </Box>
-      <Stack direction="row" sx={{ gap: '24px', justifyContent: 'flex-end' }}>
-        <Divider
-          orientation="vertical"
-          flexItem
-          sx={{
-            display: { xs: 'none', md: 'block' },
-          }}
-        />
-        <FilterMenu
-          filterMenuItems={subcategories}
-          onChange={changeCategory}
-          defaultValue={defaultValueFilter}
-        />
-      </Stack>
+      <SearchInput onChange={changeTitle} defaultValue={defaultValueInput} />
+      <FilterMenu
+        isControlScroll
+        filterMenuItems={subcategories}
+        onChange={changeCategory}
+        defaultValue={defaultValueFilter}
+      />
     </SearchFilterBarWrapper>
   )
 }

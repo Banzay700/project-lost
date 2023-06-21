@@ -1,18 +1,24 @@
 import { render, screen } from '@testing-library/react'
+import { theme } from 'theme/index'
+import { ThemeProvider } from '@mui/material'
 import DetailsListTitle from './DetailsListTitle'
 
 describe('DetailsListTitle', () => {
-  const component = <DetailsListTitle title="Title" orderNumber={32429} />
-  it('should render title', () => {
+  const component = (
+    <ThemeProvider theme={theme}>
+      <DetailsListTitle title="test" orderNumber={32429} />
+    </ThemeProvider>
+  )
+  test('should render title', () => {
     render(component)
-    expect(screen.getByText('Title')).toBeVisible()
+    expect(screen.getByText('test')).toBeInTheDocument()
   })
-  it('should render orderId', () => {
+  test('should render orderId', () => {
     render(component)
-    expect(screen.getByText('Title')).toBeVisible()
+    expect(screen.getByText('Order # 32429')).toBeInTheDocument()
   })
-  it('should have class wrapper', () => {
+  test('should have class wrapper', () => {
     render(component)
-    expect(screen.getByText('Title')).toHaveClass('MuiTypography-root')
+    expect(screen.getByText('test')).toHaveClass('MuiTypography-root')
   })
 })

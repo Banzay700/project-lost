@@ -46,3 +46,4 @@ export {
 } from './modal-components'
 
 export { ReservationCanvas } from './reservation-canvas'
+export { NotifyError } from './notification-error'

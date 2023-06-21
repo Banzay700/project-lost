@@ -11,7 +11,6 @@ export const PartySizeWrapper = styled(Stack)(({ theme }) => ({
   alignSelf: 'center',
   overflow: 'hidden',
   scrollBehavior: 'smooth',
-  position: 'relative',
   flex: 1,
 }))
 

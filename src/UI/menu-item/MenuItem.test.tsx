@@ -7,7 +7,7 @@ import { MenuItem } from '.'
 describe('testing MenuItem', () => {
   const mokMenuItem: LinkItemType = {
     title: 'testTitle',
-    icon: <div data-testid="icon">TestIcon</div>,
+    icon: <div>TestIcon</div>,
     link: 'testLink',
   }
 
@@ -19,7 +19,7 @@ describe('testing MenuItem', () => {
       </BrowserRouter>,
     )
     const element = screen.getByText('testTitle')
-    const iconElement = screen.queryByTestId('icon')
+    const iconElement = screen.getByText('TestIcon')
 
     fireEvent.click(element)
     expect(testFn).toBeCalled()

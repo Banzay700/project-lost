@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box } from '@mui/material'
 import { InputImage } from 'components'
-import { ImageWrapper } from './InputImageWithPrewiewAvatar.styled'
+import { ImageWrapper } from './InputImageWithPreviewAvatar.styled'
 
 interface InputImageWithPreviewAvatarProps {
   isDisabled: boolean
