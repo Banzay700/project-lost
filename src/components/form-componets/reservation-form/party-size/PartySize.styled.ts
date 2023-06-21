@@ -6,12 +6,12 @@ export const PartySizeWrapper = styled(Stack)(({ theme }) => ({
   border: `1px solid ${theme.palette.border.default}`,
   [theme.breakpoints.up('xl')]: { width: 'fit-content' },
   [theme.breakpoints.down('xl')]: { width: '100%' },
-  minWidth: '250px',
   borderRadius: '16px',
   flexDirection: 'row',
   alignSelf: 'center',
   overflow: 'hidden',
   scrollBehavior: 'smooth',
+  flex: 1,
 }))
 
 export const PartySizeButtonScrollWrapper = styled(Stack)`

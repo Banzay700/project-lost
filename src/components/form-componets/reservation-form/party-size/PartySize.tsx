@@ -1,5 +1,5 @@
 import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { useField, useFormikContext } from 'formik'
 import { PartySizeItem } from './party-size-item'
 import {
@@ -7,7 +7,7 @@ import {
   PartySizeButtonScrollWrapper,
   PartySizeWrapper,
 } from './PartySize.styled'
-import { partySizeArray } from './partySize.utils'
+import { partySizeArray, SCROLL_STEP } from './partySize.utils'
 
 interface ReservationPartySizeProps {
   label: string
@@ -16,29 +16,33 @@ interface ReservationPartySizeProps {
 }
 
 const PartySize: FC<ReservationPartySizeProps> = ({ label, name, maxSeats }) => {
-  const { setFieldValue } = useFormikContext()
+  const [isSelected, setIsSelected] = useState<number>(0)
+  const { setFieldValue, isSubmitting } = useFormikContext()
+  const [field] = useField(name)
   const { breakpoints } = useTheme()
   const isScreenLarge = useMediaQuery(breakpoints.down('xl'))
-  const [field] = useField(name)
-  const [isSelected, setIsSelected] = useState<number>(0)
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const partySize = partySizeArray(maxSeats)
+
+  const handleScrollLeft = () => {
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft -= SCROLL_STEP
+  }
+
+  const handleScrollRight = () => {
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft += SCROLL_STEP
+  }
 
   const handleClickItem = (value: number) => {
     setIsSelected(value)
     setFieldValue(name, value)
   }
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const scrollStep = 100
-
-  const handleScrollLeft = () => {
-    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft -= scrollStep
-  }
-
-  const handleScrollRight = () => {
-    if (scrollContainerRef.current) scrollContainerRef.current.scrollLeft += scrollStep
-  }
-
-  const partySize = partySizeArray(maxSeats)
+  useEffect(() => {
+    if (isSubmitting) {
+      setIsSelected(0)
+    }
+  }, [isSubmitting, name, setIsSelected])
 
   return (
     <Stack {...field} sx={{ gap: '12px', width: '100%' }}>

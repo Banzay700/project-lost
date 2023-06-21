@@ -40,6 +40,7 @@ const ReservationCalendar: FC<ReservationCalendarProps> = ({ label, name, onChan
   }, [field.value]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    setActiveIndex(0)
     handleSetFormValues(chosenDay)
   }, [chosenDay]) // eslint-disable-line react-hooks/exhaustive-deps
 
