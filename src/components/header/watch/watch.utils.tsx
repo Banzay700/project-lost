@@ -51,5 +51,6 @@ export const menuDataAction: LinkItemType[] = [
     link: '/login',
     title: 'Log out',
     icon: <Icon.Logout width={24} height={24} />,
+    typeButton: true,
   },
 ]
