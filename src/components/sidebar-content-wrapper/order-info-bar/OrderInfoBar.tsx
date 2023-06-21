@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
 import { Box, Stack } from '@mui/material'
-import { ToggleMenu } from 'UI'
-import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
-import { useOrderReducer } from 'hooks'
-import { ROUTES } from 'routes'
 import { useNavigate } from 'react-router-dom'
+import { ToggleMenu } from 'UI'
+import { ROUTES } from 'routes'
+import { useOrderReducer } from 'hooks'
+import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
 import { OrderInfoList } from './order-info-list'
 
 const OrderInfoBar: FC = () => {

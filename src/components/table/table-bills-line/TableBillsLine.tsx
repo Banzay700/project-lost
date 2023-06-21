@@ -40,9 +40,9 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
     <TableRow
       hover
       sx={{
-        '&:last-child td, &:last-child th': { border: 0 },
         cursor: 'pointer',
         backgroundColor,
+        height: '88px',
       }}
       onClick={handleLineWrapperClick}>
       <TableNumberColumn table={table} />

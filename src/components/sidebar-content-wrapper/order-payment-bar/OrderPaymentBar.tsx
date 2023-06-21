@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import { Stack } from '@mui/material'
 
 import { DetailsListTitle, ToggleMenu } from 'UI'
-import { useAppSelector, useBillsReducer, useUserReducer } from 'hooks'
+import { useAppSelector, useBillsReducer } from 'hooks'
 import {
   useLazySendEmailQuery,
   useUpdateBillMutation,
@@ -9,16 +10,12 @@ import {
 } from 'store/api'
 import { PaymentFormReturnType } from 'types'
 import { FadeIn } from 'utils'
-import { Stack } from '@mui/material'
 import { PaymentListInfo } from './payment-list-info'
 import { toggleMenuValues } from './orderPaymentBar.utils'
 import { OrderListInfo } from './order-list-info'
 
 const OrderPaymentBar: FC = () => {
-  const { userState } = useUserReducer()
   const { newBill, relocateBills, changeToggle } = useBillsReducer()
-
-  const { firstName, secondName } = userState
   const toggleValue = useAppSelector((state) => state.bills.toggleValue)
 
   const [updateBill] = useUpdateBillMutation()
@@ -48,8 +45,8 @@ const OrderPaymentBar: FC = () => {
         <DetailsListTitle
           title={detailsListTitle}
           orderNumber={newBill.orderNumber}
-          staffName={firstName}
-          staffSurname={secondName}
+          // staffName={firstName} // TODO: fix types in activeOrder
+          // staffSurname={secondName}
         />
         {toggleValue === 'Payment' && (
           <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />

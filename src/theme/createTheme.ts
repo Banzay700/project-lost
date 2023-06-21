@@ -66,6 +66,23 @@ const theme = createTheme(
       },
     },
     components: {
+      MuiTableRow: {
+        styleOverrides: {
+          root: {
+            borderBottom: '1px solid rgba(224, 224, 224, 1)',
+            '&:last-child': { borderBottom: 'none' },
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          body: {
+            padding: 0,
+            borderBottom: 'none',
+            '&:last-child': { paddingRight: '10px' },
+          },
+        },
+      },
       MuiSelect: {
         styleOverrides: {
           select: {

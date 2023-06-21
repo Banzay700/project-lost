@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TableCell, Typography } from '@mui/material'
+import { Stack, TableCell, Typography } from '@mui/material'
 import { TableNumberColumnContent } from './TableNumberColumn.styled'
 
 interface TableNumberColumnProps {
@@ -8,12 +8,14 @@ interface TableNumberColumnProps {
 
 const TableNumberColumn: FC<TableNumberColumnProps> = ({ table }) => {
   return (
-    <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-      <TableNumberColumnContent>
-        <Typography component="span" variant="h3" fontWeight={600} color="primary">
-          {table}
-        </Typography>
-      </TableNumberColumnContent>
+    <TableCell align="center">
+      <Stack alignItems="center">
+        <TableNumberColumnContent>
+          <Typography component="span" variant="h3" fontWeight={600} color="primary">
+            {table}
+          </Typography>
+        </TableNumberColumnContent>
+      </Stack>
     </TableCell>
   )
 }

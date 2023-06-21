@@ -8,10 +8,10 @@ interface ColumnCollapseReservationProps {
 
 const ColumnCollapseReservation: FC<ColumnCollapseReservationProps> = ({ label, data }) => {
   return (
-    <TableRow>
-      <TableCell sx={{ border: 0 }}>{label}</TableCell>
-      <TableCell sx={{ border: 0 }}>-</TableCell>
-      <TableCell sx={{ border: 0 }}>{data || 'None'}</TableCell>
+    <TableRow sx={{ '& td:last-child': { padding: '16px' }, height: '52px' }}>
+      <TableCell align="center">{label}</TableCell>
+      <TableCell align="center">-</TableCell>
+      <TableCell align="center">{data || 'None'}</TableCell>
     </TableRow>
   )
 }
