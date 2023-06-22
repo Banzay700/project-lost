@@ -50,6 +50,7 @@ export const dishApi = api.injectEndpoints({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Dish'],
     }),
     updateDish: builder.mutation<DishType, FormData>({
       query: (body) => ({

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Snackbar, Alert, Stack } from '@mui/material'
+import { Snackbar, Alert, Stack, Typography } from '@mui/material'
 import { Icon } from 'assets'
 
 interface NotifyProps {
@@ -21,12 +21,11 @@ const Notify: FC<NotifyProps> = (props) => {
     <Snackbar
       open={open}
       autoHideDuration={2500}
-      anchorOrigin={{ vertical, horizontal }}
-      onClose={handleClose}>
-      <Stack gap="5px">
-        <Alert severity={type || 'error'}>{message}</Alert>
-        <Icon.Cross style={{ cursor: 'pointer' }} onClick={handleClose} />
-      </Stack>
+      onClose={handleClose}
+      anchorOrigin={{ vertical, horizontal }}>
+      <Alert severity={type || 'error'} onClick={handleClose}>
+        {message}
+      </Alert>
     </Snackbar>
   )
 }
