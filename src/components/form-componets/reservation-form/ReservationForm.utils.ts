@@ -22,7 +22,10 @@ export const validationSchema = object().shape({
   persons: number(),
   clientName: string().required(),
   email: string().email(),
-  phoneNumber: string().min(10).required(),
+  phoneNumber: string()
+    .min(10)
+    .required()
+    .matches(/^\+?[1-9]\d{8,19}$/, 'Invalid phone number'),
   note: string(),
 })
 

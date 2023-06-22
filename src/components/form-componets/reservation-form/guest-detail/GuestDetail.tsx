@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Typography, Stack } from '@mui/material'
-import { Input } from 'UI/input'
+import { Input, PhoneNumberInput } from 'UI'
 
 const GuestDetail: FC = () => {
   return (
@@ -11,12 +11,7 @@ const GuestDetail: FC = () => {
       <Input type="text" placeholder="Full name" name="clientName" label="Full name" />
       <Stack flexDirection="row" gap="22px" justifyContent="space-between">
         <Input type="text" placeholder="Enter email address" name="email" label="Email" />
-        <Input
-          type="text"
-          placeholder="Enter phone number"
-          name="phoneNumber"
-          label="Phone number"
-        />
+        <PhoneNumberInput name="phoneNumber" />
       </Stack>
       <Input
         type="text"
