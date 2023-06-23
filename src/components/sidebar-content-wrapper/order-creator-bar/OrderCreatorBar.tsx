@@ -16,7 +16,7 @@ const OrderCreatorBar: FC = () => {
   const { activeOrder, openNewOrder } = useOrderReducer()
   const { userState } = useUserReducer()
   const [updateTableStatus] = useUpdateTableStatusMutation()
-  const orderProcessing = useOrderProcessingLogic()
+  const { createDeliveryOrder, createDineInOrder, createTakeAwayOrder } = useOrderProcessingLogic()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderInfo = updateOrderState({ orderType, table, user: userState.id })
@@ -29,7 +29,15 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleCreateOrder = async () => {
-    await orderProcessing(setToggleValue)
+    // await orderProcessing(setToggleValue)
+
+    if (activeOrder.orderType === 'delivery') {
+      await createDeliveryOrder()
+    } else if (activeOrder.orderType === 'dineIn') {
+      await createDineInOrder(setToggleValue)
+    } else {
+      await createTakeAwayOrder()
+    }
   }
 
   const handleToggleChange = (value: string) => setToggleValue(value)

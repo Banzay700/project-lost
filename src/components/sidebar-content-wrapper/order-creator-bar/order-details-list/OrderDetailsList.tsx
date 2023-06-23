@@ -5,6 +5,7 @@ import { Button, DetailsListTitle } from 'UI'
 import { FadeIn } from 'utils'
 import { useOrderReducer } from 'hooks'
 import { ListInfoActionsContainer } from './OrderDetailsList.styled'
+import { defineButtonText } from './OrderDetailsList.utils'
 import OrderDishesList from './order-dishes-list/OrderDishesList'
 
 interface OrderListProps {
@@ -14,7 +15,7 @@ interface OrderListProps {
 const OrderDetailsList: FC<OrderListProps> = ({ onClick }) => {
   const { activeOrder } = useOrderReducer()
   const total = activeOrder.dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
-  const buttonText = activeOrder.storeStatus === 'update' ? 'Update order' : 'Create New Order'
+  const buttonText = defineButtonText(activeOrder)
 
   return (
     <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>

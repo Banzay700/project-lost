@@ -14,23 +14,41 @@ import { emptyOrderState } from 'store/reducers/reducers.utils'
 export const useOrderProcessingLogic = () => {
   const navigate = useNavigate()
   const { activeOrder, openNewOrder } = useOrderReducer()
-
-  const { orderDB, orderActive } = convertOrderData(activeOrder)
+  const { orderDB } = convertOrderData(activeOrder)
+  const isUpdateStatus = activeOrder.storeStatus === 'update'
 
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createOrder] = useCreateOrderMutation()
   const [updateOrder] = useUpdateOrderMutation()
   const [getTableStatus] = useLazyGetTableStatusQuery()
 
-  return async (trigger: (name: string) => void) => {
+  const createDeliveryOrder = async () => {
+    if (isUpdateStatus) {
+      updateOrder(orderDB)
+      navigate(ROUTES.ORDERS)
+    } else {
+      const req = await createOrder(orderDB)
+      if ('data' in req) {
+        const order = req.data
+        openNewOrder(order)
+      }
+    }
+  }
+
+  const createTakeAwayOrder = async () => {
+    if (isUpdateStatus) {
+      updateOrder(orderDB)
+      navigate(ROUTES.ORDERS)
+    } else {
+      createOrder(orderDB)
+      navigate(ROUTES.ORDERS)
+    }
+  }
+
+  const createDineInOrder = async (changeToggle: (name: string) => void) => {
     const { data } = await getTableStatus(activeOrder.table)
 
     switch (data) {
-      case 'free':
-        trigger('orderInfo')
-        openNewOrder(emptyOrderState)
-        break
-
       case 'pre-order':
         createOrder(orderDB)
         updateTableStatus(activeOrder.table)
@@ -39,18 +57,15 @@ export const useOrderProcessingLogic = () => {
 
       case 'busy':
         updateOrder(orderDB)
-        openNewOrder(orderActive)
         navigate(ROUTES.ORDERS)
         break
 
       default:
-        if (orderDB.table === '-') {
-          createOrder(orderDB)
-          updateOrder(orderDB)
-          openNewOrder(orderActive)
-          navigate(ROUTES.ORDERS)
-        }
+        changeToggle('orderInfo')
+        openNewOrder(emptyOrderState)
         break
     }
   }
+
+  return { createDeliveryOrder, createTakeAwayOrder, createDineInOrder }
 }
