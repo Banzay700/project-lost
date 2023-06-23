@@ -20,8 +20,8 @@ const Notify: FC<NotifyProps> = (props) => {
     <Snackbar
       open={open}
       autoHideDuration={2500}
-      anchorOrigin={{ vertical, horizontal }}
-      onClose={handleClose}>
+      onClose={handleClose}
+      anchorOrigin={{ vertical, horizontal }}>
       <Alert severity={type || 'error'} onClick={handleClose}>
         {message}
       </Alert>
