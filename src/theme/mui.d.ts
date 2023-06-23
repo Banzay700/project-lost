@@ -17,6 +17,7 @@ declare module '@mui/material/styles/createPalette' {
       default: string
       accent: string
       dark: string
+      white: string
     }
     background: {
       main: string

@@ -2,20 +2,20 @@ import { FC } from 'react'
 import { Stack } from '@mui/material'
 
 import { Indicator } from 'UI'
-import { useRootLocationPath } from 'hooks'
-import { indicatorsNamesVariants } from './IndicatorsGroup.utils'
+import { IndicatorItemType } from 'types'
+import { IndicatorGroupWrapper } from './IndicatorGroup.styled'
 
-const IndicatorsGroup: FC = () => {
-  const { isOrdersLocation, isBillsLocation } = useRootLocationPath()
-  const { orders, bills, reservation } = indicatorsNamesVariants
-  const indicatorsNames = isOrdersLocation ? orders : isBillsLocation ? bills : reservation
+interface IndicatorGroupProps {
+  indicatorData?: IndicatorItemType[]
+}
 
+const IndicatorsGroup: FC<IndicatorGroupProps> = ({ indicatorData }) => {
   return (
-    <Stack direction="row" spacing="32px">
-      {indicatorsNames.map((item) => (
-        <Indicator key={item} type={item} />
+    <IndicatorGroupWrapper>
+      {indicatorData?.map((item) => (
+        <Indicator key={item.label} type={item.type} label={item.label} />
       ))}
-    </Stack>
+    </IndicatorGroupWrapper>
   )
 }
 

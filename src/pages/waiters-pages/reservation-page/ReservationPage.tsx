@@ -5,6 +5,7 @@ import { Drawer } from 'components/drawer'
 import { PageActionsBar } from 'UI'
 import { useActiveOrderStatus } from 'hooks'
 import { FadeIn } from 'utils'
+import { indicatorReservationItems } from './reservationPage.utils'
 
 const ReservationPage: FC = () => {
   useActiveOrderStatus('none')
@@ -15,7 +16,7 @@ const ReservationPage: FC = () => {
   return (
     <FadeIn styles={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <PageActionsBar>
-        <IndicatorsGroup />
+        <IndicatorsGroup indicatorData={indicatorReservationItems} />
       </PageActionsBar>
       <ReservationCanvas />
       <ReservationBottomBar toggleDrawer={toggleDrawer} />

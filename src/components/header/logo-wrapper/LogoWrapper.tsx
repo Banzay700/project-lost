@@ -8,7 +8,11 @@ import { UserType } from 'types'
 import { ROUTES } from 'routes/routes.utils'
 import { useOrderReducer } from 'hooks/useOrderReducer.hook'
 
-const LogoWrapper: FC<UserType> = ({ role }) => {
+interface LogoWrapperProps extends UserType {
+  route?: string
+}
+
+const LogoWrapper: FC<LogoWrapperProps> = ({ role, route }) => {
   const navigate = useNavigate()
   const { clearNewOrderState } = useOrderReducer()
 
@@ -28,7 +32,7 @@ const LogoWrapper: FC<UserType> = ({ role }) => {
           onClick={handleGoToAdminPanel}
         />
       )}
-      <Logo link="/home" />
+      <Logo link="/home" route={route} />
     </Stack>
   )
 }

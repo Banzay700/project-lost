@@ -4,7 +4,7 @@ import { NavLinkWrapper } from './CustomNavLink.styled'
 
 export interface CustomNavLinkProps extends PropsWithChildren {
   linkTo: string
-  variant?: 'sidebarTabs' | 'tabs'
+  variant?: 'sidebarTabs' | 'tabs' | 'button'
   registeredPathname?: string
   registeredLinkTo?: string
 }

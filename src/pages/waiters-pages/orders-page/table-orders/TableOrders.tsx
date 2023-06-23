@@ -6,7 +6,12 @@ import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } fro
 import { useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
-import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
+import {
+  prepareBillsData,
+  tableFilterMenuItems,
+  tableIndicatorItems,
+  tableTitleOrder,
+} from './tableOrder.utils'
 
 const TableOrders: FC = () => {
   const { clearNewOrderState } = useOrderReducer()
@@ -35,10 +40,9 @@ const TableOrders: FC = () => {
   return (
     <>
       <IndicatorFilterBar
-        filterMenuItems={[
-          { value: 'dineIn', label: 'Dine in' },
-          { value: 'takeAway', label: 'Take away' },
-        ]}
+        isFilterMenu
+        indicatorData={tableIndicatorItems}
+        filterMenuItems={tableFilterMenuItems}
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />

@@ -1,16 +1,25 @@
 import { Stack, styled } from '@mui/material'
 
-interface PageActionsBarWrapperProps {
-  $isSmallScreen: boolean
-}
-
-export const PageActionsBarWrapper = styled(Stack, {
-  shouldForwardProp: (prop) => prop !== '$isSmallScreen',
-})<PageActionsBarWrapperProps>(({ $isSmallScreen, theme }) => ({
-  minHeight: $isSmallScreen ? 'fit-content' : '71px',
+export const PageActionsBar = styled(
+  Stack,
+  {},
+)(({ theme }) => ({
+  minHeight: '71px',
   padding: '16px 24px',
   borderBottom: `1px solid ${theme.palette.border.default}`,
-  flexDirection: $isSmallScreen ? 'column' : 'row',
+  flexDirection: 'row',
   justifyContent: 'space-between',
   gap: '24px',
+
+  [theme.breakpoints.down(1024)]: {
+    minHeight: 'fit-content',
+    flexDirection: 'column',
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    border: 'none',
+    alignItems: 'center',
+  },
 }))
+
+export default PageActionsBar

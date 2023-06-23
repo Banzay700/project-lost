@@ -4,7 +4,7 @@ import { Pagination, Stack } from '@mui/material'
 import { Table, IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
 import { useBillsReducer, useParamsSearchFilter } from 'hooks/index'
-import { tableTitleBills } from './tableBills.utils'
+import { tableFilterMenuItem, tableIndicatorBills, tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
   const { newBill, changeToggle } = useBillsReducer()
@@ -32,11 +32,9 @@ const TableBills: FC = () => {
   return (
     <>
       <IndicatorFilterBar
-        filterMenuItems={[
-          { value: 'delivery', label: 'Delivery' },
-          { value: 'dineIn', label: 'Dine in' },
-          { value: 'takeAway', label: 'Take away' },
-        ]}
+        isFilterMenu
+        indicatorData={tableIndicatorBills}
+        filterMenuItems={tableFilterMenuItem}
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />

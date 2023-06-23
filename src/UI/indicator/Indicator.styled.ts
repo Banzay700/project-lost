@@ -1,4 +1,6 @@
 import { Stack, styled } from '@mui/material'
+import { Icon } from 'assets'
+import { withProps } from 'utils'
 
 export const IndicatorWrapper = styled(Stack)`
   user-select: none;
@@ -7,3 +9,10 @@ export const IndicatorWrapper = styled(Stack)`
   align-items: center;
   flex-direction: row;
 `
+
+export const IndicatorIcon = styled(
+  Icon.Indicator,
+  withProps('type'),
+)(({ type }) => ({
+  color: type,
+}))

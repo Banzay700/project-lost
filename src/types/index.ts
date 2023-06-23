@@ -68,6 +68,7 @@ export type {
   InputSelectItemType,
   RadioButtonWithoutIconItemType,
   CheckboxTagGroupItem,
+  IndicatorItemType,
 } from './ComponentsItemType'
 
 export type {

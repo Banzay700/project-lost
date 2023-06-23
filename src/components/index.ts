@@ -47,3 +47,5 @@ export {
 
 export { ReservationCanvas } from './reservation-canvas'
 export { NotifyError } from './notification-error'
+export { Watch } from './watch'
+export { RadioGroupCard } from './delivery-components'

@@ -11,6 +11,7 @@ type RootLocationPathType = {
   isReservationLocation: boolean
   isProfileLocation: boolean
   isLoginLocation: boolean
+  isDeliveryHomeLocation: boolean
 }
 
 export const useRootLocationPath = (): RootLocationPathType => {
@@ -23,6 +24,7 @@ export const useRootLocationPath = (): RootLocationPathType => {
   const isReservationLocation = location === ROUTES.RESERVATION
   const isProfileLocation = location === ROUTES.PROFILE
   const isLoginLocation = location === ROUTES.LOGIN
+  const isDeliveryHomeLocation = location === ROUTES.DELIVERY_HOME
 
   return {
     location,
@@ -34,5 +36,6 @@ export const useRootLocationPath = (): RootLocationPathType => {
     isReservationLocation,
     isProfileLocation,
     isLoginLocation,
+    isDeliveryHomeLocation,
   }
 }
