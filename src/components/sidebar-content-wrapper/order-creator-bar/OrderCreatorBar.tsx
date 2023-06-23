@@ -32,9 +32,7 @@ const OrderCreatorBar: FC = () => {
     await orderProcessing(setToggleValue)
   }
 
-  const handleToggleChange = (value: string) => {
-    setToggleValue(value)
-  }
+  const handleToggleChange = (value: string) => setToggleValue(value)
 
   useEffect(() => {
     if (activeOrder.storeStatus === 'update') {

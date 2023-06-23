@@ -47,7 +47,7 @@ const ordersSlice = createSlice({
       const dish = dishes.find((dishEl) => dishEl.dishID === payload.dishID)
 
       if (!dish) {
-        dishes.push(payload)
+        dishes.unshift(payload)
       }
     },
     removeDishOrder: (state, action: PayloadAction<string>) => {
