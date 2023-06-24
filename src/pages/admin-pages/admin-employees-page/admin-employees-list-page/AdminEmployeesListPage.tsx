@@ -15,7 +15,7 @@ const AdminEmployeesListPage: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('role')
-  const { data, isFetching } = useGetAllUsersQuery({ role, search, page, limit: 7 })
+  const { data, isFetching } = useGetAllUsersQuery({ role, search, page, limit: 10 })
   const [trigger, { data: user }] = useLazyGetUserByIDQuery()
   const [updateUser] = useUpdateUserMutation()
   const { isOpen, handleToggleIsOpenModal } = useIsModal()
@@ -57,7 +57,7 @@ const AdminEmployeesListPage: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

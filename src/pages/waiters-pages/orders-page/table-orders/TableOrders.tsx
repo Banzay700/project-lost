@@ -21,7 +21,7 @@ const TableOrders: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 10 })
 
   const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
@@ -65,7 +65,7 @@ const TableOrders: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

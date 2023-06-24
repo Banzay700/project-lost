@@ -1,7 +1,7 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
-import { Button, MenuItem } from 'UI/index'
-import { UserType } from 'types/index'
+import { MenuItem } from 'UI'
+import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
 import { Navigate } from 'react-router-dom'
 import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
@@ -58,7 +58,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
           src={userImage || ''}
           {...avatarName}
           onClick={handleClickAvatar}
-          sx={{ cursor: 'pointer' }}
+          sx={{ cursor: 'pointer', border: '2px solid white' }}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (

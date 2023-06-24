@@ -10,6 +10,7 @@ export const RadioButtonCardWrapper = styled(
   flexDirection: 'row',
   alignItems: 'center',
   color: `${isChecked ? theme.palette.primary.main : theme.palette.text.primary}`,
+  background: `${isChecked ? theme.palette.primary.extraLight : 'transparent'}`,
   border: `1px solid currentColor`,
   padding: '14px',
   borderRadius: '16px',

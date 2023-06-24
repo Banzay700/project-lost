@@ -1,26 +1,33 @@
-import { FC, useState } from 'react'
-import { RadioGroup } from '@mui/material'
-import { RadioButtonCard } from 'UI/radio-button-card'
+import { FC } from 'react'
+import { useSmoothScrollbar } from 'hooks'
+import { RadioButtonCardContentItemType } from 'types'
 import { RadioGroupCardWrapper } from './RadioGroupCard.styled'
-import { useSmoothScrollbar } from 'hooks/useSmoothScrollbar.hook'
+import { RadioButtonCard } from './radio-button-card'
 
-interface RadioGroupCardProps {}
+interface RadioGroupCardProps {
+  isActiveCard?: string
+  cardData?: RadioButtonCardContentItemType[]
+  onChange: (value: string) => void
+}
 
-const RadioGroupCard: FC<RadioGroupCardProps> = () => {
-  const [isActiveCard, setIsActiveCard] = useState('')
+const RadioGroupCard: FC<RadioGroupCardProps> = ({ isActiveCard, cardData, onChange }) => {
   const refScroll = useSmoothScrollbar<HTMLDivElement>('2px')
-  const handleChangeActiveCard = (value: string) => {
-    setIsActiveCard(value)
-  }
 
   return (
     <RadioGroupCardWrapper ref={refScroll}>
-      <RadioButtonCard value="test1" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
-      <RadioButtonCard value="test2" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
-      <RadioButtonCard value="test3" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
-      <RadioButtonCard value="test4" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
-      <RadioButtonCard value="test5" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
-      <RadioButtonCard value="test6" isChecked={isActiveCard} onChange={handleChangeActiveCard} />
+      {cardData?.map((item) => (
+        <RadioButtonCard
+          key={item.value}
+          value={item.value}
+          status={item.status}
+          orderNumber={item.orderNumber}
+          clientName={item.clientName}
+          deliveryAddress={item.deliveryAddress}
+          timeToReady={item.timeToReady}
+          isChecked={isActiveCard}
+          onChange={onChange}
+        />
+      ))}
     </RadioGroupCardWrapper>
   )
 }

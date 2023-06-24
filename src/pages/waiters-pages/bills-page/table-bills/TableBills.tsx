@@ -14,7 +14,7 @@ const TableBills: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 10 })
   const [getBill] = useLazyGetOneBillQuery()
 
   const handleSendBillsData = (id: string) => {
@@ -57,7 +57,7 @@ const TableBills: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

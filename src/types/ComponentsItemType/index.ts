@@ -10,3 +10,7 @@ export type { InputSelectItemType } from './InputSelectItemType'
 export type { RadioButtonWithoutIconItemType } from './RadioButtonWithoutIconItemType'
 export type { CheckboxTagGroupItem } from './CheckboxTagGroupItem'
 export type { IndicatorItemType } from './IndicatorItemType'
+export type {
+  RadioButtonCardDeliveryItemType,
+  RadioButtonCardContentItemType,
+} from './RadioButtonCardDeliveryItemType'

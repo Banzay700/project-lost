@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { Snackbar, Alert, Stack, Typography } from '@mui/material'
-import { Icon } from 'assets'
+import { Snackbar, Alert } from '@mui/material'
 
 interface NotifyProps {
   message: string

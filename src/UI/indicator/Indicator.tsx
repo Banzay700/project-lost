@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Typography } from '@mui/material'
+import { IndicatorItemType } from 'types/ComponentsItemType/IndicatorItemType'
 import { initIndicatorContent } from './indicator.utils'
 import { IndicatorIcon, IndicatorWrapper } from './Indicator.styled'
-import { IndicatorItemType } from 'types/ComponentsItemType/IndicatorItemType'
 
 const Indicator: FC<IndicatorItemType> = ({ type, label }) => {
   const indicator = initIndicatorContent(type)

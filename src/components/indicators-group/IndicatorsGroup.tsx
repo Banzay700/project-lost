@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
 
 import { Indicator } from 'UI'
 import { IndicatorItemType } from 'types'

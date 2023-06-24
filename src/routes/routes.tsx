@@ -79,10 +79,10 @@ const AppRoutes = () => {
             <Route path={ROUTES.ADMIN_SETTING} element={<ProfilePage />} />
           </Route>
           <Route path={ROUTES.DELIVERY} element={<DeliveryLayout />}>
-            <Route path={ROUTES.DELIVERY_HOME} element={<DeliveryHomePage />} />
+            <Route index element={<DeliveryHomePage />} />
           </Route>
-          <Route path={ROUTES.DELIVERY_ORDERS} element={<DeliveryLayout />}></Route>
-          <Route path={ROUTES.DELIVERY_HISTORY} element={<DeliveryLayout />}></Route>
+          <Route path={ROUTES.DELIVERY_ORDERS} element={<DeliveryLayout />} />
+          <Route path={ROUTES.DELIVERY_HISTORY} element={<DeliveryLayout />} />
         </>
       ) : (
         <>
