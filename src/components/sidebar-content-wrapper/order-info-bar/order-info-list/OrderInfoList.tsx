@@ -3,6 +3,7 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
 import { Button, DetailsListTitle } from 'UI'
+import { TAX } from 'utils'
 import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { useUpdateTableStatusMutation, useDeleteOrderMutation } from 'store/api'
 import { DetailsList, DetailsListActionsWrapper, InfoListWrapper } from './OrderInfoList.styled'
@@ -44,7 +45,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
         </Box>
       </DetailsList>
       <DetailsListActionsWrapper>
-        <OrderSummaryWrapper tax={10} total={total} />
+        <OrderSummaryWrapper tax={TAX} total={total} />
         <Stack direction="row" spacing={2.5}>
           <Button variant="contained" size="medium" type="submit" fullWidth onClick={onClick}>
             Update Order

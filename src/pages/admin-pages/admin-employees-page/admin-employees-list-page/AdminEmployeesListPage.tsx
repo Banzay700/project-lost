@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Pagination, Stack } from '@mui/material'
-import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
+import { ModalUpdateUserInfo, SearchFilterBar, TableUsersLine } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
+import { Table } from 'UI'
 import { UserPartialType } from 'types'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
@@ -39,14 +40,11 @@ const AdminEmployeesListPage: FC = () => {
         defaultValueFilter={role?.split(',')}
         defaultValueInput={search || ''}
       />
-      <Table
-        tableMinWidth="660px"
-        data={data?.data}
-        tableTitles={tableHeaders}
-        tableType="users"
-        onClickAction={handleClick}
-        isLoading={isFetching}
-      />
+      <Table tableMinWidth="660px" tableTitles={tableHeaders} isLoading={isFetching}>
+        {data?.data.map((users) => (
+          <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
+        ))}
+      </Table>
       <Stack
         sx={{
           height: 'fit-content',

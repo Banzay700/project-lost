@@ -1,11 +1,13 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Pagination, Stack } from '@mui/material'
-import { IndicatorFilterBar, Table } from 'components'
+import { IndicatorFilterBar, TableOrdersLine } from 'components'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
-import { useOrderReducer, useParamsSearchFilter } from 'hooks'
+import { useActiveTableLine, useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
+import { Table } from 'UI'
+import { OrderType } from 'types'
 import {
   prepareBillsData,
   tableFilterMenuItems,
@@ -22,6 +24,7 @@ const TableOrders: FC = () => {
     handlePagination,
   } = useParamsSearchFilter('orderType')
   const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 10 })
+  const { active, setActive } = useActiveTableLine(data?.data as OrderType[])
 
   const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
@@ -37,6 +40,7 @@ const TableOrders: FC = () => {
       clearNewOrderState()
     }
   }
+
   return (
     <>
       <IndicatorFilterBar
@@ -46,15 +50,18 @@ const TableOrders: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
-      <Table
-        isLoading={isFetching}
-        data={data?.data}
-        tableTitles={tableTitleOrder}
-        tableType="orders"
-        tableMinWidth="660px"
-        onClickAction={handleSendOrder}
-        onClickLine={handleLineWrapperClick}
-      />
+      <Table isLoading={isFetching} tableTitles={tableTitleOrder} tableMinWidth="660px">
+        {data?.data.map((el) => (
+          <TableOrdersLine
+            element={el}
+            key={el?.id}
+            active={active}
+            setActive={setActive}
+            onClickLine={handleLineWrapperClick}
+            onClickAction={handleSendOrder}
+          />
+        ))}
+      </Table>
       <Stack
         sx={{
           height: 'fit-content',

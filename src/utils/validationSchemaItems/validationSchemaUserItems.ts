@@ -1,28 +1,14 @@
 import { string } from 'yup'
 
-const firstName = (isRequired?: boolean) => {
+const name = (isRequired?: boolean, msg?: string) => {
   let schema = string()
     .min(2, 'Too Short! Please enter no more than 20, and no less than 2')
     .max(20, 'Too Long! Please enter no more than 20, and no less than 2')
     .matches(/\p{Lu}/u, 'First Name must contain at least one uppercase letter')
-    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ]+$/, 'Enter only numbers or letters')
+    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ\s]+$/, 'Enter only numbers or letters (EN, UA, RS)')
 
   if (isRequired) {
-    schema = schema.required('First Name is required')
-  }
-
-  return schema
-}
-
-const secondName = (isRequired?: boolean) => {
-  let schema = string()
-    .min(2, 'Too Short! Please enter no more than 20, and no less than 2')
-    .max(20, 'Too Long! Please enter no more than 20, and no less than 2')
-    .matches(/\p{Lu}/u, 'First Name must contain at least one uppercase letter')
-    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ]+$/, 'Enter only numbers or letters')
-
-  if (isRequired) {
-    schema = schema.required('Second Name is required')
+    schema = schema.required(msg)
   }
 
   return schema
@@ -56,7 +42,7 @@ const password = (isRequired?: boolean) => {
 }
 
 const phoneNumber = (isRequired?: boolean) => {
-  let schema = string().matches(/^\+?[1-9]\d{8,19}$/, 'Invalid phone number')
+  let schema = string().matches(/^\+?[0-9]\d{8,19}$/, 'Invalid phone number')
 
   if (isRequired) {
     schema = schema.required('Password is required')
@@ -86,8 +72,7 @@ const status = (isRequired?: boolean) => {
 }
 
 export const validationUser = {
-  firstName,
-  secondName,
+  name,
   email,
   password,
   phoneNumber,

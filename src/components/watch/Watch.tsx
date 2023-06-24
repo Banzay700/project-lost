@@ -1,10 +1,11 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
 import { MenuItem } from 'UI'
 import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
-import { Navigate } from 'react-router-dom'
-import { stringAvatar, menuData, formatDateTime, menuDataAction } from './watch.utils'
+import { formatDateTime } from 'utils'
+import { stringAvatar, menuData, menuDataAction } from './watch.utils'
 import { WatchContainer } from './Watch.styled'
 
 interface WatchProps {

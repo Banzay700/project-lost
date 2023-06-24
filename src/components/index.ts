@@ -9,7 +9,6 @@ export { OrderCreatorBar } from './sidebar-content-wrapper/order-creator-bar'
 export { DishesList } from './dishes-list'
 export { EmployeesCarrousel } from './employees-carrousel'
 export { SidebarContentWrapper } from './sidebar-content-wrapper'
-export { Table } from './table'
 export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 
 export {
@@ -47,5 +46,13 @@ export {
 
 export { ReservationCanvas } from './reservation-canvas'
 export { NotifyError } from './notification-error'
+export {
+  TableUsersLine,
+  TableOrdersLine,
+  TableDishLine,
+  TableBillsLine,
+  TableReservationLine,
+  TableDeliveryLine,
+} from './table-lines'
 export { Watch } from './watch'
 export { RadioGroupCard, ActionsButton } from './delivery-components'
