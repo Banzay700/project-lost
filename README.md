@@ -85,14 +85,14 @@ breakpoints:{
 
 Now here are the default breakpoints. This shows the screen width in
 pixels. sm - 600px, md - 900px and so on... To change and interact with them in our them we
-write [themeWithBreakpoints.breakpoints.between('sm', 'md')] :
+write [themeBase.breakpoints.between('sm', 'md')] :
 
 ````text
 MuiButton: {
         containedSecondary: {
           padding: "20px 0 14px",
           width: "145px",
-          [themeWithBreakpoints.breakpoints.between('sm', 'md')]: {
+          [themeBase.breakpoints.between('sm', 'md')]: {
 
           }
         }
@@ -137,7 +137,7 @@ MuiButton: {
         containedSecondary: {
           padding: "20px 0 14px",
           width: "145px",
-          [themeWithBreakpoints.breakpoints.between('sm', 'md')]: {
+          [themeBase.breakpoints.between('sm', 'md')]: {
 
           }
         }

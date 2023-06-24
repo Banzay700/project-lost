@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
 
-import { Picker } from 'UI/index'
-import { useOrderReducer, useRootLocationPath } from 'hooks/index'
+import { Picker } from 'UI'
+import { useOrderReducer } from 'hooks'
 import { OrderDetailsItemMedia } from './order-details-item-media'
 import { OrderDetailsItemTitle } from './order-details-item-title'
 import { OrderDetailsItemPriceInfo } from './order-details-item-price-info'
@@ -19,7 +19,6 @@ interface OrderDetailsItemContentProps {
 const OrderDetailsItemContent: FC<OrderDetailsItemContentProps> = (props) => {
   const { id, title, src, total, amount, handleDeleteCard } = props
   const { changeDishAmount } = useOrderReducer()
-  const { isHomeLocation } = useRootLocationPath()
   const initialPrice = (total || 0) / (amount || 0)
 
   const handleChangeOrderInfo = (value: number) => {
@@ -31,18 +30,13 @@ const OrderDetailsItemContent: FC<OrderDetailsItemContentProps> = (props) => {
       <OrderDetailsItemMedia src={src} alt={title} />
       <Stack sx={{ justifyContent: 'space-between', width: '100%' }}>
         <OrderDetailsItemTitle title={title} />
-        <OrderDetailsItemPriceInfo totalPriceItem={total}>
+        <OrderDetailsItemPriceInfo amount={amount} price={initialPrice} totalPriceItem={total}>
           <Picker
             initialValue={amount}
             onChange={handleChangeOrderInfo}
             handleDeleteCard={handleDeleteCard}
           />
         </OrderDetailsItemPriceInfo>
-        {!isHomeLocation && (
-          <Typography variant="h3">
-            {amount}x{initialPrice}$
-          </Typography>
-        )}
       </Stack>
     </>
   )
