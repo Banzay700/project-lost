@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import { array, number, object, string } from 'yup'
 import { ReservationFormType, TableType } from 'types'
+import { phoneNumber } from 'utils/validationSchemaItems'
 
 export const initialValues: Partial<ReservationFormType> = {
   tags: [],
@@ -22,7 +23,7 @@ export const validationSchema = object().shape({
   persons: number(),
   clientName: string().required(),
   email: string().email(),
-  phoneNumber: string().min(10).required(),
+  phoneNumber,
   note: string(),
 })
 
