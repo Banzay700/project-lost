@@ -6,11 +6,13 @@ export const CardStyled = styled(Card)(({ theme }) => ({
   display: 'flex',
   gap: '12px',
   padding: '16px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '8px',
+  },
   borderRadius: 0,
   background: 'inherit',
   borderBottom: '1px solid',
   borderColor: theme.palette.border.default,
-  minHeight: '107px',
   position: 'relative',
   alignItems: 'center',
 }))

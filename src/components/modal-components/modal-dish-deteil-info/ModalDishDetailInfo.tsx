@@ -32,7 +32,7 @@ const ModalDishDetailInfo: FC<ModalDishDetailInfoProps> = ({ dish, isOpenModal, 
           </Stack>
         </Stack>
         <Box>
-          <Typography variant="h1" fontWeight={600} color="primary">
+          <Typography variant="h2" fontWeight={600} color="primary">
             Description
           </Typography>
           <Typography>{description}</Typography>

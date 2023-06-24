@@ -1,4 +1,4 @@
-import { Box, Card, styled } from '@mui/material'
+import { Card, styled } from '@mui/material'
 
 export const DishWrapper = styled(Card)`
   width: 220px;
@@ -6,8 +6,4 @@ export const DishWrapper = styled(Card)`
   border-radius: 16px;
   padding: 12px;
   position: relative;
-`
-export const DishButtonWrapper = styled(Box)`
-  position: absolute;
-  right: 8px;
 `
