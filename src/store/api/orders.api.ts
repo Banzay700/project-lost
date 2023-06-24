@@ -37,7 +37,7 @@ export const ordersApi = api.injectEndpoints({
       },
     }),
 
-    createOrder: builder.mutation<OrderRequestType, OrderRequestType>({
+    createOrder: builder.mutation<OrderActiveType, OrderRequestType>({
       query: (body) => ({ url: '/orders', method: 'POST', body }),
       invalidatesTags: ['Order'],
     }),
