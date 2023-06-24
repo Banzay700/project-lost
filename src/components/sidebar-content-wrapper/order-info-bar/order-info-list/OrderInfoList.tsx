@@ -3,9 +3,9 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
 import { Button, DetailsListTitle } from 'UI'
-import { FadeIn } from 'utils'
 import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { useUpdateTableStatusMutation, useDeleteOrderMutation } from 'store/api'
+import { DetailsList, DetailsListActionsWrapper, InfoListWrapper } from './OrderInfoList.styled'
 
 interface OrderListProps {
   onClick?: () => void
@@ -27,14 +27,9 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
   }
 
   return (
-    <FadeIn styles={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
-      <DetailsListTitle
-        title="Order details"
-        orderNumber={orderNumber}
-        // staffName={user.firstName} // TODO: fix types in activeOrder
-        // staffSurname={user.secondName}
-      />
-      <div ref={containerRef} style={{ overflowY: 'auto', flex: 1 }}>
+    <InfoListWrapper>
+      <DetailsListTitle title="Order details" orderNumber={orderNumber} />
+      <DetailsList ref={containerRef}>
         <Box style={{ height: '200px' }}>
           {dishes.map(({ dishID, title, picture, dishTotalPrice, amount }) => (
             <OrderDetailsItem
@@ -47,8 +42,8 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
             />
           ))}
         </Box>
-      </div>
-      <Stack sx={{ gap: '24px', p: '18px 16px', borderTop: '1px solid #e4e4e4' }}>
+      </DetailsList>
+      <DetailsListActionsWrapper>
         <OrderSummaryWrapper tax={10} total={total} />
         <Stack direction="row" spacing={2.5}>
           <Button variant="contained" size="medium" type="submit" fullWidth onClick={onClick}>
@@ -64,8 +59,8 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
             Cancel Order
           </Button>
         </Stack>
-      </Stack>
-    </FadeIn>
+      </DetailsListActionsWrapper>
+    </InfoListWrapper>
   )
 }
 

@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
-import { Card, ListItem } from '@mui/material'
 
 import { FadeIn } from 'utils/index'
 import { OrderDetailsItemContent } from './order-details-item-content'
 import { OrderDetailsDeleteCard } from './order-details-delete-card'
-import s from './OrderDetailsItem.module.scss'
+
+import { CardStyled, ListItemStyled } from './OrderDetailsItem.styled'
 
 interface OrderItemProps {
   id: string
@@ -19,12 +19,10 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, total, amount })
 
   return (
     <FadeIn delay={50}>
-      <ListItem
-        sx={{ width: '100%', p: 0, ':hover': { transition: '1s', background: '#F8F9FDFF' } }}>
-        <Card className={s.card}>
-          {isDeleteCard ? (
-            <OrderDetailsDeleteCard id={id} handleDeleteCard={setIsDeleteCard} />
-          ) : (
+      <ListItemStyled>
+        <CardStyled>
+          {isDeleteCard && <OrderDetailsDeleteCard id={id} handleDeleteCard={setIsDeleteCard} />}
+          {!isDeleteCard && (
             <OrderDetailsItemContent
               id={id}
               title={title}
@@ -34,8 +32,8 @@ const OrderDetailsItem: FC<OrderItemProps> = ({ id, title, src, total, amount })
               handleDeleteCard={setIsDeleteCard}
             />
           )}
-        </Card>
-      </ListItem>
+        </CardStyled>
+      </ListItemStyled>
     </FadeIn>
   )
 }
