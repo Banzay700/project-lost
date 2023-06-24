@@ -1,14 +1,13 @@
 import { ChangeEvent, FC, ReactNode } from 'react'
 import { Stack } from '@mui/material'
-import { Form, Formik } from 'formik'
+import { Formik } from 'formik'
 
 import { Button, Input } from 'UI'
 import { Icon } from 'assets'
 import { PaymentFormReturnType } from 'types/index'
 import { OrderPaymentMethod } from './order-payment-method'
 import { initialValues, validationSchema } from './OrderPaymentForm.utils'
-
-import s from './OrderPaymentForm.module.scss'
+import { FormWrapper, PaymentForm } from './OrderPaymentForm.styled'
 
 interface OrderPaymentFormProps {
   onSubmit: (values: PaymentFormReturnType) => void
@@ -18,19 +17,14 @@ interface OrderPaymentFormProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
-  children,
-  isTip,
-  isEmail,
-  onSubmit,
-  onChange,
-}) => {
+const OrderPaymentForm: FC<OrderPaymentFormProps> = (props) => {
+  const { children, isTip, isEmail, onSubmit, onChange } = props
   const formikConfig = { initialValues, validationSchema, onSubmit }
 
   return (
-    <div className={s.formWrapper}>
+    <FormWrapper>
       <Formik {...formikConfig}>
-        <Form>
+        <PaymentForm>
           <OrderPaymentMethod name="paymentMethod" />
           {children}
           <Stack spacing={4} sx={{ flex: '1 1 auto' }}>
@@ -51,9 +45,9 @@ const OrderPaymentForm: FC<OrderPaymentFormProps> = ({
           <Button variant="contained" size="medium" type="submit" fullWidth>
             Submit
           </Button>
-        </Form>
+        </PaymentForm>
       </Formik>
-    </div>
+    </FormWrapper>
   )
 }
 

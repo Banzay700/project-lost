@@ -7,17 +7,18 @@ import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 
-export const themeWithBreakpoints = createTheme({ breakpoints, palette }, enUS)
+const themeBase = createTheme({ breakpoints, palette })
+
 const theme = createTheme(
   {
-    ...themeWithBreakpoints,
+    ...themeBase,
     typography: {
       fontFamily: 'Poppins',
       h1: {
         fontSize: '20px',
         lineHeight: '30px',
         fontWeight: 600,
-        [themeWithBreakpoints.breakpoints.down('lg')]: {
+        [themeBase.breakpoints.down('lg')]: {
           fontSize: '18px',
           lineHeight: '14px',
         },
@@ -25,7 +26,7 @@ const theme = createTheme(
       h2: {
         fontSize: '16px',
         lineHeight: '24px',
-        [themeWithBreakpoints.breakpoints.down('lg')]: {
+        [themeBase.breakpoints.down('lg')]: {
           fontSize: '14px',
           lineHeight: '20px',
         },
@@ -33,7 +34,7 @@ const theme = createTheme(
       h3: {
         fontSize: '14px',
         lineHeight: '20px',
-        [themeWithBreakpoints.breakpoints.down('lg')]: {
+        [themeBase.breakpoints.down('lg')]: {
           lineHeight: '18px',
           fontSize: '12px',
         },
@@ -42,7 +43,7 @@ const theme = createTheme(
         fontSize: '12px',
         lineHeight: '16px',
         fontWeight: 500,
-        [themeWithBreakpoints.breakpoints.down('lg')]: {
+        [themeBase.breakpoints.down('lg')]: {
           fontSize: '11px',
           lineHeight: '16px',
         },
@@ -51,7 +52,7 @@ const theme = createTheme(
         fontSize: '12px',
         lineHeight: '14px',
         fontWeight: 400,
-        [themeWithBreakpoints.breakpoints.down('lg')]: {
+        [themeBase.breakpoints.down('lg')]: {
           fontSize: '11px',
           lineHeight: '14px',
         },
@@ -69,7 +70,8 @@ const theme = createTheme(
       MuiTableRow: {
         styleOverrides: {
           root: {
-            borderBottom: '1px solid rgba(224, 224, 224, 1)',
+            borderBottom: '1px solid',
+            borderColor: themeBase.palette.border.default,
             '&:last-child': { borderBottom: 'none' },
           },
         },
@@ -86,16 +88,16 @@ const theme = createTheme(
       MuiSelect: {
         styleOverrides: {
           select: {
-            [themeWithBreakpoints.breakpoints.down('lg')]: {
+            [themeBase.breakpoints.down('lg')]: {
               fontSize: '14px',
               lineHeight: 1.5,
               padding: '11px 16px',
             },
             padding: '12px 16px',
-            borderColor: '#FF5C00',
+            borderColor: themeBase.palette.border.main,
             borderRadius: '16px',
             '&:focus': {
-              color: '#FF5C00',
+              color: themeBase.palette.primary.main,
             },
           },
           icon: {
@@ -107,20 +109,21 @@ const theme = createTheme(
         styleOverrides: {
           root: {
             '& .MuiInputBase-input.Mui-disabled': {
-              WebkitTextFillColor: '#828487',
+              WebkitTextFillColor: themeBase.palette.text.primary,
             },
             input: {
-              [themeWithBreakpoints.breakpoints.down('lg')]: {
+              [themeBase.breakpoints.down('lg')]: {
                 fontSize: '14px',
                 lineHeight: 1.5,
                 padding: '11px 16px',
               },
               padding: '12px 16px',
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                border: '1px solid #ff5c00',
+                border: '1px solid',
+                borderColor: themeBase.palette.primary.main,
               },
               '&.Mui-focused.MuiFormLabel-root': {
-                color: '#ff5c00',
+                color: themeBase.palette.primary.main,
               },
             },
           },
@@ -131,10 +134,11 @@ const theme = createTheme(
           root: {
             borderRadius: '16px',
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              border: '1px solid #ff5c00',
+              border: '1px solid',
+              borderColor: themeBase.palette.primary.main,
             },
             '&.Mui-focused .MuiInputAdornment-root': {
-              color: '#ff5c00',
+              color: themeBase.palette.primary.main,
             },
           },
         },
@@ -144,14 +148,14 @@ const theme = createTheme(
           root: {
             left: '4px',
             top: '-3px',
-            [themeWithBreakpoints.breakpoints.down('lg')]: {
+            [themeBase.breakpoints.down('lg')]: {
               top: '-5px',
               left: '3px',
             },
-            '&.Mui-focused': { color: '#ff5c00' },
+            '&.Mui-focused': { color: themeBase.palette.primary.main },
           },
           shrink: {
-            [themeWithBreakpoints.breakpoints.down('lg')]: {
+            [themeBase.breakpoints.down('lg')]: {
               fontSize: '12px',
               transform: 'translate(10px, -5px)',
             },
@@ -164,7 +168,7 @@ const theme = createTheme(
       MuiFormLabel: {
         styleOverrides: {
           root: {
-            [themeWithBreakpoints.breakpoints.down('lg')]: {
+            [themeBase.breakpoints.down('lg')]: {
               fontSize: '14px',
               lineHeight: 1.5,
             },
@@ -180,16 +184,8 @@ const theme = createTheme(
           },
         },
       },
-      MuiStack: {
-        defaultProps: {
-          borderColor: '#E4E4E4',
-        },
-      },
       MuiButton: {
         styleOverrides: {
-          // button: {
-          //   textTransform: 'none',
-          // },
           root: {
             ':focus': {
               outline: 'none',
@@ -205,11 +201,12 @@ const theme = createTheme(
             '&.Mui-disabled': {
               opacity: '0.6',
               background: '#FF5C00',
-              color: '#FFFFFF',
+              color: themeBase.palette.primary.white,
             },
           },
           outlinedSecondary: {
-            border: '1px solid #E4E4E4',
+            border: '1px solid',
+            borderColor: themeBase.palette.border.default,
           },
         },
         defaultProps: {
@@ -222,7 +219,7 @@ const theme = createTheme(
         styleOverrides: {
           root: {
             borderWidth: '0.5px',
-            borderColor: '#E4E4E4',
+            borderColor: themeBase.palette.border.main,
           },
         },
       },

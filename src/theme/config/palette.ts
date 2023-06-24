@@ -46,6 +46,7 @@ export const palette = {
     default: '#e4e4e4',
     dark: '#c2c2c2',
     accent: '#ffa07a',
+    main: '#ff5c00',
     white: '#fff',
   },
 }

@@ -42,12 +42,7 @@ const OrderPaymentBar: FC = () => {
         buttonDisabled={buttonDisabled}
       />
       <Stack sx={{ height: 'calc(100% - 70px)' }}>
-        <DetailsListTitle
-          title={detailsListTitle}
-          orderNumber={newBill.orderNumber}
-          // staffName={firstName} // TODO: fix types in activeOrder
-          // staffSurname={secondName}
-        />
+        <DetailsListTitle title={detailsListTitle} orderNumber={newBill.orderNumber} />
         {toggleValue === 'Payment' && (
           <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
         )}

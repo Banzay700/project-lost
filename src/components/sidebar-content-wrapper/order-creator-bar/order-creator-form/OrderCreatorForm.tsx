@@ -1,17 +1,16 @@
 import { FC, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
-import { Form, Formik } from 'formik'
+import { Formik } from 'formik'
 
 import { Button, SelectInput } from 'UI'
 import { InputSelectItemType, OrderCreatorFormReturnType } from 'types'
 import { useOrderReducer } from 'hooks'
-import { FadeIn } from 'utils'
 import { useGetFreeTablesQuery, useLazyGetReservationInfoQuery } from 'store/api'
 import { RadioButtonsGroup } from './radio-buttons-group'
 import { radioButtonGroupContent } from './radio-buttons-group/radioButtonGroup.utils'
 import { InfoBox } from './info-box'
 import { MAIN_ORDER_TYPE, initialValue, validationSchema } from './orderCreatorForm.utils'
-import s from './OrderCreatorForm.module.scss'
+import { OrderCreatorFormWrapper, OrderForm } from './OrderCreatorForm.styled'
 
 interface OrderCreatorFormProps {
   onSubmit: (values: OrderCreatorFormReturnType) => void
@@ -48,13 +47,13 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   }, [activeOrder, setFormValues])
 
   return (
-    <FadeIn className={s.newOrderForm}>
+    <OrderCreatorFormWrapper>
       <Formik
         onSubmit={onSubmit}
         validationSchema={validationSchema}
         initialValues={formValues}
         enableReinitialize>
-        <Form>
+        <OrderForm>
           <Stack spacing={6}>
             <RadioButtonsGroup
               name="orderType"
@@ -77,9 +76,9 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
               Open New Order
             </Button>
           </Stack>
-        </Form>
+        </OrderForm>
       </Formik>
-    </FadeIn>
+    </OrderCreatorFormWrapper>
   )
 }
 
