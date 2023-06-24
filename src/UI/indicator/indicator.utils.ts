@@ -1,29 +1,16 @@
-type IndicatorContent = {
-  color: string
-  text: 'Dine in' | 'Take away' | 'Delivery' | 'Available' | 'Reserved' | 'Overdue' | 'default'
-}
-
-export const initIndicatorContent = (type: string): IndicatorContent => {
+export const initIndicatorContent = (type?: string) => {
   switch (type) {
-    case 'takeAway':
-      return { color: '#3395F0', text: 'Take away' }
-
-    case 'dineIn':
-      return { color: '#FF5C00', text: 'Dine in' }
-
-    case 'delivery':
-      return { color: '#F0B433', text: 'Delivery' }
-
-    case 'available':
-      return { color: '#3395F0', text: 'Available' }
-
-    case 'reserved':
-      return { color: '#FF5C00', text: 'Reserved' }
-
-    case 'overdue':
-      return { color: '#f3362d', text: 'Overdue' }
-
+    case 'blue':
+      return '#3395F0'
+    case 'primary':
+      return '#FF5C00'
+    case 'yellow':
+      return '#F0B433'
+    case 'red':
+      return '#f3362d'
+    case 'green':
+      return '#1DCD00'
     default:
-      return { color: 'gray', text: 'default' }
+      return 'gray'
   }
 }

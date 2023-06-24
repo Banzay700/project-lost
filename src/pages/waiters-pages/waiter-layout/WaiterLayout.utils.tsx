@@ -23,9 +23,4 @@ export const navData: LinkItemType[] = [
     title: 'Reservation',
     icon: <Icon.Reservation style={{ marginRight: '11px' }} />,
   },
-  // {
-  //   link: '/history',
-  //   text: 'History',
-  //   icon: <Icon.Note style={{ marginRight: '11px' }} />,
-  // },
 ]

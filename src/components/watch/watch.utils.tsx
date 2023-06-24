@@ -1,5 +1,5 @@
-import { LinkItemType } from 'types'
-import { Icon } from 'assets'
+import { LinkItemType } from 'types/index'
+import { Icon } from 'assets/index'
 
 const stringToColor = (string: string): string => {
   let hash = 0

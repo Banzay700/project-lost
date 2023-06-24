@@ -1,1 +1,1 @@
-export { default as PageActionsBar } from './PageActionsBar'
+export { default as PageActionsBar } from './PageActionsBar.styled'

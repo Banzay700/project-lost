@@ -3,12 +3,13 @@ import styled, { css } from 'styled-components'
 import { theme } from 'theme/index'
 
 interface NavLinkWrapperProps {
-  $variant?: 'sidebarTabs' | 'tabs'
+  $variant?: 'sidebarTabs' | 'tabs' | 'button'
 }
 
 const commonStyles = css`
   display: flex;
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
   color: ${theme.palette.text.primary};
 `
 
@@ -59,6 +60,19 @@ const styleVariantTabs = css`
   }
 `
 
+const styleVariantButton = css`
+  padding: 6px 14px;
+  color: white;
+  border-radius: 16px;
+  background: ${theme.palette.primary.main};
+  border: 1px solid ${theme.palette.border.white};
+
+  &.active {
+    background: ${theme.palette.background.default};
+    color: ${theme.palette.primary.main};
+  }
+`
+
 const styleVariantNotTabs = css`
   &.active {
     color: ${theme.palette.primary.main};
@@ -70,5 +84,6 @@ export const NavLinkWrapper = styled(NavLink)<NavLinkWrapperProps>`
 
   ${({ $variant }) => $variant === 'sidebarTabs' && styleVariantSidebarTabs}
   ${({ $variant }) => $variant === 'tabs' && styleVariantTabs}
+  ${({ $variant }) => $variant === 'button' && styleVariantButton}
   ${({ $variant }) => !$variant && styleVariantNotTabs}
 `

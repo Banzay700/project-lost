@@ -30,7 +30,7 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
     page,
     search,
     status: 'all',
-    limit: 7,
+    limit: 10,
   })
   const categoriesValues: FilterMenuItemType[] | undefined =
     categories && categories.map(({ title }) => ({ value: title, label: correctionName(title) }))
@@ -64,7 +64,7 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

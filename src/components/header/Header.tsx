@@ -2,18 +2,23 @@ import { FC } from 'react'
 
 import { Navbar } from 'UI'
 import { useUserReducer } from 'hooks'
-import { HeaderWrapper } from 'components/header/Header.styled'
-import { Watch } from './watch'
+import { Watch } from 'components'
+import { LinkItemType } from 'types'
+import { HeaderWrapper } from './Header.styled'
 import { LogoWrapper } from './logo-wrapper'
-import { navData } from './header.util'
 
-const Header: FC = () => {
+interface HeaderProps {
+  dataLink?: LinkItemType[]
+  route?: string
+}
+
+const Header: FC<HeaderProps> = ({ dataLink, route }) => {
   const { userState } = useUserReducer()
 
   return (
     <HeaderWrapper>
-      <LogoWrapper {...userState} />
-      <Navbar direction="row" data={navData} spacing={6.4} />
+      <LogoWrapper {...userState} route={route} />
+      {dataLink && <Navbar direction="row" data={dataLink} />}
       <Watch dataUser={userState} />
     </HeaderWrapper>
   )

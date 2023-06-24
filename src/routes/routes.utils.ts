@@ -15,4 +15,8 @@ export const ROUTES = {
   ADMIN_EMPLOYEES: 'employees',
   ADMIN_EMPLOYEES_CATEGORY: ':employees',
   ADMIN_SETTING: 'settings',
+  DELIVERY: 'delivery',
+  DELIVERY_HOME: '/delivery',
+  DELIVERY_ORDERS: '/active-delivery',
+  DELIVERY_HISTORY: '/history',
 }

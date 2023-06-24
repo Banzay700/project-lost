@@ -1,21 +1,16 @@
 import { FC } from 'react'
 import { Typography } from '@mui/material'
-
-import { Icon } from 'assets'
+import { IndicatorItemType } from 'types/ComponentsItemType/IndicatorItemType'
 import { initIndicatorContent } from './indicator.utils'
-import { IndicatorWrapper } from './Indicator.styled'
+import { IndicatorIcon, IndicatorWrapper } from './Indicator.styled'
 
-export interface IndicatorProps {
-  type: 'dineIn' | 'takeAway' | 'delivery' | 'available' | 'reserved' | 'overdue'
-}
-
-const Indicator: FC<IndicatorProps> = ({ type }) => {
+const Indicator: FC<IndicatorItemType> = ({ type, label }) => {
   const indicator = initIndicatorContent(type)
 
   return (
     <IndicatorWrapper>
-      <Icon.Indicator color={indicator.color} />
-      <Typography variant="h3">{indicator.text}</Typography>
+      <IndicatorIcon type={indicator} />
+      <Typography variant="h3">{label}</Typography>
     </IndicatorWrapper>
   )
 }

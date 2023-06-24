@@ -1,4 +1,4 @@
-export type UserType = {
+export interface UserType {
   id: string
   firstName: string
   secondName: string

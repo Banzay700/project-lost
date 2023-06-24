@@ -10,6 +10,9 @@ declare module '@mui/material/styles/createPalette' {
     darkRed?: string
     red?: string
     lightRed?: string
+    green?: string
+    yellow?: string
+    gray?: string
   }
 
   interface Palette {
@@ -18,12 +21,18 @@ declare module '@mui/material/styles/createPalette' {
       accent: string
       dark: string
       main: string
+      white: string
     }
     background: {
       main: string
       accent: string
       gradient: string
       lightMain: string
+      lightBlue: string
+      lightRed: string
+      lightYellow: string
+      lightGreen: string
+      lightGray: string
     }
   }
 
@@ -32,6 +41,11 @@ declare module '@mui/material/styles/createPalette' {
     accent: string
     gradient: string
     lightMain: string
+    lightBlue: string
+    lightRed: string
+    lightYellow: string
+    lightGreen: string
+    lightGray: string
   }
 }
 

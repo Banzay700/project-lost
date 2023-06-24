@@ -1,6 +1,6 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 import { Stack, Avatar, Box, Menu, Typography, Divider } from '@mui/material'
-import { Button, MenuItem } from 'UI'
+import { MenuItem } from 'UI'
 import { UserType } from 'types'
 import { useLogoutMutation } from 'store/api'
 import { Navigate } from 'react-router-dom'
@@ -21,7 +21,7 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
   const avatarName = !!firstName &&
     !!secondName && { ...stringAvatar(`${firstName} ${secondName}`) }
 
-  const handleClickAvatar = (e: MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget)
+  const handleClickAvatar = (e: MouseEvent<HTMLDivElement>) => setAnchorEl(e.currentTarget)
 
   const handleCloseAvatar = () => setAnchorEl(null)
 
@@ -54,12 +54,11 @@ const Watch: FC<WatchProps> = ({ dataUser }) => {
         </Typography>
       </WatchContainer>
       <Box>
-        <Button
-          variant="text"
-          size="medium"
-          color="secondary"
+        <Avatar
+          src={userImage || ''}
+          {...avatarName}
           onClick={handleClickAvatar}
-          icon={<Avatar src={userImage || ''} {...avatarName} />}
+          sx={{ cursor: 'pointer', border: '2px solid white' }}
         />
         <Menu anchorEl={anchorEl} open={open} onClose={handleCloseAvatar}>
           {menuData.map((item) => (

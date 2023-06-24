@@ -4,7 +4,7 @@ import { Pagination, Stack } from '@mui/material'
 import { Table, IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
 import { useBillsReducer, useParamsSearchFilter } from 'hooks/index'
-import { tableTitleBills } from './tableBills.utils'
+import { tableFilterMenuItem, tableIndicatorBills, tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
   const { newBill, changeToggle } = useBillsReducer()
@@ -14,7 +14,7 @@ const TableBills: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 10 })
   const [getBill] = useLazyGetOneBillQuery()
 
   const handleSendBillsData = (id: string) => {
@@ -32,11 +32,9 @@ const TableBills: FC = () => {
   return (
     <>
       <IndicatorFilterBar
-        filterMenuItems={[
-          { value: 'delivery', label: 'Delivery' },
-          { value: 'dineIn', label: 'Dine in' },
-          { value: 'takeAway', label: 'Take away' },
-        ]}
+        isFilterMenu
+        indicatorData={tableIndicatorBills}
+        filterMenuItems={tableFilterMenuItem}
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
@@ -59,7 +57,7 @@ const TableBills: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

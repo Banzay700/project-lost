@@ -6,7 +6,12 @@ import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } fro
 import { useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
-import { prepareBillsData, tableTitleOrder } from './tableOrder.utils'
+import {
+  prepareBillsData,
+  tableFilterMenuItems,
+  tableIndicatorItems,
+  tableTitleOrder,
+} from './tableOrder.utils'
 
 const TableOrders: FC = () => {
   const { clearNewOrderState } = useOrderReducer()
@@ -16,7 +21,7 @@ const TableOrders: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 7 })
+  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 10 })
 
   const navigate = useNavigate()
   const [trigger] = useLazyGetOrderQuery()
@@ -35,10 +40,9 @@ const TableOrders: FC = () => {
   return (
     <>
       <IndicatorFilterBar
-        filterMenuItems={[
-          { value: 'dineIn', label: 'Dine in' },
-          { value: 'takeAway', label: 'Take away' },
-        ]}
+        isFilterMenu
+        indicatorData={tableIndicatorItems}
+        filterMenuItems={tableFilterMenuItems}
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
@@ -61,7 +65,7 @@ const TableOrders: FC = () => {
         }}>
         {data && (
           <Pagination
-            count={Math.ceil(data.totalCount / 7)}
+            count={Math.ceil(data.totalCount / 10)}
             variant="text"
             shape="rounded"
             color="primary"

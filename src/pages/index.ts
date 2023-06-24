@@ -11,3 +11,5 @@ export {
   AdminEmployeesPage,
   AdminRestaurantPage,
 } from './admin-pages'
+
+export { DeliveryLayout, DeliveryHomePage } from './delivery-pages'
