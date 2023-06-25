@@ -14,14 +14,7 @@ interface OrderItemPriceInfoProps extends PropsWithChildren {
 const OrderDetailsItemPriceInfo: FC<OrderItemPriceInfoProps> = (props) => {
   const { totalPriceItem, amount, price, children } = props
   const { isHomeLocation } = useRootLocationPath()
-
-  let textContent
-
-  if (isHomeLocation) {
-    textContent = 'Price'
-  } else {
-    textContent = `Price $${price} x ${amount}`
-  }
+  const textContent = isHomeLocation ? 'Price' : `Price $${price} x ${amount}`
 
   return (
     <CardContentWrapper>
