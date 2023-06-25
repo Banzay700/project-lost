@@ -14,6 +14,7 @@ const city = (isRequired?: boolean) => {
 
   return schema
 }
+
 const street = (isRequired?: boolean) => {
   let schema = string()
     .min(2, 'Too Short! 3-20 symbols')
@@ -24,7 +25,7 @@ const street = (isRequired?: boolean) => {
       'Street must contain only letters (EN, UA, RS), numbers, and spaces',
     )
 
-  if (isRequired) schema = schema.required('City is required')
+  if (isRequired) schema = schema.required('Street is required')
 
   return schema
 }

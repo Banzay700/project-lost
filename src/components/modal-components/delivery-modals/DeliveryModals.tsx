@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
-import { Modal } from 'UI'
-import { DeliveryFormType, OrderActiveType } from 'types'
+import { Modal } from 'UI/index'
+import { DeliveryFormType, OrderActiveType } from 'types/index'
 import { DeliveryForm } from './delivery-form'
 import { DeliveryPayment } from './delivery-payment'
 import { DeliveryConfirmation } from './delivery-confirmation'

@@ -17,8 +17,8 @@ export const selectMenuItems: InputSelectItemType[] = [
   },
 ]
 export const validationSchema = object().shape({
-  firstName: validationUser.name(true, 'The first name is required'),
-  secondName: validationUser.name(true, 'The second name is required'),
+  firstName: validationUser.name(true, 'First name is required'),
+  secondName: validationUser.name(true, 'Second name is required'),
   email: validationUser.email(),
   phoneNumber: validationUser.phoneNumber(),
   password: validationUser.password(true),

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 
-import { OrderDetailsList } from 'components'
+import { OrderDetailsList, DeliveryModals } from 'components'
 import { ToggleMenu } from 'UI'
 import { useOrderReducer, useOrderProcessingLogic, useUserReducer } from 'hooks'
 import { DeliveryFormType, OrderCreatorFormReturnType } from 'types'
@@ -14,7 +14,6 @@ import {
 import { formatDateTime } from 'utils'
 import { OrderCreatorForm } from './order-creator-form'
 import { toggleMenuValues, updateOrderState } from './orderCreatorBar.utils'
-import DeliveryModals from './delivery-modals/DeliveryModals'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
@@ -75,8 +74,7 @@ const OrderCreatorBar: FC = () => {
 
   const handleOnConfirm = () => {
     if (activeOrder.id && deliveryForm) {
-      const time = formatDateTime(new Date())
-      createDelivery({ ...deliveryForm, order: activeOrder.id, time })
+      createDelivery({ ...deliveryForm, order: activeOrder.id })
     }
     setToggleValue('orderInfo')
     setButtonDisabled(true)

@@ -1,4 +1,5 @@
 export type DeliveryFormType = {
+  time: string
   clientInfo: {
     name: string
     email?: string
@@ -9,7 +10,6 @@ export type DeliveryFormType = {
     address: {
       city?: string
       street: string
-      house: string
       apartment?: string
     }
   }

@@ -1,8 +1,9 @@
-import { object, string } from 'yup'
+import { number, object, string } from 'yup'
 import { InputSelectItemType } from 'types/index'
 import { validationDelivery, validationUser } from 'utils/index'
 
 export const initialValues = {
+  time: '',
   clientInfo: {
     name: '',
     email: '',
@@ -13,7 +14,6 @@ export const initialValues = {
     address: {
       city: '',
       street: '',
-      house: '',
       apartment: '',
     },
   },
@@ -35,8 +35,9 @@ export const selectMenuItems: InputSelectItemType[] = [
 ]
 
 export const validationSchema = object().shape({
+  time: string().required(),
   clientInfo: object().shape({
-    name: validationUser.name(true, 'The name is required'),
+    name: validationUser.name(true, 'Name is required'),
     phoneNumber: validationUser.phoneNumber(true),
     paymentMethod: string().required(),
     email: validationUser.email(),
@@ -45,7 +46,6 @@ export const validationSchema = object().shape({
     address: object().shape({
       city: validationDelivery.city(),
       street: validationDelivery.street(true),
-      house: validationDelivery.house(true, 'The house is required'),
       apartment: validationDelivery.house(),
     }),
   }),
