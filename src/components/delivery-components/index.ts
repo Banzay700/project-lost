@@ -1,2 +1,7 @@
 export { RadioGroupCard } from './radio-group-card'
 export { ActionsButton } from './actions-button'
+export { HeaderActionMobile } from './header-action-mobile'
+export { InfoDelivery } from './info-delivery'
+export { OrderDetailList } from './order-detail-list'
+export { TotalPriceInfo } from './total-price-info'
+export { DeliveryWrapper } from './delivery-wrapper'

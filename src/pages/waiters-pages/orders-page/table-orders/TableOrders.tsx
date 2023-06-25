@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Pagination, Stack } from '@mui/material'
 import { IndicatorFilterBar, Table } from 'components'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
 import { useOrderReducer, useParamsSearchFilter } from 'hooks'
 
 import { ROUTES } from 'routes'
+import { Pagination } from 'UI'
 import {
   prepareBillsData,
   tableFilterMenuItems,
@@ -55,25 +55,14 @@ const TableOrders: FC = () => {
         onClickAction={handleSendOrder}
         onClickLine={handleLineWrapperClick}
       />
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </>
   )
 }

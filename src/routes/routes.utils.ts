@@ -17,6 +17,8 @@ export const ROUTES = {
   ADMIN_SETTING: 'settings',
   DELIVERY: 'delivery',
   DELIVERY_HOME: '/delivery',
+  DELIVERY_CURRENT_ORDER: '/delivery/:currentOrder',
   DELIVERY_ORDERS: '/active-delivery',
+  DELIVERY_ACTIVE_ORDER: '/active-delivery/:activeOrder',
   DELIVERY_HISTORY: '/history',
 }

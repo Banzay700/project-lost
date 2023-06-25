@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
 import { Navbar } from 'UI'
 import { useUserReducer } from 'hooks'
@@ -7,18 +7,20 @@ import { LinkItemType } from 'types'
 import { HeaderWrapper } from './Header.styled'
 import { LogoWrapper } from './logo-wrapper'
 
-interface HeaderProps {
+interface HeaderProps extends PropsWithChildren {
   dataLink?: LinkItemType[]
   route?: string
+  withoutLink?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ dataLink, route }) => {
+const Header: FC<HeaderProps> = ({ dataLink, withoutLink, route, children }) => {
   const { userState } = useUserReducer()
 
   return (
     <HeaderWrapper>
       <LogoWrapper {...userState} route={route} />
-      {dataLink && <Navbar direction="row" data={dataLink} />}
+      {children}
+      {dataLink && !withoutLink && <Navbar direction="row" data={dataLink} />}
       <Watch dataUser={userState} />
     </HeaderWrapper>
   )

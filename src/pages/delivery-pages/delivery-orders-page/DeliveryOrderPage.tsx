@@ -1,15 +1,15 @@
 import { FC, useState } from 'react'
-import { IndicatorsGroup, RadioGroupCard, ActionsButton } from 'components'
 import { PageActionsBar, Pagination } from 'UI'
-import { RadioButtonCardContentItemType } from 'types'
-import { deliveryIndicatorItems } from './deliveryHomePage.utils'
+import { ActionsButton, RadioGroupCard, IndicatorsGroup } from 'components'
 import { useNavigate } from 'react-router-dom'
+import { RadioButtonCardContentItemType } from 'types'
+import { deliveryIndicatorItems } from './deliveryOrderPage.utils'
 
 const mok: RadioButtonCardContentItemType[] = [
   {
     value: 'test',
     clientName: 'Artem',
-    deliveryAddress: 'test2, test3',
+    deliveryAddress: 'tes2t2, test3',
     orderNumber: 123123,
     status: { type: 'red', label: 'Priority' },
     timeToReady: '14min',
@@ -64,7 +64,7 @@ const mok: RadioButtonCardContentItemType[] = [
   },
 ]
 
-const DeliveryHomePage: FC = () => {
+const DeliveryOrderPage: FC = () => {
   const [isActiveCard, setIsActiveCard] = useState('')
   const navigate = useNavigate()
 
@@ -75,6 +75,7 @@ const DeliveryHomePage: FC = () => {
   const handleSubmitCard = () => {
     navigate(isActiveCard)
   }
+
   return (
     <>
       <PageActionsBar>
@@ -94,4 +95,4 @@ const DeliveryHomePage: FC = () => {
   )
 }
 
-export default DeliveryHomePage
+export default DeliveryOrderPage

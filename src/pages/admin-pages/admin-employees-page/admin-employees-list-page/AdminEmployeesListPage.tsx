@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
 import { UserPartialType } from 'types'
+import { Pagination } from 'UI'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
 const AdminEmployeesListPage: FC = () => {
@@ -47,25 +48,14 @@ const AdminEmployeesListPage: FC = () => {
         onClickAction={handleClick}
         isLoading={isFetching}
       />
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
       {user && (
         <ModalUpdateUserInfo
           title={`${user.firstName} ${user.secondName}`}

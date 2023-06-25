@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
 
 import { Table, IndicatorFilterBar } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
-import { useBillsReducer, useParamsSearchFilter } from 'hooks/index'
+import { useBillsReducer, useParamsSearchFilter } from 'hooks'
+import { Pagination } from 'UI'
 import { tableFilterMenuItem, tableIndicatorBills, tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
@@ -47,25 +47,14 @@ const TableBills: FC = () => {
         onClickAction={handleSendBillsData}
         onClickLine={handleLineBillsData}
       />
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </>
   )
 }
