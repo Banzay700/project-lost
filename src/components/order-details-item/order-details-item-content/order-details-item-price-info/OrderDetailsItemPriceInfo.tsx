@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, ReactNode } from 'react'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Typography } from '@mui/material'
 
 import { useRootLocationPath } from 'hooks'
 import { CardContentWrapper, CardTextWrapper } from './OrderDetailsItemPriceInfo.styled'
@@ -14,9 +14,14 @@ interface OrderItemPriceInfoProps extends PropsWithChildren {
 const OrderDetailsItemPriceInfo: FC<OrderItemPriceInfoProps> = (props) => {
   const { totalPriceItem, amount, price, children } = props
   const { isHomeLocation } = useRootLocationPath()
-  const { breakpoints } = useTheme()
-  const isMobile = useMediaQuery(breakpoints.down('sm'))
-  const textContent = isMobile || !isHomeLocation ? `Price $${price} x ${amount}` : 'Price'
+
+  let textContent
+
+  if (isHomeLocation) {
+    textContent = 'Price'
+  } else {
+    textContent = `Price $${price} x ${amount}`
+  }
 
   return (
     <CardContentWrapper>

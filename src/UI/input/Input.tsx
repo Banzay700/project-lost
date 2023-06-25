@@ -1,10 +1,9 @@
 import { FC } from 'react'
 import { useField } from 'formik'
-import { FadeIn } from 'utils'
 
 import { InputPropsType } from 'types'
 import { IconWrapper } from './icon-wrapper'
-import { InputWrapper } from './Input.styled'
+import { ErrorMessage, InputContainer, InputWrapper } from './Input.styled'
 
 const Input: FC<InputPropsType> = (props) => {
   const {
@@ -23,7 +22,7 @@ const Input: FC<InputPropsType> = (props) => {
     onChange,
   } = props
   const [field, meta] = useField(name)
-
+  const validationError = meta.touched && meta.error
   const textFieldConfig = {
     placeholder,
     label,
@@ -35,8 +34,6 @@ const Input: FC<InputPropsType> = (props) => {
     ...field,
     outlined,
     fullWidth: true,
-    error: false,
-    helperText: '',
     InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},
     inputProps: {
       maxLength,
@@ -44,15 +41,11 @@ const Input: FC<InputPropsType> = (props) => {
     },
   }
 
-  if (meta.touched && meta.error) {
-    textFieldConfig.error = true
-    textFieldConfig.helperText = meta.error
-  }
-
   return (
-    <FadeIn delay={50} styles={{ width: '100%' }}>
+    <InputContainer delay={50}>
       <InputWrapper {...textFieldConfig} focused={focus} fullWidth />
-    </FadeIn>
+      {validationError && <ErrorMessage>{meta.error}</ErrorMessage>}
+    </InputContainer>
   )
 }
 

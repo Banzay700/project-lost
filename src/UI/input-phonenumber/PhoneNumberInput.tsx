@@ -1,7 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { FC, useState } from 'react'
 import { useFormikContext } from 'formik'
-
 import { Phone, MyLabel } from './PhoneNumberInput.styled'
 
 interface PhoneNumberInputProps {
@@ -27,12 +25,8 @@ const PhoneNumberInput: FC<PhoneNumberInputProps> = ({ name }) => {
         regions="europe"
         enableAreaCodes
         placeholder="Enter phone number"
-        inputProps={{
-          name,
-        }}
-        onChange={(value: string) => {
-          setFieldValue(name, value)
-        }}
+        inputProps={{ name }}
+        onChange={(value: string) => setFieldValue(name, value)}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
       />

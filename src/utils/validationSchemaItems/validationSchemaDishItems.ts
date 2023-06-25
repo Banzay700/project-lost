@@ -16,7 +16,7 @@ const price = (isRequired?: boolean) => {
   if (isRequired) {
     schema = schema.required('Price is required')
   }
-
+  schema = isRequired ? schema.required('Price is required') : schema
   return schema
 }
 

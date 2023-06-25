@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Form, Formik } from 'formik'
+import { Stack } from '@mui/material'
+
 import { InputsCreateDish } from 'components'
 import { DishPartialType, DishType } from 'types'
-import { Stack } from '@mui/material'
 import { ImageDragDrop } from './image-drag-drop'
 import { validationSchema } from './updateDishForm.utils'
 
