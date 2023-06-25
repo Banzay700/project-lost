@@ -40,9 +40,9 @@ const Input: FC<InputPropsType> = (props) => {
       onChange,
     },
   }
-
+  console.log(maxRows)
   return (
-    <InputContainer delay={50}>
+    <InputContainer rows={maxRows} delay={50}>
       <InputWrapper {...textFieldConfig} focused={focus} fullWidth />
       {validationError && <ErrorMessage>{meta.error}</ErrorMessage>}
     </InputContainer>
