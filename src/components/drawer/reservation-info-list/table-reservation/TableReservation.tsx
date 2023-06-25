@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { Table } from 'components'
+import { TableReservationLine } from 'components'
+import { Table } from 'UI'
 import { ReservationResponseType } from 'types'
 import { tableTitleReservation } from './tableReservation.utils'
 
@@ -9,13 +10,11 @@ interface TableReservationProps {
 
 const TableReservation: FC<TableReservationProps> = ({ data }) => {
   return (
-    <Table
-      data={data}
-      tableTitles={tableTitleReservation}
-      tableType="reservation"
-      tableMaxHeight="550px"
-      tableMinWidth="485px"
-    />
+    <Table tableTitles={tableTitleReservation} tableMaxHeight="550px" tableMinWidth="485px">
+      {data?.map((element) => (
+        <TableReservationLine key={element?.id} element={element} />
+      ))}
+    </Table>
   )
 }
 

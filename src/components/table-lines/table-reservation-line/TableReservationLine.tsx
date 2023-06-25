@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
-import { ReservationResponseType } from 'types'
+import { ReservationResponseType } from 'types/index'
 import { Collapse, Table, TableBody, TableCell, TableRow } from '@mui/material'
-import { ColumnInfoChip, ColumnText, ColumnCollapseReservation } from 'UI'
+import { ColumnInfoChip, ColumnText, ColumnCollapseReservation } from 'UI/index'
 
 interface TableReservationLineProps {
   element: ReservationResponseType

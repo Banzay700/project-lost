@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { OrderSummaryWrapper } from 'components'
 import { Button, DetailsListTitle } from 'UI'
-import { FadeIn } from 'utils'
+import { FadeIn, TAX } from 'utils'
 import { useOrderReducer } from 'hooks'
 import { ListInfoActionsContainer } from './OrderDetailsList.styled'
 import { defineButtonText } from './OrderDetailsList.utils'
@@ -22,7 +22,7 @@ const OrderDetailsList: FC<OrderListProps> = ({ onClick }) => {
       <DetailsListTitle title="Order details" orderNumber={activeOrder.orderNumber} />
       <OrderDishesList dishes={activeOrder.dishes} />
       <ListInfoActionsContainer>
-        <OrderSummaryWrapper tax={10} total={total} />
+        <OrderSummaryWrapper tax={TAX} total={total} />
         <Button variant="contained" size="medium" type="submit" fullWidth onClick={onClick}>
           {buttonText}
         </Button>

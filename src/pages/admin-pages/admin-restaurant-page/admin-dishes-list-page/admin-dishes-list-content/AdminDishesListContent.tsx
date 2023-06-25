@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Pagination, Stack } from '@mui/material'
-import { SearchFilterBar, Table } from 'components'
+import { SearchFilterBar, TableDishLine } from 'components'
 import { useParamsSearchFilter } from 'hooks'
 import { useGetCategoriesQuery, useGetDishesQuery } from 'store/api'
+import { Table } from 'UI'
 import { FilterMenuItemType } from 'types'
 import { correctionName } from 'utils'
 import { dishesTableTitles } from './adminDishesListContent.utils'
@@ -45,15 +46,16 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
         defaultValueInput={search || ''}
       />
 
-      <Table
-        tableMinWidth="660px"
-        data={data?.data}
-        isLoading={isFetching}
-        tableTitles={dishesTableTitles}
-        tableType="dishes"
-        onClickAction={onClickAction}
-        onClickLine={onClickLine}
-      />
+      <Table tableMinWidth="660px" isLoading={isFetching} tableTitles={dishesTableTitles}>
+        {data?.data.map((dish) => (
+          <TableDishLine
+            key={dish.id}
+            dish={dish}
+            onClickAction={onClickAction}
+            onClickLine={onClickLine}
+          />
+        ))}
+      </Table>
       <Stack
         sx={{
           height: 'fit-content',

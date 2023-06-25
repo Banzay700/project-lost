@@ -1,6 +1,6 @@
 import { TableRow } from '@mui/material'
 import { FC } from 'react'
-import { ColumnAction, ColumnInfoChip, ColumnText } from 'UI'
+import { ColumnAction, ColumnInfoChip, ColumnText } from 'UI/index'
 import { UserType } from 'types/UserType'
 
 interface TableUsersLineProps {
