@@ -1,8 +1,8 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { TableRow } from '@mui/material'
-import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI'
-import { OrderType, OrderTypeOfElement } from 'types'
-import { Icon } from 'assets'
+import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI/index'
+import { OrderType, OrderTypeOfElement } from 'types/index'
+import { Icon } from 'assets/index'
 
 interface TableOrdersColumnProps {
   element: OrderType

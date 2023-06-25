@@ -11,6 +11,7 @@ interface ModalProps extends PropsWithChildren {
   colorHeader?: 'primary' | 'secondary'
   isIconExit?: boolean
   hiddenActions?: boolean
+  removeBgClosed?: boolean
   actionAdditionalComponent?: ReactNode
   onClose: () => void
   onSubmit?: (value: true) => void
@@ -22,6 +23,7 @@ const Modal: FC<ModalProps> = ({
   isIconExit,
   actionAdditionalComponent,
   hiddenActions,
+  removeBgClosed,
   linkageToForm,
   colorHeader,
   onClose,
@@ -38,7 +40,7 @@ const Modal: FC<ModalProps> = ({
   }
 
   return (
-    <ModalWrapper open={isOpen} onClose={handleClose}>
+    <ModalWrapper open={isOpen} onClose={removeBgClosed ? undefined : handleClose}>
       <DialogTitle sx={{ p: '24px' }} color={colorHeader}>
         <ModalTitleContainer>
           {title}

@@ -11,7 +11,9 @@ const ColumnCollapseReservation: FC<ColumnCollapseReservationProps> = ({ label, 
     <TableRow sx={{ '& td:last-child': { padding: '16px' }, height: '52px' }}>
       <TableCell align="center">{label}</TableCell>
       <TableCell align="center">-</TableCell>
-      <TableCell align="center">{data || 'None'}</TableCell>
+      <TableCell align="center" sx={{ overflowWrap: 'break-word', maxWidth: '118px' }}>
+        {data || 'None'}
+      </TableCell>
     </TableRow>
   )
 }

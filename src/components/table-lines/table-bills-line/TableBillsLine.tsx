@@ -1,8 +1,8 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { TableRow } from '@mui/material'
-import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
-import { BillsType, OrderTypeOfElement } from 'types'
-import { Icon } from 'assets'
+import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI/index'
+import { BillsType, OrderTypeOfElement } from 'types/index'
+import { Icon } from 'assets/index'
 
 interface TableBillsColumnProps {
   element: BillsType
