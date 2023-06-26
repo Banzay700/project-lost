@@ -1,8 +1,8 @@
-import { BillsType, DishType, OrderType, ReservationResponseType, UserType } from 'types'
+import { BillsType, OrderType } from 'types'
 
 export type Categories = {
   category: string
   subcategories: string[]
 }
 
-export type TableDataItem = BillsType | OrderType | ReservationResponseType | UserType | DishType
+export type TableDataItem = BillsType | OrderType

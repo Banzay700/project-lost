@@ -219,7 +219,7 @@ const theme = createTheme(
         styleOverrides: {
           root: {
             borderWidth: '0.5px',
-            borderColor: themeBase.palette.border.main,
+            borderColor: themeBase.palette.border.default,
           },
         },
       },

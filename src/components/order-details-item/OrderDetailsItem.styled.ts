@@ -6,15 +6,14 @@ export const CardStyled = styled(Card)(({ theme }) => ({
   display: 'flex',
   gap: '12px',
   padding: '16px',
-  [theme.breakpoints.down('sm')]: {
-    padding: '8px',
-  },
+  minHeight: '98px',
   borderRadius: 0,
   background: 'inherit',
   borderBottom: '1px solid',
   borderColor: theme.palette.border.default,
   position: 'relative',
   alignItems: 'center',
+  [theme.breakpoints.down('sm')]: { padding: '8px', minHeight: '71px' },
 }))
 
 export const ListItemStyled = styled(ListItem)(({ theme }) => ({

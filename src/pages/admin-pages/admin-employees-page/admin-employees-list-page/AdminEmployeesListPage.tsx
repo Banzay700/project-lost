@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { ModalUpdateUserInfo, SearchFilterBar, Table } from 'components'
+import { ModalUpdateUserInfo, SearchFilterBar, TableUsersLine } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
 import { UserPartialType } from 'types'
-import { Pagination } from 'UI'
+import { Pagination,Table } from 'UI'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
 const AdminEmployeesListPage: FC = () => {
@@ -40,14 +40,11 @@ const AdminEmployeesListPage: FC = () => {
         defaultValueFilter={role?.split(',')}
         defaultValueInput={search || ''}
       />
-      <Table
-        tableMinWidth="660px"
-        data={data?.data}
-        tableTitles={tableHeaders}
-        tableType="users"
-        onClickAction={handleClick}
-        isLoading={isFetching}
-      />
+      <Table tableMinWidth="660px" tableTitles={tableHeaders} isLoading={isFetching}>
+        {data?.data.map((users) => (
+          <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
+        ))}
+      </Table>
       {data && data.totalCount > 10 && (
         <Pagination
           marginRight="30px"

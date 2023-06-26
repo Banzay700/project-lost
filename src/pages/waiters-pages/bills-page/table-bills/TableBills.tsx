@@ -1,9 +1,9 @@
 import { FC } from 'react'
-
-import { Table, IndicatorFilterBar } from 'components'
+import {  IndicatorFilterBar, TableBillsLine } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
-import { useBillsReducer, useParamsSearchFilter } from 'hooks'
-import { Pagination } from 'UI'
+import { Pagination, Table } from 'UI'
+import { useActiveTableLine, useBillsReducer, useParamsSearchFilter } from 'hooks'
+import { BillsType } from 'types'
 import { tableFilterMenuItem, tableIndicatorBills, tableTitleBills } from './tableBills.utils'
 
 const TableBills: FC = () => {
@@ -16,6 +16,7 @@ const TableBills: FC = () => {
   } = useParamsSearchFilter('orderType')
   const { data, isFetching } = useGetAllBillsQuery({ orderType, page, limit: 10 })
   const [getBill] = useLazyGetOneBillQuery()
+  const { active, setActive } = useActiveTableLine(data?.data as BillsType[])
 
   const handleSendBillsData = (id: string) => {
     getBill(id)
@@ -38,15 +39,18 @@ const TableBills: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
-      <Table
-        isLoading={isFetching}
-        data={data?.data}
-        tableTitles={tableTitleBills}
-        tableType="bills"
-        tableMinWidth="750px"
-        onClickAction={handleSendBillsData}
-        onClickLine={handleLineBillsData}
-      />
+      <Table isLoading={isFetching} tableTitles={tableTitleBills} tableMinWidth="750px">
+        {data?.data.map((el) => (
+          <TableBillsLine
+            element={el}
+            key={el?.id}
+            active={active}
+            setActive={setActive}
+            onClickAction={handleSendBillsData}
+            onClickLine={handleLineBillsData}
+          />
+        ))}
+      </Table>
       {data && data.totalCount > 10 && (
         <Pagination
           marginRight="30px"
