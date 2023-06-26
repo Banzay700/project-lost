@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import {  IndicatorFilterBar, TableBillsLine } from 'components'
+import { IndicatorFilterBar, TableBillsLine } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
 import { Pagination, Table } from 'UI'
 import { useActiveTableLine, useBillsReducer, useParamsSearchFilter } from 'hooks'
@@ -40,16 +40,17 @@ const TableBills: FC = () => {
         onChange={handleFilterCategory}
       />
       <Table isLoading={isFetching} tableTitles={tableTitleBills} tableMinWidth="750px">
-        {data?.data.map((el) => (
-          <TableBillsLine
-            element={el}
-            key={el?.id}
-            active={active}
-            setActive={setActive}
-            onClickAction={handleSendBillsData}
-            onClickLine={handleLineBillsData}
-          />
-        ))}
+        {!isFetching &&
+          data?.data.map((el) => (
+            <TableBillsLine
+              element={el}
+              key={el?.id}
+              active={active}
+              setActive={setActive}
+              onClickAction={handleSendBillsData}
+              onClickLine={handleLineBillsData}
+            />
+          ))}
       </Table>
       {data && data.totalCount > 10 && (
         <Pagination

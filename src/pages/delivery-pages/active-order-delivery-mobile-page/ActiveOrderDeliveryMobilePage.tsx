@@ -58,7 +58,7 @@ const mok: OrderDetailsItemType[] = [
   },
 ]
 
-const DeliveryActiveOrderMobilePage: FC = () => {
+const ActiveOrderDeliveryMobilePage: FC = () => {
   const { activeOrder } = useParams()
 
   return (
@@ -85,4 +85,4 @@ const DeliveryActiveOrderMobilePage: FC = () => {
   )
 }
 
-export default DeliveryActiveOrderMobilePage
+export default ActiveOrderDeliveryMobilePage

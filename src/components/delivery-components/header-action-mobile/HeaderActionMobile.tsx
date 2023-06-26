@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { HeaderActionsWrapper } from './HeaderActionMobile.styled'
 import { useNavigate } from 'react-router-dom'
 import { Icon } from 'assets'
-import { Button } from 'UI/button'
+import { Button } from 'UI'
 import { Typography } from '@mui/material'
+import { HeaderActionsWrapper } from './HeaderActionMobile.styled'
 
 interface HeaderActionsProps {
   label: string
@@ -17,6 +17,7 @@ const HeaderActionMobile: FC<HeaderActionsProps> = ({ label }) => {
       <Button
         variant="outlined"
         size="small"
+        minWidth="38px"
         icon={<Icon.ArrowLeft />}
         onClick={() => navigate(-1)}
       />

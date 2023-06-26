@@ -1,5 +1,5 @@
 export interface RadioButtonCardContentItemType {
-  value: string
+  id: string
   orderNumber: number
   clientName: string
   deliveryAddress: string

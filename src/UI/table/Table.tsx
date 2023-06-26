@@ -1,16 +1,15 @@
-import { CSSProperties, FC, ReactNode } from 'react'
+import { CSSProperties, FC, PropsWithChildren } from 'react'
 import { Table as MuiTable, TableBody, TableContainer } from '@mui/material'
 import { useSmoothScrollbar } from 'hooks'
 import { TableLineSkeleton } from 'UI'
 import { TableHead } from './table-head'
 
-interface TableProps {
+interface TableProps extends PropsWithChildren {
   tableTitles: string[]
   isLoading?: boolean
   alignHead?: 'inherit' | 'center' | 'left' | 'right' | 'justify' | undefined
   tableMinWidth?: CSSProperties['minWidth']
   tableMaxHeight?: CSSProperties['maxHeight']
-  children: ReactNode
 }
 
 const Table: FC<TableProps> = ({

@@ -1,15 +1,15 @@
-import { FC, useState } from 'react'
-import { IndicatorsGroup, RadioGroupCard, ActionsButton } from 'components'
-import { PageActionsBar, Pagination } from 'UI'
+import { FC } from 'react'
+import { ContentRouteDeliveryMobile, IndicatorsGroup } from 'components'
 import { RadioButtonCardContentItemType } from 'types'
-import { deliveryIndicatorItems } from './deliveryHomePage.utils'
-import { useNavigate } from 'react-router-dom'
+import { deliveryIndicatorItems } from './OrdersDeliveryPage.utils'
+import { PageActionsBar } from 'UI/page-actions-bar'
+import { useScreenTracking } from 'hooks/useScreenTracking'
 
 const mok: RadioButtonCardContentItemType[] = [
   {
     value: 'test',
     clientName: 'Artem',
-    deliveryAddress: 'test2, test3',
+    deliveryAddress: 'tes2t2, test3',
     orderNumber: 123123,
     status: { type: 'red', label: 'Priority' },
     timeToReady: '14min',
@@ -64,34 +64,18 @@ const mok: RadioButtonCardContentItemType[] = [
   },
 ]
 
-const DeliveryHomePage: FC = () => {
-  const [isActiveCard, setIsActiveCard] = useState('')
-  const navigate = useNavigate()
+const OrdersDeliveryPage: FC = () => {
+  const { isMobileScreen } = useScreenTracking()
 
-  const handleChangeActiveCard = (value: string) => {
-    setIsActiveCard(value)
-  }
-
-  const handleSubmitCard = () => {
-    navigate(isActiveCard)
-  }
   return (
     <>
       <PageActionsBar>
         <IndicatorsGroup indicatorData={deliveryIndicatorItems} />
       </PageActionsBar>
-      <RadioGroupCard
-        isActiveCard={isActiveCard}
-        onChange={handleChangeActiveCard}
-        cardData={mok}
-      />
-      <ActionsButton
-        titleButton="Detail Info"
-        onSubmit={handleSubmitCard}
-        disabled={!isActiveCard}
-      />
+      {isMobileScreen && <ContentRouteDeliveryMobile cardItem={mok} />}
+      {!isMobileScreen && <div>test</div>}
     </>
   )
 }
 
-export default DeliveryHomePage
+export default OrdersDeliveryPage

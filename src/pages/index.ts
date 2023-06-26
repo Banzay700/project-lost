@@ -14,8 +14,8 @@ export {
 
 export {
   DeliveryLayout,
-  DeliveryHomePage,
-  DeliveryCurrentOrderMobilePage,
-  DeliveryOrderPage,
-  DeliveryActiveOrderMobilePage,
+  HomeDeliveryPage,
+  CurrentOrderDeliveryMobilePage,
+  OrdersDeliveryPage,
+  ActiveOrderDeliveryMobilePage,
 } from './delivery-pages'

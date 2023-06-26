@@ -1,11 +1,9 @@
 import { FC } from 'react'
-import { Header } from 'components/header'
 import {
   ActionsButton,
-  DeliveryWrapper,
-  HeaderActionMobile,
   InfoDelivery,
   OrderDetailList,
+  OrderLayout,
   TotalPriceInfo,
 } from 'components'
 import { useParams } from 'react-router-dom'
@@ -58,28 +56,19 @@ const mok: OrderDetailsItemType[] = [
   },
 ]
 
-const DeliveryCurrentOrderMobilePage: FC = () => {
+const CurrentOrderDeliveryMobilePage: FC = () => {
   const { currentOrder } = useParams()
   return (
-    <>
-      <Header route="Delivery" withoutLink>
-        <HeaderActionMobile label="Current Order" />
-      </Header>
-      <DeliveryWrapper>
-        <InfoDelivery
-          deliveryAddress="test"
-          orderNumber="test"
-          clientName="test"
-          readyToTime="test">
-          <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
-        </InfoDelivery>
-        <OrderDetailList ordersDetail={mok} />
-        <ActionsButton titleButton="Take Delivery" onSubmit={() => {}}>
-          <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
-        </ActionsButton>
-      </DeliveryWrapper>
-    </>
+    <OrderLayout titleHeader="Current order">
+      <InfoDelivery deliveryAddress="test" orderNumber="test" clientName="test" readyToTime="test">
+        <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
+      </InfoDelivery>
+      <OrderDetailList ordersDetail={mok} />
+      <ActionsButton titleButton="Take Delivery" onSubmit={() => {}}>
+        <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
+      </ActionsButton>
+    </OrderLayout>
   )
 }
 
-export default DeliveryCurrentOrderMobilePage
+export default CurrentOrderDeliveryMobilePage

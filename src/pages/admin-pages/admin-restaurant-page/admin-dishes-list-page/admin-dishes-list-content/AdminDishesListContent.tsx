@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { SearchFilterBar, TableDishLine } from 'components'
 import { useParamsSearchFilter } from 'hooks'
 import { useGetCategoriesQuery, useGetDishesQuery } from 'store/api'
-import { Table,Pagination} from 'UI'
+import { Table, Pagination } from 'UI'
 import { FilterMenuItemType } from 'types'
 import { correctionName } from 'utils'
 import { dishesTableTitles } from './adminDishesListContent.utils'
@@ -46,14 +46,15 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
       />
 
       <Table tableMinWidth="660px" isLoading={isFetching} tableTitles={dishesTableTitles}>
-        {data?.data.map((dish) => (
-          <TableDishLine
-            key={dish.id}
-            dish={dish}
-            onClickAction={onClickAction}
-            onClickLine={onClickLine}
-          />
-        ))}
+        {!isFetching &&
+          data?.data.map((dish) => (
+            <TableDishLine
+              key={dish.id}
+              dish={dish}
+              onClickAction={onClickAction}
+              onClickLine={onClickLine}
+            />
+          ))}
       </Table>
       {data && data.totalCount > 10 && (
         <Pagination

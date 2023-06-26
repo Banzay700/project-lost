@@ -14,10 +14,10 @@ import {
   LoaderPage,
   NotFoundPage,
   DeliveryLayout,
-  DeliveryHomePage,
-  DeliveryCurrentOrderMobilePage,
-  DeliveryOrderPage,
-  DeliveryActiveOrderMobilePage,
+  HomeDeliveryPage,
+  CurrentOrderDeliveryMobilePage,
+  OrdersDeliveryPage,
+  ActiveOrderDeliveryMobilePage,
 } from 'pages'
 import { useRootLocationPath, useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -83,19 +83,19 @@ const AppRoutes = () => {
           </Route>
 
           <Route path={ROUTES.DELIVERY} element={<DeliveryLayout />}>
-            <Route index element={<DeliveryHomePage />} />
+            <Route index element={<HomeDeliveryPage />} />
           </Route>
           <Route
             path={ROUTES.DELIVERY_CURRENT_ORDER}
-            element={<DeliveryCurrentOrderMobilePage />}
+            element={<CurrentOrderDeliveryMobilePage />}
           />
 
           <Route path={ROUTES.DELIVERY_ORDERS} element={<DeliveryLayout />}>
-            <Route index element={<DeliveryOrderPage />} />
+            <Route index element={<OrdersDeliveryPage />} />
           </Route>
-          <Route path={ROUTES.DELIVERY_ACTIVE_ORDER} element={<DeliveryActiveOrderMobilePage />} />
+          <Route path={ROUTES.DELIVERY_ACTIVE_ORDER} element={<ActiveOrderDeliveryMobilePage />} />
 
-          <Route path={ROUTES.DELIVERY_HISTORY} element={<DeliveryLayout />} />
+          {/*<Route path={ROUTES.DELIVERY_HISTORY} element={<DeliveryLayout />} />*/}
         </>
       ) : (
         <>

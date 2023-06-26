@@ -4,7 +4,7 @@ import { ModalUpdateUserInfo, SearchFilterBar, TableUsersLine } from 'components
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
 import { UserPartialType } from 'types'
-import { Pagination,Table } from 'UI'
+import { Pagination, Table } from 'UI'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
 const AdminEmployeesListPage: FC = () => {
@@ -41,9 +41,10 @@ const AdminEmployeesListPage: FC = () => {
         defaultValueInput={search || ''}
       />
       <Table tableMinWidth="660px" tableTitles={tableHeaders} isLoading={isFetching}>
-        {data?.data.map((users) => (
-          <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
-        ))}
+        {!isFetching &&
+          data?.data.map((users) => (
+            <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
+          ))}
       </Table>
       {data && data.totalCount > 10 && (
         <Pagination

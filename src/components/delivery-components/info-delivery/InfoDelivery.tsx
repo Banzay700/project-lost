@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren } from 'react'
-import { InfoDeliveryWrapper } from './InfoDelivery.styled'
 import { Stack, Typography } from '@mui/material'
 import { InfoTag } from 'UI'
 import { Icon } from 'assets'
+import { InfoDeliveryWrapper } from './InfoDelivery.styled'
 
 interface InfoDeliveryProps extends PropsWithChildren {
   clientName: string

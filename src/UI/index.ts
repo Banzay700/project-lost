@@ -24,6 +24,8 @@ export {
   ColumnText,
   ColumnInfoChip,
   ColumnCollapseReservation,
+  ColumnInfoTag,
+  ColumnPhoneRedirect,
 } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'

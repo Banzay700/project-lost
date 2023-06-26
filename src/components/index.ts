@@ -54,6 +54,7 @@ export {
   TableBillsLine,
   TableReservationLine,
   TableDeliveryLine,
+  TableOrderDeliveryLine,
 } from './table-lines'
 export { Watch } from './watch'
 export {
@@ -64,4 +65,7 @@ export {
   OrderDetailList,
   TotalPriceInfo,
   DeliveryWrapper,
+  ContentRouteDeliveryMobile,
+  OrderLayout,
+  SidebarDeliveryInfo,
 } from './delivery-components'
