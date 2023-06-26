@@ -12,7 +12,7 @@ const WaiterLayout: FC = () => {
 
   return (
     <>
-      <Header dataLink={navData} />
+      <Header dataLink={navData} routeLogoStyle="Food" />
       <Stack direction="row" flex="1" height="calc(100% - 76px)">
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />

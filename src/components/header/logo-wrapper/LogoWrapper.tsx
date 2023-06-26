@@ -5,25 +5,26 @@ import { Stack } from '@mui/material'
 import { Button, Logo } from 'UI'
 import { Icon } from 'assets'
 import { UserType } from 'types'
-import { ROUTES } from 'routes/routes.utils'
-import { useOrderReducer } from 'hooks/useOrderReducer.hook'
+import { useOrderReducer, useRootLocationPath } from 'hooks'
+import { ROUTES } from 'routes'
 
 interface LogoWrapperProps extends UserType {
-  route?: string
+  routeLogoStyle?: string
 }
 
-const LogoWrapper: FC<LogoWrapperProps> = ({ role, route }) => {
+const LogoWrapper: FC<LogoWrapperProps> = ({ role, routeLogoStyle }) => {
   const navigate = useNavigate()
   const { clearNewOrderState } = useOrderReducer()
+  const { isAdminLocation } = useRootLocationPath()
 
   const handleGoToAdminPanel = () => {
     clearNewOrderState()
-    navigate(ROUTES.ADMIN_PANEL)
+    navigate('/admin')
   }
 
   return (
     <Stack alignItems="center" direction="row" spacing={4.8}>
-      {role === 'Admin' && (
+      {role === 'Admin' && !isAdminLocation && (
         <Button
           variant="outlined"
           size="medium"
@@ -32,7 +33,7 @@ const LogoWrapper: FC<LogoWrapperProps> = ({ role, route }) => {
           onClick={handleGoToAdminPanel}
         />
       )}
-      <Logo link="/home" route={route} />
+      <Logo link={ROUTES.HOME} routeLogoStyle={routeLogoStyle} />
     </Stack>
   )
 }

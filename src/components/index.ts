@@ -23,7 +23,7 @@ export {
   LoginForm,
 } from './form-componets'
 
-export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
+export { SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
 export {
   InputImage,
@@ -64,8 +64,9 @@ export {
   InfoDelivery,
   OrderDetailList,
   TotalPriceInfo,
-  DeliveryWrapper,
   ContentRouteDeliveryMobile,
   OrderLayout,
   SidebarDeliveryInfo,
 } from './delivery-components'
+
+export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'

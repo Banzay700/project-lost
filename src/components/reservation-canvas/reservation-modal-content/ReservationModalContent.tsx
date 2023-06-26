@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 import { ModalContentPopup } from 'UI'
-import { ROUTES } from 'routes'
+import { ROUTES_WAITER } from 'routes'
 import { ReservationCanvasType } from 'types'
 import { useLazyGetTablesCanvasQuery, useUpdateReservationMutation } from 'store/api'
 import { prepareReservationData } from './reservationModalContent.utils'
@@ -23,7 +23,7 @@ const ReservationModalContent: FC<ReservationModalContentProps> = (props) => {
 
   const handleOpenOrder = () => {
     updateReservation({ ...reservation, status: 'done' })
-    navigate(`/${ROUTES.DISHES}`)
+    navigate(`/${ROUTES_WAITER.DISHES}`)
   }
 
   const handleCancelReservation = (e: SyntheticEvent) => {

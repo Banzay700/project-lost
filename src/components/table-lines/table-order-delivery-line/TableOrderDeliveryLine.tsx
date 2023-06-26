@@ -35,7 +35,6 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
       }}>
       <ColumnText title={clientName} textFontWeight={600} />
       <ColumnPhoneRedirect title={phoneNumber} textFontWeight={400} />
-      {/*<ColumnText title={phoneNumber} textFontWeight={400} />*/}
       <ColumnText title={deliveryAddress} textFontWeight={400} />
 
       <ColumnInfoTag {...status} />

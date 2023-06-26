@@ -1,24 +1,34 @@
 export const ROUTES = {
   HOME: '/',
+  PROFILE: 'profile',
+}
+
+export const ROUTES_WAITER = {
   DISHES: 'home',
   DISHES_CATEGORY: ':category',
   ORDERS: 'orders',
   BILLS: 'bills',
   RESERVATION: 'reservation',
-  LOGIN: 'login',
-  PROFILE: 'profile',
-  ADMIN_PANEL: 'admin',
-  ADMIN_STATISTICS: 'statistics',
-  ADMIN_STATISTICS_CATEGORY: ':statistics',
-  ADMIN_RESTAURANT: 'restaurant',
-  ADMIN_RESTAURANT_CATEGORY: ':restaurant',
-  ADMIN_EMPLOYEES: 'employees',
-  ADMIN_EMPLOYEES_CATEGORY: ':employees',
-  ADMIN_SETTING: 'settings',
+}
+
+export const ROUTES_ADMIN = {
+  DASHBOARD: 'admin',
+  STATISTICS: 'statistics',
+  STATISTICS_CATEGORY: ':statistics',
+  RESTAURANT: 'restaurant',
+  RESTAURANT_CATEGORY: ':restaurant',
+  EMPLOYEES: 'employees',
+  EMPLOYEES_CATEGORY: ':employees',
+  SETTING: 'settings',
+}
+
+export const ROUTES_DELIVERY = {
   DELIVERY: 'delivery',
-  DELIVERY_HOME: '/delivery',
-  DELIVERY_CURRENT_ORDER: '/delivery/:currentOrder',
-  DELIVERY_ORDERS: '/active-delivery',
-  DELIVERY_ACTIVE_ORDER: '/active-delivery/:activeOrder',
-  DELIVERY_HISTORY: '/history',
+  CURRENT_ORDER: '/delivery/:currentOrder',
+  ORDERS: 'active-delivery',
+  ACTIVE_ORDER: '/active-delivery/:activeOrder',
+}
+
+export const ROUTES_NOT_AUTH = {
+  LOGIN: 'login',
 }

@@ -1,18 +1,16 @@
-import { Box, Stack } from '@mui/material'
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { HeaderAdmin, SidebarLeftAdmin } from 'components'
+import { AdaptiveHeaderWrapper, Header, SidebarLeftAdmin } from 'components'
+import { navLink } from './adminLayout.utils'
 
 const AdminLayout: FC = () => {
   return (
     <>
-      <Box height="76px">
-        <HeaderAdmin />
-      </Box>
-      <Stack direction="row" height="calc(100% - 76px)">
+      <Header routeLogoStyle="Dashboard" dataLink={navLink} />
+      <AdaptiveHeaderWrapper direction="row">
         <SidebarLeftAdmin />
         <Outlet />
-      </Stack>
+      </AdaptiveHeaderWrapper>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
-import { DeliveryWrapper, HeaderActionMobile, Header } from 'components'
+import { HeaderActionMobile, Header, AdaptiveHeaderWrapper } from 'components'
 
 interface OrderLayoutProps extends PropsWithChildren {
   titleHeader: string
@@ -8,10 +8,10 @@ interface OrderLayoutProps extends PropsWithChildren {
 const OrderLayout: FC<OrderLayoutProps> = ({ titleHeader, children }) => {
   return (
     <>
-      <Header route="Delivery" withoutLink>
+      <Header routeLogoStyle="Delivery" withoutLink>
         <HeaderActionMobile label={titleHeader} />
       </Header>
-      <DeliveryWrapper>{children}</DeliveryWrapper>
+      <AdaptiveHeaderWrapper>{children}</AdaptiveHeaderWrapper>
     </>
   )
 }

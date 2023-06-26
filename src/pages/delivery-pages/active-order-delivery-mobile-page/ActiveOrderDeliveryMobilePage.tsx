@@ -6,7 +6,7 @@ import {
   InfoDelivery,
   OrderDetailList,
   TotalPriceInfo,
-  DeliveryWrapper,
+  AdaptiveHeaderWrapper,
 } from 'components'
 import { Button } from 'UI'
 import { OrderDetailsItemType } from 'types'
@@ -63,10 +63,10 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
 
   return (
     <>
-      <Header route="Delivery" withoutLink>
+      <Header routeLogoStyle="Delivery" withoutLink>
         <HeaderActionMobile label="Active Order" />
       </Header>
-      <DeliveryWrapper>
+      <AdaptiveHeaderWrapper>
         <InfoDelivery
           deliveryAddress="test"
           orderNumber="test"
@@ -80,7 +80,7 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
         <ActionsButton doubleAction titleButton="Done" onSubmit={() => {}}>
           <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
         </ActionsButton>
-      </DeliveryWrapper>
+      </AdaptiveHeaderWrapper>
     </>
   )
 }

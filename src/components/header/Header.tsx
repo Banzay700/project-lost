@@ -9,16 +9,16 @@ import { LogoWrapper } from './logo-wrapper'
 
 interface HeaderProps extends PropsWithChildren {
   dataLink?: LinkItemType[]
-  route?: string
+  routeLogoStyle?: string
   withoutLink?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ dataLink, withoutLink, route, children }) => {
+const Header: FC<HeaderProps> = ({ dataLink, withoutLink, routeLogoStyle, children }) => {
   const { userState } = useUserReducer()
 
   return (
     <HeaderWrapper>
-      <LogoWrapper {...userState} route={route} />
+      <LogoWrapper {...userState} routeLogoStyle={routeLogoStyle} />
       {children}
       {dataLink && !withoutLink && <Navbar direction="row" data={dataLink} />}
       <Watch dataUser={userState} />

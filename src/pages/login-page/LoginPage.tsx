@@ -12,7 +12,7 @@ const LoginPage: FC = () => {
   }
 
   if (isSuccess) {
-    return <Navigate to="/home" />
+    return <Navigate to="/" />
   }
 
   return <Login onSubmit={handleSubmitLogin} isError={isError} error={error} />

@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { DeliveryWrapper, Header, SidebarDeliveryInfo } from 'components'
-import { navData } from './deliveryLayout.utils'
+import { AdaptiveHeaderWrapper, Header, SidebarDeliveryInfo } from 'components'
 import { useScreenTracking } from 'hooks/useScreenTracking'
 import { OrderDetailsItemType } from 'types/ComponentsItemType'
 import { Stack } from '@mui/material'
+import { navData } from './deliveryLayout.utils'
+
 const mok2: OrderDetailsItemType[] = [
   {
     id: 'test',
@@ -54,13 +55,13 @@ const DeliveryLayout: FC = () => {
 
   return (
     <>
-      <Header dataLink={navData} route="Delivery" />
-      <DeliveryWrapper direction="row">
+      <Header dataLink={navData} routeLogoStyle="Delivery" />
+      <AdaptiveHeaderWrapper direction="row">
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />
         </Stack>
         {!isMobileScreen && <SidebarDeliveryInfo orderDetail={mok2} orderNumber={12312} />}
-      </DeliveryWrapper>
+      </AdaptiveHeaderWrapper>
     </>
   )
 }

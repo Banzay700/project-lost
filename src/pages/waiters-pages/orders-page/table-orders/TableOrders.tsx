@@ -4,7 +4,7 @@ import { IndicatorFilterBar, TableOrdersLine } from 'components'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
 import { useActiveTableLine, useOrderReducer, useParamsSearchFilter } from 'hooks'
 
-import { ROUTES } from 'routes'
+import { ROUTES_WAITER } from 'routes'
 import { Pagination, Table } from 'UI'
 import { OrderType } from 'types'
 import {
@@ -35,7 +35,7 @@ const TableOrders: FC = () => {
     const dataOrder = prepareBillsData(id, data?.data)
     if (dataOrder) {
       createBills(dataOrder)
-      navigate(`/${ROUTES.BILLS}`)
+      navigate(`/${ROUTES_WAITER.BILLS}`)
       clearNewOrderState()
     }
   }

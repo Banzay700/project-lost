@@ -25,10 +25,7 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({ orderDetail, orderN
           <OrderSummaryWrapper tax={TAX} total={10} />
           <Stack direction="row" spacing={2.5}>
             <Button variant="contained" size="medium" type="submit" fullWidth onClick={() => {}}>
-              Update Order
-            </Button>
-            <Button variant="outlined" size="medium" type="submit" fullWidth onClick={() => {}}>
-              Cancel Order
+              Take delivery
             </Button>
           </Stack>
         </SidebarDeliveryActionsWrapper>

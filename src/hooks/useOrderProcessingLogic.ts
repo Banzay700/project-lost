@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { useOrderReducer } from 'hooks'
-import { ROUTES } from 'routes'
+import { ROUTES_WAITER } from 'routes'
 import { convertOrderData } from 'utils'
 import {
   useCreateOrderMutation,
@@ -25,7 +25,7 @@ export const useOrderProcessingLogic = () => {
   const createDeliveryOrder = async () => {
     if (isUpdateStatus) {
       updateOrder(orderDB)
-      navigate(ROUTES.ORDERS)
+      navigate(ROUTES_WAITER.ORDERS)
     } else {
       const req = await createOrder(orderDB)
       if ('data' in req) {
@@ -38,10 +38,10 @@ export const useOrderProcessingLogic = () => {
   const createTakeAwayOrder = async () => {
     if (isUpdateStatus) {
       updateOrder(orderDB)
-      navigate(ROUTES.ORDERS)
+      navigate(ROUTES_WAITER.ORDERS)
     } else {
       createOrder(orderDB)
-      navigate(ROUTES.ORDERS)
+      navigate(ROUTES_WAITER.ORDERS)
     }
   }
 
@@ -52,12 +52,12 @@ export const useOrderProcessingLogic = () => {
       case 'pre-order':
         createOrder(orderDB)
         updateTableStatus(activeOrder.table)
-        navigate(ROUTES.ORDERS)
+        navigate(ROUTES_WAITER.ORDERS)
         break
 
       case 'busy':
         updateOrder(orderDB)
-        navigate(ROUTES.ORDERS)
+        navigate(ROUTES_WAITER.ORDERS)
         break
 
       default:

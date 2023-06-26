@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { ColumnPhoneRedirectWrapper } from './ColumnPhoneRedirect.styled'
 import { TableCell, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 

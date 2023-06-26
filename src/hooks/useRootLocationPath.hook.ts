@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { ROUTES } from 'routes'
+import { ROUTES_WAITER, ROUTES, ROUTES_NOT_AUTH, ROUTES_DELIVERY, ROUTES_ADMIN } from 'routes'
 
 type RootLocationPathType = {
   location: string
@@ -12,20 +12,23 @@ type RootLocationPathType = {
   isProfileLocation: boolean
   isLoginLocation: boolean
   isDeliveryHomeLocation: boolean
+  isAdminLocation: boolean
 }
 
 export const useRootLocationPath = (): RootLocationPathType => {
   const { pathname } = useLocation()
   const location = pathname.split('/')[1]
   const isRootLocation = !location
-  const isHomeLocation = location === ROUTES.DISHES
-  const isOrdersLocation = location === ROUTES.ORDERS
-  const isBillsLocation = location === ROUTES.BILLS
-  const isReservationLocation = location === ROUTES.RESERVATION
+  const isHomeLocation = location === ROUTES_WAITER.DISHES
+  const isOrdersLocation = location === ROUTES_WAITER.ORDERS
+  const isBillsLocation = location === ROUTES_WAITER.BILLS
+  const isReservationLocation = location === ROUTES_WAITER.RESERVATION
   const isProfileLocation = location === ROUTES.PROFILE
-  const isLoginLocation = location === ROUTES.LOGIN
-  const isDeliveryHomeLocation = location === ROUTES.DELIVERY_HOME
+  const isLoginLocation = location === ROUTES_NOT_AUTH.LOGIN
+  const isDeliveryHomeLocation = location === ROUTES_DELIVERY.DELIVERY
+  const isAdminLocation = location === ROUTES_ADMIN.DASHBOARD
 
+  console.log(isAdminLocation)
   return {
     location,
     pathname,
@@ -37,5 +40,6 @@ export const useRootLocationPath = (): RootLocationPathType => {
     isProfileLocation,
     isLoginLocation,
     isDeliveryHomeLocation,
+    isAdminLocation,
   }
 }

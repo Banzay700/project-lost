@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { ContentRouteDeliveryMobile, IndicatorsGroup } from 'components'
 import { RadioButtonCardContentItemType } from 'types'
-import { deliveryIndicatorItems } from './OrdersDeliveryPage.utils'
 import { PageActionsBar } from 'UI/page-actions-bar'
 import { useScreenTracking } from 'hooks/useScreenTracking'
+import { deliveryIndicatorItems } from './OrdersDeliveryPage.utils'
 
 const mok: RadioButtonCardContentItemType[] = [
   {
-    value: 'test',
+    id: 'test',
     clientName: 'Artem',
     deliveryAddress: 'tes2t2, test3',
     orderNumber: 123123,
@@ -15,7 +15,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test2',
+    id: 'test2',
     clientName: 'Artem2',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,
@@ -23,7 +23,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test3',
+    id: 'test3',
     clientName: 'Artem3',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,
@@ -31,7 +31,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test4',
+    id: 'test4',
     clientName: 'Artem3',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,
@@ -39,7 +39,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test5',
+    id: 'test5',
     clientName: 'Artem3',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,
@@ -47,7 +47,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test6',
+    id: 'test6',
     clientName: 'Artem3',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,
@@ -55,7 +55,7 @@ const mok: RadioButtonCardContentItemType[] = [
     timeToReady: '14min',
   },
   {
-    value: 'test7',
+    id: 'test7',
     clientName: 'Artem3',
     deliveryAddress: 'test2, test3',
     orderNumber: 123123,

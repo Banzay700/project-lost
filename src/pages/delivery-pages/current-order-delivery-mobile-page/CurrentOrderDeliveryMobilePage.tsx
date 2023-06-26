@@ -58,6 +58,7 @@ const mok: OrderDetailsItemType[] = [
 
 const CurrentOrderDeliveryMobilePage: FC = () => {
   const { currentOrder } = useParams()
+
   return (
     <OrderLayout titleHeader="Current order">
       <InfoDelivery deliveryAddress="test" orderNumber="test" clientName="test" readyToTime="test">
