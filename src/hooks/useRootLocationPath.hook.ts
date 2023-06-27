@@ -28,7 +28,6 @@ export const useRootLocationPath = (): RootLocationPathType => {
   const isDeliveryHomeLocation = location === ROUTES_DELIVERY.DELIVERY
   const isAdminLocation = location === ROUTES_ADMIN.DASHBOARD
 
-  console.log(isAdminLocation)
   return {
     location,
     pathname,
