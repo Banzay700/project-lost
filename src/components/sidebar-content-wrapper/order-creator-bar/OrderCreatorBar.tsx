@@ -11,7 +11,6 @@ import {
   useUpdateTableStatusMutation,
 } from 'store/api'
 
-import { formatDateTime } from 'utils'
 import { OrderCreatorForm } from './order-creator-form'
 import { toggleMenuValues, updateOrderState } from './orderCreatorBar.utils'
 
@@ -20,12 +19,14 @@ const OrderCreatorBar: FC = () => {
   const [isOpened, setIsOpened] = useState(false)
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [deliveryForm, setDeliveryForm] = useState<DeliveryFormType>()
+
   const { activeOrder, openNewOrder } = useOrderReducer()
   const { userState } = useUserReducer()
+  const { createDeliveryOrder, createDineInOrder, createTakeAwayOrder } = useOrderProcessingLogic()
+
   const [deleteOrder] = useDeleteOrderMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [createDelivery] = useCreateDeliveryMutation()
-  const { createDeliveryOrder, createDineInOrder, createTakeAwayOrder } = useOrderProcessingLogic()
 
   const handleFormSubmit = ({ orderType, table }: OrderCreatorFormReturnType) => {
     const orderInfo = updateOrderState({ orderType, table, user: userState.id })
@@ -38,8 +39,6 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleCreateOrder = async () => {
-    // await orderProcessing(setToggleValue)
-
     if (activeOrder.orderType === 'delivery') {
       await createDeliveryOrder()
       setIsOpened(true)
