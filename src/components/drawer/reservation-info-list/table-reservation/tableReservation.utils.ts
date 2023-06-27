@@ -1,1 +1,1 @@
-export const tableTitleReservation: string[] = ['CUSTOMER NAME', 'TIME', 'TABLE', 'STATUS']
+export const tableTitleReservation: string[] = ['Customer name', 'Time', 'Table', 'Status']

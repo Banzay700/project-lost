@@ -12,14 +12,13 @@ import {
 } from 'store/api'
 
 import { OrderCreatorForm } from './order-creator-form'
-import { toggleMenuValues, updateOrderState } from './orderCreatorBar.utils'
+import { toggleMenuValues, updateOrderState, prepareDeliveryInfo } from './orderCreatorBar.utils'
 
 const OrderCreatorBar: FC = () => {
   const [toggleValue, setToggleValue] = useState<string>('orderInfo')
   const [isOpened, setIsOpened] = useState(false)
   const [buttonDisabled, setButtonDisabled] = useState(true)
-  const [deliveryForm, setDeliveryForm] = useState<DeliveryFormType>()
-
+  const [deliveryFormInfo, setDeliveryFormInfo] = useState<DeliveryFormType>()
   const { activeOrder, openNewOrder } = useOrderReducer()
   const { userState } = useUserReducer()
   const { createDeliveryOrder, createDineInOrder, createTakeAwayOrder } = useOrderProcessingLogic()
@@ -67,13 +66,15 @@ const OrderCreatorBar: FC = () => {
   }
 
   const handleOnSubmit = (value: DeliveryFormType) => {
-    setDeliveryForm(value)
+    setDeliveryFormInfo(value)
     setIsOpened(false)
   }
 
   const handleOnConfirm = () => {
-    if (activeOrder.id && deliveryForm) {
-      createDelivery({ ...deliveryForm, order: activeOrder.id })
+    if (activeOrder.id && deliveryFormInfo) {
+      const deliveryInfo = prepareDeliveryInfo(activeOrder.id, deliveryFormInfo)
+      console.log(deliveryInfo)
+      createDelivery(deliveryInfo)
     }
     setToggleValue('orderInfo')
     setButtonDisabled(true)
@@ -92,7 +93,7 @@ const OrderCreatorBar: FC = () => {
         {toggleValue === 'dishes' && <OrderDetailsList onClick={handleCreateOrder} />}
       </Box>
       <DeliveryModals
-        deliveryForm={deliveryForm}
+        deliveryFormInfo={deliveryFormInfo}
         activeOrder={activeOrder}
         onSubmit={handleOnSubmit}
         onConfirm={handleOnConfirm}

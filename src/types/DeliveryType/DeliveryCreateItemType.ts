@@ -1,5 +1,7 @@
 import { DeliveryFormType } from './DeliveryFormType'
 
-export type DeliveryCreateItemType = {
+export type DeliveryCreateItemType = Omit<DeliveryFormType, 'time'> & {
   order: string
-} & DeliveryFormType
+  status?: string
+  time: number
+}

@@ -6,7 +6,7 @@ import { DeliveryPayment } from './delivery-payment'
 import { DeliveryConfirmation } from './delivery-confirmation'
 
 interface DeliveryModalsProps {
-  deliveryForm: DeliveryFormType | undefined
+  deliveryFormInfo: DeliveryFormType | undefined
   activeOrder: OrderActiveType
   isOpened: boolean
   onClose: () => void
@@ -15,7 +15,7 @@ interface DeliveryModalsProps {
 }
 
 const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
-  const { deliveryForm, isOpened, activeOrder, onClose, onSubmit, onConfirm } = props
+  const { deliveryFormInfo, isOpened, activeOrder, onClose, onSubmit, onConfirm } = props
   const [isOpenedConfirmation, setIsOpenedConfirmation] = useState(false)
   const handleCloseModal = () => {
     onClose()
@@ -50,10 +50,10 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
         onClose={handleCloseModal}
         onSubmit={handleOnConfirmModal}
         actionAdditionalComponent={
-          <DeliveryPayment paymentMethod={deliveryForm?.clientInfo.paymentMethod} />
+          <DeliveryPayment paymentMethod={deliveryFormInfo?.clientInfo.paymentMethod} />
         }
         removeBgClosed>
-        <DeliveryConfirmation data={activeOrder} deliveryForm={deliveryForm} />
+        <DeliveryConfirmation data={activeOrder} deliveryFormInfo={deliveryFormInfo} />
       </Modal>
     </>
   )

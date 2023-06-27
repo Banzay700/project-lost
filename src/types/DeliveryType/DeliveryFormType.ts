@@ -6,11 +6,10 @@ export type DeliveryFormType = {
     phoneNumber: string
     paymentMethod: string
     description?: string
-
-    address: {
-      city?: string
-      street: string
-      apartment?: string
-    }
+  }
+  address: {
+    street: string
+    latitude: string
+    longitude: string
   }
 }

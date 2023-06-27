@@ -4,6 +4,7 @@ import { Input, SelectInput } from 'UI/index'
 import { DeliveryFormType } from 'types/index'
 import { initialValues, validationSchema, selectMenuItems } from './DeliveryForm.utils'
 import { DeliveryFormContainer } from './DeliveryForm.styled'
+import Autocomplete from '../../../autocomplete/Autocomplete'
 
 interface DeliveryFormProps {
   onSubmit: (value: DeliveryFormType) => void
@@ -17,18 +18,21 @@ const DeliveryForm: FC<DeliveryFormProps> = ({ onSubmit, linkageToForm }) => {
     <Formik {...formikConfig}>
       <DeliveryFormContainer id={linkageToForm}>
         <Input placeholder="Name" name="clientInfo.name" label="Name" />
-        <Input placeholder="City" name="clientInfo.address.city" label="City" />
+        <Autocomplete placeholder="Street" name="address.street" label="Street" />
         <Input placeholder="Phone Number" name="clientInfo.phoneNumber" label="Phone Number" />
-        <Input placeholder="Street" name="clientInfo.address.street" label="Street" />
+        <Input
+          placeholder="Delivery Time in minuts"
+          name="time"
+          label="Delivery Time"
+          type="number"
+        />
         <Input placeholder="Email" name="clientInfo.email" label="Email" />
-        <Input placeholder="Apartment" name="clientInfo.address.apartment" label="Apartment" />
-        <Input placeholder="Description" name="clientInfo.description" label="Description" />
-        <Input placeholder="Delivery Time" name="time" label="Delivery Time" />
         <SelectInput
           name="clientInfo.paymentMethod"
           label="Payment Method"
           data={selectMenuItems}
         />
+        <Input placeholder="Description" name="clientInfo.description" label="Description" />
       </DeliveryFormContainer>
     </Formik>
   )
