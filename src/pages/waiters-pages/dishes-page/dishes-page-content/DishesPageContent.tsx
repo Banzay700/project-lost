@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
 import { DishesList, SearchFilterBar } from 'components'
@@ -7,6 +7,7 @@ import { useGetDishesQuery, useGetSubCategoriesInCategoryQuery } from 'store/api
 import { firstLetterUpperCase, correctionName } from 'utils'
 import { FilterMenuItemType } from 'types'
 import { useParamsSearchFilter } from 'hooks'
+import { Pagination } from 'UI'
 
 const DishesPageContent: FC = () => {
   const { category } = useParams()
@@ -49,18 +50,14 @@ const DishesPageContent: FC = () => {
         defaultValueInput={search || ''}
       />
       <DishesList dishes={dishes?.data} isLoading={isFetching} />
-      <Stack sx={{ alignItems: 'flex-end', marginRight: '30px', p: { md: '20px', xs: '10px' } }}>
-        {dishes && (
-          <Pagination
-            count={Math.ceil(dishes.totalCount / 12)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {dishes && dishes.totalCount > 12 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(dishes.totalCount / 12)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </Stack>
   )
 }

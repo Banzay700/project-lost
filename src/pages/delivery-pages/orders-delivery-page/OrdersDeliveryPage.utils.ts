@@ -1,4 +1,4 @@
-import { IndicatorItemType } from 'types/ComponentsItemType'
+import { IndicatorItemType } from 'types'
 
 export const deliveryIndicatorItems: IndicatorItemType[] = [
   { label: 'Priority', type: 'red' },

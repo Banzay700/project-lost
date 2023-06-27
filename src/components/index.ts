@@ -23,7 +23,7 @@ export {
   LoginForm,
 } from './form-componets'
 
-export { HeaderAdmin, SidebarLeftAdmin, SidebarTabsList } from './admin-components'
+export { SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
 export {
   InputImage,
@@ -54,6 +54,19 @@ export {
   TableBillsLine,
   TableReservationLine,
   TableDeliveryLine,
+  TableOrderDeliveryLine,
 } from './table-lines'
 export { Watch } from './watch'
-export { RadioGroupCard, ActionsButton } from './delivery-components'
+export {
+  RadioGroupCard,
+  ActionsButton,
+  HeaderActionMobile,
+  InfoDelivery,
+  OrderDetailList,
+  TotalPriceInfo,
+  ContentRouteDeliveryMobile,
+  OrderLayout,
+  SidebarDeliveryInfo,
+} from './delivery-components'
+
+export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'

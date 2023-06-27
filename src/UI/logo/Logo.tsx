@@ -5,14 +5,14 @@ import { LogoWrapper } from './Logo.styled'
 
 interface LogoProps {
   link: string
-  route?: string
+  routeLogoStyle?: string
 }
 
-const Logo: FC<LogoProps> = ({ link, route }) => {
+const Logo: FC<LogoProps> = ({ link, routeLogoStyle }) => {
   return (
     <LogoWrapper to={link}>
       <LogoImg style={{ marginRight: '8px' }} />
-      <Typography>{route}</Typography>
+      <Typography>{routeLogoStyle}</Typography>
     </LogoWrapper>
   )
 }

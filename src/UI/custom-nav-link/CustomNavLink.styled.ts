@@ -74,6 +74,10 @@ const styleVariantButton = css`
 `
 
 const styleVariantNotTabs = css`
+  &:hover {
+    color: ${theme.palette.primary.main};
+  }
+
   &.active {
     color: ${theme.palette.primary.main};
   }

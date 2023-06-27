@@ -24,6 +24,8 @@ export {
   ColumnText,
   ColumnInfoChip,
   ColumnCollapseReservation,
+  ColumnInfoTag,
+  ColumnPhoneRedirect,
 } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'
@@ -37,4 +39,5 @@ export { ErrorContent } from './error-content'
 export { Notify } from './notification-inform'
 export { Table } from './table'
 export { InfoTag } from './info-tag'
-export { PhoneNumberInput } from './input-phone-number'
+export { PhoneNumberInput } from './input-phonenumber'
+export { Pagination } from './pagination'

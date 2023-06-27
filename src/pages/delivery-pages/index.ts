@@ -1,2 +1,5 @@
 export { DeliveryLayout } from './delivery-layout'
-export { DeliveryHomePage } from './delivery-home-page'
+export { HomeDeliveryPage } from './home-delivery-page'
+export { CurrentOrderDeliveryMobilePage } from './current-order-delivery-mobile-page'
+export { OrdersDeliveryPage } from './orders-delivery-page'
+export { ActiveOrderDeliveryMobilePage } from './active-order-delivery-mobile-page'

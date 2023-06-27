@@ -17,8 +17,8 @@ const RadioGroupCard: FC<RadioGroupCardProps> = ({ isActiveCard, cardData, onCha
     <RadioGroupCardWrapper ref={refScroll}>
       {cardData?.map((item) => (
         <RadioButtonCard
-          key={item.value}
-          value={item.value}
+          key={item.id}
+          id={item.id}
           status={item.status}
           orderNumber={item.orderNumber}
           clientName={item.clientName}

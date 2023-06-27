@@ -5,4 +5,5 @@ export const ActionsButtonWrapper = styled(Stack)(() => ({
   padding: '20px',
   boxShadow: '0px -10px 24px 0px rgba(228, 228, 228, 0.5)',
   alignItems: 'center',
+  gap: '10px',
 }))

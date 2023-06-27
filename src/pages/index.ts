@@ -12,4 +12,10 @@ export {
   AdminRestaurantPage,
 } from './admin-pages'
 
-export { DeliveryLayout, DeliveryHomePage } from './delivery-pages'
+export {
+  DeliveryLayout,
+  HomeDeliveryPage,
+  CurrentOrderDeliveryMobilePage,
+  OrdersDeliveryPage,
+  ActiveOrderDeliveryMobilePage,
+} from './delivery-pages'

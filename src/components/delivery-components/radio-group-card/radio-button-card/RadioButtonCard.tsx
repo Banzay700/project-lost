@@ -6,20 +6,12 @@ import { RadioButtonCardDeliveryItemType } from 'types'
 import { RadioButtonCardWrapper, RadioButtonCardRadio } from './RadioButtonCard.styled'
 
 const RadioButtonCard: FC<RadioButtonCardDeliveryItemType> = (props) => {
-  const {
-    value,
-    isChecked,
-    orderNumber,
-    clientName,
-    deliveryAddress,
-    timeToReady,
-    status,
-    onChange,
-  } = props
+  const { id, isChecked, orderNumber, clientName, deliveryAddress, timeToReady, status, onChange } =
+    props
 
-  const checked = isChecked === value
+  const checked = isChecked === id
   const handleChangeRadio = () => {
-    onChange(value)
+    onChange(id)
   }
   return (
     <RadioButtonCardWrapper onClick={handleChangeRadio} isChecked={checked}>

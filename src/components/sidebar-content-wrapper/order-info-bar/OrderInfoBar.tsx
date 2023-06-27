@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ToggleMenu } from 'UI'
-import { ROUTES } from 'routes'
+import { ROUTES_WAITER } from 'routes'
 import { useOrderReducer } from 'hooks'
 import { ORDER_TOGGLE_MENU_VALUES } from 'utils'
 import { OrderInfoList } from './order-info-list'
@@ -15,7 +15,7 @@ const OrderInfoBar: FC = () => {
 
   const handleUpdateOrder = () => {
     switchOrderStatus('update')
-    navigate(ROUTES.DISHES)
+    navigate(ROUTES_WAITER.DISHES)
   }
 
   const handleToggleChange = (value: string) => {

@@ -41,11 +41,6 @@ export const useParamsSearchFilter = (params: string) => {
     }
   }
 
-  // useEffect(() => {
-  //   searchParams.set('page', page || '1')
-  //   navigate(`?${searchParams.toString()}`)
-  // }, [search, type]) // eslint-disable-line react-hooks/exhaustive-deps
-
   return {
     params: type || undefined,
     search: search || undefined,

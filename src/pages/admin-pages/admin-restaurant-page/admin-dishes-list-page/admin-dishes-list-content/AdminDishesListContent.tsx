@@ -1,9 +1,8 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
 import { SearchFilterBar, TableDishLine } from 'components'
 import { useParamsSearchFilter } from 'hooks'
 import { useGetCategoriesQuery, useGetDishesQuery } from 'store/api'
-import { Table } from 'UI'
+import { Table, Pagination } from 'UI'
 import { FilterMenuItemType } from 'types'
 import { correctionName } from 'utils'
 import { dishesTableTitles } from './adminDishesListContent.utils'
@@ -47,34 +46,24 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
       />
 
       <Table tableMinWidth="660px" isLoading={isFetching} tableTitles={dishesTableTitles}>
-        {data?.data.map((dish) => (
-          <TableDishLine
-            key={dish.id}
-            dish={dish}
-            onClickAction={onClickAction}
-            onClickLine={onClickLine}
-          />
-        ))}
+        {!isFetching &&
+          data?.data.map((dish) => (
+            <TableDishLine
+              key={dish.id}
+              dish={dish}
+              onClickAction={onClickAction}
+              onClickLine={onClickLine}
+            />
+          ))}
       </Table>
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </>
   )
 }

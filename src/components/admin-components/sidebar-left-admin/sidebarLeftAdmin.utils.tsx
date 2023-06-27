@@ -9,5 +9,4 @@ export const sidebarLeftAdminMenu: SidebarItemType[] = [
   },
   { id: 'restaurant', icon: <Icon.DineIn width={35} height={35} />, title: 'Restaurant' },
   { id: 'employees', icon: <Icon.Users />, title: 'Employees' },
-  { id: 'settings', icon: <Icon.Setting />, title: 'Settings' },
 ]

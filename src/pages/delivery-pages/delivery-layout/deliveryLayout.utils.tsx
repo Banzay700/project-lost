@@ -1,5 +1,5 @@
-import { Icon } from 'assets/index'
-import { LinkItemType } from 'types/ComponentsItemType'
+import { Icon } from 'assets'
+import { LinkItemType } from 'types'
 
 export const navData: LinkItemType[] = [
   {

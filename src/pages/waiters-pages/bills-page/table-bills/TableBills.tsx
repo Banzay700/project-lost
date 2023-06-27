@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
-
 import { IndicatorFilterBar, TableBillsLine } from 'components'
 import { useGetAllBillsQuery, useLazyGetOneBillQuery } from 'store/api'
+import { Pagination, Table } from 'UI'
 import { useActiveTableLine, useBillsReducer, useParamsSearchFilter } from 'hooks'
-import { Table } from 'UI'
 import { BillsType } from 'types'
 import { tableFilterMenuItem, tableIndicatorBills, tableTitleBills } from './tableBills.utils'
 
@@ -42,36 +40,26 @@ const TableBills: FC = () => {
         onChange={handleFilterCategory}
       />
       <Table isLoading={isFetching} tableTitles={tableTitleBills} tableMinWidth="750px">
-        {data?.data.map((el) => (
-          <TableBillsLine
-            element={el}
-            key={el?.id}
-            active={active}
-            setActive={setActive}
-            onClickAction={handleSendBillsData}
-            onClickLine={handleLineBillsData}
-          />
-        ))}
+        {!isFetching &&
+          data?.data.map((el) => (
+            <TableBillsLine
+              element={el}
+              key={el?.id}
+              active={active}
+              setActive={setActive}
+              onClickAction={handleSendBillsData}
+              onClickLine={handleLineBillsData}
+            />
+          ))}
       </Table>
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </>
   )
 }

@@ -14,3 +14,5 @@ export type {
   RadioButtonCardDeliveryItemType,
   RadioButtonCardContentItemType,
 } from './RadioButtonCardDeliveryItemType'
+export type { OrderDetailsItemType } from './OrderDetailsItemType'
+export type { InfoDeliveryItemType } from './InfoDeliveryItemType'

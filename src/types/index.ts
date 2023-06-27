@@ -72,6 +72,8 @@ export type {
   IndicatorItemType,
   RadioButtonCardDeliveryItemType,
   RadioButtonCardContentItemType,
+  OrderDetailsItemType,
+  InfoDeliveryItemType,
 } from './ComponentsItemType'
 
 export type {

@@ -1,12 +1,11 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Pagination, Stack } from '@mui/material'
 import { IndicatorFilterBar, TableOrdersLine } from 'components'
 import { useCreateBillMutation, useGetAllOrdersQuery, useLazyGetOrderQuery } from 'store/api'
 import { useActiveTableLine, useOrderReducer, useParamsSearchFilter } from 'hooks'
 
-import { ROUTES } from 'routes'
-import { Table } from 'UI'
+import { ROUTES_WAITER } from 'routes'
+import { Pagination, Table } from 'UI'
 import { OrderType } from 'types'
 import {
   prepareBillsData,
@@ -36,11 +35,10 @@ const TableOrders: FC = () => {
     const dataOrder = prepareBillsData(id, data?.data)
     if (dataOrder) {
       createBills(dataOrder)
-      navigate(`/${ROUTES.BILLS}`)
+      navigate(`/${ROUTES_WAITER.BILLS}`)
       clearNewOrderState()
     }
   }
-
   return (
     <>
       <IndicatorFilterBar
@@ -51,36 +49,26 @@ const TableOrders: FC = () => {
         onChange={handleFilterCategory}
       />
       <Table isLoading={isFetching} tableTitles={tableTitleOrder} tableMinWidth="660px">
-        {data?.data.map((el) => (
-          <TableOrdersLine
-            element={el}
-            key={el?.id}
-            active={active}
-            setActive={setActive}
-            onClickLine={handleLineWrapperClick}
-            onClickAction={handleSendOrder}
-          />
-        ))}
+        {!isFetching &&
+          data?.data.map((el) => (
+            <TableOrdersLine
+              element={el}
+              key={el?.id}
+              active={active}
+              setActive={setActive}
+              onClickLine={handleLineWrapperClick}
+              onClickAction={handleSendOrder}
+            />
+          ))}
       </Table>
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
     </>
   )
 }

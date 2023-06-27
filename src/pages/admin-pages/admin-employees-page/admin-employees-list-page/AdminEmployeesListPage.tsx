@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { Pagination, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { ModalUpdateUserInfo, SearchFilterBar, TableUsersLine } from 'components'
 import { useGetAllUsersQuery, useLazyGetUserByIDQuery, useUpdateUserMutation } from 'store/api'
 import { useIsModal, useParamsSearchFilter } from 'hooks'
-import { Table } from 'UI'
 import { UserPartialType } from 'types'
+import { Pagination, Table } from 'UI'
 import { filterItems, tableHeaders } from './adminEmployeesListPage.utils'
 
 const AdminEmployeesListPage: FC = () => {
@@ -41,29 +41,19 @@ const AdminEmployeesListPage: FC = () => {
         defaultValueInput={search || ''}
       />
       <Table tableMinWidth="660px" tableTitles={tableHeaders} isLoading={isFetching}>
-        {data?.data.map((users) => (
-          <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
-        ))}
+        {!isFetching &&
+          data?.data.map((users) => (
+            <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
+          ))}
       </Table>
-      <Stack
-        sx={{
-          height: 'fit-content',
-          alignItems: 'flex-end',
-          marginRight: '30px',
-          p: { md: '20px', xs: '10px' },
-          flex: 0,
-        }}>
-        {data && (
-          <Pagination
-            count={Math.ceil(data.totalCount / 10)}
-            variant="text"
-            shape="rounded"
-            color="primary"
-            onChange={handlePagination}
-            page={Number(page)}
-          />
-        )}
-      </Stack>
+      {data && data.totalCount > 10 && (
+        <Pagination
+          marginRight="30px"
+          count={Math.ceil(data.totalCount / 10)}
+          onChange={handlePagination}
+          page={Number(page)}
+        />
+      )}
       {user && (
         <ModalUpdateUserInfo
           title={`${user.firstName} ${user.secondName}`}
