@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import { Form, Formik, FormikHelpers } from 'formik'
-import { Stack } from '@mui/material'
 import { Input, Button } from 'UI'
 import { ButtonLoginReturnType, UserLoginRequestType } from 'types'
 import { DigitButtonsGroup } from 'components'
 import { initialValues, validationSchema } from './LoginForm.utils'
+import { FormWrapper } from './LoginForm.styled'
 
 interface InputPasswordProps {
   userId: string
@@ -47,13 +47,13 @@ const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
       onSubmit={handleFormSubmit}
       enableReinitialize>
       <Form>
-        <Stack spacing={8}>
+        <FormWrapper spacing={8}>
           <Input placeholder="Enter your PIN" name="password" type="password" outlined focus />
           <DigitButtonsGroup getValue={getPassword} />
           <Button variant="contained" size="medium" fullWidth>
             Login
           </Button>
-        </Stack>
+        </FormWrapper>
       </Form>
     </Formik>
   )
