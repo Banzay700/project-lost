@@ -1,4 +1,4 @@
-import { number, object, string } from 'yup'
+import { object, string } from 'yup'
 import { InputSelectItemType } from 'types/index'
 import { validationDelivery, validationUser } from 'utils/index'
 

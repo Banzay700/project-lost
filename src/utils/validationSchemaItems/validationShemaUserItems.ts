@@ -27,12 +27,8 @@ const email = (isRequired?: boolean) => {
 const password = (isRequired?: boolean) => {
   let schema = string()
     .matches(/^\S*$/, 'Password must not contain spaces')
-    // .matches(/\p{Lu}/u, 'Password must contain at least one uppercase letter')
-    // .matches(
-    //   /^(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]*$/,
-    //   'Password must contain at least one number and one special symbol',
-    // )
     .min(3, 'Too Short! Please enter no less than 3 symbols')
+    .max(15, 'Too Long! Please enter no more than 15 symbols')
 
   if (isRequired) {
     schema = schema.required('Password is required')
@@ -42,10 +38,10 @@ const password = (isRequired?: boolean) => {
 }
 
 const phoneNumber = (isRequired?: boolean) => {
-  let schema = string().matches(/^\+?[0-9]\d{8,19}$/, 'Invalid phone number')
-
+  let schema = string()
+  // .matches(/^\+?[0-9]\d{8,19}$/, 'Invalid phone number') TODO: add phone validation
   if (isRequired) {
-    schema = schema.required('Password is required')
+    schema = schema.required('Phone is required')
   }
 
   return schema
