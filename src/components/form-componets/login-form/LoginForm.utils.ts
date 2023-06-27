@@ -1,4 +1,5 @@
-import { object, string } from 'yup'
+import { object } from 'yup'
+import { validationUser } from 'utils'
 
 export const initialValues = {
   userId: '',
@@ -6,5 +7,5 @@ export const initialValues = {
 }
 
 export const validationSchema = object().shape({
-  password: string().required('Password is required'),
+  password: validationUser.password(true),
 })

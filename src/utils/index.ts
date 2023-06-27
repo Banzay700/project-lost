@@ -8,10 +8,11 @@ export { default as FadeIn } from './FadeIn'
 export { generateArray } from './generateArray'
 export { withProps } from './withProps'
 export { formatDateTime } from './formatDateTime'
-
+export { REGEX } from './regex'
 export {
   validationUser,
   validationDish,
   validationPicture,
   validationDelivery,
+  reservationValidationItems,
 } from './validationSchemaItems'

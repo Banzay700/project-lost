@@ -16,11 +16,14 @@ interface CalendarProps {
   handleSetChosenDay: (day: Date) => void
 }
 
-const MonthCalendar: FC<CalendarProps> = (props) => {
-  const { handleSetChosenDay } = props
-
+const MonthCalendar: FC<CalendarProps> = ({ handleSetChosenDay }) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs())
   const currentDay = useMemo(() => dayjs().toDate(), [])
+  const firstDayOfTheMonth = useMemo(() => selectedDate.clone().startOf('month'), [selectedDate])
+  const firstDayOfFirstWeekOfMonth = useMemo(
+    () => dayjs(firstDayOfTheMonth).startOf('week'),
+    [firstDayOfTheMonth],
+  )
 
   const colorVariant = (day: Date) =>
     selectedDate.clone().toDate().getMonth() !== day.getMonth()
@@ -28,13 +31,6 @@ const MonthCalendar: FC<CalendarProps> = (props) => {
       : dayjs(currentDay).isSame(day, 'date')
       ? '#FF5C00'
       : '#1B1B2F'
-
-  const firstDayOfTheMonth = useMemo(() => selectedDate.clone().startOf('month'), [selectedDate])
-
-  const firstDayOfFirstWeekOfMonth = useMemo(
-    () => dayjs(firstDayOfTheMonth).startOf('week'),
-    [firstDayOfTheMonth],
-  )
 
   const generateFirstDayOfEachWeek = useCallback((day: Dayjs): Dayjs[] => {
     const dates: Dayjs[] = [day]

@@ -1,9 +1,10 @@
 import { FC } from 'react'
+import { Box, Stack } from '@mui/material'
 import { Form, Formik, FormikHelpers } from 'formik'
-import { Button } from 'UI/button'
+
+import { Button } from 'UI'
 import { InputsCreateDish } from 'components'
 import { CreateDishFormReturnType } from 'types'
-import { Box, Stack } from '@mui/material'
 import { CreateDishCategoryFormItem } from './create-dish-category-form-item'
 import { initialValues, validationSchema } from './createDishForm.utils'
 import { CreateDishPictureFormItem } from './create-dish-picture-form-item'

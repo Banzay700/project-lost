@@ -1,8 +1,10 @@
 import { FC } from 'react'
-import { InputImage } from 'components'
-import { Box, Stack } from '@mui/material'
-import { Button } from 'UI'
 import { useFormikContext } from 'formik'
+import { Stack } from '@mui/material'
+
+import { InputImage } from 'components'
+import { Button } from 'UI'
+import { InputImageWrapper } from './CreateCategoryPicture.styled'
 
 const CreateCategoryPicture: FC = () => {
   const { setFieldValue } = useFormikContext()
@@ -13,9 +15,9 @@ const CreateCategoryPicture: FC = () => {
 
   return (
     <Stack sx={{ gap: '20px' }}>
-      <Box sx={{ width: '200px', height: '200px', minHeight: '200px', minWidth: '200px' }}>
+      <InputImageWrapper>
         <InputImage view="squareRounding" />
-      </Box>
+      </InputImageWrapper>
       <Button variant="outlined" size="small" fullWidth onClick={handleResetPicture}>
         Cancel
       </Button>
