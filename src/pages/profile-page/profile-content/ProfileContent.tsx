@@ -9,11 +9,9 @@ interface ProfileContentProps {
   submitChangePassword: (value: UserPassword) => void
 }
 
-const ProfileContent: FC<ProfileContentProps> = ({
-  user,
-  submitChangeUserInfo,
-  submitChangePassword,
-}) => {
+const ProfileContent: FC<ProfileContentProps> = (props) => {
+  const { user, submitChangeUserInfo, submitChangePassword } = props
+
   return (
     <Stack sx={{ width: '100%' }}>
       <Box sx={{ p: '16px 40px', borderBottom: '1px solid #e4e4e4' }}>

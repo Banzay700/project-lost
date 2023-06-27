@@ -3,20 +3,14 @@ import { Box } from '@mui/material'
 import DropZone from 'react-formik-ui/dist/components/DropZone/DropZone'
 
 export const InputImageWrapper = styled(Box)`
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 300px;
   cursor: pointer;
-
-  .dropzone,
-  .dropzone-wrapper {
-    width: 100%;
-    height: 100%;
-  }
 `
 
 export const DropZoneWrapper = styled(DropZone)<{ $view: 'round' | 'squareRounding' }>`
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 300px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

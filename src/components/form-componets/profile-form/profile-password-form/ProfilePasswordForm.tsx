@@ -45,7 +45,7 @@ const ProfilePasswordForm: FC<ProfileFormChangePasswordProps> = ({ initialValues
                 Save change
               </Button>
             </Stack>
-            <Input placeholder="Password" name="password" label="Password" />
+            <Input placeholder="Password" name="password" label="Password" type="password" />
           </>
         )}
       </Form>

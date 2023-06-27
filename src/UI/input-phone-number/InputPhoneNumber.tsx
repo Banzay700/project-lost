@@ -1,5 +1,6 @@
 import { FC, ChangeEvent, useEffect, useState } from 'react'
-import { useFormikContext } from 'formik'
+import { useField, useFormikContext } from 'formik'
+
 import { Input } from 'UI'
 import { REGEX } from 'utils'
 import { PHONE_NUMBER_MASK } from './InputPhoneNumber.utils'
@@ -11,8 +12,9 @@ interface InputPhoneNumberProps {
 }
 
 const InputPhoneNumber: FC<InputPhoneNumberProps> = ({ name, label, disabled }) => {
-  const [number, setNumber] = useState('')
   const { setFieldValue } = useFormikContext()
+  const [field] = useField(name)
+  const [number, setNumber] = useState(field.value)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = event.target.value

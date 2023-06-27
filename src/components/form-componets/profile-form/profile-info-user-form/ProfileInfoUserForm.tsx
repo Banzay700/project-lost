@@ -2,9 +2,9 @@ import { FC, useState } from 'react'
 import { Stack } from '@mui/material'
 import { Form, Formik } from 'formik'
 
-import { InputsBasicUserInfo } from 'components/index'
-import { Input, Button } from 'UI/index'
-import { UserType, UserUpdateInfo } from 'types/index'
+import { InputsBasicUserInfo } from 'components'
+import { Input, Button } from 'UI'
+import { UserType, UserUpdateInfo } from 'types'
 import { validationSchema } from './profileInfoUserForm.utils'
 
 interface ProfileInputGroupProps {

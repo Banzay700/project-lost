@@ -73,7 +73,7 @@ const OrderCreatorBar: FC = () => {
   const handleOnConfirm = () => {
     if (activeOrder.id && deliveryFormInfo) {
       const deliveryInfo = prepareDeliveryInfo(activeOrder.id, deliveryFormInfo)
-      console.log(deliveryInfo)
+
       createDelivery(deliveryInfo)
     }
     setToggleValue('orderInfo')
