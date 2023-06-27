@@ -1,1 +1,1 @@
-export { default as PhoneNumberInput } from './InputPhoneNumber'
+export { default as InputPhoneNumber } from './InputPhoneNumber'
