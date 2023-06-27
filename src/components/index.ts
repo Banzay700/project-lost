@@ -70,3 +70,4 @@ export {
 } from './delivery-components'
 
 export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'
+export { Autocomplete } from './autocomplete'

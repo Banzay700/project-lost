@@ -1,1 +1,1 @@
-export const deliveryTitle = ['ITEM NAME', 'QTY', 'PRICE', 'TAX', 'SUBTOTAL']
+export const deliveryTitle: string[] = ['Item name', 'Qty', 'Price', 'Tax', 'Subtotal']

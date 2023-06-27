@@ -17,13 +17,9 @@ const city = (isRequired?: boolean) => {
 
 const street = (isRequired?: boolean) => {
   let schema = string()
-    .min(2, 'Too Short! 3-20 symbols')
-    .max(50, 'Too Long! 3-20 symbols')
+    .min(2, 'Too Short! 3-50 symbols')
+    .max(100, 'Too Long! 3-50 symbols')
     .matches(/\p{Lu}/u, 'Address must contain at least one uppercase letter')
-    .matches(
-      /^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ0-9\s.,]+$/,
-      'Street must contain only letters (EN, UA, RS), numbers, and spaces',
-    )
 
   if (isRequired) schema = schema.required('Street is required')
 
