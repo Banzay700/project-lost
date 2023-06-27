@@ -40,12 +40,12 @@ export const InputContainer = styled(
   position: 'relative',
   width: '100%',
   height: rows ? `${31 * rows}px` : '53px',
-  [theme.breakpoints.down('lg')]: rows ? `${31 * rows}px` : '53px',
+  [theme.breakpoints.down('lg')]: { height: rows ? `${31 * rows}px` : '53px' },
 }))
 
 export const ErrorMessage = styled('div')`
   position: absolute;
-  bottom: -9px;
+  bottom: -7px;
   left: 12px;
   font-size: 11px;
   color: ${({ theme }) => theme.palette.primary.darkRed};

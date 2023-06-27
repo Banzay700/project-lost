@@ -19,9 +19,9 @@ interface OrderCreatorFormProps {
 const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const [formValues, setFormValues] = useState<OrderCreatorFormReturnType>(initialValue)
   const [selectValue, setSelectValue] = useState('')
-
   const [disabled, setDisabled] = useState(true)
   const [isSelect, setIsSelect] = useState(false)
+
   const { activeOrder } = useOrderReducer()
   const { data } = useGetFreeTablesQuery()
   const [getReservationInfo, { data: reservationInfo }] = useLazyGetReservationInfoQuery()
@@ -32,6 +32,7 @@ const OrderCreatorForm: FC<OrderCreatorFormProps> = ({ onSubmit }) => {
   const handleValue = (value: string) => {
     setSelectValue(value)
     setDisabled(false)
+
     getReservationInfo(value)
   }
 

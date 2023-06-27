@@ -2,14 +2,15 @@ import { FC } from 'react'
 import { Typography, Stack, Box } from '@mui/material'
 
 import { Icon } from 'assets'
-import { ReservationInfoResponseType } from 'types/ReservationsTypes'
+import { ReservationInfoResponseType } from 'types'
 
 interface InfoItemProps {
   data: ReservationInfoResponseType
+  isHidden: boolean
 }
 
-const InfoItem: FC<InfoItemProps> = ({ data }) => {
-  return (
+const InfoItem: FC<InfoItemProps> = ({ data, isHidden }) => {
+  return !isHidden ? (
     <>
       <Typography>{data.message}</Typography>
       <Stack spacing={2} sx={{ marginTop: '10px' }}>
@@ -22,7 +23,7 @@ const InfoItem: FC<InfoItemProps> = ({ data }) => {
           ))}
       </Stack>
     </>
-  )
+  ) : null
 }
 
 export default InfoItem

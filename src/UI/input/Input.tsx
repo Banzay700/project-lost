@@ -35,15 +35,12 @@ const Input: FC<InputPropsType> = (props) => {
     outlined,
     fullWidth: true,
     InputProps: icon ? { startAdornment: <IconWrapper>{icon}</IconWrapper> } : {},
-    inputProps: {
-      maxLength,
-      onChange,
-    },
+    inputProps: { maxLength, onChange },
   }
-  console.log(maxRows)
+
   return (
     <InputContainer rows={maxRows} delay={50}>
-      <InputWrapper {...textFieldConfig} focused={focus} fullWidth />
+      <InputWrapper {...textFieldConfig} focused={focus} />
       {validationError && <ErrorMessage>{meta.error}</ErrorMessage>}
     </InputContainer>
   )

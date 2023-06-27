@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Input } from 'UI'
+import { Input, PhoneNumberInput } from 'UI'
 
 interface InputsBasicUserInfoProps {
   isDisabled?: boolean
@@ -16,12 +16,7 @@ const InputsBasicUserInfo: FC<InputsBasicUserInfoProps> = ({ isDisabled }) => {
         disabled={isDisabled}
       />
       <Input placeholder="Email" name="email" label="Email" disabled={isDisabled} />
-      <Input
-        placeholder="Phone Number"
-        name="phoneNumber"
-        label="Phone Number"
-        disabled={isDisabled}
-      />
+      <PhoneNumberInput name="phoneNumber" label="Phone number" disabled={isDisabled} />
     </>
   )
 }
