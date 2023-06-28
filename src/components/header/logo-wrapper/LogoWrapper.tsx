@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Stack } from '@mui/material'
+import { Stack, useTheme, useMediaQuery } from '@mui/material'
 
 import { Button, Logo } from 'UI'
 import { Icon } from 'assets'
@@ -14,6 +14,8 @@ interface LogoWrapperProps extends UserType {
 
 const LogoWrapper: FC<LogoWrapperProps> = ({ role, routeLogoStyle }) => {
   const navigate = useNavigate()
+  const { breakpoints } = useTheme()
+  const isMobile = useMediaQuery(breakpoints.down('sm'))
   const { clearNewOrderState } = useOrderReducer()
   const { isAdminLocation } = useRootLocationPath()
 
@@ -28,7 +30,7 @@ const LogoWrapper: FC<LogoWrapperProps> = ({ role, routeLogoStyle }) => {
         <Button
           variant="outlined"
           size="medium"
-          icon={<Icon.ArrowLeft color="secondary" />}
+          icon={<Icon.ArrowLeft color={isMobile ? 'white' : 'secondary'} />}
           color="secondary"
           onClick={handleGoToAdminPanel}
         />

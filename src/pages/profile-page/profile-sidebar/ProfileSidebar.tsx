@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import { Box, Stack } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 import { Navigate } from 'react-router-dom'
 
 import { ProfileAvatarForm } from 'components'
 import { Button } from 'UI'
 import { UserAvatar, UserType } from 'types'
 import { Icon } from 'assets'
+import { MS_CUSTOM_BREAKPOINT } from 'utils'
 import { useLogoutMutation } from 'store/api'
+import { SidebarWrapper } from './ProfileSidebar.styled'
 
 interface ProfileSidebarProps {
   user: UserType
@@ -15,46 +17,40 @@ interface ProfileSidebarProps {
 }
 
 const ProfileSidebar: FC<ProfileSidebarProps> = ({ user, submitChangeAvatar, isLogoutButton }) => {
-  const [logout, { isSuccess }] = useLogoutMutation()
   const { firstName, secondName, userImage } = user
+  const [logout, { isSuccess }] = useLogoutMutation()
+  const { breakpoints } = useTheme()
+  const isMobile = useMediaQuery(breakpoints.down(MS_CUSTOM_BREAKPOINT))
 
-  const handleLogout = () => {
-    logout()
-  }
+  const handleLogout = () => logout()
 
   if (isSuccess) {
     return <Navigate to="/login" />
   }
 
   return (
-    <Stack
-      sx={{
-        width: 'fit-content',
-        p: '24px',
-        height: '100%',
-        borderRight: '1px solid #e4e4e4',
-        alignItems: 'start',
-        justifyContent: 'space-between',
-      }}>
+    <SidebarWrapper>
       <ProfileAvatarForm
         firstName={firstName}
         secondName={secondName}
         userImage={userImage}
         onSubmit={submitChangeAvatar}
       />
-      {isLogoutButton && (
+      {!isMobile && (
         <Box sx={{ width: '100px' }}>
-          <Button
-            variant="contained"
-            size="small"
-            startIcon={<Icon.Logout />}
-            onClick={handleLogout}
-            fullWidth>
-            Log out
-          </Button>
+          {isLogoutButton && (
+            <Button
+              variant="contained"
+              size="small"
+              startIcon={<Icon.Logout />}
+              onClick={handleLogout}
+              fullWidth>
+              Log out
+            </Button>
+          )}
         </Box>
       )}
-    </Stack>
+    </SidebarWrapper>
   )
 }
 

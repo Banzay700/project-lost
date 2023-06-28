@@ -1,77 +1,50 @@
 import { string } from 'yup'
+import { REGEX } from 'utils/regex'
 
 const name = (isRequired?: boolean, msg?: string) => {
-  let schema = string()
-    .min(2, 'Too Short! Please enter no more than 20, and no less than 2')
-    .max(20, 'Too Long! Please enter no more than 20, and no less than 2')
-    .matches(/\p{Lu}/u, 'First Name must contain at least one uppercase letter')
-    .matches(/^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ\s]+$/, 'Enter only numbers or letters (EN, UA, RS)')
+  const schema = string()
+    .min(2, 'Too Short! Please enter no less than 2')
+    .max(20, 'Too Long! Please enter no more than 20')
+    .matches(REGEX.ONE_UPPERCASE_LETTER, 'First Name must contain at least one uppercase letter')
+    .matches(REGEX.ONLY_LETTERS, 'Enter letters and numbers only')
 
-  if (isRequired) {
-    schema = schema.required(msg)
-  }
-
-  return schema
+  return isRequired ? schema.required(msg) : schema
 }
 
 const email = (isRequired?: boolean) => {
-  let schema = string().email('You entered the wrong email')
+  const schema = string().email('You entered the wrong email')
 
-  if (isRequired) {
-    schema = schema.required('Email is required')
-  }
-
-  return schema
+  return isRequired ? schema.required('Email is required') : schema
 }
 
 const password = (isRequired?: boolean) => {
-  let schema = string()
-    .matches(/^\S*$/, 'Password must not contain spaces')
+  const schema = string()
+    .matches(REGEX.NO_SPACES, 'Password must not contain spaces')
     .min(3, 'Too Short! Please enter no less than 3 symbols')
     .max(15, 'Too Long! Please enter no more than 15 symbols')
 
-  if (isRequired) {
-    schema = schema.required('Password is required')
-  }
-
-  return schema
+  return isRequired ? schema.required('Password is required') : schema
 }
 
 const phoneNumber = (isRequired?: boolean) => {
-  let schema = string()
-  // .matches(/^\+?[0-9]\d{8,19}$/, 'Invalid phone number') TODO: add phone validation
-  if (isRequired) {
-    schema = schema.required('Phone is required')
-  }
+  const schema = string()
+    .min(17, "Phone number can't be less than 11 symbols")
+    .max(17, "Phone number can't be more than 11 symbols")
+    .matches(REGEX.PHONE_NUMBER, 'Invalid phone number')
 
-  return schema
+  return isRequired ? schema.required('Phone is required') : schema
 }
 
 const role = (isRequired?: boolean) => {
-  let schema = string().oneOf(['Admin', 'Waiter', 'Courier'])
+  const schema = string().oneOf(['Admin', 'Waiter', 'Courier'])
 
-  if (isRequired) {
-    schema = schema.required('Role is required')
-  }
-
-  return schema
+  return isRequired ? schema.required('Role is required') : schema
 }
 
 const status = (isRequired?: boolean) => {
-  let schema = string().oneOf(['active', 'inactive'])
+  const schema = string().oneOf(['active', 'inactive'])
 
-  if (isRequired) {
-    schema = schema.required('Status is required')
-  }
-
-  return schema
+  return isRequired ? schema.required('Status is required') : schema
 }
 
-export const validationUser = {
-  name,
-  email,
-  password,
-  phoneNumber,
-  role,
-  status,
-}
+export const validationUser = { name, email, password, phoneNumber, role, status }

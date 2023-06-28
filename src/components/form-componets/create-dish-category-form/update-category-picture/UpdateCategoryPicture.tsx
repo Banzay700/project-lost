@@ -1,8 +1,9 @@
 import { FC, useState } from 'react'
-import { InputImageWithPreviewAvatar } from 'components'
 import { Stack } from '@mui/material'
-import { Button } from 'UI/button'
 import { useFormikContext } from 'formik'
+
+import { InputImageWithPreviewAvatar } from 'components'
+import { Button } from 'UI'
 
 interface UpdateCategoryPictureProps {
   picture: string
@@ -15,6 +16,7 @@ const UpdateCategoryPicture: FC<UpdateCategoryPictureProps> = ({ picture, pictur
 
   const handleIsDisabled = () => setIsDisabled((prevState) => !prevState)
   const handleResetPicture = () => setFieldValue('picture', '')
+
   return (
     <Stack>
       <InputImageWithPreviewAvatar

@@ -1,33 +1,21 @@
 import { FC } from 'react'
-import { Box } from '@mui/material'
 import { InputImage } from 'components'
-import { ImageWrapper } from './InputImageWithPreviewAvatar.styled'
+import { ImageWrapper, InputImageWrapper } from './InputImageWithPreviewAvatar.styled'
 
 interface InputImageWithPreviewAvatarProps {
   isDisabled: boolean
   picture: string
   pictureAlt: string
   view: 'round' | 'squareRounding'
-  width?: string
-  height?: string
 }
 
-const InputImageWithPreviewAvatar: FC<InputImageWithPreviewAvatarProps> = ({
-  picture,
-  pictureAlt,
-  view,
-  width,
-  height,
-  isDisabled,
-}) => {
+const InputImageWithPreviewAvatar: FC<InputImageWithPreviewAvatarProps> = (props) => {
+  const { picture, pictureAlt, view, isDisabled } = props
   return (
-    <Box sx={{ width: width || '300px', height: height || '300px' }}>
-      {isDisabled ? (
-        <ImageWrapper $view={view} src={picture || ''} alt={pictureAlt} />
-      ) : (
-        <InputImage view={view} />
-      )}
-    </Box>
+    <InputImageWrapper>
+      {isDisabled && <ImageWrapper view={view} src={picture || ''} alt={pictureAlt} />}
+      {!isDisabled && <InputImage view={view} />}
+    </InputImageWrapper>
   )
 }
 

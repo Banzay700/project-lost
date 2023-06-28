@@ -1,9 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import { Box, Stack } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 import { OrderDetailsList, DeliveryModals } from 'components'
 import { ToggleMenu } from 'UI'
 import { useOrderReducer, useOrderProcessingLogic, useUserReducer, useIsModal } from 'hooks'
+import { ROUTES_WAITER } from 'routes/routes.utils'
 import { DeliveryFormType, OrderCreatorFormReturnType } from 'types'
 import {
   useCreateDeliveryMutation,
@@ -19,6 +21,7 @@ const OrderCreatorBar: FC = () => {
   const { isOpen, handleToggleIsOpenModal } = useIsModal()
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [deliveryFormInfo, setDeliveryFormInfo] = useState<DeliveryFormType>()
+  const navigate = useNavigate()
   const { activeOrder, openNewOrder } = useOrderReducer()
   const { userState } = useUserReducer()
   const { createDeliveryOrder, createDineInOrder, createTakeAwayOrder } = useOrderProcessingLogic()
@@ -74,6 +77,7 @@ const OrderCreatorBar: FC = () => {
     if (activeOrder.id && deliveryFormInfo) {
       const deliveryInfo = prepareDeliveryInfo(activeOrder.id, deliveryFormInfo)
       createDelivery(deliveryInfo)
+      navigate(ROUTES_WAITER.ORDERS)
     }
     setToggleValue('orderInfo')
     setButtonDisabled(true)

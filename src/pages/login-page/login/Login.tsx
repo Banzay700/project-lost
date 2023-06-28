@@ -1,11 +1,10 @@
 import { FC, useState } from 'react'
-import { Stack } from '@mui/material'
 import { useGetUsersInLoginQuery } from 'store/api'
 import { EmployeesCarrousel, LoginForm, NotifyError } from 'components'
 import { Button } from 'UI'
 import { UserLoginRequestType } from 'types'
 import { FadeIn } from 'utils'
-import { LoginWrapper } from './Login.styled'
+import { LoginWrapper, InnerWrapper } from './Login.styled'
 
 interface LoginProps {
   onSubmit: (value: UserLoginRequestType) => void
@@ -23,11 +22,9 @@ const Login: FC<LoginProps> = (props) => {
     setChosenEmployee(id)
   }
 
-  const gap = chosenEmployee ? '44px' : '114px'
-
   return (
     <LoginWrapper>
-      <Stack flexDirection="column" alignItems="center" gap={gap}>
+      <InnerWrapper chosenEmployee={chosenEmployee}>
         <EmployeesCarrousel
           employeesData={users}
           handleSetActiveSlide={handleSetActiveSlide}
@@ -43,7 +40,7 @@ const Login: FC<LoginProps> = (props) => {
             Login
           </Button>
         )}
-      </Stack>
+      </InnerWrapper>
     </LoginWrapper>
   )
 }

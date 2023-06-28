@@ -6,6 +6,7 @@ import { InputSelectItemType, RadioButtonWithoutIconItemType } from 'types'
 import { Icon } from 'assets'
 import { correctionName } from 'utils'
 import { useGetCategoriesQuery, useLazyGetSubCategoriesInCategoryQuery } from 'store/api'
+import { CategoryLineWrapper } from 'components/form-componets/create-dish-form/create-dish-category-form-item/CreateDishCategoryFormItem.styled'
 
 const CreateDishCategoryFormItem: FC = () => {
   const { setFieldValue, getFieldMeta, isSubmitting } = useFormikContext()
@@ -60,7 +61,7 @@ const CreateDishCategoryFormItem: FC = () => {
           handleValue={handleChangeCategory}
         />
         {categoryState && (
-          <Stack direction="row" sx={{ gap: '10px', width: '100%', alignItems: 'center' }}>
+          <CategoryLineWrapper>
             {!isNewSubcategory && (
               <RadioGroup sx={{ flexDirection: 'row', gap: '10px' }}>
                 {categoryState?.map(({ name, value, label }) => (
@@ -78,16 +79,16 @@ const CreateDishCategoryFormItem: FC = () => {
               />
             )}
             {isNewSubcategory && (
-              <Stack direction="row" sx={{ alignItems: 'center', gap: '10px', width: '100%' }}>
+              <CategoryLineWrapper>
                 <Input
                   placeholder="New Subcategory"
                   name="newSubcategory"
                   label="New Subcategory"
                 />
                 <Icon.Cross style={{ cursor: 'pointer' }} onClick={handleToggleIsNewSubcategory} />
-              </Stack>
+              </CategoryLineWrapper>
             )}
-          </Stack>
+          </CategoryLineWrapper>
         )}
       </Stack>
       {categoryMeta.touched && categoryMeta.error && (

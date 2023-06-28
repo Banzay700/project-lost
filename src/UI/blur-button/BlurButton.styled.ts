@@ -8,4 +8,7 @@ export const ButtonWrapper = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   width: '124px',
   height: '60px',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '25vw',
+  },
 }))
