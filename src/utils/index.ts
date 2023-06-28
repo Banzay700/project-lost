@@ -1,5 +1,5 @@
 export { formatString } from './formatString'
-export { ORDER_TOGGLE_MENU_VALUES, TAX } from './constants'
+export { ORDER_TOGGLE_MENU_VALUES, TAX, MS_CUSTOM_BREAKPOINT } from './constants'
 export { correctionName } from './correctionName'
 export { firstLetterUpperCase } from './firstLetterUpperCase'
 export { spacesBetweenCapitalsLetters } from './spacesBetweenCapitalsLetters'
@@ -8,10 +8,11 @@ export { default as FadeIn } from './FadeIn'
 export { generateArray } from './generateArray'
 export { withProps } from './withProps'
 export { formatDateTime } from './formatDateTime'
-
+export { REGEX } from './regex'
 export {
   validationUser,
   validationDish,
   validationPicture,
   validationDelivery,
+  reservationValidationItems,
 } from './validationSchemaItems'

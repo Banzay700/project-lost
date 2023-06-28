@@ -1,11 +1,13 @@
 import { FC, useEffect, useState } from 'react'
-import { Form, Formik, FormikHelpers } from 'formik'
+import { Formik, FormikHelpers } from 'formik'
+
 import { InputsBasicUserInfo } from 'components'
 import { RegistrationFormReturnType } from 'types'
 import { SelectInput, Button, Input } from 'UI'
 import { Box, Stack } from '@mui/material'
 import { selectMenuItems, validationSchema } from './registrationForm.utils'
 import { RegistrationPicture } from './registration-picutre'
+import { FormWrapper, InputsWrapper } from './RegistrationForm.styled'
 
 interface RegistrationFormProps {
   initialValues: RegistrationFormReturnType
@@ -32,14 +34,13 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
       enableReinitialize>
-      <Form style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
-        <Stack direction="row" sx={{ justifyContent: 'space-between', gap: '40px' }}>
+      <FormWrapper>
+        <InputsWrapper>
           <Stack sx={{ gap: '20px', width: '80%' }}>
             <InputsBasicUserInfo />
-            <Input placeholder="Password" name="password" label="Password" />
           </Stack>
           <RegistrationPicture />
-        </Stack>
+        </InputsWrapper>
         <Box width="20%">
           <SelectInput name="role" label="Role" data={selectMenuItems} />
         </Box>
@@ -56,7 +57,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
             Registration
           </Button>
         </Box>
-      </Form>
+      </FormWrapper>
     </Formik>
   )
 }

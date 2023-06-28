@@ -13,7 +13,6 @@ export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
 
 export {
   ProfileInfoUserForm,
-  ProfilePasswordForm,
   ProfileAvatarForm,
   UpdateDishForm,
   UpdateUserInfoForm,

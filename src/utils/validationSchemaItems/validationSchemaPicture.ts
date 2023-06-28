@@ -1,5 +1,7 @@
 import { mixed, TestContext } from 'yup'
 
+const FILE_MAX_SIZE = 6291456
+
 export const validationPicture = mixed()
   .nullable()
   .test(
@@ -8,15 +10,12 @@ export const validationPicture = mixed()
     function validatePicture(this: TestContext, value) {
       if (!value) return true
 
-      const files = value as File[]
-
-      const file = files[0]
+      const [file] = value as File[]
 
       if (!file.type.startsWith('image/')) {
         return false
       }
 
-      const maxSize = 6 * 1024 * 1024
-      return file.size <= maxSize
+      return file.size <= FILE_MAX_SIZE
     },
   )

@@ -1,22 +1,21 @@
 import { FC } from 'react'
-import { Box } from '@mui/material'
-import { InputImage } from 'components/input-form'
-import { Button } from 'UI/button'
 import { useFormikContext } from 'formik'
+import { Stack } from '@mui/material'
+
+import { InputImage } from 'components'
+import { Button } from 'UI'
 
 const RegistrationPicture: FC = () => {
   const { setFieldValue } = useFormikContext()
-  const handleResetForm = () => {
-    setFieldValue('picture', '')
-  }
+  const handleResetForm = () => setFieldValue('picture', '')
+
   return (
-    <Box sx={{ minWidth: '300px', minHeight: '300px', width: '300px', height: '300px' }}>
+    <Stack gap="20px">
       <InputImage view="round" />
-      <br />
       <Button variant="outlined" size="small" fullWidth type="button" onClick={handleResetForm}>
         Cancel
       </Button>
-    </Box>
+    </Stack>
   )
 }
 
