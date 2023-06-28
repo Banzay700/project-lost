@@ -5,6 +5,7 @@ export interface UserType {
   role: 'Waiter' | 'Admin' | 'Courier'
   userImage?: string
   phoneNumber?: string
+  password?: string
   email?: string
   description?: string
   status: 'active' | 'inactive'
@@ -15,9 +16,11 @@ export type UserInLoginType = Pick<UserType, 'id' | 'firstName' | 'secondName' |
 export type UserPassword = {
   password: string
 }
+
 export type UserAvatar = {
   picture: File[] | null
 }
+
 export type UserUpdateInfo = Pick<
   UserType,
   'firstName' | 'secondName' | 'phoneNumber' | 'email' | 'description'
@@ -29,4 +32,5 @@ export type UserUpdateAvatar = {
   body: FormData
   id: string
 }
+
 export type UserPartialType = UserIdType & (UserUpdateInfo | UserPassword | FormData)

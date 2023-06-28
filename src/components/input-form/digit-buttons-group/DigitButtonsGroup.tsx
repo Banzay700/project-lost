@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
 import { BlurButton } from 'UI/index'
 import { ButtonLoginReturnType } from 'types/index'
 import { Icon } from 'assets/index'
 import digits from './digitButtonsGroup.utils'
+import { FormWrapper } from './DigitButtonsGroup.styled'
 
 interface DigitButtonsGroupProps {
   getValue: (value: ButtonLoginReturnType) => void
@@ -19,7 +19,7 @@ const DigitButtonsGroup: FC<DigitButtonsGroupProps> = (props) => {
   ))
 
   return (
-    <Stack flexDirection="row" flexWrap="wrap" gap="16px" width="404px">
+    <FormWrapper>
       {buttonsD}
       <BlurButton value="clear" getValue={getValue}>
         C
@@ -30,7 +30,7 @@ const DigitButtonsGroup: FC<DigitButtonsGroupProps> = (props) => {
       <BlurButton value="delete" getValue={getValue}>
         <Icon.Delete />
       </BlurButton>
-    </Stack>
+    </FormWrapper>
   )
 }
 

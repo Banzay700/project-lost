@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import { Header, SidebarContentWrapper } from 'components'
 import { useRootLocationPath } from 'hooks'
 import { navData } from './WaiterLayout.utils'
+import { WaiterContentWrapper } from './WaiterLayout.styled'
 
 const WaiterLayout: FC = () => {
   const { isProfileLocation, isReservationLocation } = useRootLocationPath()
@@ -13,12 +14,12 @@ const WaiterLayout: FC = () => {
   return (
     <>
       <Header dataLink={navData} routeLogoStyle="Food" />
-      <Stack direction="row" flex="1" height="calc(100% - 76px)">
+      <WaiterContentWrapper direction="row" flex="1" height="calc(100% - 76px)">
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />
         </Stack>
         {isSidebar && <SidebarContentWrapper />}
-      </Stack>
+      </WaiterContentWrapper>
     </>
   )
 }

@@ -1,10 +1,11 @@
 import { FC } from 'react'
+import { Box } from '@mui/material'
 import { CreateDishForm, ModalCreateCategory } from 'components'
 import { CreateCategoryFormReturnType, CreateDishFormReturnType } from 'types/ComponentsReturnType'
 import { useCreateCategoryMutation, useCreateDishMutation } from 'store/api'
-import { Box } from '@mui/material'
-import { Snackbar } from 'UI/snackbar'
-import { useIsModal } from 'hooks/useIsModal.hook'
+
+import { Snackbar } from 'UI'
+import { useIsModal } from 'hooks'
 
 const AdminCreateDishPage: FC = () => {
   const [createDish, { isError, isSuccess }] = useCreateDishMutation()

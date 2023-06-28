@@ -20,7 +20,7 @@ export const validationSchema = object().shape({
   firstName: validationUser.name(true, 'First name is required'),
   secondName: validationUser.name(true, 'Second name is required'),
   email: validationUser.email(),
-  phoneNumber: validationUser.phoneNumber(),
+  phoneNumber: validationUser.phoneNumber(true),
   password: validationUser.password(true),
   role: validationUser.role(),
   picture: validationPicture,

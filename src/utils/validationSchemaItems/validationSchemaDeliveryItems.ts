@@ -1,37 +1,29 @@
 import { number, string } from 'yup'
+import { REGEX } from 'utils'
 
 const city = (isRequired?: boolean) => {
-  let schema = string()
+  const schema = string()
     .min(2, 'Too Short! 3-20 symbols')
     .max(50, 'Too Long! 3-20 symbols')
-    .matches(/\p{Lu}/u, 'Address must contain at least one uppercase letter')
-    .matches(
-      /^[a-zA-Z0-9а-яА-ЯіІїЇєЄёЁ0-9\s]+$/,
-      'Street must contain only letters (EN, UA, RS), numbers, and spaces',
-    )
+    .matches(REGEX.ONE_UPPERCASE_LETTER, 'Address must contain at least one uppercase letter')
+    .matches(REGEX.NO_SYMBOLS, 'Street must contain only letters, numbers and spaces')
 
-  if (isRequired) schema = schema.required('City is required')
-
-  return schema
+  return isRequired ? schema.required('City is required') : schema
 }
 
 const street = (isRequired?: boolean) => {
-  let schema = string()
+  const schema = string()
     .min(2, 'Too Short! 3-50 symbols')
-    .max(100, 'Too Long! 3-50 symbols')
-    .matches(/\p{Lu}/u, 'Address must contain at least one uppercase letter')
+    .max(100, 'Too Long! 3-100 symbols')
+    .matches(REGEX.ONE_UPPERCASE_LETTER, 'Street must contain at least one uppercase letter')
 
-  if (isRequired) schema = schema.required('Street is required')
-
-  return schema
+  return isRequired ? schema.required('Street is required') : schema
 }
 
 const house = (isRequired?: boolean, msg?: string) => {
-  let schema = number().integer().positive()
+  const schema = number().integer().positive()
 
-  if (isRequired) schema = schema.required(msg)
-
-  return schema
+  return isRequired ? schema.required(msg) : schema
 }
 
 export const validationDelivery = {
