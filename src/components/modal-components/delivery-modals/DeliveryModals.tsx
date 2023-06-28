@@ -1,6 +1,7 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Modal } from 'UI/index'
-import { DeliveryFormType, OrderActiveType } from 'types/index'
+import { useIsModal } from 'hooks'
+import { DeliveryFormType, OrderActiveType } from 'types'
 import { DeliveryForm } from './delivery-form'
 import { DeliveryPayment } from './delivery-payment'
 import { DeliveryConfirmation } from './delivery-confirmation'
@@ -16,20 +17,20 @@ interface DeliveryModalsProps {
 
 const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
   const { deliveryFormInfo, isOpened, activeOrder, onClose, onSubmit, onConfirm } = props
-  const [isOpenedConfirmation, setIsOpenedConfirmation] = useState(false)
+  const { isOpen, handleToggleIsOpenModal } = useIsModal()
   const handleCloseModal = () => {
     onClose()
-    setIsOpenedConfirmation(false)
+    handleToggleIsOpenModal()
   }
 
   const handleOnConfirmModal = () => {
     onConfirm()
-    setIsOpenedConfirmation(false)
+    handleToggleIsOpenModal()
   }
 
   const handleOnSubmitModal = (value: DeliveryFormType) => {
     onSubmit(value)
-    setIsOpenedConfirmation(true)
+    handleToggleIsOpenModal()
   }
 
   return (
@@ -46,7 +47,7 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
       <Modal
         title="Order confirmation"
         colorHeader="secondary"
-        isOpen={isOpenedConfirmation}
+        isOpen={isOpen}
         onClose={handleCloseModal}
         onSubmit={handleOnConfirmModal}
         actionAdditionalComponent={
