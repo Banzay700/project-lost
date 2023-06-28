@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { OrderDetailsItemType, OrderType } from 'types'
+import { OrderType } from 'types'
 import { OrderDetailsItem } from 'components'
 import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailListTitle, OrderDetailListWrapper } from './OrderDetailList.styled'

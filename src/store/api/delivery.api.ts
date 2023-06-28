@@ -11,10 +11,15 @@ import { api } from './api'
 export const deliveryApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllDelivery: builder.query<DeliveryResponseType, DeliveryGetRequestType>({
-      query: ({ status, courier }) => {
+      query: ({ status, courier, limit, page }) => {
         const params: DeliveryGetRequestType = {}
         if (status) params.status = status
         if (courier) params.courier = courier
+        if (limit && page) {
+          params.limit = limit
+          params.page = page
+        }
+
         return {
           url: API_CONST_DELIVERY.DELIVERY,
           params,

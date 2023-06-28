@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useSmoothScrollbar } from 'hooks'
 import { DeliveryType } from 'types'
-import { generateStatus, generateTimeString } from 'utils'
+import { firstLetterUpperCase, generateStatus, generateTimeString } from 'utils'
 import { RadioGroupCardWrapper } from './RadioGroupCard.styled'
 import { RadioButtonCard } from './radio-button-card'
 
@@ -20,11 +20,15 @@ const RadioGroupCard: FC<RadioGroupCardProps> = ({ isActiveCard, cardData, onCha
         <RadioButtonCard
           key={item.id}
           id={item.id}
-          status={generateStatus(item.time)}
+          status={
+            item.status === 'closed'
+              ? { label: firstLetterUpperCase(item.status), type: 'green' }
+              : generateStatus(item.time)
+          }
           orderNumber={item.order.orderNumber}
           clientName={item.clientInfo.name}
           deliveryAddress={item.address.street}
-          timeToReady={generateTimeString(item.time)}
+          timeToReady={item.status === 'closed' ? 'Executed' : generateTimeString(item.time)}
           isChecked={isActiveCard}
           onChange={onChange}
         />

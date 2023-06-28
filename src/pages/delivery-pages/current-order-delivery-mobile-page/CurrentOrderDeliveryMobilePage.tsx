@@ -7,12 +7,10 @@ import {
   TotalPriceInfo,
 } from 'components'
 import { useNavigate, useParams } from 'react-router-dom'
-import { DeliveryType, OrderDetailsItemType } from 'types'
 import { Button } from 'UI'
 import { Icon } from 'assets'
 import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
-import { generateTimeString } from 'utils/generateTimeString'
-import { calculateTotalPrice } from 'utils/calculateTotalPrice'
+import { generateTimeString, calculateTotalPrice } from 'utils'
 import { useUserReducer, useRootLocationPath } from 'hooks'
 
 const CurrentOrderDeliveryMobilePage: FC = () => {

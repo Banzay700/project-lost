@@ -4,8 +4,8 @@ import { AdaptiveHeaderWrapper, Header, SidebarDeliveryInfo } from 'components'
 import { useScreenTracking } from 'hooks/useScreenTracking'
 import { OrderDetailsItemType } from 'types/ComponentsItemType'
 import { Stack } from '@mui/material'
-import { navData } from './deliveryLayout.utils'
 import { useRootLocationPath } from 'hooks/useRootLocationPath.hook'
+import { navData } from './deliveryLayout.utils'
 
 const mok2: OrderDetailsItemType[] = [
   {

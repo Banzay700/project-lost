@@ -4,7 +4,7 @@ import { DeliveryFormType } from './DeliveryFormType'
 export type DeliveryType = DeliveryFormType & {
   status: 'opened' | 'closed'
   order: OrderType
-  bill: string
+  bill?: string
   courier?: UserType
   id: string
 }

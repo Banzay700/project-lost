@@ -56,8 +56,9 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
             />
           ))}
       </Table>
-      {data && data.totalCount > 10 && (
+      {data && (
         <Pagination
+          disabled={data.totalCount > 10}
           marginRight="30px"
           count={Math.ceil(data.totalCount / 10)}
           onChange={handlePagination}

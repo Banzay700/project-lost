@@ -1,29 +1,61 @@
 import { FC } from 'react'
-import { PageActionsBar } from 'UI/page-actions-bar'
-import { IndicatorsGroup } from 'components/indicators-group'
-import {
-  deliveryIndicatorItems,
-  tableTitleDelivery,
-} from 'pages/delivery-pages/home-delivery-page/homeDeliveryPage.utils'
-import { ContentRouteDeliveryMobile } from 'components/delivery-components'
-import { Table } from 'UI/table'
-import { TableOrderDeliveryLine } from 'components/table-lines'
-import { generateStatus } from 'utils/generateStatus'
-import { useUserReducer } from 'hooks/useUserReducer.hook'
+import { ContentRouteDeliveryMobile, TableOrderDeliveryLine } from 'components'
+import { Pagination, Table } from 'UI'
+import { useUserReducer, useScreenTracking, useParamsSearchFilter } from 'hooks'
 import { useGetAllDeliveryQuery } from 'store/api'
-import { useScreenTracking } from 'hooks/useScreenTracking'
+import { firstLetterUpperCase } from 'utils'
+import { tableHistoryTitleDelivery } from './historyDeliveryPage.utils'
 
 const HistoryDeliveryPage: FC = () => {
   const { isMobileScreen } = useScreenTracking()
+  const { page, handlePagination } = useParamsSearchFilter('')
   const { userState } = useUserReducer()
-  const { data } = useGetAllDeliveryQuery({ courier: userState.id, status: 'closed' })
+  const { data, isFetching } = useGetAllDeliveryQuery({
+    courier: userState.id,
+    status: 'closed',
+    page,
+    limit: 10,
+  })
+
   return (
     <>
-      <PageActionsBar>
-        <IndicatorsGroup indicatorData={deliveryIndicatorItems} />
-      </PageActionsBar>
-      {isMobileScreen && <ContentRouteDeliveryMobile cardItem={data?.data} />}
-      {/*{!isMobileScreen && <Table tableTitles={tableTitleDelivery} tableMinWidth="660px"></Table>}*/}
+      {isMobileScreen && (
+        <ContentRouteDeliveryMobile
+          data={data}
+          isLoading={isFetching}
+          page={page}
+          onChangePagination={handlePagination}
+        />
+      )}
+      {!isMobileScreen && (
+        <>
+          <Table
+            tableTitles={tableHistoryTitleDelivery}
+            tableMinWidth="660px"
+            isLoading={isFetching}>
+            {!isFetching &&
+              data?.data.map((item) => (
+                <TableOrderDeliveryLine
+                  key={item.id}
+                  id={item.id}
+                  clientName={item.clientInfo.name}
+                  deliveryAddress={item.address.street}
+                  phoneNumber={item.clientInfo.phoneNumber}
+                  status={{ label: firstLetterUpperCase(item.status), type: 'green' }}
+                />
+              ))}
+          </Table>
+          {data && (
+            <Pagination
+              marginRight="30px"
+              disabled={data.totalCount > 10}
+              page={Number(page)}
+              onChange={handlePagination}
+              count={Math.ceil(data.totalCount / 10)}
+            />
+          )}
+        </>
+      )}
     </>
   )
 }
