@@ -12,3 +12,7 @@ export const API_CONST_USERS = {
   LOGOUT: 'users/logout',
   REFRESH: 'users/refresh',
 }
+
+export const API_CONST_DELIVERY = {
+  DELIVERY: 'delivery',
+}

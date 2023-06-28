@@ -1,11 +1,11 @@
 import { FC } from 'react'
-import { OrderDetailsItemType } from 'types'
+import { OrderType } from 'types'
 import { OrderDetailsItem } from 'components'
 import { useSmoothScrollbar } from 'hooks'
 import { OrderDetailListTitle, OrderDetailListWrapper } from './OrderDetailList.styled'
 
 interface OrderDetailListProps {
-  ordersDetail?: OrderDetailsItemType[]
+  ordersDetail?: OrderType
 }
 
 const OrderDetailList: FC<OrderDetailListProps> = ({ ordersDetail }) => {
@@ -21,13 +21,13 @@ const OrderDetailList: FC<OrderDetailListProps> = ({ ordersDetail }) => {
         Detail order
       </OrderDetailListTitle>
       <OrderDetailListWrapper ref={refObject}>
-        {ordersDetail?.map((item) => (
+        {ordersDetail?.dishes?.map((item) => (
           <OrderDetailsItem
-            key={item.id}
-            id={item.id}
+            key={item.dishID}
+            id={item.dishID}
             title={item.title}
-            src={item.src}
-            total={item.total}
+            src={item.picture}
+            total={item.dishTotalPrice}
             amount={item.amount}
           />
         ))}

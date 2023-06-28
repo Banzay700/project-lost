@@ -5,3 +5,10 @@ export const deliveryIndicatorItems: IndicatorItemType[] = [
   { label: 'Timely', type: 'primary' },
   { label: 'Flexible', type: 'green' },
 ]
+export const tableOrdersTitleDelivery: string[] = [
+  'Client Name',
+  'Phone number',
+  'Address',
+  'Status',
+  'Actions',
+]

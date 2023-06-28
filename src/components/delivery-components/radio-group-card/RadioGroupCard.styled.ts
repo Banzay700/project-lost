@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 
 export const RadioGroupCardWrapper = styled(Stack)`
   flex: 1;
-  padding: 20px;
+  padding: 0 20px 20px;
 
   & .MuiFormControl-root {
     margin-top: 16px;

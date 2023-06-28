@@ -50,8 +50,9 @@ const DishesPageContent: FC = () => {
         defaultValueInput={search || ''}
       />
       <DishesList dishes={dishes?.data} isLoading={isFetching} />
-      {dishes && dishes.totalCount > 12 && (
+      {dishes && (
         <Pagination
+          disabled={dishes.totalCount > 12}
           marginRight="30px"
           count={Math.ceil(dishes.totalCount / 12)}
           onChange={handlePagination}

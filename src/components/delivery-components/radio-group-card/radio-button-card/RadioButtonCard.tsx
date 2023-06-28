@@ -28,13 +28,13 @@ const RadioButtonCard: FC<RadioButtonCardDeliveryItemType> = (props) => {
             {deliveryAddress}
           </Typography>
         </Stack>
-        <Stack justifyContent="space-between">
+        <Stack justifyContent="space-between" minWidth="93px">
           <InfoTag
             label={timeToReady}
             size="small"
             icon={<Icon.Clock width="14px" height="14px" />}
           />
-          <InfoTag {...status} withBorder size="small" />
+          {status && <InfoTag {...status} withBorder size="small" />}
         </Stack>
       </Stack>
     </RadioButtonCardWrapper>

@@ -6,7 +6,7 @@ export const deliveryIndicatorItems: IndicatorItemType[] = [
   { label: 'Flexible', type: 'green' },
 ]
 
-export const tableTitleDelivery: string[] = [
+export const tableHomeTitleDelivery: string[] = [
   'Client Name',
   'Phone number',
   'Address',

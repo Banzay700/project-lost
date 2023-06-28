@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { calculateValues } from './orderSummaryWrapper.utils'
+import { calculateTotalPriceWithTax } from 'utils'
 import { OrderSummary } from './order-summary'
 
 interface OrderSummaryWrapperProps {
@@ -13,7 +13,7 @@ interface OrderSummaryWrapperProps {
 
 const OrderSummaryWrapper: FC<OrderSummaryWrapperProps> = (props) => {
   const { total, tax, paymentMethod, tip, email } = props
-  const { taxValue, totalValue } = calculateValues(total, tax, tip)
+  const { taxValue, totalValue } = calculateTotalPriceWithTax(total, tax, tip)
 
   return (
     <Stack sx={{ gap: '16px' }}>

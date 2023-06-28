@@ -4,7 +4,7 @@ export interface RadioButtonCardContentItemType {
   clientName: string
   deliveryAddress: string
   timeToReady: string
-  status: { label: 'Priority' | 'Timely' | 'Flexible'; type: 'red' | 'primary' | 'green' }
+  status?: { label: string; type: 'red' | 'primary' | 'green' }
 }
 
 export interface RadioButtonCardDeliveryItemType extends RadioButtonCardContentItemType {

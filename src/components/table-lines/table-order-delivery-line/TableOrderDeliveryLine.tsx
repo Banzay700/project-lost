@@ -12,7 +12,7 @@ interface TableOrderDeliveryLineProps {
     type?: 'blue' | 'primary' | 'yellow' | 'green' | 'red' | 'default'
     label: string
   }
-  onClickAction: (id: string) => void
+  onClickAction?: (id: string) => void
 }
 
 const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
@@ -24,7 +24,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
   onClickAction,
 }) => {
   const handleClickAction = () => {
-    onClickAction(id)
+    if (onClickAction) onClickAction(id)
   }
 
   return (
@@ -39,12 +39,14 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
 
       <ColumnInfoTag {...status} />
 
-      <ColumnAction
-        title="Notify Client"
-        variant="contained"
-        size="small"
-        onClick={handleClickAction}
-      />
+      {onClickAction && (
+        <ColumnAction
+          title="Notify Client"
+          variant="contained"
+          size="small"
+          onClick={handleClickAction}
+        />
+      )}
     </TableRow>
   )
 }

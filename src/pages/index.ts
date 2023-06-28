@@ -18,4 +18,6 @@ export {
   CurrentOrderDeliveryMobilePage,
   OrdersDeliveryPage,
   ActiveOrderDeliveryMobilePage,
+  HistoryDeliveryPage,
+  Direction,
 } from './delivery-pages'

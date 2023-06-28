@@ -14,6 +14,7 @@ export const RadioButtonCardWrapper = styled(
   border: `1px solid currentColor`,
   padding: '14px',
   borderRadius: '16px',
+  cursor: 'pointer',
 }))
 
 export const RadioButtonCardRadio = styled(Radio)`

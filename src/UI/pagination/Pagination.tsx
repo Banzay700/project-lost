@@ -6,6 +6,7 @@ interface PaginationProps {
   page: number
   onChange: (event: ChangeEvent<unknown>, value: number) => void
   count: number
+  disabled?: boolean
   position?: 'flex-start' | 'center' | 'flex-end'
   marginRight?: string
   marginLeft?: string
@@ -14,6 +15,7 @@ interface PaginationProps {
 const Pagination: FC<PaginationProps> = ({
   page,
   count,
+  disabled,
   marginRight,
   marginLeft,
   position,
@@ -24,15 +26,17 @@ const Pagination: FC<PaginationProps> = ({
 
   return (
     <PaginationWrapper alignItems={position || 'flex-end'} sx={{ marginRight, marginLeft }}>
-      <PaginationMui
-        count={count}
-        variant="text"
-        shape="rounded"
-        color="primary"
-        size={isMobileScreen ? 'small' : 'medium'}
-        onChange={onChange}
-        page={page}
-      />
+      {disabled && (
+        <PaginationMui
+          count={count}
+          variant="text"
+          shape="rounded"
+          color="primary"
+          size={isMobileScreen ? 'small' : 'medium'}
+          onChange={onChange}
+          page={page}
+        />
+      )}
     </PaginationWrapper>
   )
 }
