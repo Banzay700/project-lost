@@ -27,6 +27,7 @@ export const ROUTES_DELIVERY = {
   CURRENT_ORDER: '/delivery/:currentOrder',
   ORDERS: 'active-delivery',
   ACTIVE_ORDER: '/active-delivery/:activeOrder',
+  DIRECTION: '/direction',
 }
 
 export const ROUTES_NOT_AUTH = {
