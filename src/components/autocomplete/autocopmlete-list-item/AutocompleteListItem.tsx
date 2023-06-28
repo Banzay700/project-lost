@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { GeoArgs, Suggestion } from 'use-places-autocomplete'
+import { Suggestion } from 'use-places-autocomplete'
 import { AutocompleteListItemSuggestion } from './AutocopmleteListItem.styled'
 
 interface AutocompleteListItemProps {
   suggestion: Suggestion
-  onSelect: ({ description }: GeoArgs) => void
+  onSelect: ({ description }: Suggestion) => void
 }
 
 const AutocompleteListItem: FC<AutocompleteListItemProps> = ({ suggestion, onSelect }) => {

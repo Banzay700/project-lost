@@ -28,6 +28,7 @@ export const ROUTES_DELIVERY = {
   HISTORY: 'history',
   HISTORY_ORDER: '/history/:historyOrder',
   ACTIVE_ORDER: '/active-delivery/:activeOrder',
+  DIRECTION: '/direction',
 }
 
 export const ROUTES_NOT_AUTH = {

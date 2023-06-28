@@ -19,6 +19,7 @@ import {
   ProfilePage,
   ReservationPage,
   WaiterLayout,
+  Direction,
 } from 'pages'
 import { useRootLocationPath, useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -116,7 +117,7 @@ const AppRoutes = () => {
                 <Route path={ROUTES_DELIVERY.DELIVERY} element={<HomeDeliveryPage />} />
                 <Route path={ROUTES_DELIVERY.ORDERS} element={<OrdersDeliveryPage />} />
                 <Route path={ROUTES_DELIVERY.HISTORY} element={<HistoryDeliveryPage />} />
-
+                <Route path={ROUTES_DELIVERY.DIRECTION} element={<Direction />} />
                 <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
               </Route>
               <Route

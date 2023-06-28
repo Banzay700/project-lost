@@ -66,6 +66,7 @@ export {
   ContentRouteDeliveryMobile,
   OrderLayout,
   SidebarDeliveryInfo,
+  GoogleMap,
 } from './delivery-components'
 
 export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'

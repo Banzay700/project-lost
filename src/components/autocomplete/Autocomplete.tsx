@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react'
-import usePlacesAutocomplete, { GeoArgs, getGeocode, getLatLng } from 'use-places-autocomplete'
+import usePlacesAutocomplete, { getGeocode, getLatLng, Suggestion } from 'use-places-autocomplete'
 import { useFormikContext } from 'formik'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import { Input } from 'UI'
@@ -30,7 +30,7 @@ const Autocomplete: FC<AutocompleteProps> = ({ name, label, placeholder }) => {
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>): void => setValue(e.target.value)
 
-  const handleSelect = ({ description }: GeoArgs) => {
+  const handleSelect = ({ description }: Suggestion) => {
     setValue(description, false)
     clearSuggestions()
 
