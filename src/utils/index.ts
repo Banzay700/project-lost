@@ -15,3 +15,8 @@ export {
   validationPicture,
   validationDelivery,
 } from './validationSchemaItems'
+
+export { generateStatus } from './generateStatus'
+export { generateTimeString } from './generateTimeString'
+export { calculateTotalPriceWithTax } from './calculateTotalPriceWithTax'
+export { calculateTotalPrice } from './calculateTotalPrice'

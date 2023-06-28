@@ -1,10 +1,10 @@
 import { ActionsButton, RadioGroupCard } from 'components'
 import { FC, useState } from 'react'
-import { RadioButtonCardContentItemType } from 'types'
+import { DeliveryType, RadioButtonCardContentItemType } from 'types'
 import { useNavigate } from 'react-router-dom'
 
 interface ContentDeliveryMobileProps {
-  cardItem?: RadioButtonCardContentItemType[]
+  cardItem?: DeliveryType[]
 }
 
 const ContentRouteDeliveryMobile: FC<ContentDeliveryMobileProps> = ({ cardItem }) => {

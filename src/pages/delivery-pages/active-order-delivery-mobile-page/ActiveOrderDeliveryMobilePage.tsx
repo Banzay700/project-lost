@@ -7,11 +7,17 @@ import {
   OrderDetailList,
   TotalPriceInfo,
   AdaptiveHeaderWrapper,
+  OrderLayout,
 } from 'components'
 import { Button } from 'UI'
 import { OrderDetailsItemType } from 'types'
 import { Icon } from 'assets'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useRootLocationPath } from 'hooks/useRootLocationPath.hook'
+import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
+import { useUserReducer } from 'hooks/useUserReducer.hook'
+import { calculateTotalPrice } from 'utils/calculateTotalPrice'
+import { generateTimeString } from 'utils/generateTimeString'
 
 const mok: OrderDetailsItemType[] = [
   {
@@ -60,28 +66,42 @@ const mok: OrderDetailsItemType[] = [
 
 const ActiveOrderDeliveryMobilePage: FC = () => {
   const { activeOrder } = useParams()
+  const { location } = useRootLocationPath()
 
+  const { data } = useGetByIDQuery(activeOrder || '')
+  const [updateDelivery, { isSuccess }] = useUpdateDeliveryMutation()
+
+  const navigate = useNavigate()
+  const { userState } = useUserReducer()
+
+  const totalPrice = data && calculateTotalPrice(data.order.dishes)
+
+  const handleUpdateDelivery = () => {
+    if (activeOrder) updateDelivery({ id: activeOrder, courier: userState.id })
+  }
+
+  if (isSuccess) navigate(`/${location}`)
   return (
-    <>
-      <Header routeLogoStyle="Delivery" withoutLink>
-        <HeaderActionMobile label="Active Order" />
-      </Header>
-      <AdaptiveHeaderWrapper>
+    <OrderLayout titleHeader="Active order">
+      {data && (
         <InfoDelivery
-          deliveryAddress="test"
-          orderNumber="test"
-          clientName="test"
-          readyToTime="test">
-          <Button variant="contained" size="small" icon={<Icon.Phone />} />
-          <Button variant="contained" size="small" icon={<Icon.Message />} />
+          deliveryAddress={data.address.street}
+          orderNumber={data.order.orderNumber}
+          clientName={data.clientInfo.name}
+          readyToTime={generateTimeString(data.time)}>
           <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
         </InfoDelivery>
-        <OrderDetailList ordersDetail={mok} />
-        <ActionsButton doubleAction titleButton="Done" onSubmit={() => {}}>
-          <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
-        </ActionsButton>
-      </AdaptiveHeaderWrapper>
-    </>
+      )}
+      <OrderDetailList ordersDetail={data?.order} />
+
+      <ActionsButton
+        doubleAction
+        titleButton={data?.order.status === 'opened' ? 'Cooking in progress' : 'Done'}
+        onSubmit={() => {}}
+        disabled={data?.order.status === 'opened'}>
+        <TotalPriceInfo totalPrice={totalPrice} paymentMethod={data?.clientInfo.paymentMethod} />
+      </ActionsButton>
+    </OrderLayout>
   )
 }
 

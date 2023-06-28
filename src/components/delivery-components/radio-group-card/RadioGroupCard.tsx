@@ -1,12 +1,13 @@
 import { FC } from 'react'
 import { useSmoothScrollbar } from 'hooks'
-import { RadioButtonCardContentItemType } from 'types'
+import { DeliveryType } from 'types'
+import { generateStatus, generateTimeString } from 'utils'
 import { RadioGroupCardWrapper } from './RadioGroupCard.styled'
 import { RadioButtonCard } from './radio-button-card'
 
 interface RadioGroupCardProps {
   isActiveCard?: string
-  cardData?: RadioButtonCardContentItemType[]
+  cardData?: DeliveryType[]
   onChange: (value: string) => void
 }
 
@@ -19,11 +20,11 @@ const RadioGroupCard: FC<RadioGroupCardProps> = ({ isActiveCard, cardData, onCha
         <RadioButtonCard
           key={item.id}
           id={item.id}
-          status={item.status}
-          orderNumber={item.orderNumber}
-          clientName={item.clientName}
-          deliveryAddress={item.deliveryAddress}
-          timeToReady={item.timeToReady}
+          status={generateStatus(item.time)}
+          orderNumber={item.order.orderNumber}
+          clientName={item.clientInfo.name}
+          deliveryAddress={item.address.street}
+          timeToReady={generateTimeString(item.time)}
           isChecked={isActiveCard}
           onChange={onChange}
         />

@@ -60,4 +60,9 @@ export {
   useGetReservationInfoQuery,
   useLazyGetReservationInfoQuery,
 } from './reservation.api'
-export { useCreateDeliveryMutation } from './delivery.api'
+export {
+  useCreateDeliveryMutation,
+  useGetAllDeliveryQuery,
+  useGetByIDQuery,
+  useUpdateDeliveryMutation,
+} from './delivery.api'

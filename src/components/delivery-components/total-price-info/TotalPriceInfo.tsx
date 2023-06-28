@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material'
 import { Icon } from 'assets'
 import { FC } from 'react'
+import { calculateTotalPriceWithTax, TAX } from 'utils'
 import {
   PaymentMethod,
   PaymentMethodWrapper,
@@ -9,8 +10,8 @@ import {
 } from './TotalPriceInfo.styled'
 
 interface TotalPriceInfoProps {
-  paymentMethod: string
-  totalPrice: string | number
+  paymentMethod?: string
+  totalPrice?: number
 }
 
 const TotalPriceInfo: FC<TotalPriceInfoProps> = ({ paymentMethod, totalPrice }) => {
@@ -24,9 +25,11 @@ const TotalPriceInfo: FC<TotalPriceInfoProps> = ({ paymentMethod, totalPrice }) 
           </Typography>
         </PaymentMethod>
         <TotalPrice>
-          <Typography variant="subtitle1" component="p">
-            $ {totalPrice}
-          </Typography>
+          {totalPrice && (
+            <Typography variant="subtitle1" component="p">
+              $ {calculateTotalPriceWithTax(totalPrice, TAX).totalValue}
+            </Typography>
+          )}
         </TotalPrice>
       </PaymentMethodWrapper>
     </TotalPriceInfoWrapper>

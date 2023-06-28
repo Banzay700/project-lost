@@ -1,5 +1,12 @@
 export type { TableDataItem, OrderTypeOfElement } from './ComponetTableType'
-export type { DeliveryFormType, DeliveryCreateItemType } from './DeliveryType'
+export type {
+  DeliveryFormType,
+  DeliveryCreateItemType,
+  DeliveryResponseType,
+  DeliveryType,
+  DeliveryGetRequestType,
+  DeliveryUpdateType,
+} from './DeliveryType'
 
 export type {
   TableType,

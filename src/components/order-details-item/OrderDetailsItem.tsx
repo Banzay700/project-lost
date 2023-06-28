@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { FadeIn } from 'utils'
-import { OrderDetailsItemType } from 'types'
+import { OrderDetailsItemType, OrderDishType } from 'types'
 import { OrderDetailsItemContent } from './order-details-item-content'
 import { OrderDetailsDeleteCard } from './order-details-delete-card'
 

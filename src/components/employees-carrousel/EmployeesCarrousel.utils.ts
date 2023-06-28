@@ -5,9 +5,14 @@ const responsive = {
     slidesToSlide: 5,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 768 },
     items: 3,
     slidesToSlide: 3,
+  },
+  mobile: {
+    breakpoint: { max: 768, min: 320 },
+    items: 2,
+    slidesToSlide: 1,
   },
 }
 

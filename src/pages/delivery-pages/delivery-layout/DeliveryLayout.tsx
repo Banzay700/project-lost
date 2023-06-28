@@ -5,6 +5,7 @@ import { useScreenTracking } from 'hooks/useScreenTracking'
 import { OrderDetailsItemType } from 'types/ComponentsItemType'
 import { Stack } from '@mui/material'
 import { navData } from './deliveryLayout.utils'
+import { useRootLocationPath } from 'hooks/useRootLocationPath.hook'
 
 const mok2: OrderDetailsItemType[] = [
   {
@@ -52,6 +53,7 @@ const mok2: OrderDetailsItemType[] = [
 ]
 const DeliveryLayout: FC = () => {
   const { isMobileScreen } = useScreenTracking()
+  const { isProfileLocation } = useRootLocationPath()
 
   return (
     <>
@@ -60,7 +62,9 @@ const DeliveryLayout: FC = () => {
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />
         </Stack>
-        {!isMobileScreen && <SidebarDeliveryInfo orderDetail={mok2} orderNumber={12312} />}
+        {!isMobileScreen && !isProfileLocation && (
+          <SidebarDeliveryInfo orderDetail={mok2} orderNumber={12312} />
+        )}
       </AdaptiveHeaderWrapper>
     </>
   )

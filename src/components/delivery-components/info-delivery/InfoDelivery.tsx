@@ -7,7 +7,7 @@ import { InfoDeliveryWrapper } from './InfoDelivery.styled'
 interface InfoDeliveryProps extends PropsWithChildren {
   clientName: string
   deliveryAddress: string
-  orderNumber: string
+  orderNumber: number
   readyToTime: string | number
 }
 

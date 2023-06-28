@@ -27,7 +27,7 @@ const ActionsButton: FC<ActionsButtonProps> = ({
           <Button variant="outlined" size="small" onClick={onCancel} fullWidth>
             Cancel
           </Button>
-          <Button variant="contained" size="small" onClick={onSubmit} fullWidth>
+          <Button variant="contained" size="small" onClick={onSubmit} fullWidth disabled={disabled}>
             {titleButton}
           </Button>
         </Stack>

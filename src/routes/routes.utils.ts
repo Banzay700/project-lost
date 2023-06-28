@@ -19,13 +19,14 @@ export const ROUTES_ADMIN = {
   RESTAURANT_CATEGORY: ':restaurant',
   EMPLOYEES: 'employees',
   EMPLOYEES_CATEGORY: ':employees',
-  SETTING: 'settings',
 }
 
 export const ROUTES_DELIVERY = {
   DELIVERY: 'delivery',
   CURRENT_ORDER: '/delivery/:currentOrder',
   ORDERS: 'active-delivery',
+  HISTORY: 'history',
+  HISTORY_ORDER: '/history/:historyOrder',
   ACTIVE_ORDER: '/active-delivery/:activeOrder',
 }
 
