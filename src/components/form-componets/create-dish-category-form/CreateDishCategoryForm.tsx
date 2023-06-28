@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Form, Formik } from 'formik'
-import { Stack } from '@mui/material'
+
 import { Input } from 'UI'
 import { CreateCategoryFormReturnType } from 'types'
 import { CreateCategoryPicture } from './create-category-picture'
@@ -24,9 +24,7 @@ const CreateDishCategoryForm: FC<CreateDishCategoryFormProps> = ({ linkageToForm
       <Form style={{ display: 'flex', gap: '20px', width: '100%' }} id={linkageToForm}>
         <FormInputsWrapper>
           <CreateCategoryPicture />
-          <Stack sx={{ width: '100%' }}>
-            <Input placeholder="Category" name="title" label="Category" />
-          </Stack>
+          <Input placeholder="Category" name="title" label="Category" />
         </FormInputsWrapper>
       </Form>
     </Formik>

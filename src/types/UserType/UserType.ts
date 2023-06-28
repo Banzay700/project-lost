@@ -5,6 +5,7 @@ export interface UserType {
   role: 'Waiter' | 'Admin' | 'Courier'
   userImage?: string
   phoneNumber?: string
+  password?: string
   email?: string
   description?: string
   status: 'active' | 'inactive'

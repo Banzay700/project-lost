@@ -14,7 +14,7 @@ const city = (isRequired?: boolean) => {
 const street = (isRequired?: boolean) => {
   const schema = string()
     .min(2, 'Too Short! 3-50 symbols')
-    .max(50, 'Too Long! 3-50 symbols')
+    .max(100, 'Too Long! 3-100 symbols')
     .matches(REGEX.ONE_UPPERCASE_LETTER, 'Street must contain at least one uppercase letter')
 
   return isRequired ? schema.required('Street is required') : schema

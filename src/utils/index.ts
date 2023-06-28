@@ -1,5 +1,5 @@
 export { formatString } from './formatString'
-export { ORDER_TOGGLE_MENU_VALUES, TAX } from './constants'
+export { ORDER_TOGGLE_MENU_VALUES, TAX, MS_CUSTOM_BREAKPOINT } from './constants'
 export { correctionName } from './correctionName'
 export { firstLetterUpperCase } from './firstLetterUpperCase'
 export { spacesBetweenCapitalsLetters } from './spacesBetweenCapitalsLetters'

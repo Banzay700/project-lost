@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Formik } from 'formik'
-import { Input, SelectInput } from 'UI/index'
-import { DeliveryFormType } from 'types/index'
+import { Input, InputPhoneNumber, SelectInput } from 'UI'
+import { DeliveryFormType } from 'types'
+import { Autocomplete } from 'components/autocomplete'
 import { initialValues, validationSchema, selectMenuItems } from './DeliveryForm.utils'
 import { DeliveryFormContainer } from './DeliveryForm.styled'
-import Autocomplete from '../../../autocomplete/Autocomplete'
 
 interface DeliveryFormProps {
   onSubmit: (value: DeliveryFormType) => void
@@ -19,7 +19,7 @@ const DeliveryForm: FC<DeliveryFormProps> = ({ onSubmit, linkageToForm }) => {
       <DeliveryFormContainer id={linkageToForm}>
         <Input placeholder="Name" name="clientInfo.name" label="Name" />
         <Autocomplete placeholder="Street" name="address.street" label="Street" />
-        <Input placeholder="Phone Number" name="clientInfo.phoneNumber" label="Phone Number" />
+        <InputPhoneNumber name="clientInfo.phoneNumber" label="Phone Number" />
         <Input
           placeholder="Delivery Time in minuts"
           name="time"

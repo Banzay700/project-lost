@@ -15,6 +15,13 @@ const InputsBasicUserInfo: FC<InputsBasicUserInfoProps> = ({ isDisabled }) => {
         label="Second Name"
         disabled={isDisabled}
       />
+      <Input
+        placeholder="Password"
+        name="password"
+        label="Password"
+        type="password"
+        disabled={isDisabled}
+      />
       <Input placeholder="Email" name="email" label="Email" disabled={isDisabled} />
       <InputPhoneNumber name="phoneNumber" label="Phone number" disabled={isDisabled} />
     </>

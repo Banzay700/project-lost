@@ -38,7 +38,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
         <InputsWrapper>
           <Stack sx={{ gap: '20px', width: '80%' }}>
             <InputsBasicUserInfo />
-            <Input placeholder="Password" name="password" label="Password" type="password" />
           </Stack>
           <RegistrationPicture />
         </InputsWrapper>

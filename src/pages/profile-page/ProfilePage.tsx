@@ -1,11 +1,16 @@
 import { FC } from 'react'
-import { useUserReducer } from 'hooks'
-import { UserAvatar, UserPassword, UserUpdateInfo } from 'types'
-import { Stack } from '@mui/material'
+import { useSmoothScrollbar, useUserReducer } from 'hooks'
+import { UserAvatar, UserUpdateInfo } from 'types'
 import { useUpdateUserMutation } from 'store/api'
 import { useUpdateUserAvatarMutation } from 'store/api/users.api'
 import { ProfileSidebar } from './profile-sidebar'
 import { ProfileContent } from './profile-content'
+import { ProfileHeader } from './profile-header'
+import {
+  ProfileContentContainer,
+  ProfilePageWrapper,
+  ScrollbarContainer,
+} from './ProfilePage.styled'
 
 interface ProfilePageProps {
   isLogoutButton?: boolean
@@ -15,11 +20,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ isLogoutButton }) => {
   const { userState } = useUserReducer()
   const [update] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
-  const handleSubmitChangeProfile = (value: UserUpdateInfo) => {
-    update({ id: userState.id, ...value })
-  }
+  const containerRef = useSmoothScrollbar<HTMLDivElement>()
 
-  const handleSubmitChangePassword = (value: UserPassword) => {
+  const handleSubmitChangeProfile = (value: UserUpdateInfo) => {
     update({ id: userState.id, ...value })
   }
 
@@ -32,18 +35,19 @@ const ProfilePage: FC<ProfilePageProps> = ({ isLogoutButton }) => {
   }
 
   return (
-    <Stack direction="row" sx={{ width: '100%', height: '100%' }}>
-      <ProfileSidebar
-        user={userState}
-        submitChangeAvatar={handleSubmitChangeAvatar}
-        isLogoutButton={isLogoutButton}
-      />
-      <ProfileContent
-        user={userState}
-        submitChangePassword={handleSubmitChangePassword}
-        submitChangeUserInfo={handleSubmitChangeProfile}
-      />
-    </Stack>
+    <ProfilePageWrapper ref={containerRef}>
+      <ScrollbarContainer>
+        <ProfileHeader />
+        <ProfileContentContainer>
+          <ProfileSidebar
+            user={userState}
+            submitChangeAvatar={handleSubmitChangeAvatar}
+            isLogoutButton={isLogoutButton}
+          />
+          <ProfileContent user={userState} submitChangeUserInfo={handleSubmitChangeProfile} />
+        </ProfileContentContainer>
+      </ScrollbarContainer>
+    </ProfilePageWrapper>
   )
 }
 
