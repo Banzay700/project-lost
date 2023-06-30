@@ -42,6 +42,7 @@ export {
   ModalUpdateDishInfo,
   ModalCreateCategory,
   DeliveryModals,
+  ModalAddressInfo,
 } from './modal-components'
 
 export { ReservationCanvas } from './reservation-canvas'

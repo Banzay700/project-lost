@@ -94,3 +94,9 @@ export type {
   CreateCategoryFormReturnType,
   ReservationFormType,
 } from './ComponentsReturnType'
+export type {
+  DirectionsServicesType,
+  TripSummaryType,
+  RouteInfoType,
+  MapActionsType,
+} from './GoogleMapsType'

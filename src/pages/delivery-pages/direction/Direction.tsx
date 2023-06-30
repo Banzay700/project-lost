@@ -4,9 +4,9 @@ import { ActionsButton, OrderLayout, TotalPriceInfo, GoogleMap } from 'component
 const Direction: FC = () => {
   return (
     <OrderLayout titleHeader="Direction">
-      <GoogleMap lat={1} lng={2} />
+      <GoogleMap lat={50.52073439999999} lng={30.2461634} mapActions={{ mapTypeControl: false }} />
       <ActionsButton titleButton="Take Delivery" onSubmit={() => {}}>
-        <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
+        <TotalPriceInfo totalPrice={12} paymentMethod="Cash" />
       </ActionsButton>
     </OrderLayout>
   )
