@@ -117,7 +117,6 @@ const AppRoutes = () => {
                 <Route path={ROUTES_DELIVERY.DELIVERY} element={<HomeDeliveryPage />} />
                 <Route path={ROUTES_DELIVERY.ORDERS} element={<OrdersDeliveryPage />} />
                 <Route path={ROUTES_DELIVERY.HISTORY} element={<HistoryDeliveryPage />} />
-                <Route path={ROUTES_DELIVERY.DIRECTION} element={<Direction />} />
                 <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
               </Route>
               <Route
@@ -132,6 +131,7 @@ const AppRoutes = () => {
                 path={ROUTES_DELIVERY.HISTORY_ORDER}
                 element={<ActiveOrderDeliveryMobilePage />}
               />
+              <Route path={ROUTES_DELIVERY.DIRECTION} element={<Direction />} />
             </>
           )}
         </>

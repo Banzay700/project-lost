@@ -1,17 +1,16 @@
 import { FC } from 'react'
-import { OrderDetailList, OrderSummaryWrapper } from 'components'
-import { OrderDetailsItemType } from 'types'
-import { DetailsListTitle } from 'UI/details-title'
 import { Stack } from '@mui/material'
+import { OrderDetailList, OrderSummaryWrapper } from 'components'
+import { Button, DetailsListTitle } from 'UI'
+import { OrderType } from 'types'
 import { TAX } from 'utils'
-import { Button } from 'UI'
 import {
   SidebarDeliveryActionsWrapper,
   SidebarDeliveryInfoWrapper,
 } from './SidebarDeliveryInfo.styled'
 
 interface SidebarDeliveryInfoProps {
-  orderDetail?: OrderDetailsItemType[]
+  orderDetail?: OrderType
   orderNumber: number
 }
 
