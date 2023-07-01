@@ -35,12 +35,7 @@ const LogoWrapper: FC<LogoWrapperProps> = ({ role, routeLogoStyle }) => {
           onClick={handleGoToAdminPanel}
         />
       )}
-      <Logo
-        link={ROUTES.HOME}
-        routeLogoStyle={routeLogoStyle}
-        widthLogo={isMobile ? '100px' : ''}
-        heightLogo={isMobile ? '25px' : ''}
-      />
+      <Logo link={ROUTES.HOME} routeLogoStyle={routeLogoStyle} />
     </Stack>
   )
 }

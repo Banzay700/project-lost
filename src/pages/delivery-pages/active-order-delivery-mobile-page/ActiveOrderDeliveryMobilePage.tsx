@@ -52,7 +52,12 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
           clientName={data.clientInfo.name}
           readyToTime={generateTimeString(data.time)}>
           <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
-          <Button variant="contained" size="small" icon={<Icon.Phone />} />
+          <Button
+            variant="contained"
+            linkTo={`tel:${data.clientInfo.phoneNumber}`}
+            size="small"
+            icon={<Icon.Phone />}
+          />
           <Button variant="contained" size="small" icon={<Icon.NotifyUser />} />
         </InfoDelivery>
       )}

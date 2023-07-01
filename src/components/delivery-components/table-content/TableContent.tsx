@@ -1,10 +1,8 @@
 import { FC } from 'react'
 import { Table } from 'UI'
-import { TableOrderDeliveryLine } from 'components'
+import { TableOrderDeliveryLine, TableNotDataFoundLine } from 'components'
 import { generateStatus } from 'utils'
 import { DeliveryType } from 'types'
-import { Icon } from 'assets'
-import { Stack } from '@mui/material'
 
 interface TableContentProps {
   tableTitle: string[]
@@ -24,31 +22,27 @@ const TableContent: FC<TableContentProps> = ({
   onClickAction,
 }) => {
   return (
-    <>
-      <Table
-        tableTitles={tableTitle}
-        tableMinWidth="660px"
-        isLoading={isLoading}
-        tableMaxHeight={!data?.length ? 88 : '100%'}>
-        {!isLoading &&
-          data?.map((item) => (
-            <TableOrderDeliveryLine
-              isActive={isActiveLine || ''}
-              key={item.id}
-              id={item.id}
-              clientName={item.clientInfo.name}
-              deliveryAddress={item.address.street}
-              phoneNumber={item.clientInfo.phoneNumber}
-              status={generateStatus(item.time)}
-              onClickAction={onClickAction}
-              onClickLine={onClickLine}
-            />
-          ))}
-      </Table>
-      <Stack width="100%" alignItems="center">
-        {!data?.length && !isLoading && <Icon.NotDataFound />}
-      </Stack>
-    </>
+    <Table tableTitles={tableTitle} tableMinWidth="660px" isLoading={isLoading}>
+      {!isLoading &&
+        data?.map((item) => (
+          <TableOrderDeliveryLine
+            isActive={isActiveLine || ''}
+            key={item.id}
+            id={item.id}
+            clientName={item.clientInfo.name}
+            deliveryAddress={item.address.street}
+            phoneNumber={item.clientInfo.phoneNumber}
+            status={
+              item.status === 'closed'
+                ? { label: 'Closed', type: 'green' }
+                : generateStatus(item.time)
+            }
+            onClickAction={onClickAction}
+            onClickLine={onClickLine}
+          />
+        ))}
+      {!data?.length && !isLoading && <TableNotDataFoundLine length={tableTitle.length} />}
+    </Table>
   )
 }
 

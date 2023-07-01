@@ -1,17 +1,10 @@
 import { FC } from 'react'
-import {
-  ContentRouteDeliveryMobile,
-  SidebarDeliveryInfo,
-  TableContent,
-  TableOrderDeliveryLine,
-} from 'components'
-import { Pagination, Table } from 'UI'
+import { ContentRouteDeliveryMobile, SidebarDeliveryInfo, TableContent } from 'components'
+import { Pagination } from 'UI'
 import { useUserReducer, useScreenTracking, useParamsSearchFilter } from 'hooks'
 import { useGetAllDeliveryQuery, useLazyGetByIDQuery } from 'store/api'
-import { firstLetterUpperCase } from 'utils'
 import { Stack } from '@mui/material'
 import { tableHistoryTitleDelivery } from './historyDeliveryPage.utils'
-import { tableHomeTitleDelivery } from 'pages/delivery-pages/home-delivery-page/homeDeliveryPage.utils'
 
 const HistoryDeliveryPage: FC = () => {
   const { isMobileScreen } = useScreenTracking()
@@ -61,7 +54,10 @@ const HistoryDeliveryPage: FC = () => {
         )}
       </Stack>
       {!isMobileScreen && (
-        <SidebarDeliveryInfo orderDetail={data?.data[0]?.order} titleButton="Back" />
+        <SidebarDeliveryInfo
+          orderDetail={data?.data[0]?.order}
+          isLoading={isFetchingDeliveryItem}
+        />
       )}
     </>
   )

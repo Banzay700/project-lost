@@ -45,16 +45,19 @@ const AdminDishesListContent: FC<AdminDishesListContentProps> = ({
         defaultValueInput={search || ''}
       />
 
-      <Table tableMinWidth="660px" isLoading={isFetching} tableTitles={dishesTableTitles}>
-        {!isFetching &&
-          data?.data.map((dish) => (
-            <TableDishLine
-              key={dish.id}
-              dish={dish}
-              onClickAction={onClickAction}
-              onClickLine={onClickLine}
-            />
-          ))}
+      <Table
+        tableMinWidth="660px"
+        isLoading={isFetching}
+        tableTitles={dishesTableTitles}
+        notDataFound={!data?.data.length}>
+        {data?.data.map((dish) => (
+          <TableDishLine
+            key={dish.id}
+            dish={dish}
+            onClickAction={onClickAction}
+            onClickLine={onClickLine}
+          />
+        ))}
       </Table>
       {data && (
         <Pagination

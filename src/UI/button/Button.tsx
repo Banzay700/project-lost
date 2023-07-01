@@ -12,6 +12,7 @@ interface ButtonProps extends PropsWithChildren {
   startIcon?: ReactNode | ReactElement
   endIcon?: ReactNode | ReactElement
   icon?: ReactNode | ReactElement
+  linkTo?: string
   type?: 'submit' | 'reset' | 'button'
   variantText?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
   fontWeight?: 400 | 500 | 600 | 700
@@ -33,6 +34,7 @@ const Button: FC<ButtonProps> = ({
   endIcon,
   blur,
   icon,
+  linkTo,
   type,
   variantText,
   fontWeight,
@@ -49,6 +51,7 @@ const Button: FC<ButtonProps> = ({
   return (
     <ButtonWrapper
       sx={{ maxWidth, minWidth }}
+      href={linkTo}
       filterMenuStyle={filterMenuStyle}
       size={size}
       blur={blur}

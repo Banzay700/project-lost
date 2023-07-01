@@ -33,7 +33,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
   }
 
   const handleClickLine = () => {
-    if (onClickLine) onClickLine(id)
+    if (onClickLine && id !== isActive) onClickLine(id)
   }
 
   return (
@@ -43,6 +43,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
         height: '88px',
         cursor: 'pointer',
         background: isActive === id ? 'rgba(0, 0, 0, 0.04)' : '',
+        '.MuiTableCell-root:last-child': { p: 0 },
       }}
       onClick={handleClickLine}>
       <ColumnText title={clientName} textFontWeight={600} />

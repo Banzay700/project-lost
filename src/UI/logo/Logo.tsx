@@ -1,24 +1,25 @@
 import { FC } from 'react'
 import { LogoImg } from 'assets'
 import { Typography } from '@mui/material'
+import { useScreenTracking } from 'hooks'
 import { LogoWrapper } from './Logo.styled'
 
 interface LogoProps {
   link: string
   routeLogoStyle?: string
-  widthLogo?: string
-  heightLogo?: string
 }
 
-const Logo: FC<LogoProps> = ({ link, routeLogoStyle, widthLogo, heightLogo }) => {
+const Logo: FC<LogoProps> = ({ link, routeLogoStyle }) => {
+  const { isMobileScreen } = useScreenTracking()
+
   return (
     <LogoWrapper to={link}>
       <LogoImg
         style={{ marginRight: '8px' }}
-        width={widthLogo || '120px'}
-        height={heightLogo || '35px'}
+        width={isMobileScreen ? '100px' : '120px'}
+        height={isMobileScreen ? '25px' : '35px'}
       />
-      <Typography lineHeight={0.7}>{routeLogoStyle}</Typography>
+      <Typography lineHeight={isMobileScreen ? 0.7 : 1}>{routeLogoStyle}</Typography>
     </LogoWrapper>
   )
 }

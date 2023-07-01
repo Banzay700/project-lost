@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
 import { TableCell, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -17,8 +17,12 @@ const ColumnPhoneRedirect: FC<ColumnPhoneRedirectProps> = ({
   textFontWeight,
   textColor,
 }) => {
+  const handleClick = (e: MouseEvent) => {
+    e.stopPropagation()
+  }
+
   return (
-    <TableCell align={columnAlign || 'center'}>
+    <TableCell align={columnAlign || 'center'} onClick={handleClick}>
       <Link to={`tel:${title}`} style={{ textDecoration: 'underline' }}>
         <Typography
           color={textColor || 'secondary'}

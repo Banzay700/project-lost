@@ -55,6 +55,7 @@ export {
   TableReservationLine,
   TableDeliveryLine,
   TableOrderDeliveryLine,
+  TableNotDataFoundLine,
 } from './table-lines'
 export { Watch } from './watch'
 export {

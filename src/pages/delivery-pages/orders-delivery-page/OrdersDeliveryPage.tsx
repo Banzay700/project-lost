@@ -7,7 +7,7 @@ import {
 } from 'components'
 import { PageActionsBar } from 'UI'
 import { useScreenTracking, useUserReducer } from 'hooks'
-import { useGetAllDeliveryQuery, useLazyGetByIDQuery } from 'store/api'
+import { useGetAllDeliveryQuery, useLazyGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { Stack } from '@mui/material'
 import { deliveryIndicatorItems, tableOrdersTitleDelivery } from './OrdersDeliveryPage.utils'
 
@@ -17,10 +17,27 @@ const OrdersDeliveryPage: FC = () => {
   const { data, isFetching } = useGetAllDeliveryQuery({ courier: userState.id, status: 'opened' })
   const [getByIdDelivery, { isFetching: isFetchingDeliveryItem, data: deliveryOrderItem }] =
     useLazyGetByIDQuery()
+  const [updateDelivery] = useUpdateDeliveryMutation()
 
   const handleClickLine = (id: string) => {
     getByIdDelivery(id)
   }
+
+  const handleCloseDelivery = (id: string) => {
+    if (deliveryOrderItem?.bill || data?.data[0]?.bill) {
+      updateDelivery({
+        id,
+        courier: userState.id,
+        status: 'closed',
+        bill: deliveryOrderItem?.bill || data?.data[0]?.bill,
+      })
+    }
+  }
+
+  const handleCancelDelivery = (id: string) => {
+    updateDelivery({ id })
+  }
+
   return (
     <>
       <Stack flex={1} height="100%" width="100%" overflow="auto">
@@ -41,6 +58,11 @@ const OrdersDeliveryPage: FC = () => {
       </Stack>
       {!isMobileScreen && (
         <SidebarDeliveryInfo
+          deliveryId={deliveryOrderItem?.id || data?.data[0]?.id}
+          withButtonCancel
+          statusCheck
+          onCancel={handleCancelDelivery}
+          onSubmit={handleCloseDelivery}
           orderDetail={deliveryOrderItem?.order || data?.data[0]?.order}
           titleButton="Done"
           isLoading={isFetchingDeliveryItem}

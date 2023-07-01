@@ -2,8 +2,9 @@ import { FC } from 'react'
 import { useSmoothScrollbar } from 'hooks'
 import { DeliveryType } from 'types'
 import { firstLetterUpperCase, generateStatus, generateTimeString } from 'utils'
-import { RadioButtonCardSkeleton } from 'UI/skeleton'
-import { Box } from '@mui/material'
+import { RadioButtonCardSkeleton } from 'UI'
+import { Box, Stack } from '@mui/material'
+import { Icon } from 'assets'
 import { RadioGroupCardWrapper } from './RadioGroupCard.styled'
 import { RadioButtonCard } from './radio-button-card'
 
@@ -44,6 +45,11 @@ const RadioGroupCard: FC<RadioGroupCardProps> = ({
               onChange={onChange}
             />
           ))}
+        {!isLoading && !cardData?.length && (
+          <Stack sx={{ width: '100%', height: '100%' }} alignItems="center">
+            <Icon.NotDataFound />
+          </Stack>
+        )}
       </RadioGroupCardWrapper>
     </Box>
   )
