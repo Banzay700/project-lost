@@ -67,6 +67,7 @@ export {
   OrderLayout,
   SidebarDeliveryInfo,
   GoogleMap,
+  TableContent,
 } from './delivery-components'
 
 export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'

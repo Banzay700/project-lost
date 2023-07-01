@@ -25,17 +25,22 @@ const LogoWrapper: FC<LogoWrapperProps> = ({ role, routeLogoStyle }) => {
   }
 
   return (
-    <Stack alignItems="center" direction="row" spacing={4.8}>
+    <Stack alignItems="center" direction="row" spacing={2}>
       {role === 'Admin' && !isAdminLocation && (
         <Button
           variant="outlined"
-          size="medium"
+          size={isMobile ? 'small' : 'medium'}
           icon={<Icon.ArrowLeft color={isMobile ? 'white' : 'secondary'} />}
           color="secondary"
           onClick={handleGoToAdminPanel}
         />
       )}
-      <Logo link={ROUTES.HOME} routeLogoStyle={routeLogoStyle} />
+      <Logo
+        link={ROUTES.HOME}
+        routeLogoStyle={routeLogoStyle}
+        widthLogo={isMobile ? '100px' : ''}
+        heightLogo={isMobile ? '25px' : ''}
+      />
     </Stack>
   )
 }

@@ -9,6 +9,7 @@ interface InfoDeliveryProps extends PropsWithChildren {
   deliveryAddress: string
   orderNumber: number
   readyToTime: string | number
+  status?: string
 }
 
 const InfoDelivery: FC<InfoDeliveryProps> = ({
@@ -16,6 +17,7 @@ const InfoDelivery: FC<InfoDeliveryProps> = ({
   deliveryAddress,
   readyToTime,
   orderNumber,
+  status,
   children,
 }) => {
   return (
@@ -29,7 +31,10 @@ const InfoDelivery: FC<InfoDeliveryProps> = ({
             Order # {orderNumber}
           </Typography>
         </Stack>
-        <InfoTag label={readyToTime.toString()} icon={<Icon.Clock />} />
+        <InfoTag
+          label={status === 'closed' ? 'Executed' : readyToTime.toString()}
+          icon={<Icon.Clock />}
+        />
       </Stack>
       <Stack direction="row" justifyContent="space-between">
         <Stack>

@@ -1,4 +1,4 @@
-import { Card, ListItem, styled } from '@mui/material'
+import { Box, Card, styled } from '@mui/material'
 
 export const CardStyled = styled(Card)(({ theme }) => ({
   width: '100%',
@@ -16,7 +16,7 @@ export const CardStyled = styled(Card)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: { padding: '8px', minHeight: '71px' },
 }))
 
-export const ListItemStyled = styled(ListItem)(({ theme }) => ({
+export const ListItemStyled = styled(Box)(({ theme }) => ({
   width: '100%',
   padding: 0,
   ':hover': {

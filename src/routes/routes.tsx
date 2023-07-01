@@ -20,6 +20,7 @@ import {
   ReservationPage,
   WaiterLayout,
   Direction,
+  HistoryOrderDeliveryMobilePage,
 } from 'pages'
 import { useRootLocationPath, useUserReducer } from 'hooks'
 import { useRefreshQuery } from 'store/api'
@@ -130,7 +131,7 @@ const AppRoutes = () => {
               />
               <Route
                 path={ROUTES_DELIVERY.HISTORY_ORDER}
-                element={<ActiveOrderDeliveryMobilePage />}
+                element={<HistoryOrderDeliveryMobilePage />}
               />
             </>
           )}

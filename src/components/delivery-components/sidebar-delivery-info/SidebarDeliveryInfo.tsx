@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { OrderDetailList, OrderSummaryWrapper } from 'components'
-import { OrderDetailsItemType } from 'types'
+import { OrderType } from 'types'
 import { DetailsListTitle } from 'UI/details-title'
 import { Stack } from '@mui/material'
-import { TAX } from 'utils'
+import { calculateTotalPrice, TAX } from 'utils'
 import { Button } from 'UI'
 import {
   SidebarDeliveryActionsWrapper,
@@ -11,21 +11,31 @@ import {
 } from './SidebarDeliveryInfo.styled'
 
 interface SidebarDeliveryInfoProps {
-  orderDetail?: OrderDetailsItemType[]
-  orderNumber: number
+  orderDetail?: OrderType
+  isLoading?: boolean
+  titleButton: string
+  onSubmit?: () => void
 }
 
-const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({ orderDetail, orderNumber }) => {
+const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
+  orderDetail,
+  isLoading,
+  titleButton,
+  onSubmit,
+}) => {
   return (
     <SidebarDeliveryInfoWrapper>
       <Stack flex={1} height="100%">
-        <DetailsListTitle title="Delivery details" orderNumber={orderNumber} />
-        <OrderDetailList ordersDetail={orderDetail} />
+        <DetailsListTitle title="Delivery details" orderNumber={orderDetail?.orderNumber || 0} />
+        <OrderDetailList ordersDetail={orderDetail} isLoading={isLoading} />
         <SidebarDeliveryActionsWrapper>
-          <OrderSummaryWrapper tax={TAX} total={10} />
+          <OrderSummaryWrapper
+            tax={TAX}
+            total={orderDetail ? calculateTotalPrice(orderDetail?.dishes) : 0}
+          />
           <Stack direction="row" spacing={2.5}>
-            <Button variant="contained" size="medium" type="submit" fullWidth onClick={() => {}}>
-              Take delivery
+            <Button variant="contained" size="medium" type="submit" fullWidth onClick={onSubmit}>
+              {titleButton}
             </Button>
           </Stack>
         </SidebarDeliveryActionsWrapper>
