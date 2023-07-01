@@ -1,34 +1,68 @@
-import { CSSProperties, FC, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { Box } from '@mui/material'
+import { RouteInfoType, MapActionsType } from 'types'
+import { GOOGLE_MAP_ID_STYLE, ORIGIN_LAT, ORIGIN_LNG } from 'utils'
+import { GoogleMapBox } from './GoogleMap.styled'
+import { GoogleRouteInfo } from './google-route-info'
+import { directionsServices } from './GoogleMap.utils'
 
 interface GoogleMapProps {
   lat: number
   lng: number
-  height?: CSSProperties['height']
-  width?: CSSProperties['width']
   zoom?: number
+  hideTripSummary?: boolean
+  isMarker?: boolean
+  mapActions?: MapActionsType
 }
 
-const GoogleMap: FC<GoogleMapProps> = ({ lat, lng, height, width, zoom }) => {
+const GoogleMap: FC<GoogleMapProps> = ({
+  lat,
+  lng,
+  zoom,
+  hideTripSummary,
+  isMarker,
+  mapActions,
+}) => {
   const mapRef = useRef<HTMLDivElement | null>(null)
+  const [routeInfo, setRouteInfo] = useState<RouteInfoType>({
+    duration: '',
+    distance: '',
+  })
 
   const initMap = async () => {
-    let map: google.maps.Map | null = null
-    let marker: google.maps.Marker | null = null
-    const { maps } = await window.google
-    const position = { lat: 50.52073439999999, lng: 30.2461634 }
+    const { MapTypeControlStyle, Marker, Map, LatLng, TravelMode } = await window.google.maps
+    const position = { lat, lng }
 
-    map = new maps.Map(mapRef.current as HTMLElement, {
+    const mapOptions: google.maps.MapOptions = {
       center: position,
-      zoom: 14,
-      mapId: 'b1b2ca9ab1dc851c', // b1b2ca9ab1dc851c
-    })
+      zoom: zoom || 14,
+      mapId: GOOGLE_MAP_ID_STYLE,
+      mapTypeControlOptions: {
+        style: MapTypeControlStyle.DROPDOWN_MENU,
+      },
+      ...mapActions,
+    }
 
-    marker = new maps.Marker({
-      map,
-      position,
-      title: 'Destination',
-    })
+    const map = new Map(mapRef.current as HTMLElement, mapOptions)
+    if (isMarker) {
+      const marker = new Marker({
+        map,
+        position,
+        title: 'Destination',
+      })
+    } else {
+      const origin = new LatLng(ORIGIN_LAT, ORIGIN_LNG)
+      const destination = new LatLng(lat, lng)
+
+      const request: google.maps.DirectionsRequest = {
+        origin,
+        destination,
+        travelMode: TravelMode.DRIVING,
+      }
+
+      const directions = await directionsServices({ map, request })
+      setRouteInfo(directions)
+    }
   }
 
   useEffect(() => {
@@ -36,8 +70,11 @@ const GoogleMap: FC<GoogleMapProps> = ({ lat, lng, height, width, zoom }) => {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Box sx={{ height: '100%', width: '100%' }}>
-      <Box ref={mapRef} sx={{ height: '100%', width: '100%' }} />
+    <Box sx={{ height: '100%', width: '100%', position: 'relative' }}>
+      <GoogleMapBox ref={mapRef} />
+      {!hideTripSummary && (
+        <GoogleRouteInfo duration={routeInfo.duration} distance={routeInfo.distance} />
+      )}
     </Box>
   )
 }
