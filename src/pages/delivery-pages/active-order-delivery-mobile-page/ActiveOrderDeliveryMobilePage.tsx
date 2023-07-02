@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import {
   ActionsButton,
   InfoDelivery,
@@ -6,17 +6,18 @@ import {
   TotalPriceInfo,
   OrderLayout,
 } from 'components'
-import { Button } from 'UI'
+import { Button, InfoDeliverySkeleton } from 'UI'
 import { Icon } from 'assets'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
-import { useUserReducer, useRootLocationPath } from 'hooks'
+import { useUserReducer, useRootLocationPath, useScreenTracking } from 'hooks'
 import { calculateTotalPrice, generateTimeString } from 'utils'
 
 const ActiveOrderDeliveryMobilePage: FC = () => {
   const { activeOrder } = useParams()
+  const { isMobileScreen } = useScreenTracking()
   const { location } = useRootLocationPath()
-  const { data } = useGetByIDQuery(activeOrder || '')
+  const { data, isFetching } = useGetByIDQuery(activeOrder || '')
   const [updateDelivery, { isSuccess }] = useUpdateDeliveryMutation()
 
   const { userState } = useUserReducer()
@@ -33,23 +34,35 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
     if (activeOrder && data) updateDelivery({ id: activeOrder })
   }
 
-  if (isSuccess) navigate(`/${location}`)
+  useEffect(() => {
+    if (!isMobileScreen) {
+      navigate(`/${location}`)
+    }
+    if (isSuccess) {
+      navigate(`/${location}`)
+    }
+  }, [isMobileScreen, location, navigate, isSuccess])
 
   return (
     <OrderLayout titleHeader="Active order">
-      {data && (
+      {!isFetching && data && (
         <InfoDelivery
           deliveryAddress={data.address.street}
           orderNumber={data.order.orderNumber}
           clientName={data.clientInfo.name}
           readyToTime={generateTimeString(data.time)}>
           <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
-          <Button variant="contained" size="small" icon={<Icon.Phone />} />
+          <Button
+            variant="contained"
+            linkTo={`tel:${data.clientInfo.phoneNumber}`}
+            size="small"
+            icon={<Icon.Phone />}
+          />
           <Button variant="contained" size="small" icon={<Icon.NotifyUser />} />
         </InfoDelivery>
       )}
-      <OrderDetailList ordersDetail={data?.order} />
-
+      {isFetching && <InfoDeliverySkeleton />}
+      <OrderDetailList ordersDetail={data?.order} isLoading={isFetching} />
       <ActionsButton
         doubleAction
         titleButton={data?.order.status === 'opened' ? 'Cooking in progress' : 'Done'}

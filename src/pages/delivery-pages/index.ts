@@ -4,4 +4,5 @@ export { CurrentOrderDeliveryMobilePage } from './current-order-delivery-mobile-
 export { OrdersDeliveryPage } from './orders-delivery-page'
 export { ActiveOrderDeliveryMobilePage } from './active-order-delivery-mobile-page'
 export { HistoryDeliveryPage } from './history-delivery-page'
+export { HistoryOrderDeliveryMobilePage } from './history-order-delivery-mobile-page'
 export { Direction } from './direction'

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import {
   ActionsButton,
   InfoDelivery,
@@ -7,17 +7,18 @@ import {
   TotalPriceInfo,
 } from 'components'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Button } from 'UI'
+import { Button, InfoDeliverySkeleton } from 'UI'
 import { Icon } from 'assets'
 import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { generateTimeString, calculateTotalPrice } from 'utils'
-import { useUserReducer, useRootLocationPath } from 'hooks'
+import { useUserReducer, useRootLocationPath, useScreenTracking } from 'hooks'
 
 const CurrentOrderDeliveryMobilePage: FC = () => {
   const { currentOrder } = useParams()
   const { location } = useRootLocationPath()
+  const { isMobileScreen } = useScreenTracking()
 
-  const { data } = useGetByIDQuery(currentOrder || '')
+  const { data, isFetching } = useGetByIDQuery(currentOrder || '')
   const [updateDelivery, { isSuccess }] = useUpdateDeliveryMutation()
 
   const navigate = useNavigate()
@@ -29,11 +30,18 @@ const CurrentOrderDeliveryMobilePage: FC = () => {
     if (currentOrder) updateDelivery({ id: currentOrder, courier: userState.id })
   }
 
-  if (isSuccess) navigate(`/${location}`)
+  useEffect(() => {
+    if (!isMobileScreen) {
+      navigate(`/${location}`)
+    }
+    if (isSuccess) {
+      navigate(`/${location}`)
+    }
+  }, [isMobileScreen, location, navigate, isSuccess])
 
   return (
     <OrderLayout titleHeader="Current order">
-      {data && (
+      {!isFetching && data && (
         <InfoDelivery
           deliveryAddress={data.address.street}
           orderNumber={data.order.orderNumber}
@@ -42,7 +50,8 @@ const CurrentOrderDeliveryMobilePage: FC = () => {
           <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
         </InfoDelivery>
       )}
-      <OrderDetailList ordersDetail={data?.order} />
+      {isFetching && <InfoDeliverySkeleton />}
+      <OrderDetailList ordersDetail={data?.order} isLoading={isFetching} />
       <ActionsButton titleButton="Take Delivery" onSubmit={handleTakeDelivery}>
         <TotalPriceInfo totalPrice={totalPrice} paymentMethod={data?.clientInfo.paymentMethod} />
       </ActionsButton>

@@ -1,31 +1,75 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
 import { OrderDetailList, OrderSummaryWrapper } from 'components'
-import { Button, DetailsListTitle } from 'UI'
 import { OrderType } from 'types'
-import { TAX } from 'utils'
+import { Stack } from '@mui/material'
+import { calculateTotalPrice, TAX } from 'utils'
+import { Button, DetailsListTitle } from 'UI'
 import {
   SidebarDeliveryActionsWrapper,
   SidebarDeliveryInfoWrapper,
 } from './SidebarDeliveryInfo.styled'
 
 interface SidebarDeliveryInfoProps {
+  deliveryId?: string
   orderDetail?: OrderType
-  orderNumber: number
+  isLoading?: boolean
+  statusCheck?: boolean
+  titleButton?: string
+  withButtonCancel?: boolean
+  onCancel?: (id: string) => void
+  onSubmit?: (id: string) => void
 }
 
-const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({ orderDetail, orderNumber }) => {
+const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
+  deliveryId,
+  orderDetail,
+  isLoading,
+  statusCheck,
+  titleButton,
+  withButtonCancel,
+  onSubmit,
+  onCancel,
+}) => {
+  const handleSubmit = () => {
+    if (onSubmit && deliveryId) onSubmit(deliveryId)
+  }
+
+  const handleCancel = () => {
+    if (onCancel && deliveryId) onCancel(deliveryId)
+  }
+
   return (
     <SidebarDeliveryInfoWrapper>
       <Stack flex={1} height="100%">
-        <DetailsListTitle title="Delivery details" orderNumber={orderNumber} />
-        <OrderDetailList ordersDetail={orderDetail} />
+        <DetailsListTitle title="Delivery details" orderNumber={orderDetail?.orderNumber || 0} />
+        <OrderDetailList ordersDetail={orderDetail} isLoading={isLoading} />
         <SidebarDeliveryActionsWrapper>
-          <OrderSummaryWrapper tax={TAX} total={10} />
+          <OrderSummaryWrapper
+            tax={TAX}
+            total={orderDetail ? calculateTotalPrice(orderDetail?.dishes) : 0}
+          />
           <Stack direction="row" spacing={2.5}>
-            <Button variant="contained" size="medium" type="submit" fullWidth onClick={() => {}}>
-              Take delivery
-            </Button>
+            {withButtonCancel && (
+              <Button
+                variant="outlined"
+                size="medium"
+                type="submit"
+                fullWidth
+                onClick={handleCancel}>
+                Cancel Delivery
+              </Button>
+            )}
+            {titleButton && (
+              <Button
+                disabled={!orderDetail || (statusCheck && orderDetail?.status === 'opened')}
+                variant="contained"
+                size="medium"
+                type="submit"
+                fullWidth
+                onClick={handleSubmit}>
+                {titleButton}
+              </Button>
+            )}
           </Stack>
         </SidebarDeliveryActionsWrapper>
       </Stack>

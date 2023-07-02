@@ -1,6 +1,6 @@
 import { ActionsButton, RadioGroupCard } from 'components'
 import { ChangeEvent, FC, useState } from 'react'
-import { DeliveryResponseType, DeliveryType, RadioButtonCardContentItemType } from 'types'
+import { DeliveryResponseType } from 'types'
 import { useNavigate } from 'react-router-dom'
 import { Pagination } from 'UI/pagination'
 
@@ -34,16 +34,17 @@ const ContentRouteDeliveryMobile: FC<ContentDeliveryMobileProps> = ({
         isActiveCard={isActiveCard}
         onChange={handleChangeActiveCard}
         cardData={data?.data}
+        isLoading={isLoading}
       />
-      {/* {data && onChangePagination && ( */}
-      {/*  <Pagination */}
-      {/*    position="center" */}
-      {/*    disabled={data.totalCount > 10} */}
-      {/*    page={Number(page)} */}
-      {/*    onChange={onChangePagination} */}
-      {/*    count={Math.ceil(data.totalCount / 10)} */}
-      {/*  /> */}
-      {/* )} */}
+      {data && onChangePagination && (
+        <Pagination
+          position="center"
+          disabled={data.totalCount > 10}
+          page={Number(page)}
+          onChange={onChangePagination}
+          count={Math.ceil(data.totalCount / 10)}
+        />
+      )}
       <ActionsButton
         titleButton="Detail Info"
         onSubmit={handleSubmitCard}

@@ -51,5 +51,6 @@ export const {
   useCreateDeliveryMutation,
   useGetAllDeliveryQuery,
   useGetByIDQuery,
+  useLazyGetByIDQuery,
   useUpdateDeliveryMutation,
 } = deliveryApi

@@ -16,7 +16,7 @@ const RadioButtonCard: FC<RadioButtonCardDeliveryItemType> = (props) => {
   return (
     <RadioButtonCardWrapper onClick={handleChangeRadio} isChecked={checked}>
       <RadioButtonCardRadio checked={checked} onChange={handleChangeRadio} />
-      <Stack direction="row" justifyContent="space-between" width="100%">
+      <Stack direction="row" justifyContent="space-between" width="100%" sx={{ gap: '5px' }}>
         <Stack>
           <Typography variant="subtitle1" component="p" color="text.primary">
             Order ID #{orderNumber}

@@ -40,11 +40,14 @@ const AdminEmployeesListPage: FC = () => {
         defaultValueFilter={role?.split(',')}
         defaultValueInput={search || ''}
       />
-      <Table tableMinWidth="660px" tableTitles={tableHeaders} isLoading={isFetching}>
-        {!isFetching &&
-          data?.data.map((users) => (
-            <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
-          ))}
+      <Table
+        tableMinWidth="660px"
+        tableTitles={tableHeaders}
+        isLoading={isFetching}
+        notDataFound={!data?.data.length}>
+        {data?.data.map((users) => (
+          <TableUsersLine key={users.id} user={users} onClickAction={handleClick} />
+        ))}
       </Table>
       {data && (
         <Pagination
