@@ -1,6 +1,6 @@
 import { FC } from 'react'
+import { UserLoginRequestType } from 'types'
 import { useLoginMutation } from 'store/api'
-import { UserLoginRequestType } from 'types/UserType'
 import { Navigate } from 'react-router-dom'
 import { Login } from './login'
 

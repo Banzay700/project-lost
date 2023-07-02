@@ -49,7 +49,6 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
         </InfoDelivery>
       )}
       <OrderDetailList ordersDetail={data?.order} />
-
       <ActionsButton
         doubleAction
         titleButton={data?.order.status === 'opened' ? 'Cooking in progress' : 'Done'}

@@ -1,4 +1,6 @@
-import { FilterMenuItemType, IndicatorItemType, OrderType } from 'types/index'
+import { FilterMenuItemType, IndicatorItemType, OrderType } from 'types'
+
+export const TABLE_ROWS_PER_PAGE = 10
 
 export const tableTitleOrder: string[] = [
   'Table Number',
@@ -42,9 +44,6 @@ export const prepareBillsData = (id: string, data: OrderType[] | undefined) => {
       price: dishTotalPrice,
     }
   })
-  return {
-    orderID: id,
-    totalPrice,
-    dishes: modifiedData,
-  }
+
+  return { orderID: id, totalPrice, dishes: modifiedData }
 }

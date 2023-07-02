@@ -5,5 +5,5 @@ export type CommonOrderBillsType = {
   orderNumber: number
   totalPrice: number
   description?: string
-  status?: 'opened' | 'closed'
+  status?: 'opened' | 'closed' | 'cancel'
 }

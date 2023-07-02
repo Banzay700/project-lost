@@ -5,6 +5,7 @@ export const OrderDetailListWrapper = styled(Stack)(({ theme }) => ({
   flex: 1,
   [theme.breakpoints.up('sm')]: { padding: 0 },
 }))
+
 export const OrderDetailListTitle = styled(Typography)(({ theme }) => ({
   margin: '0 20px',
   pb: '5px',

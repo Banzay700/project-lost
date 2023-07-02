@@ -6,7 +6,7 @@ const Direction: FC = () => {
     <OrderLayout titleHeader="Direction">
       <GoogleMap lat={1} lng={2} />
       <ActionsButton titleButton="Take Delivery" onSubmit={() => {}}>
-        <TotalPriceInfo totalPrice="12" paymentMethod="Cash" />
+        <TotalPriceInfo totalPrice={12} paymentMethod="Cash" />
       </ActionsButton>
     </OrderLayout>
   )
