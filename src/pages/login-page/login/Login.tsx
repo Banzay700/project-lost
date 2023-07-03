@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { useGetUsersInLoginQuery } from 'store/api'
 import { EmployeesCarrousel, LoginForm, NotifyError } from 'components'
-import { Button, SnackbarForHR } from 'UI'
+import { Button } from 'UI'
 import { UserLoginRequestType } from 'types'
 import { FadeIn } from 'utils'
 import { LoginWrapper, InnerWrapper } from './Login.styled'

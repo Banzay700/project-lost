@@ -69,9 +69,10 @@ export {
   ContentRouteDeliveryMobile,
   OrderLayout,
   SidebarDeliveryInfo,
-  GoogleMap,
   TableContent,
 } from './delivery-components'
 
 export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'
 export { Autocomplete } from './autocomplete'
+
+export { GoogleMap } from './google-map'

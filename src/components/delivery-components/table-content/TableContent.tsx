@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Table } from 'UI'
 import { TableOrderDeliveryLine, TableNotDataFoundLine } from 'components'
 import { generateStatus } from 'utils'
-import { DeliveryType } from 'types'
+import { DeliveryAddressType, DeliveryType } from 'types'
 
 interface TableContentProps {
   tableTitle: string[]
@@ -11,6 +11,7 @@ interface TableContentProps {
   isActiveLine?: string
   onClickAction?: (id: string) => void
   onClickLine?: (id: string) => void
+  onClickOpenInfoAddress?: (value: DeliveryAddressType) => void
 }
 
 const TableContent: FC<TableContentProps> = ({
@@ -20,6 +21,7 @@ const TableContent: FC<TableContentProps> = ({
   isLoading,
   onClickLine,
   onClickAction,
+  onClickOpenInfoAddress,
 }) => {
   return (
     <Table tableTitles={tableTitle} tableMinWidth="660px" isLoading={isLoading}>
@@ -30,7 +32,7 @@ const TableContent: FC<TableContentProps> = ({
             key={item.id}
             id={item.id}
             clientName={item.clientInfo.name}
-            deliveryAddress={item.address.street}
+            deliveryAddress={item.address}
             phoneNumber={item.clientInfo.phoneNumber}
             status={
               item.status === 'closed'
@@ -39,6 +41,7 @@ const TableContent: FC<TableContentProps> = ({
             }
             onClickAction={onClickAction}
             onClickLine={onClickLine}
+            onClickOpenAddressInfo={onClickOpenInfoAddress}
           />
         ))}
       {!data?.length && !isLoading && <TableNotDataFoundLine length={tableTitle.length} />}
