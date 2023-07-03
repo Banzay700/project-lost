@@ -5,6 +5,7 @@ import {
   OrderDetailList,
   TotalPriceInfo,
   OrderLayout,
+  GoogleMap,
 } from 'components'
 import { Button, InfoDeliverySkeleton } from 'UI'
 import { Icon } from 'assets'
@@ -12,6 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { useUserReducer, useRootLocationPath, useScreenTracking } from 'hooks'
 import { calculateTotalPrice, generateTimeString } from 'utils'
+import { ROUTES_DELIVERY } from 'routes/routes.utils'
 
 const ActiveOrderDeliveryMobilePage: FC = () => {
   const { activeOrder } = useParams()
@@ -43,6 +45,13 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
     }
   }, [isMobileScreen, location, navigate, isSuccess])
 
+  const handleOpenMap = () => {
+    if (data && data.address.latitude && data.address.longitude) {
+      const { latitude, longitude } = data.address
+      navigate(`${ROUTES_DELIVERY.DIRECTION}?lat=${latitude}&lng=${longitude}`)
+    }
+  }
+
   return (
     <OrderLayout titleHeader="Active order">
       {!isFetching && data && (
@@ -51,7 +60,12 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
           orderNumber={data.order.orderNumber}
           clientName={data.clientInfo.name}
           readyToTime={generateTimeString(data.time)}>
-          <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
+          <Button
+            variant="contained"
+            size="small"
+            icon={<Icon.MapMarker />}
+            onClick={handleOpenMap}
+          />
           <Button
             variant="contained"
             linkTo={`tel:${data.clientInfo.phoneNumber}`}

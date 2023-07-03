@@ -2,18 +2,22 @@ import { FC } from 'react'
 import {
   ContentRouteDeliveryMobile,
   IndicatorsGroup,
+  ModalAddressInfo,
   SidebarDeliveryInfo,
   TableContent,
 } from 'components'
-import { useScreenTracking, useUserReducer } from 'hooks'
+import { useGoogleMapStateAction, useIsModal, useScreenTracking, useUserReducer } from 'hooks'
 import { PageActionsBar } from 'UI'
 import { useGetAllDeliveryQuery, useLazyGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { Stack } from '@mui/material'
+import { DeliveryAddressType } from 'types/DeliveryType'
 import { deliveryIndicatorItems, tableHomeTitleDelivery } from './homeDeliveryPage.utils'
 
 const HomeDeliveryPage: FC = () => {
   const { isMobileScreen } = useScreenTracking()
   const { userState } = useUserReducer()
+  const { isOpen, handleToggleIsOpenModal } = useIsModal()
+  const { state: googleMap, handleSetStateMap } = useGoogleMapStateAction()
   const { data, isFetching } = useGetAllDeliveryQuery({})
   const [getByIdDelivery, { isFetching: isFetchingDeliveryItem, data: deliveryOrderItem }] =
     useLazyGetByIDQuery()
@@ -25,6 +29,11 @@ const HomeDeliveryPage: FC = () => {
 
   const handleTakeDelivery = (id: string) => {
     updateDelivery({ id, courier: userState.id })
+  }
+
+  const handleOpenGoogleMap = (value: DeliveryAddressType) => {
+    handleSetStateMap(value)
+    handleToggleIsOpenModal()
   }
 
   return (
@@ -42,6 +51,7 @@ const HomeDeliveryPage: FC = () => {
             isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
             onClickLine={handleClickLine}
             onClickAction={() => {}}
+            onClickOpenInfoAddress={handleOpenGoogleMap}
           />
         )}
       </Stack>
@@ -52,6 +62,15 @@ const HomeDeliveryPage: FC = () => {
           orderDetail={deliveryOrderItem?.order || data?.data[0]?.order}
           titleButton="Take Delivery"
           isLoading={isFetchingDeliveryItem}
+        />
+      )}
+      {googleMap && (
+        <ModalAddressInfo
+          address={googleMap.street}
+          lat={googleMap.latitude}
+          lng={googleMap.longitude}
+          isOpen={isOpen}
+          onOpenModal={handleToggleIsOpenModal}
         />
       )}
     </>

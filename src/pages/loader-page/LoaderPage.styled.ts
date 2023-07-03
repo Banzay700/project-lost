@@ -6,5 +6,4 @@ export const LoaderPageWrapper = styled(Stack)`
   height: 100%;
   justify-content: center;
   align-items: center;
-  image-rendering: pixelated;
 `

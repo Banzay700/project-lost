@@ -19,7 +19,7 @@ import {
   ProfilePage,
   ReservationPage,
   WaiterLayout,
-  Direction,
+  DirectionPage,
   HistoryOrderDeliveryMobilePage,
 } from 'pages'
 import { useRootLocationPath, useUserReducer } from 'hooks'
@@ -70,7 +70,7 @@ const AppRoutes = () => {
         <>
           {role === 'Admin' && (
             <>
-              <Route path="/" element={<Navigate to={ROUTES_ADMIN.DASHBOARD} />} />
+              <Route path={ROUTES.HOME} element={<Navigate to={ROUTES_ADMIN.DASHBOARD} />} />
               <Route path={ROUTES_ADMIN.DASHBOARD} element={<AdminLayout />}>
                 <Route index element={<Navigate to={ROUTES_ADMIN.STATISTICS} />} />
                 <Route path={ROUTES_ADMIN.STATISTICS} element={<AdminStatisticsPage />}>
@@ -95,7 +95,7 @@ const AppRoutes = () => {
           {(role === 'Admin' || role === 'Waiter') && (
             <>
               {role !== 'Admin' && (
-                <Route path="/" element={<Navigate to={ROUTES_WAITER.DISHES} />} />
+                <Route path={ROUTES.HOME} element={<Navigate to={ROUTES_WAITER.DISHES} />} />
               )}
               <Route path="/" element={<WaiterLayout />}>
                 <Route path={ROUTES_WAITER.DISHES} element={<Navigate to="pizza" />} />
@@ -112,7 +112,7 @@ const AppRoutes = () => {
           {(role === 'Admin' || role === 'Courier') && (
             <>
               {role !== 'Admin' && (
-                <Route path="/" element={<Navigate to={ROUTES_DELIVERY.DELIVERY} />} />
+                <Route path={ROUTES.HOME} element={<Navigate to={ROUTES_DELIVERY.DELIVERY} />} />
               )}
               <Route path={ROUTES.HOME} element={<DeliveryLayout />}>
                 <Route path={ROUTES_DELIVERY.DELIVERY} element={<HomeDeliveryPage />} />
@@ -132,7 +132,7 @@ const AppRoutes = () => {
                 path={ROUTES_DELIVERY.HISTORY_ORDER}
                 element={<HistoryOrderDeliveryMobilePage />}
               />
-              <Route path={ROUTES_DELIVERY.DIRECTION} element={<Direction />} />
+              <Route path={ROUTES_DELIVERY.DIRECTION} element={<DirectionPage />} />
             </>
           )}
         </>

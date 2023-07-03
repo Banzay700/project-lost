@@ -1,4 +1,4 @@
-import { TripSummaryType, DirectionsServicesType } from 'types'
+import { TripSummaryType, DirectionsServicesType } from 'types/index'
 
 export const directionsServices = async (props: DirectionsServicesType): TripSummaryType => {
   const { map, request } = props

@@ -12,6 +12,7 @@ import { Icon } from 'assets'
 import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { generateTimeString, calculateTotalPrice } from 'utils'
 import { useUserReducer, useRootLocationPath, useScreenTracking } from 'hooks'
+import { ROUTES_DELIVERY } from 'routes/routes.utils'
 
 const CurrentOrderDeliveryMobilePage: FC = () => {
   const { currentOrder } = useParams()
@@ -39,6 +40,13 @@ const CurrentOrderDeliveryMobilePage: FC = () => {
     }
   }, [isMobileScreen, location, navigate, isSuccess])
 
+  const handleOpenMap = () => {
+    if (data && data.address.latitude && data.address.longitude) {
+      const { latitude, longitude } = data.address
+      navigate(`${ROUTES_DELIVERY.DIRECTION}?lat=${latitude}&lng=${longitude}`)
+    }
+  }
+
   return (
     <OrderLayout titleHeader="Current order">
       {!isFetching && data && (
@@ -47,7 +55,12 @@ const CurrentOrderDeliveryMobilePage: FC = () => {
           orderNumber={data.order.orderNumber}
           clientName={data.clientInfo.name}
           readyToTime={generateTimeString(data.time)}>
-          <Button variant="contained" size="small" icon={<Icon.MapMarker />} />
+          <Button
+            variant="contained"
+            size="small"
+            icon={<Icon.MapMarker />}
+            onClick={handleOpenMap}
+          />
         </InfoDelivery>
       )}
       {isFetching && <InfoDeliverySkeleton />}

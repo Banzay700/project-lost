@@ -6,6 +6,7 @@ export type {
   DeliveryType,
   DeliveryGetRequestType,
   DeliveryUpdateType,
+  DeliveryAddressType,
 } from './DeliveryType'
 
 export type {
