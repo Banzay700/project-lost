@@ -62,9 +62,9 @@ const DeliveryLayout: FC = () => {
         <Stack flex={1} height="100%" width="100%" overflow="auto">
           <Outlet />
         </Stack>
-        {!isMobileScreen && !isProfileLocation && (
-          <SidebarDeliveryInfo orderDetail={mok2} orderNumber={12312} />
-        )}
+        {/* {!isMobileScreen && !isProfileLocation && ( */}
+        {/*  <SidebarDeliveryInfo orderDetail={mok2} orderNumber={12312} /> */}
+        {/* )} */}
       </AdaptiveHeaderWrapper>
     </>
   )

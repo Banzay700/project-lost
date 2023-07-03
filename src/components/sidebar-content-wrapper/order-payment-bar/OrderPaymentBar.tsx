@@ -17,7 +17,6 @@ import { OrderListInfo } from './order-list-info'
 const OrderPaymentBar: FC = () => {
   const { newBill, relocateBills, changeToggle } = useBillsReducer()
   const toggleValue = useAppSelector((state) => state.bills.toggleValue)
-
   const [updateBill] = useUpdateBillMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [sendEmail] = useLazySendEmailQuery()

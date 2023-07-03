@@ -3,13 +3,9 @@ import { Box, Stack } from '@mui/material'
 
 import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
 import { Button, DetailsListTitle, Modal, ModalContentPopup } from 'UI'
-import { TAX } from 'utils'
+import { convertOrderData, TAX } from 'utils'
 import { useOrderReducer, useSmoothScrollbar } from 'hooks'
-import {
-  useUpdateTableStatusMutation,
-  useDeleteOrderMutation,
-  useUpdateOrderMutation,
-} from 'store/api'
+import { useUpdateTableStatusMutation, useUpdateOrderMutation } from 'store/api'
 import { DetailsList, DetailsListActionsWrapper, InfoListWrapper } from './OrderInfoList.styled'
 
 interface OrderListProps {
@@ -19,7 +15,7 @@ interface OrderListProps {
 const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const { activeOrder, clearNewOrderState } = useOrderReducer()
-  const [deleteOrder] = useDeleteOrderMutation()
+  const { orderDB } = convertOrderData(activeOrder)
   const [closeOrder] = useUpdateOrderMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
@@ -30,7 +26,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
 
   const handleDeleteOrder = async () => {
     if (!id) return
-    await closeOrder({ id: activeOrder.id, status: 'cancel' })
+    await closeOrder({ ...orderDB, status: 'cancel' })
     updateTableStatus(table)
     clearNewOrderState()
     handleToggleModal()
@@ -71,7 +67,7 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
         </Stack>
       </DetailsListActionsWrapper>
       <Modal
-        title="Close order confirmation"
+        title="Сonfirmation of order deletion"
         isOpen={modalOpen}
         onClose={handleToggleModal}
         hiddenActions>

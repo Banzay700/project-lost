@@ -10,7 +10,7 @@ interface OrderDetailListProps {
 
 const OrderDetailList: FC<OrderDetailListProps> = ({ ordersDetail }) => {
   const refObject = useSmoothScrollbar<HTMLDivElement>('2px')
-  console.log(ordersDetail)
+
   return (
     <>
       <OrderDetailListTitle

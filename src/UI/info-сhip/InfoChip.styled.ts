@@ -1,7 +1,8 @@
 import { Chip, styled, css } from '@mui/material'
+import { withProps } from 'utils/withProps'
 
 interface InfoChipWrapperProps {
-  $type?:
+  type?:
     | 'dineIn'
     | 'takeAway'
     | 'delivery'
@@ -13,6 +14,7 @@ interface InfoChipWrapperProps {
     | 'active'
     | 'inactive'
     | 'cancelled'
+    | 'cancel'
     | 'done'
 }
 
@@ -46,19 +48,20 @@ const defaultStyle = css`
   color: #969696;
 `
 
-export const InfoChipWrapper = styled(Chip, {
-  shouldForwardProp: (prop) => prop !== '$type',
-})<InfoChipWrapperProps>(({ $type }) => {
-  if ($type === 'waiter' || $type === 'takeAway') return BlueStyle
+export const InfoChipWrapper = styled(
+  Chip,
+  withProps('type'),
+)<InfoChipWrapperProps>(({ type }) => {
+  if (type === 'waiter' || type === 'takeAway') return BlueStyle
 
-  if ($type === 'dineIn' || $type === 'closed' || $type === 'done' || $type === 'admin')
+  if (type === 'dineIn' || type === 'closed' || type === 'done' || type === 'admin')
     return OrangeStyle
 
-  if ($type === 'delivery' || $type === 'courier') return YellowStyle
+  if (type === 'delivery' || type === 'courier') return YellowStyle
 
-  if ($type === 'opened' || $type === 'active') return GreenStyle
+  if (type === 'opened' || type === 'active') return GreenStyle
 
-  if ($type === 'cancelled') return RedStyle
+  if (type === 'cancelled') return RedStyle
 
   return defaultStyle
 })

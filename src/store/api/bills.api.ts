@@ -17,7 +17,8 @@ export const billsApi = api.injectEndpoints({
       },
       onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        if (data) {
+
+        if (data.data.length !== 0) {
           dispatch(openNewBill(data.data[0]))
         }
       },
