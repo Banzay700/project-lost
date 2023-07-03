@@ -32,7 +32,7 @@ export const ordersApi = api.injectEndpoints({
       onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
 
-        if (!data) {
+        if (data) {
           const { orderActive } = convertOrderData(data)
           dispatch(openOrder(orderActive))
         }
