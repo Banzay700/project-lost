@@ -15,6 +15,6 @@ export const HeaderWrapper = styled(Stack)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
     backgroundImage: 'url(/header-background.png) ',
     borderRadius: '0 0 16px 16px',
-    gap: '30px',
+    rowGap: '30px',
   },
 }))

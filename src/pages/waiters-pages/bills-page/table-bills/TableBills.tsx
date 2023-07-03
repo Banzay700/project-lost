@@ -39,18 +39,21 @@ const TableBills: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
-      <Table isLoading={isFetching} tableTitles={tableTitleBills} tableMinWidth="750px">
-        {!isFetching &&
-          data?.data.map((el) => (
-            <TableBillsLine
-              element={el}
-              key={el?.id}
-              active={active}
-              setActive={setActive}
-              onClickAction={handleSendBillsData}
-              onClickLine={handleLineBillsData}
-            />
-          ))}
+      <Table
+        isLoading={isFetching}
+        tableTitles={tableTitleBills}
+        tableMinWidth="750px"
+        notDataFound={!data?.data.length}>
+        {data?.data.map((el) => (
+          <TableBillsLine
+            element={el}
+            key={el?.id}
+            active={active}
+            setActive={setActive}
+            onClickAction={handleSendBillsData}
+            onClickLine={handleLineBillsData}
+          />
+        ))}
       </Table>
       {data && (
         <Pagination

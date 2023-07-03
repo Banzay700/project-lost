@@ -49,18 +49,21 @@ const TableOrders: FC = () => {
         defaultValue={orderType?.split(',')}
         onChange={handleFilterCategory}
       />
-      <Table isLoading={isFetching} tableTitles={tableTitleOrder} tableMinWidth="660px">
-        {!isFetching &&
-          data?.data.map((el) => (
-            <TableOrdersLine
-              element={el}
-              key={el?.id}
-              active={active}
-              setActive={setActive}
-              onClickLine={handleLineWrapperClick}
-              onClickAction={handleSendOrder}
-            />
-          ))}
+      <Table
+        isLoading={isFetching}
+        tableTitles={tableTitleOrder}
+        tableMinWidth="660px"
+        notDataFound={!data?.data.length}>
+        {data?.data.map((el) => (
+          <TableOrdersLine
+            element={el}
+            key={el?.id}
+            active={active}
+            setActive={setActive}
+            onClickLine={handleLineWrapperClick}
+            onClickAction={handleSendOrder}
+          />
+        ))}
       </Table>
       {data && (
         <Pagination

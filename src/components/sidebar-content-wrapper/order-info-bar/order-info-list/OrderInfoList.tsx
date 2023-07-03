@@ -5,6 +5,7 @@ import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
 import { Button, DetailsListTitle, Modal, ModalContentPopup } from 'UI'
 import { convertOrderData, TAX } from 'utils'
 import { useOrderReducer, useSmoothScrollbar } from 'hooks'
+import { Icon } from 'assets'
 import { useUpdateTableStatusMutation, useUpdateOrderMutation } from 'store/api'
 import { DetailsList, DetailsListActionsWrapper, InfoListWrapper } from './OrderInfoList.styled'
 
@@ -47,6 +48,11 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
               src={picture}
             />
           ))}
+          {!dishes.length && (
+            <Stack width="100%" sx={{ marginTop: '20px' }} alignItems="center">
+              <Icon.NotDataFound style={{ transform: 'scale(0.5)' }} />
+            </Stack>
+          )}
         </Box>
       </DetailsList>
       <DetailsListActionsWrapper>

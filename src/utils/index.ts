@@ -1,5 +1,13 @@
 export { formatString } from './formatString'
-export { ORDER_TOGGLE_MENU_VALUES, TAX, MS_CUSTOM_BREAKPOINT } from './constants'
+export {
+  ORDER_TOGGLE_MENU_VALUES,
+  TAX,
+  MS_CUSTOM_BREAKPOINT,
+  ORIGIN_LAT,
+  ORIGIN_LNG,
+  GOOGLE_MAP_ID_STYLE,
+  MAP_ACTIONS_MODAL_ADDRESS,
+} from './constants'
 export { correctionName } from './correctionName'
 export { firstLetterUpperCase } from './firstLetterUpperCase'
 export { spacesBetweenCapitalsLetters } from './spacesBetweenCapitalsLetters'

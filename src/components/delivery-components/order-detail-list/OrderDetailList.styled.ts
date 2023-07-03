@@ -2,7 +2,6 @@ import { Stack, styled, Typography } from '@mui/material'
 
 export const OrderDetailListWrapper = styled(Stack)(({ theme }) => ({
   padding: '0 20px',
-  flex: 1,
   [theme.breakpoints.up('sm')]: { padding: 0 },
 }))
 

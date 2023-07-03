@@ -11,7 +11,7 @@ const OrderDetailsItem: FC<OrderDetailsItemType> = ({ id, title, src, total, amo
   const [isDeleteCard, setIsDeleteCard] = useState(false)
 
   return (
-    <FadeIn delay={50}>
+    <FadeIn delay={20}>
       <ListItemStyled>
         <CardStyled>
           {isDeleteCard && <OrderDetailsDeleteCard id={id} handleDeleteCard={setIsDeleteCard} />}

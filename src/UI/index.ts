@@ -31,7 +31,14 @@ export { Modal } from './modal'
 export { Snackbar } from './snackbar'
 export { RadioButtonWithoutIcon } from './radio-button-without-icon'
 export { ModalContentPopup } from './modal-content-popup'
-export { SidebarLinkListSkeleton, TableLineSkeleton, DishesListSkeleton } from './skeleton'
+export {
+  SidebarLinkListSkeleton,
+  TableLineSkeleton,
+  DishesListSkeleton,
+  RadioButtonCardSkeleton,
+  InfoDeliverySkeleton,
+  OrderDetailsItemsSkeleton,
+} from './skeleton'
 export { CustomNavLink } from './custom-nav-link'
 export { Loader } from './loader'
 export { PDFDoc } from './pdf-doc'

@@ -65,4 +65,5 @@ export {
   useGetAllDeliveryQuery,
   useGetByIDQuery,
   useUpdateDeliveryMutation,
+  useLazyGetByIDQuery,
 } from './delivery.api'

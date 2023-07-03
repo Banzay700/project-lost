@@ -1,10 +1,11 @@
 import { FC } from 'react'
-import { Box } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
 import { useSmoothScrollbar } from 'hooks'
 import { BillsType } from 'types'
 import { TAX } from 'utils'
+import { Icon } from 'assets'
 
 interface OrderListInfoProps {
   newBill: BillsType
@@ -29,6 +30,11 @@ const OrderListInfo: FC<OrderListInfoProps> = ({ newBill }) => {
               amount={amount}
             />
           ))}
+          {!dishes?.length && (
+            <Stack width="100%" sx={{ marginTop: '20px' }} alignItems="center">
+              <Icon.NotDataFound style={{ transform: 'scale(0.5)' }} />
+            </Stack>
+          )}
         </Box>
       </div>
       <Box sx={{ p: '16px 16px 30px', borderTop: '1px solid #e4e4e4' }}>
