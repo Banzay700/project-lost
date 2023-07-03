@@ -25,7 +25,7 @@ export const deliveryApi = api.injectEndpoints({
           params,
         }
       },
-      providesTags: ['Delivery', 'Bills', 'Order'],
+      providesTags: ['Delivery'],
     }),
     getByID: builder.query<DeliveryType, string>({
       query: (id) => ({

@@ -46,12 +46,12 @@ export const ordersApi = api.injectEndpoints({
 
     updateOrder: builder.mutation<OrderRequestType, OrderRequestType>({
       query: (body) => ({ url: '/orders', method: 'PUT', body }),
-      invalidatesTags: ['Order'],
+      invalidatesTags: ['Order', 'Delivery'],
     }),
 
     deleteOrder: builder.mutation<OrderRequestType, string>({
       query: (id) => ({ url: `/orders/${id}`, method: 'DELETE' }),
-      invalidatesTags: ['Order'],
+      invalidatesTags: ['Order', 'Delivery'],
     }),
   }),
 })

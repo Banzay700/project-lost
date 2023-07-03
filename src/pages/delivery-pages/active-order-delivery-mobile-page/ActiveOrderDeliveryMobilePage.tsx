@@ -5,6 +5,7 @@ import {
   OrderDetailList,
   TotalPriceInfo,
   OrderLayout,
+  GoogleMap,
 } from 'components'
 import { Button, InfoDeliverySkeleton } from 'UI'
 import { Icon } from 'assets'

@@ -1,8 +1,7 @@
 import { FC, MouseEvent } from 'react'
 import { TableRow } from '@mui/material'
-import { ColumnAction, ColumnInfoTag, ColumnText } from 'UI/table-row-columns'
-import { DeliveryAddressType } from 'types/DeliveryType'
-import ColumnPhoneRedirect from '../../../UI/table-row-columns/column-phone-redirect/ColumnPhoneRedirect'
+import { ColumnAction, ColumnInfoTag, ColumnText, ColumnPhoneRedirect } from 'UI'
+import { DeliveryAddressType } from 'types'
 
 interface TableOrderDeliveryLineProps {
   id: string
