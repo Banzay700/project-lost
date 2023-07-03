@@ -41,7 +41,7 @@ const Login: FC<LoginProps> = (props) => {
           </Button>
         )}
       </InnerWrapper>
-      <SnackbarForHR />
+      {/* <SnackbarForHR /> // TODO: uncomment after presentation */}
     </LoginWrapper>
   )
 }

@@ -43,6 +43,7 @@ export {
   ModalCreateCategory,
   DeliveryModals,
   ModalAddressInfo,
+  OrderCancellationModal,
 } from './modal-components'
 
 export { ReservationCanvas } from './reservation-canvas'

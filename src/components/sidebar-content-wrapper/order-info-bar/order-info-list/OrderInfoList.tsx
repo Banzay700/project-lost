@@ -1,11 +1,11 @@
 import { FC, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 
-import { OrderSummaryWrapper, OrderDetailsItem } from 'components'
-import { Button, DetailsListTitle, Modal, ModalContentPopup } from 'UI'
+import { OrderSummaryWrapper, OrderDetailsItem, OrderCancellationModal } from 'components'
+import { Button, DetailsListTitle } from 'UI'
 import { convertOrderData, TAX } from 'utils'
-import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { Icon } from 'assets'
+import { useOrderReducer, useSmoothScrollbar } from 'hooks'
 import { useUpdateTableStatusMutation, useUpdateOrderMutation } from 'store/api'
 import { DetailsList, DetailsListActionsWrapper, InfoListWrapper } from './OrderInfoList.styled'
 
@@ -20,15 +20,17 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
   const [closeOrder] = useUpdateOrderMutation()
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const containerRef = useSmoothScrollbar<HTMLDivElement>()
-  const { id, table, orderNumber, dishes } = activeOrder
+  const { id, table, orderNumber, dishes, orderType } = activeOrder
   const total = dishes.reduce((acc, item) => acc + item.dishTotalPrice, 0)
 
   const handleToggleModal = () => setModalOpen((prev) => !prev)
 
   const handleDeleteOrder = async () => {
     if (!id) return
+
     await closeOrder({ ...orderDB, status: 'cancel' })
-    updateTableStatus(table)
+    if (orderType === 'dineIn') updateTableStatus(table)
+
     clearNewOrderState()
     handleToggleModal()
   }
@@ -72,17 +74,12 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
           </Button>
         </Stack>
       </DetailsListActionsWrapper>
-      <Modal
-        title="Сonfirmation of order deletion"
-        isOpen={modalOpen}
-        onClose={handleToggleModal}
-        hiddenActions>
-        <ModalContentPopup
-          message={`Are you sure you want to cancel order #${orderNumber}?`}
-          handleConfirm={handleDeleteOrder}
-          handleReject={handleToggleModal}
-        />
-      </Modal>
+      <OrderCancellationModal
+        open={modalOpen}
+        order={orderNumber}
+        onToggleView={handleToggleModal}
+        onConfirm={handleDeleteOrder}
+      />
     </InfoListWrapper>
   )
 }
