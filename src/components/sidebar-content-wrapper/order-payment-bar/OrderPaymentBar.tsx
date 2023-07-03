@@ -22,7 +22,7 @@ const OrderPaymentBar: FC = () => {
   const [updateTableStatus] = useUpdateTableStatusMutation()
   const [sendEmail] = useLazySendEmailQuery()
 
-  const buttonDisabled = newBill.status === 'closed'
+  const buttonDisabled = newBill?.status === 'closed'
   const detailsListTitle = toggleValue === 'Payment' ? 'Order payment' : 'Order info'
 
   const handleFormSubmit = (values: PaymentFormReturnType) => {
@@ -41,13 +41,15 @@ const OrderPaymentBar: FC = () => {
         defaultValue={toggleValue}
         buttonDisabled={buttonDisabled}
       />
-      <Stack sx={{ height: 'calc(100% - 70px)' }}>
-        <DetailsListTitle title={detailsListTitle} orderNumber={newBill.orderNumber} />
-        {toggleValue === 'Payment' && (
-          <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
-        )}
-        {toggleValue === 'Order info' && <OrderListInfo newBill={newBill} />}
-      </Stack>
+      {newBill && (
+        <Stack sx={{ height: 'calc(100% - 70px)' }}>
+          <DetailsListTitle title={detailsListTitle} orderNumber={newBill?.orderNumber} />
+          {toggleValue === 'Payment' && (
+            <PaymentListInfo onSubmit={handleFormSubmit} newBill={newBill} />
+          )}
+          {toggleValue === 'Order info' && <OrderListInfo newBill={newBill} />}
+        </Stack>
+      )}
     </FadeIn>
   )
 }
