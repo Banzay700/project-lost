@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { Stack } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
 import { DishesList, SearchFilterBar } from 'components'
 import { useGetDishesQuery, useGetSubCategoriesInCategoryQuery } from 'store/api'
-import { firstLetterUpperCase, correctionName } from 'utils'
-import { FilterMenuItemType } from 'types'
+import { firstLetterUpperCase } from 'utils'
 import { useParamsSearchFilter } from 'hooks'
 import { Pagination } from 'UI'
+import { ContentWrapper } from './DishesPageContent.styled'
+import { generateFilterItems, DISHES_PER_PAGE } from './DishesPageContent.utils'
 
 const DishesPageContent: FC = () => {
   const { category } = useParams()
-
+  const formattedCategory = firstLetterUpperCase(category || 'pizza')
   const {
     params: subCategory,
     search,
@@ -21,29 +21,20 @@ const DishesPageContent: FC = () => {
     handlePagination,
   } = useParamsSearchFilter('category')
 
-  const { data } = useGetSubCategoriesInCategoryQuery(firstLetterUpperCase(category || 'pizza'))
-  const {
-    data: dishes,
-
-    isFetching,
-  } = useGetDishesQuery({
-    category: subCategory || firstLetterUpperCase(category || 'pizza'),
+  const { data } = useGetSubCategoriesInCategoryQuery(formattedCategory)
+  const { data: dishes, isFetching } = useGetDishesQuery({
+    category: subCategory || formattedCategory,
     search,
     page,
-    limit: 12,
+    limit: DISHES_PER_PAGE,
   })
 
-  const filterMenu: FilterMenuItemType[] | undefined =
-    data &&
-    data.map((item) => ({
-      label: correctionName(item.title),
-      value: item.title,
-    }))
+  const filterMenuItems = generateFilterItems(data)
 
   return (
-    <Stack sx={{ width: '100%', height: '100%', background: '#F8F9FD' }}>
+    <ContentWrapper>
       <SearchFilterBar
-        subcategories={filterMenu}
+        subcategories={filterMenuItems}
         changeCategory={handleFilterCategory}
         changeTitle={handleFilterTitle}
         defaultValueFilter={subCategory?.split(',')}
@@ -52,14 +43,14 @@ const DishesPageContent: FC = () => {
       <DishesList dishes={dishes?.data} isLoading={isFetching} />
       {dishes && (
         <Pagination
-          disabled={dishes.totalCount > 12}
+          disabled={dishes.totalCount > DISHES_PER_PAGE}
           marginRight="30px"
-          count={Math.ceil(dishes.totalCount / 12)}
+          count={Math.ceil(dishes.totalCount / DISHES_PER_PAGE)}
           onChange={handlePagination}
           page={Number(page)}
         />
       )}
-    </Stack>
+    </ContentWrapper>
   )
 }
 

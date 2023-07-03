@@ -12,6 +12,7 @@ import {
   tableFilterMenuItems,
   tableIndicatorItems,
   tableTitleOrder,
+  TABLE_ROWS_PER_PAGE,
 } from './tableOrder.utils'
 
 const TableOrders: FC = () => {
@@ -22,7 +23,7 @@ const TableOrders: FC = () => {
     handleFilterCategory,
     handlePagination,
   } = useParamsSearchFilter('orderType')
-  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: 10 })
+  const { data, isFetching } = useGetAllOrdersQuery({ orderType, page, limit: TABLE_ROWS_PER_PAGE })
   const { active, setActive } = useActiveTableLine(data?.data as OrderType[])
 
   const navigate = useNavigate()
@@ -66,9 +67,9 @@ const TableOrders: FC = () => {
       </Table>
       {data && (
         <Pagination
-          disabled={data.totalCount > 10}
+          disabled={data.totalCount > TABLE_ROWS_PER_PAGE}
           marginRight="30px"
-          count={Math.ceil(data.totalCount / 10)}
+          count={Math.ceil(data.totalCount / TABLE_ROWS_PER_PAGE)}
           onChange={handlePagination}
           page={Number(page)}
         />

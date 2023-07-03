@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { Box, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+
 import { ToggleMenu } from 'UI'
 import { ROUTES_WAITER } from 'routes'
 import { useOrderReducer } from 'hooks'

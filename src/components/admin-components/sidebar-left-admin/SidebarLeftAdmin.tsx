@@ -3,7 +3,7 @@ import { SidebarLeftList } from 'components'
 import { Stack } from '@mui/material'
 import { useLogoutMutation } from 'store/api'
 import { Navigate } from 'react-router-dom'
-import { LogoutWrapper } from './SidebarLeftAdmin.styled'
+import { LogoutIcon } from './SidebarLeftAdmin.styled'
 import { sidebarLeftAdminMenu } from './sidebarLeftAdmin.utils'
 
 const SidebarLeftAdmin: FC = () => {
@@ -21,7 +21,7 @@ const SidebarLeftAdmin: FC = () => {
     <Stack sx={{ background: '#19191C' }}>
       <SidebarLeftList sidebarItems={sidebarLeftAdminMenu} />
       <Stack sx={{ p: '16px', alignItems: 'center' }}>
-        <LogoutWrapper onClick={handleLogout} />
+        <LogoutIcon onClick={handleLogout} />
       </Stack>
     </Stack>
   )

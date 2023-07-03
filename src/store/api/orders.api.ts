@@ -13,12 +13,14 @@ export const ordersApi = api.injectEndpoints({
         if (page) params.page = page
         if (status) params.status = status
         if (limit) params.limit = limit
+
         return { url: '/orders', params }
       },
       onQueryStarted: async (body, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
-        const { orderActive } = convertOrderData(data.data[0] as OrderActiveType)
-        if (data) {
+
+        if (data.data.length !== 0) {
+          const { orderActive } = convertOrderData(data?.data[0] as OrderActiveType)
           dispatch(openOrder(orderActive))
         }
       },
@@ -30,7 +32,7 @@ export const ordersApi = api.injectEndpoints({
       onQueryStarted: async (id, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled
 
-        if (data) {
+        if (!data) {
           const { orderActive } = convertOrderData(data)
           dispatch(openOrder(orderActive))
         }

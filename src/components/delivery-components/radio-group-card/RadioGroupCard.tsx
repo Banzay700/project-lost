@@ -37,7 +37,7 @@ const RadioGroupCard: FC<RadioGroupCardProps> = ({
                   ? { label: firstLetterUpperCase(item.status), type: 'green' }
                   : generateStatus(item.time)
               }
-              orderNumber={item.order.orderNumber}
+              orderNumber={item.order?.orderNumber}
               clientName={item.clientInfo.name}
               deliveryAddress={item.address.street}
               timeToReady={item.status === 'closed' ? 'Executed' : generateTimeString(item.time)}

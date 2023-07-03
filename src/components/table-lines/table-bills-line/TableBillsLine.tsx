@@ -35,7 +35,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
       setActive(id)
     }
   }
-
+  console.log(status)
   return (
     <TableRow
       hover

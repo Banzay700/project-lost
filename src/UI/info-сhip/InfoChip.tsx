@@ -15,12 +15,13 @@ interface InfoTagProps {
     | 'active'
     | 'inactive'
     | 'cancelled'
+    | 'cancel'
     | 'done'
 }
 
 const InfoChip: FC<InfoTagProps> = ({ type }) => {
   const label = spacesBetweenCapitalsLetters(type)
-  return <InfoChipWrapper label={label} $type={type} />
+  return <InfoChipWrapper label={label} type={type} />
 }
 
 export default InfoChip

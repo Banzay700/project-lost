@@ -11,13 +11,9 @@ interface SearchFilterBarProps {
   changeTitle: (titleValue: string) => void
 }
 
-const SearchFilterBar: FC<SearchFilterBarProps> = ({
-  subcategories,
-  changeCategory,
-  changeTitle,
-  defaultValueInput,
-  defaultValueFilter,
-}) => {
+const SearchFilterBar: FC<SearchFilterBarProps> = (props) => {
+  const { subcategories, defaultValueInput, defaultValueFilter, changeCategory, changeTitle } =
+    props
   return (
     <SearchFilterBarWrapper>
       <SearchInput onChange={changeTitle} defaultValue={defaultValueInput} />
