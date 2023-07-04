@@ -6,6 +6,7 @@ export const HeaderActionsWrapper = styled(Stack)(({ theme }) => ({
   flexBasis: '100%',
   flexDirection: 'row',
   alignItems: 'center',
+  paddingRight: '38px',
 
   '&&': {
     button: {

@@ -1,20 +1,21 @@
 import { FC, MouseEvent } from 'react'
 import { TableRow } from '@mui/material'
-import { ColumnAction, ColumnInfoTag, ColumnText } from 'UI/table-row-columns'
-import ColumnPhoneRedirect from '../../../UI/table-row-columns/column-phone-redirect/ColumnPhoneRedirect'
+import { ColumnAction, ColumnInfoTag, ColumnText, ColumnPhoneRedirect } from 'UI'
+import { DeliveryAddressType } from 'types'
 
 interface TableOrderDeliveryLineProps {
   id: string
   isActive: string
   clientName: string
   phoneNumber: string
-  deliveryAddress: string
+  deliveryAddress: DeliveryAddressType
   status: {
     type?: 'blue' | 'primary' | 'yellow' | 'green' | 'red' | 'default'
     label: string
   }
   onClickAction?: (id: string) => void
   onClickLine?: (id: string) => void
+  onClickOpenAddressInfo?: (value: DeliveryAddressType) => void
 }
 
 const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
@@ -26,6 +27,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
   status,
   onClickAction,
   onClickLine,
+  onClickOpenAddressInfo,
 }) => {
   const handleClickAction = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
@@ -36,6 +38,10 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
     if (onClickLine && id !== isActive) onClickLine(id)
   }
 
+  const handleDeliveryAddressInfo = () => {
+    if (onClickOpenAddressInfo) onClickOpenAddressInfo(deliveryAddress)
+  }
+
   return (
     <TableRow
       hover
@@ -43,13 +49,16 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
         height: '88px',
         cursor: 'pointer',
         background: isActive === id ? 'rgba(0, 0, 0, 0.04)' : '',
-        '.MuiTableCell-root:last-child': { p: 0 },
       }}
       onClick={handleClickLine}>
       <ColumnText title={clientName} textFontWeight={600} />
       <ColumnPhoneRedirect title={phoneNumber} textFontWeight={400} />
-      <ColumnText title={deliveryAddress} textFontWeight={400} />
-
+      <ColumnText
+        title={onClickOpenAddressInfo ? 'Open Detail info address' : deliveryAddress.street}
+        textColor={onClickOpenAddressInfo ? 'primary' : 'secondary'}
+        textFontWeight={onClickOpenAddressInfo ? 600 : 400}
+        onClick={handleDeliveryAddressInfo}
+      />
       <ColumnInfoTag {...status} />
 
       {onClickAction && (

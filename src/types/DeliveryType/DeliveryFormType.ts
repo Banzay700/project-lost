@@ -1,3 +1,9 @@
+export type DeliveryAddressType = {
+  street: string
+  latitude: string
+  longitude: string
+}
+
 export type DeliveryFormType = {
   time: string
   clientInfo: {
@@ -7,9 +13,5 @@ export type DeliveryFormType = {
     paymentMethod: string
     description?: string
   }
-  address: {
-    street: string
-    latitude: string
-    longitude: string
-  }
+  address: DeliveryAddressType
 }

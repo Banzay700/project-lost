@@ -1,4 +1,4 @@
-export type { DeliveryFormType } from './DeliveryFormType'
+export type { DeliveryFormType, DeliveryAddressType } from './DeliveryFormType'
 export type { DeliveryCreateItemType } from './DeliveryCreateItemType'
 export type { DeliveryResponseType } from './DeliveryResponseType'
 export type { DeliveryType } from './DeliveryType'

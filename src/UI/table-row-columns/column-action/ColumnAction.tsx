@@ -53,7 +53,7 @@ const ColumnAction: FC<ColumnActionProps> = ({
           startIcon={startIcon}
           endIcon={endIcon}
           icon={icon}
-          maxWidth="150px"
+          maxWidth="200px"
           fullWidth>
           {title}
         </Button>

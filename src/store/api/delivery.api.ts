@@ -38,7 +38,7 @@ export const deliveryApi = api.injectEndpoints({
         method: 'PUT',
         body,
       }),
-      invalidatesTags: ['Delivery'],
+      invalidatesTags: ['Delivery', 'Bills'],
     }),
     createDelivery: builder.mutation<DeliveryCreateItemType, DeliveryCreateItemType>({
       query: (body) => ({ url: API_CONST_DELIVERY.DELIVERY, method: 'POST', body }),

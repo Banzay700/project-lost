@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Snackbar, SnackbarContent, Typography } from '@mui/material'
+import { Snackbar, Typography } from '@mui/material'
 
 const SnackbarForHR: FC = () => {
   const message = () => {
