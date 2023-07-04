@@ -6,11 +6,12 @@ import {
   TotalPriceInfo,
   OrderLayout,
   GoogleMap,
+  NotifyError,
 } from 'components'
 import { Button, InfoDeliverySkeleton } from 'UI'
 import { Icon } from 'assets'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
+import { useGetByIDQuery, useUpdateDeliveryMutation, useLazySendNotifyQuery } from 'store/api'
 import { useUserReducer, useRootLocationPath, useScreenTracking } from 'hooks'
 import { calculateTotalPrice, generateTimeString } from 'utils'
 import { ROUTES_DELIVERY } from 'routes/routes.utils'
@@ -20,6 +21,7 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
   const { isMobileScreen } = useScreenTracking()
   const { location } = useRootLocationPath()
   const { data, isFetching } = useGetByIDQuery(activeOrder || '')
+  const [sendNotify, { isSuccess: isSuccessNotify, isError, error }] = useLazySendNotifyQuery()
   const [updateDelivery, { isSuccess }] = useUpdateDeliveryMutation()
 
   const { userState } = useUserReducer()
@@ -34,6 +36,10 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
 
   const handleCancelDelivery = () => {
     if (activeOrder && data) updateDelivery({ id: activeOrder })
+  }
+
+  const handleSendNotify = () => {
+    sendNotify(activeOrder || '')
   }
 
   useEffect(() => {
@@ -54,6 +60,8 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
 
   return (
     <OrderLayout titleHeader="Active order">
+      {!!isSuccessNotify && <NotifyError isSuccess />}
+      {!!isError && <NotifyError isError error={error} />}
       {!isFetching && data && (
         <InfoDelivery
           deliveryAddress={data.address.street}
@@ -72,7 +80,12 @@ const ActiveOrderDeliveryMobilePage: FC = () => {
             size="small"
             icon={<Icon.Phone />}
           />
-          <Button variant="contained" size="small" icon={<Icon.NotifyUser />} />
+          <Button
+            variant="contained"
+            size="small"
+            icon={<Icon.NotifyUser />}
+            onClick={handleSendNotify}
+          />
         </InfoDelivery>
       )}
       {isFetching && <InfoDeliverySkeleton />}
