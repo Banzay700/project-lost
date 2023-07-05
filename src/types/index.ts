@@ -82,6 +82,7 @@ export type {
   RadioButtonCardContentItemType,
   OrderDetailsItemType,
   InfoDeliveryItemType,
+  NativeSelectItemType,
 } from './ComponentsItemType'
 
 export type {
@@ -103,4 +104,8 @@ export type {
   MapActionsType,
 } from './GoogleMapsType'
 
-export type { StatisticLabelsResponseType } from './StatisticTypes'
+export type {
+  StatisticLabelsResponseType,
+  DataHorizontalChart,
+  StatisticsTopCategoryRequest,
+} from './StatisticTypes'

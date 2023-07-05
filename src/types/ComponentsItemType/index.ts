@@ -16,3 +16,4 @@ export type {
 } from './RadioButtonCardDeliveryItemType'
 export type { OrderDetailsItemType } from './OrderDetailsItemType'
 export type { InfoDeliveryItemType } from './InfoDeliveryItemType'
+export type { NativeSelectItemType } from './NativeSelectItemType'

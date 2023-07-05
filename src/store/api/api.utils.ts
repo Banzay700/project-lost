@@ -16,3 +16,7 @@ export const API_CONST_USERS = {
 export const API_CONST_DELIVERY = {
   DELIVERY: 'delivery',
 }
+
+export const API_CONST_STATISTICS = {
+  TOP_SALES_CATEGORY: 'analytics/top-sales-category',
+}

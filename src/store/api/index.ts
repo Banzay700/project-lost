@@ -67,3 +67,5 @@ export {
   useUpdateDeliveryMutation,
   useLazyGetByIDQuery,
 } from './delivery.api'
+
+export { useGetTopSalesCategoryQuery, useLazyGetTopSalesCategoryQuery } from './statistics.api'
