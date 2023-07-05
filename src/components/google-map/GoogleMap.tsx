@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { Box } from '@mui/material'
-import { RouteInfoType, MapActionsType } from 'types/index'
-import { GOOGLE_MAP_ID_STYLE, ORIGIN_LAT, ORIGIN_LNG } from 'utils/index'
+import { RouteInfoType, MapActionsType } from 'types'
+import { GOOGLE_MAP } from 'utils'
 import { GoogleMapBox } from './GoogleMap.styled'
 import { GoogleRouteInfo } from './google-route-info'
 import { directionsServices } from './GoogleMap.utils'
@@ -35,8 +35,8 @@ const GoogleMap: FC<GoogleMapProps> = ({
 
     const mapOptions: google.maps.MapOptions = {
       center: position,
-      zoom: zoom || 14,
-      mapId: GOOGLE_MAP_ID_STYLE,
+      zoom: zoom || GOOGLE_MAP.DEFAULT_ZOOM,
+      mapId: GOOGLE_MAP.ID_STYLE,
       mapTypeControlOptions: {
         style: MapTypeControlStyle.DROPDOWN_MENU,
       },
@@ -51,7 +51,7 @@ const GoogleMap: FC<GoogleMapProps> = ({
         title: 'Destination',
       })
     } else {
-      const origin = new LatLng(ORIGIN_LAT, ORIGIN_LNG)
+      const origin = new LatLng(GOOGLE_MAP.ORIGIN_LAT, GOOGLE_MAP.ORIGIN_LNG)
       const destination = new LatLng(lat, lng)
 
       const request: google.maps.DirectionsRequest = {
