@@ -5,7 +5,6 @@ import {
   OrderDetailList,
   TotalPriceInfo,
   OrderLayout,
-  GoogleMap,
   NotifyError,
 } from 'components'
 import { Button, InfoDeliverySkeleton } from 'UI'
