@@ -1,37 +1,11 @@
 import { useParams } from 'react-router-dom'
 import { FC } from 'react'
 import { SidebarTabsList } from 'components'
-import { SidebarTabItemType } from 'types'
 import { Icon } from 'assets'
 import { useRelocateDefaultLocation } from 'hooks'
-
-const mokStatistics: SidebarTabItemType[] = [
-  {
-    linkTo: 'sales',
-    icon: <Icon.Sales />,
-    label: 'Sales',
-  },
-  {
-    linkTo: 'marketing',
-    icon: <Icon.Marketing />,
-    label: 'Marketing',
-  },
-  {
-    linkTo: 'business-summary',
-    icon: <Icon.Summary />,
-    label: 'Business Summary',
-  },
-  {
-    linkTo: 'saved-reports',
-    icon: <Icon.SavedReports />,
-    label: 'Saved Reports',
-  },
-  {
-    linkTo: 'feedbacks',
-    icon: <Icon.Feedbacks />,
-    label: 'Feedbacks',
-  },
-]
+import { Stack } from '@mui/material'
+import { Statistics } from './statistics'
+import { mokStatistics } from './AdminStatisticsPage.utils'
 
 const AdminStatisticsPage: FC = () => {
   const { statistics } = useParams()
@@ -42,11 +16,14 @@ const AdminStatisticsPage: FC = () => {
   })
 
   return (
-    <SidebarTabsList
-      sidebarTabItems={mokStatistics}
-      title="Statistics"
-      titleIcon={<Icon.Statistics />}
-    />
+    <Stack direction="row" width="100%">
+      <SidebarTabsList
+        sidebarTabItems={mokStatistics}
+        title="Statistics"
+        titleIcon={<Icon.Statistics />}
+      />
+      <Statistics />
+    </Stack>
   )
 }
 

@@ -3,9 +3,7 @@ export {
   ORDER_TOGGLE_MENU_VALUES,
   TAX,
   MS_CUSTOM_BREAKPOINT,
-  ORIGIN_LAT,
-  ORIGIN_LNG,
-  GOOGLE_MAP_ID_STYLE,
+  GOOGLE_MAP,
   MAP_ACTIONS_MODAL_ADDRESS,
 } from './constants'
 export { correctionName } from './correctionName'
