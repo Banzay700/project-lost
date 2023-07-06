@@ -1,5 +1,4 @@
 import { FC, useEffect } from 'react'
-import { StatisticsSalesTopCategoryWrapper } from './StatisticsSalesTopCategory.styled'
 import {
   useGetCategoriesQuery,
   useGetTopSalesCategoryQuery,
@@ -9,7 +8,9 @@ import { HorizontalChart } from 'components'
 import { NativeSelect } from 'UI'
 import { NativeSelectItemType } from 'types'
 import { correctionName } from 'utils/correctionName'
+import { StatisticsSalesTopCategoryWrapper } from './StatisticsSalesTopCategory.styled'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface StatisticsSalesTopCategoryProps {}
 
 const StatisticsSalesTopCategory: FC<StatisticsSalesTopCategoryProps> = () => {
