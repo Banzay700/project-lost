@@ -1,9 +1,20 @@
-import { DataHorizontalChart } from 'types/StatisticTypes'
-import { correctionName } from 'utils/correctionName'
+import { DataHorizontalChart } from 'types'
+import { theme } from 'theme'
+import { correctionName } from 'utils'
 
 const colorPalette = {
-  backgroundColor: ['rgb(53, 162, 235)', 'rgb(0,223,137)', 'rgb(255,92,92)', 'rgb(255,228,92)'],
-  borderColor: ['rgba(53, 162, 235, 0.5)', 'rgb(2,120,73)', 'rgb(211,8,8)', 'rgb(148,125,5)'],
+  backgroundColor: [
+    theme.palette.background.chartPrimary,
+    theme.palette.background.chartSecondary,
+    theme.palette.background.chartTertiary,
+    theme.palette.background.chartQuaternary,
+  ],
+  borderColor: [
+    theme.palette.border.white,
+    theme.palette.border.white,
+    theme.palette.border.white,
+    theme.palette.border.white,
+  ],
 }
 export const addBackgroundAndBorder = (data: DataHorizontalChart) => {
   const { borderColor, backgroundColor } = colorPalette
@@ -23,4 +34,32 @@ export const addBackgroundAndBorder = (data: DataHorizontalChart) => {
     labels,
     datasets,
   }
+}
+
+export const horizontalChartOptions = {
+  indexAxis: 'y' as const,
+  elements: {
+    bar: {
+      borderWidth: 2,
+    },
+  },
+  scales: {
+    y: {
+      ticks: { display: false },
+      grid: { display: false },
+    },
+    x: {
+      grid: { display: false },
+    },
+  },
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'bottom' as const,
+    },
+    title: {
+      display: true,
+      text: '',
+    },
+  },
 }

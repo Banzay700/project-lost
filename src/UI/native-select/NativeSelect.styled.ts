@@ -2,7 +2,7 @@ import { FormControl, styled } from '@mui/material'
 
 export const SelectWrapper = styled(FormControl)`
   position: absolute;
-  top: 25px;
+  top: 34px;
   right: 10px;
   z-index: 1;
   && {

@@ -12,6 +12,6 @@ export const ChartItem = styled(Stack)(({ theme }) => ({
   borderRadius: '10px',
   alignItems: 'center',
   justifyContent: 'center',
-  maxHeight: '344px',
+  maxHeight: '340px',
   backgroundColor: theme.palette.background.default,
 }))

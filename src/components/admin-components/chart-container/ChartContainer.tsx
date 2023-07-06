@@ -1,18 +1,29 @@
 import { FC, ReactNode } from 'react'
 
 import { NativeSelect } from 'UI'
+import { NativeSelectItemType } from 'types'
 import { ChartsContainer, ChartItem } from './ChartContainer.styled'
 
 interface ChartContainerProps {
-  size: 'big' | 'small'
+  size: number
   children: ReactNode
+  selectDefaultTitle?: string
+  selectData?: NativeSelectItemType[]
+  onSelectChange: (id: string) => void
 }
 
-const ChartContainer: FC<ChartContainerProps> = ({ size, children }) => {
-  const itemSize = size === 'big' ? 8 : 4
+const ChartContainer: FC<ChartContainerProps> = (props) => {
+  const { size, selectData, selectDefaultTitle, children, onSelectChange } = props
+
   return (
-    <ChartsContainer item xs={itemSize}>
-      <NativeSelect data={['sds']} defaultTitle="Top category" onChange={() => {}} />
+    <ChartsContainer item xs={size}>
+      {selectData && (
+        <NativeSelect
+          data={selectData}
+          defaultTitle={selectDefaultTitle}
+          onChange={onSelectChange}
+        />
+      )}
       <ChartItem>{children}</ChartItem>
     </ChartsContainer>
   )

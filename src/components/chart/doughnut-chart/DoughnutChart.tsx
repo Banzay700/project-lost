@@ -2,24 +2,20 @@ import { FC } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 
-import { ChartContainer } from 'components/admin-components'
+import { DataDoughnutChartType } from 'types'
 import { doughnutChartOptions, doughnutChartStyles } from './DoughnutChart.utils'
 
+interface DoughnutChartProps {
+  data: DataDoughnutChartType
+  title: string
+}
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const DoughnutChart: FC = () => {
-  const data = {
-    labels: ['Dine In', 'Take Away', 'Delivery'],
-    datasets: [{ label: 'Total', data: [12, 19, 3] }],
-  }
-
+const DoughnutChart: FC<DoughnutChartProps> = ({ data, title }) => {
   data.datasets = [{ ...data.datasets[0], ...doughnutChartStyles }]
+  doughnutChartOptions.plugins.title.text = title
 
-  return (
-    <ChartContainer size="small">
-      <Doughnut data={data} options={doughnutChartOptions} />
-    </ChartContainer>
-  )
+  return <Doughnut data={data} options={doughnutChartOptions} />
 }
 
 export default DoughnutChart

@@ -1,17 +1,20 @@
 import { FC } from 'react'
+
 import { ChartContainer } from 'components/admin-components'
-import { DoughnutChart } from 'components'
+import { TopCategoriesBarChart } from './top-categories-chart'
+import { OrderTypeStatisticChart } from './order-type-statistic-chart'
 import { ChartsWrapper } from './StatisticCharts.styled'
-import { StatisticsSalesTopCategory } from 'pages/admin-pages/admin-statistics-page/statistics/statistics-sales-top-category'
+import { AverageBillLineChart } from './average-bill-line-chart'
 
 const StatisticCharts: FC = () => {
   return (
     <ChartsWrapper container spacing="2%">
-      {/*<StatisticsSalesTopCategory />*/}
-      <ChartContainer size="big">I&#39;m ChartContainer place inside me your chart</ChartContainer>
-      <DoughnutChart />
-      <DoughnutChart />
-      <ChartContainer size="big">I&#39;m ChartContainer place inside me your chart</ChartContainer>
+      <ChartContainer size={8} onSelectChange={() => {}}>
+        I&#39;m ChartContainer place inside me your chart
+      </ChartContainer>
+      <OrderTypeStatisticChart />
+      <TopCategoriesBarChart />
+      <AverageBillLineChart />
     </ChartsWrapper>
   )
 }
