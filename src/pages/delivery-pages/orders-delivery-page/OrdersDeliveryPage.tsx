@@ -5,10 +5,16 @@ import {
   ModalAddressInfo,
   SidebarDeliveryInfo,
   TableContent,
+  NotifyError,
 } from 'components'
 import { PageActionsBar } from 'UI'
 import { useGoogleMapStateAction, useIsModal, useScreenTracking, useUserReducer } from 'hooks'
-import { useGetAllDeliveryQuery, useLazyGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
+import {
+  useGetAllDeliveryQuery,
+  useLazyGetByIDQuery,
+  useUpdateDeliveryMutation,
+  useLazySendNotifyQuery,
+} from 'store/api'
 import { Stack } from '@mui/material'
 import { DeliveryAddressType } from 'types'
 import { deliveryIndicatorItems, tableOrdersTitleDelivery } from './OrdersDeliveryPage.utils'
@@ -22,6 +28,7 @@ const OrdersDeliveryPage: FC = () => {
   const [getByIdDelivery, { isFetching: isFetchingDeliveryItem, data: deliveryOrderItem }] =
     useLazyGetByIDQuery()
   const [updateDelivery] = useUpdateDeliveryMutation()
+  const [sendNotify, { isSuccess: isSuccessNotify, isError, error }] = useLazySendNotifyQuery()
 
   const handleClickLine = (id: string) => {
     getByIdDelivery(id)
@@ -47,8 +54,14 @@ const OrdersDeliveryPage: FC = () => {
     handleToggleIsOpenModal()
   }
 
+  const handleSendNotify = (id: string) => {
+    sendNotify(id || '')
+  }
+
   return (
     <>
+      {!!isSuccessNotify && <NotifyError isSuccess />}
+      {!!isError && <NotifyError isError error={error} />}
       <Stack flex={1} height="100%" width="100%" overflow="auto">
         <PageActionsBar>
           <IndicatorsGroup indicatorData={deliveryIndicatorItems} />
@@ -61,7 +74,7 @@ const OrdersDeliveryPage: FC = () => {
             data={data?.data}
             isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
             onClickLine={handleClickLine}
-            onClickAction={() => {}}
+            onClickAction={handleSendNotify}
             onClickOpenInfoAddress={handleOpenGoogleMap}
           />
         )}
