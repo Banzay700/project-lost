@@ -15,7 +15,8 @@ interface StatisticsSalesTopCategoryProps {}
 const StatisticsSalesTopCategory: FC<StatisticsSalesTopCategoryProps> = () => {
   const [changeCategory, { data: DataTopCategory }] = useLazyGetTopSalesCategoryQuery()
   const { data: DataCategory } = useGetCategoriesQuery(null)
-
+  console.log('DataCategory', DataTopCategory)
+  console.log(DataTopCategory)
   const updateDataCategory: NativeSelectItemType[] | undefined =
     DataCategory &&
     DataCategory.map((item) => ({ value: item.id, label: correctionName(item.title) }))

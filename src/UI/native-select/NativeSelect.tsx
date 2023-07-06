@@ -1,4 +1,4 @@
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material'
+import { MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material'
 import { FC, useState } from 'react'
 import { NativeSelectItemType } from 'types'
 import { SelectWrapper } from './NativeSelect.styled'
@@ -18,10 +18,10 @@ const NativeSelect: FC<NativeSelectProps> = ({ data, defaultTitle, onChange }) =
   }
 
   return (
-    <SelectWrapper fullWidth variant="standard">
-      <Select displayEmpty value={value} onChange={handleChange}>
+    <SelectWrapper variant="standard">
+      <Select displayEmpty value={value} size="small" onChange={handleChange}>
         <MenuItem value="">
-          <em>{defaultTitle}</em>
+          <Typography variant="subtitle2">{defaultTitle}</Typography>
         </MenuItem>
         {data.map((item) => (
           <MenuItem key={item.value} value={item.value}>
