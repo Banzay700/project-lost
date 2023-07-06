@@ -24,6 +24,8 @@ export {
 
 export { SidebarLeftAdmin, SidebarTabsList } from './admin-components'
 
+export { HorizontalChart } from './chart'
+
 export {
   InputImage,
   InputsBasicUserInfo,
