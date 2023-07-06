@@ -68,3 +68,5 @@ export {
   useLazyGetByIDQuery,
   useLazySendNotifyQuery,
 } from './delivery.api'
+
+export { useGetTopSalesCategoryQuery, useLazyGetTopSalesCategoryQuery } from './statistics.api'
