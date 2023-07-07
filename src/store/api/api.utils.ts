@@ -19,4 +19,5 @@ export const API_CONST_DELIVERY = {
 
 export const API_CONST_STATISTICS = {
   TOP_SALES_CATEGORY: 'analytics/top-sales-category',
+  GENERAL_STATISTIC: 'analytics/general',
 }

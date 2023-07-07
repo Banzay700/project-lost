@@ -38,6 +38,7 @@ export {
   RadioButtonCardSkeleton,
   InfoDeliverySkeleton,
   OrderDetailsItemsSkeleton,
+  StatisticLabelsSkeleton,
 } from './skeleton'
 export { CustomNavLink } from './custom-nav-link'
 export { Loader } from './loader'

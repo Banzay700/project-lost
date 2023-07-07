@@ -1,19 +1,22 @@
 import { FC } from 'react'
 
 import { StatisticLabelsResponseType } from 'types'
+import { StatisticLabelsSkeleton } from 'UI'
 import { LabelItem } from './label-item'
 import { LabelsGroupWrapper } from './LabelsGroup.styled'
 
 interface LabelsGroupProps {
-  data: StatisticLabelsResponseType[]
+  data?: StatisticLabelsResponseType[]
+  isLoading: boolean
 }
 
-const LabelsGroup: FC<LabelsGroupProps> = ({ data }) => {
+const LabelsGroup: FC<LabelsGroupProps> = ({ data, isLoading }) => {
+  const skeletonItemsRange = [...Array(4).keys()]
+
   return (
     <LabelsGroupWrapper>
-      {data.map((item) => (
-        <LabelItem key={item.title} labelInfo={item} />
-      ))}
+      {!isLoading && data?.map((item) => <LabelItem key={item.title} labelInfo={item} />)}
+      {isLoading && skeletonItemsRange.map((index) => <StatisticLabelsSkeleton key={index} />)}
     </LabelsGroupWrapper>
   )
 }

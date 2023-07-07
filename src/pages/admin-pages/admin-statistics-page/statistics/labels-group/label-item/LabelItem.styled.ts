@@ -1,15 +1,11 @@
-import { styled, Stack, Box } from '@mui/material'
+import { styled, Stack } from '@mui/material'
+import { FadeIn } from 'utils'
 
-export const LabelWrapper = styled(Stack)(({ theme }) => ({
-  position: 'relative',
-  padding: '16px 20px 13px',
-  alignItems: 'flex-start',
-  overflow: 'hidden',
-  width: '100%',
-  borderRadius: '12px',
+export const LabelContent = styled(FadeIn)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
   gap: '10px',
-  backgroundColor: theme.palette.background.default,
-  boxShadow: '0px 8px 16px 0px rgba(96, 97, 112, 0.16), 0px 2px 4px 0px rgba(40, 41, 61, 0.04)',
+  width: '100%',
 }))
 
 export const PercentageWrapper = styled(Stack)(({ theme }) => ({
@@ -20,15 +16,6 @@ export const PercentageWrapper = styled(Stack)(({ theme }) => ({
   gap: '5px',
   padding: '12px 0 0',
   borderColor: theme.palette.border.default,
-}))
-
-export const DecorLine = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  width: '5px',
-  height: '100%',
-  top: 0,
-  left: 0,
-  backgroundColor: theme.palette.primary.light,
 }))
 
 export const TitleLineWrapper = styled(Stack)`
