@@ -10,6 +10,16 @@ export { DishesList } from './dishes-list'
 export { EmployeesCarrousel } from './employees-carrousel'
 export { SidebarContentWrapper } from './sidebar-content-wrapper'
 export { IndicatorFilterBar, SearchFilterBar } from './filter-components'
+export { Watch } from './watch'
+export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'
+export { Autocomplete } from './autocomplete'
+export { GoogleMap } from './google-map'
+export { SidebarLeftAdmin, SidebarTabsList } from './admin-components'
+export { HorizontalChart, DoughnutChart, LineChart } from './chart'
+export { IndicatorsGroup } from './indicators-group'
+export { ReservationBottomBar } from './reservation-bottom-bar'
+export { ReservationCanvas } from './reservation-canvas'
+export { NotifyError } from './notification-error'
 
 export {
   ProfileInfoUserForm,
@@ -22,10 +32,6 @@ export {
   LoginForm,
 } from './form-componets'
 
-export { SidebarLeftAdmin, SidebarTabsList } from './admin-components'
-
-export { HorizontalChart } from './chart'
-
 export {
   InputImage,
   InputsBasicUserInfo,
@@ -34,9 +40,6 @@ export {
   CheckboxTagGroup,
   DigitButtonsGroup,
 } from './input-form'
-
-export { IndicatorsGroup } from './indicators-group'
-export { ReservationBottomBar } from './reservation-bottom-bar'
 
 export {
   ModalUpdateUserInfo,
@@ -48,8 +51,6 @@ export {
   OrderCancellationModal,
 } from './modal-components'
 
-export { ReservationCanvas } from './reservation-canvas'
-export { NotifyError } from './notification-error'
 export {
   TableUsersLine,
   TableOrdersLine,
@@ -60,7 +61,7 @@ export {
   TableOrderDeliveryLine,
   TableNotDataFoundLine,
 } from './table-lines'
-export { Watch } from './watch'
+
 export {
   RadioGroupCard,
   ActionsButton,
@@ -73,8 +74,3 @@ export {
   SidebarDeliveryInfo,
   TableContent,
 } from './delivery-components'
-
-export { AdaptiveHeaderWrapper } from './adaptive-header-wrapper'
-export { Autocomplete } from './autocomplete'
-
-export { GoogleMap } from './google-map'

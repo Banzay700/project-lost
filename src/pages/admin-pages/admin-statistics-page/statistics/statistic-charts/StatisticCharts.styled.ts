@@ -1,5 +1,5 @@
-import { Stack, styled } from '@mui/material'
+import { styled, Grid } from '@mui/material'
 
-export const ChartsWrapper = styled(Stack)`
-  flex: 1;
+export const ChartsWrapper = styled(Grid)`
+  flex-grow: 1;
 `
