@@ -8,3 +8,9 @@ export const BottomBarIconWrapper = styled(Stack)(({ theme }) => ({
   borderRight: '1px solid',
   borderColor: theme.palette.border.default,
 }))
+
+export const IconContainer = styled(Stack)(({ theme }) => ({
+  borderRadius: '12px',
+  padding: '12px',
+  backgroundColor: theme.palette.background.main,
+}))

@@ -17,8 +17,6 @@ export { GoogleMap } from './google-map'
 export { SidebarLeftAdmin, SidebarTabsList, ChartContainer } from './admin-components'
 export { HorizontalChart, DoughnutChart, LineChart, VerticalDiagram } from './chart'
 export { IndicatorsGroup } from './indicators-group'
-export { ReservationBottomBar } from './reservation-bottom-bar'
-export { ReservationCanvas } from './reservation-canvas'
 export { NotifyError } from './notification-error'
 
 export {
@@ -30,6 +28,7 @@ export {
   CreateDishForm,
   CreateDishCategoryForm,
   LoginForm,
+  ReservationForm,
 } from './form-componets'
 
 export {
@@ -74,3 +73,9 @@ export {
   SidebarDeliveryInfo,
   TableContent,
 } from './delivery-components'
+
+export {
+  ReservationCanvas,
+  ReservationBottomBar,
+  ReservationInfoList,
+} from './reservation-components'

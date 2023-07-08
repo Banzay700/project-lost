@@ -18,8 +18,8 @@ export const initialValues: Partial<ReservationFormType> = {
 export const validationSchema = object().shape({
   tags: array().of(string()),
   date: reservationValidationItems.date(),
-  hours: reservationValidationItems.hours(),
-  minutes: reservationValidationItems.minutes(),
+  hours: reservationValidationItems.hours(true),
+  minutes: reservationValidationItems.minutes(true),
   persons: number(),
   clientName: validationUser.name(true),
   email: validationUser.email(),

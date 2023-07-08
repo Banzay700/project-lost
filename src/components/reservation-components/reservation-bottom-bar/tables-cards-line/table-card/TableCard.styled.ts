@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/material'
-import { FadeIn } from 'utils'
+import { FadeIn } from 'utils/index'
 
 export const TableCardWrapper = styled(FadeIn)(({ theme }) => ({
   position: 'relative',

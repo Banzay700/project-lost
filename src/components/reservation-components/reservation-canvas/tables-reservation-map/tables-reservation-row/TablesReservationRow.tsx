@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
-import { TableType } from 'types'
+import { TableType } from 'types/index'
 import { Table } from './table'
 
 interface TablesReservationRowProps {

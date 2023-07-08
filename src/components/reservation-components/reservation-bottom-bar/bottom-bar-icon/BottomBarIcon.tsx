@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 
-import { Icon } from 'assets'
-import { BottomBarIconWrapper } from './BottomBarIcon.styled'
+import { Icon } from 'assets/index'
+import { BottomBarIconWrapper, IconContainer } from './BottomBarIcon.styled'
 
 const BottomBarIcon: FC = () => {
   return (
     <BottomBarIconWrapper>
-      <Stack sx={{ p: '12px', bgcolor: '#F8F9FD', borderRadius: '16px' }}>
+      <IconContainer>
         <Icon.Paper />
-      </Stack>
+      </IconContainer>
       <Typography color="secondary" fontWeight={600}>
-        Table:
+        Selected Table:
       </Typography>
     </BottomBarIconWrapper>
   )

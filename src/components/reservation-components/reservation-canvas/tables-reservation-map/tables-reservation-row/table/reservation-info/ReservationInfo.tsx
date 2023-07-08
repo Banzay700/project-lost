@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react'
 
-import { Icon } from 'assets'
-import { ReservationCanvasType } from 'types'
+import { Icon } from 'assets/index'
+import { ReservationCanvasType } from 'types/index'
 import { ReservationInfoModal } from 'components/modal-components'
 import { IconWrapper } from './ReservationInfo.styled'
 

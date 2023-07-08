@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { TableReservationLine } from 'components'
-import { Table } from 'UI'
-import { ReservationResponseType } from 'types'
+import { TableReservationLine } from 'components/index'
+import { Table } from 'UI/index'
+import { ReservationResponseType } from 'types/index'
 import { tableTitleReservation } from './tableReservation.utils'
 
 interface TableReservationProps {
