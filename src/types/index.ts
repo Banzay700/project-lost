@@ -109,4 +109,5 @@ export type {
   DataHorizontalChart,
   StatisticsTopCategoryRequest,
   DataDoughnutChartType,
+  ServiceTypeStatisticRequest,
 } from './StatisticTypes'

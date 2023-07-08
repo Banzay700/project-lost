@@ -1,24 +1,24 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import { DoughnutChart } from 'components'
 import { ChartContainer } from 'components/admin-components'
-
-const doughnutSelectDataMok = [
-  { value: '1', label: 'Month' },
-  { value: '2', label: 'Quarter' },
-  { value: '3', label: 'Year' },
-]
+import { useLazyGetServiceTypeStatisticQuery } from 'store/api'
+import { doughnutSelectDataMok } from './OrderTypeStatisticChart.utils'
 
 const OrderTypeStatisticChart: FC = () => {
-  const data = {
-    labels: ['Dine In', 'Take Away', 'Delivery'],
-    datasets: [{ label: 'Total', data: [12, 19, 3] }],
+  const [getServiceTypeData, { data, isSuccess }] = useLazyGetServiceTypeStatisticQuery()
+
+  const handleChangePeriod = (value: string) => {
+    getServiceTypeData({ period: value })
   }
-  const handleChangePeriod = (query: string) => {}
+
+  useEffect(() => {
+    getServiceTypeData({})
+  }, [getServiceTypeData])
 
   return (
     <ChartContainer size={4} selectData={doughnutSelectDataMok} onSelectChange={handleChangePeriod}>
-      <DoughnutChart data={data} title="Best sales by Service type" />
+      {isSuccess && data && <DoughnutChart data={data} title="Best sales by Service type" />}
     </ChartContainer>
   )
 }

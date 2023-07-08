@@ -9,13 +9,14 @@ interface DoughnutChartProps {
   data: DataDoughnutChartType
   title: string
 }
+
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 const DoughnutChart: FC<DoughnutChartProps> = ({ data, title }) => {
-  data.datasets = [{ ...data.datasets[0], ...doughnutChartStyles }]
+  const styledData = { ...data, datasets: [{ ...data?.datasets[0], ...doughnutChartStyles }] }
   doughnutChartOptions.plugins.title.text = title
 
-  return <Doughnut data={data} options={doughnutChartOptions} />
+  return <Doughnut data={styledData} options={doughnutChartOptions} />
 }
 
 export default DoughnutChart
