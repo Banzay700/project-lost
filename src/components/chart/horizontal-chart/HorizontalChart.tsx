@@ -10,38 +10,20 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { DataHorizontalChart } from 'types'
-import { addBackgroundAndBorder } from './horizontalChart.utils'
+import { addBackgroundAndBorder, horizontalChartOptions } from './horizontalChart.utils'
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Legend, Tooltip)
 
 interface StatisticsChartCategoryProps {
   data: DataHorizontalChart
-  titleChart?: string
+  title: string
 }
 
-const HorizontalChart: FC<StatisticsChartCategoryProps> = ({ data, titleChart }) => {
+const HorizontalChart: FC<StatisticsChartCategoryProps> = ({ data, title }) => {
   const newData = data && addBackgroundAndBorder(data)
+  horizontalChartOptions.plugins.title.text = title
 
-  const options = {
-    indexAxis: 'y' as const,
-    elements: {
-      bar: {
-        borderWidth: 2,
-      },
-    },
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'right' as const,
-      },
-      title: {
-        display: true,
-        text: `${titleChart || 'Chart'}`,
-      },
-    },
-  }
-
-  return <Bar options={options} data={newData} />
+  return <Bar options={horizontalChartOptions} data={newData} />
 }
 
 export default HorizontalChart

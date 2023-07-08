@@ -60,6 +60,7 @@ export {
   useGetReservationInfoQuery,
   useLazyGetReservationInfoQuery,
 } from './reservation.api'
+
 export {
   useCreateDeliveryMutation,
   useGetAllDeliveryQuery,
@@ -69,4 +70,8 @@ export {
   useLazySendNotifyQuery,
 } from './delivery.api'
 
-export { useGetTopSalesCategoryQuery, useLazyGetTopSalesCategoryQuery } from './statistics.api'
+export {
+  useGetTopSalesCategoryQuery,
+  useLazyGetTopSalesCategoryQuery,
+  useGetGeneralStatisticQuery,
+} from './statistics.api'

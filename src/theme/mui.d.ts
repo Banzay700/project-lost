@@ -33,6 +33,10 @@ declare module '@mui/material/styles/createPalette' {
       lightYellow: string
       lightGreen: string
       lightGray: string
+      chartPrimary: string
+      chartSecondary: string
+      chartTertiary: string
+      chartQuaternary: string
     }
   }
 
@@ -46,6 +50,10 @@ declare module '@mui/material/styles/createPalette' {
     lightYellow: string
     lightGreen: string
     lightGray: string
+    chartPrimary: string
+    chartSecondary: string
+    chartTertiary: string
+    chartQuaternary: string
   }
 }
 

@@ -108,4 +108,5 @@ export type {
   StatisticLabelsResponseType,
   DataHorizontalChart,
   StatisticsTopCategoryRequest,
+  DataDoughnutChartType,
 } from './StatisticTypes'
