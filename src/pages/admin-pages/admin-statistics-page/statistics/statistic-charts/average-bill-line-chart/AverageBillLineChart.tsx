@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
-import { LineChart } from 'components'
-import { ChartContainer } from 'components/admin-components'
+import { LineChart, ChartContainer } from 'components'
 
 const selectDataMok = [
   { value: '1', label: 'Month' },
