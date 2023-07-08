@@ -77,4 +77,5 @@ export {
   useGetServiceTypeStatisticQuery,
   useLazyGetServiceTypeStatisticQuery,
   useLazyGetGeneralTotalQuery,
+  useLazyGetAverageBillStatisticQuery,
 } from './statistics.api'

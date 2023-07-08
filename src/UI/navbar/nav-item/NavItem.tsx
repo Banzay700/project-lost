@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Typography } from '@mui/material'
+
 import { LinkItemType } from 'types'
 import { CustomNavLink } from 'UI'
 
@@ -13,6 +14,7 @@ interface NavbarProps {
 const NavItem: FC<NavbarProps> = (props) => {
   const { data, variant, fontWeight, variantStyle } = props
   const { icon, title, link } = data
+
   return (
     <CustomNavLink linkTo={link} variant={variantStyle}>
       {icon && !variantStyle && icon}

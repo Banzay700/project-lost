@@ -23,4 +23,5 @@ export const API_STATISTICS_ENDPOINTS = {
   GENERAL_STATISTIC: 'analytics/general',
   SERVICE_TYPE_STATISTIC: 'analytics/order-type-total',
   GENERAL_TOTAL: 'analytics/general-total',
+  AVERAGE_BILL_STATISTIC: 'analytics/average-total',
 }
