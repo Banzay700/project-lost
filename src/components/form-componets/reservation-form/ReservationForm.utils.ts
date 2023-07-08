@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { array, number, object, string } from 'yup'
 import { ReservationFormType, TableType } from 'types'
-import { reservationValidationItems, validationUser } from 'utils'
+import { REGEX, reservationValidationItems, validationUser } from 'utils'
 
 export const initialValues: Partial<ReservationFormType> = {
   tags: [],
@@ -36,12 +36,13 @@ export const tags = [
 ]
 
 export const prepareReservationData = (values: ReservationFormType, activeTable: TableType) => {
-  const { date, hours, minutes, ...rest } = values
+  const { date, hours, minutes, phoneNumber, ...rest } = values
   const time = `${hours}:${minutes}`
 
   return {
     ...rest,
     time,
+    phoneNumber: phoneNumber.replace(REGEX.PHONE_NUMBER_DB, ''),
     date: dayjs(date).format('YYYY-MM-DD'),
     table: activeTable.id,
   }

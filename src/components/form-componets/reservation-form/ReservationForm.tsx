@@ -32,6 +32,7 @@ const ReservationForm: FC<ReservationFormProps> = ({ handleShowForm }) => {
     values: ReservationFormType,
     actions: FormikHelpers<ReservationFormType>,
   ) => {
+    console.log(values)
     const reservationInfo = prepareReservationData(values, activeTable)
 
     addNewReservation(reservationInfo)

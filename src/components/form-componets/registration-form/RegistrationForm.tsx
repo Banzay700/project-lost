@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react'
+import { Box, Stack } from '@mui/material'
 import { Formik, FormikHelpers } from 'formik'
 
 import { InputsBasicUserInfo } from 'components'
 import { RegistrationFormReturnType } from 'types'
 import { SelectInput, Button, Input } from 'UI'
-import { Box, Stack } from '@mui/material'
+import { formatPhoneNumber } from 'utils'
 import { selectMenuItems, validationSchema } from './registrationForm.utils'
 import { RegistrationPicture } from './registration-picutre'
 import { FormWrapper, InputsWrapper } from './RegistrationForm.styled'
@@ -20,7 +21,8 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ initialValues, onSubmit }
     value: RegistrationFormReturnType,
     { resetForm }: FormikHelpers<RegistrationFormReturnType>,
   ) => {
-    onSubmit(value)
+    const formattedValues = formatPhoneNumber(value)
+    onSubmit(formattedValues)
     resetForm()
   }
 
