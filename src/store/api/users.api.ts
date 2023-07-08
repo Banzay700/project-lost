@@ -12,25 +12,25 @@ import {
 import { setUserData, setUserInfo, setUserLogout } from 'store/reducers'
 import { RootState } from 'store/store'
 import { api } from './api'
-import { API_CONST_USERS } from './api.utils'
+import { API_USERS_ENDPOINTS } from './api.utils'
 
 export const usersApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUsersInLogin: builder.query<UserInLoginType[], void>({
-      query: () => ({ url: API_CONST_USERS.USERS_IN_LOGIN }),
+      query: () => ({ url: API_USERS_ENDPOINTS.USERS_IN_LOGIN }),
       providesTags: ['Users'],
     }),
     getAllUsers: builder.query<UserAllResponseType, UserRequestType>({
-      query: (params) => ({ url: API_CONST_USERS.USERS, params }),
+      query: (params) => ({ url: API_USERS_ENDPOINTS.USERS, params }),
       providesTags: ['Users'],
     }),
     getUserByID: builder.query<UserType, string>({
-      query: (id) => ({ url: `${API_CONST_USERS.USERS}/${id}` }),
+      query: (id) => ({ url: `${API_USERS_ENDPOINTS.USERS}/${id}` }),
       providesTags: ['Users'],
     }),
     updateUser: builder.mutation<UserType, UserPartialType>({
       query: (body) => ({
-        url: `${API_CONST_USERS.USERS}/${body.id}`,
+        url: `${API_USERS_ENDPOINTS.USERS}/${body.id}`,
         method: 'POST',
         body,
       }),
@@ -46,7 +46,7 @@ export const usersApi = api.injectEndpoints({
     }),
     updateUserAvatar: builder.mutation<UserType, UserUpdateAvatar>({
       query: (body) => ({
-        url: `${API_CONST_USERS.USERS}/${body.id}`,
+        url: `${API_USERS_ENDPOINTS.USERS}/${body.id}`,
         method: 'POST',
         body: body.body,
       }),
@@ -60,7 +60,7 @@ export const usersApi = api.injectEndpoints({
     }),
     registration: builder.mutation<{ data: string }, FormData>({
       query: (body) => ({
-        url: API_CONST_USERS.REGISTRATION,
+        url: API_USERS_ENDPOINTS.REGISTRATION,
         method: 'POST',
         body,
       }),
@@ -69,7 +69,7 @@ export const usersApi = api.injectEndpoints({
 
     login: builder.mutation<UserResponseType, UserLoginRequestType>({
       query: (body) => ({
-        url: API_CONST_USERS.LOGIN,
+        url: API_USERS_ENDPOINTS.LOGIN,
         method: 'POST',
         body,
       }),
@@ -82,7 +82,7 @@ export const usersApi = api.injectEndpoints({
     }),
     logout: builder.mutation<UserLogoutResponseType, void>({
       query: () => ({
-        url: API_CONST_USERS.LOGOUT,
+        url: API_USERS_ENDPOINTS.LOGOUT,
         method: 'POST',
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
@@ -94,7 +94,7 @@ export const usersApi = api.injectEndpoints({
     }),
     refresh: builder.query<UserResponseType, void>({
       query: () => ({
-        url: API_CONST_USERS.REFRESH,
+        url: API_USERS_ENDPOINTS.REFRESH,
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         const { data } = await queryFulfilled

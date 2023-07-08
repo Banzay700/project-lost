@@ -9,11 +9,3 @@ export type DataChart = {
   labels: string[]
   datasets: DatasetChartType[]
 }
-
-export type StatisticsTopCategoryRequest = {
-  category?: string
-}
-
-export type StatisticsGeneralTotal = {
-  period?: string
-}
