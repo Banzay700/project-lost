@@ -28,11 +28,9 @@ const GoogleMap: FC<GoogleMapProps> = ({
     duration: '',
     distance: '',
   })
-
   const initMap = async () => {
     const { MapTypeControlStyle, Marker, Map, LatLng, TravelMode } = await window.google.maps
     const position = { lat, lng }
-
     const mapOptions: google.maps.MapOptions = {
       center: position,
       zoom: zoom || GOOGLE_MAP.DEFAULT_ZOOM,
@@ -42,7 +40,6 @@ const GoogleMap: FC<GoogleMapProps> = ({
       },
       ...mapActions,
     }
-
     const map = new Map(mapRef.current as HTMLElement, mapOptions)
     if (isMarker) {
       const marker = new Marker({
@@ -53,22 +50,18 @@ const GoogleMap: FC<GoogleMapProps> = ({
     } else {
       const origin = new LatLng(GOOGLE_MAP.ORIGIN_LAT, GOOGLE_MAP.ORIGIN_LNG)
       const destination = new LatLng(lat, lng)
-
       const request: google.maps.DirectionsRequest = {
         origin,
         destination,
         travelMode: TravelMode.DRIVING,
       }
-
       const directions = await directionsServices({ map, request })
       setRouteInfo(directions)
     }
   }
-
   useEffect(() => {
     initMap()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <Box sx={{ height: '100%', width: '100%', position: 'relative' }}>
       <GoogleMapBox ref={mapRef} />

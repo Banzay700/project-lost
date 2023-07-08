@@ -44,6 +44,11 @@ export const deliveryApi = api.injectEndpoints({
       query: (body) => ({ url: API_CONST_DELIVERY.DELIVERY, method: 'POST', body }),
       invalidatesTags: ['Delivery'],
     }),
+    sendNotify: builder.query<DeliveryType, string>({
+      query: (id) => ({
+        url: `${API_CONST_DELIVERY.NOTIFY}/${id}`,
+      }),
+    }),
   }),
 })
 
@@ -53,4 +58,5 @@ export const {
   useGetByIDQuery,
   useLazyGetByIDQuery,
   useUpdateDeliveryMutation,
+  useLazySendNotifyQuery,
 } = deliveryApi

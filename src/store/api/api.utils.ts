@@ -15,6 +15,7 @@ export const API_CONST_USERS = {
 
 export const API_CONST_DELIVERY = {
   DELIVERY: 'delivery',
+  NOTIFY: 'delivery/send',
 }
 
 export const API_CONST_STATISTICS = {
