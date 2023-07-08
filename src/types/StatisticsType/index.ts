@@ -1,4 +1,4 @@
 export type {
-  DataHorizontalChart,
+  DataChart,
   StatisticsTopCategoryRequest,
 } from '../StatisticTypes/StatisticsTopCategory'

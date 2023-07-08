@@ -9,13 +9,13 @@ import {
   Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import { DataHorizontalChart } from 'types'
+import { DataChart } from 'types'
 import { addBackgroundAndBorder, horizontalChartOptions } from './horizontalChart.utils'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Legend, Tooltip)
 
 interface StatisticsChartCategoryProps {
-  data: DataHorizontalChart
+  data: DataChart
   title: string
 }
 

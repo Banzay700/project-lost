@@ -1,15 +1,19 @@
-export type DatasetHorizontalChartType = {
+export type DatasetChartType = {
   label: string
   data: number[]
   borderColor?: string
   backgroundColor?: string
 }
 
-export type DataHorizontalChart = {
+export type DataChart = {
   labels: string[]
-  datasets: DatasetHorizontalChartType[]
+  datasets: DatasetChartType[]
 }
 
 export type StatisticsTopCategoryRequest = {
   category?: string
+}
+
+export type StatisticsGeneralTotal = {
+  period?: string
 }
