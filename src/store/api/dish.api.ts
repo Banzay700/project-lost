@@ -1,6 +1,6 @@
 import { DishesResponseType, DishSubCategoriesResponseType, DishType, SidebarItemType } from 'types'
 import { api } from './api'
-import { API_CONST_DISHES } from './api.utils'
+import { API_DISHES_ENDPOINTS } from './api.utils'
 
 interface DishesRequest {
   category?: string
@@ -32,7 +32,7 @@ export const dishApi = api.injectEndpoints({
         if (limit) params.limit = limit
 
         return {
-          url: API_CONST_DISHES.DISHES,
+          url: API_DISHES_ENDPOINTS.DISHES,
           params,
         }
       },
@@ -40,13 +40,13 @@ export const dishApi = api.injectEndpoints({
     }),
     getDishById: builder.query<DishType, string>({
       query: (id) => ({
-        url: `${API_CONST_DISHES.DISHES}/${id}`,
+        url: `${API_DISHES_ENDPOINTS.DISHES}/${id}`,
       }),
       providesTags: ['Dish'],
     }),
     createDish: builder.mutation<DishType, FormData>({
       query: (body) => ({
-        url: API_CONST_DISHES.DISHES,
+        url: API_DISHES_ENDPOINTS.DISHES,
         method: 'POST',
         body,
       }),
@@ -54,7 +54,7 @@ export const dishApi = api.injectEndpoints({
     }),
     updateDish: builder.mutation<DishType, FormData>({
       query: (body) => ({
-        url: API_CONST_DISHES.DISHES,
+        url: API_DISHES_ENDPOINTS.DISHES,
         method: 'PUT',
         body,
       }),
@@ -62,17 +62,17 @@ export const dishApi = api.injectEndpoints({
     }),
     getSvg: builder.query<{ svg: string } | undefined, string | undefined>({
       query: (icon) => ({
-        url: `${API_CONST_DISHES.STATIC}${icon}`,
+        url: `${API_DISHES_ENDPOINTS.STATIC}${icon}`,
       }),
     }),
     getCategories: builder.query<SidebarItemType[], null>({
       query: () => ({
-        url: API_CONST_DISHES.CATEGORIES,
+        url: API_DISHES_ENDPOINTS.CATEGORIES,
       }),
     }),
     getSubCategoriesInCategory: builder.query<DishSubCategoriesResponseType[], string>({
       query: (category) => ({
-        url: API_CONST_DISHES.CATEGORIES,
+        url: API_DISHES_ENDPOINTS.CATEGORIES,
         params: {
           category,
         },
@@ -80,7 +80,7 @@ export const dishApi = api.injectEndpoints({
     }),
     createCategory: builder.mutation<void, FormData>({
       query: (body) => ({
-        url: API_CONST_DISHES.CATEGORIES,
+        url: API_DISHES_ENDPOINTS.CATEGORIES,
         method: 'POST',
         body,
         invalidatesTags: ['Dish'],

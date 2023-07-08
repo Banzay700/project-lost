@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import { DoughnutChart } from 'components'
-import { ChartContainer } from 'components/admin-components'
+import { DoughnutChart, ChartContainer } from 'components'
 import { useLazyGetServiceTypeStatisticQuery } from 'store/api'
 import { doughnutSelectDataMok } from './OrderTypeStatisticChart.utils'
 

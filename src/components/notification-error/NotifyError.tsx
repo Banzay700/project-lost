@@ -2,32 +2,38 @@ import { FC, useState, useEffect } from 'react'
 import { Notify } from 'UI'
 
 interface NotifyErrorProps {
-  isError: boolean
+  isSuccess?: boolean
+  isError?: boolean
   error?: unknown
 }
 
 const NotifyError: FC<NotifyErrorProps> = (props) => {
-  const { isError, error } = props
+  const { isError, error, isSuccess } = props
 
-  const [errorMsg, setError] = useState('')
-  const [open, setOpenErrorMsg] = useState(false)
+  const [msg, setMsg] = useState('')
+  const [open, setOpenStatus] = useState(false)
+  const [type, setType] = useState<'error' | 'success' | 'info'>('error')
 
   useEffect(() => {
     if (isError && typeof error === 'object') {
       const e = error as { data: string }
-      setError(e.data)
-      setOpenErrorMsg(true)
+      setMsg(e.data)
+      setOpenStatus(true)
     } else if (isError) {
-      setError('Something went wrong')
-      setOpenErrorMsg(true)
+      setMsg('Something went wrong')
+      setOpenStatus(true)
+    } else if (isSuccess) {
+      setMsg('message was sent to user')
+      setType('success')
+      setOpenStatus(true)
     }
-  }, [error, isError])
+  }, [error, isError, isSuccess])
 
   const handleClose = () => {
-    setOpenErrorMsg(false)
+    setOpenStatus(false)
   }
 
-  return <Notify message={errorMsg} open={open} handleClose={handleClose} />
+  return <Notify message={msg} open={open} type={type} handleClose={handleClose} />
 }
 
 export default NotifyError

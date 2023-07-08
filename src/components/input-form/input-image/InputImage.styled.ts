@@ -4,7 +4,7 @@ import { theme } from 'theme'
 import DropZone from 'react-formik-ui/dist/components/DropZone/DropZone'
 
 interface DropZoneWrapperProps {
-  view: 'round' | 'squareRounding'
+  $view: 'round' | 'squareRounding'
 }
 
 export const InputImageWrapper = styled(Box)(() => ({

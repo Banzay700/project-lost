@@ -10,7 +10,3 @@ export type DataDoughnutChartType = {
   labels: string[]
   datasets: DatasetDoughnutChartType[]
 }
-
-export type ServiceTypeStatisticRequest = {
-  period?: string
-}

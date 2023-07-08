@@ -1,10 +1,9 @@
 import { FC, useEffect } from 'react'
 import { useGetCategoriesQuery, useLazyGetTopSalesCategoryQuery } from 'store/api'
-import { HorizontalChart } from 'components'
+import { HorizontalChart, ChartContainer } from 'components'
 
 import { NativeSelectItemType } from 'types'
 import { correctionName } from 'utils'
-import { ChartContainer } from 'components/admin-components'
 
 const TopCategoriesBarChart: FC = () => {
   const [changeCategory, { data: dataTopCategory }] = useLazyGetTopSalesCategoryQuery()

@@ -67,6 +67,7 @@ export {
   useGetByIDQuery,
   useUpdateDeliveryMutation,
   useLazyGetByIDQuery,
+  useLazySendNotifyQuery,
 } from './delivery.api'
 
 export {
@@ -75,4 +76,5 @@ export {
   useGetGeneralStatisticQuery,
   useGetServiceTypeStatisticQuery,
   useLazyGetServiceTypeStatisticQuery,
+  useLazyGetGeneralTotalQuery,
 } from './statistics.api'

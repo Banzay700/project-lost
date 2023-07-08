@@ -1,29 +1,35 @@
 import { api } from 'store/api/api'
 import {
-  StatisticsTopCategoryRequest,
-  DataHorizontalChart,
+  StatisticChartsRequestType,
+  DataChart,
   StatisticLabelsResponseType,
   DataDoughnutChartType,
-  ServiceTypeStatisticRequest,
 } from 'types'
-import { API_CONST_STATISTICS } from './api.utils'
+import { API_STATISTICS_ENDPOINTS } from './api.utils'
 
 export const statisticsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getTopSalesCategory: builder.query<DataHorizontalChart, StatisticsTopCategoryRequest>({
+    getTopSalesCategory: builder.query<DataChart, StatisticChartsRequestType>({
       query: ({ category }) => ({
-        url: API_CONST_STATISTICS.TOP_SALES_CATEGORY,
+        url: API_STATISTICS_ENDPOINTS.TOP_SALES_CATEGORY,
         params: { category },
       }),
     }),
 
     getGeneralStatistic: builder.query<StatisticLabelsResponseType[], void>({
-      query: () => ({ url: API_CONST_STATISTICS.GENERAL_STATISTIC }),
+      query: () => ({ url: API_STATISTICS_ENDPOINTS.GENERAL_STATISTIC }),
     }),
 
-    getServiceTypeStatistic: builder.query<DataDoughnutChartType, ServiceTypeStatisticRequest>({
+    getServiceTypeStatistic: builder.query<DataDoughnutChartType, StatisticChartsRequestType>({
       query: ({ period }) => ({
-        url: API_CONST_STATISTICS.SERVICE_TYPE_STATISTIC,
+        url: API_STATISTICS_ENDPOINTS.SERVICE_TYPE_STATISTIC,
+        params: { period },
+      }),
+    }),
+
+    getGeneralTotal: builder.query<DataChart, StatisticChartsRequestType>({
+      query: ({ period }) => ({
+        url: API_STATISTICS_ENDPOINTS.GENERAL_TOTAL,
         params: { period },
       }),
     }),
@@ -36,4 +42,5 @@ export const {
   useGetGeneralStatisticQuery,
   useGetServiceTypeStatisticQuery,
   useLazyGetServiceTypeStatisticQuery,
+  useLazyGetGeneralTotalQuery,
 } = statisticsApi

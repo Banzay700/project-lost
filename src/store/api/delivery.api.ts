@@ -5,7 +5,7 @@ import {
   DeliveryType,
   DeliveryUpdateType,
 } from 'types'
-import { API_CONST_DELIVERY } from './api.utils'
+import { API_DELIVERY_ENDPOINTS } from './api.utils'
 import { api } from './api'
 
 export const deliveryApi = api.injectEndpoints({
@@ -21,7 +21,7 @@ export const deliveryApi = api.injectEndpoints({
         }
 
         return {
-          url: API_CONST_DELIVERY.DELIVERY,
+          url: API_DELIVERY_ENDPOINTS.DELIVERY,
           params,
         }
       },
@@ -29,20 +29,25 @@ export const deliveryApi = api.injectEndpoints({
     }),
     getByID: builder.query<DeliveryType, string>({
       query: (id) => ({
-        url: `${API_CONST_DELIVERY.DELIVERY}/${id}`,
+        url: `${API_DELIVERY_ENDPOINTS.DELIVERY}/${id}`,
       }),
     }),
     updateDelivery: builder.mutation<DeliveryType, DeliveryUpdateType>({
       query: (body) => ({
-        url: API_CONST_DELIVERY.DELIVERY,
+        url: API_DELIVERY_ENDPOINTS.DELIVERY,
         method: 'PUT',
         body,
       }),
       invalidatesTags: ['Delivery', 'Bills'],
     }),
     createDelivery: builder.mutation<DeliveryCreateItemType, DeliveryCreateItemType>({
-      query: (body) => ({ url: API_CONST_DELIVERY.DELIVERY, method: 'POST', body }),
+      query: (body) => ({ url: API_DELIVERY_ENDPOINTS.DELIVERY, method: 'POST', body }),
       invalidatesTags: ['Delivery'],
+    }),
+    sendNotify: builder.query<DeliveryType, string>({
+      query: (id) => ({
+        url: `${API_DELIVERY_ENDPOINTS.NOTIFY}/${id}`,
+      }),
     }),
   }),
 })
@@ -53,4 +58,5 @@ export const {
   useGetByIDQuery,
   useLazyGetByIDQuery,
   useUpdateDeliveryMutation,
+  useLazySendNotifyQuery,
 } = deliveryApi
