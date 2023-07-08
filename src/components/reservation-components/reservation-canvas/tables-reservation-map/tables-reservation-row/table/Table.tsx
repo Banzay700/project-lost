@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Box, Typography } from '@mui/material'
 
-import { TableType } from 'types'
+import { TableType } from 'types/index'
 import { useReservationReducer } from 'hooks/useReservationReducer.hook'
 import { ChairsPair } from './chairs-pair'
 import { ChairLine } from './chair-line'

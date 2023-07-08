@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Typography } from '@mui/material'
-import { Icon } from 'assets'
+import { Icon } from 'assets/index'
 import { useReservationReducer } from 'hooks/useReservationReducer.hook'
 import { TableCardIcon, TableCardWrapper } from './TableCard.styled'
 

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Stack, Typography } from '@mui/material'
-import { Button } from 'UI'
-import { FilterMenuItemType } from 'types'
-import { FadeIn } from 'utils'
+import { Button } from 'UI/index'
+import { FilterMenuItemType } from 'types/index'
+import { FadeIn } from 'utils/index'
 
 interface ReservationModalInfoProps {
   info: FilterMenuItemType[]

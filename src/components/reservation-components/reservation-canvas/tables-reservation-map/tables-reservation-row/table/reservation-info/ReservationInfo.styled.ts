@@ -1,8 +1,8 @@
 import { Box, styled } from '@mui/material'
 import dayjs from 'dayjs'
 
-import { ReservationCanvasType } from 'types'
-import { withProps } from 'utils'
+import { ReservationCanvasType } from 'types/index'
+import { withProps } from 'utils/index'
 
 interface IconWrapperProps {
   info?: ReservationCanvasType

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Stack } from '@mui/material'
 
-import { useReservationReducer } from 'hooks'
+import { useReservationReducer } from 'hooks/index'
 import { TableCard } from './table-card'
 
 const TablesCardsLine: FC = () => {
