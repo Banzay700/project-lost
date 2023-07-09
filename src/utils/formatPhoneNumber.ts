@@ -6,6 +6,6 @@ export const formatPhoneNumber = (formValues: any) => {
 
   return {
     ...rest,
-    phoneNumber: phoneNumber.replace(REGEX.PHONE_NUMBER_DB, ''),
+    phoneNumber: phoneNumber?.replace(REGEX.PHONE_NUMBER_DB, ''),
   }
 }
