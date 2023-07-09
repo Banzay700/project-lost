@@ -1,10 +1,10 @@
-export const API_CONST_DISHES = {
+export const API_DISHES_ENDPOINTS = {
   CATEGORIES: 'categories',
   DISHES: 'dishes',
   STATIC: 'static',
 }
 
-export const API_CONST_USERS = {
+export const API_USERS_ENDPOINTS = {
   USERS: 'users',
   USERS_IN_LOGIN: 'users/inLogin',
   REGISTRATION: 'users/registration',
@@ -13,13 +13,15 @@ export const API_CONST_USERS = {
   REFRESH: 'users/refresh',
 }
 
-export const API_CONST_DELIVERY = {
+export const API_DELIVERY_ENDPOINTS = {
   DELIVERY: 'delivery',
   NOTIFY: 'delivery/send',
 }
 
-export const API_CONST_STATISTICS = {
+export const API_STATISTICS_ENDPOINTS = {
   TOP_SALES_CATEGORY: 'analytics/top-sales-category',
   GENERAL_STATISTIC: 'analytics/general',
+  SERVICE_TYPE_STATISTIC: 'analytics/order-type-total',
   GENERAL_TOTAL: 'analytics/general-total',
+  AVERAGE_BILL_STATISTIC: 'analytics/average-total',
 }

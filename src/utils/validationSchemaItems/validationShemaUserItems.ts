@@ -28,7 +28,7 @@ const password = (isRequired?: boolean) => {
 
 const phoneNumber = (isRequired?: boolean) => {
   const schema = string()
-    .min(17, "Phone number can't be less than 11 symbols")
+    .min(11, "Phone number can't be less than 11 symbols")
     .max(18, "Phone number can't be more than 12 symbols")
     .matches(REGEX.PHONE_NUMBER, 'Invalid phone number')
 

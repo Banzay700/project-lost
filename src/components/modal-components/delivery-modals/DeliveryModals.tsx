@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Modal } from 'UI/index'
 import { useIsModal } from 'hooks'
 import { DeliveryFormType, OrderActiveType } from 'types'
+import { formatPhoneNumber } from 'utils/formatPhoneNumber'
 import { DeliveryForm } from './delivery-form'
 import { DeliveryPayment } from './delivery-payment'
 import { DeliveryConfirmation } from './delivery-confirmation'
@@ -29,7 +30,9 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
   }
 
   const handleOnSubmitModal = (value: DeliveryFormType) => {
-    onSubmit(value)
+    const formattedValues = formatPhoneNumber(value)
+
+    onSubmit(formattedValues)
     handleToggleIsOpenModal()
   }
 

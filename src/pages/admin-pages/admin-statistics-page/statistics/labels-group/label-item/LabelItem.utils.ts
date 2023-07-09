@@ -8,22 +8,33 @@ const formatNumber = (value: number, precision = 2) => {
     { suffix: 'K', threshold: 1e3 },
     { suffix: '', threshold: 1 },
   ]
+  const correctedPrecision = value < 1000 ? 0 : precision
   const found = suffixMap.find((x) => Math.abs(value) >= x.threshold)
 
   if (found) {
-    return (value / found.threshold).toFixed(precision) + found.suffix
+    const formattedValue = (value / found.threshold).toFixed(correctedPrecision) + found.suffix
+    return `$ ${formattedValue}`
   }
 
-  return value
+  return `$ ${value}`
 }
 
 export const prepareStatisticLabelData = (data: StatisticLabelsResponseType) => {
   const { title, value, percentage, period } = data
   const precision = title === 'Average bill' ? 2 : title === 'Total revenue' ? 1 : 0
+  const compareString = period === 'Daily' ? 'vs last 7 days' : 'vs last month'
 
-  const formatLabelValue = title === 'Failure rate' ? `${value}%` : formatNumber(value, precision)
+  let formatLabelValue
 
-  const compareString = period === 'daily' ? 'vs last 7 days' : 'vs last month'
+  if (title === 'Failure rate') {
+    formatLabelValue = `${value}%`
+  } else if (title !== 'Failure rate' && title !== 'Total orders' && value < 999) {
+    formatLabelValue = `$ ${value}`
+  } else if (title !== 'Total orders' && value > 999) {
+    formatLabelValue = formatNumber(value, precision)
+  } else {
+    formatLabelValue = value
+  }
 
   return {
     title,

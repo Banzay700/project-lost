@@ -106,8 +106,6 @@ export type {
 
 export type {
   StatisticLabelsResponseType,
-  DataChart,
-  StatisticsTopCategoryRequest,
-  DataDoughnutChartType,
-  StatisticsGeneralTotal,
+  StatisticsChartDataType,
+  StatisticChartsRequestType,
 } from './StatisticTypes'

@@ -10,11 +10,11 @@ export const options = {
     },
   },
   scales: {
-    // y: { grid: { display: false } },
+    y: { grid: { display: false } },
     x: { grid: { display: false } },
   },
 }
 
 export const lineDiagramStyles = {
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.light,
 }

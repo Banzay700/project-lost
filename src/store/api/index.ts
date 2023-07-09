@@ -74,5 +74,8 @@ export {
   useGetTopSalesCategoryQuery,
   useLazyGetTopSalesCategoryQuery,
   useGetGeneralStatisticQuery,
+  useGetServiceTypeStatisticQuery,
+  useLazyGetServiceTypeStatisticQuery,
   useLazyGetGeneralTotalQuery,
+  useLazyGetAverageBillStatisticQuery,
 } from './statistics.api'

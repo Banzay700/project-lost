@@ -5,6 +5,7 @@ import { Formik } from 'formik'
 import { InputsBasicUserInfo } from 'components'
 import { Input, Button } from 'UI'
 import { UserType, UserUpdateInfo } from 'types'
+import { formatPhoneNumber } from 'utils'
 import { ProfileFormWrapper, UserForm } from './ProfileInfoUserForm.styled'
 import { validationSchema } from './profileInfoUserForm.utils'
 
@@ -21,7 +22,8 @@ const ProfileInfoUserForm: FC<ProfileInputGroupProps> = ({ initialValues, onSubm
   }
 
   const handleSubmit = (value: UserUpdateInfo) => {
-    onSubmit(value)
+    const formattedValues = formatPhoneNumber(value)
+    onSubmit(formattedValues)
     setIsDisabled(true)
   }
 

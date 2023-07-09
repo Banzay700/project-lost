@@ -1,27 +1,23 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import { LineChart, ChartContainer } from 'components'
-
-const selectDataMok = [
-  { value: '1', label: 'Month' },
-  { value: '2', label: 'Quarter' },
-  { value: '3', label: 'Year' },
-]
+import { useLazyGetAverageBillStatisticQuery } from 'store/api'
+import { selectChartValues } from './AverageBillLineChart.utils'
 
 const AverageBillLineChart: FC = () => {
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label: 'Dataset 2',
-        data: [34, 28, 45, 32, 52, 36, 31],
-      },
-    ],
+  const [getLineChartData, { data, isSuccess }] = useLazyGetAverageBillStatisticQuery()
+
+  const handleSelectChange = (value: string) => {
+    getLineChartData({ period: value })
   }
 
+  useEffect(() => {
+    getLineChartData({})
+  }, [getLineChartData])
+
   return (
-    <ChartContainer size={7} selectData={selectDataMok} onSelectChange={() => {}}>
-      <LineChart data={data} title="Average Bill" />
+    <ChartContainer size={7} selectData={selectChartValues} onSelectChange={handleSelectChange}>
+      {isSuccess && data && <LineChart data={data} title="Average bill" />}
     </ChartContainer>
   )
 }
