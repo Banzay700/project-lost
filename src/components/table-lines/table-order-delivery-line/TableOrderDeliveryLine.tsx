@@ -1,7 +1,8 @@
 import { FC, MouseEvent } from 'react'
-import { TableRow } from '@mui/material'
-import { ColumnAction, ColumnInfoTag, ColumnText, ColumnPhoneRedirect } from 'UI'
+import { Stack, TableRow } from '@mui/material'
+import { ColumnInfoTag, ColumnText, ColumnPhoneRedirect, ColumnWithChildren, Button } from 'UI'
 import { DeliveryAddressType } from 'types'
+import { Icon } from 'assets'
 
 interface TableOrderDeliveryLineProps {
   id: string
@@ -29,19 +30,19 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
   onClickLine,
   onClickOpenAddressInfo,
 }) => {
-  const handleClickAction = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    if (onClickAction) onClickAction(id)
-  }
-
   const handleClickLine = () => {
     if (onClickLine && id !== isActive) onClickLine(id)
   }
 
-  const handleDeliveryAddressInfo = () => {
+  const handleDeliveryAddressInfo = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     if (onClickOpenAddressInfo) onClickOpenAddressInfo(deliveryAddress)
   }
 
+  const handleSendNotify = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    if (onClickAction) onClickAction(id)
+  }
   return (
     <TableRow
       hover
@@ -53,22 +54,28 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
       onClick={handleClickLine}>
       <ColumnText title={clientName} textFontWeight={600} />
       <ColumnPhoneRedirect title={phoneNumber} textFontWeight={400} />
-      <ColumnText
-        title={onClickOpenAddressInfo ? 'Open Detail info address' : deliveryAddress.street}
-        textColor={onClickOpenAddressInfo ? 'primary' : 'secondary'}
-        textFontWeight={onClickOpenAddressInfo ? 600 : 400}
-        onClick={handleDeliveryAddressInfo}
-      />
+      <ColumnText title={deliveryAddress.street} noWrap maxWidth="100px" />
       <ColumnInfoTag {...status} />
-
-      {onClickAction && (
-        <ColumnAction
-          title="Notify Client"
-          variant="contained"
-          size="small"
-          onClick={handleClickAction}
-        />
-      )}
+      <ColumnWithChildren>
+        <Stack direction="row" sx={{ gap: '15px', width: '100%', justifyContent: 'center' }}>
+          {!!onClickOpenAddressInfo && (
+            <Button
+              variant="contained"
+              size="small"
+              icon={<Icon.MapMarker />}
+              onClick={handleDeliveryAddressInfo}
+            />
+          )}
+          {!!onClickAction && (
+            <Button
+              variant="contained"
+              size="small"
+              icon={<Icon.NotifyUser />}
+              onClick={handleSendNotify}
+            />
+          )}
+        </Stack>
+      </ColumnWithChildren>
     </TableRow>
   )
 }

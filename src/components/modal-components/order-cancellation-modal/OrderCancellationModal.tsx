@@ -3,22 +3,19 @@ import { Modal, ModalContentPopup } from 'UI'
 
 interface OrderCancellationModalProps {
   open: boolean
-  order: number
   onToggleView: () => void
   onConfirm: () => void
+  titleModal: string
+  messageModal: string
 }
 
 const OrderCancellationModal: FC<OrderCancellationModalProps> = (props) => {
-  const { open, order, onToggleView, onConfirm } = props
+  const { open, messageModal, titleModal, onToggleView, onConfirm } = props
 
   return (
-    <Modal
-      title="Сonfirmation of order deletion"
-      isOpen={open}
-      onClose={onToggleView}
-      hiddenActions>
+    <Modal title={titleModal} isOpen={open} onClose={onToggleView} hiddenActions>
       <ModalContentPopup
-        message={`Are you sure you want to cancel order #${order}?`}
+        message={messageModal}
         handleConfirm={onConfirm}
         handleReject={onToggleView}
       />
