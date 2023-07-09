@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import { DataChart } from 'types'
+import { StatisticsChartDataType } from 'types'
 import { lineDiagramStyles, options } from './VerticalDiagram.utils'
 
 interface InvoiceDiagramProps {
-  data: DataChart
+  data: StatisticsChartDataType
 }
 
 const VerticalDiagram: FC<InvoiceDiagramProps> = ({ data }) => {

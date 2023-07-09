@@ -2,11 +2,11 @@ import { FC } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 
-import { DataDoughnutChartType } from 'types'
+import { StatisticsChartDataType } from 'types'
 import { doughnutChartOptions, doughnutChartStyles } from './DoughnutChart.utils'
 
 interface DoughnutChartProps {
-  data: DataDoughnutChartType
+  data: StatisticsChartDataType
   title: string
 }
 

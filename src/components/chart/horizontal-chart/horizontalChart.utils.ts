@@ -1,4 +1,4 @@
-import { DataChart } from 'types'
+import { StatisticsChartDataType } from 'types'
 import { theme } from 'theme'
 import { correctionName } from 'utils'
 
@@ -16,7 +16,7 @@ const colorPalette = {
     theme.palette.border.white,
   ],
 }
-export const addBackgroundAndBorder = (data: DataChart) => {
+export const addBackgroundAndBorder = (data: StatisticsChartDataType) => {
   const { borderColor, backgroundColor } = colorPalette
 
   const datasets = data?.datasets.map((item, index) => {
