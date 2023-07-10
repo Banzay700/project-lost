@@ -1,8 +1,6 @@
 import { FC, useEffect } from 'react'
-import { Stack } from '@mui/material'
 import { VerticalDiagram, ChartContainer } from 'components'
 import { useLazyGetGeneralTotalQuery } from 'store/api'
-import { Icon } from 'assets'
 import { selectInvoiceData } from './InvoiceDiagram.utils'
 
 const InvoiceDiagram: FC = () => {
@@ -16,16 +14,11 @@ const InvoiceDiagram: FC = () => {
 
   return (
     <ChartContainer
-      size={8}
+      size={6}
       onSelectChange={handleChangePeriod}
       selectDefaultTitle="Month"
       selectData={selectInvoiceData}>
-      {dataGeneralTotal && (
-        <Stack direction="row" alignItems="center">
-          <Icon.Diagram />
-          <VerticalDiagram data={dataGeneralTotal} />
-        </Stack>
-      )}
+      {dataGeneralTotal && <VerticalDiagram data={dataGeneralTotal} />}
     </ChartContainer>
   )
 }

@@ -5,4 +5,5 @@ export const StatisticsWrapper = styled(Stack)(({ theme }) => ({
   height: '100%',
   backgroundColor: theme.palette.background.main,
   padding: '20px',
+  gap: '15px',
 }))

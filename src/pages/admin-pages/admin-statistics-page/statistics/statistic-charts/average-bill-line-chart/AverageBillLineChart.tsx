@@ -16,7 +16,7 @@ const AverageBillLineChart: FC = () => {
   }, [getLineChartData])
 
   return (
-    <ChartContainer size={7} selectData={selectChartValues} onSelectChange={handleSelectChange}>
+    <ChartContainer size={5.5} selectData={selectChartValues} onSelectChange={handleSelectChange}>
       {isSuccess && data && <LineChart data={data} title="Average bill" />}
     </ChartContainer>
   )

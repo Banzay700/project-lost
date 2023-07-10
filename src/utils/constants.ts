@@ -8,6 +8,7 @@ export const ORDER_TOGGLE_MENU_VALUES = [
 export const TAX = 10
 
 export const MS_CUSTOM_BREAKPOINT = 690
+export const LGS_CUSTOM_BREAKPOINT = 1025
 
 export const GOOGLE_MAP = {
   ORIGIN_LAT: 50.44668381698298,

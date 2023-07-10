@@ -27,7 +27,7 @@ const TopCategoriesBarChart: FC = () => {
 
   return (
     <ChartContainer
-      size={5}
+      size={4.5}
       selectDefaultTitle="Top catecories"
       selectData={updateDataCategory}
       onSelectChange={handleChangeCategory}>
