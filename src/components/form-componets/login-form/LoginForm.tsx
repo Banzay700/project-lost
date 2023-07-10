@@ -47,7 +47,7 @@ const LoginForm: FC<InputPasswordProps> = ({ userId, onSubmit }) => {
       onSubmit={handleFormSubmit}
       enableReinitialize>
       <Form>
-        <FormWrapper spacing={8}>
+        <FormWrapper>
           <Input placeholder="Enter your PIN" name="password" type="password" outlined focus />
           <DigitButtonsGroup getValue={getPassword} />
           <Button variant="contained" size="medium" fullWidth>
