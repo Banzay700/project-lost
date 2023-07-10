@@ -1,7 +1,7 @@
 import { styled, Stack } from '@mui/material'
 
 export const ChartsWrapper = styled(Stack)`
-  height: 100%;
+  height: calc(100% - 167px);
   width: 100%;
   gap: 12px;
 `

@@ -16,14 +16,14 @@ const AdminStatisticsPage: FC = () => {
   })
 
   return (
-    <Stack direction="row" width="100%">
+    <>
       <SidebarTabsList
         sidebarTabItems={adminStatisticsPageTabs}
         title="Statistics"
         titleIcon={<Icon.Statistics />}
       />
       {statistics === ROUTES_STATISTICS.SALES && <Statistics />}
-    </Stack>
+    </>
   )
 }
 
