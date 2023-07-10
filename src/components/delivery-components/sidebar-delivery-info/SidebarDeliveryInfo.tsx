@@ -8,6 +8,8 @@ import {
   SidebarDeliveryActionsWrapper,
   SidebarDeliveryInfoWrapper,
 } from './SidebarDeliveryInfo.styled'
+import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
+import { useIsModal } from 'hooks/useIsModal.hook'
 
 interface SidebarDeliveryInfoProps {
   deliveryId?: string
@@ -30,14 +32,17 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
   onSubmit,
   onCancel,
 }) => {
+  const { handleToggleIsOpenModal, isOpen } = useIsModal()
   const handleSubmit = () => {
     if (onSubmit && deliveryId) onSubmit(deliveryId)
   }
 
-  const handleCancel = () => {
+  const handleToggleModal = () => {
+    handleToggleIsOpenModal()
+  }
+  const handleConfirmCancel = () => {
     if (onCancel && deliveryId) onCancel(deliveryId)
   }
-
   return (
     <SidebarDeliveryInfoWrapper>
       <Stack flex={1} height="100%">
@@ -55,7 +60,7 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
                 size="medium"
                 type="submit"
                 fullWidth
-                onClick={handleCancel}>
+                onClick={onCancel && handleToggleModal}>
                 Cancel Delivery
               </Button>
             )}
@@ -73,6 +78,13 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
           </Stack>
         </SidebarDeliveryActionsWrapper>
       </Stack>
+      <OrderCancellationModal
+        open={isOpen}
+        onConfirm={handleConfirmCancel}
+        onToggleView={handleToggleIsOpenModal}
+        titleModal="Delivery cancel"
+        messageModal="Are you sure you want to back out?"
+      />
     </SidebarDeliveryInfoWrapper>
   )
 }

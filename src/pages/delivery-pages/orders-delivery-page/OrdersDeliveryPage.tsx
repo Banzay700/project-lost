@@ -87,7 +87,11 @@ const OrdersDeliveryPage: FC = () => {
           onCancel={handleCancelDelivery}
           onSubmit={handleCloseDelivery}
           orderDetail={deliveryOrderItem?.order || data?.data[0]?.order}
-          titleButton="Done"
+          titleButton={
+            (deliveryOrderItem?.order?.status || data?.data[0]?.order?.status) === 'opened'
+              ? 'Cooking'
+              : 'Done'
+          }
           isLoading={isFetchingDeliveryItem}
         />
       )}

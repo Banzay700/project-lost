@@ -50,7 +50,6 @@ const HomeDeliveryPage: FC = () => {
             data={data?.data}
             isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
             onClickLine={handleClickLine}
-            onClickAction={() => {}}
             onClickOpenInfoAddress={handleOpenGoogleMap}
           />
         )}

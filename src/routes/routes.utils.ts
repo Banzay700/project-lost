@@ -24,10 +24,10 @@ export const ROUTES_ADMIN = {
 export const ROUTES_DELIVERY = {
   DELIVERY: 'delivery',
   CURRENT_ORDER: '/delivery/:currentOrder',
-  ORDERS: 'active-delivery',
+  ORDERS: 'active-orders',
   HISTORY: 'history',
   HISTORY_ORDER: '/history/:historyOrder',
-  ACTIVE_ORDER: '/active-delivery/:activeOrder',
+  ACTIVE_ORDER: '/active-orders/:activeOrder',
   DIRECTION: '/direction',
 }
 

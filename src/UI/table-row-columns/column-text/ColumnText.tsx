@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { FC } from 'react'
 import { TableCell, Typography } from '@mui/material'
 
 interface ColumnTextProps {
@@ -7,7 +7,8 @@ interface ColumnTextProps {
   textVariant?: 'h1' | 'h2' | 'h3' | 'subtitle1' | 'subtitle2' | 'caption' | 'dashNumb'
   textFontWeight?: 400 | 500 | 600 | 700
   textColor?: 'secondary' | 'primary'
-  onClick?: () => void
+  noWrap?: boolean
+  maxWidth?: string
 }
 
 const ColumnText: FC<ColumnTextProps> = ({
@@ -16,21 +17,18 @@ const ColumnText: FC<ColumnTextProps> = ({
   textVariant,
   textFontWeight,
   textColor,
-  onClick,
+  noWrap,
+  maxWidth,
 }) => {
-  const handleClick = (e: MouseEvent<HTMLParagraphElement>) => {
-    e.stopPropagation()
-    if (onClick) onClick()
-  }
-
   return (
-    <TableCell align={columnAlign || 'center'}>
+    <TableCell align={columnAlign || 'center'} sx={{ maxWidth }}>
       <Typography
-        onClick={handleClick}
+        title={String(title)}
         color={textColor || 'secondary'}
         variant={textVariant || 'h3'}
         fontWeight={textFontWeight || 400}
-        component="p">
+        component="p"
+        noWrap={noWrap}>
         {title}
       </Typography>
     </TableCell>

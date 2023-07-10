@@ -1,14 +1,17 @@
 import { Dialog, Stack, styled } from '@mui/material'
 
-export const ModalWrapper = styled(Dialog)`
-  border-radius: 16px;
+export const ModalWrapper = styled(Dialog)(({ theme }) => ({
+  borderRadius: '16px',
 
-  && {
-    & .MuiDialog-paper {
-      min-width: 500px;
-    }
-  }
-`
+  '&&': {
+    '&': {
+      '.MuiDialog-paper': {
+        minWidth: '500px',
+        [theme.breakpoints.down('sm')]: { minWidth: 0 },
+      },
+    },
+  },
+}))
 
 export const ModalTitleContainer = styled(Stack)`
   justify-content: space-between;

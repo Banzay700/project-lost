@@ -76,9 +76,10 @@ const OrderInfoList: FC<OrderListProps> = ({ onClick }) => {
       </DetailsListActionsWrapper>
       <OrderCancellationModal
         open={modalOpen}
-        order={orderNumber}
         onToggleView={handleToggleModal}
         onConfirm={handleDeleteOrder}
+        titleModal="Сonfirmation of order deletion"
+        messageModal={`Are you sure you want to cancel order #${orderNumber}?`}
       />
     </InfoListWrapper>
   )

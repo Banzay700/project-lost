@@ -26,6 +26,7 @@ export {
   ColumnCollapseReservation,
   ColumnInfoTag,
   ColumnPhoneRedirect,
+  ColumnWithChildren,
 } from './table-row-columns'
 export { Modal } from './modal'
 export { Snackbar } from './snackbar'
