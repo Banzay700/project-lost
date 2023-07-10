@@ -10,16 +10,29 @@ import { DeliveryConfirmation } from './delivery-confirmation'
 interface DeliveryModalsProps {
   deliveryFormInfo: DeliveryFormType | undefined
   activeOrder: OrderActiveType
-  isOpened: boolean
+  isFormModal: boolean
   onClose: () => void
   onConfirm: () => void
   onSubmit: (value: DeliveryFormType) => void
+  handleFormIsOpenModal: (delay?: number) => void
 }
 
-const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
-  const { deliveryFormInfo, isOpened, activeOrder, onClose, onSubmit, onConfirm } = props
+const DeliveryModals: FC<DeliveryModalsProps> = ({
+  deliveryFormInfo,
+  isFormModal,
+  activeOrder,
+  onClose,
+  onSubmit,
+  onConfirm,
+  handleFormIsOpenModal,
+}) => {
   const { isOpen, handleToggleIsOpenModal } = useIsModal()
-  const handleCloseModal = () => {
+  const handleCloseModalForm = () => {
+    onClose()
+    handleFormIsOpenModal()
+  }
+
+  const handleCloseModalPayment = () => {
     onClose()
     handleToggleIsOpenModal()
   }
@@ -31,7 +44,6 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
 
   const handleOnSubmitModal = (value: DeliveryFormType) => {
     const formattedValues = formatPhoneNumber(value)
-
     onSubmit(formattedValues)
     handleToggleIsOpenModal()
   }
@@ -41,8 +53,8 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
       <Modal
         title="Delivery info"
         colorHeader="secondary"
-        isOpen={isOpened}
-        onClose={handleCloseModal}
+        isOpen={isFormModal}
+        onClose={handleCloseModalForm}
         linkageToForm="create-delivery-info"
         removeBgClosed>
         <DeliveryForm onSubmit={handleOnSubmitModal} linkageToForm="create-delivery-info" />
@@ -51,7 +63,7 @@ const DeliveryModals: FC<DeliveryModalsProps> = (props) => {
         title="Order confirmation"
         colorHeader="secondary"
         isOpen={isOpen}
-        onClose={handleCloseModal}
+        onClose={handleCloseModalPayment}
         onSubmit={handleOnConfirmModal}
         actionAdditionalComponent={
           <DeliveryPayment paymentMethod={deliveryFormInfo?.clientInfo.paymentMethod} />

@@ -63,7 +63,6 @@ const OrderCreatorBar: FC = () => {
     if (activeOrder.id) {
       deleteOrder(activeOrder.id)
     }
-    handleToggleIsOpenModal()
     setToggleValue('orderInfo')
     setButtonDisabled(true)
   }
@@ -101,7 +100,8 @@ const OrderCreatorBar: FC = () => {
         onSubmit={handleOnSubmit}
         onConfirm={handleOnConfirm}
         onClose={handleClose}
-        isOpened={isOpen}
+        handleFormIsOpenModal={handleToggleIsOpenModal}
+        isFormModal={isOpen}
       />
     </Stack>
   )
