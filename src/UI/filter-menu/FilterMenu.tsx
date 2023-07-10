@@ -61,7 +61,7 @@ const FilterMenu: FC<FilterMenuProps> = ({
     <Stack width="100%" direction="row" justifyContent="center" flex={0}>
       {isLengthItem && isControlScroll && (
         <ButtonScrollWrapper>
-          <ButtonScroll onClick={handleScrollLeft} />
+          <ButtonScroll onClick={handleScrollLeft} onTouchEnd={handleScrollLeft} />
         </ButtonScrollWrapper>
       )}
       <FilterMenuWrapper direction="row" ref={scrollContainerRef} isControlScroll={isControlScroll}>
@@ -85,7 +85,7 @@ const FilterMenu: FC<FilterMenuProps> = ({
       </FilterMenuWrapper>
       {isLengthItem && isControlScroll && (
         <ButtonScrollWrapper>
-          <ButtonScroll onClick={handleScrollRight} transformRight />
+          <ButtonScroll onClick={handleScrollRight} onTouchEnd={handleScrollRight} transformRight />
         </ButtonScrollWrapper>
       )}
     </Stack>
