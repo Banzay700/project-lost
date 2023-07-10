@@ -1,8 +1,18 @@
-import { Stack, Grid, styled } from '@mui/material'
+import { Stack, styled } from '@mui/material'
+import { withProps } from 'utils/withProps'
 
-export const ChartsContainer = styled(Grid)`
-  position: relative;
-`
+interface ChartsContainerProps {
+  size: number
+}
+
+export const ChartsContainer = styled(
+  Stack,
+  withProps('size'),
+)<ChartsContainerProps>(({ size }) => ({
+  position: 'relative',
+  width: `${size * 10}%`,
+  justifyContent: 'center',
+}))
 
 export const ChartItem = styled(Stack)(({ theme }) => ({
   position: 'relative',
@@ -13,5 +23,7 @@ export const ChartItem = styled(Stack)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   maxHeight: '340px',
+  flex: 1,
+  width: '100%',
   backgroundColor: theme.palette.background.default,
 }))

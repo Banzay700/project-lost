@@ -11,6 +11,7 @@ interface InvoiceDiagramProps {
 const VerticalDiagram: FC<InvoiceDiagramProps> = ({ data }) => {
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip)
   const updatedData = { ...data, datasets: [{ ...data.datasets[0], ...lineDiagramStyles }] }
+
   return <Bar options={options} data={updatedData} />
 }
 

@@ -9,7 +9,8 @@ export const SidebarTabsListWrapper = styled(List)(({ theme }) => ({
   gap: '16px',
   borderRight: `1px solid ${theme.palette.border.default}`,
 
-  [theme.breakpoints.down('lg')]: { width: '250px', minWidth: '250px' },
+  [theme.breakpoints.down('xl')]: { width: '250px', minWidth: '250px' },
+  [theme.breakpoints.down('lg')]: { width: '200px', minWidth: '200px' },
 }))
 
 export const SidebarSubheaderWrapper = styled(ListSubheader)(({ theme }) => ({

@@ -10,6 +10,7 @@ export const ItemContainer = styled(Stack)(({ theme }) => ({
   gap: '10px',
   backgroundColor: theme.palette.background.default,
   boxShadow: '0px 8px 16px 0px rgba(96, 97, 112, 0.16), 0px 2px 4px 0px rgba(40, 41, 61, 0.04)',
+  [theme.breakpoints.down(1145)]: { padding: '11px' },
 }))
 
 export const DecorLine = styled(Box)(({ theme }) => ({

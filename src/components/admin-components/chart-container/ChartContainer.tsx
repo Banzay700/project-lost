@@ -16,7 +16,7 @@ const ChartContainer: FC<ChartContainerProps> = (props) => {
   const { size, selectData, selectDefaultTitle, children, onSelectChange } = props
 
   return (
-    <ChartsContainer item xs={size}>
+    <ChartsContainer size={size}>
       {selectData && (
         <NativeSelect
           data={selectData}

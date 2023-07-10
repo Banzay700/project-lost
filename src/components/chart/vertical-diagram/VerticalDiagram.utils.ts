@@ -6,7 +6,7 @@ export const options = {
     legend: { display: false },
     title: {
       display: true,
-      text: 'Invoice Diagram',
+      text: 'Total revenue',
     },
   },
   scales: {

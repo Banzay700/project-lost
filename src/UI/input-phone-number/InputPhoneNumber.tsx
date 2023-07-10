@@ -15,7 +15,7 @@ const InputPhoneNumber: FC<InputPhoneNumberProps> = ({ name, label, disabled }) 
 
   return (
     <PatternFormat
-      format="# (###) #### ###"
+      format="+38 (###) #### ###"
       mask="_"
       label={label}
       placeholder="Phone number"
