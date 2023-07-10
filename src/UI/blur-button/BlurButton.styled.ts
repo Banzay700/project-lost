@@ -10,5 +10,6 @@ export const ButtonWrapper = styled(Button)(({ theme }) => ({
   height: '60px',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '25vw',
+    maxHeight: '50px',
   },
 }))
