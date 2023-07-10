@@ -36,11 +36,11 @@ export const billsApi = api.injectEndpoints({
     }),
     createBill: builder.mutation<BillsType, ModifiedDataType>({
       query: (body) => ({ url: '/bills', method: 'POST', body }),
-      invalidatesTags: ['Bills', 'Order', 'Delivery'],
+      invalidatesTags: ['Bills', 'Order', 'Delivery', 'Statistics'],
     }),
     updateBill: builder.mutation<BillsType, BillsType>({
       query: (post) => ({ url: `/bills`, method: 'PUT', body: post }),
-      invalidatesTags: ['Bills'],
+      invalidatesTags: ['Bills', 'Statistics'],
     }),
     sendEmail: builder.query<string, string>({
       query: (id) => ({ url: `bills/send/${id}` }),

@@ -1,20 +1,25 @@
-import { List } from '@mui/material'
-import styled from 'styled-components'
+import { styled, List } from '@mui/material'
+import { LGS_CUSTOM_BREAKPOINT } from 'utils'
 
-export const SidebarWrapper = styled(List)`
-  width: 110px;
-  height: 100%;
-  min-width: 110px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const SidebarWrapper = styled(List)(({ theme }) => ({
+  width: '110px',
+  height: '100%',
+  minWidth: '110px',
+  padding: '15px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 
-  //TODO переделать с брекпоинтами
-  @media (max-width: 1280px) {
-    width: 90px;
-    min-width: 90px;
-    padding: 14px;
-    gap: 8px;
-  }
-`
+  [theme.breakpoints.down('lg')]: {
+    width: '90px',
+    minWidth: '90px',
+    padding: '14px',
+    gap: '8px',
+  },
+  [theme.breakpoints.down(LGS_CUSTOM_BREAKPOINT)]: {
+    width: '75px',
+    minWidth: '75px',
+    padding: '14px 10px',
+    gap: '8px',
+  },
+}))

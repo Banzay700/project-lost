@@ -13,10 +13,12 @@ export const statisticsApi = api.injectEndpoints({
         url: API_STATISTICS_ENDPOINTS.TOP_SALES_CATEGORY,
         params: { category },
       }),
+      providesTags: ['Statistics'],
     }),
 
     getGeneralStatistic: builder.query<StatisticLabelsResponseType[], void>({
       query: () => ({ url: API_STATISTICS_ENDPOINTS.GENERAL_STATISTIC }),
+      providesTags: ['Statistics'],
     }),
 
     getServiceTypeStatistic: builder.query<StatisticsChartDataType, StatisticChartsRequestType>({
@@ -24,6 +26,7 @@ export const statisticsApi = api.injectEndpoints({
         url: API_STATISTICS_ENDPOINTS.SERVICE_TYPE_STATISTIC,
         params: { period },
       }),
+      providesTags: ['Statistics'],
     }),
 
     getAverageBillStatistic: builder.query<StatisticsChartDataType, StatisticChartsRequestType>({
@@ -31,6 +34,7 @@ export const statisticsApi = api.injectEndpoints({
         url: API_STATISTICS_ENDPOINTS.AVERAGE_BILL_STATISTIC,
         params: { period },
       }),
+      providesTags: ['Statistics'],
     }),
 
     getGeneralTotal: builder.query<StatisticsChartDataType, StatisticChartsRequestType>({
@@ -38,6 +42,7 @@ export const statisticsApi = api.injectEndpoints({
         url: API_STATISTICS_ENDPOINTS.GENERAL_TOTAL,
         params: { period },
       }),
+      providesTags: ['Statistics'],
     }),
   }),
 })

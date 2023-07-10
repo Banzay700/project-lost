@@ -1,11 +1,12 @@
 import { styled, Stack } from '@mui/material'
 import { FadeIn } from 'utils'
 
-export const LabelContent = styled(FadeIn)(() => ({
+export const LabelContent = styled(FadeIn)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '10px',
   width: '100%',
+  [theme.breakpoints.down(1145)]: { gap: '6px' },
 }))
 
 export const PercentageWrapper = styled(Stack)(({ theme }) => ({
@@ -18,9 +19,10 @@ export const PercentageWrapper = styled(Stack)(({ theme }) => ({
   borderColor: theme.palette.border.default,
 }))
 
-export const TitleLineWrapper = styled(Stack)`
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`
+export const TitleLineWrapper = styled(Stack)(({ theme }) => ({
+  width: '100%',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  [theme.breakpoints.down(1145)]: { alignItems: 'flex-start' },
+}))

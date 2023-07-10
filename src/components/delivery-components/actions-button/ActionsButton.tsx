@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from 'react'
-import { Button } from 'UI'
 import { Stack } from '@mui/material'
-import { useIsModal } from 'hooks/useIsModal.hook'
-import { Simulate } from 'react-dom/test-utils'
+
+import { Button } from 'UI'
+import { useIsModal } from 'hooks'
+import { OrderCancellationModal } from 'components/modal-components'
 import { ActionsButtonWrapper } from './ActionsButton.styled'
-import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
 
 interface ActionsButtonProps extends PropsWithChildren {
   titleButton: string
@@ -14,14 +14,8 @@ interface ActionsButtonProps extends PropsWithChildren {
   onCancel?: () => void
 }
 
-const ActionsButton: FC<ActionsButtonProps> = ({
-  titleButton,
-  doubleAction,
-  disabled,
-  onCancel,
-  onSubmit,
-  children,
-}) => {
+const ActionsButton: FC<ActionsButtonProps> = (props) => {
+  const { titleButton, doubleAction, disabled, children, onCancel, onSubmit } = props
   const { handleToggleIsOpenModal, isOpen } = useIsModal()
 
   const handleClickCancel = () => {

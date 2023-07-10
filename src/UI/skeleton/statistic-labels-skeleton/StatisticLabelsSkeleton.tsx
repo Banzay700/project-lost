@@ -1,13 +1,17 @@
 import { FC } from 'react'
-import { Stack, Skeleton } from '@mui/material'
+import { Skeleton } from '@mui/material'
 
 import { LabelItemContainer } from 'pages/admin-pages'
-import { BottomGroupWrapper, HeadersWrapper } from './StatisticLabelsSkeleton.styled'
+import {
+  BottomGroupWrapper,
+  HeadersWrapper,
+  SkeletonContentContainer,
+} from './StatisticLabelsSkeleton.styled'
 
 const StatisticLabelsSkeleton: FC = () => {
   return (
     <LabelItemContainer>
-      <Stack width="100%" maxHeight="120px">
+      <SkeletonContentContainer>
         <HeadersWrapper>
           <Skeleton height="27px" width="55%" animation="wave" />
           <Skeleton
@@ -23,7 +27,7 @@ const StatisticLabelsSkeleton: FC = () => {
           <Skeleton width="16px" animation="wave" />
           <Skeleton width="60%" animation="wave" />
         </BottomGroupWrapper>
-      </Stack>
+      </SkeletonContentContainer>
     </LabelItemContainer>
   )
 }

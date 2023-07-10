@@ -31,7 +31,7 @@ export const deliveryApi = api.injectEndpoints({
       query: (id) => ({
         url: `${API_DELIVERY_ENDPOINTS.DELIVERY}/${id}`,
       }),
-      providesTags: ['Delivery', 'resetDelivery'],
+      providesTags: ['Delivery'],
     }),
     updateDelivery: builder.mutation<DeliveryType, DeliveryUpdateType>({
       query: (body) => ({
@@ -39,11 +39,11 @@ export const deliveryApi = api.injectEndpoints({
         method: 'PUT',
         body,
       }),
-      invalidatesTags: ['Delivery', 'Bills'],
+      invalidatesTags: ['Delivery', 'Bills', 'Statistics'],
     }),
     createDelivery: builder.mutation<DeliveryCreateItemType, DeliveryCreateItemType>({
       query: (body) => ({ url: API_DELIVERY_ENDPOINTS.DELIVERY, method: 'POST', body }),
-      invalidatesTags: ['Delivery'],
+      invalidatesTags: ['Delivery', 'Statistics'],
     }),
     sendNotify: builder.query<DeliveryType, string>({
       query: (id) => ({

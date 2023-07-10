@@ -17,7 +17,7 @@ const OrderTypeStatisticChart: FC = () => {
 
   return (
     <ChartContainer size={4} selectData={doughnutSelectDataMok} onSelectChange={handleChangePeriod}>
-      {isSuccess && data && <DoughnutChart data={data} title="Best sales by Service type" />}
+      {isSuccess && data && <DoughnutChart data={data} title="Top by Order Type" />}
     </ChartContainer>
   )
 }

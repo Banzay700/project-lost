@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Typography } from '@mui/material'
+import { Typography, useTheme, useMediaQuery } from '@mui/material'
 
 import { InfoTag } from 'UI'
 import { Icon } from 'assets'
@@ -14,13 +14,15 @@ interface LabelItemProps {
 
 const LabelItem: FC<LabelItemProps> = ({ labelInfo }) => {
   const { title, value, percentage, period, compareString } = prepareStatisticLabelData(labelInfo)
+  const theme = useTheme()
+  const isTablet = useMediaQuery(theme.breakpoints.down(1145))
   const isPositivePercentage = labelInfo.percentage > 0
 
   return (
     <LabelItemContainer>
       <LabelContent>
         <TitleLineWrapper>
-          <Typography variant="h2" fontWeight={500}>
+          <Typography variant={isTablet ? 'h3' : 'h2'} fontWeight={500}>
             {title}
           </Typography>
           <InfoTag label={period} type="primary" size="small" />
@@ -28,10 +30,12 @@ const LabelItem: FC<LabelItemProps> = ({ labelInfo }) => {
         <Typography variant="h1">{value}</Typography>
         <PercentageWrapper>
           {isPositivePercentage ? <Icon.ChartUp /> : <Icon.ChartDown />}
-          <Typography variant="h3" color={isPositivePercentage ? 'primary.green' : 'primary.red'}>
+          <Typography
+            variant={isTablet ? 'h3' : 'h2'}
+            color={isPositivePercentage ? 'primary.green' : 'primary.red'}>
             {percentage}
           </Typography>
-          <Typography variant="h3">{compareString}</Typography>
+          <Typography variant={isTablet ? 'subtitle2' : 'subtitle1'}>{compareString}</Typography>
         </PercentageWrapper>
       </LabelContent>
     </LabelItemContainer>
