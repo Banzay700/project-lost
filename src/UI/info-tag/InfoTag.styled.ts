@@ -1,5 +1,5 @@
 import { Chip, styled } from '@mui/material'
-import { withProps } from 'utils/withProps'
+import { withProps } from 'utils'
 
 export interface InfoType {
   type?: 'blue' | 'primary' | 'yellow' | 'green' | 'red' | 'default'

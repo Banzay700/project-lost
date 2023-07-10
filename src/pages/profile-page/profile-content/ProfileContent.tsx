@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { UserType, UserUpdateInfo } from 'types'
-import { ProfileInfoUserForm } from 'components/form-componets/profile-form'
+import { ProfileInfoUserForm } from 'components/form-componets'
 import { ContentWrapper } from './ProfileContent.styled'
 
 interface ProfileContentProps {
@@ -15,7 +15,7 @@ const ProfileContent: FC<ProfileContentProps> = (props) => {
     <ContentWrapper>
       <ProfileInfoUserForm
         onSubmit={submitChangeUserInfo}
-        initialValues={{ ...user, password: '###' }}
+        initialValues={{ ...user, password: '' }}
       />
     </ContentWrapper>
   )

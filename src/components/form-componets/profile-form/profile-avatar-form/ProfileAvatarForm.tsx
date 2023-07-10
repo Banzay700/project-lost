@@ -11,12 +11,8 @@ interface ProfileFormAvatarProps {
   onSubmit: (value: UserAvatar) => void
 }
 
-const ProfileAvatarForm: FC<ProfileFormAvatarProps> = ({
-  userImage,
-  firstName,
-  secondName,
-  onSubmit,
-}) => {
+const ProfileAvatarForm: FC<ProfileFormAvatarProps> = (props) => {
+  const { userImage, firstName, secondName, onSubmit } = props
   const [isDisabled, setIsDisabled] = useState(true)
 
   const handleSubmit = (value: UserAvatar) => {
