@@ -4,12 +4,12 @@ import { OrderType } from 'types'
 import { Stack } from '@mui/material'
 import { calculateTotalPrice, TAX } from 'utils'
 import { Button, DetailsListTitle } from 'UI'
+import { useIsModal } from 'hooks/useIsModal.hook'
 import {
   SidebarDeliveryActionsWrapper,
   SidebarDeliveryInfoWrapper,
 } from './SidebarDeliveryInfo.styled'
 import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
-import { useIsModal } from 'hooks/useIsModal.hook'
 
 interface SidebarDeliveryInfoProps {
   deliveryId?: string

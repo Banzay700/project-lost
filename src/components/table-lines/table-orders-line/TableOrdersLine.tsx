@@ -1,8 +1,8 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
-import { TableRow } from '@mui/material'
-import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI/index'
-import { OrderType, OrderTypeOfElement } from 'types/index'
-import { Icon } from 'assets/index'
+import { TableNumberColumn, ColumnText, ColumnInfoChip, ColumnAction } from 'UI'
+import { OrderType, OrderTypeOfElement } from 'types'
+import { Icon } from 'assets'
+import { TableCommonRow } from '../table-common-row'
 
 interface TableOrdersColumnProps {
   element: OrderType
@@ -37,14 +37,7 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({
   }
 
   return (
-    <TableRow
-      hover
-      sx={{
-        cursor: 'pointer',
-        backgroundColor,
-        height: '88px',
-      }}
-      onClick={handleLineWrapperClick}>
+    <TableCommonRow hover background={backgroundColor} onClick={handleLineWrapperClick}>
       <TableNumberColumn table={table} />
 
       <ColumnText title={`#${orderNumber}`} textFontWeight={600} />
@@ -60,7 +53,7 @@ const TableOrdersLine: FC<TableOrdersColumnProps> = ({
         size="small"
         startIcon={<Icon.Tip />}
       />
-    </TableRow>
+    </TableCommonRow>
   )
 }
 

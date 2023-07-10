@@ -1,8 +1,9 @@
 import { FC, MouseEvent } from 'react'
-import { Stack, TableRow } from '@mui/material'
+import { Stack } from '@mui/material'
 import { ColumnInfoTag, ColumnText, ColumnPhoneRedirect, ColumnWithChildren, Button } from 'UI'
 import { DeliveryAddressType } from 'types'
 import { Icon } from 'assets'
+import { TableCommonRow } from '../table-common-row'
 
 interface TableOrderDeliveryLineProps {
   id: string
@@ -30,6 +31,8 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
   onClickLine,
   onClickOpenAddressInfo,
 }) => {
+  const background = isActive === id ? 'rgba(0, 0, 0, 0.04)' : ''
+
   const handleClickLine = () => {
     if (onClickLine && id !== isActive) onClickLine(id)
   }
@@ -44,14 +47,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
     if (onClickAction) onClickAction(id)
   }
   return (
-    <TableRow
-      hover
-      sx={{
-        height: '88px',
-        cursor: 'pointer',
-        background: isActive === id ? 'rgba(0, 0, 0, 0.04)' : '',
-      }}
-      onClick={handleClickLine}>
+    <TableCommonRow hover background={background} onClick={handleClickLine}>
       <ColumnText title={clientName} textFontWeight={600} />
       <ColumnPhoneRedirect title={phoneNumber} textFontWeight={400} />
       <ColumnText title={deliveryAddress.street} noWrap maxWidth="100px" />
@@ -76,7 +72,7 @@ const TableOrderDeliveryLine: FC<TableOrderDeliveryLineProps> = ({
           )}
         </Stack>
       </ColumnWithChildren>
-    </TableRow>
+    </TableCommonRow>
   )
 }
 
