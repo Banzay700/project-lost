@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
   ContentRouteDeliveryMobile,
   IndicatorsGroup,
@@ -6,22 +6,33 @@ import {
   SidebarDeliveryInfo,
   TableContent,
 } from 'components'
-import { useGoogleMapStateAction, useIsModal, useScreenTracking, useUserReducer } from 'hooks'
+import {
+  useAppDispatch,
+  useGoogleMapStateAction,
+  useIsModal,
+  useScreenTracking,
+  useUserReducer,
+} from 'hooks'
 import { PageActionsBar } from 'UI'
 import { useGetAllDeliveryQuery, useLazyGetByIDQuery, useUpdateDeliveryMutation } from 'store/api'
 import { Stack } from '@mui/material'
-import { DeliveryAddressType } from 'types/DeliveryType'
+import { DeliveryAddressType, DeliveryType } from 'types/DeliveryType'
 import { deliveryIndicatorItems, tableHomeTitleDelivery } from './homeDeliveryPage.utils'
 
 const HomeDeliveryPage: FC = () => {
   const { isMobileScreen } = useScreenTracking()
   const { userState } = useUserReducer()
   const { isOpen, handleToggleIsOpenModal } = useIsModal()
-  const { state: googleMap, handleSetStateMap } = useGoogleMapStateAction()
+
   const { data, isFetching } = useGetAllDeliveryQuery({})
   const [getByIdDelivery, { isFetching: isFetchingDeliveryItem, data: deliveryOrderItem }] =
     useLazyGetByIDQuery()
   const [updateDelivery] = useUpdateDeliveryMutation()
+
+  const { state: googleMap, handleSetStateMap } = useGoogleMapStateAction()
+  const [detailDeliveryActiveLine, setDetailDeliveryActiveLine] = useState<
+    DeliveryType | undefined
+  >(data?.data[0])
 
   const handleClickLine = (id: string) => {
     getByIdDelivery(id)
@@ -29,12 +40,22 @@ const HomeDeliveryPage: FC = () => {
 
   const handleTakeDelivery = (id: string) => {
     updateDelivery({ id, courier: userState.id })
+    const findId = data?.data?.find((item) => item.id !== id)
+    getByIdDelivery(findId?.id || data?.data[1]?.id || '')
   }
 
   const handleOpenGoogleMap = (value: DeliveryAddressType) => {
     handleSetStateMap(value)
     handleToggleIsOpenModal()
   }
+
+  useEffect(() => {
+    setDetailDeliveryActiveLine(deliveryOrderItem)
+  }, [deliveryOrderItem, data?.data])
+
+  useEffect(() => {
+    setDetailDeliveryActiveLine(data?.data[0])
+  }, [data?.data])
 
   return (
     <>
@@ -48,7 +69,7 @@ const HomeDeliveryPage: FC = () => {
             tableTitle={tableHomeTitleDelivery}
             isLoading={isFetching}
             data={data?.data}
-            isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
+            isActiveLine={detailDeliveryActiveLine?.id}
             onClickLine={handleClickLine}
             onClickOpenInfoAddress={handleOpenGoogleMap}
           />
@@ -57,8 +78,7 @@ const HomeDeliveryPage: FC = () => {
       {!isMobileScreen && (
         <SidebarDeliveryInfo
           onSubmit={handleTakeDelivery}
-          deliveryId={deliveryOrderItem?.id || data?.data[0]?.id}
-          orderDetail={deliveryOrderItem?.order || data?.data[0]?.order}
+          deliveryInfo={detailDeliveryActiveLine}
           titleButton="Take Delivery"
           isLoading={isFetchingDeliveryItem}
         />

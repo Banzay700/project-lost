@@ -31,6 +31,7 @@ export const deliveryApi = api.injectEndpoints({
       query: (id) => ({
         url: `${API_DELIVERY_ENDPOINTS.DELIVERY}/${id}`,
       }),
+      providesTags: ['Delivery', 'resetDelivery'],
     }),
     updateDelivery: builder.mutation<DeliveryType, DeliveryUpdateType>({
       query: (body) => ({

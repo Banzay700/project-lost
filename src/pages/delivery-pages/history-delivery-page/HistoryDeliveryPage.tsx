@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ContentRouteDeliveryMobile, SidebarDeliveryInfo, TableContent } from 'components'
 import { Pagination } from 'UI'
 import { useUserReducer, useScreenTracking, useParamsSearchFilter } from 'hooks'
 import { useGetAllDeliveryQuery, useLazyGetByIDQuery } from 'store/api'
 import { Stack } from '@mui/material'
+import { DeliveryType } from 'types'
 import { tableHistoryTitleDelivery } from './historyDeliveryPage.utils'
 
 const HistoryDeliveryPage: FC = () => {
@@ -19,10 +20,21 @@ const HistoryDeliveryPage: FC = () => {
   const [getByIdDelivery, { isFetching: isFetchingDeliveryItem, data: deliveryOrderItem }] =
     useLazyGetByIDQuery()
 
+  const [detailDeliveryActiveLine, setDetailDeliveryActiveLine] = useState<
+    DeliveryType | undefined
+  >(data?.data[0])
+
   const handleClickLine = (id: string) => {
     getByIdDelivery(id)
   }
 
+  useEffect(() => {
+    setDetailDeliveryActiveLine(deliveryOrderItem)
+  }, [deliveryOrderItem])
+
+  useEffect(() => {
+    setDetailDeliveryActiveLine(data?.data[0])
+  }, [data?.data])
   return (
     <>
       <Stack flex={1} height="100%" width="100%" overflow="auto">
@@ -39,7 +51,7 @@ const HistoryDeliveryPage: FC = () => {
             tableTitle={tableHistoryTitleDelivery}
             isLoading={isFetching}
             data={data?.data}
-            isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
+            isActiveLine={detailDeliveryActiveLine?.id}
             onClickLine={handleClickLine}
           />
         )}
@@ -55,7 +67,7 @@ const HistoryDeliveryPage: FC = () => {
       </Stack>
       {!isMobileScreen && (
         <SidebarDeliveryInfo
-          orderDetail={data?.data[0]?.order}
+          deliveryInfo={detailDeliveryActiveLine}
           isLoading={isFetchingDeliveryItem}
         />
       )}
