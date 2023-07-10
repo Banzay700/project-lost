@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
   ContentRouteDeliveryMobile,
   IndicatorsGroup,
@@ -16,7 +16,7 @@ import {
   useLazySendNotifyQuery,
 } from 'store/api'
 import { Stack } from '@mui/material'
-import { DeliveryAddressType } from 'types'
+import { DeliveryAddressType, DeliveryType } from 'types'
 import { deliveryIndicatorItems, tableOrdersTitleDelivery } from './OrdersDeliveryPage.utils'
 
 const OrdersDeliveryPage: FC = () => {
@@ -30,23 +30,29 @@ const OrdersDeliveryPage: FC = () => {
   const [updateDelivery] = useUpdateDeliveryMutation()
   const [sendNotify, { isSuccess: isSuccessNotify, isError, error }] = useLazySendNotifyQuery()
 
+  const [detailDeliveryActiveLine, setDetailDeliveryActiveLine] = useState<
+    DeliveryType | undefined
+  >(data?.data[0])
+
   const handleClickLine = (id: string) => {
     getByIdDelivery(id)
   }
 
   const handleCloseDelivery = (id: string) => {
-    if (deliveryOrderItem?.bill || data?.data[0]?.bill) {
-      updateDelivery({
-        id,
-        courier: userState.id,
-        status: 'closed',
-        bill: deliveryOrderItem?.bill || data?.data[0]?.bill,
-      })
-    }
+    const findId = data?.data?.find((item) => item.id === id)
+    updateDelivery({
+      id,
+      courier: userState.id,
+      status: 'closed',
+      bill: findId?.bill,
+    })
+    getByIdDelivery(data?.data[0]?.id || '')
   }
 
   const handleCancelDelivery = (id: string) => {
     updateDelivery({ id })
+    const findId = data?.data?.find((item) => item.id !== id)
+    getByIdDelivery(findId?.id || data?.data[1]?.id || '')
   }
 
   const handleOpenGoogleMap = (value: DeliveryAddressType) => {
@@ -57,6 +63,14 @@ const OrdersDeliveryPage: FC = () => {
   const handleSendNotify = (id: string) => {
     sendNotify(id || '')
   }
+
+  useEffect(() => {
+    setDetailDeliveryActiveLine(deliveryOrderItem)
+  }, [deliveryOrderItem])
+
+  useEffect(() => {
+    setDetailDeliveryActiveLine(data?.data[0])
+  }, [data?.data])
 
   return (
     <>
@@ -72,7 +86,7 @@ const OrdersDeliveryPage: FC = () => {
             tableTitle={tableOrdersTitleDelivery}
             isLoading={isFetching}
             data={data?.data}
-            isActiveLine={deliveryOrderItem?.id || data?.data[0]?.id}
+            isActiveLine={detailDeliveryActiveLine?.id}
             onClickLine={handleClickLine}
             onClickAction={handleSendNotify}
             onClickOpenInfoAddress={handleOpenGoogleMap}
@@ -81,17 +95,12 @@ const OrdersDeliveryPage: FC = () => {
       </Stack>
       {!isMobileScreen && (
         <SidebarDeliveryInfo
-          deliveryId={deliveryOrderItem?.id || data?.data[0]?.id}
+          deliveryInfo={detailDeliveryActiveLine}
           withButtonCancel
           statusCheck
           onCancel={handleCancelDelivery}
           onSubmit={handleCloseDelivery}
-          orderDetail={deliveryOrderItem?.order || data?.data[0]?.order}
-          titleButton={
-            (deliveryOrderItem?.order?.status || data?.data[0]?.order?.status) === 'opened'
-              ? 'Cooking'
-              : 'Done'
-          }
+          titleButton={detailDeliveryActiveLine?.order?.status === 'opened' ? 'Cooking' : 'Done'}
           isLoading={isFetchingDeliveryItem}
         />
       )}

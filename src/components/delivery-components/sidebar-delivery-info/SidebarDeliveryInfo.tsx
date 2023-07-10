@@ -1,19 +1,17 @@
 import { FC } from 'react'
-import { OrderDetailList, OrderSummaryWrapper } from 'components'
-import { OrderType } from 'types'
+import { OrderDetailList, OrderSummaryWrapper, OrderCancellationModal } from 'components'
+import { DeliveryType } from 'types'
 import { Stack } from '@mui/material'
 import { calculateTotalPrice, TAX } from 'utils'
 import { Button, DetailsListTitle } from 'UI'
-import { useIsModal } from 'hooks/useIsModal.hook'
+import { useIsModal } from 'hooks'
 import {
   SidebarDeliveryActionsWrapper,
   SidebarDeliveryInfoWrapper,
 } from './SidebarDeliveryInfo.styled'
-import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
 
 interface SidebarDeliveryInfoProps {
-  deliveryId?: string
-  orderDetail?: OrderType
+  deliveryInfo?: DeliveryType
   isLoading?: boolean
   statusCheck?: boolean
   titleButton?: string
@@ -23,8 +21,7 @@ interface SidebarDeliveryInfoProps {
 }
 
 const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
-  deliveryId,
-  orderDetail,
+  deliveryInfo,
   isLoading,
   statusCheck,
   titleButton,
@@ -34,24 +31,29 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
 }) => {
   const { handleToggleIsOpenModal, isOpen } = useIsModal()
   const handleSubmit = () => {
-    if (onSubmit && deliveryId) onSubmit(deliveryId)
+    if (onSubmit && deliveryInfo?.id) onSubmit(deliveryInfo?.id)
   }
 
   const handleToggleModal = () => {
     handleToggleIsOpenModal()
   }
   const handleConfirmCancel = () => {
-    if (onCancel && deliveryId) onCancel(deliveryId)
+    if (onCancel && deliveryInfo?.id) onCancel(deliveryInfo?.id)
+    handleToggleIsOpenModal()
   }
+
   return (
     <SidebarDeliveryInfoWrapper>
       <Stack flex={1} height="100%">
-        <DetailsListTitle title="Delivery details" orderNumber={orderDetail?.orderNumber || 0} />
-        <OrderDetailList ordersDetail={orderDetail} isLoading={isLoading} />
+        <DetailsListTitle
+          title="Delivery details"
+          orderNumber={deliveryInfo?.order?.orderNumber || 0}
+        />
+        <OrderDetailList ordersDetail={deliveryInfo?.order} isLoading={isLoading} />
         <SidebarDeliveryActionsWrapper>
           <OrderSummaryWrapper
             tax={TAX}
-            total={orderDetail ? calculateTotalPrice(orderDetail?.dishes) : 0}
+            total={deliveryInfo?.order ? calculateTotalPrice(deliveryInfo?.order?.dishes) : 0}
           />
           <Stack direction="row" spacing={2.5}>
             {withButtonCancel && (
@@ -60,13 +62,15 @@ const SidebarDeliveryInfo: FC<SidebarDeliveryInfoProps> = ({
                 size="medium"
                 type="submit"
                 fullWidth
-                onClick={onCancel && handleToggleModal}>
+                onClick={deliveryInfo?.id ? handleToggleModal : () => {}}>
                 Cancel Delivery
               </Button>
             )}
             {titleButton && (
               <Button
-                disabled={!orderDetail || (statusCheck && orderDetail?.status === 'opened')}
+                disabled={
+                  !deliveryInfo?.order || (statusCheck && deliveryInfo?.order?.status === 'opened')
+                }
                 variant="contained"
                 size="medium"
                 type="submit"

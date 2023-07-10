@@ -5,24 +5,24 @@ import { SidebarTabsList } from 'components'
 import { Icon } from 'assets'
 import { useRelocateDefaultLocation } from 'hooks'
 import { Statistics } from './statistics'
-import { mokStatistics } from './AdminStatisticsPage.utils'
+import { adminStatisticsPageTabs, ROUTES_STATISTICS } from './AdminStatisticsPage.utils'
 
 const AdminStatisticsPage: FC = () => {
   const { statistics } = useParams()
 
   useRelocateDefaultLocation({
     isParams: statistics,
-    relocateTo: mokStatistics[0].linkTo,
+    relocateTo: adminStatisticsPageTabs[0].linkTo,
   })
 
   return (
     <Stack direction="row" width="100%">
       <SidebarTabsList
-        sidebarTabItems={mokStatistics}
+        sidebarTabItems={adminStatisticsPageTabs}
         title="Statistics"
         titleIcon={<Icon.Statistics />}
       />
-      <Statistics />
+      {statistics === ROUTES_STATISTICS.SALES && <Statistics />}
     </Stack>
   )
 }
