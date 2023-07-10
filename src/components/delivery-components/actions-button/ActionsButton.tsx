@@ -1,11 +1,10 @@
 import { FC, PropsWithChildren } from 'react'
 import { Button } from 'UI'
 import { Stack } from '@mui/material'
-import { ActionsButtonWrapper } from './ActionsButton.styled'
-import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
 import { useIsModal } from 'hooks/useIsModal.hook'
 import { Simulate } from 'react-dom/test-utils'
-import cancel = Simulate.cancel
+import { ActionsButtonWrapper } from './ActionsButton.styled'
+import OrderCancellationModal from '../../modal-components/order-cancellation-modal/OrderCancellationModal'
 
 interface ActionsButtonProps extends PropsWithChildren {
   titleButton: string

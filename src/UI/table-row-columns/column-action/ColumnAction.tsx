@@ -15,6 +15,7 @@ interface ColumnActionProps {
   icon?: ReactNode
   element?: BillsType
   type?: 'print'
+  disabled?: boolean
 }
 
 const ColumnAction: FC<ColumnActionProps> = ({
@@ -28,6 +29,7 @@ const ColumnAction: FC<ColumnActionProps> = ({
   element,
   type,
   onClick,
+  disabled,
 }) => {
   return (
     <TableCell align={columnAlign || 'center'}>
@@ -54,7 +56,8 @@ const ColumnAction: FC<ColumnActionProps> = ({
           endIcon={endIcon}
           icon={icon}
           maxWidth="200px"
-          fullWidth>
+          fullWidth
+          disabled={disabled}>
           {title}
         </Button>
       )}

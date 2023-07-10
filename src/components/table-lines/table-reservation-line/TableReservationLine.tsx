@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { ReservationResponseType } from 'types/index'
 import { Collapse, Table, TableBody, TableCell, TableRow } from '@mui/material'
 import { ColumnInfoChip, ColumnText, ColumnCollapseReservation } from 'UI/index'
+import { TableCommonRow } from '../table-common-row'
 
 interface TableReservationLineProps {
   element: ReservationResponseType
@@ -16,22 +17,17 @@ const TableReservationLine: FC<TableReservationLineProps> = ({ element }) => {
 
   return (
     <>
-      <TableRow
+      <TableCommonRow
         hover
-        sx={{
-          '& td:last-child': {
-            paddingRight: '0px',
-          },
-          cursor: 'pointer',
-          backgroundColor,
-          height: '65px',
-        }}
+        lastChild
+        height="65px"
+        background={backgroundColor}
         onClick={handleLineWrapperClick}>
         <ColumnText title={clientName} />
         <ColumnText title={time} />
         {table && <ColumnText title={table.number} />}
         <ColumnInfoChip type={status} />
-      </TableRow>
+      </TableCommonRow>
       <TableRow
         sx={{
           backgroundColor: 'rgba(0,0,0,0.02)',

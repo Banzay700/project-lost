@@ -1,8 +1,8 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
-import { TableRow } from '@mui/material'
-import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI/index'
-import { BillsType, OrderTypeOfElement } from 'types/index'
-import { Icon } from 'assets/index'
+import { ColumnAction, ColumnInfoChip, ColumnText, TableNumberColumn } from 'UI'
+import { BillsType, OrderTypeOfElement } from 'types'
+import { Icon } from 'assets'
+import { TableCommonRow } from '../table-common-row'
 
 interface TableBillsColumnProps {
   element: BillsType
@@ -20,7 +20,9 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
   onClickLine,
 }) => {
   const { table, totalPrice, orderType, orderNumber, id, status } = element
+  const disabled = orderType === 'delivery'
   const backgroundColor = active === id ? 'rgba(0, 0, 0, 0.04)' : 'initial'
+
   const handleSendBillsData = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     if (onClickAction && id) {
@@ -35,15 +37,9 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
       setActive(id)
     }
   }
+
   return (
-    <TableRow
-      hover
-      sx={{
-        cursor: 'pointer',
-        backgroundColor,
-        height: '88px',
-      }}
-      onClick={handleLineWrapperClick}>
+    <TableCommonRow hover background={backgroundColor} onClick={handleLineWrapperClick}>
       <TableNumberColumn table={table} />
 
       <ColumnText title={`#${orderNumber}`} textFontWeight={600} />
@@ -61,6 +57,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           size="small"
           variant="contained"
           startIcon={<Icon.Tip />}
+          disabled={disabled}
         />
       ) : (
         <ColumnAction
@@ -72,7 +69,7 @@ const TableBillsLine: FC<TableBillsColumnProps> = ({
           element={element}
         />
       )}
-    </TableRow>
+    </TableCommonRow>
   )
 }
 
