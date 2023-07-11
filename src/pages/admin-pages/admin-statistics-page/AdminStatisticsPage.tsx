@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
-import { Stack } from '@mui/material'
 import { FC } from 'react'
+
 import { SidebarTabsList } from 'components'
 import { Icon } from 'assets'
 import { useRelocateDefaultLocation } from 'hooks'
