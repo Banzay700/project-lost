@@ -1,0 +1,1218 @@
+[
+  {
+    "bonus": 6,
+    "description": "A strip of marinated pork ribs, grilled. Served with BBQ sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Ribs-on-the-grill_o3emwq.jpg",
+    "price": 299,
+    "type": "dish",
+    "title": "Grilled ribs",
+    "weight": 350,
+    "category": "6463d3d529c030d9f12890a3"
+  },
+  {
+    "bonus": 10,
+    "description": "Roll with panko salmon, Philadelphia cheese, mango, iceberg lettuce, unagi sauce in sesame; Roll with salmon, Philadelphia cheese, tamago-unagi omelet, iceberg lettuce and cucumber; Roll with surimi-kimchi, cucumber, tamago-unagi omelet in tobika caviar. 24 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/tandem-set_jboroj.jpg",
+    "price": 499,
+    "type": "dish",
+    "title": "Tandem set",
+    "weight": 499,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "description": "Carbonated mineral water",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Morshynska-low-carbonated_qhhlax.jpg",
+    "price": 49,
+    "type": "dish",
+    "title": "Morshinska is weakly carbonated",
+    "weight": 0.5,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "bonus": 2,
+    "description": "Fried potatoes with mushrooms, green butter and herbs",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Potatoes-in-the-Mediterranean-style_kgxnco.jpg",
+    "price": 89,
+    "type": "dish",
+    "title": "Mediterranean potatoes",
+    "weight": 270,
+    "category": "6463d42e29c030d9f12890a9"
+  },
+  {
+    "description": "Red semi-sweet wine. Ukraine",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Koblevo-Select-Black-Sea-Riviera_haumcl.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Koblevo Select Black Sea Riviera",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Apple cider with added strawberry juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Royal_cilvzm.jpg",
+    "price": 129,
+    "type": "dish",
+    "title": "Royal",
+    "weight": 0.7,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Packaged apple juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Apple-juice_gmziwk.png",
+    "price": 99,
+    "type": "dish",
+    "title": "Apple",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "bonus": 3,
+    "description": "Tomatoes, sweet pepper, cucumbers, romaine lettuce, feta cheese, red onion, oregano, olive oil, balsamic sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/Greek_zndgss.jpg",
+    "price": 149,
+    "type": "dish",
+    "title": "Greek",
+    "weight": 245,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "description": "Red, dry, France",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Louis-Eschenauer-dOc-Cabernet-Sauvignon_vhhsss.jpg",
+    "price": 329,
+    "type": "dish",
+    "title": "Louis Eschenauer d'Oc Cabernet Sauvignon",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "bonus": 9,
+    "description": "Roll with salmon, Philadelphia cheese, mango, tamago-unagi omelet, iceberg lettuce and orange sauce; Roll with eel, Philadelphia cheese, pear, tamago-unagi omelet, unagi sauce in sesame. 16 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/phils-double_sswaas.jpg",
+    "price": 479,
+    "type": "dish",
+    "title": "Double Phil",
+    "weight": 485,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "description": "White, semi-sweet, Georgia",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931252/Alazan-Valley-Duruji-Valley_n33091.jpg",
+    "price": 329,
+    "type": "dish",
+    "title": "Alazan Valley Duruji Valle",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Leffe-Brune_hkazsf.jpg",
+    "price": 89,
+    "type": "dish",
+    "title": "Leffe Brune",
+    "weight": 0.33,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Corona-Extra_ce2vag.jpg",
+    "price": 89,
+    "type": "dish",
+    "title": "Corona Extra",
+    "weight": 0.33,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "bonus": 4,
+    "description": "Two beef patties, Hochland cheese, onion, pickled cucumber, ketchup, mustard",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Double-Cheeseburger_sz4hat.jpg",
+    "price": 179,
+    "type": "dish",
+    "title": "Double Cheeseburger",
+    "weight": 280,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "bonus": 2,
+    "description": "A classic cream cheese dessert on a sand base",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931146/Classic-cheesecake_cmalj1.jpg",
+    "price": 115,
+    "type": "dish",
+    "title": "Classic cheesecake",
+    "weight": 140,
+    "category": "645fddc021acd64994d67c09"
+  },
+  {
+    "bonus": 3,
+    "description": "Hamburger, French fries, BBQ sauce.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Hamburger-combo-menu_lrlnbs.jpg",
+    "price": 179,
+    "type": "dish",
+    "title": "Hamburger combo menu",
+    "weight": 310,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "description": "Still mineral water",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Evian_sermva.jpg",
+    "price": 49,
+    "type": "dish",
+    "title": "Evian",
+    "weight": 0.33,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "bonus": 5,
+    "description": "Tagliatelle with salmon and shrimp, tomatoes, zucchini, cream sauce and Parmesan cheese",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Pasta-with-salmon-and-shrimp_scfoov.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Pasta with salmon and shrimp",
+    "weight": 365,
+    "category": "6463d37529c030d9f128909b"
+  },
+  {
+    "bonus": 20,
+    "description": "Roll #1: Salmon fillet roll. Roll #2: Roll with salmon fillet and Sriracha sauce. Roll #3: Roll with salmon fillet, Philadelphia cheese, avocado and cucumber. Roll #4: Roll with salmon fillet, Philadelphia cheese, cucumber, Tamago and tobiko. Roll #5: Roll with salmon fillet, Philadelphia cheese, Tamago, mango and Romaine salad. Roll #6: Roll with salmon fillet, Philadelphia cheese, Tamago, cucumber and mango-chili sauce. 44 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/Salmon-Salmon-XL_gzhpqh.jpg",
+    "price": 999,
+    "type": "dish",
+    "title": "Salmon&Salmon XL",
+    "weight": 1180,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 11,
+    "description": "Mozzarella cheese, ham, brisket, mushrooms, parmesan, cherry tomatoes and truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/meter-carbonara_yqnr52.jpg",
+    "price": 569,
+    "type": "dish",
+    "title": "Carbonara meter",
+    "weight": 1200,
+    "category": "6463d02486e7ee99e0de1ad3"
+  },
+  {
+    "description": "Carbonated drink",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Pepsi-Black_ijmsgt.jpg",
+    "price": 45,
+    "type": "dish",
+    "title": "Pepsi Black",
+    "weight": 0.5,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "description": "Red, semi-sweet, Georgia",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931252/Alazan-Valley-Duruji-Valley-red_qit0qu.jpg",
+    "price": 329,
+    "type": "dish",
+    "title": "Alazan Valley Duruji Valley",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "bonus": 2,
+    "description": "Chicken broth, sous-vide chicken fillet, potatoes, carrots, beets, onions, cabbage, tomato paste, parsley. Served with sour cream, pieces of lard and brown bread with garlic sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930363/Ukrainian-borscht_iaufwd.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Ukrainian borsch",
+    "weight": 420,
+    "category": "645fdd5921acd64994d67c05"
+  },
+  {
+    "bonus": 4,
+    "description": "Classic ramen soup with egg noodles, spicy pork belly, pickled egg and fried sesame",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930363/Ramen_oxg5mn.jpg",
+    "price": 189,
+    "type": "dish",
+    "title": "Ramen",
+    "weight": 350,
+    "category": "645fdd5921acd64994d67c05"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Mafia-Blanche_apvaju.jpg",
+    "price": 72,
+    "type": "dish",
+    "title": "Blanche",
+    "weight": 0.5,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "bonus": 3,
+    "description": "Tagliatelle with bacon and ham in a creamy sauce, with garlic and Parmesan cheese",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Pasta-Carbonara_nbgbuf.jpg",
+    "price": 149,
+    "type": "dish",
+    "title": "Pasta Carbonara",
+    "weight": 260,
+    "category": "6463d37529c030d9f128909b"
+  },
+  {
+    "bonus": 5,
+    "description": "Roll with salmon, Philadelphia cheese, tamago-unagi omelet, cucumber, iceberg lettuce and tobika caviar",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/Felix-roll-with-salmon_kfzemu.jpg",
+    "price": 229,
+    "type": "dish",
+    "title": "Felix roll with salmon",
+    "weight": 255,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 4,
+    "description": "Roll with oily fish, Philadelphia cheese, tamago-unagi omelet, cucumber, iceberg lettuce, spicy sauce and tobika caviar",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927676/Felix-roll-with-buttercream_mjxucg.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Felix roll with oily fish",
+    "weight": 255,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 5,
+    "description": "Roll with panko salmon, Philadelphia cheese, mango, iceberg lettuce, unagi sauce in sesame",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/Salmon-crunch_rsidox.jpg",
+    "price": 259,
+    "type": "dish",
+    "title": "Salmon crunch",
+    "weight": 220,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 5,
+    "description": "Grilled chicken fillet with vegetables in a creamy sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Chicken-breast-in-cream-sauce_yd0ms0.jpg",
+    "price": 259,
+    "type": "dish",
+    "title": "Chicken breast in cream sauce",
+    "weight": 350,
+    "category": "6463d47629c030d9f12890ad"
+  },
+  {
+    "bonus": 3,
+    "description": "Classic Basque cheesecake with sour cream",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931146/Basque-cheesecake_isdgtw.jpg",
+    "price": 149,
+    "type": "dish",
+    "title": "Basque Cheesecake",
+    "weight": 150,
+    "category": "645fddc021acd64994d67c09"
+  },
+  {
+    "description": "Carbonated drink",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931252/7UP_hylhkm.jpg",
+    "price": 55,
+    "type": "dish",
+    "title": "7 UP",
+    "weight": 0.5,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "bonus": 16,
+    "description": "Roll with sour kimchi, tamago and cucumber in tobiko caviar; Roll with salmon fillet, Philadelphia cheese, Tamago and mango; Roll with salmon fillet, Philadelphia cheese, dor bleu, Tamago and pear; Roll with butter, sour kimchi, Philadelphia cheese and cucumber in sesame and with mango-chili sauce; Maki with sour kimchi and cucumber; Roll with Philadelphia cheese, Tamago, Chuka, ginger, bell pepper and cucumber in sesame and unagi sauce. 46 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/Premium_xrlg8l.jpg",
+    "price": 799,
+    "type": "dish",
+    "title": "Premium",
+    "weight": 1220,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 4,
+    "description": "Chicken wings in spicy Privan sauce, carp dips",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Chicken-wings-in-sauce_qqiwvl.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Chicken wings in sauce",
+    "weight": 350,
+    "category": "6463d47629c030d9f12890ad"
+  },
+  {
+    "bonus": 1,
+    "description": "Roll with cucumber",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/Kapa-maki_fucmvc.jpg",
+    "price": 65,
+    "type": "dish",
+    "title": "Capa maki",
+    "weight": 110,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "description": "Vermouth. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Martini-Bianco_aysyww.jpg",
+    "price": 499,
+    "type": "dish",
+    "title": "Martini Bianco",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 18,
+    "description": "Roll #1: Roll with salmon fillet, Philadelphia cheese, mango and Tamago; Roll #2: Roll with salmon fillet, Philadelphia cheese, dor bleu, Tamago and pear; Roll #3: Roll with panko salmon, Tamago, Philadelphia cheese in cucumber and tobiko caviar; Roll #4: Roll with panko eel, Philadelphia cheese, avocado, Tamago, cucumber, sesame and unagi sauce; Roll #5: Roll with eel, Philadelphia cheese, cucumber, Tamago, tobiko caviar and unagi sauce; Roll #6: Roll with panko chicken, Philadelphia cheese, sweet pepper, cucumber and romaine lettuce in cheddar cheese and spicy sauce. 48 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927676/Big-Fish-XXL_usjqc5.jpg",
+    "price": 899,
+    "type": "dish",
+    "title": "Big Fish XXL",
+    "weight": 1435,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 5,
+    "description": "Classic roll with salmon, cream cheese, avocado, tobiko caviar and cucumber",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/Philadelphia-classic_wlwp4n.jpg",
+    "price": 289,
+    "type": "dish",
+    "title": "Philadelphia classic",
+    "weight": 260,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "description": "Whiskey. Ireland",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Jameson_i9mhjk.jpg",
+    "price": 1499,
+    "type": "dish",
+    "title": "Jameson",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Whiskey. USA",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Jack-Daniels_bk08fi.jpg",
+    "price": 1499,
+    "type": "dish",
+    "title": "Jack Daniels",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 4,
+    "description": "Chicken fillet, crispy bacon, tomatoes, salad mix, quail egg, Parmesan cheese, croutons with green oil and garlic, Caesar sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/cezar_qafyxj.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Caesar",
+    "weight": 275,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "bonus": 5,
+    "description": "Chicken, bell pepper, red onion, pineapple, carrot, peanut, sweet and sour sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Chicken-in-sweet-and-sour-sauce_gy2dg5.jpg",
+    "price": 269,
+    "type": "dish",
+    "title": "Chicken in sweet and sour sauce",
+    "weight": 375,
+    "category": "6463d47629c030d9f12890ad"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Mafia-Lager_qkhyrq.jpg",
+    "price": 65,
+    "type": "dish",
+    "title": "Lager",
+    "weight": 0.5,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "description": "White semi-sweet sparkling wine. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Fragolino-Fiorelli-Bianco_yc3opm.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Fragolino Fiorelli Bianco",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Vodka. Finland",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Finlandia-cranberry_sjewfp.jpg",
+    "price": 449,
+    "type": "dish",
+    "title": "Finlandia cranberry",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Carbonated drink",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Mirinda_wviobj.jpg",
+    "price": 45,
+    "type": "dish",
+    "title": "Mirinda",
+    "weight": 0.33,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "bonus": 2,
+    "description": "Chuka, celery stalk, cucumber, sesame, lemon, homadare sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/Kaiso_t6a3ii.jpg",
+    "price": 119,
+    "type": "dish",
+    "title": "Kaiso",
+    "weight": 155,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "bonus": 3,
+    "description": "Lightly salted herring with baked potatoes and pickled onions",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Home-style-herring_ue2jnx.jpg",
+    "price": 129,
+    "type": "dish",
+    "title": "Homemade herring",
+    "weight": 240,
+    "category": "6463d3c329c030d9f12890a1"
+  },
+  {
+    "bonus": 7,
+    "description": "Original roll with 100-gram salmon, cream cheese, avocado and cucumber",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/Philadelphia-Maxi_jxztoj.jpg",
+    "price": 369,
+    "type": "dish",
+    "title": "Philadelphia max",
+    "weight": 305,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 4,
+    "description": "Creamy soup with salmon, potatoes, onions, dill and white pepper. Served with cheese bruschetta and salmon",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930363/Scandinavian-salmon-soup_vk6y9o.jpg",
+    "price": 219,
+    "type": "dish",
+    "title": "Scandinavian soup with salmon",
+    "weight": 340,
+    "category": "645fdd5921acd64994d67c05"
+  },
+  {
+    "description": "Red dry wine. France",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Saperavi-Duruji-Valley_kionpz.png",
+    "price": 419,
+    "type": "dish",
+    "title": "Kiwi Cuvee Pinot Noir",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Red, dry, Georgia",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Saperavi-Duruji-Valley_qzmapl.jpg",
+    "price": 419,
+    "type": "dish",
+    "title": "Saperavi Duruji Valley",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Cognac. Ukraine",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Koblevo-Reserve-VSOP_wx7mxa.jpg",
+    "price": 349,
+    "type": "dish",
+    "title": "Koblevo RESERVE VSOP",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 24,
+    "description": "Roll #1 - California chicken: Roll with panko chicken, cucumber, tomatoes, lettuce and Caesar sauce in tobiko caviar. Roll #2 - Green Dragon: Roll with salmon and eel panko, Philadelphia cheese, Tamago, cucumber, tobiko caviar, avocado, sesame and unagi sauce. Roll #3 - Unagi roru: Roll with eel, Philadelphia cheese, cucumber, Tamago and unagi sauce. Roll #4 вЂ“ Fire Dragon: Roll with caramelized salmon, Philadelphia cheese, dor bleu cheese, pear, Tamago, tobiko caviar and mango-chili sauce. Roll #5 - Felix roll with eel: Roll with eel, Philadelphia cheese, cucumber, Tamago and unagi sauce. Roll #6 - Golden Dragon: Roll with eel, salmon panko, Philadelphia cheese, Tamago, bell pepper, cucumber, tobiko caviar, sesame and unagi sauce. Roll #7 - Maki with salmon: Maki with salmon, sesame and Sriracha sauce. Roll #8 вЂ“ Spicy Chuka Maki: Maki with Chuka, sesame and spicy sauce. 60 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/dragon-xxl_aftwpa.jpg",
+    "price": 1199,
+    "type": "dish",
+    "title": "Dragon XXL",
+    "weight": 1650,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 7,
+    "description": "Chicken wings in privan sauce, chicken sticks with unagi sauce and white sesame, potato nossets, onion rings, potato waffles, croutons, BBQ and cheese sauces",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928162/Beer-plate_uira16.jpg",
+    "price": 369,
+    "type": "dish",
+    "title": "Beer plate",
+    "weight": 770,
+    "category": "6463d3c329c030d9f12890a1"
+  },
+  {
+    "bonus": 3,
+    "description": "Eggplant, zucchini, mushrooms, bell pepper, creamy sauce with parmesan",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Grilled-vegetables_kzy56g.jpg",
+    "price": 169,
+    "type": "dish",
+    "title": "Grilled vegetables",
+    "weight": 310,
+    "category": "6463dc465a068891ae1cb2f6"
+  },
+  {
+    "bonus": 12,
+    "description": "Sous-vide chicken fillet, ham, hunting sausages, pepperoni, mozzarella cheese, mushrooms, onions, parsley, BBQ sauce and truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/super-meat-meter_xiinhq.jpg",
+    "price": 589,
+    "type": "dish",
+    "title": "Super meaty meter",
+    "weight": 1300,
+    "category": "6463d02486e7ee99e0de1ad3"
+  },
+  {
+    "bonus": 6,
+    "description": "Mozzarella cheese, ham, brisket, mushrooms, parmesan, cherry tomatoes and truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/carbonara_vjqs5k.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Carbonara",
+    "weight": 500,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 6,
+    "description": "Sous-vide chicken fillet, ham, hunting sausages, pepperoni, mozzarella cheese, mushrooms, onions, parsley, BBQ sauce and truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/super-meat_xbintm.jpg",
+    "price": 299,
+    "type": "dish",
+    "title": "Super meaty",
+    "weight": 580,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 2,
+    "description": "Beef cutlet, onion, pickled cucumber, ketchup, mustard",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Hamburger_hcrebm.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Hamburger",
+    "weight": 180,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "description": "Packaged orange juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Orange-juice_w06fhm.png",
+    "price": 99,
+    "type": "dish",
+    "title": "Orange",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "description": "White dry sparkling wine. Ukraine",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Marengo-Brut_mtexkg.jpg",
+    "price": 259,
+    "type": "dish",
+    "title": "Marengo Brut",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "bonus": 5,
+    "description": "Sous-vide chicken fillet, bell pepper, mozzarella cheese, pineapple, garlic, marinara sauce, BBQ sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/polo_o2cuer.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Polo",
+    "weight": 550,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 6,
+    "description": "Dor bleu cheese, mozzarella cheese, cheddar cheese, Parmesan cheese, truffle paste, Philadelphia, honey, truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/tryufalini_s3eyxf.jpg",
+    "price": 289,
+    "type": "dish",
+    "title": "Trufalini",
+    "weight": 525,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 11,
+    "description": "Sous-vide chicken fillet, hunting sausages, pepperoni, mozzarella cheese, corn, mustard, onion jam, marinara and BBQ sauces",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/bbq-meter_ee7sas.jpg",
+    "price": 569,
+    "type": "dish",
+    "title": "BBQ meter",
+    "weight": 1265,
+    "category": "6463d02486e7ee99e0de1ad3"
+  },
+  {
+    "bonus": 5,
+    "description": "Roll with shrimp, Philadelphia cheese, mango, tamago-unagi omelet, iceberg lettuce and mango-chili sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/Philadelphia-Abi_cncv1m.jpg",
+    "price": 249,
+    "type": "dish",
+    "title": "Philadelphia Eby",
+    "weight": 230,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "description": "Packaged peach nectar",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Peach-juice_rdzemm.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Peach",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "bonus": 3,
+    "description": "Chicken thigh in panko, pickled cucumber, sesame mix, spicy gyoza sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Chicken-crunch_uofsrr.jpg",
+    "price": 149,
+    "type": "dish",
+    "title": "Chicken crunch",
+    "weight": 235,
+    "category": "6463d3c329c030d9f12890a1"
+  },
+  {
+    "bonus": 5,
+    "description": "Marinated veal, beans, sweet pepper, red onion, garlic, peanuts, Thai sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Veal-in-Thai-style_gbkfsy.jpg",
+    "price": 259,
+    "type": "dish",
+    "title": "Thai-style veal",
+    "weight": 300,
+    "category": "6463d3d529c030d9f12890a3"
+  },
+  {
+    "bonus": 4,
+    "description": "Perch fillet in panko, cucumber, lemon, signature sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Fish-Chips_hmdbus.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Fish & Chips",
+    "weight": 265,
+    "category": "6463d3c329c030d9f12890a1"
+  },
+  {
+    "bonus": 2,
+    "description": "Delicate puff pastry with vanilla custard and caramel sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931146/Napoleon_muyplj.jpg",
+    "price": 119,
+    "type": "dish",
+    "title": "Napoleon",
+    "weight": 120,
+    "category": "645fddc021acd64994d67c09"
+  },
+  {
+    "bonus": 4,
+    "description": "Marinara sauce, tomatoes, mozzarella cheese, garlic sauce.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/margarita_hlmcra.jpg",
+    "price": 199,
+    "type": "dish",
+    "title": "Margarita",
+    "weight": 445,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 3,
+    "description": "Cheddar cheese in panko breading",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928162/Cheese-sticks-with-cranberry-sauce_rx3tft.jpg",
+    "price": 159,
+    "type": "dish",
+    "title": "Cheese sticks with cranberry sauce",
+    "weight": 205,
+    "category": "6463d3c329c030d9f12890a1"
+  },
+  {
+    "bonus": 2,
+    "description": "Chicken broth, chicken fillet, quail egg, noodles and aromatic herbs",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930364/Chicken-broth_wbxjsa.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Chicken broth",
+    "weight": 365,
+    "category": "645fdd5921acd64994d67c05"
+  },
+  {
+    "description": "White rum. Germany / Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Bacardi-Carta-Blanca_zxyy6n.jpg",
+    "price": 999,
+    "type": "dish",
+    "title": "Bacardi Carta Blanca",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Light golden-yellow whiskey. Scotland",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/William-Lawsons_qtpeba.png",
+    "price": 899,
+    "type": "dish",
+    "title": "William Lawson's",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 4,
+    "description": "Marinated veal, baked eggplant and sweet pepper, salad mix, cherries, peanuts, spicy sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/Salad-with-veal_q5dkwk.jpg",
+    "price": 189,
+    "type": "dish",
+    "title": "Salad with veal",
+    "weight": 189,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "description": "Vodka",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Cossack-Council-Special_p1t7f6.jpg",
+    "price": 299,
+    "type": "dish",
+    "title": "Special Cossack Council",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Carbonated drink",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Pepsi_krgaob.jpg",
+    "price": 45,
+    "type": "dish",
+    "title": "Pepsi",
+    "weight": 0.5,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "description": "Vermouth. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Martini-Fiero_hw7gr1.jpg",
+    "price": 499,
+    "type": "dish",
+    "title": "Martini Fiero",
+    "weight": 0.75,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Cognac. Georgia",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931252/Agmarti-3_ejzjla.jpg",
+    "price": 499,
+    "type": "dish",
+    "title": "Agmarti 3*",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "White sweet sparkling wine. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Martini-Asti_uvdubt.jpg",
+    "price": 449,
+    "type": "dish",
+    "title": "Martini Asti",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "bonus": 16,
+    "description": "Kunsei philadelphia roll, Surimi-tamago roll, Maki with butter, Maki with salmon, Philadelphia roll with salmon, Chizu roll. 52 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/super-fila-xxl_gjqb2i.jpg",
+    "price": 799,
+    "type": "dish",
+    "title": "Super Fila XXL",
+    "weight": 1370,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 5,
+    "description": "Sous-vide chicken fillet, hunting sausages, pepperoni, mozzarella cheese, corn, mustard, onion jam, marinara and BBQ sauces",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/bbq_o57j6l.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "BBQ",
+    "weight": 580,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 7,
+    "description": "Carbonara: ham, brisket, Parmesan cheese, mushrooms, cherry tomatoes and cream. Gourmet meat: sous-vide chicken fillet, ham, hunting sausages, pepperoni, mushrooms, onion, parsley and BBQ sauce. Four cheeses: dour bleu cheese, cheddar cheese, parmesan cheese, pear, walnut and cream sauce. Cheese board: Philadelphia cheese, mozzarella cheese",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/mafia_gqyjok.jpg",
+    "price": 339,
+    "type": "dish",
+    "title": "Mafia",
+    "weight": 570,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "description": "Tequila. Mexico",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Sierra-Silver_t3kxbw.jpg",
+    "price": 1099,
+    "type": "dish",
+    "title": "Sierra Silver",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "description": "Cognac. Ukraine",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931249/Koblevo-RESERVE-VS_uypngs.jpg",
+    "price": 249,
+    "type": "dish",
+    "title": "Koblevo RESERVE VS",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 5,
+    "description": "Roll with panko shrimp, Philadelphia cheese, mango, iceberg lettuce and mango-chili sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927676/Ebi-tempura_by0tww.jpg",
+    "price": 239,
+    "type": "dish",
+    "title": "Ebi tempura",
+    "weight": 215,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 6,
+    "description": "Crispy Torisho chicken, lightly salted cucumbers, pickled carrots, Aioli sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Crispy-Torisho-chicken-with-aioli-sauce_uktj7f.jpg",
+    "price": 289,
+    "type": "dish",
+    "title": "Crispy Chicken Torisho with Aioli Sauce",
+    "weight": 520,
+    "category": "6463d47629c030d9f12890ad"
+  },
+  {
+    "description": "Rum. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Bacardi-Spiced_jzqcge.jpg",
+    "price": 999,
+    "type": "dish",
+    "title": "Bacardi Spiced",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 5,
+    "description": "Dor bleu cheese, cheddar cheese, parmesan cheese, mozzarella cheese, pear, walnut, cream sauce and truffle oil",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928212/four-cheeses_oxenlq.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Four cheeses",
+    "weight": 430,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "bonus": 11,
+    "description": "Sous-vide chicken fillet, bell pepper, mozzarella cheese, pineapple, garlic, marinara sauce, BBQ sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/polo-meter_fjvzka.jpg",
+    "price": 579,
+    "type": "dish",
+    "title": "Polo meter",
+    "weight": 1350,
+    "category": "6463d02486e7ee99e0de1ad3"
+  },
+  {
+    "bonus": 2,
+    "description": "Shortbread Tart with Walnut and Salted Caramel",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931146/Walnut-tart-with-caramel_id3fu6.jpg",
+    "price": 115,
+    "type": "dish",
+    "title": "Nut tart with caramel",
+    "weight": 70,
+    "category": "645fddc021acd64994d67c09"
+  },
+  {
+    "bonus": 6,
+    "description": "Roll with salmon, Philadelphia cheese, mango, tamago-unagi omelet, iceberg lettuce and orange sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927675/Orange-salmon_wolhsj.jpg",
+    "price": 299,
+    "type": "dish",
+    "title": "Orange salmon",
+    "weight": 255,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "bonus": 2,
+    "description": "French fries",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/French-fries_auhfdp.jpg",
+    "price": 89,
+    "type": "dish",
+    "title": "French fries",
+    "weight": 140,
+    "category": "6463d42e29c030d9f12890a9"
+  },
+  {
+    "bonus": 12,
+    "description": "Carbonara: ham, brisket, Parmesan cheese, mushrooms, cherry tomatoes and cream. Gourmet meat: sous-vide chicken fillet, ham, hunting sausages, pepperoni, mushrooms, onion, parsley and BBQ sauce. Four cheeses: dour bleu cheese, cheddar cheese, parmesan cheese, pear, walnut and cream sauce. Cheese board: Philadelphia cheese, mozzarella cheese",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/meter-mafia_eyrq19.jpg",
+    "price": 619,
+    "type": "dish",
+    "title": "Mafia meter",
+    "weight": 1340,
+    "category": "6463d02486e7ee99e0de1ad3"
+  },
+  {
+    "description": "Whiskey, Scotland.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Hankey-Bannister_y0p3cf.jpg",
+    "price": 999,
+    "type": "dish",
+    "title": "Hankey Bannister",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 5,
+    "description": "Lightly salted salmon, avocado, mango, salad mix, cherries, almond flakes, orange sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/Salad-with-salmon_ktt3o8.jpg",
+    "price": 239,
+    "type": "dish",
+    "title": "Salad with salmon",
+    "weight": 190,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "description": "Non-alcoholic beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/PPB_prccvh.jpg",
+    "price": 69,
+    "type": "dish",
+    "title": "PPB, b/a",
+    "weight": 0.5,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "bonus": 19,
+    "description": "Green Dragon: salmon and eel panko roll, Philadelphia cheese, tamago-unagi omelet, cucumber, tobiko caviar, avocado, sesame and unagi sauce; Fire dragon: roll with caramelized salmon, Philadelphia cheese, dor bleu cheese, pear, tamago-unagi omelet, tobiko caviar and mango-chili sauce; Golden Dragon: roll with eel, panko salmon, Philadelphia cheese, tamago unagi omelet, bell pepper, cucumber, tobiko caviar, sesame and unagi sauce. 24 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/three-dragons_ksmql6.jpg",
+    "price": 849,
+    "type": "dish",
+    "title": "Three dragons",
+    "weight": 780,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 6,
+    "description": "Pork steak, asparagus beans and onion jam with carbonara cream sauce, BBQ sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930528/Grilled-pork-steak_isxelz.jpg",
+    "price": 279,
+    "type": "dish",
+    "title": "Grilled pork steak",
+    "weight": 380,
+    "category": "6463d3d529c030d9f12890a3"
+  },
+  {
+    "bonus": 7,
+    "description": "Lightly salted salmon, stracchatella and mozzarella cheeses, arugula, pickled red onion, marinara sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928211/norwegian_ywjozh.jpg",
+    "price": 349,
+    "type": "dish",
+    "title": "Norwegian",
+    "weight": 515,
+    "category": "6463d2ef29c030d9f1289093"
+  },
+  {
+    "description": "Spiced rum. Germany / Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Oakheart-Original_mmyfyp.jpg",
+    "price": 999,
+    "type": "dish",
+    "title": "Oakheart Original",
+    "weight": 1,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 1,
+    "description": "Steamed jasmine rice, white sesame",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930527/Jasmine-rice_v0ieex.jpg",
+    "price": 39,
+    "type": "dish",
+    "title": "Jasmine rice",
+    "weight": 150,
+    "category": "6463d49a29c030d9f12890af"
+  },
+  {
+    "description": "White dry wine. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Decordi-Soave_eouwqi.jpg",
+    "price": 339,
+    "type": "dish",
+    "title": "Decordi Soave",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Packaged pineapple nectar",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Pineapple-juice_agqy0u.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Pineapple",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "description": "Effervescent tonic",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Schweppes_oaokuv.jpg",
+    "price": 45,
+    "type": "dish",
+    "title": "Schweppes",
+    "weight": 0.25,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Stella-Artois_ytjqpb.jpg",
+    "price": 96,
+    "type": "dish",
+    "title": "Stella Artois",
+    "weight": 0.5,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "description": "Packaged tomato juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931246/Tomato-juice_ulqpor.png",
+    "price": 99,
+    "type": "dish",
+    "title": "Tomato",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "description": "Packaged multivitamin juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Multivitamin-juice_icv3qh.png",
+    "price": 99,
+    "type": "dish",
+    "title": "Multivitamin",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "bonus": 18,
+    "description": "Roll #1 - Philadelphia unagi: Roll with panko eel, kimchi surimi, pear and cream cheese in tobiko caviar and sesame. Roll #2 - Green Dragon: Roll with eel panko, cream cheese, avocado, Tamago, cucumber, sesame and unagi sauce. Roll #3 - Felix roll with eel: Roll with eel, salmon, perch, sour kimchi, cream cheese, cucumber, Tamago, spice sauce and unagi sauce. Roll #4 - Philadelphia unagi: Roll with eel and salmon, cream cheese, blue cheese and pear. Roll #5 - Unagi maki: Maki with eel, cucumber, spice sauce and unagi sauce. Roll #6 - Unagi roru: Roll with eel, salmon, perch, sour kimchi, cream cheese, cucumber, tamago and unagi sauce. 46 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927676/Atlantic-set_omz8fx.jpg",
+    "price": 899,
+    "type": "dish",
+    "title": "Atlantic set",
+    "weight": 1250,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 4,
+    "description": "King York burger, French fries, BBQ sauce.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Combo-menu-King-York_aadqmt.jpg",
+    "price": 209,
+    "type": "dish",
+    "title": "King York combo menu",
+    "weight": 310,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "description": "Vodka. Finland",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Finlandia_e2t0bw.jpg",
+    "price": 449,
+    "type": "dish",
+    "title": "Finlandia",
+    "weight": 0.5,
+    "category": "6463d3a629c030d9f128909f"
+  },
+  {
+    "bonus": 4,
+    "description": "Cheese cream soup with dor bleu, cream cheese, bacon. Served with cheese bruschetta",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684930364/Cheese-soup_dnlxi7.jpg",
+    "price": 179,
+    "type": "dish",
+    "title": "Cheese soup",
+    "weight": 365,
+    "category": "645fdd5921acd64994d67c05"
+  },
+  {
+    "description": "Packaged pomegranate nectar",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931247/Pomegranate-juice_c6mhvd.jpg",
+    "price": 99,
+    "type": "dish",
+    "title": "Garnet",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  },
+  {
+    "description": "Beer",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Apple-cider_nvqmhy.jpg",
+    "price": 69,
+    "type": "dish",
+    "title": "Apple cider",
+    "weight": 0.5,
+    "category": "6463d45929c030d9f12890ab"
+  },
+  {
+    "bonus": 6,
+    "description": "Shrimp, avocado, tomatoes, salad mix, quail egg, Parmesan cheese, croutons with green oil and garlic, Caesar sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928540/Caesar-with-shrimp_tufh5b.jpg",
+    "price": 299,
+    "type": "dish",
+    "title": "Caesar with shrimp",
+    "weight": 275,
+    "category": "645fc3bbc4a8097ac591a038"
+  },
+  {
+    "description": "White extra dry sparkling wine. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Martini-Prosecco_yz59wq.jpg",
+    "price": 449,
+    "type": "dish",
+    "title": "Martini Prosecco",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "Still mineral water",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Evian_sermva.jpg",
+    "price": 59,
+    "type": "dish",
+    "title": "Evian",
+    "weight": 0.33,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "description": "White dry wine. Italy",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931250/Decordi-Pinot-Grigio_ppd00q.jpg",
+    "price": 379,
+    "type": "dish",
+    "title": "Decordi Pinot Grigio",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "description": "White semi-sweet sparkling wine. Ukraine",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931248/Marengo_pedtl0.jpg",
+    "price": 259,
+    "type": "dish",
+    "title": "Marengo",
+    "weight": 0.75,
+    "category": "6463d3f929c030d9f12890a5"
+  },
+  {
+    "bonus": 4,
+    "description": "Beef cutlet, Hochland cheese, iceberg lettuce, purple onion, pickled cucumber, tomato, signature sauce",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928162/Burger-King-York_qj6jh0.jpg",
+    "price": 129,
+    "type": "dish",
+    "title": "Burger King York",
+    "weight": 210,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "bonus": 11,
+    "description": "Roll with shrimp-panko, Philadelphia cheese, mango, iceberg lettuce and mango-chili sauce; Roll with oily fish, Philadelphia cheese, tamago-unagi omelet, cucumber, iceberg lettuce, spicy sauce and tobika caviar; Roll with salmon, Philadelphia cheese, mango, tamago-unagi omelet and mango-chili sauce. 24 pcs.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/sea-mix_pipw3f.jpg",
+    "price": 549,
+    "type": "dish",
+    "title": "Sea mix",
+    "weight": 745,
+    "category": "6463d33429c030d9f1289097"
+  },
+  {
+    "bonus": 2,
+    "description": "Maki with salmon and wasabi",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684927674/Syake-maki_w3uxfn.jpg",
+    "price": 139,
+    "type": "dish",
+    "title": "Sake maki",
+    "weight": 110,
+    "category": "6463d34e29c030d9f1289099"
+  },
+  {
+    "description": "Carbonated mineral water",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Borjomi_t5clbv.jpg",
+    "price": 85,
+    "type": "dish",
+    "title": "Borjomi",
+    "weight": 0.5,
+    "category": "6463d41429c030d9f12890a7"
+  },
+  {
+    "bonus": 5,
+    "description": "Burger Double Cheeseburger, french fries, BBQ sauce.",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684928161/Double-Cheeseburger-combo-menu_t1xl7f.jpg",
+    "price": 239,
+    "type": "dish",
+    "title": "Combo menu Double Cheeseburger",
+    "weight": 310,
+    "category": "6463d31529c030d9f1289095"
+  },
+  {
+    "description": "Packaged cherry juice",
+    "picture": "https://res.cloudinary.com/dz5jl6tzt/image/upload/v1684931251/Cherry-juice_t8ipc7.png",
+    "price": 99,
+    "type": "dish",
+    "title": "Cherry",
+    "weight": 0.95,
+    "category": "6463d39a29c030d9f128909d"
+  }
+]
