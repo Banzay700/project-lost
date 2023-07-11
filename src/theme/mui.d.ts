@@ -37,6 +37,8 @@ declare module '@mui/material/styles/createPalette' {
       chartSecondary: string
       chartTertiary: string
       chartQuaternary: string
+      chartQuaternaryLight: string
+      chartSecondaryLight: string
     }
   }
 
@@ -54,6 +56,8 @@ declare module '@mui/material/styles/createPalette' {
     chartSecondary: string
     chartTertiary: string
     chartQuaternary: string
+    chartQuaternaryLight: string
+    chartSecondaryLight: string
   }
 }
 

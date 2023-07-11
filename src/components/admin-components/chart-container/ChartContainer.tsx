@@ -24,6 +24,7 @@ const ChartContainer: FC<ChartContainerProps> = (props) => {
           onChange={onSelectChange}
         />
       )}
+
       <ChartItem>{children}</ChartItem>
     </ChartsContainer>
   )

@@ -40,6 +40,8 @@ export {
   InfoDeliverySkeleton,
   OrderDetailsItemsSkeleton,
   StatisticLabelsSkeleton,
+  BarChartSkeleton,
+  DoughnutChartSkeleton,
 } from './skeleton'
 export { CustomNavLink } from './custom-nav-link'
 export { Loader } from './loader'

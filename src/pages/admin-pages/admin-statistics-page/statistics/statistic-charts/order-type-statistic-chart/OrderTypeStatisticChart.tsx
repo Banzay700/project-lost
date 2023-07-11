@@ -1,11 +1,12 @@
 import { FC, useEffect } from 'react'
 
-import { DoughnutChart, ChartContainer } from 'components'
+import { ChartContainer, DoughnutChart } from 'components'
+import { DoughnutChartSkeleton } from 'UI'
 import { useLazyGetServiceTypeStatisticQuery } from 'store/api'
 import { doughnutSelectDataMok } from './OrderTypeStatisticChart.utils'
 
 const OrderTypeStatisticChart: FC = () => {
-  const [getServiceTypeData, { data, isSuccess }] = useLazyGetServiceTypeStatisticQuery()
+  const [getServiceTypeData, { data, isSuccess, isLoading }] = useLazyGetServiceTypeStatisticQuery()
 
   const handleChangePeriod = (value: string) => {
     getServiceTypeData({ period: value })
@@ -18,6 +19,7 @@ const OrderTypeStatisticChart: FC = () => {
   return (
     <ChartContainer size={4} selectData={doughnutSelectDataMok} onSelectChange={handleChangePeriod}>
       {isSuccess && data && <DoughnutChart data={data} title="Top by Order Type" />}
+      {isLoading && <DoughnutChartSkeleton />}
     </ChartContainer>
   )
 }

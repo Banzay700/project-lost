@@ -4,9 +4,11 @@ import { HorizontalChart, ChartContainer } from 'components'
 
 import { NativeSelectItemType } from 'types'
 import { correctionName } from 'utils'
+import { BarChartSkeleton } from 'UI/skeleton'
 
 const TopCategoriesBarChart: FC = () => {
-  const [changeCategory, { data: dataTopCategory }] = useLazyGetTopSalesCategoryQuery()
+  const [changeCategory, { data: dataTopCategory, isSuccess, isLoading }] =
+    useLazyGetTopSalesCategoryQuery()
   const { data: dataCategory } = useGetCategoriesQuery(null)
 
   const updateDataCategory: NativeSelectItemType[] | undefined =
@@ -31,7 +33,8 @@ const TopCategoriesBarChart: FC = () => {
       selectDefaultTitle="Top catecories"
       selectData={updateDataCategory}
       onSelectChange={handleChangeCategory}>
-      {dataTopCategory && <HorizontalChart data={dataTopCategory} title="Top Sales" />}
+      {isSuccess && dataTopCategory && <HorizontalChart data={dataTopCategory} title="Top Sales" />}
+      {isLoading && <BarChartSkeleton barItemsColor="background.chartSecondaryLight" />}
     </ChartContainer>
   )
 }

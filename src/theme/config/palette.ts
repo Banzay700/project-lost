@@ -42,8 +42,10 @@ export const palette = {
     lightMain: '#ffe2cc',
     chartPrimary: '#fc8040',
     chartSecondary: '#87bafc',
+    chartSecondaryLight: '#fff9f1',
     chartTertiary: '#f6d684',
     chartQuaternary: 'rgb(164,167,250)',
+    chartQuaternaryLight: '#e3e3f6',
     gradient: 'linear-gradient(218.57deg, #ffab18 -6.67%, #ff2197 137.69%)',
   },
   border: {

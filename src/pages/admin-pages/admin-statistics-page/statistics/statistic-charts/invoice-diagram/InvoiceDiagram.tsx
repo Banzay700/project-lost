@@ -1,10 +1,12 @@
 import { FC, useEffect } from 'react'
+
 import { VerticalDiagram, ChartContainer } from 'components'
+import { BarChartSkeleton } from 'UI'
 import { useLazyGetGeneralTotalQuery } from 'store/api'
 import { selectInvoiceData } from './InvoiceDiagram.utils'
 
 const InvoiceDiagram: FC = () => {
-  const [changePeriod, { data: dataGeneralTotal }] = useLazyGetGeneralTotalQuery()
+  const [changePeriod, { data, isSuccess, isLoading }] = useLazyGetGeneralTotalQuery()
 
   const handleChangePeriod = (period: string) => changePeriod({ period })
 
@@ -18,7 +20,8 @@ const InvoiceDiagram: FC = () => {
       onSelectChange={handleChangePeriod}
       selectDefaultTitle="Month"
       selectData={selectInvoiceData}>
-      {dataGeneralTotal && <VerticalDiagram data={dataGeneralTotal} />}
+      {isSuccess && data && <VerticalDiagram data={data} />}
+      {isLoading && <BarChartSkeleton barItemsColor="primary.extraLight" />}
     </ChartContainer>
   )
 }
