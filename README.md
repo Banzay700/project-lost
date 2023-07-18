@@ -1,7 +1,7 @@
 
 <div style="display: flex; align-items: center; justify-content: space-between" >
+<div style="width: 85px; height: 85px; display: flex; align-items: center; justify-content: center"><img src="./client/public/logo.svg" alt="Folks logo" style="width: 85px; height: 85px;" /></div>
 <h1> Team Project - <span style="color: coral">"Folks Restaurant"</span></h1>
-<div style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center"><img src="./client/public/logo.svg" alt="Folks logo" style="width: 90px; height: 90px; margin-right: 20px" /></div>
 </div>
   
 
@@ -45,7 +45,7 @@ Link to deployed app: [folks.onrender.com](https://folks.onrender.com/)
 <a href="#" title="JWT" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/jwt-3.svg" alt="JWT" width="55"/> </a>
 </p>
 
-###### * Joy, Bcrypt, Multer, Nodemailer
+###### * Joy, Bcrypt, Multer, Nodemailer,
 
 ### Developers:
 
