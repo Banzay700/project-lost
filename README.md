@@ -1,8 +1,7 @@
 
 <div style="display: flex; align-items: center; justify-content: space-between" >
 <h1> Team Project - <span style="color: coral">"Folks Restaurant"</span></h1>
-<div style="width: 110px; height: 110px; display: flex; align-items: center; justify-content: center"><img src="./client/public/logo.svg" alt="Folks logo" style="width: 110px; height: 110px; margin-right: 20px" /></div>
-
+<div style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center"><img src="./client/public/logo.svg" alt="Folks logo" style="width: 90px; height: 90px; margin-right: 20px" /></div>
 </div>
   
 
@@ -33,16 +32,20 @@ Link to deployed app: [folks.onrender.com](https://folks.onrender.com/)
 <a href="https://www.figma.com/" title="Figma"  target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="50" height="50"/> </a>
 </p>
 
-###### * Redux Toolkit, RTK Query, Yup, Jest-Dom
+###### * Redux Toolkit, RTK Query, Yup
 
 #### Backend Technologies:
 <p align="left" style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap;"> 
 <a href="https://uk.legacy.reactjs.org/" title="Node.js" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/452075/node-js.svg" alt="Node.js" width="55" /> </a>
 <a href="#" title="Express.js" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-ar21.svg" alt="Express.js" width="87" /> </a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="45" height="45"/> </a> 
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="50"/> </a> 
 <a href="#" title="MongoDB" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png" alt="MongoDB" width="150"/> </a>
-<a href="#" title="Mongose" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/7552965?s=280&v=4" alt="Mongoose" width="90"/> </a>
+<a href="#" title="Mongoose" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/7552965?s=280&v=4" alt="Mongoose" width="90"/> </a>
+<a href="#" title="Cloudinary" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/353566/cloudinary.svg" alt="Cloudinary" width="80"/> </a>
+<a href="#" title="JWT" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/jwt-3.svg" alt="JWT" width="55"/> </a>
 </p>
+
+###### * Joy, Bcrypt, Multer, Nodemailer
 
 ### Developers:
 
